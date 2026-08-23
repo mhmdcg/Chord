@@ -421,10 +421,10 @@ body {
     color: var(--text);
     white-space: nowrap;
     padding: 4px 8px;
-    background: rgba(255, 255, 255, 0.95);
+    background-color: inherit;
     border-radius: 4px;
     margin-bottom: 2px;
-    box-shadow: 0 1px 3px var(--shadow);
+    box-shadow: none;
     cursor: pointer;
 }
 
@@ -565,11 +565,21 @@ body {
     border-color: var(--primary);
 }
 
+.chord-roots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
 .chord-suggestions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    max-height: 22vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .chord-suggestion {
@@ -582,7 +592,18 @@ body {
     transition: all 0.2s;
 }
 
+.chord-suggestion.root {
+    font-weight: 600;
+    min-width: 40px;
+}
+
 .chord-suggestion:hover {
+    background: #EEF2FF;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.chord-suggestion.selected {
     background: var(--primary);
     color: white;
     border-color: var(--primary);

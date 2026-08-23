@@ -33,11 +33,16 @@ class ChordAnnotatorApp {
             '#E6E6FA',
         ];
 
-        this.commonChords = [
-            'C', 'D', 'E', 'F', 'G', 'A', 'B',
-            'Cm', 'Dm', 'Em', 'Fm', 'Gm', 'Am', 'Bm',
-            'C7', 'D7', 'E7', 'F7', 'G7', 'A7', 'B7'
+        this.rootLetters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+        this.chordQualities = [
+            '', 'm', '7', 'm7', 'maj7', '6', 'm6',
+            '9', 'm9', 'maj9', 'add9', 'madd9', 'add11', 'add4',
+            'sus2', 'sus4', 'sus', '7sus4', '9sus4',
+            'dim', 'dim7', 'm7b5', 'aug',
+            '5', '11', '13', 'm11', 'm13',
+            '7b9', '7#9', '7b5', '7#5', 'maj7#11'
         ];
+        this.allChords = this.buildChordCatalog();
 
         this.init();
     }
@@ -83,7 +88,7 @@ class ChordAnnotatorApp {
             if (this.pendingEdit) {
                 this.pendingEdit.chord = e.target.value;
             }
-            this.filterChordSuggestions(e.target.value);
+            this.updateChordSuggestions();
         });
         document.getElementById('chordInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.saveChord();
@@ -450,7 +455,7 @@ class ChordAnnotatorApp {
                 const pendingClass = annotation.pending ? ' pending' : '';
                 html += `<span class="chord-annotation${pendingClass}" data-index="${annotation.index}" style="background-color: ${color}">`;
                 if (isFirst && annotation.chord) {
-                    html += `<span class="chord-label">${this.escapeHtml(annotation.chord)}</span>`;
+                    html += `<span class="chord-label" style="background-color: ${color}">${this.escapeHtml(annotation.chord)}</span>`;
                 }
                 html += `<span class="lyric-text">${this.escapeHtml(text)}</span>`;
                 html += '</span>';
@@ -673,7 +678,7 @@ class ChordAnnotatorApp {
         document.getElementById('chordModal').classList.add('active');
         document.getElementById('annotationView').classList.add('sheet-open');
 
-        this.renderChordSuggestions(this.commonChords);
+        this.updateChordSuggestions();
         this.renderAnnotationView();
         this.scrollSelectionIntoView();
 
@@ -853,29 +858,93 @@ class ChordAnnotatorApp {
         });
     }
 
-    filterChordSuggestions(input) {
-        const filtered = this.commonChords.filter(chord =>
-            chord.toLowerCase().startsWith(input.toLowerCase())
-        );
-        this.renderChordSuggestions(filtered);
+    buildChordCatalog() {
+        const chords = [];
+        this.rootLetters.forEach(letter => {
+            ['', 'b', '#'].forEach(accidental => {
+                this.chordQualities.forEach(quality => {
+                    chords.push(`${letter}${accidental}${quality}`);
+                });
+            });
+        });
+        return chords;
     }
 
-    renderChordSuggestions(chords) {
+    parseChordRoot(chord) {
+        const match = String(chord || '').trim().match(/^([A-Ga-g])([#b])?(.*)$/);
+        if (!match) return null;
+        return {
+            letter: match[1].toUpperCase(),
+            accidental: match[2] || '',
+            quality: match[3] || '',
+            root: `${match[1].toUpperCase()}${match[2] || ''}`
+        };
+    }
+
+    getChordFamily(letter) {
+        const upper = letter.toUpperCase();
+        return this.allChords.filter(chord => this.parseChordRoot(chord)?.letter === upper);
+    }
+
+    filterChordsByInput(input) {
+        const query = input.trim();
+        if (!query) return [];
+
+        const parsed = this.parseChordRoot(query);
+        if (parsed && query.length === 1) {
+            return this.getChordFamily(parsed.letter);
+        }
+
+        const lower = query.toLowerCase();
+        return this.allChords.filter(chord => chord.toLowerCase().startsWith(lower));
+    }
+
+    updateChordSuggestions() {
+        const input = document.getElementById('chordInput').value.trim();
+        const parsed = this.parseChordRoot(input);
+        const activeLetter = parsed ? parsed.letter : '';
+        this.renderRootButtons(activeLetter, input);
+        this.renderChordSuggestions(this.filterChordsByInput(input), input);
+    }
+
+    renderRootButtons(activeLetter, selectedChord) {
+        const container = document.getElementById('chordRoots');
+        container.innerHTML = '';
+
+        this.rootLetters.forEach(letter => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'chord-suggestion root';
+            if (activeLetter === letter) btn.classList.add('selected');
+            btn.textContent = letter;
+            btn.addEventListener('click', () => this.selectSuggestedChord(letter));
+            container.appendChild(btn);
+        });
+    }
+
+    renderChordSuggestions(chords, selectedChord = '') {
         const container = document.getElementById('chordSuggestions');
         container.innerHTML = '';
 
-        chords.slice(0, 12).forEach(chord => {
+        chords.forEach(chord => {
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'chord-suggestion';
+            if (selectedChord && chord.toLowerCase() === selectedChord.toLowerCase()) {
+                btn.classList.add('selected');
+            }
             btn.textContent = chord;
-            btn.addEventListener('click', () => {
-                document.getElementById('chordInput').value = chord;
-                if (this.pendingEdit) this.pendingEdit.chord = chord;
-                this.saveChord();
-            });
+            btn.addEventListener('click', () => this.selectSuggestedChord(chord));
             container.appendChild(btn);
         });
+    }
+
+    selectSuggestedChord(chord) {
+        document.getElementById('chordInput').value = chord;
+        if (this.pendingEdit) this.pendingEdit.chord = chord;
+        this.updateChordSuggestions();
+        this.renderAnnotatedLyrics();
+        this.positionHandles();
     }
 
     updateChordLegend() {
