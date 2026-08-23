@@ -42,8 +42,24 @@
                     <input type="text" id="songArtist" placeholder="Enter artist name" />
                 </div>
                 <div class="form-group">
-                    <label for="songLyrics">Lyrics</label>
-                    <textarea id="songLyrics" placeholder="Paste or type your lyrics here...&#10;Supports English and Persian text"></textarea>
+                    <div class="field-label-row">
+                        <label for="songLyrics">Lyrics</label>
+                        <div class="align-toggle" role="group" aria-label="Lyrics alignment">
+                            <button type="button" id="alignLeftBtn" class="align-btn active" aria-pressed="true">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                                    <path d="M4 6h16M4 12h10M4 18h14"/>
+                                </svg>
+                                Left
+                            </button>
+                            <button type="button" id="alignRightBtn" class="align-btn" aria-pressed="false">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                                    <path d="M4 6h16M10 12h10M6 18h14"/>
+                                </svg>
+                                Right
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="songLyrics" class="align-left" placeholder="Paste or type your lyrics here...&#10;Supports English and Persian text"></textarea>
                 </div>
                 <div class="form-actions">
                     <button id="proceedToAnnotateBtn" class="btn btn-primary btn-large">Continue to Add Chords →</button>

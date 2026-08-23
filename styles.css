@@ -249,6 +249,63 @@ body {
     color: var(--text);
 }
 
+.field-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.field-label-row label {
+    margin-bottom: 0;
+}
+
+.align-toggle {
+    display: inline-flex;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 3px;
+    gap: 2px;
+}
+
+.align-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.375rem 0.75rem;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    min-height: 36px;
+}
+
+.align-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.align-btn.active {
+    background: var(--surface);
+    color: var(--primary);
+    box-shadow: 0 1px 2px var(--shadow);
+}
+
+#songLyrics.align-left {
+    text-align: left;
+    direction: ltr;
+}
+
+#songLyrics.align-right {
+    text-align: right;
+    direction: rtl;
+}
+
 .form-group input,
 .form-group textarea {
     width: 100%;
@@ -317,6 +374,14 @@ body {
     -webkit-user-select: text;
 }
 
+.lyrics-display.align-left,
+.lyrics-display.align-left .lyrics-content {
+    direction: ltr;
+    text-align: left;
+}
+
+.lyrics-display.align-right,
+.lyrics-display.align-right .lyrics-content,
 .lyrics-display.rtl,
 .lyrics-display.rtl .lyrics-content {
     direction: rtl;
@@ -361,6 +426,12 @@ body {
     margin-bottom: 2px;
     box-shadow: 0 1px 3px var(--shadow);
     cursor: pointer;
+}
+
+.lyrics-display.align-right .chord-label,
+.lyrics-display.rtl .chord-label {
+    left: auto;
+    right: 0;
 }
 
 /* Selection handles */

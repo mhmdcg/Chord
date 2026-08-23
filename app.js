@@ -58,6 +58,8 @@ class ChordAnnotatorApp {
 
         document.getElementById('saveEditorBtn').addEventListener('click', () => this.saveSong());
         document.getElementById('proceedToAnnotateBtn').addEventListener('click', () => this.proceedToAnnotation());
+        document.getElementById('alignLeftBtn').addEventListener('click', () => this.setTextAlign('left'));
+        document.getElementById('alignRightBtn').addEventListener('click', () => this.setTextAlign('right'));
 
         document.getElementById('doneAnnotatingBtn').addEventListener('click', () => this.finishAnnotation());
         document.getElementById('undoBtn').addEventListener('click', () => this.undo());
@@ -186,6 +188,7 @@ class ChordAnnotatorApp {
         } else if (viewName === 'editor') {
             this.closeChordModal();
             document.getElementById('editorView').classList.add('active');
+            this.applyTextAlign();
         } else if (viewName === 'annotation') {
             document.getElementById('annotationView').classList.add('active');
             this.initHistory();
@@ -202,6 +205,7 @@ class ChordAnnotatorApp {
             artist: '',
             lyrics: '',
             annotations: [],
+            textAlign: 'left',
             createdAt: new Date().toISOString()
         };
 
@@ -209,6 +213,7 @@ class ChordAnnotatorApp {
         document.getElementById('songTitle').value = '';
         document.getElementById('songArtist').value = '';
         document.getElementById('songLyrics').value = '';
+        this.applyTextAlign();
 
         this.showView('editor');
     }
@@ -221,6 +226,7 @@ class ChordAnnotatorApp {
         document.getElementById('songTitle').value = this.currentSong.title;
         document.getElementById('songArtist').value = this.currentSong.artist || '';
         document.getElementById('songLyrics').value = this.currentSong.lyrics;
+        this.applyTextAlign();
 
         this.showView('editor');
     }
@@ -242,6 +248,7 @@ class ChordAnnotatorApp {
         this.currentSong.title = title;
         this.currentSong.artist = document.getElementById('songArtist').value.trim();
         this.currentSong.lyrics = lyrics;
+        this.currentSong.textAlign = this.getSongTextAlign(this.currentSong);
 
         if (this.editingIndex >= 0) {
             this.songs[this.editingIndex] = this.currentSong;
@@ -274,6 +281,7 @@ class ChordAnnotatorApp {
         this.currentSong.title = title;
         this.currentSong.artist = document.getElementById('songArtist').value.trim();
         this.currentSong.lyrics = lyrics;
+        this.currentSong.textAlign = this.getSongTextAlign(this.currentSong);
 
         if (!this.currentSong.annotations) {
             this.currentSong.annotations = [];
@@ -330,12 +338,46 @@ class ChordAnnotatorApp {
         document.getElementById('redoBtn').disabled = this.historyIndex >= this.history.length - 1;
     }
 
-    renderAnnotationView() {
+    getSongTextAlign(song) {
+        if (!song) return 'left';
+        if (song.textAlign === 'right' || song.textAlign === 'left') {
+            return song.textAlign;
+        }
+        return /[\u0600-\u06FF]/.test(song.lyrics || '') ? 'right' : 'left';
+    }
+
+    setTextAlign(align) {
+        if (!this.currentSong) {
+            this.currentSong = { textAlign: align, annotations: [] };
+        }
+        this.currentSong.textAlign = align === 'right' ? 'right' : 'left';
+        this.applyTextAlign();
+    }
+
+    applyTextAlign() {
+        const align = this.getSongTextAlign(this.currentSong);
+        const textarea = document.getElementById('songLyrics');
         const display = document.getElementById('lyricsDisplay');
+        const leftBtn = document.getElementById('alignLeftBtn');
+        const rightBtn = document.getElementById('alignRightBtn');
+
+        textarea.classList.toggle('align-left', align === 'left');
+        textarea.classList.toggle('align-right', align === 'right');
+
+        display.classList.toggle('align-left', align === 'left');
+        display.classList.toggle('align-right', align === 'right');
+        display.classList.toggle('rtl', align === 'right');
+
+        leftBtn.classList.toggle('active', align === 'left');
+        rightBtn.classList.toggle('active', align === 'right');
+        leftBtn.setAttribute('aria-pressed', align === 'left' ? 'true' : 'false');
+        rightBtn.setAttribute('aria-pressed', align === 'right' ? 'true' : 'false');
+    }
+
+    renderAnnotationView() {
         document.getElementById('annotationTitle').textContent = this.currentSong.title;
 
-        const isPersian = /[\u0600-\u06FF]/.test(this.currentSong.lyrics);
-        display.classList.toggle('rtl', isPersian);
+        this.applyTextAlign();
 
         this.renderAnnotatedLyrics();
         this.updateChordLegend();
