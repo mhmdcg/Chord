@@ -1,0 +1,500 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4F46E5;
+    --primary-dark: #4338CA;
+    --secondary: #6B7280;
+    --background: #F9FAFB;
+    --surface: #FFFFFF;
+    --text: #111827;
+    --text-light: #6B7280;
+    --border: #E5E7EB;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-lg: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+    min-height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.view {
+    display: none;
+    min-height: 100vh;
+}
+
+.view.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: var(--surface);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+.header h1, .header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    flex: 1;
+    margin: 0 1rem;
+}
+
+.btn {
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: var(--background);
+}
+
+.btn-large {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn-danger {
+    background: #DC2626;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #B91C1C;
+}
+
+/* Song List */
+.song-list {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-light);
+}
+
+.song-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.song-card:hover {
+    box-shadow: 0 4px 12px var(--shadow);
+    transform: translateY(-2px);
+}
+
+.song-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+    color: var(--text);
+}
+
+.song-card p {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.song-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8125rem;
+    color: var(--text-light);
+    margin-top: 0.75rem;
+}
+
+.song-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.btn-small {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+}
+
+/* Editor */
+.editor-container {
+    padding: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-group textarea {
+    min-height: 300px;
+    resize: vertical;
+    line-height: 1.8;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Annotation View */
+.annotation-container {
+    padding: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.instructions {
+    background: #EEF2FF;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--primary-dark);
+    font-weight: 500;
+}
+
+.lyrics-display {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    min-height: 400px;
+    font-size: 1.125rem;
+    line-height: 2.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    position: relative;
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: text;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.lyrics-display.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.chord-annotation {
+    position: relative;
+    display: inline;
+    padding: 2px 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chord-annotation:hover {
+    filter: brightness(0.95);
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.chord-label {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 4px;
+    margin-bottom: 2px;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 20px 40px var(--shadow-lg);
+}
+
+.modal-content h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.selected-text-preview {
+    background: var(--background);
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
+    color: var(--text-light);
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+#chordInput {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+#chordInput:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.chord-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.chord-suggestion {
+    padding: 0.5rem 1rem;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.chord-suggestion:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.modal-actions .btn {
+    flex: 1;
+}
+
+/* Chord Legend */
+.chord-legend {
+    margin-top: 2rem;
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.chord-legend h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.legend-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.legend-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.legend-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.legend-item-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.legend-item button {
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.legend-item button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 0.875rem 1rem;
+    }
+    
+    .header h1, .header h2 {
+        font-size: 1.125rem;
+        margin: 0 0.5rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .song-list,
+    .editor-container,
+    .annotation-container {
+        padding: 1rem;
+    }
+    
+    .lyrics-display {
+        padding: 1.5rem;
+        font-size: 1rem;
+        line-height: 2.25;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lyrics-display {
+        font-size: 1.25rem;
+        line-height: 2.75;
+    }
+}
+
+/* Persian/RTL Support */
+[lang="fa"], [lang="ar"] {
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+/* Prevent text selection highlighting during annotation */
+.lyrics-display::selection {
+    background: rgba(79, 70, 229, 0.2);
+}
+
+/* Loading state */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+}
