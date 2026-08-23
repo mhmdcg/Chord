@@ -44,17 +44,38 @@ class ChordAnnotatorApp {
         ];
         this.allChords = this.buildChordCatalog();
 
+        this.github = {
+            owner: 'mhmdcg',
+            repo: 'Chord',
+            path: 'songs-data.json',
+            branch: 'main'
+        };
+        this.githubSha = null;
+        this.localUpdatedAt = null;
+        this.githubPushTimer = null;
+        this.syncState = 'loading';
+
         this.init();
     }
 
     init() {
-        this.loadData();
+        this.loadLocalCache();
         this.setupEventListeners();
         this.renderSongList();
+        this.updateSyncBanner();
+        this.refreshFromGithub();
     }
 
     setupEventListeners() {
         document.getElementById('newSongBtn').addEventListener('click', () => this.createNewSong());
+        document.getElementById('syncSettingsBtn').addEventListener('click', () => this.toggleSyncPanel());
+        document.getElementById('syncBanner').addEventListener('click', () => {
+            if (this.syncState === 'needs-token') this.toggleSyncPanel();
+        });
+        document.getElementById('saveGithubTokenBtn').addEventListener('click', () => this.saveGithubToken());
+        document.getElementById('githubTokenInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') this.saveGithubToken();
+        });
         document.getElementById('backToListBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('backToEditorBtn').addEventListener('click', () => {
             this.closeChordModal();
@@ -1079,31 +1100,269 @@ class ChordAnnotatorApp {
         return div.innerHTML;
     }
 
-    loadData() {
+    getDataPayload() {
+        return {
+            updatedAt: this.localUpdatedAt || new Date().toISOString(),
+            songs: this.songs,
+            chordColors: this.chordColors,
+            nextColorIndex: this.nextColorIndex
+        };
+    }
+
+    applyData(data) {
+        this.songs = data.songs || [];
+        this.chordColors = data.chordColors || {};
+        this.nextColorIndex = data.nextColorIndex || 0;
+        this.localUpdatedAt = data.updatedAt || this.localUpdatedAt;
+    }
+
+    loadLocalCache() {
         try {
             const data = localStorage.getItem('chordAnnotatorData');
             if (data) {
                 const parsed = JSON.parse(data);
-                this.songs = parsed.songs || [];
-                this.chordColors = parsed.chordColors || {};
-                this.nextColorIndex = parsed.nextColorIndex || 0;
+                this.applyData(parsed);
+            }
+            const token = localStorage.getItem('chordAnnotatorGithubToken');
+            if (token) {
+                document.getElementById('githubTokenInput').value = token;
             }
         } catch (e) {
             console.error('Error loading data:', e);
         }
     }
 
-    saveData() {
+    saveLocalCache() {
         try {
-            const data = {
-                songs: this.songs,
-                chordColors: this.chordColors,
-                nextColorIndex: this.nextColorIndex
-            };
-            localStorage.setItem('chordAnnotatorData', JSON.stringify(data));
+            localStorage.setItem('chordAnnotatorData', JSON.stringify(this.getDataPayload()));
         } catch (e) {
             console.error('Error saving data:', e);
             alert('Error saving data. Your device storage might be full.');
+        }
+    }
+
+    saveData() {
+        this.localUpdatedAt = new Date().toISOString();
+        this.saveLocalCache();
+        this.scheduleGithubPush();
+    }
+
+    getGithubToken() {
+        return (localStorage.getItem('chordAnnotatorGithubToken') || '').trim();
+    }
+
+    toggleSyncPanel() {
+        document.getElementById('syncPanel').classList.toggle('open');
+    }
+
+    saveGithubToken() {
+        const token = document.getElementById('githubTokenInput').value.trim();
+        if (!token) {
+            localStorage.removeItem('chordAnnotatorGithubToken');
+            this.syncState = 'needs-token';
+            this.updateSyncBanner();
+            return;
+        }
+        localStorage.setItem('chordAnnotatorGithubToken', token);
+        this.syncState = 'saving';
+        this.updateSyncBanner();
+        this.pushToGithub()
+            .then(() => this.refreshFromGithub())
+            .catch(() => {
+                this.syncState = 'error';
+                this.updateSyncBanner('Token could not save to GitHub. Check repo access.');
+            });
+    }
+
+    githubHeaders(includeAuth = true) {
+        const headers = {
+            Accept: 'application/vnd.github+json'
+        };
+        const token = this.getGithubToken();
+        if (includeAuth && token) {
+            headers.Authorization = `Bearer ${token}`;
+        }
+        return headers;
+    }
+
+    githubContentsUrl() {
+        const { owner, repo, path, branch } = this.github;
+        return `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+    }
+
+    githubWriteUrl() {
+        const { owner, repo, path } = this.github;
+        return `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+    }
+
+    encodeBase64(text) {
+        const bytes = new TextEncoder().encode(text);
+        let binary = '';
+        bytes.forEach((byte) => {
+            binary += String.fromCharCode(byte);
+        });
+        return btoa(binary);
+    }
+
+    decodeBase64(content) {
+        const clean = String(content || '').replace(/\n/g, '');
+        const binary = atob(clean);
+        const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+        return new TextDecoder().decode(bytes);
+    }
+
+    async fetchGithubData() {
+        const response = await fetch(this.githubContentsUrl(), {
+            headers: this.githubHeaders()
+        });
+        if (response.status === 404) {
+            return this.fetchStaticSongsFile();
+        }
+        if (!response.ok) {
+            return this.fetchStaticSongsFile();
+        }
+        const payload = await response.json();
+        const parsed = JSON.parse(this.decodeBase64(payload.content));
+        return { data: parsed, sha: payload.sha };
+    }
+
+    async fetchStaticSongsFile() {
+        const response = await fetch('songs-data.json', { cache: 'no-store' });
+        if (!response.ok) {
+            throw new Error('Could not load songs from GitHub');
+        }
+        return { data: await response.json(), sha: this.githubSha };
+    }
+
+    async refreshFromGithub() {
+        this.syncState = 'loading';
+        this.updateSyncBanner();
+        try {
+            const { data, sha } = await this.fetchGithubData();
+            this.githubSha = sha;
+            const githubTime = Date.parse(data && data.updatedAt ? data.updatedAt : 0) || 0;
+            const localTime = Date.parse(this.localUpdatedAt || 0) || 0;
+            const githubSongs = data && Array.isArray(data.songs) ? data.songs : [];
+            const hasGithub = githubSongs.length > 0;
+            const hasLocal = this.songs.length > 0;
+
+            if (hasGithub && (!hasLocal || githubTime >= localTime)) {
+                this.applyData(data);
+                this.saveLocalCache();
+            } else if (hasLocal && this.getGithubToken() && (!hasGithub || localTime > githubTime)) {
+                await this.pushToGithub();
+            } else if (hasGithub && !hasLocal) {
+                this.applyData(data);
+                this.saveLocalCache();
+            }
+
+            this.syncState = this.getGithubToken() ? 'ok' : 'needs-token';
+            this.renderSongList();
+            this.updateSyncBanner();
+        } catch (error) {
+            console.error('GitHub sync error:', error);
+            this.syncState = this.songs.length ? 'offline' : 'error';
+            this.updateSyncBanner(error.message);
+            this.renderSongList();
+        }
+    }
+
+    scheduleGithubPush() {
+        if (!this.getGithubToken()) {
+            this.syncState = 'needs-token';
+            this.updateSyncBanner();
+            return;
+        }
+        clearTimeout(this.githubPushTimer);
+        this.syncState = 'saving';
+        this.updateSyncBanner();
+        this.githubPushTimer = setTimeout(() => {
+            this.pushToGithub().catch((error) => {
+                console.error(error);
+                this.syncState = 'error';
+                this.updateSyncBanner('Could not save to GitHub.');
+            });
+        }, 1500);
+    }
+
+    async pushToGithub() {
+        const token = this.getGithubToken();
+        if (!token) {
+            this.syncState = 'needs-token';
+            this.updateSyncBanner();
+            return;
+        }
+
+        const body = {
+            message: 'Update songs',
+            content: this.encodeBase64(JSON.stringify(this.getDataPayload(), null, 2)),
+            branch: this.github.branch
+        };
+        if (this.githubSha) {
+            body.sha = this.githubSha;
+        }
+
+        const response = await fetch(this.githubWriteUrl(), {
+            method: 'PUT',
+            headers: {
+                ...this.githubHeaders(),
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (response.status === 409 || response.status === 422) {
+            const latest = await this.fetchGithubData();
+            this.githubSha = latest.sha;
+            if (this.githubSha) body.sha = this.githubSha;
+            const retry = await fetch(this.githubWriteUrl(), {
+                method: 'PUT',
+                headers: {
+                    ...this.githubHeaders(),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+            if (!retry.ok) {
+                throw new Error(`GitHub save failed (${retry.status})`);
+            }
+            const retried = await retry.json();
+            this.githubSha = retried.content && retried.content.sha;
+            this.syncState = 'ok';
+            this.updateSyncBanner();
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(`GitHub save failed (${response.status})`);
+        }
+
+        const saved = await response.json();
+        this.githubSha = saved.content && saved.content.sha;
+        this.syncState = 'ok';
+        this.updateSyncBanner();
+    }
+
+    updateSyncBanner(detail) {
+        const banner = document.getElementById('syncBanner');
+        if (!banner) return;
+        banner.classList.remove('error', 'ok');
+
+        if (this.syncState === 'loading') {
+            banner.textContent = 'Loading songs from GitHub…';
+        } else if (this.syncState === 'saving') {
+            banner.textContent = 'Saving songs to GitHub…';
+        } else if (this.syncState === 'ok') {
+            banner.classList.add('ok');
+            banner.textContent = 'Songs are synced with GitHub. This list is the same on every device.';
+        } else if (this.syncState === 'needs-token') {
+            banner.textContent = 'Songs load from GitHub. Tap GitHub and add a token to save from this device.';
+        } else if (this.syncState === 'offline') {
+            banner.classList.add('error');
+            banner.textContent = detail || 'Could not reach GitHub. Showing songs saved on this device.';
+        } else {
+            banner.classList.add('error');
+            banner.textContent = detail || 'Could not sync with GitHub.';
         }
     }
 }

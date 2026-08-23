@@ -16,7 +16,26 @@
         <div id="songListView" class="view active">
             <div class="header">
                 <h1>🎵 My Songs</h1>
-                <button id="newSongBtn" class="btn btn-primary">+ New Song</button>
+                <div class="header-end">
+                    <button id="syncSettingsBtn" class="btn btn-secondary" type="button">GitHub</button>
+                    <button id="newSongBtn" class="btn btn-primary">+ New Song</button>
+                </div>
+            </div>
+            <div id="syncBanner" class="sync-banner">Loading songs from GitHub…</div>
+            <div id="syncPanel" class="sync-panel">
+                <div class="sync-panel-card">
+                    <p>Songs are stored in this GitHub repo so every device sees the same list. Loading works for everyone. Saving from a device needs a token once.</p>
+                    <ol>
+                        <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub token settings</a></li>
+                        <li>Create a fine-grained token for the <strong>Chord</strong> repo only</li>
+                        <li>Set permission <strong>Contents: Read and write</strong></li>
+                        <li>Paste it here. It stays on this device only, not in the repo.</li>
+                    </ol>
+                    <div class="sync-token-row">
+                        <input type="password" id="githubTokenInput" placeholder="GitHub token" autocomplete="off" />
+                        <button id="saveGithubTokenBtn" class="btn btn-primary" type="button">Save token</button>
+                    </div>
+                </div>
             </div>
             <div id="songList" class="song-list">
                 <div class="empty-state">

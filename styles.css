@@ -62,6 +62,86 @@ body {
     margin: 0 1rem;
 }
 
+.header-end {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.sync-banner {
+    padding: 0.65rem 1.5rem;
+    background: #EEF2FF;
+    color: var(--primary-dark);
+    font-size: 0.8125rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.sync-banner.error {
+    background: #FEF2F2;
+    color: #991B1B;
+}
+
+.sync-banner.ok {
+    background: #ECFDF5;
+    color: #065F46;
+}
+
+.sync-panel {
+    display: none;
+    padding: 1rem 1.5rem 0;
+}
+
+.sync-panel.open {
+    display: block;
+}
+
+.sync-panel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+}
+
+.sync-panel-card p {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.sync-panel-card ol {
+    margin: 0 0 1rem 1.1rem;
+    padding: 0;
+    color: var(--text);
+    font-size: 0.875rem;
+}
+
+.sync-panel-card li {
+    margin-bottom: 0.4rem;
+}
+
+.sync-panel-card a {
+    color: var(--primary);
+}
+
+.sync-token-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.sync-token-row input {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
 .annotation-header {
     flex-direction: column;
     align-items: stretch;
@@ -356,12 +436,12 @@ body {
 
 .lyrics-display {
     background: var(--surface);
-    padding: 2rem;
+    padding: 3.25rem 2rem 2rem;
     border-radius: 12px;
     border: 1px solid var(--border);
     min-height: 400px;
     font-size: 1.125rem;
-    line-height: 2.5;
+    line-height: 5;
     position: relative;
     cursor: text;
     box-shadow: 0 2px 8px var(--shadow);
@@ -372,6 +452,7 @@ body {
     word-wrap: break-word;
     user-select: text;
     -webkit-user-select: text;
+    line-height: 5;
 }
 
 .lyrics-display.align-left,
@@ -418,12 +499,13 @@ body {
     left: 0;
     font-size: 0.75rem;
     font-weight: 600;
+    line-height: 1.2;
     color: var(--text);
     white-space: nowrap;
-    padding: 4px 8px;
+    padding: 3px 7px;
     background-color: inherit;
     border-radius: 4px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     box-shadow: none;
     cursor: pointer;
 }
@@ -699,6 +781,12 @@ body {
         margin: 0 0.5rem;
     }
 
+    .sync-banner,
+    .sync-panel {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     .btn {
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
@@ -718,9 +806,13 @@ body {
     }
     
     .lyrics-display {
-        padding: 1.5rem;
+        padding: 3rem 1.25rem 1.5rem;
         font-size: 1rem;
-        line-height: 2.25;
+        line-height: 4.9;
+    }
+
+    .lyrics-content {
+        line-height: 4.9;
     }
     
     .modal-content {
@@ -731,7 +823,12 @@ body {
 @media (min-width: 1024px) {
     .lyrics-display {
         font-size: 1.25rem;
-        line-height: 2.75;
+        line-height: 5.1;
+        padding-top: 3.5rem;
+    }
+
+    .lyrics-content {
+        line-height: 5.1;
     }
 }
 
