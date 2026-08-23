@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Chord Annotator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4F46E5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <div id="app">
+        <!-- Song List View -->
+        <div id="songListView" class="view active">
+            <div class="header">
+                <h1>🎵 My Songs</h1>
+                <button id="newSongBtn" class="btn btn-primary">+ New Song</button>
+            </div>
+            <div id="songList" class="song-list">
+                <div class="empty-state">
+                    <p>No songs yet. Create your first song!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Song Editor View -->
+        <div id="editorView" class="view">
+            <div class="header">
+                <button id="backToListBtn" class="btn btn-secondary">← Back</button>
+                <h2 id="editorTitle">New Song</h2>
+                <button id="saveEditorBtn" class="btn btn-primary">Save</button>
+            </div>
+            <div class="editor-container">
+                <div class="form-group">
+                    <label for="songTitle">Song Title</label>
+                    <input type="text" id="songTitle" placeholder="Enter song title" />
+                </div>
+                <div class="form-group">
+                    <label for="songArtist">Artist (optional)</label>
+                    <input type="text" id="songArtist" placeholder="Enter artist name" />
+                </div>
+                <div class="form-group">
+                    <label for="songLyrics">Lyrics</label>
+                    <textarea id="songLyrics" placeholder="Paste or type your lyrics here...&#10;Supports English and Persian text"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button id="proceedToAnnotateBtn" class="btn btn-primary btn-large">Continue to Add Chords →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chord Annotation View -->
+        <div id="annotationView" class="view">
+            <div class="header">
+                <button id="backToEditorBtn" class="btn btn-secondary">← Edit</button>
+                <h2 id="annotationTitle">Add Chords</h2>
+                <button id="doneAnnotatingBtn" class="btn btn-primary">Done</button>
+            </div>
+            
+            <div class="annotation-container">
+                <div class="instructions">
+                    <p>📝 Select any text to add a chord</p>
+                </div>
+                
+                <div id="lyricsDisplay" class="lyrics-display"></div>
+                
+                <!-- Chord Input Modal -->
+                <div id="chordModal" class="modal">
+                    <div class="modal-content">
+                        <h3>Add Chord</h3>
+                        <p class="selected-text-preview"></p>
+                        <input type="text" id="chordInput" placeholder="e.g., Am, G, D7, Cm" autocomplete="off" />
+                        <div class="chord-suggestions" id="chordSuggestions"></div>
+                        <div class="modal-actions">
+                            <button id="cancelChordBtn" class="btn btn-secondary">Cancel</button>
+                            <button id="saveChordBtn" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chord Legend -->
+                <div class="chord-legend">
+                    <h3>Chord Colors</h3>
+                    <div id="chordLegendList" class="legend-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
