@@ -436,12 +436,12 @@ body {
 
 .lyrics-display {
     background: var(--surface);
-    padding: 3.25rem 2rem 2rem;
+    padding: 2.25rem 2rem 2rem;
     border-radius: 12px;
     border: 1px solid var(--border);
     min-height: 400px;
     font-size: 1.125rem;
-    line-height: 5;
+    line-height: 3.4;
     position: relative;
     cursor: text;
     box-shadow: 0 2px 8px var(--shadow);
@@ -452,7 +452,7 @@ body {
     word-wrap: break-word;
     user-select: text;
     -webkit-user-select: text;
-    line-height: 5;
+    line-height: 3.4;
 }
 
 .lyrics-display.align-left,
@@ -806,13 +806,13 @@ body {
     }
     
     .lyrics-display {
-        padding: 3rem 1.25rem 1.5rem;
+        padding: 2.1rem 1.25rem 1.5rem;
         font-size: 1rem;
-        line-height: 4.9;
+        line-height: 3.45;
     }
 
     .lyrics-content {
-        line-height: 4.9;
+        line-height: 3.45;
     }
     
     .modal-content {
@@ -823,12 +823,12 @@ body {
 @media (min-width: 1024px) {
     .lyrics-display {
         font-size: 1.25rem;
-        line-height: 5.1;
-        padding-top: 3.5rem;
+        line-height: 3.4;
+        padding-top: 2.4rem;
     }
 
     .lyrics-content {
-        line-height: 5.1;
+        line-height: 3.4;
     }
 }
 
