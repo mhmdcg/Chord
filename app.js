@@ -99,6 +99,7 @@ class ChordAnnotatorApp {
         document.getElementById('timeBottom').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('songTempo').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('deleteAllChordsBtn').addEventListener('click', () => this.deleteAllChords());
+        document.getElementById('exportLyricsBtn').addEventListener('click', () => this.exportLyricsImage());
 
         const lyricsContent = document.getElementById('lyricsContent');
         lyricsContent.addEventListener('mouseup', (e) => this.handleTextSelection(e));
@@ -1082,6 +1083,80 @@ class ChordAnnotatorApp {
 
         this.commitAnnotations([]);
         this.renderAnnotationView();
+    }
+
+    exportFilename() {
+        const title = (this.currentSong?.title || 'lyrics').trim() || 'lyrics';
+        return `${title.replace(/[\\/:*?"<>|]+/g, '').replace(/\s+/g, ' ').trim() || 'lyrics'}.jpg`;
+    }
+
+    async saveJpegBlob(blob, filename) {
+        const file = new File([blob], filename, { type: 'image/jpeg' });
+        try {
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                await navigator.share({ files: [file], title: filename });
+                return;
+            }
+        } catch (error) {
+            if (error && error.name === 'AbortError') return;
+        }
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        link.rel = 'noopener';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }
+
+    async exportLyricsImage() {
+        const card = document.getElementById('lyricsDisplay');
+        const button = document.getElementById('exportLyricsBtn');
+        if (!card || typeof html2canvas !== 'function') {
+            alert('Export is not available.');
+            return;
+        }
+
+        const previousLabel = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Exporting…';
+
+        try {
+            const width = card.offsetWidth || 540;
+            const canvas = await html2canvas(card, {
+                backgroundColor: '#ffffff',
+                scale: Math.min(3, Math.max(2, 1080 / width)),
+                useCORS: true,
+                logging: false,
+                ignoreElements: (element) => element.classList?.contains('sel-handle'),
+                onclone: (clonedDoc) => {
+                    const clonedCard = clonedDoc.getElementById('lyricsDisplay');
+                    if (!clonedCard) return;
+                    clonedCard.style.boxShadow = 'none';
+                    clonedCard.style.overflow = 'hidden';
+                    clonedCard.classList.remove('dragging');
+                    clonedDoc.querySelectorAll('.sel-handle').forEach((handle) => handle.remove());
+                }
+            });
+
+            const blob = await new Promise((resolve, reject) => {
+                canvas.toBlob((result) => {
+                    if (result) resolve(result);
+                    else reject(new Error('Could not create the image.'));
+                }, 'image/jpeg', 0.92);
+            });
+
+            await this.saveJpegBlob(blob, this.exportFilename());
+        } catch (error) {
+            console.error('Export failed:', error);
+            alert('Could not export the lyrics image.');
+        } finally {
+            button.disabled = false;
+            button.textContent = previousLabel;
+        }
     }
 
     updateChordLegend() {

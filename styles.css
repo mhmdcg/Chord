@@ -436,6 +436,14 @@ body {
     font-weight: 500;
 }
 
+.lyrics-actions {
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto 0.75rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .lyrics-stage {
     width: 100%;
     max-width: 540px;
