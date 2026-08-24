@@ -946,6 +946,25 @@ body {
     .lyrics-content {
         line-height: 3.45;
     }
+
+    .lyrics-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        min-height: 0;
+        gap: 0.4rem;
+    }
+
+    .lyrics-meta-controls {
+        position: static;
+        transform: none;
+        top: auto;
+    }
+
+    .lyrics-heading {
+        width: 100%;
+        text-align: center;
+    }
     
     .modal-content {
         padding: 1.5rem;
