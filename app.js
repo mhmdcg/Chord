@@ -54,6 +54,8 @@ class ChordAnnotatorApp {
         this.githubSha = null;
         this.localUpdatedAt = null;
         this.githubPushTimer = null;
+        this.githubPushInFlight = false;
+        this.githubPushQueued = false;
         this.syncState = 'loading';
 
         this.init();
@@ -1302,15 +1304,16 @@ class ChordAnnotatorApp {
         if (response.status === 403) {
             return 'GitHub blocked write access. Create a classic token with public_repo checked, then paste the long code.';
         }
-        if (response.status === 404) {
-            return 'This token cannot see the Chord repo. Create a new token with public_repo checked.';
+        if (response.status === 409 || /does not match/i.test(githubMessage)) {
+            return 'The song file changed on GitHub while saving. Try save again.';
         }
         return githubMessage || `GitHub save failed (${response.status}).`;
     }
 
     githubHeaders(includeAuth = true) {
         const headers = {
-            Accept: 'application/vnd.github+json'
+            Accept: 'application/vnd.github+json',
+            'Cache-Control': 'no-cache'
         };
         const token = this.getGithubToken();
         if (includeAuth && token) {
@@ -1347,7 +1350,8 @@ class ChordAnnotatorApp {
 
     async fetchGithubData(requireAuth = false) {
         const response = await fetch(this.githubContentsUrl(), {
-            headers: this.githubHeaders()
+            headers: this.githubHeaders(),
+            cache: 'no-store'
         });
         if (response.status === 404) {
             if (requireAuth) return { data: null, sha: null };
@@ -1429,35 +1433,60 @@ class ChordAnnotatorApp {
             return;
         }
 
-        const latest = await this.fetchGithubData(true);
-        this.githubSha = latest.sha;
-
-        const body = {
-            message: 'Update songs',
-            content: this.encodeBase64(JSON.stringify(this.getDataPayload(), null, 2)),
-            branch: this.github.branch
-        };
-        if (this.githubSha) {
-            body.sha = this.githubSha;
+        if (this.githubPushInFlight) {
+            this.githubPushQueued = true;
+            return;
         }
 
-        const response = await fetch(this.githubWriteUrl(), {
-            method: 'PUT',
-            headers: {
-                ...this.githubHeaders(),
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        });
+        this.githubPushInFlight = true;
+        try {
+            const payload = this.encodeBase64(JSON.stringify(this.getDataPayload(), null, 2));
+            let lastError = null;
 
-        if (!response.ok) {
-            throw new Error(await this.readGithubError(response));
+            for (let attempt = 0; attempt < 4; attempt++) {
+                const latest = await this.fetchGithubData(true);
+                this.githubSha = latest.sha;
+
+                const body = {
+                    message: 'Update songs',
+                    content: payload,
+                    branch: this.github.branch
+                };
+                if (this.githubSha) {
+                    body.sha = this.githubSha;
+                }
+
+                const response = await fetch(this.githubWriteUrl(), {
+                    method: 'PUT',
+                    headers: {
+                        ...this.githubHeaders(),
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                if (response.ok) {
+                    const saved = await response.json();
+                    this.githubSha = saved.content && saved.content.sha;
+                    this.syncState = 'ok';
+                    this.updateSyncBanner();
+                    return;
+                }
+
+                lastError = await this.readGithubError(response);
+                if (response.status !== 409 && response.status !== 422) {
+                    throw new Error(lastError);
+                }
+            }
+
+            throw new Error(lastError || 'Could not save to GitHub. Try again.');
+        } finally {
+            this.githubPushInFlight = false;
+            if (this.githubPushQueued) {
+                this.githubPushQueued = false;
+                await this.pushToGithub();
+            }
         }
-
-        const saved = await response.json();
-        this.githubSha = saved.content && saved.content.sha;
-        this.syncState = 'ok';
-        this.updateSyncBanner();
     }
 
     updateSyncBanner(detail) {
