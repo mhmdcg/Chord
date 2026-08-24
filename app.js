@@ -606,7 +606,7 @@ class ChordAnnotatorApp {
                 const pendingClass = annotation.pending ? ' pending' : '';
                 html += `<span class="chord-annotation${pendingClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
                 if (isFirst && annotation.chord) {
-                    html += `<span class="chord-label" style="background-color: ${color}">${this.escapeHtml(annotation.chord)}</span>`;
+                    html += `<span class="chord-label">${this.escapeHtml(annotation.chord)}</span>`;
                 }
                 html += `<span class="lyric-text">${this.escapeHtml(text)}</span>`;
                 html += '</span>';
