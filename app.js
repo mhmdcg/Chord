@@ -446,14 +446,16 @@ class ChordAnnotatorApp {
     }
 
     updateSongMetaFields() {
-        document.getElementById('songScale').value = this.currentSong.scale || '';
+        const scale = this.normalizeScale(this.currentSong.scale);
+        this.currentSong.scale = scale;
+        document.getElementById('songScale').value = scale;
         document.getElementById('timeTop').value = this.currentSong.timeTop || 4;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom || 4;
     }
 
     saveSongMeta() {
         if (!this.currentSong) return;
-        this.currentSong.scale = document.getElementById('songScale').value;
+        this.currentSong.scale = this.normalizeScale(document.getElementById('songScale').value);
         const top = parseInt(document.getElementById('timeTop').value, 10);
         const bottom = parseInt(document.getElementById('timeBottom').value, 10);
         this.currentSong.timeTop = Number.isFinite(top) && top > 0 ? top : 4;
@@ -468,7 +470,7 @@ class ChordAnnotatorApp {
         select.innerHTML = '';
         const placeholder = document.createElement('option');
         placeholder.value = '';
-        placeholder.textContent = 'Select scale';
+        placeholder.textContent = '—';
         select.appendChild(placeholder);
 
         this.scaleOptions.forEach((group) => {
@@ -484,23 +486,20 @@ class ChordAnnotatorApp {
         });
     }
 
+    normalizeScale(value) {
+        if (!value) return '';
+        let scale = String(value).trim();
+        scale = scale.replace(/\s*major$/i, '');
+        scale = scale.replace(/\s*minor$/i, 'm');
+        scale = scale.replace(/\s+/g, '');
+        return scale;
+    }
+
     buildScaleOptions() {
+        const roots = ['C', 'C#', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab', 'A', 'Bb', 'B'];
         return [
-            {
-                label: 'Major',
-                options: [
-                    'C major', 'C# major', 'Db major', 'D major', 'Eb major', 'E major',
-                    'F major', 'F# major', 'Gb major', 'G major', 'Ab major', 'A major',
-                    'Bb major', 'B major'
-                ]
-            },
-            {
-                label: 'Minor',
-                options: [
-                    'A minor', 'Bb minor', 'B minor', 'C minor', 'C# minor', 'D minor',
-                    'Eb minor', 'E minor', 'F minor', 'F# minor', 'G minor', 'G# minor'
-                ]
-            }
+            { label: 'Major', options: roots.slice() },
+            { label: 'Minor', options: roots.map((root) => `${root}m`) }
         ];
     }
 
