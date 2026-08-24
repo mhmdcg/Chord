@@ -439,7 +439,7 @@ body {
 .lyrics-stage {
     width: 100%;
     max-width: 540px;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
     margin-inline: auto;
 }
 
