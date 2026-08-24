@@ -1306,8 +1306,8 @@ class ChordAnnotatorApp {
         if (response.status === 403) {
             return 'GitHub blocked write access. Create a classic token with public_repo checked, then paste the long code.';
         }
-        if (response.status === 409 || /does not match/i.test(githubMessage)) {
-            return 'The song file changed on GitHub while saving. Try save again.';
+        if (response.status === 404) {
+            return 'This token cannot see the Chord repo. Create a new token with public_repo checked.';
         }
         return githubMessage || `GitHub save failed (${response.status}).`;
     }
@@ -1320,6 +1320,12 @@ class ChordAnnotatorApp {
         if (includeAuth && token) {
             headers.Authorization = `Bearer ${token}`;
         }
+        return headers;
+    }
+
+    githubGetHeaders() {
+        const headers = this.githubHeaders();
+        headers['If-None-Match'] = `"nocache-${Date.now()}-${Math.random().toString(16).slice(2)}"`;
         return headers;
     }
 
@@ -1352,7 +1358,7 @@ class ChordAnnotatorApp {
     async fetchGithubData(requireAuth = false) {
         try {
             const response = await fetch(this.githubContentsUrl(), {
-                headers: this.githubHeaders()
+                headers: this.githubGetHeaders()
             });
             if (response.status === 404) {
                 if (requireAuth) return { data: null, sha: null };
@@ -1397,7 +1403,7 @@ class ChordAnnotatorApp {
                 this.applyData(data);
                 this.saveLocalCache();
             } else if (hasLocal && this.getGithubToken() && (!hasGithub || localTime > githubTime)) {
-                await this.pushToGithub();
+                this.scheduleGithubPush();
             } else if (hasGithub && !hasLocal) {
                 this.applyData(data);
                 this.saveLocalCache();
@@ -1440,6 +1446,33 @@ class ChordAnnotatorApp {
         }, 1500);
     }
 
+    async fetchRemoteBlobSha() {
+        const { owner, repo, path, branch } = this.github;
+        const headers = this.githubGetHeaders();
+        const refRes = await fetch(
+            `https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${encodeURIComponent(branch)}`,
+            { headers }
+        );
+        if (refRes.status === 404) return null;
+        if (!refRes.ok) {
+            throw new Error(await this.readGithubError(refRes));
+        }
+        const ref = await refRes.json();
+        const commitSha = ref.object && ref.object.sha;
+        if (!commitSha) return null;
+
+        const fileRes = await fetch(
+            `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(commitSha)}`,
+            { headers: this.githubGetHeaders() }
+        );
+        if (fileRes.status === 404) return null;
+        if (!fileRes.ok) {
+            throw new Error(await this.readGithubError(fileRes));
+        }
+        const file = await fileRes.json();
+        return file.sha || null;
+    }
+
     async pushToGithub() {
         const token = this.getGithubToken();
         if (!token) {
@@ -1455,20 +1488,20 @@ class ChordAnnotatorApp {
 
         this.githubPushInFlight = true;
         try {
-            const payload = this.encodeBase64(JSON.stringify(this.getDataPayload(), null, 2));
             let lastError = null;
 
-            for (let attempt = 0; attempt < 4; attempt++) {
-                const latest = await this.fetchGithubData(true);
-                this.githubSha = latest.sha;
+            for (let attempt = 0; attempt < 5; attempt++) {
+                const payload = this.encodeBase64(JSON.stringify(this.getDataPayload(), null, 2));
+                const sha = await this.fetchRemoteBlobSha();
+                this.githubSha = sha;
 
                 const body = {
                     message: 'Update songs',
                     content: payload,
                     branch: this.github.branch
                 };
-                if (this.githubSha) {
-                    body.sha = this.githubSha;
+                if (sha) {
+                    body.sha = sha;
                 }
 
                 const response = await fetch(this.githubWriteUrl(), {
@@ -1488,13 +1521,15 @@ class ChordAnnotatorApp {
                     return;
                 }
 
+                const conflict = response.status === 409 || response.status === 422;
                 lastError = await this.readGithubError(response);
-                if (response.status !== 409 && response.status !== 422) {
+                if (!conflict) {
                     throw new Error(lastError);
                 }
+                await new Promise((resolve) => setTimeout(resolve, 150 * (attempt + 1)));
             }
 
-            throw new Error(lastError || 'Could not save to GitHub. Try again.');
+            throw new Error('Could not save to GitHub. Tap Done or Save again.');
         } finally {
             this.githubPushInFlight = false;
             if (this.githubPushQueued) {
