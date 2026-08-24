@@ -1,0 +1,16 @@
+{
+  "name": "Chord Annotator",
+  "terminals": [
+    {
+      "name": "web",
+      "command": "python3 -m http.server 8000 --bind 0.0.0.0",
+      "description": "Static web server for the Chord Annotator app, served from the repository root on port 8000 (http://localhost:8000)."
+    }
+  ],
+  "ports": [
+    {
+      "name": "web",
+      "port": 8000
+    }
+  ]
+}
