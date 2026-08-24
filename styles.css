@@ -441,7 +441,36 @@ body {
     max-width: 540px;
     margin: 0 auto 0.75rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.lyric-theme-toggle {
+    display: inline-flex;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 3px;
+    gap: 2px;
+}
+
+.lyric-theme-opt {
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    border-radius: 8px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 32px;
+}
+
+.lyric-theme-opt.active {
+    background: var(--surface);
+    color: var(--primary);
+    box-shadow: 0 1px 2px var(--shadow);
 }
 
 .lyrics-stage {
@@ -610,6 +639,46 @@ body {
 
 .lyrics-display.is-export .export-meta-chip .tempo-eq {
     font-size: 0.75rem;
+}
+
+.lyrics-display.theme-dark {
+    background: #000;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: none;
+    color-scheme: dark;
+}
+
+.lyrics-display.theme-dark .lyrics-heading,
+.lyrics-display.theme-dark .lyrics-content,
+.lyrics-display.theme-dark .time-slash,
+.lyrics-display.theme-dark .tempo-sign,
+.lyrics-display.theme-dark .tempo-eq {
+    color: #fff;
+}
+
+.lyrics-display.theme-dark .lyrics-meta-controls select,
+.lyrics-display.theme-dark .time-signature input,
+.lyrics-display.theme-dark .song-tempo input {
+    background: #000;
+    color: #fff;
+    border-color: #fff;
+}
+
+.lyrics-display.theme-dark .song-tempo input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.lyrics-display.theme-dark.is-export .export-meta-chip,
+.lyrics-display.theme-dark.is-export .export-meta-chip .tempo-sign,
+.lyrics-display.theme-dark.is-export .export-meta-chip .tempo-eq {
+    background: #000;
+    color: #fff;
+    border-color: #fff;
+}
+
+.lyrics-display.theme-dark .chord-label {
+    color: var(--text);
 }
 
 .lyrics-content {

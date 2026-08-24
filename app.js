@@ -100,6 +100,8 @@ class ChordAnnotatorApp {
         document.getElementById('songTempo').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('deleteAllChordsBtn').addEventListener('click', () => this.deleteAllChords());
         document.getElementById('exportLyricsBtn').addEventListener('click', () => this.exportLyricsImage());
+        document.getElementById('lyricThemeLightBtn').addEventListener('click', () => this.setLyricTheme('light'));
+        document.getElementById('lyricThemeDarkBtn').addEventListener('click', () => this.setLyricTheme('dark'));
 
         const lyricsContent = document.getElementById('lyricsContent');
         lyricsContent.addEventListener('mouseup', (e) => this.handleTextSelection(e));
@@ -246,6 +248,7 @@ class ChordAnnotatorApp {
             timeTop: 4,
             timeBottom: 4,
             tempo: '',
+            lyricTheme: 'light',
             createdAt: new Date().toISOString()
         };
 
@@ -414,11 +417,36 @@ class ChordAnnotatorApp {
         rightBtn.setAttribute('aria-pressed', align === 'right' ? 'true' : 'false');
     }
 
+    getLyricTheme() {
+        return this.currentSong?.lyricTheme === 'dark' ? 'dark' : 'light';
+    }
+
+    setLyricTheme(theme) {
+        if (!this.currentSong) return;
+        this.currentSong.lyricTheme = theme === 'dark' ? 'dark' : 'light';
+        this.applyLyricTheme();
+        this.persistCurrentSong();
+    }
+
+    applyLyricTheme() {
+        const theme = this.getLyricTheme();
+        const display = document.getElementById('lyricsDisplay');
+        const lightBtn = document.getElementById('lyricThemeLightBtn');
+        const darkBtn = document.getElementById('lyricThemeDarkBtn');
+
+        display.classList.toggle('theme-dark', theme === 'dark');
+        lightBtn.classList.toggle('active', theme === 'light');
+        darkBtn.classList.toggle('active', theme === 'dark');
+        lightBtn.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+        darkBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    }
+
     renderAnnotationView() {
         document.getElementById('annotationTitle').textContent = this.currentSong.title;
         this.updateLyricsHeading();
         this.updateSongMetaFields();
         this.applyTextAlign();
+        this.applyLyricTheme();
 
         this.renderAnnotatedLyrics();
         this.updateChordLegend();
@@ -1135,7 +1163,7 @@ class ChordAnnotatorApp {
         try {
             const width = card.offsetWidth || 540;
             const canvas = await html2canvas(card, {
-                backgroundColor: '#ffffff',
+                backgroundColor: card.classList.contains('theme-dark') ? '#000000' : '#ffffff',
                 scale: Math.min(3, Math.max(2, 1080 / width)),
                 useCORS: true,
                 logging: false,
