@@ -436,18 +436,21 @@ body {
     font-weight: 500;
 }
 
+.lyrics-stage {
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 4 / 5;
+    margin-inline: auto;
+}
+
 .lyrics-display {
-    --lyrics-chrome: 12rem;
     background: var(--surface);
     padding: 1.25rem 2rem 2rem;
     border-radius: 12px;
     border: 1px solid var(--border);
-    width: min(100%, calc((100dvh - var(--lyrics-chrome)) * 4 / 5));
-    aspect-ratio: 4 / 5;
-    height: auto;
+    width: 100%;
+    height: 100%;
     min-height: 0;
-    max-height: calc(100dvh - var(--lyrics-chrome));
-    margin-inline: auto;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
@@ -456,7 +459,6 @@ body {
     position: relative;
     cursor: text;
     box-shadow: 0 2px 8px var(--shadow);
-    flex-shrink: 0;
 }
 
 .lyrics-meta {
@@ -948,7 +950,6 @@ body {
     }
     
     .lyrics-display {
-        --lyrics-chrome: 14rem;
         padding: 1.1rem 1.25rem 1.5rem;
         font-size: 0.9rem;
         line-height: 3.45;
