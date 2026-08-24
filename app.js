@@ -97,6 +97,7 @@ class ChordAnnotatorApp {
         document.getElementById('songScale').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('change', () => this.saveSongMeta());
+        document.getElementById('songTempo').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('deleteAllChordsBtn').addEventListener('click', () => this.deleteAllChords());
 
         const lyricsContent = document.getElementById('lyricsContent');
@@ -243,6 +244,7 @@ class ChordAnnotatorApp {
             scale: '',
             timeTop: 4,
             timeBottom: 4,
+            tempo: '',
             createdAt: new Date().toISOString()
         };
 
@@ -452,6 +454,7 @@ class ChordAnnotatorApp {
         document.getElementById('songScale').value = scale;
         document.getElementById('timeTop').value = this.currentSong.timeTop || 4;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom || 4;
+        document.getElementById('songTempo').value = this.currentSong.tempo || '';
     }
 
     saveSongMeta() {
@@ -461,8 +464,11 @@ class ChordAnnotatorApp {
         const bottom = parseInt(document.getElementById('timeBottom').value, 10);
         this.currentSong.timeTop = Number.isFinite(top) && top > 0 ? top : 4;
         this.currentSong.timeBottom = Number.isFinite(bottom) && bottom > 0 ? bottom : 4;
+        const tempo = parseInt(document.getElementById('songTempo').value, 10);
+        this.currentSong.tempo = Number.isFinite(tempo) && tempo > 0 ? tempo : '';
         document.getElementById('timeTop').value = this.currentSong.timeTop;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom;
+        document.getElementById('songTempo').value = this.currentSong.tempo;
         this.persistCurrentSong();
     }
 
