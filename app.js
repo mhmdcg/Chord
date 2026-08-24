@@ -1090,15 +1090,23 @@ class ChordAnnotatorApp {
         return `${title.replace(/[\\/:*?"<>|]+/g, '').replace(/\s+/g, ' ').trim() || 'lyrics'}.jpg`;
     }
 
+    isIosDevice() {
+        const ua = navigator.userAgent || '';
+        return /iPad|iPhone|iPod/.test(ua)
+            || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    }
+
     async saveJpegBlob(blob, filename) {
-        const file = new File([blob], filename, { type: 'image/jpeg' });
-        try {
-            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                await navigator.share({ files: [file], title: filename });
-                return;
+        if (this.isIosDevice()) {
+            const file = new File([blob], filename, { type: 'image/jpeg' });
+            try {
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], title: filename });
+                    return;
+                }
+            } catch (error) {
+                if (error && error.name === 'AbortError') return;
             }
-        } catch (error) {
-            if (error && error.name === 'AbortError') return;
         }
 
         const url = URL.createObjectURL(blob);
