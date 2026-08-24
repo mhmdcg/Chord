@@ -1140,14 +1140,7 @@ class ChordAnnotatorApp {
                 useCORS: true,
                 logging: false,
                 ignoreElements: (element) => element.classList?.contains('sel-handle'),
-                onclone: (clonedDoc) => {
-                    const clonedCard = clonedDoc.getElementById('lyricsDisplay');
-                    if (!clonedCard) return;
-                    clonedCard.style.boxShadow = 'none';
-                    clonedCard.style.overflow = 'hidden';
-                    clonedCard.classList.remove('dragging');
-                    clonedDoc.querySelectorAll('.sel-handle').forEach((handle) => handle.remove());
-                }
+                onclone: (clonedDoc) => this.prepareExportClone(clonedDoc)
             });
 
             const blob = await new Promise((resolve, reject) => {
@@ -1164,6 +1157,63 @@ class ChordAnnotatorApp {
         } finally {
             button.disabled = false;
             button.textContent = previousLabel;
+        }
+    }
+
+    prepareExportClone(clonedDoc) {
+        const clonedCard = clonedDoc.getElementById('lyricsDisplay');
+        if (!clonedCard) return;
+
+        clonedCard.classList.add('is-export');
+        clonedCard.style.boxShadow = 'none';
+        clonedCard.style.overflow = 'hidden';
+        clonedCard.classList.remove('dragging');
+        clonedDoc.querySelectorAll('.sel-handle').forEach((handle) => handle.remove());
+
+        const chip = (className) => {
+            const el = clonedDoc.createElement('span');
+            el.className = className ? `export-meta-chip ${className}` : 'export-meta-chip';
+            return el;
+        };
+
+        const scale = clonedDoc.getElementById('songScale');
+        if (scale) {
+            const label = (scale.options[scale.selectedIndex]?.text || scale.value || '').trim();
+            if (label && label !== '—') {
+                const el = chip();
+                el.textContent = label;
+                scale.replaceWith(el);
+            } else {
+                scale.remove();
+            }
+        }
+
+        const time = clonedDoc.querySelector('.time-signature');
+        if (time) {
+            const top = clonedDoc.getElementById('timeTop')?.value || '4';
+            const bottom = clonedDoc.getElementById('timeBottom')?.value || '4';
+            const el = chip();
+            el.textContent = `${top} / ${bottom}`;
+            time.replaceWith(el);
+        }
+
+        const tempoWrap = clonedDoc.querySelector('.song-tempo');
+        if (tempoWrap) {
+            const tempoValue = clonedDoc.getElementById('songTempo')?.value?.trim();
+            const el = chip('export-meta-tempo');
+            const note = clonedDoc.createElement('span');
+            note.className = 'tempo-sign';
+            note.textContent = '♩';
+            const eq = clonedDoc.createElement('span');
+            eq.className = 'tempo-eq';
+            eq.textContent = '=';
+            el.append(note, eq);
+            if (tempoValue) {
+                const number = clonedDoc.createElement('span');
+                number.textContent = tempoValue;
+                el.append(number);
+            }
+            tempoWrap.replaceWith(el);
         }
     }
 

@@ -587,6 +587,31 @@ body {
     margin: 0;
 }
 
+.lyrics-display.is-export .export-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.22rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--background);
+    padding: 0.2rem 0.55rem;
+    min-height: 26px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.lyrics-display.is-export .export-meta-chip .tempo-sign {
+    font-size: 0.95rem;
+}
+
+.lyrics-display.is-export .export-meta-chip .tempo-eq {
+    font-size: 0.75rem;
+}
+
 .lyrics-content {
     white-space: pre-wrap;
     word-wrap: break-word;
