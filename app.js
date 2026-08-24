@@ -16,21 +16,21 @@ class ChordAnnotatorApp {
         this.ignoreAnnotationClick = false;
 
         this.colorPalette = [
-            '#FFE5B4',
-            '#BFEFFF',
-            '#FFD1DC',
-            '#E0FFE0',
-            '#FFE4E1',
-            '#F0E68C',
-            '#DDA0DD',
-            '#AFEEEE',
-            '#FFB6C1',
-            '#98FB98',
-            '#F5DEB3',
-            '#D8BFD8',
-            '#B0E0E6',
-            '#FFDAB9',
-            '#E6E6FA',
+            '#4FC3F7',
+            '#FFB300',
+            '#FF5C8A',
+            '#66BB6A',
+            '#AB47BC',
+            '#26C6DA',
+            '#FF7043',
+            '#D4E157',
+            '#5C6BC0',
+            '#EC407A',
+            '#26A69A',
+            '#FFA726',
+            '#7E57C2',
+            '#42A5F5',
+            '#9CCC65'
         ];
 
         this.rootLetters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -604,11 +604,12 @@ class ChordAnnotatorApp {
                     : 'rgba(79, 70, 229, 0.22)';
                 const fill = annotation.chord ? this.withAlpha(color, 0.55) : color;
                 const pendingClass = annotation.pending ? ' pending' : '';
-                html += `<span class="chord-annotation${pendingClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
+                const joinClass = this.joinClasses(lyrics, start, end, text);
+                html += `<span class="chord-annotation${pendingClass}${joinClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
                 if (isFirst && annotation.chord) {
-                    html += `<span class="chord-label">${this.escapeHtml(annotation.chord)}</span>`;
+                    html += `<span class="chord-anchor"><span class="chord-label">${this.escapeHtml(annotation.chord)}</span></span>`;
                 }
-                html += `<span class="lyric-text">${this.escapeHtml(text)}</span>`;
+                html += this.escapeHtml(text);
                 html += '</span>';
             } else {
                 html += this.escapeHtml(text);
@@ -616,6 +617,29 @@ class ChordAnnotatorApp {
         }
 
         content.innerHTML = html;
+    }
+
+    isArabicLetter(char) {
+        if (!char) return false;
+        const code = char.charCodeAt(0);
+        if (code === 0x0640) return true;
+        return (code >= 0x0621 && code <= 0x063F)
+            || (code >= 0x0641 && code <= 0x064A)
+            || (code >= 0x0671 && code <= 0x06D3);
+    }
+
+    joinClasses(lyrics, start, end, text) {
+        if (!text) return '';
+        const prev = start > 0 ? lyrics[start - 1] : '';
+        const next = end < lyrics.length ? lyrics[end] : '';
+        let classes = '';
+        if (this.isArabicLetter(prev) && this.isArabicLetter(text[0])) {
+            classes += ' joins-prev';
+        }
+        if (this.isArabicLetter(text[text.length - 1]) && this.isArabicLetter(next)) {
+            classes += ' joins-next';
+        }
+        return classes;
     }
 
     clampOffset(value) {
@@ -1288,6 +1312,23 @@ class ChordAnnotatorApp {
         return this.chordColors[chord];
     }
 
+    remapChordColors() {
+        const seen = [];
+        Object.keys(this.chordColors || {}).forEach((chord) => {
+            if (chord && !seen.includes(chord)) seen.push(chord);
+        });
+        (this.songs || []).forEach((song) => {
+            (song.annotations || []).forEach((annotation) => {
+                if (annotation.chord && !seen.includes(annotation.chord)) {
+                    seen.push(annotation.chord);
+                }
+            });
+        });
+        this.chordColors = {};
+        this.nextColorIndex = 0;
+        seen.forEach((chord) => this.getChordColor(chord));
+    }
+
     withAlpha(color, alpha) {
         const value = String(color || '').trim();
         const hex = value.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
@@ -1418,6 +1459,7 @@ class ChordAnnotatorApp {
         this.chordColors = data.chordColors || {};
         this.nextColorIndex = data.nextColorIndex || 0;
         this.localUpdatedAt = data.updatedAt || this.localUpdatedAt;
+        this.remapChordColors();
     }
 
     loadLocalCache() {

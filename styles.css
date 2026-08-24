@@ -732,10 +732,15 @@ body {
 .chord-annotation {
     position: relative;
     display: inline;
-    padding: 1px 2px;
-    border-radius: 3px;
+    padding: 1px 0;
+    border-radius: 0;
     cursor: pointer;
     transition: box-shadow 0.2s, outline 0.2s;
+}
+
+.chord-annotation.joins-prev::before,
+.chord-annotation.joins-next::after {
+    content: '\200D';
 }
 
 .chord-annotation.pending {
@@ -745,13 +750,19 @@ body {
 
 .chord-annotation:hover {
     filter: brightness(0.95);
-    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.chord-anchor {
+    display: inline;
+    position: relative;
+    background-color: inherit;
 }
 
 .chord-label {
     position: absolute;
     bottom: 100%;
-    left: 0;
+    inset-inline-start: 0;
+    inset-inline-end: auto;
     font-size: 0.726rem;
     font-weight: 600;
     line-height: 1.2;
@@ -763,12 +774,6 @@ body {
     margin-bottom: 2px;
     box-shadow: none;
     cursor: pointer;
-}
-
-.lyrics-display.align-right .chord-label,
-.lyrics-display.rtl .chord-label {
-    left: auto;
-    right: 0;
 }
 
 /* Selection handles */
