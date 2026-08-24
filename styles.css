@@ -480,12 +480,18 @@ body {
     margin: 0;
     color: var(--text);
     text-align: center;
+    direction: ltr;
 }
 
+.heading-title,
 .heading-sep,
 .heading-artist {
-    direction: ltr;
     unicode-bidi: isolate;
+}
+
+.lyrics-display.align-right .lyrics-heading,
+.lyrics-display.rtl .lyrics-heading {
+    direction: rtl;
 }
 
 .lyrics-meta-controls {
