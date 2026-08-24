@@ -1283,6 +1283,8 @@ class ChordAnnotatorApp {
 
         const response = await fetch(`https://api.github.com/repos/${this.github.owner}/${this.github.repo}`, {
             headers: this.githubHeaders()
+        }).catch((error) => {
+            throw new Error(this.friendlyNetworkError(error));
         });
         if (!response.ok) {
             throw new Error(await this.readGithubError(response));
@@ -1312,8 +1314,7 @@ class ChordAnnotatorApp {
 
     githubHeaders(includeAuth = true) {
         const headers = {
-            Accept: 'application/vnd.github+json',
-            'Cache-Control': 'no-cache'
+            Accept: 'application/vnd.github+json'
         };
         const token = this.getGithubToken();
         if (includeAuth && token) {
@@ -1324,7 +1325,7 @@ class ChordAnnotatorApp {
 
     githubContentsUrl() {
         const { owner, repo, path, branch } = this.github;
-        return `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+        return `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`;
     }
 
     githubWriteUrl() {
@@ -1349,21 +1350,27 @@ class ChordAnnotatorApp {
     }
 
     async fetchGithubData(requireAuth = false) {
-        const response = await fetch(this.githubContentsUrl(), {
-            headers: this.githubHeaders(),
-            cache: 'no-store'
-        });
-        if (response.status === 404) {
-            if (requireAuth) return { data: null, sha: null };
+        try {
+            const response = await fetch(this.githubContentsUrl(), {
+                headers: this.githubHeaders()
+            });
+            if (response.status === 404) {
+                if (requireAuth) return { data: null, sha: null };
+                return this.fetchStaticSongsFile();
+            }
+            if (!response.ok) {
+                if (!requireAuth) return this.fetchStaticSongsFile();
+                throw new Error(await this.readGithubError(response));
+            }
+            const payload = await response.json();
+            const parsed = JSON.parse(this.decodeBase64(payload.content));
+            return { data: parsed, sha: payload.sha };
+        } catch (error) {
+            if (requireAuth) {
+                throw new Error(this.friendlyNetworkError(error));
+            }
             return this.fetchStaticSongsFile();
         }
-        if (!response.ok) {
-            if (!requireAuth) return this.fetchStaticSongsFile();
-            throw new Error(await this.readGithubError(response));
-        }
-        const payload = await response.json();
-        const parsed = JSON.parse(this.decodeBase64(payload.content));
-        return { data: parsed, sha: payload.sha };
     }
 
     async fetchStaticSongsFile() {
@@ -1402,9 +1409,17 @@ class ChordAnnotatorApp {
         } catch (error) {
             console.error('GitHub sync error:', error);
             this.syncState = this.songs.length ? 'offline' : 'error';
-            this.updateSyncBanner(error.message);
+            this.updateSyncBanner(this.friendlyNetworkError(error));
             this.renderSongList();
         }
+    }
+
+    friendlyNetworkError(error) {
+        const message = error && error.message ? String(error.message) : '';
+        if (/failed to fetch|networkerror|load failed/i.test(message)) {
+            return 'Could not reach GitHub. Showing songs saved on this phone.';
+        }
+        return message || 'Could not reach GitHub.';
     }
 
     scheduleGithubPush() {
