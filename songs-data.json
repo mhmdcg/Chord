@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T19:31:18.518Z",
+  "updatedAt": "2026-08-24T19:31:59.467Z",
   "songs": [
     {
       "title": "خیال",
@@ -80,6 +80,11 @@
           "chord": "Bbm",
           "start": 245,
           "end": 271
+        },
+        {
+          "chord": "Bb7",
+          "start": 272,
+          "end": 288
         }
       ],
       "textAlign": "right",
@@ -112,7 +117,8 @@
     "Db": "#FF5C8A",
     "Abm": "#66BB6A",
     "Bbm": "#AB47BC",
-    "Ebm": "#26C6DA"
+    "Ebm": "#26C6DA",
+    "Bb7": "#FF7043"
   },
-  "nextColorIndex": 21
+  "nextColorIndex": 22
 }
