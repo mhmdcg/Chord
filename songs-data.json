@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T19:22:59.291Z",
+  "updatedAt": "2026-08-24T19:29:06.885Z",
   "songs": [
     {
       "title": "خیال",
@@ -59,7 +59,7 @@
         {
           "chord": "Bbm",
           "start": 163,
-          "end": 250
+          "end": 199
         }
       ],
       "textAlign": "right",
@@ -72,27 +72,27 @@
     }
   ],
   "chordColors": {
-    "C": "#FFE5B4",
-    "Cadd4": "#BFEFFF",
-    "F": "#FFD1DC",
-    "Fsus": "#E0FFE0",
-    "B": "#FFE4E1",
-    "Bm": "#F0E68C",
-    "G": "#DDA0DD",
-    "Gm9": "#AFEEEE",
-    "Fsus4": "#FFB6C1",
-    "E": "#98FB98",
-    "E7": "#F5DEB3",
-    "D": "#D8BFD8",
-    "D7": "#B0E0E6",
-    "A": "#FFDAB9",
-    "Am7": "#E6E6FA",
-    "Dm7": "#FFE5B4",
-    "Am6": "#BFEFFF",
-    "Db": "#FFD1DC",
-    "Abm": "#E0FFE0",
-    "Bbm": "#FFE4E1",
-    "Ebm": "#F0E68C"
+    "C": "#4FC3F7",
+    "Cadd4": "#FFB300",
+    "F": "#FF5C8A",
+    "Fsus": "#66BB6A",
+    "B": "#AB47BC",
+    "Bm": "#26C6DA",
+    "G": "#FF7043",
+    "Gm9": "#D4E157",
+    "Fsus4": "#5C6BC0",
+    "E": "#EC407A",
+    "E7": "#26A69A",
+    "D": "#FFA726",
+    "D7": "#7E57C2",
+    "A": "#42A5F5",
+    "Am7": "#9CCC65",
+    "Dm7": "#4FC3F7",
+    "Am6": "#FFB300",
+    "Db": "#FF5C8A",
+    "Abm": "#66BB6A",
+    "Bbm": "#AB47BC",
+    "Ebm": "#26C6DA"
   },
   "nextColorIndex": 21
 }
