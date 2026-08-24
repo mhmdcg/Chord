@@ -1166,12 +1166,54 @@ class ChordAnnotatorApp {
         localStorage.setItem('chordAnnotatorGithubToken', token);
         this.syncState = 'saving';
         this.updateSyncBanner();
-        this.pushToGithub()
-            .then(() => this.refreshFromGithub())
-            .catch(() => {
-                this.syncState = 'error';
-                this.updateSyncBanner('Token could not save to GitHub. Check repo access.');
-            });
+        this.verifyAndPushToken().catch((error) => {
+            this.syncState = 'error';
+            this.updateSyncBanner(error.message || 'Token could not save to GitHub.');
+        });
+    }
+
+    async verifyAndPushToken() {
+        await this.verifyGithubToken();
+        await this.pushToGithub();
+        await this.refreshFromGithub();
+    }
+
+    async verifyGithubToken() {
+        const token = this.getGithubToken();
+        if (!token) {
+            throw new Error('Paste the long GitHub access code first.');
+        }
+        if (!/^(ghp_|github_pat_)/.test(token)) {
+            throw new Error('That does not look like a GitHub access code. It should start with ghp_ or github_pat_.');
+        }
+
+        const response = await fetch(`https://api.github.com/repos/${this.github.owner}/${this.github.repo}`, {
+            headers: this.githubHeaders()
+        });
+        if (!response.ok) {
+            throw new Error(await this.readGithubError(response));
+        }
+    }
+
+    async readGithubError(response) {
+        let githubMessage = '';
+        try {
+            const body = await response.json();
+            githubMessage = body.message || '';
+        } catch (e) {
+            githubMessage = '';
+        }
+
+        if (response.status === 401) {
+            return 'GitHub says this token is invalid. Paste the long code shown once (ghp_ or github_pat_), not the token name.';
+        }
+        if (response.status === 403) {
+            return 'GitHub blocked write access. Create a classic token with public_repo checked, then paste the long code.';
+        }
+        if (response.status === 404) {
+            return 'This token cannot see the Chord repo. Create a new token with public_repo checked.';
+        }
+        return githubMessage || `GitHub save failed (${response.status}).`;
     }
 
     githubHeaders(includeAuth = true) {
@@ -1211,15 +1253,17 @@ class ChordAnnotatorApp {
         return new TextDecoder().decode(bytes);
     }
 
-    async fetchGithubData() {
+    async fetchGithubData(requireAuth = false) {
         const response = await fetch(this.githubContentsUrl(), {
             headers: this.githubHeaders()
         });
         if (response.status === 404) {
+            if (requireAuth) return { data: null, sha: null };
             return this.fetchStaticSongsFile();
         }
         if (!response.ok) {
-            return this.fetchStaticSongsFile();
+            if (!requireAuth) return this.fetchStaticSongsFile();
+            throw new Error(await this.readGithubError(response));
         }
         const payload = await response.json();
         const parsed = JSON.parse(this.decodeBase64(payload.content));
@@ -1280,7 +1324,7 @@ class ChordAnnotatorApp {
             this.pushToGithub().catch((error) => {
                 console.error(error);
                 this.syncState = 'error';
-                this.updateSyncBanner('Could not save to GitHub.');
+                this.updateSyncBanner(error.message || 'Could not save to GitHub.');
             });
         }, 1500);
     }
@@ -1292,6 +1336,9 @@ class ChordAnnotatorApp {
             this.updateSyncBanner();
             return;
         }
+
+        const latest = await this.fetchGithubData(true);
+        this.githubSha = latest.sha;
 
         const body = {
             message: 'Update songs',
@@ -1311,30 +1358,8 @@ class ChordAnnotatorApp {
             body: JSON.stringify(body)
         });
 
-        if (response.status === 409 || response.status === 422) {
-            const latest = await this.fetchGithubData();
-            this.githubSha = latest.sha;
-            if (this.githubSha) body.sha = this.githubSha;
-            const retry = await fetch(this.githubWriteUrl(), {
-                method: 'PUT',
-                headers: {
-                    ...this.githubHeaders(),
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            });
-            if (!retry.ok) {
-                throw new Error(`GitHub save failed (${retry.status})`);
-            }
-            const retried = await retry.json();
-            this.githubSha = retried.content && retried.content.sha;
-            this.syncState = 'ok';
-            this.updateSyncBanner();
-            return;
-        }
-
         if (!response.ok) {
-            throw new Error(`GitHub save failed (${response.status})`);
+            throw new Error(await this.readGithubError(response));
         }
 
         const saved = await response.json();

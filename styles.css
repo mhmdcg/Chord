@@ -122,8 +122,11 @@ body {
     margin-bottom: 0.4rem;
 }
 
-.sync-panel-card a {
-    color: var(--primary);
+.sync-panel-card code {
+    font-size: 0.8em;
+    background: var(--background);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
 }
 
 .sync-token-row {
