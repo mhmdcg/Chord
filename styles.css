@@ -750,17 +750,17 @@ body {
 
 .chord-label {
     position: absolute;
-    bottom: 100%;
+    bottom: calc(100% - 1px);
     left: 0;
-    font-size: 0.6rem;
+    font-size: 0.66rem;
     font-weight: 600;
     line-height: 1.2;
     color: var(--text);
     white-space: nowrap;
-    padding: 2px 4px;
+    padding: 2px 5px 3px;
     background-color: inherit;
-    border-radius: 4px;
-    margin-bottom: 2px;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 0;
     box-shadow: none;
     cursor: pointer;
 }
