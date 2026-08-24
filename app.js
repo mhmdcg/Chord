@@ -97,6 +97,7 @@ class ChordAnnotatorApp {
         document.getElementById('songScale').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('change', () => this.saveSongMeta());
+        document.getElementById('deleteAllChordsBtn').addEventListener('click', () => this.deleteAllChords());
 
         const lyricsContent = document.getElementById('lyricsContent');
         lyricsContent.addEventListener('mouseup', (e) => this.handleTextSelection(e));
@@ -1061,9 +1062,27 @@ class ChordAnnotatorApp {
         this.positionHandles();
     }
 
+    deleteAllChords() {
+        const annotations = this.currentSong?.annotations || [];
+        if (!annotations.length) return;
+        if (!confirm('Are you sure you want to delete all chords?')) return;
+
+        this.pendingEdit = null;
+        this.draggingHandle = null;
+        document.getElementById('chordModal').classList.remove('active');
+        document.getElementById('annotationView').classList.remove('sheet-open');
+        document.getElementById('removeChordBtn').hidden = true;
+        document.getElementById('lyricsDisplay').classList.remove('dragging');
+
+        this.commitAnnotations([]);
+        this.renderAnnotationView();
+    }
+
     updateChordLegend() {
         const usedChords = new Set((this.currentSong.annotations || []).map(a => a.chord));
         const container = document.getElementById('chordLegendList');
+        const deleteBtn = document.getElementById('deleteAllChordsBtn');
+        if (deleteBtn) deleteBtn.disabled = usedChords.size === 0;
 
         if (usedChords.size === 0) {
             container.innerHTML = '<p style="color: var(--text-light); font-size: 0.875rem;">No chords added yet</p>';

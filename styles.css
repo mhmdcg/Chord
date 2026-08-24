@@ -799,10 +799,37 @@ body {
     border: 1px solid var(--border);
 }
 
+.chord-legend-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
 .chord-legend h3 {
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin: 0;
     color: var(--text);
+}
+
+.btn-legend-delete {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: transparent;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+    border-radius: 8px;
+}
+
+.btn-legend-delete:hover:not(:disabled) {
+    background: #FEF2F2;
+}
+
+.btn-legend-delete:disabled {
+    opacity: 0.4;
+    cursor: default;
 }
 
 .legend-list {
