@@ -730,49 +730,37 @@ body {
 }
 
 .chord-annotation {
+    position: relative;
     display: inline;
+    padding: 1px 2px;
+    border-radius: 3px;
     cursor: pointer;
-    transition: filter 0.2s, outline 0.2s;
+    transition: box-shadow 0.2s, outline 0.2s;
 }
 
-.chord-annotation.pending .lyric-text {
+.chord-annotation.pending {
     outline: 2px solid var(--primary);
     outline-offset: 1px;
 }
 
-.chord-annotation:hover .lyric-text,
-.chord-annotation:hover .chord-label {
+.chord-annotation:hover {
     filter: brightness(0.95);
-}
-
-.lyric-text {
-    position: relative;
-    display: inline-block;
-    vertical-align: baseline;
-    line-height: 1.35;
-    padding: 1px 4px 2px;
-    background-color: var(--chord-fill);
-    border-radius: 0 4px 4px 4px;
-}
-
-.lyrics-display.align-right .lyric-text,
-.lyrics-display.rtl .lyric-text {
-    border-radius: 4px 0 4px 4px;
+    box-shadow: 0 2px 4px var(--shadow);
 }
 
 .chord-label {
     position: absolute;
-    bottom: calc(100% - 6px);
+    bottom: 100%;
     left: 0;
     font-size: 0.726rem;
     font-weight: 600;
-    line-height: 1.15;
+    line-height: 1.2;
     color: var(--text);
     white-space: nowrap;
-    padding: 2px 6px 6px;
-    background-color: var(--chord-fill);
-    border-radius: 5px 5px 0 0;
-    margin: 0;
+    padding: 2px 5px;
+    background-color: inherit;
+    border-radius: 4px;
+    margin-bottom: 2px;
     box-shadow: none;
     cursor: pointer;
 }

@@ -604,12 +604,12 @@ class ChordAnnotatorApp {
                     : 'rgba(79, 70, 229, 0.22)';
                 const fill = annotation.chord ? this.withAlpha(color, 0.55) : color;
                 const pendingClass = annotation.pending ? ' pending' : '';
-                html += `<span class="chord-annotation${pendingClass}" data-index="${annotation.index}" style="--chord-fill: ${fill}">`;
-                html += `<span class="lyric-text">`;
+                html += `<span class="chord-annotation${pendingClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
                 if (isFirst && annotation.chord) {
                     html += `<span class="chord-label">${this.escapeHtml(annotation.chord)}</span>`;
                 }
-                html += `${this.escapeHtml(text)}</span></span>`;
+                html += `<span class="lyric-text">${this.escapeHtml(text)}</span>`;
+                html += '</span>';
             } else {
                 html += this.escapeHtml(text);
             }
