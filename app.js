@@ -602,7 +602,7 @@ class ChordAnnotatorApp {
                 const color = annotation.chord
                     ? this.getChordColor(annotation.chord)
                     : 'rgba(79, 70, 229, 0.22)';
-                const fill = annotation.chord ? this.withAlpha(color, 0.32) : color;
+                const fill = annotation.chord ? this.withAlpha(color, 0.55) : color;
                 const pendingClass = annotation.pending ? ' pending' : '';
                 html += `<span class="chord-annotation${pendingClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
                 if (isFirst && annotation.chord) {
