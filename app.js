@@ -43,6 +43,7 @@ class ChordAnnotatorApp {
             '7b9', '7#9', '7b5', '7#5', 'maj7#11'
         ];
         this.allChords = this.buildChordCatalog();
+        this.scaleOptions = this.buildScaleOptions();
 
         this.github = {
             owner: 'mhmdcg',
@@ -61,6 +62,7 @@ class ChordAnnotatorApp {
     init() {
         this.loadLocalCache();
         this.setupEventListeners();
+        this.populateScaleSelect();
         this.renderSongList();
         this.updateSyncBanner();
         this.refreshFromGithub();
@@ -90,6 +92,9 @@ class ChordAnnotatorApp {
         document.getElementById('doneAnnotatingBtn').addEventListener('click', () => this.finishAnnotation());
         document.getElementById('undoBtn').addEventListener('click', () => this.undo());
         document.getElementById('redoBtn').addEventListener('click', () => this.redo());
+        document.getElementById('songScale').addEventListener('change', () => this.saveSongMeta());
+        document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
+        document.getElementById('timeBottom').addEventListener('change', () => this.saveSongMeta());
 
         const lyricsContent = document.getElementById('lyricsContent');
         lyricsContent.addEventListener('mouseup', (e) => this.handleTextSelection(e));
@@ -232,6 +237,9 @@ class ChordAnnotatorApp {
             lyrics: '',
             annotations: [],
             textAlign: 'left',
+            scale: '',
+            timeTop: 4,
+            timeBottom: 4,
             createdAt: new Date().toISOString()
         };
 
@@ -402,12 +410,96 @@ class ChordAnnotatorApp {
 
     renderAnnotationView() {
         document.getElementById('annotationTitle').textContent = this.currentSong.title;
-
+        this.updateLyricsHeading();
+        this.updateSongMetaFields();
         this.applyTextAlign();
 
         this.renderAnnotatedLyrics();
         this.updateChordLegend();
         this.positionHandles();
+    }
+
+    updateLyricsHeading() {
+        const heading = document.getElementById('lyricsSongHeading');
+        heading.replaceChildren();
+
+        const title = (this.currentSong.title || '').trim();
+        const artist = (this.currentSong.artist || '').trim();
+
+        const titleSpan = document.createElement('span');
+        titleSpan.className = 'heading-title';
+        titleSpan.textContent = title;
+        heading.appendChild(titleSpan);
+
+        if (artist) {
+            const sep = document.createElement('span');
+            sep.className = 'heading-sep';
+            sep.textContent = ' - ';
+            const artistSpan = document.createElement('span');
+            artistSpan.className = 'heading-artist';
+            artistSpan.textContent = artist;
+            heading.appendChild(sep);
+            heading.appendChild(artistSpan);
+        }
+    }
+
+    updateSongMetaFields() {
+        document.getElementById('songScale').value = this.currentSong.scale || '';
+        document.getElementById('timeTop').value = this.currentSong.timeTop || 4;
+        document.getElementById('timeBottom').value = this.currentSong.timeBottom || 4;
+    }
+
+    saveSongMeta() {
+        if (!this.currentSong) return;
+        this.currentSong.scale = document.getElementById('songScale').value;
+        const top = parseInt(document.getElementById('timeTop').value, 10);
+        const bottom = parseInt(document.getElementById('timeBottom').value, 10);
+        this.currentSong.timeTop = Number.isFinite(top) && top > 0 ? top : 4;
+        this.currentSong.timeBottom = Number.isFinite(bottom) && bottom > 0 ? bottom : 4;
+        document.getElementById('timeTop').value = this.currentSong.timeTop;
+        document.getElementById('timeBottom').value = this.currentSong.timeBottom;
+        this.persistCurrentSong();
+    }
+
+    populateScaleSelect() {
+        const select = document.getElementById('songScale');
+        select.innerHTML = '';
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = 'Select scale';
+        select.appendChild(placeholder);
+
+        this.scaleOptions.forEach((group) => {
+            const optgroup = document.createElement('optgroup');
+            optgroup.label = group.label;
+            group.options.forEach((name) => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                optgroup.appendChild(option);
+            });
+            select.appendChild(optgroup);
+        });
+    }
+
+    buildScaleOptions() {
+        return [
+            {
+                label: 'Major',
+                options: [
+                    'C major', 'C# major', 'Db major', 'D major', 'Eb major', 'E major',
+                    'F major', 'F# major', 'Gb major', 'G major', 'Ab major', 'A major',
+                    'Bb major', 'B major'
+                ]
+            },
+            {
+                label: 'Minor',
+                options: [
+                    'A minor', 'Bb minor', 'B minor', 'C minor', 'C# minor', 'D minor',
+                    'Eb minor', 'E minor', 'F minor', 'F# minor', 'G minor', 'G# minor'
+                ]
+            }
+        ];
     }
 
     getDisplayAnnotations() {

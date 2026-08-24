@@ -438,7 +438,7 @@ body {
 
 .lyrics-display {
     background: var(--surface);
-    padding: 2.25rem 2rem 2rem;
+    padding: 1.25rem 2rem 2rem;
     border-radius: 12px;
     border: 1px solid var(--border);
     min-height: 400px;
@@ -449,12 +449,95 @@ body {
     box-shadow: 0 2px 8px var(--shadow);
 }
 
+.lyrics-meta {
+    cursor: default;
+    user-select: none;
+    margin-bottom: 0.5rem;
+}
+
+.lyrics-heading {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 0.85rem;
+    color: var(--text);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
+.heading-sep,
+.heading-artist {
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+.lyrics-meta-controls {
+    direction: ltr;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.85rem 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.meta-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    letter-spacing: 0.02em;
+}
+
+.meta-field select,
+.time-signature input {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--background);
+    padding: 0.45rem 0.6rem;
+    min-height: 40px;
+}
+
+.meta-field select {
+    min-width: 9.5rem;
+}
+
+.time-signature {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.time-signature input {
+    width: 3.1rem;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.time-signature input::-webkit-outer-spin-button,
+.time-signature input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.time-slash {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
 .lyrics-content {
     white-space: pre-wrap;
     word-wrap: break-word;
     user-select: text;
     -webkit-user-select: text;
     line-height: 3.4;
+    padding-top: 1.6rem;
 }
 
 .lyrics-display.align-left,
@@ -830,7 +913,7 @@ body {
     }
     
     .lyrics-display {
-        padding: 2.1rem 1.25rem 1.5rem;
+        padding: 1.1rem 1.25rem 1.5rem;
         font-size: 1rem;
         line-height: 3.45;
     }
@@ -848,7 +931,7 @@ body {
     .lyrics-display {
         font-size: 1.25rem;
         line-height: 3.4;
-        padding-top: 2.4rem;
+        padding-top: 1.35rem;
     }
 
     .lyrics-content {
