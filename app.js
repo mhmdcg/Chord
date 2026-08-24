@@ -602,8 +602,9 @@ class ChordAnnotatorApp {
                 const color = annotation.chord
                     ? this.getChordColor(annotation.chord)
                     : 'rgba(79, 70, 229, 0.22)';
+                const fill = annotation.chord ? this.withAlpha(color, 0.32) : color;
                 const pendingClass = annotation.pending ? ' pending' : '';
-                html += `<span class="chord-annotation${pendingClass}" data-index="${annotation.index}" style="background-color: ${color}">`;
+                html += `<span class="chord-annotation${pendingClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
                 if (isFirst && annotation.chord) {
                     html += `<span class="chord-label" style="background-color: ${color}">${this.escapeHtml(annotation.chord)}</span>`;
                 }
@@ -1285,6 +1286,27 @@ class ChordAnnotatorApp {
             this.nextColorIndex++;
         }
         return this.chordColors[chord];
+    }
+
+    withAlpha(color, alpha) {
+        const value = String(color || '').trim();
+        const hex = value.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+        if (hex) {
+            let raw = hex[1];
+            if (raw.length === 3) {
+                raw = raw.split('').map((ch) => ch + ch).join('');
+            }
+            const n = parseInt(raw, 16);
+            const r = (n >> 16) & 255;
+            const g = (n >> 8) & 255;
+            const b = n & 255;
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        }
+        const rgb = value.match(/^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i);
+        if (rgb) {
+            return `rgba(${rgb[1]}, ${rgb[2]}, ${rgb[3]}, ${alpha})`;
+        }
+        return value;
     }
 
     finishAnnotation() {
