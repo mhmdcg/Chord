@@ -117,21 +117,15 @@
 
                 <div id="lyricsDisplay" class="lyrics-display">
                     <div class="lyrics-meta">
-                        <h2 id="lyricsSongHeading" class="lyrics-heading"></h2>
                         <div class="lyrics-meta-controls">
-                            <label class="meta-field">
-                                <span>Scale</span>
-                                <select id="songScale"></select>
-                            </label>
-                            <label class="meta-field">
-                                <span>Time signature</span>
-                                <span class="time-signature">
-                                    <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Time signature top" />
-                                    <span class="time-slash">/</span>
-                                    <input id="timeBottom" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Time signature bottom" />
-                                </span>
-                            </label>
+                            <select id="songScale" aria-label="Scale"></select>
+                            <span class="time-signature">
+                                <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beats per bar" />
+                                <span class="time-slash">/</span>
+                                <input id="timeBottom" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beat value" />
+                            </span>
                         </div>
+                        <h2 id="lyricsSongHeading" class="lyrics-heading"></h2>
                     </div>
                     <div id="lyricsContent" class="lyrics-content"></div>
                     <div id="startHandle" class="sel-handle start" hidden>
