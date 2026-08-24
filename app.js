@@ -1161,6 +1161,9 @@ class ChordAnnotatorApp {
         button.textContent = 'Exporting…';
 
         try {
+            if (document.fonts?.ready) {
+                await document.fonts.ready;
+            }
             const width = card.offsetWidth || 540;
             const canvas = await html2canvas(card, {
                 backgroundColor: card.classList.contains('theme-dark') ? '#000000' : '#ffffff',
