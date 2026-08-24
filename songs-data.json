@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T08:19:22.572Z",
+  "updatedAt": "2026-08-24T08:20:44.571Z",
   "songs": [
     {
       "title": "خیال",
@@ -10,6 +10,41 @@
           "chord": "Cadd4",
           "start": 0,
           "end": 33
+        },
+        {
+          "chord": "Fsus",
+          "start": 33,
+          "end": 70
+        },
+        {
+          "chord": "Bm",
+          "start": 70,
+          "end": 123
+        },
+        {
+          "chord": "Gm9",
+          "start": 124,
+          "end": 171
+        },
+        {
+          "chord": "Bm",
+          "start": 172,
+          "end": 223
+        },
+        {
+          "chord": "Fsus4",
+          "start": 224,
+          "end": 254
+        },
+        {
+          "chord": "E7",
+          "start": 255,
+          "end": 467
+        },
+        {
+          "chord": "D7",
+          "start": 468,
+          "end": 734
         }
       ],
       "textAlign": "right",
@@ -21,7 +56,18 @@
   ],
   "chordColors": {
     "C": "#FFE5B4",
-    "Cadd4": "#BFEFFF"
+    "Cadd4": "#BFEFFF",
+    "F": "#FFD1DC",
+    "Fsus": "#E0FFE0",
+    "B": "#FFE4E1",
+    "Bm": "#F0E68C",
+    "G": "#DDA0DD",
+    "Gm9": "#AFEEEE",
+    "Fsus4": "#FFB6C1",
+    "E": "#98FB98",
+    "E7": "#F5DEB3",
+    "D": "#D8BFD8",
+    "D7": "#B0E0E6"
   },
-  "nextColorIndex": 2
+  "nextColorIndex": 13
 }
