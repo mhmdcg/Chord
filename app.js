@@ -611,14 +611,38 @@ class ChordAnnotatorApp {
                 if (isFirst && annotation.chord) {
                     html += `<span class="chord-anchor"><span class="chord-label" style="background-color: ${fill}">${this.escapeHtml(annotation.chord)}</span></span>`;
                 }
-                html += this.escapeHtml(text);
+                html += this.formatLyricHtml(text);
                 html += '</span>';
             } else {
-                html += this.escapeHtml(text);
+                html += this.formatLyricHtml(text);
             }
         }
 
         content.innerHTML = html;
+    }
+
+    formatLyricHtml(text) {
+        if (!text) return '';
+        return text.split(/(_+)/).map((part) => {
+            if (!part) return '';
+            if (/^_+$/.test(part)) {
+                return this.melodyBreakHtml(part);
+            }
+            return this.escapeHtml(part);
+        }).join('');
+    }
+
+    melodyBreakHtml(source) {
+        return `<span class="melody-break" title="Melody">` +
+            `<span class="melody-break-mark" aria-hidden="true">` +
+            `<span class="melody-break-line"></span>` +
+            `<span class="melody-note">♩</span>` +
+            `<span class="melody-note">♩</span>` +
+            `<span class="melody-note">♩</span>` +
+            `<span class="melody-break-line"></span>` +
+            `</span>` +
+            `<span class="melody-break-source">${this.escapeHtml(source)}</span>` +
+            `</span>`;
     }
 
     isArabicLetter(char) {
@@ -694,7 +718,7 @@ class ChordAnnotatorApp {
 
     isLabelNode(node) {
         const element = node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
-        return Boolean(element && element.closest && element.closest('.chord-label'));
+        return Boolean(element && element.closest && element.closest('.chord-label, .melody-break-mark'));
     }
 
     createLyricWalker(root) {
@@ -724,7 +748,8 @@ class ChordAnnotatorApp {
         }
 
         if (this.isLabelNode(range.startContainer)) {
-            const annotation = range.startContainer.parentElement.closest('.chord-annotation');
+            const startEl = range.startContainer.parentElement;
+            const annotation = startEl?.closest('.chord-annotation');
             if (annotation) {
                 const index = Number(annotation.getAttribute('data-index'));
                 const match = this.getDisplayAnnotations().find(a => a.index === index) ||
@@ -732,6 +757,10 @@ class ChordAnnotatorApp {
                 if (match) {
                     return this.draggingHandle === 'start' ? match.start : match.end;
                 }
+            }
+            const melody = startEl?.closest('.melody-break');
+            if (melody) {
+                return this.nearestOffsetFromPoint(x, y);
             }
         }
 

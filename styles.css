@@ -710,6 +710,48 @@ body {
     color: var(--text);
 }
 
+.melody-break {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    color: #C5A45A;
+    line-height: 1;
+}
+
+.melody-break-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.12rem;
+    pointer-events: none;
+}
+
+.melody-note {
+    font-size: 0.82rem;
+    line-height: 1;
+    font-family: "Apple Symbols", "Segoe UI Symbol", "Noto Music", serif;
+    color: inherit;
+}
+
+.melody-break-line {
+    display: inline-block;
+    width: 0.8rem;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 1px;
+    transform: translateY(-0.12em);
+}
+
+.melody-break-source {
+    display: none;
+}
+
+.lyrics-display.theme-dark .melody-break,
+.lyrics-display.theme-dark .melody-note {
+    color: #C5A45A;
+}
+
 .lyrics-content {
     font-family: 'Estedad', Tahoma, sans-serif;
     white-space: pre-wrap;
