@@ -500,13 +500,14 @@ body {
 
 .lyrics-display {
     background: var(--surface);
-    padding: 1.25rem 2rem 2rem;
+    padding: 1.25rem 0.4rem 2rem;
     border-radius: 12px;
     border: 1px solid var(--border);
     width: 100%;
     height: 100%;
     min-height: 0;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     font-size: 0.9rem;
@@ -514,18 +515,20 @@ body {
     position: relative;
     cursor: text;
     box-shadow: 0 2px 8px var(--shadow);
+    text-align: center;
 }
 
 .lyrics-meta {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.4rem;
     cursor: default;
     user-select: none;
     margin-bottom: 0.75rem;
-    min-height: 1.75rem;
+    min-height: 0;
     direction: ltr;
 }
 
@@ -536,9 +539,9 @@ body {
     line-height: 1.35;
     margin: 0;
     color: var(--text);
-    text-align: right;
+    text-align: center;
     direction: ltr;
-    flex: 1;
+    width: 100%;
     min-width: 0;
 }
 
@@ -554,6 +557,9 @@ body {
 }
 
 .lyrics-meta-controls {
+    position: static;
+    align-self: flex-start;
+    margin-left: 0;
     direction: ltr;
     display: flex;
     align-items: center;
@@ -712,20 +718,19 @@ body {
     -webkit-user-select: text;
     line-height: 3.4;
     padding-top: 1.25rem;
+    padding-inline: 1.6rem;
+    text-align: center;
 }
 
-.lyrics-display.align-left,
 .lyrics-display.align-left .lyrics-content {
     direction: ltr;
-    text-align: left;
+    text-align: center;
 }
 
-.lyrics-display.align-right,
 .lyrics-display.align-right .lyrics-content,
-.lyrics-display.rtl,
 .lyrics-display.rtl .lyrics-content {
     direction: rtl;
-    text-align: right;
+    text-align: center;
 }
 
 .lyrics-display.dragging .lyrics-content {
@@ -1121,32 +1126,35 @@ body {
     }
     
     .lyrics-display {
-        padding: 1.1rem 1.25rem 1.5rem;
+        padding: 1.1rem 0.35rem 1.5rem;
         font-size: 0.9rem;
         line-height: 3.45;
     }
 
     .lyrics-content {
         line-height: 3.45;
+        padding-inline: 0.9rem;
     }
 
     .lyrics-meta {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         justify-content: flex-start;
         min-height: 0;
-        gap: 0.4rem;
+        gap: 0.35rem;
     }
 
     .lyrics-meta-controls {
         position: static;
         transform: none;
         top: auto;
+        left: auto;
+        margin-left: 0;
     }
 
     .lyrics-heading {
         width: 100%;
-        text-align: right;
+        text-align: center;
     }
     
     .modal-content {
