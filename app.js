@@ -1319,7 +1319,7 @@ class ChordAnnotatorApp {
             const top = card.querySelector('#timeTop')?.value || this.currentSong?.timeTop || '4';
             const bottom = card.querySelector('#timeBottom')?.value || this.currentSong?.timeBottom || '4';
             const el = chip();
-            el.textContent = `${top} / ${bottom}`;
+            el.textContent = `${top}/${bottom}`;
             replace(time, el);
         }
 
