@@ -33,7 +33,7 @@ class ChordAnnotatorApp {
             '#D97706',
             '#7C3AED'
         ];
-        this.highlightAlpha = { light: 0.2, dark: 0.26 };
+        this.highlightAlpha = { light: 0.1, dark: 0.14 };
 
         this.rootLetters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.chordQualities = [
@@ -630,15 +630,58 @@ class ChordAnnotatorApp {
             || (code >= 0x0671 && code <= 0x06D3);
     }
 
+    isArabicTransparent(char) {
+        if (!char) return false;
+        const code = char.charCodeAt(0);
+        return (code >= 0x064B && code <= 0x065F)
+            || code === 0x0670
+            || (code >= 0x06D6 && code <= 0x06ED);
+    }
+
+    isArabicNonJoining(char) {
+        if (!char) return false;
+        const code = char.charCodeAt(0);
+        return code === 0x0621 || code === 0x0674;
+    }
+
+    // Alef, dal, reh, waw, and similar letters never connect to the next letter.
+    isArabicRightJoining(char) {
+        if (!char) return false;
+        return /[\u0622-\u0625\u0627\u0629\u062F-\u0632\u0648\u0671-\u0673\u0675-\u0677\u0688-\u0699\u06C0\u06C2-\u06CB\u06CF\u06D2\u06D3\u06D5]/.test(char);
+    }
+
+    canJoinForward(char) {
+        return this.isArabicLetter(char) && !this.isArabicNonJoining(char) && !this.isArabicRightJoining(char);
+    }
+
+    canJoinBackward(char) {
+        return this.isArabicLetter(char) && !this.isArabicNonJoining(char);
+    }
+
+    adjacentJoiningChar(text, index, direction) {
+        const step = direction < 0 ? -1 : 1;
+        for (let i = index + step; i >= 0 && i < text.length; i += step) {
+            if (this.isArabicTransparent(text[i])) continue;
+            return text[i];
+        }
+        return '';
+    }
+
+    shouldJoinArabic(left, right) {
+        return this.canJoinForward(left) && this.canJoinBackward(right);
+    }
+
     joinClasses(lyrics, start, end, text) {
         if (!text) return '';
-        const prev = start > 0 ? lyrics[start - 1] : '';
-        const next = end < lyrics.length ? lyrics[end] : '';
+        const prev = this.adjacentJoiningChar(lyrics, start, -1);
+        const next = this.adjacentJoiningChar(lyrics, end - 1, 1);
+        const first = this.adjacentJoiningChar(text, -1, 1);
+        const last = this.adjacentJoiningChar(text, text.length, -1);
         let classes = '';
-        if (this.isArabicLetter(prev) && this.isArabicLetter(text[0])) {
+        if (this.shouldJoinArabic(prev, first)) {
             classes += ' joins-prev';
         }
-        if (this.isArabicLetter(text[text.length - 1]) && this.isArabicLetter(next)) {
+        if (this.shouldJoinArabic(last, next)) {
             classes += ' joins-next';
         }
         return classes;
