@@ -779,33 +779,6 @@ body {
     cursor: pointer;
 }
 
-.lyrics-display.is-export .export-highlight-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.lyrics-display.is-export .export-highlight {
-    position: absolute;
-    border-radius: 4px;
-    pointer-events: none;
-}
-
-.lyrics-display.is-export .lyrics-meta,
-.lyrics-display.is-export .lyrics-content {
-    position: relative;
-    z-index: 1;
-}
-
-.lyrics-display.is-export .chord-annotation {
-    background-color: transparent !important;
-    box-shadow: none;
-}
-
-/* Selection handles */
 .sel-handle {
     position: absolute;
     width: 44px;
