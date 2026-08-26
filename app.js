@@ -1220,6 +1220,7 @@ class ChordAnnotatorApp {
         const previousOverflow = card.style.overflow;
         card.style.overflow = 'hidden';
         card.classList.add('is-export');
+        const restoreMeta = this.installExportMetaChips(card);
 
         try {
             return await htmlToImage.toCanvas(card, {
@@ -1229,12 +1230,84 @@ class ChordAnnotatorApp {
                 filter: (node) => !(node.classList && node.classList.contains('sel-handle'))
             });
         } finally {
+            restoreMeta();
             card.classList.remove('is-export');
             card.style.overflow = previousOverflow;
             hiddenHandles.forEach((handle) => {
                 handle.hidden = false;
             });
         }
+    }
+
+    installExportMetaChips(card) {
+        const doc = card.ownerDocument;
+        const replaced = [];
+
+        const chip = (className) => {
+            const el = doc.createElement('span');
+            el.className = className ? `export-meta-chip ${className}` : 'export-meta-chip';
+            return el;
+        };
+
+        const replace = (original, next) => {
+            original.replaceWith(next);
+            replaced.push({ original, placeholder: next });
+        };
+
+        const scale = card.querySelector('#songScale');
+        if (scale) {
+            const label = (
+                scale.options[scale.selectedIndex]?.text ||
+                scale.value ||
+                this.currentSong?.scale ||
+                ''
+            ).trim();
+            if (label && label !== '—') {
+                const el = chip();
+                el.textContent = label;
+                replace(scale, el);
+            } else {
+                replace(scale, doc.createComment('export-scale'));
+            }
+        }
+
+        const time = card.querySelector('.time-signature');
+        if (time) {
+            const top = card.querySelector('#timeTop')?.value || this.currentSong?.timeTop || '4';
+            const bottom = card.querySelector('#timeBottom')?.value || this.currentSong?.timeBottom || '4';
+            const el = chip();
+            el.textContent = `${top} / ${bottom}`;
+            replace(time, el);
+        }
+
+        const tempoWrap = card.querySelector('.song-tempo');
+        if (tempoWrap) {
+            const tempoValue = (
+                card.querySelector('#songTempo')?.value ||
+                this.currentSong?.tempo ||
+                ''
+            ).toString().trim();
+            const el = chip('export-meta-tempo');
+            const note = doc.createElement('span');
+            note.className = 'tempo-sign';
+            note.textContent = '♩';
+            const eq = doc.createElement('span');
+            eq.className = 'tempo-eq';
+            eq.textContent = '=';
+            el.append(note, eq);
+            if (tempoValue) {
+                const number = doc.createElement('span');
+                number.textContent = tempoValue;
+                el.append(number);
+            }
+            replace(tempoWrap, el);
+        }
+
+        return () => {
+            replaced.forEach((item) => {
+                item.placeholder.replaceWith(item.original);
+            });
+        };
     }
 
     updateChordLegend() {
