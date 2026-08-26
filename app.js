@@ -15,23 +15,26 @@ class ChordAnnotatorApp {
         this.lastSelectionAt = 0;
         this.ignoreAnnotationClick = false;
 
+        // Evenly spaced hues so neighboring assignments stay easy to tell apart.
         this.colorPalette = [
-            '#4FC3F7',
-            '#FFB300',
-            '#FF5C8A',
-            '#66BB6A',
-            '#AB47BC',
-            '#26C6DA',
-            '#FF7043',
-            '#D4E157',
-            '#5C6BC0',
-            '#EC407A',
-            '#26A69A',
-            '#FFA726',
-            '#7E57C2',
-            '#42A5F5',
-            '#9CCC65'
+            '#0EA5E9',
+            '#F59E0B',
+            '#EC4899',
+            '#16A34A',
+            '#6366F1',
+            '#0D9488',
+            '#E11D48',
+            '#EA580C',
+            '#2563EB',
+            '#A855F7',
+            '#65A30D',
+            '#F43F5E',
+            '#0891B2',
+            '#D97706',
+            '#7C3AED'
         ];
+        this.highlightAlpha = { light: 0.34, dark: 0.4 };
+        this.labelAlpha = { light: 0.46, dark: 0.56 };
 
         this.rootLetters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.chordQualities = [
@@ -601,13 +604,14 @@ class ChordAnnotatorApp {
                 const isFirst = start === annotation.start;
                 const color = annotation.chord
                     ? this.getChordColor(annotation.chord)
-                    : 'rgba(79, 70, 229, 0.22)';
-                const fill = annotation.chord ? this.withAlpha(color, 0.55) : color;
+                    : 'rgba(79, 70, 229, 0.18)';
+                const fill = annotation.chord ? this.getChordFill(annotation.chord, 'text') : color;
+                const labelFill = annotation.chord ? this.getChordFill(annotation.chord, 'label') : color;
                 const pendingClass = annotation.pending ? ' pending' : '';
                 const joinClass = this.joinClasses(lyrics, start, end, text);
                 html += `<span class="chord-annotation${pendingClass}${joinClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
                 if (isFirst && annotation.chord) {
-                    html += `<span class="chord-anchor"><span class="chord-label">${this.escapeHtml(annotation.chord)}</span></span>`;
+                    html += `<span class="chord-anchor"><span class="chord-label" style="background-color: ${labelFill}">${this.escapeHtml(annotation.chord)}</span></span>`;
                 }
                 html += this.escapeHtml(text);
                 html += '</span>';
@@ -981,10 +985,7 @@ class ChordAnnotatorApp {
             return;
         }
 
-        if (!this.chordColors[chord]) {
-            this.chordColors[chord] = this.colorPalette[this.nextColorIndex % this.colorPalette.length];
-            this.nextColorIndex++;
-        }
+        this.chordColors[chord] = this.getChordColor(chord);
 
         let next = (this.currentSong.annotations || []).map(annotation => ({ ...annotation }));
 
@@ -1190,13 +1191,17 @@ class ChordAnnotatorApp {
                 await document.fonts.ready;
             }
             const width = card.offsetWidth || 540;
+            const highlights = this.collectExportHighlights(card);
             const canvas = await html2canvas(card, {
                 backgroundColor: card.classList.contains('theme-dark') ? '#000000' : '#ffffff',
                 scale: Math.min(3, Math.max(2, 1080 / width)),
                 useCORS: true,
                 logging: false,
                 ignoreElements: (element) => element.classList?.contains('sel-handle'),
-                onclone: (clonedDoc) => this.prepareExportClone(clonedDoc)
+                onclone: (clonedDoc) => {
+                    this.prepareExportClone(clonedDoc);
+                    this.applyExportHighlights(clonedDoc, highlights);
+                }
             });
 
             const blob = await new Promise((resolve, reject) => {
@@ -1223,6 +1228,7 @@ class ChordAnnotatorApp {
         clonedCard.classList.add('is-export');
         clonedCard.style.boxShadow = 'none';
         clonedCard.style.overflow = 'hidden';
+        clonedCard.style.position = 'relative';
         clonedCard.classList.remove('dragging');
         clonedDoc.querySelectorAll('.sel-handle').forEach((handle) => handle.remove());
 
@@ -1273,6 +1279,65 @@ class ChordAnnotatorApp {
         }
     }
 
+    collectExportHighlights(card) {
+        const cardRect = card.getBoundingClientRect();
+        const content = document.getElementById('lyricsContent');
+        const fontSize = parseFloat(window.getComputedStyle(content || card).fontSize) || 14;
+        const maxHeight = fontSize * 1.5;
+        const highlights = [];
+
+        card.querySelectorAll('.chord-annotation').forEach((el) => {
+            const fill = el.style.backgroundColor;
+            const label = el.querySelector('.chord-label');
+            const rects = [];
+            for (const rect of el.getClientRects()) {
+                const height = Math.min(rect.height, maxHeight);
+                rects.push({
+                    left: rect.left - cardRect.left + card.scrollLeft,
+                    top: rect.top - cardRect.top + card.scrollTop + Math.max(0, (rect.height - height) / 2),
+                    width: rect.width,
+                    height
+                });
+            }
+            highlights.push({
+                fill,
+                labelFill: label?.style.backgroundColor || fill,
+                rects
+            });
+        });
+
+        return highlights;
+    }
+
+    applyExportHighlights(clonedDoc, highlights) {
+        const clonedCard = clonedDoc.getElementById('lyricsDisplay');
+        if (!clonedCard) return;
+
+        clonedCard.querySelectorAll('.chord-annotation').forEach((el, index) => {
+            el.style.backgroundColor = 'transparent';
+            const label = el.querySelector('.chord-label');
+            if (label && highlights[index]?.labelFill) {
+                label.style.backgroundColor = highlights[index].labelFill;
+            }
+        });
+
+        const layer = clonedDoc.createElement('div');
+        layer.className = 'export-highlight-layer';
+        (highlights || []).forEach((item) => {
+            (item.rects || []).forEach((rect) => {
+                const box = clonedDoc.createElement('div');
+                box.className = 'export-highlight';
+                box.style.left = `${rect.left}px`;
+                box.style.top = `${rect.top}px`;
+                box.style.width = `${rect.width}px`;
+                box.style.height = `${rect.height}px`;
+                box.style.backgroundColor = item.fill;
+                layer.appendChild(box);
+            });
+        });
+        clonedCard.insertBefore(layer, clonedCard.firstChild);
+    }
+
     updateChordLegend() {
         const usedChords = new Set((this.currentSong.annotations || []).map(a => a.chord));
         const container = document.getElementById('chordLegendList');
@@ -1289,11 +1354,11 @@ class ChordAnnotatorApp {
         Array.from(usedChords).sort().forEach(chord => {
             const item = document.createElement('div');
             item.className = 'legend-item';
-            item.style.backgroundColor = this.getChordColor(chord);
+            item.style.backgroundColor = this.getChordFill(chord, 'text');
 
             const colorBox = document.createElement('div');
             colorBox.className = 'legend-color';
-            colorBox.style.backgroundColor = this.getChordColor(chord);
+            colorBox.style.backgroundColor = this.getChordFill(chord, 'label');
 
             const label = document.createElement('span');
             label.textContent = chord;
@@ -1305,28 +1370,48 @@ class ChordAnnotatorApp {
     }
 
     getChordColor(chord) {
-        if (!this.chordColors[chord]) {
-            this.chordColors[chord] = this.colorPalette[this.nextColorIndex % this.colorPalette.length];
-            this.nextColorIndex++;
+        const map = this.getSongColorMap();
+        if (map[chord]) return map[chord];
+        return this.pickDistinctColor(Object.values(map));
+    }
+
+    getChordFill(chord, role = 'text') {
+        const theme = this.getLyricTheme();
+        const alpha = role === 'label'
+            ? this.labelAlpha[theme]
+            : this.highlightAlpha[theme];
+        return this.withAlpha(this.getChordColor(chord), alpha);
+    }
+
+    getSongChordList(song = this.currentSong) {
+        const seen = [];
+        const annotations = [...(song?.annotations || [])].sort((a, b) => a.start - b.start);
+        annotations.forEach((annotation) => {
+            if (annotation.chord && !seen.includes(annotation.chord)) {
+                seen.push(annotation.chord);
+            }
+        });
+        if (this.pendingEdit?.chord && !seen.includes(this.pendingEdit.chord)) {
+            seen.push(this.pendingEdit.chord);
         }
-        return this.chordColors[chord];
+        return seen;
+    }
+
+    getSongColorMap(song = this.currentSong) {
+        const map = {};
+        this.getSongChordList(song).forEach((chord, index) => {
+            map[chord] = this.colorPalette[index % this.colorPalette.length];
+        });
+        return map;
+    }
+
+    pickDistinctColor(used) {
+        const taken = used || [];
+        return this.colorPalette.find((color) => !taken.includes(color)) || this.colorPalette[taken.length % this.colorPalette.length];
     }
 
     remapChordColors() {
-        const seen = [];
-        Object.keys(this.chordColors || {}).forEach((chord) => {
-            if (chord && !seen.includes(chord)) seen.push(chord);
-        });
-        (this.songs || []).forEach((song) => {
-            (song.annotations || []).forEach((annotation) => {
-                if (annotation.chord && !seen.includes(annotation.chord)) {
-                    seen.push(annotation.chord);
-                }
-            });
-        });
-        this.chordColors = {};
-        this.nextColorIndex = 0;
-        seen.forEach((chord) => this.getChordColor(chord));
+        // Colors are assigned per song at render time so nearby chords stay distinct.
     }
 
     withAlpha(color, alpha) {

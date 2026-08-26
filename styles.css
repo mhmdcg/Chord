@@ -732,10 +732,13 @@ body {
 .chord-annotation {
     position: relative;
     display: inline;
-    padding: 1px 0;
-    border-radius: 0;
+    padding: 0.08em 0.16em;
+    border-radius: 4px;
     cursor: pointer;
     transition: box-shadow 0.2s, outline 0.2s;
+    line-height: 1.25;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 .chord-annotation.joins-prev::before,
@@ -774,6 +777,30 @@ body {
     margin-bottom: 2px;
     box-shadow: none;
     cursor: pointer;
+}
+
+.lyrics-display.is-export .export-highlight-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.lyrics-display.is-export .export-highlight {
+    position: absolute;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.lyrics-display.is-export .lyrics-meta,
+.lyrics-display.is-export .lyrics-content {
+    position: relative;
+    z-index: 1;
+}
+
+.lyrics-display.is-export .chord-annotation {
+    background-color: transparent !important;
+    box-shadow: none;
 }
 
 /* Selection handles */
