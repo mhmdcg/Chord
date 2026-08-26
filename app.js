@@ -33,8 +33,8 @@ class ChordAnnotatorApp {
             '#D97706',
             '#7C3AED'
         ];
-        this.highlightAlpha = { light: 0.34, dark: 0.4 };
-        this.labelAlpha = { light: 0.46, dark: 0.56 };
+        this.highlightAlpha = { light: 0.2, dark: 0.26 };
+        this.labelAlpha = { light: 0.32, dark: 0.4 };
 
         this.rootLetters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.chordQualities = [
@@ -1191,18 +1191,19 @@ class ChordAnnotatorApp {
                 await document.fonts.ready;
             }
             const width = card.offsetWidth || 540;
-            const highlights = this.collectExportHighlights(card);
+            const isDark = card.classList.contains('theme-dark');
             const canvas = await html2canvas(card, {
-                backgroundColor: card.classList.contains('theme-dark') ? '#000000' : '#ffffff',
+                backgroundColor: null,
                 scale: Math.min(3, Math.max(2, 1080 / width)),
                 useCORS: true,
                 logging: false,
                 ignoreElements: (element) => element.classList?.contains('sel-handle'),
                 onclone: (clonedDoc) => {
                     this.prepareExportClone(clonedDoc);
-                    this.applyExportHighlights(clonedDoc, highlights);
+                    this.captureCloneHighlightRects(clonedDoc);
                 }
             });
+            this.drawHighlightsOnCanvas(canvas, isDark);
 
             const blob = await new Promise((resolve, reject) => {
                 canvas.toBlob((result) => {
@@ -1229,6 +1230,8 @@ class ChordAnnotatorApp {
         clonedCard.style.boxShadow = 'none';
         clonedCard.style.overflow = 'hidden';
         clonedCard.style.position = 'relative';
+        clonedCard.style.setProperty('background', 'transparent', 'important');
+        clonedCard.style.setProperty('background-color', 'transparent', 'important');
         clonedCard.classList.remove('dragging');
         clonedDoc.querySelectorAll('.sel-handle').forEach((handle) => handle.remove());
 
@@ -1279,63 +1282,93 @@ class ChordAnnotatorApp {
         }
     }
 
-    collectExportHighlights(card) {
-        const cardRect = card.getBoundingClientRect();
-        const content = document.getElementById('lyricsContent');
-        const fontSize = parseFloat(window.getComputedStyle(content || card).fontSize) || 14;
-        const maxHeight = fontSize * 1.5;
-        const highlights = [];
-
-        card.querySelectorAll('.chord-annotation').forEach((el) => {
-            const fill = el.style.backgroundColor;
-            const label = el.querySelector('.chord-label');
-            const rects = [];
-            for (const rect of el.getClientRects()) {
-                const height = Math.min(rect.height, maxHeight);
-                rects.push({
-                    left: rect.left - cardRect.left + card.scrollLeft,
-                    top: rect.top - cardRect.top + card.scrollTop + Math.max(0, (rect.height - height) / 2),
-                    width: rect.width,
-                    height
-                });
+    annotationTextRects(el, doc) {
+        const range = doc.createRange();
+        const rects = [];
+        const walker = doc.createTreeWalker(el, NodeFilter.SHOW_TEXT, {
+            acceptNode: (node) => {
+                if (!node.textContent) return NodeFilter.FILTER_REJECT;
+                const parent = node.parentElement;
+                if (parent && parent.closest && parent.closest('.chord-label')) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                return NodeFilter.FILTER_ACCEPT;
             }
-            highlights.push({
-                fill,
-                labelFill: label?.style.backgroundColor || fill,
-                rects
-            });
         });
 
-        return highlights;
+        while (walker.nextNode()) {
+            range.selectNodeContents(walker.currentNode);
+            Array.from(range.getClientRects()).forEach((rect) => {
+                if (rect.width >= 0.5 && rect.height >= 0.5) {
+                    rects.push(rect);
+                }
+            });
+        }
+
+        return rects;
     }
 
-    applyExportHighlights(clonedDoc, highlights) {
+    captureCloneHighlightRects(clonedDoc) {
         const clonedCard = clonedDoc.getElementById('lyricsDisplay');
+        this._exportHighlightRects = { width: 0, height: 0, rects: [] };
         if (!clonedCard) return;
 
-        clonedCard.querySelectorAll('.chord-annotation').forEach((el, index) => {
-            el.style.backgroundColor = 'transparent';
-            const label = el.querySelector('.chord-label');
-            if (label && highlights[index]?.labelFill) {
-                label.style.backgroundColor = highlights[index].labelFill;
-            }
-        });
+        clonedCard.offsetHeight;
+        const cardRect = clonedCard.getBoundingClientRect();
+        const rects = [];
 
-        const layer = clonedDoc.createElement('div');
-        layer.className = 'export-highlight-layer';
-        (highlights || []).forEach((item) => {
-            (item.rects || []).forEach((rect) => {
-                const box = clonedDoc.createElement('div');
-                box.className = 'export-highlight';
-                box.style.left = `${rect.left}px`;
-                box.style.top = `${rect.top}px`;
-                box.style.width = `${rect.width}px`;
-                box.style.height = `${rect.height}px`;
-                box.style.backgroundColor = item.fill;
-                layer.appendChild(box);
+        clonedCard.querySelectorAll('.chord-annotation').forEach((el) => {
+            const fill = el.style.backgroundColor;
+            el.style.setProperty('background', 'none', 'important');
+            el.style.setProperty('background-color', 'transparent', 'important');
+            this.annotationTextRects(el, clonedDoc).forEach((rect) => {
+                rects.push({
+                    x: rect.left - cardRect.left,
+                    y: rect.top - cardRect.top,
+                    w: rect.width,
+                    h: rect.height,
+                    fill
+                });
             });
         });
-        clonedCard.insertBefore(layer, clonedCard.firstChild);
+
+        this._exportHighlightRects = {
+            width: clonedCard.offsetWidth,
+            height: clonedCard.offsetHeight,
+            rects
+        };
+    }
+
+    drawHighlightsOnCanvas(canvas, isDark) {
+        const data = this._exportHighlightRects;
+        if (!canvas || !data?.rects?.length || !data.width || !data.height) return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const sx = canvas.width / data.width;
+        const sy = canvas.height / data.height;
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-over';
+        data.rects.forEach((item) => {
+            const x = item.x * sx;
+            const y = item.y * sy;
+            const w = item.w * sx;
+            const h = item.h * sy;
+            const radius = Math.min(4 * Math.min(sx, sy), w / 2, h / 2);
+            ctx.fillStyle = item.fill || 'transparent';
+            ctx.beginPath();
+            if (typeof ctx.roundRect === 'function') {
+                ctx.roundRect(x, y, w, h, radius);
+            } else {
+                ctx.rect(x, y, w, h);
+            }
+            ctx.fill();
+        });
+        ctx.fillStyle = isDark ? '#000000' : '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.restore();
+        this._exportHighlightRects = null;
     }
 
     updateChordLegend() {

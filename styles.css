@@ -781,9 +781,11 @@ body {
 
 .lyrics-display.is-export .export-highlight-layer {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     z-index: 0;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .lyrics-display.is-export .export-highlight {
