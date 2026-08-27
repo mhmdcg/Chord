@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-27T09:54:55.539Z",
+  "updatedAt": "2026-08-27T09:55:14.196Z",
   "songs": [
     {
       "title": "خیال",
@@ -170,6 +170,11 @@
           "chord": "Db",
           "start": 419,
           "end": 421
+        },
+        {
+          "chord": "B",
+          "start": 415,
+          "end": 418
         }
       ],
       "textAlign": "right",
@@ -186,7 +191,7 @@
     "Cadd4": "#FFB300",
     "F": "#FF5C8A",
     "Fsus": "#66BB6A",
-    "B": "#AB47BC",
+    "B": "#F59E0B",
     "Bm": "#26C6DA",
     "G": "#FF7043",
     "Gm9": "#D4E157",
