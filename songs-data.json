@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-28T09:17:13.119Z",
+  "updatedAt": "2026-08-28T09:17:15.160Z",
   "songs": [
     {
       "title": "خیال",
@@ -27,7 +27,7 @@
           "end": 68
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 69,
           "end": 86
         },
@@ -42,7 +42,7 @@
           "end": 130
         },
         {
-          "chord": "F#m",
+          "chord": "Gbm",
           "start": 130,
           "end": 140
         },
@@ -57,12 +57,12 @@
           "end": 162
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 163,
           "end": 199
         },
         {
-          "chord": "F#m",
+          "chord": "Gbm",
           "start": 200,
           "end": 223
         },
@@ -77,17 +77,17 @@
           "end": 244
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 245,
           "end": 271
         },
         {
-          "chord": "C#7",
+          "chord": "Db7",
           "start": 272,
           "end": 288
         },
         {
-          "chord": "F#m",
+          "chord": "Gbm",
           "start": 289,
           "end": 327
         },
@@ -102,7 +102,7 @@
           "end": 348
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 349,
           "end": 354
         },
@@ -117,7 +117,7 @@
           "end": 370
         },
         {
-          "chord": "F#m",
+          "chord": "Gbm",
           "start": 370,
           "end": 376
         },
@@ -132,7 +132,7 @@
           "end": 392
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 393,
           "end": 398
         },
@@ -142,27 +142,27 @@
           "end": 406
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 406,
           "end": 408
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 376,
           "end": 379
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 408,
           "end": 415
         },
         {
-          "chord": "F#m",
+          "chord": "Gbm",
           "start": 421,
           "end": 428
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 429,
           "end": 431
         },
@@ -187,7 +187,7 @@
           "end": 444
         },
         {
-          "chord": "C#m",
+          "chord": "Dbm",
           "start": 446,
           "end": 450
         },
@@ -204,7 +204,7 @@
       ],
       "textAlign": "right",
       "createdAt": "2026-08-24T07:59:29.573Z",
-      "scale": "D#m",
+      "scale": "Ebm",
       "timeTop": 4,
       "timeBottom": 4,
       "tempo": 140,
