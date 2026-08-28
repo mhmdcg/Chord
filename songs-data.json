@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-28T09:42:05.303Z",
+  "updatedAt": "2026-08-28T09:42:12.018Z",
   "songs": [
     {
       "title": "خیال",
@@ -12,7 +12,7 @@
           "end": 29
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 30,
           "end": 47
         },
@@ -22,7 +22,7 @@
           "end": 60
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 61,
           "end": 68
         },
@@ -37,7 +37,7 @@
           "end": 115
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 115,
           "end": 130
         },
@@ -52,7 +52,7 @@
           "end": 147
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 148,
           "end": 162
         },
@@ -72,7 +72,7 @@
           "end": 237
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 237,
           "end": 244
         },
@@ -97,7 +97,7 @@
           "end": 340
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 341,
           "end": 348
         },
@@ -112,7 +112,7 @@
           "end": 363
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 364,
           "end": 370
         },
@@ -127,7 +127,7 @@
           "end": 390
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 390,
           "end": 392
         },
@@ -172,7 +172,7 @@
           "end": 421
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 415,
           "end": 418
         },
@@ -182,7 +182,7 @@
           "end": 442
         },
         {
-          "chord": "A#",
+          "chord": "Bb",
           "start": 442,
           "end": 444
         },
@@ -204,7 +204,7 @@
       ],
       "textAlign": "right",
       "createdAt": "2026-08-24T07:59:29.573Z",
-      "scale": "D",
+      "scale": "Ebm",
       "timeTop": 4,
       "timeBottom": 4,
       "tempo": 140,
