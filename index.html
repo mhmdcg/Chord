@@ -126,7 +126,13 @@
                     <div id="lyricsDisplay" class="lyrics-display">
                     <div class="lyrics-meta">
                         <div class="lyrics-meta-controls">
-                            <select id="songScale" aria-label="Scale"></select>
+                            <div class="scale-control">
+                                <div class="transpose-buttons">
+                                    <button type="button" id="transposeDownBtn" class="transpose-btn" aria-label="Transpose down a half step">−</button>
+                                    <button type="button" id="transposeUpBtn" class="transpose-btn" aria-label="Transpose up a half step">+</button>
+                                </div>
+                                <select id="songScale" aria-label="Scale"></select>
+                            </div>
                             <span class="time-signature">
                                 <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beats per bar" />
                                 <span class="time-slash">/</span>

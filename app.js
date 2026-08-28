@@ -97,6 +97,8 @@ class ChordAnnotatorApp {
         document.getElementById('undoBtn').addEventListener('click', () => this.undo());
         document.getElementById('redoBtn').addEventListener('click', () => this.redo());
         document.getElementById('songScale').addEventListener('change', () => this.saveSongMeta());
+        document.getElementById('transposeUpBtn').addEventListener('click', () => this.transposeSong(1));
+        document.getElementById('transposeDownBtn').addEventListener('click', () => this.transposeSong(-1));
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('songTempo').addEventListener('change', () => this.saveSongMeta());
@@ -336,16 +338,35 @@ class ChordAnnotatorApp {
     }
 
     initHistory() {
-        const snapshot = JSON.parse(JSON.stringify(this.currentSong.annotations || []));
-        this.history = [snapshot];
+        this.history = [this.snapshotSongState()];
         this.historyIndex = 0;
         this.updateUndoRedoButtons();
+    }
+
+    snapshotSongState() {
+        return {
+            annotations: JSON.parse(JSON.stringify(this.currentSong.annotations || [])),
+            scale: this.currentSong.scale || ''
+        };
+    }
+
+    historyEntry(entry) {
+        if (Array.isArray(entry)) {
+            return { annotations: entry, scale: this.currentSong?.scale || '' };
+        }
+        return entry;
+    }
+
+    applySongState(state) {
+        const entry = this.historyEntry(state);
+        this.currentSong.annotations = JSON.parse(JSON.stringify(entry.annotations || []));
+        this.currentSong.scale = entry.scale || '';
     }
 
     commitAnnotations(annotations) {
         this.currentSong.annotations = annotations;
         this.history = this.history.slice(0, this.historyIndex + 1);
-        this.history.push(JSON.parse(JSON.stringify(annotations)));
+        this.history.push(this.snapshotSongState());
         this.historyIndex++;
         this.updateUndoRedoButtons();
         this.persistCurrentSong();
@@ -362,7 +383,7 @@ class ChordAnnotatorApp {
         if (this.historyIndex <= 0) return;
         this.closeChordModal();
         this.historyIndex--;
-        this.currentSong.annotations = JSON.parse(JSON.stringify(this.history[this.historyIndex]));
+        this.applySongState(this.history[this.historyIndex]);
         this.persistCurrentSong();
         this.renderAnnotationView();
         this.updateUndoRedoButtons();
@@ -372,7 +393,7 @@ class ChordAnnotatorApp {
         if (this.historyIndex >= this.history.length - 1) return;
         this.closeChordModal();
         this.historyIndex++;
-        this.currentSong.annotations = JSON.parse(JSON.stringify(this.history[this.historyIndex]));
+        this.applySongState(this.history[this.historyIndex]);
         this.persistCurrentSong();
         this.renderAnnotationView();
         this.updateUndoRedoButtons();
@@ -534,7 +555,7 @@ class ChordAnnotatorApp {
     }
 
     buildScaleOptions() {
-        const roots = ['C', 'C#', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab', 'A', 'Bb', 'B'];
+        const roots = ['C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab', 'A', 'A#', 'Bb', 'B'];
         return [
             { label: 'Major', options: roots.slice() },
             { label: 'Minor', options: roots.map((root) => `${root}m`) }
@@ -1127,6 +1148,69 @@ class ChordAnnotatorApp {
         };
     }
 
+    noteIndex(root) {
+        const names = {
+            'C': 0, 'B#': 0,
+            'C#': 1, 'Db': 1,
+            'D': 2,
+            'D#': 3, 'Eb': 3,
+            'E': 4, 'Fb': 4,
+            'F': 5, 'E#': 5,
+            'F#': 6, 'Gb': 6,
+            'G': 7,
+            'G#': 8, 'Ab': 8,
+            'A': 9,
+            'A#': 10, 'Bb': 10,
+            'B': 11, 'Cb': 11
+        };
+        return names[String(root || '')];
+    }
+
+    noteName(index, semitones) {
+        const i = ((index % 12) + 12) % 12;
+        const sharp = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const flat = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+        return semitones >= 0 ? sharp[i] : flat[i];
+    }
+
+    transposeRoot(root, semitones) {
+        const index = this.noteIndex(root);
+        if (index == null || !semitones) return root;
+        return this.noteName(index + semitones, semitones);
+    }
+
+    transposeChordName(chord, semitones) {
+        const raw = String(chord || '').trim();
+        if (!raw || !semitones) return raw;
+        return raw.split('/').map((part) => {
+            const parsed = this.parseChordRoot(part);
+            if (!parsed) return part;
+            return `${this.transposeRoot(parsed.root, semitones)}${parsed.quality}`;
+        }).join('/');
+    }
+
+    transposeScale(scale, semitones) {
+        const value = this.normalizeScale(scale);
+        if (!value || !semitones) return value;
+        const parsed = this.parseChordRoot(value);
+        if (!parsed) return value;
+        return `${this.transposeRoot(parsed.root, semitones)}${parsed.quality}`;
+    }
+
+    transposeSong(semitones) {
+        if (!this.currentSong || !semitones) return;
+        this.closeChordModal();
+        const nextScale = this.transposeScale(this.currentSong.scale, semitones);
+        const nextAnnotations = (this.currentSong.annotations || []).map((annotation) => ({
+            ...annotation,
+            chord: this.transposeChordName(annotation.chord, semitones)
+        }));
+        this.currentSong.scale = nextScale;
+        document.getElementById('songScale').value = nextScale;
+        this.commitAnnotations(nextAnnotations);
+        this.renderAnnotationView();
+    }
+
     getChordFamily(letter) {
         const upper = letter.toUpperCase();
         return this.allChords.filter(chord => this.parseChordRoot(chord)?.letter === upper);
@@ -1327,19 +1411,20 @@ class ChordAnnotatorApp {
         };
 
         const scale = card.querySelector('#songScale');
-        if (scale) {
+        const scaleControl = card.querySelector('.scale-control') || scale;
+        if (scaleControl) {
             const label = (
-                scale.options[scale.selectedIndex]?.text ||
-                scale.value ||
+                scale?.options[scale.selectedIndex]?.text ||
+                scale?.value ||
                 this.currentSong?.scale ||
                 ''
             ).trim();
             if (label && label !== '—') {
                 const el = chip();
                 el.textContent = label;
-                replace(scale, el);
+                replace(scaleControl, el);
             } else {
-                replace(scale, doc.createComment('export-scale'));
+                replace(scaleControl, doc.createComment('export-scale'));
             }
         }
 

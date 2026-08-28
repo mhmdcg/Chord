@@ -567,6 +567,44 @@ body {
     flex-shrink: 0;
 }
 
+.scale-control {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
+}
+
+.transpose-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.15rem;
+}
+
+.transpose-btn {
+    flex: 1;
+    min-width: 0;
+    height: 16px;
+    min-height: 16px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.transpose-btn:hover {
+    background: var(--surface);
+    color: var(--primary);
+}
+
+.lyrics-display.is-export .transpose-buttons {
+    display: none;
+}
+
 .lyrics-meta-controls select,
 .time-signature input,
 .song-tempo input {
@@ -688,7 +726,8 @@ body {
 
 .lyrics-display.theme-dark .lyrics-meta-controls select,
 .lyrics-display.theme-dark .time-signature input,
-.lyrics-display.theme-dark .song-tempo input {
+.lyrics-display.theme-dark .song-tempo input,
+.lyrics-display.theme-dark .transpose-btn {
     background: #000;
     color: #fff;
     border-color: #fff;
@@ -736,7 +775,7 @@ body {
 
 .melody-break-line {
     display: inline-block;
-    width: 0.8rem;
+    width: 4rem;
     height: 1.5px;
     background: currentColor;
     border-radius: 1px;
