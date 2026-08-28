@@ -99,6 +99,7 @@ class ChordAnnotatorApp {
         document.getElementById('songScale').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('transposeUpBtn').addEventListener('click', () => this.transposeSong(1));
         document.getElementById('transposeDownBtn').addEventListener('click', () => this.transposeSong(-1));
+        document.getElementById('scaleModeBtn').addEventListener('click', () => this.toggleScaleMode());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('songTempo').addEventListener('change', () => this.saveSongMeta());
@@ -507,6 +508,7 @@ class ChordAnnotatorApp {
         document.getElementById('timeTop').value = this.currentSong.timeTop || 4;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom || 4;
         document.getElementById('songTempo').value = this.currentSong.tempo || '';
+        this.updateScaleModeButton();
     }
 
     saveSongMeta() {
@@ -521,6 +523,7 @@ class ChordAnnotatorApp {
         document.getElementById('timeTop').value = this.currentSong.timeTop;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom;
         document.getElementById('songTempo').value = this.currentSong.tempo;
+        this.updateScaleModeButton();
         this.persistCurrentSong();
     }
 
@@ -1195,6 +1198,44 @@ class ChordAnnotatorApp {
         const parsed = this.parseChordRoot(value);
         if (!parsed) return value;
         return `${this.transposeRoot(parsed.root, semitones)}${parsed.quality}`;
+    }
+
+    isMinorScale(scale) {
+        const parsed = this.parseChordRoot(this.normalizeScale(scale));
+        return parsed?.quality === 'm';
+    }
+
+    toggleScaleQuality(scale) {
+        const parsed = this.parseChordRoot(this.normalizeScale(scale));
+        if (!parsed) return scale;
+        return `${parsed.root}${parsed.quality === 'm' ? '' : 'm'}`;
+    }
+
+    updateScaleModeButton() {
+        const button = document.getElementById('scaleModeBtn');
+        if (!button) return;
+        const scale = this.normalizeScale(this.currentSong?.scale || document.getElementById('songScale')?.value || '');
+        const parsed = this.parseChordRoot(scale);
+        const hasScale = Boolean(parsed);
+        const isMinor = parsed?.quality === 'm';
+        button.disabled = !hasScale;
+        button.textContent = isMinor ? 'min' : 'maj';
+        button.setAttribute('aria-pressed', isMinor ? 'true' : 'false');
+        button.setAttribute('aria-label', hasScale
+            ? (isMinor ? 'Switch scale to major' : 'Switch scale to minor')
+            : 'Choose a scale first');
+    }
+
+    toggleScaleMode() {
+        if (!this.currentSong) return;
+        const current = this.normalizeScale(this.currentSong.scale || document.getElementById('songScale').value);
+        if (!current) return;
+        const next = this.toggleScaleQuality(current);
+        if (!next || next === current) return;
+        this.currentSong.scale = next;
+        document.getElementById('songScale').value = next;
+        this.commitAnnotations(this.currentSong.annotations || []);
+        this.updateScaleModeButton();
     }
 
     transposeSong(semitones) {
