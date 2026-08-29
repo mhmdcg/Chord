@@ -681,7 +681,7 @@ class ChordAnnotatorApp {
                 const joinClass = this.joinClasses(lyrics, start, end, text);
                 html += `<span class="chord-annotation${pendingClass}${joinClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
                 if (isFirst && annotation.chord) {
-                    html += `<span class="chord-anchor"><span class="chord-label" style="background-color: ${fill}">${this.escapeHtml(annotation.chord)}</span></span>`;
+                    html += `<span class="chord-anchor"><span class="chord-label" dir="ltr" style="background-color: ${fill}">${this.escapeHtml(annotation.chord)}</span></span>`;
                 }
                 html += this.formatLyricHtml(text);
                 html += '</span>';

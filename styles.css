@@ -913,6 +913,7 @@ body {
     line-height: 1.25;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
+    unicode-bidi: isolate;
 }
 
 .chord-annotation.joins-prev::before,
@@ -933,13 +934,16 @@ body {
     display: inline;
     position: relative;
     background-color: inherit;
+    unicode-bidi: isolate;
 }
 
 .chord-label {
     position: absolute;
     bottom: 100%;
-    inset-inline-start: 0;
-    inset-inline-end: auto;
+    left: 0;
+    right: auto;
+    direction: ltr;
+    unicode-bidi: isolate;
     font-size: 0.726rem;
     font-weight: 600;
     line-height: 1.2;
@@ -951,6 +955,12 @@ body {
     margin-bottom: 2px;
     box-shadow: none;
     cursor: pointer;
+}
+
+.lyrics-display.align-right .chord-label,
+.lyrics-display.rtl .chord-label {
+    left: auto;
+    right: 0;
 }
 
 .sel-handle {
