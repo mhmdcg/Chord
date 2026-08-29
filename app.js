@@ -45,7 +45,10 @@ class ChordAnnotatorApp {
             '7b9', '7#9', '7b5', '7#5', 'maj7#11'
         ];
         this.allChords = this.buildChordCatalog();
-        this.scaleOptions = this.buildScaleOptions();
+        this.scaleOptions = {
+            major: MusicTheory.PREFERRED_MAJOR.slice(),
+            minor: MusicTheory.PREFERRED_MINOR.slice()
+        };
 
         this.github = {
             owner: 'mhmdcg',
@@ -96,7 +99,7 @@ class ChordAnnotatorApp {
         document.getElementById('doneAnnotatingBtn').addEventListener('click', () => this.finishAnnotation());
         document.getElementById('undoBtn').addEventListener('click', () => this.undo());
         document.getElementById('redoBtn').addEventListener('click', () => this.redo());
-        document.getElementById('songScale').addEventListener('change', () => this.saveSongMeta());
+        document.getElementById('songScale').addEventListener('change', () => this.onScaleSelectChange());
         document.getElementById('transposeUpBtn').addEventListener('click', () => this.transposeSong(1));
         document.getElementById('transposeDownBtn').addEventListener('click', () => this.transposeSong(-1));
         document.getElementById('scaleModeBtn').addEventListener('click', () => this.toggleScaleMode());
@@ -502,8 +505,9 @@ class ChordAnnotatorApp {
     }
 
     updateSongMetaFields() {
-        const scale = this.normalizeScale(this.currentSong.scale);
+        const scale = MusicTheory.normalizePreferredScale(this.currentSong.scale);
         this.currentSong.scale = scale;
+        this.populateScaleSelect();
         document.getElementById('songScale').value = scale;
         document.getElementById('timeTop').value = this.currentSong.timeTop || 4;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom || 4;
@@ -513,7 +517,6 @@ class ChordAnnotatorApp {
 
     saveSongMeta() {
         if (!this.currentSong) return;
-        this.currentSong.scale = this.normalizeScale(document.getElementById('songScale').value);
         const top = parseInt(document.getElementById('timeTop').value, 10);
         const bottom = parseInt(document.getElementById('timeBottom').value, 10);
         this.currentSong.timeTop = Number.isFinite(top) && top > 0 ? top : 4;
@@ -523,46 +526,48 @@ class ChordAnnotatorApp {
         document.getElementById('timeTop').value = this.currentSong.timeTop;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom;
         document.getElementById('songTempo').value = this.currentSong.tempo;
-        this.updateScaleModeButton();
         this.persistCurrentSong();
+    }
+
+    onScaleSelectChange() {
+        if (!this.currentSong) return;
+        const selected = document.getElementById('songScale').value;
+        if (!selected) {
+            this.currentSong.scale = '';
+            this.populateScaleSelect();
+            this.updateScaleModeButton();
+            this.persistCurrentSong();
+            return;
+        }
+        this.changeSongKey(selected);
     }
 
     populateScaleSelect() {
         const select = document.getElementById('songScale');
+        if (!select) return;
+        const current = MusicTheory.normalizePreferredScale(this.currentSong?.scale || '');
+        const isMinor = current ? MusicTheory.isMinorScale(current) : false;
+        const options = MusicTheory.preferredOptions(isMinor);
+        const previous = select.value;
         select.innerHTML = '';
         const placeholder = document.createElement('option');
         placeholder.value = '';
         placeholder.textContent = '—';
         select.appendChild(placeholder);
-
-        this.scaleOptions.forEach((group) => {
-            const optgroup = document.createElement('optgroup');
-            optgroup.label = group.label;
-            group.options.forEach((name) => {
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                optgroup.appendChild(option);
-            });
-            select.appendChild(optgroup);
+        options.forEach((name) => {
+            const option = document.createElement('option');
+            option.value = name;
+            option.textContent = name;
+            select.appendChild(option);
         });
+        select.value = current || previous || '';
+        if (current && select.value !== current) {
+            select.value = current;
+        }
     }
 
     normalizeScale(value) {
-        if (!value) return '';
-        let scale = String(value).trim();
-        scale = scale.replace(/\s*major$/i, '');
-        scale = scale.replace(/\s*minor$/i, 'm');
-        scale = scale.replace(/\s+/g, '');
-        return scale;
-    }
-
-    buildScaleOptions() {
-        const roots = ['C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab', 'A', 'A#', 'Bb', 'B'];
-        return [
-            { label: 'Major', options: roots.slice() },
-            { label: 'Minor', options: roots.map((root) => `${root}m`) }
-        ];
+        return MusicTheory.normalizeScale(value);
     }
 
     getDisplayAnnotations() {
@@ -1141,83 +1146,31 @@ class ChordAnnotatorApp {
     }
 
     parseChordRoot(chord) {
-        const match = String(chord || '').trim().match(/^([A-Ga-g])([#b])?(.*)$/);
-        if (!match) return null;
-        return {
-            letter: match[1].toUpperCase(),
-            accidental: match[2] || '',
-            quality: match[3] || '',
-            root: `${match[1].toUpperCase()}${match[2] || ''}`
-        };
+        return MusicTheory.parseChordRoot(chord);
     }
 
-    noteIndex(root) {
-        const names = {
-            'C': 0, 'B#': 0,
-            'C#': 1, 'Db': 1,
-            'D': 2,
-            'D#': 3, 'Eb': 3,
-            'E': 4, 'Fb': 4,
-            'F': 5, 'E#': 5,
-            'F#': 6, 'Gb': 6,
-            'G': 7,
-            'G#': 8, 'Ab': 8,
-            'A': 9,
-            'A#': 10, 'Bb': 10,
-            'B': 11, 'Cb': 11
-        };
-        return names[String(root || '')];
-    }
-
-    noteName(index, semitones) {
-        const i = ((index % 12) + 12) % 12;
-        const sharp = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-        const flat = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
-        return semitones >= 0 ? sharp[i] : flat[i];
-    }
-
-    transposeRoot(root, semitones) {
-        const index = this.noteIndex(root);
-        if (index == null || !semitones) return root;
-        return this.noteName(index + semitones, semitones);
-    }
-
-    transposeChordName(chord, semitones) {
-        const raw = String(chord || '').trim();
-        if (!raw || !semitones) return raw;
-        return raw.split('/').map((part) => {
-            const parsed = this.parseChordRoot(part);
-            if (!parsed) return part;
-            return `${this.transposeRoot(parsed.root, semitones)}${parsed.quality}`;
-        }).join('/');
+    transposeChordName(chord, semitones, targetKey) {
+        return MusicTheory.transposeChordName(chord, semitones, targetKey);
     }
 
     transposeScale(scale, semitones) {
-        const value = this.normalizeScale(scale);
-        if (!value || !semitones) return value;
-        const parsed = this.parseChordRoot(value);
-        if (!parsed) return value;
-        return `${this.transposeRoot(parsed.root, semitones)}${parsed.quality}`;
+        return MusicTheory.transposeScale(scale, semitones);
     }
 
     isMinorScale(scale) {
-        const parsed = this.parseChordRoot(this.normalizeScale(scale));
-        return parsed?.quality === 'm';
+        return MusicTheory.isMinorScale(scale);
     }
 
     toggleScaleQuality(scale) {
-        const parsed = this.parseChordRoot(this.normalizeScale(scale));
-        if (!parsed) return scale;
-        return `${parsed.root}${parsed.quality === 'm' ? '' : 'm'}`;
+        return MusicTheory.toggleScaleQuality(scale);
     }
 
     updateScaleModeButton() {
         const button = document.getElementById('scaleModeBtn');
         if (!button) return;
-        const scale = this.normalizeScale(this.currentSong?.scale || document.getElementById('songScale')?.value || '');
-        const parsed = this.parseChordRoot(scale);
-        const hasScale = Boolean(parsed);
-        const isMinor = parsed?.quality === 'm';
+        const scale = MusicTheory.normalizePreferredScale(this.currentSong?.scale || document.getElementById('songScale')?.value || '');
+        const hasScale = Boolean(scale);
+        const isMinor = MusicTheory.isMinorScale(scale);
         button.disabled = !hasScale;
         button.textContent = isMinor ? 'min' : 'maj';
         button.setAttribute('aria-pressed', isMinor ? 'true' : 'false');
@@ -1226,30 +1179,57 @@ class ChordAnnotatorApp {
             : 'Choose a scale first');
     }
 
+    changeSongKey(nextScaleRaw) {
+        if (!this.currentSong) return;
+        this.closeChordModal();
+        const current = MusicTheory.normalizePreferredScale(this.currentSong.scale);
+        const next = MusicTheory.normalizePreferredScale(nextScaleRaw);
+        if (!next) {
+            this.currentSong.scale = '';
+            this.populateScaleSelect();
+            this.updateScaleModeButton();
+            this.persistCurrentSong();
+            return;
+        }
+        const semitones = current ? MusicTheory.scaleInterval(current, next) : 0;
+        this.applyKeyTransposition(semitones, next);
+    }
+
+    applyKeyTransposition(semitones, targetScale) {
+        const target = MusicTheory.normalizePreferredScale(targetScale);
+        const nextAnnotations = (this.currentSong.annotations || []).map((annotation) => ({
+            ...annotation,
+            chord: MusicTheory.transposeChordName(annotation.chord, semitones || 0, target)
+        }));
+        this.currentSong.scale = target;
+        this.commitAnnotations(nextAnnotations);
+        this.renderAnnotationView();
+    }
+
     toggleScaleMode() {
         if (!this.currentSong) return;
-        const current = this.normalizeScale(this.currentSong.scale || document.getElementById('songScale').value);
+        const current = MusicTheory.normalizePreferredScale(this.currentSong.scale || document.getElementById('songScale').value);
         if (!current) return;
-        const next = this.toggleScaleQuality(current);
+        const next = MusicTheory.toggleScaleQuality(current);
         if (!next || next === current) return;
-        this.currentSong.scale = next;
-        document.getElementById('songScale').value = next;
-        this.commitAnnotations(this.currentSong.annotations || []);
-        this.updateScaleModeButton();
+        this.applyKeyTransposition(0, next);
     }
 
     transposeSong(semitones) {
         if (!this.currentSong || !semitones) return;
         this.closeChordModal();
-        const nextScale = this.transposeScale(this.currentSong.scale, semitones);
-        const nextAnnotations = (this.currentSong.annotations || []).map((annotation) => ({
-            ...annotation,
-            chord: this.transposeChordName(annotation.chord, semitones)
-        }));
-        this.currentSong.scale = nextScale;
-        document.getElementById('songScale').value = nextScale;
-        this.commitAnnotations(nextAnnotations);
-        this.renderAnnotationView();
+        const current = MusicTheory.normalizePreferredScale(this.currentSong.scale);
+        if (!current) {
+            const nextAnnotations = (this.currentSong.annotations || []).map((annotation) => ({
+                ...annotation,
+                chord: MusicTheory.transposeChordName(annotation.chord, semitones)
+            }));
+            this.commitAnnotations(nextAnnotations);
+            this.renderAnnotationView();
+            return;
+        }
+        const nextScale = MusicTheory.transposeScale(current, semitones);
+        this.applyKeyTransposition(semitones, nextScale);
     }
 
     getChordFamily(letter) {
