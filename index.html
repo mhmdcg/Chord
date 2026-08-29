@@ -133,8 +133,12 @@
                                 </div>
                                 <div class="scale-row">
                                     <select id="songScale" aria-label="Scale"></select>
-                                    <button type="button" id="scaleModeBtn" class="scale-mode-btn" aria-label="Switch scale between minor and major">min</button>
+                                    <div class="scale-mode-toggle" role="group" aria-label="Scale mode">
+                                        <button type="button" id="scaleMajorBtn" class="scale-mode-opt" aria-pressed="false">Maj</button>
+                                        <button type="button" id="scaleMinorBtn" class="scale-mode-opt" aria-pressed="false">Min</button>
+                                    </div>
                                 </div>
+                                <button type="button" id="lockChordsBtn" class="lock-chords-btn" aria-pressed="false">Lock chords</button>
                             </div>
                             <span class="time-signature">
                                 <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beats per bar" />
