@@ -171,8 +171,32 @@ body {
 
 .header-row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+}
+
+.header-center {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.header-center h2 {
+    margin: 0;
+    width: 100%;
+    flex: none;
+}
+
+.header-guide {
+    margin: 0.2rem 0 0;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text-light);
+    text-align: center;
 }
 
 .header-row h2 {
@@ -439,33 +463,44 @@ body {
 /* Annotation View */
 .annotation-container {
     padding: 1.5rem;
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
     width: 100%;
 }
 
-.instructions {
-    background: #EEF2FF;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: var(--primary-dark);
-    font-weight: 500;
+.annotation-workspace {
+    display: grid;
+    grid-template-columns: minmax(10.5rem, 1fr) minmax(0, 540px) minmax(0, 1fr);
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    width: 100%;
 }
 
-.lyrics-actions {
+.annotation-tools {
+    grid-column: 1;
+    justify-self: end;
     width: 100%;
-    max-width: 540px;
-    margin: 0 auto 0.75rem;
+    max-width: 11.75rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.75rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    padding: 0.85rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--shadow);
+    min-height: 0;
+}
+
+.annotation-tools .btn {
+    width: 100%;
 }
 
 .lyric-theme-toggle {
     display: inline-flex;
+    width: 100%;
     background: var(--background);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -474,11 +509,12 @@ body {
 }
 
 .lyric-theme-opt {
+    flex: 1;
     border: none;
     background: transparent;
     color: var(--text-light);
     border-radius: 8px;
-    padding: 0.35rem 0.7rem;
+    padding: 0.35rem 0.45rem;
     font-size: 0.8125rem;
     font-weight: 600;
     cursor: pointer;
@@ -492,10 +528,11 @@ body {
 }
 
 .lyrics-stage {
+    grid-column: 2;
     width: 100%;
     max-width: 540px;
     aspect-ratio: 9 / 16;
-    margin-inline: auto;
+    margin-inline: 0;
 }
 
 .lyrics-display {
@@ -562,7 +599,7 @@ body {
     direction: ltr;
     display: flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.16rem;
     z-index: 2;
     flex-shrink: 0;
 }
@@ -571,26 +608,26 @@ body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 0.15rem;
+    gap: 0.25rem;
 }
 
 .transpose-buttons {
     display: flex;
     justify-content: space-between;
-    gap: 0.15rem;
+    gap: 0.25rem;
 }
 
 .transpose-btn {
     flex: 1;
     min-width: 0;
-    height: 16px;
-    min-height: 16px;
+    height: 28px;
+    min-height: 28px;
     padding: 0;
     border: 1px solid var(--border);
-    border-radius: 5px;
+    border-radius: 6px;
     background: var(--background);
     color: var(--text);
-    font-size: 0.7rem;
+    font-size: 0.95rem;
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
@@ -604,7 +641,7 @@ body {
 .scale-row {
     display: flex;
     align-items: center;
-    gap: 0.15rem;
+    gap: 0.25rem;
 }
 
 .scale-mode-toggle {
@@ -615,7 +652,7 @@ body {
     border-radius: 6px;
     padding: 2px;
     gap: 1px;
-    height: 26px;
+    height: 32px;
 }
 
 .scale-mode-opt {
@@ -623,12 +660,12 @@ body {
     background: transparent;
     color: var(--text-light);
     border-radius: 5px;
-    padding: 0 0.4rem;
-    font-size: 0.65rem;
+    padding: 0 0.45rem;
+    font-size: 0.7rem;
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
-    min-height: 20px;
+    min-height: 26px;
 }
 
 .scale-mode-opt.active {
@@ -638,14 +675,15 @@ body {
 }
 
 .lock-chords-btn {
-    height: 22px;
-    min-height: 22px;
+    height: 32px;
+    min-height: 32px;
+    width: 100%;
     padding: 0 0.4rem;
     border: 1px solid var(--border);
     border-radius: 6px;
     background: var(--background);
     color: var(--text);
-    font-size: 0.65rem;
+    font-size: 0.72rem;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
@@ -658,28 +696,24 @@ body {
     box-shadow: 0 1px 2px var(--shadow);
 }
 
-.lyrics-display.is-export .scale-mode-toggle,
-.lyrics-display.is-export .lock-chords-btn,
-.lyrics-display.is-export .transpose-buttons {
-    display: none;
-}
-
-.lyrics-meta-controls select,
+.annotation-tools select,
 .time-signature input,
 .song-tempo input {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--text);
     border: 1px solid var(--border);
     border-radius: 6px;
     background: var(--background);
     padding: 0.15rem 0.3rem;
-    min-height: 26px;
-    height: 26px;
+    min-height: 32px;
+    height: 32px;
 }
 
-.lyrics-meta-controls select {
-    width: 4.4rem;
+.annotation-tools select {
+    flex: 1;
+    min-width: 0;
+    width: auto;
 }
 
 .time-signature {
@@ -689,7 +723,7 @@ body {
 }
 
 .time-signature input {
-    width: 1.35rem;
+    width: 2.1rem;
     text-align: center;
     padding-inline: 0.1rem;
     -moz-appearance: textfield;
@@ -702,7 +736,7 @@ body {
 }
 
 .time-slash {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--text);
 }
@@ -710,7 +744,7 @@ body {
 .song-tempo {
     display: inline-flex;
     align-items: center;
-    gap: 0.2rem;
+    gap: 0.25rem;
 }
 
 .tempo-sign {
@@ -727,7 +761,9 @@ body {
 }
 
 .song-tempo input {
-    width: 2.4rem;
+    flex: 1;
+    min-width: 0;
+    width: 3rem;
     text-align: center;
     -moz-appearance: textfield;
 }
@@ -738,11 +774,12 @@ body {
     margin: 0;
 }
 
-.lyrics-display.is-export .lyrics-meta-controls {
-    gap: 0.16rem;
+.annotation-tools .time-signature,
+.annotation-tools .song-tempo {
+    width: 100%;
 }
 
-.lyrics-display.is-export .export-meta-chip {
+.export-meta-chip {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -759,11 +796,15 @@ body {
     white-space: nowrap;
 }
 
-.lyrics-display.is-export .export-meta-chip .tempo-sign {
+.export-meta-chip[hidden] {
+    display: none;
+}
+
+.export-meta-chip .tempo-sign {
     font-size: 0.95rem;
 }
 
-.lyrics-display.is-export .export-meta-chip .tempo-eq {
+.export-meta-chip .tempo-eq {
     font-size: 0.75rem;
 }
 
@@ -776,41 +817,13 @@ body {
 }
 
 .lyrics-display.theme-dark .lyrics-heading,
-.lyrics-display.theme-dark .lyrics-content,
-.lyrics-display.theme-dark .time-slash,
-.lyrics-display.theme-dark .tempo-sign,
-.lyrics-display.theme-dark .tempo-eq {
+.lyrics-display.theme-dark .lyrics-content {
     color: #fff;
 }
 
-.lyrics-display.theme-dark .lyrics-meta-controls select,
-.lyrics-display.theme-dark .time-signature input,
-.lyrics-display.theme-dark .song-tempo input,
-.lyrics-display.theme-dark .transpose-btn,
-.lyrics-display.theme-dark .scale-mode-toggle,
-.lyrics-display.theme-dark .lock-chords-btn {
-    background: #000;
-    color: #fff;
-    border-color: #fff;
-}
-
-.lyrics-display.theme-dark .scale-mode-opt {
-    color: rgba(255, 255, 255, 0.55);
-}
-
-.lyrics-display.theme-dark .scale-mode-opt.active,
-.lyrics-display.theme-dark .lock-chords-btn.active {
-    background: #111;
-    color: #fff;
-}
-
-.lyrics-display.theme-dark .song-tempo input::placeholder {
-    color: rgba(255, 255, 255, 0.45);
-}
-
-.lyrics-display.theme-dark.is-export .export-meta-chip,
-.lyrics-display.theme-dark.is-export .export-meta-chip .tempo-sign,
-.lyrics-display.theme-dark.is-export .export-meta-chip .tempo-eq {
+.lyrics-display.theme-dark .export-meta-chip,
+.lyrics-display.theme-dark .export-meta-chip .tempo-sign,
+.lyrics-display.theme-dark .export-meta-chip .tempo-eq {
     background: #000;
     color: #fff;
     border-color: #fff;
@@ -1221,6 +1234,49 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 900px) {
+    .annotation-workspace {
+        grid-template-columns: minmax(0, 540px);
+        justify-content: center;
+    }
+
+    .annotation-tools {
+        grid-column: 1;
+        justify-self: center;
+        max-width: 540px;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .annotation-tools .lyric-theme-toggle {
+        width: auto;
+        flex: 1 1 auto;
+    }
+
+    .annotation-tools .btn {
+        width: auto;
+        flex: 0 0 auto;
+    }
+
+    .annotation-tools .scale-control {
+        flex: 1 1 100%;
+    }
+
+    .annotation-tools .time-signature,
+    .annotation-tools .song-tempo {
+        width: auto;
+        flex: 1 1 auto;
+    }
+
+    .lyrics-stage {
+        grid-column: 1;
+        justify-self: center;
+        margin-inline: auto;
+    }
+}
+
 @media (max-width: 768px) {
     .header {
         padding: calc(0.65rem + env(safe-area-inset-top, 0px)) max(1rem, env(safe-area-inset-right, 0px)) 0.65rem max(1rem, env(safe-area-inset-left, 0px));

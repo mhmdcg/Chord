@@ -84,4 +84,15 @@ assert.ok(!theory.PREFERRED_MINOR.includes('A#m'));
 assert.ok(!theory.PREFERRED_MAJOR.includes('C#'));
 assert.ok(!theory.PREFERRED_MAJOR.includes('Gb'));
 
+eq(theory.romanizeToLatin('خیال'), 'Khial', 'خیال romanizes to Khial');
+eq(theory.romanizeToLatin('شب زده'), 'Shab Zade', 'شب زده romanizes to Shab Zade');
+eq(theory.filenameToken('شب زده'), 'Shabzade');
+eq(theory.filenameToken('عرفان طهماسبی'), 'Erfantahmasbi');
+eq(theory.filenameToken('Ebi'), 'Ebi');
+eq(theory.filenameToken('ابی'), 'Ebi');
+eq(theory.exportImageFilename('شب زده', 'ابی', 'Am'), 'Shabzade_Ebi_Am.jpg');
+eq(theory.exportImageFilename('خیال', 'عرفان طهماسبی', 'Ebm'), 'Khial_Erfantahmasbi_Ebm.jpg');
+eq(theory.exportImageFilename('Hotel California', 'Eagles', 'Bm'), 'HotelCalifornia_Eagles_Bm.jpg');
+eq(theory.exportImageFilename('خیال', '', ''), 'Khial.jpg');
+
 console.log('All transposition spelling tests passed.');

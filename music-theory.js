@@ -134,6 +134,157 @@
         return normalizePreferredScale(next);
     }
 
+    const ARABIC_SCRIPT = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
+    const DIACRITIC = /[\u064B-\u065F\u0670\u06D6-\u06ED]/g;
+    const PERSIAN_DIGITS = { '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4', '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9' };
+    const MATRES = new Set(['ا', 'آ', 'أ', 'إ', 'و', 'ی', 'ي', 'ى', 'ئ']);
+    const CONSONANTS = new Set([...'بپتثجچحخدذرزژسشصضطظغفقکكگلمن']);
+    const LETTER_MAP = {
+        'ا': 'a', 'آ': 'a', 'أ': 'a', 'إ': 'e', 'ء': '',
+        'ب': 'b', 'پ': 'p', 'ت': 't', 'ث': 's',
+        'ج': 'j', 'چ': 'ch', 'ح': 'h', 'خ': 'kh',
+        'د': 'd', 'ذ': 'z', 'ر': 'r', 'ز': 'z', 'ژ': 'zh',
+        'س': 's', 'ش': 'sh', 'ص': 's', 'ض': 'z',
+        'ط': 't', 'ظ': 'z', 'ع': '', 'غ': 'gh',
+        'ف': 'f', 'ق': 'gh', 'ک': 'k', 'ك': 'k', 'گ': 'g',
+        'ل': 'l', 'م': 'm', 'ن': 'n',
+        'و': 'o',
+        'ه': 'h', 'ة': 'h',
+        'ی': 'i', 'ي': 'i', 'ئ': 'i', 'ى': 'i'
+    };
+    // Short vowels are unwritten in Persian. These names would otherwise be guessed wrong.
+    const WORD_DICT = {
+        'ابی': 'Ebi', 'ابي': 'Ebi',
+        'عرفان': 'Erfan',
+        'طهماسبی': 'Tahmasbi', 'طهماسبي': 'Tahmasbi',
+        'علی': 'Ali', 'علي': 'Ali',
+        'محمد': 'Mohammad',
+        'محسن': 'Mohsen',
+        'چاوشی': 'Chavoshi', 'چاووشی': 'Chavoshi',
+        'گوگوش': 'Googoosh',
+        'داریوش': 'Dariush',
+        'هایده': 'Hayedeh',
+        'مهستی': 'Mahasti',
+        'معین': 'Moein', 'معين': 'Moein',
+        'احسان': 'Ehsan',
+        'حسین': 'Hossein', 'حسين': 'Hossein',
+        'رضا': 'Reza',
+        'امیر': 'Amir', 'امير': 'Amir',
+        'سعید': 'Saeed', 'سعيد': 'Saeed',
+        'شادمهر': 'Shadmehr',
+        'عقیلی': 'Aghili', 'عقيلي': 'Aghili',
+        'فرهاد': 'Farhad',
+        'فریدون': 'Fereydoun', 'فريدون': 'Fereydoun',
+        'سیاوش': 'Siavash', 'سياوش': 'Siavash',
+        'وحید': 'Vahid', 'وحيد': 'Vahid'
+    };
+
+    function isTrueConsonant(ch) {
+        return CONSONANTS.has(ch) || ch === 'ه';
+    }
+
+    function capitalizeLatin(value) {
+        const text = String(value || '').toLowerCase();
+        if (!text) return '';
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    function normalizePersianLetters(word) {
+        return String(word || '')
+            .replace(/ك/g, 'ک')
+            .replace(/[يى]/g, 'ی')
+            .replace(/ة/g, 'ه')
+            .replace(/ـ/g, '')
+            .replace(DIACRITIC, '')
+            .replace(/[۰-۹]/g, (digit) => PERSIAN_DIGITS[digit] || digit);
+    }
+
+    function shouldInsertA(prev, ch, next) {
+        if (!isTrueConsonant(prev) || !isTrueConsonant(ch)) return false;
+        if (prev === 'ه') return false;
+        if (next && MATRES.has(next)) return false;
+        return true;
+    }
+
+    function romanizePersianWord(word) {
+        const chars = [...normalizePersianLetters(word)].filter((ch) => ch !== 'ـ');
+        const lookup = chars.join('');
+        if (WORD_DICT[lookup]) return WORD_DICT[lookup];
+
+        let out = '';
+        for (let i = 0; i < chars.length; i += 1) {
+            const ch = chars[i];
+            const prev = chars[i - 1];
+            const next = chars[i + 1];
+
+            if (ch === 'ع') {
+                if (i === 0) out += 'e';
+                continue;
+            }
+
+            if (ch === 'ه' && i === chars.length - 1) {
+                if (prev !== 'ا' && prev !== 'و' && prev !== 'آ') out += 'e';
+                continue;
+            }
+
+            if (ch === 'و') {
+                if (i === 0) {
+                    out += 'v';
+                    if (next && isTrueConsonant(next)) out += 'a';
+                    continue;
+                }
+                out += 'o';
+                continue;
+            }
+
+            if (i > 0 && shouldInsertA(prev, ch, next)) out += 'a';
+            out += Object.prototype.hasOwnProperty.call(LETTER_MAP, ch) ? LETTER_MAP[ch] : ch;
+        }
+
+        return capitalizeLatin(out.replace(/[^A-Za-z0-9]/g, ''));
+    }
+
+    function romanizeWord(word) {
+        const token = String(word || '').trim();
+        if (!token) return '';
+        if (ARABIC_SCRIPT.test(token)) return romanizePersianWord(token);
+        const latin = token
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^A-Za-z0-9]/g, '');
+        return capitalizeLatin(latin);
+    }
+
+    function splitNameWords(text) {
+        return String(text || '')
+            .replace(/[\u200c\u200d]/g, ' ')
+            .split(/[^\u0600-\u06FFa-zA-Z0-9]+/)
+            .filter(Boolean);
+    }
+
+    function romanizeToLatin(text) {
+        return splitNameWords(text).map(romanizeWord).filter(Boolean).join(' ');
+    }
+
+    function filenameToken(text) {
+        const words = splitNameWords(text);
+        if (!words.length) return '';
+        const romanized = words.map(romanizeWord).filter(Boolean);
+        if (!romanized.length) return '';
+        if (ARABIC_SCRIPT.test(String(text || ''))) {
+            return capitalizeLatin(romanized.join('').toLowerCase());
+        }
+        return romanized.join('').replace(/[^A-Za-z0-9]/g, '');
+    }
+
+    function exportImageFilename(title, artist, scale) {
+        const titlePart = filenameToken(title) || 'Song';
+        const artistPart = filenameToken(artist);
+        const key = normalizePreferredScale(scale) || normalizeScale(scale) || '';
+        const keyPart = key.replace(/[^A-Za-z0-9#]/g, '');
+        return `${[titlePart, artistPart, keyPart].filter(Boolean).join('_')}.jpg`;
+    }
+
     return {
         PREFERRED_MAJOR,
         PREFERRED_MINOR,
@@ -148,6 +299,9 @@
         transposeRoot,
         transposeChordName,
         transposeScale,
-        toggleScaleQuality
+        toggleScaleQuality,
+        romanizeToLatin,
+        filenameToken,
+        exportImageFilename
     };
 }));

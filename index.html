@@ -91,7 +91,10 @@
             <div class="header annotation-header">
                 <div class="header-row">
                     <button id="backToEditorBtn" class="btn btn-secondary">← Edit</button>
-                    <h2 id="annotationTitle">Add Chords</h2>
+                    <div class="header-center">
+                        <h2 id="annotationTitle">Add Chords</h2>
+                        <p class="header-guide">Select any text to add a chord. Drag the handles to adjust the range.</p>
+                    </div>
                     <button id="doneAnnotatingBtn" class="btn btn-primary">Done</button>
                 </div>
                 <div class="header-toolbar">
@@ -111,44 +114,48 @@
             </div>
 
             <div class="annotation-container">
-                <div class="instructions">
-                    <p>Select any text to add a chord. Drag the handles to adjust the range.</p>
-                </div>
-
-                <div class="lyrics-actions">
-                    <div class="lyric-theme-toggle" role="group" aria-label="Lyrics theme">
-                        <button type="button" id="lyricThemeLightBtn" class="lyric-theme-opt active" aria-pressed="true">Light</button>
-                        <button type="button" id="lyricThemeDarkBtn" class="lyric-theme-opt" aria-pressed="false">Dark</button>
-                    </div>
-                    <button id="exportLyricsBtn" class="btn btn-secondary" type="button">Export</button>
-                </div>
-                <div class="lyrics-stage">
+                <div class="annotation-workspace">
+                    <aside class="annotation-tools" aria-label="Song tools">
+                        <div class="lyric-theme-toggle" role="group" aria-label="Lyrics theme">
+                            <button type="button" id="lyricThemeLightBtn" class="lyric-theme-opt active" aria-pressed="true">Light</button>
+                            <button type="button" id="lyricThemeDarkBtn" class="lyric-theme-opt" aria-pressed="false">Dark</button>
+                        </div>
+                        <button id="exportLyricsBtn" class="btn btn-secondary" type="button">Export</button>
+                        <div class="scale-control">
+                            <div class="transpose-buttons">
+                                <button type="button" id="transposeDownBtn" class="transpose-btn" aria-label="Transpose down a half step">−</button>
+                                <button type="button" id="transposeUpBtn" class="transpose-btn" aria-label="Transpose up a half step">+</button>
+                            </div>
+                            <div class="scale-row">
+                                <select id="songScale" aria-label="Scale"></select>
+                                <div class="scale-mode-toggle" role="group" aria-label="Scale mode">
+                                    <button type="button" id="scaleMajorBtn" class="scale-mode-opt" aria-pressed="false">Maj</button>
+                                    <button type="button" id="scaleMinorBtn" class="scale-mode-opt" aria-pressed="false">Min</button>
+                                </div>
+                            </div>
+                            <button type="button" id="lockChordsBtn" class="lock-chords-btn" aria-pressed="false">Lock chords</button>
+                        </div>
+                        <span class="time-signature">
+                            <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beats per bar" />
+                            <span class="time-slash">/</span>
+                            <input id="timeBottom" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beat value" />
+                        </span>
+                        <span class="song-tempo">
+                            <span class="tempo-sign" aria-hidden="true">♩</span>
+                            <span class="tempo-eq" aria-hidden="true">=</span>
+                            <input id="songTempo" type="number" inputmode="numeric" min="20" max="320" placeholder="120" aria-label="Tempo" />
+                        </span>
+                    </aside>
+                    <div class="lyrics-stage">
                     <div id="lyricsDisplay" class="lyrics-display">
                     <div class="lyrics-meta">
                         <div class="lyrics-meta-controls">
-                            <div class="scale-control">
-                                <div class="transpose-buttons">
-                                    <button type="button" id="transposeDownBtn" class="transpose-btn" aria-label="Transpose down a half step">−</button>
-                                    <button type="button" id="transposeUpBtn" class="transpose-btn" aria-label="Transpose up a half step">+</button>
-                                </div>
-                                <div class="scale-row">
-                                    <select id="songScale" aria-label="Scale"></select>
-                                    <div class="scale-mode-toggle" role="group" aria-label="Scale mode">
-                                        <button type="button" id="scaleMajorBtn" class="scale-mode-opt" aria-pressed="false">Maj</button>
-                                        <button type="button" id="scaleMinorBtn" class="scale-mode-opt" aria-pressed="false">Min</button>
-                                    </div>
-                                </div>
-                                <button type="button" id="lockChordsBtn" class="lock-chords-btn" aria-pressed="false">Lock chords</button>
-                            </div>
-                            <span class="time-signature">
-                                <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beats per bar" />
-                                <span class="time-slash">/</span>
-                                <input id="timeBottom" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beat value" />
-                            </span>
-                            <span class="song-tempo">
+                            <span id="previewScaleChip" class="export-meta-chip" hidden></span>
+                            <span id="previewTimeChip" class="export-meta-chip">4/4</span>
+                            <span id="previewTempoChip" class="export-meta-chip export-meta-tempo">
                                 <span class="tempo-sign" aria-hidden="true">♩</span>
                                 <span class="tempo-eq" aria-hidden="true">=</span>
-                                <input id="songTempo" type="number" inputmode="numeric" min="20" max="320" placeholder="120" aria-label="Tempo" />
+                                <span id="previewTempoValue"></span>
                             </span>
                         </div>
                         <h2 id="lyricsSongHeading" class="lyrics-heading"></h2>
@@ -163,6 +170,7 @@
                         <span class="sel-handle-knob"></span>
                     </div>
                     </div>
+                </div>
                 </div>
 
                 <!-- Chord Input Sheet -->
