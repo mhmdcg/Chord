@@ -77,6 +77,8 @@ class ChordAnnotatorApp {
 
     setupEventListeners() {
         document.getElementById('newSongBtn').addEventListener('click', () => this.createNewSong());
+        document.getElementById('allChordsBtn').addEventListener('click', () => this.showView('allChords'));
+        document.getElementById('backFromAllChordsBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('syncSettingsBtn').addEventListener('click', () => this.toggleSyncPanel());
         document.getElementById('syncBanner').addEventListener('click', () => {
             if (this.syncState === 'needs-token') this.toggleSyncPanel();
@@ -86,10 +88,7 @@ class ChordAnnotatorApp {
             if (e.key === 'Enter') this.saveGithubToken();
         });
         document.getElementById('backToListBtn').addEventListener('click', () => this.showView('songList'));
-        document.getElementById('backToEditorBtn').addEventListener('click', () => {
-            this.closeChordModal();
-            this.showView('editor');
-        });
+        document.getElementById('backToEditorBtn').addEventListener('click', () => this.finishAnnotation());
 
         document.getElementById('saveEditorBtn').addEventListener('click', () => this.saveSong());
         document.getElementById('proceedToAnnotateBtn').addEventListener('click', () => this.proceedToAnnotation());
@@ -236,6 +235,10 @@ class ChordAnnotatorApp {
             this.closeChordModal();
             document.getElementById('songListView').classList.add('active');
             this.renderSongList();
+        } else if (viewName === 'allChords') {
+            this.closeChordModal();
+            document.getElementById('allChordsView').classList.add('active');
+            this.renderAllChords();
         } else if (viewName === 'editor') {
             this.closeChordModal();
             document.getElementById('editorView').classList.add('active');
@@ -1681,6 +1684,70 @@ class ChordAnnotatorApp {
             card.appendChild(actions);
 
             container.appendChild(card);
+        });
+    }
+
+    collectChordsByKey() {
+        const groups = [];
+        const indexByKey = new Map();
+
+        this.songs.forEach((song) => {
+            const key = MusicTheory.normalizePreferredScale(song.scale) || 'No key';
+            const chords = this.getSongChordList(song).filter(Boolean);
+            if (!chords.length) return;
+
+            if (!indexByKey.has(key)) {
+                indexByKey.set(key, groups.length);
+                groups.push({ key, chords: [] });
+            }
+            const group = groups[indexByKey.get(key)];
+            chords.forEach((chord) => {
+                if (!group.chords.includes(chord)) group.chords.push(chord);
+            });
+        });
+
+        return groups;
+    }
+
+    renderAllChords() {
+        const container = document.getElementById('allChordsList');
+        const groups = this.collectChordsByKey();
+        container.replaceChildren();
+
+        if (!groups.length) {
+            const empty = document.createElement('div');
+            empty.className = 'empty-state';
+            empty.innerHTML = '<p>No chords in your songs yet.</p>';
+            container.appendChild(empty);
+            return;
+        }
+
+        groups.forEach((group) => {
+            const row = document.createElement('div');
+            row.className = 'all-chords-row';
+
+            const keyLabel = document.createElement('span');
+            keyLabel.className = 'all-chords-key';
+            keyLabel.dir = 'ltr';
+            keyLabel.textContent = `${group.key}:`;
+            row.appendChild(keyLabel);
+
+            const chords = document.createElement('div');
+            chords.className = 'all-chords-values';
+            group.chords.forEach((chord, index) => {
+                const chip = document.createElement('span');
+                chip.className = 'training-chord';
+                chip.dir = 'ltr';
+                chip.textContent = chord;
+                chip.style.backgroundColor = this.withAlpha(
+                    this.colorPalette[index % this.colorPalette.length],
+                    this.highlightAlpha.light
+                );
+                chords.appendChild(chip);
+            });
+
+            row.appendChild(chords);
+            container.appendChild(row);
         });
     }
 

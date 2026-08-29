@@ -299,12 +299,20 @@ body {
 .song-list {
     padding: 1.5rem;
     flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    align-content: start;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .empty-state {
     text-align: center;
     padding: 4rem 2rem;
     color: var(--text-light);
+    grid-column: 1 / -1;
 }
 
 .song-card {
@@ -312,7 +320,9 @@ body {
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 1.25rem;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -345,13 +355,66 @@ body {
 
 .song-card-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 0.75rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
 }
 
 .btn-small {
     padding: 0.375rem 0.75rem;
     font-size: 0.8125rem;
+}
+
+.all-chords-list {
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.all-chords-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.65rem 0.85rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.all-chords-key {
+    flex: 0 0 auto;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    direction: ltr;
+    unicode-bidi: isolate;
+    min-width: 3.25rem;
+    padding-top: 0.15rem;
+}
+
+.all-chords-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    min-width: 0;
+    flex: 1;
+}
+
+.training-chord {
+    display: inline-flex;
+    align-items: center;
+    direction: ltr;
+    unicode-bidi: isolate;
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 0.28rem 0.55rem;
+    border-radius: 6px;
+    color: var(--text);
 }
 
 /* Editor */
@@ -1339,8 +1402,13 @@ body {
     
     .song-list,
     .editor-container,
-    .annotation-container {
+    .annotation-container,
+    .all-chords-list {
         padding: 1rem;
+    }
+
+    .song-list {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
     
     .lyrics-display {

@@ -17,6 +17,7 @@
             <div class="header song-list-header">
                 <h1>🎵 My Songs</h1>
                 <div class="header-end">
+                    <button id="allChordsBtn" class="btn btn-secondary" type="button">All chords</button>
                     <button id="syncSettingsBtn" class="btn btn-secondary" type="button">GitHub</button>
                     <button id="newSongBtn" class="btn btn-primary">+ New Song</button>
                 </div>
@@ -42,6 +43,15 @@
                     <p>No songs yet. Create your first song!</p>
                 </div>
             </div>
+        </div>
+
+        <!-- All chords training view -->
+        <div id="allChordsView" class="view">
+            <div class="header">
+                <button id="backFromAllChordsBtn" class="btn btn-secondary" type="button">← Back</button>
+                <h2>All chords</h2>
+            </div>
+            <div id="allChordsList" class="all-chords-list"></div>
         </div>
 
         <!-- Song Editor View -->
@@ -90,7 +100,7 @@
         <div id="annotationView" class="view">
             <div class="header annotation-header">
                 <div class="header-row">
-                    <button id="backToEditorBtn" class="btn btn-secondary">← Edit</button>
+                    <button id="backToEditorBtn" class="btn btn-secondary">← Back</button>
                     <div class="header-center">
                         <h2 id="annotationTitle">Add Chords</h2>
                         <p class="header-guide">Select any text to add a chord. Drag the handles to adjust the range.</p>
