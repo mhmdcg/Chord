@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-31T20:56:58.829Z",
+  "updatedAt": "2026-08-31T20:57:09.831Z",
   "songs": [
     {
       "title": "خیال",
@@ -107,8 +107,13 @@
           "end": 355
         },
         {
+          "chord": "Db",
+          "start": 355,
+          "end": 364
+        },
+        {
           "chord": "B",
-          "start": 363,
+          "start": 364,
           "end": 370
         },
         {
@@ -248,9 +253,7 @@
         458,
         460
       ],
-      "recentChords": [
-        "B"
-      ]
+      "recentChords": []
     },
     {
       "title": "بهانه",
