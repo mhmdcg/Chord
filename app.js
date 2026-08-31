@@ -1965,22 +1965,31 @@ class ChordAnnotatorApp {
             }
         });
         const previousOverflow = card.style.overflow;
+        const previousHeight = card.style.height;
         card.style.overflow = 'hidden';
+        card.style.height = `${Math.max(card.scrollHeight, card.offsetHeight)}px`;
         card.classList.add('is-export');
+        this.positionLyricOverlays();
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        this.positionLyricOverlays();
 
         try {
             return await htmlToImage.toCanvas(card, {
                 backgroundColor: isDark ? '#000000' : '#ffffff',
                 pixelRatio: Math.min(3, Math.max(2, 1080 / width)),
                 cacheBust: true,
+                width: card.offsetWidth || width,
+                height: card.offsetHeight,
                 filter: (node) => !(node.classList && node.classList.contains('sel-handle'))
             });
         } finally {
             card.classList.remove('is-export');
             card.style.overflow = previousOverflow;
+            card.style.height = previousHeight;
             hiddenHandles.forEach((handle) => {
                 handle.hidden = false;
             });
+            this.positionLyricOverlays();
         }
     }
 

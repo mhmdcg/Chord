@@ -608,6 +608,7 @@ body {
     min-height: 0;
     overflow-x: hidden;
     overflow-y: auto;
+    scrollbar-gutter: stable;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     font-size: 0.9rem;
@@ -1109,7 +1110,6 @@ body {
 }
 
 .lyrics-display.is-export .lyric-split {
-    display: none;
     pointer-events: none;
 }
 
