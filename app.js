@@ -376,7 +376,8 @@ class ChordAnnotatorApp {
         return {
             annotations: JSON.parse(JSON.stringify(this.currentSong.annotations || [])),
             splits: [...this.getSplits()],
-            scale: this.currentSong.scale || ''
+            scale: this.currentSong.scale || '',
+            recentChords: [...(this.currentSong.recentChords || [])]
         };
     }
 
@@ -394,6 +395,9 @@ class ChordAnnotatorApp {
             this.currentSong.splits = [...entry.splits];
         }
         this.currentSong.scale = entry.scale || '';
+        if (Array.isArray(entry.recentChords)) {
+            this.currentSong.recentChords = [...entry.recentChords];
+        }
         this.normalizeSplits();
     }
 
@@ -1540,6 +1544,7 @@ class ChordAnnotatorApp {
         }
 
         this.chordColors[chord] = this.getChordColor(chord);
+        this.recordRecentChord(chord);
 
         let next = (this.currentSong.annotations || []).map(annotation => ({ ...annotation }));
 
@@ -1714,6 +1719,11 @@ class ChordAnnotatorApp {
             ...annotation,
             chord: MusicTheory.transposeChordName(annotation.chord, semitones || 0, target)
         }));
+        if (Array.isArray(this.currentSong.recentChords)) {
+            this.currentSong.recentChords = this.currentSong.recentChords.map((chord) =>
+                MusicTheory.transposeChordName(chord, semitones || 0, target)
+            );
+        }
         this.currentSong.scale = target;
         this.commitAnnotations(nextAnnotations);
         this.renderAnnotationView();
@@ -1758,8 +1768,61 @@ class ChordAnnotatorApp {
         const input = document.getElementById('chordInput').value.trim();
         const parsed = this.parseChordRoot(input);
         const activeLetter = parsed ? parsed.letter : '';
+        this.renderRecentChords(input);
         this.renderRootButtons(activeLetter, input);
         this.renderChordSuggestions(this.filterChordsByInput(input), input);
+    }
+
+    recordRecentChord(chord) {
+        const name = (chord || '').trim();
+        if (!name || !this.currentSong) return;
+        const next = [
+            name,
+            ...(this.currentSong.recentChords || []).filter((item) => item.toLowerCase() !== name.toLowerCase())
+        ];
+        this.currentSong.recentChords = next.slice(0, 16);
+    }
+
+    getRecentSongChords() {
+        const seen = new Set();
+        const chords = [];
+        const add = (chord) => {
+            const name = (chord || '').trim();
+            if (!name) return;
+            const key = name.toLowerCase();
+            if (seen.has(key)) return;
+            seen.add(key);
+            chords.push(name);
+        };
+
+        (this.currentSong?.recentChords || []).forEach(add);
+        [...(this.currentSong?.annotations || [])]
+            .filter((annotation) => annotation.chord)
+            .sort((a, b) => b.start - a.start)
+            .forEach((annotation) => add(annotation.chord));
+
+        return chords.slice(0, 12);
+    }
+
+    renderRecentChords(selectedChord = '') {
+        const row = document.getElementById('chordRecentRow');
+        const container = document.getElementById('chordRecent');
+        if (!row || !container) return;
+
+        const chords = this.getRecentSongChords();
+        container.innerHTML = '';
+        row.hidden = chords.length === 0;
+        chords.forEach((chord) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'chord-suggestion recent';
+            if (selectedChord && chord.toLowerCase() === selectedChord.toLowerCase()) {
+                btn.classList.add('selected');
+            }
+            btn.textContent = chord;
+            btn.addEventListener('click', () => this.selectSuggestedChord(chord));
+            container.appendChild(btn);
+        });
     }
 
     renderRootButtons(activeLetter, selectedChord) {

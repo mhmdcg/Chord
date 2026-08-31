@@ -1286,6 +1286,16 @@ body {
     border-color: var(--primary);
 }
 
+.chord-recent-row {
+    margin-bottom: 0.75rem;
+}
+
+.chord-recent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
 .chord-roots {
     display: flex;
     flex-wrap: wrap;
