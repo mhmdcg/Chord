@@ -992,6 +992,9 @@ body {
     padding-top: 1.25rem;
     padding-inline: 1.6rem;
     text-align: center;
+    position: relative;
+    z-index: 2;
+    background: transparent;
 }
 
 .lyrics-display.align-left .lyrics-content {
@@ -1013,18 +1016,17 @@ body {
 .chord-annotation {
     position: relative;
     display: inline;
-    padding: 0.08em 0.16em;
+    padding: 0.08em 0;
     border-radius: 4px;
     cursor: pointer;
     transition: box-shadow 0.2s, outline 0.2s;
     line-height: 1.25;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
-    unicode-bidi: isolate;
 }
 
-.chord-annotation.joins-prev::before,
-.chord-annotation.joins-next::after {
+.lyric-section.joins-prev::before,
+.lyric-section.joins-next::after {
     content: '\200D';
 }
 
@@ -1057,16 +1059,37 @@ body {
     -webkit-user-select: none;
 }
 
+.lyric-section-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.lyric-section-fill {
+    position: absolute;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.lyric-section-fill.pending {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+.lyric-split-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 8;
+}
+
 .lyric-split {
-    display: inline-block;
-    position: relative;
+    position: absolute;
     width: 0;
-    height: 1.35em;
-    vertical-align: -0.2em;
     border-inline-start: 2px solid #C5A45A;
     pointer-events: auto;
     cursor: col-resize;
     touch-action: none;
+    transform: translateX(-50%);
 }
 
 .lyric-split::after {
@@ -1094,13 +1117,6 @@ body {
     border-inline-start-color: #C5A45A;
 }
 
-.chord-anchor {
-    display: inline;
-    position: relative;
-    background-color: inherit;
-    unicode-bidi: isolate;
-}
-
 .chord-label {
     position: absolute;
     bottom: 100%;
@@ -1119,12 +1135,25 @@ body {
     margin-bottom: 2px;
     box-shadow: none;
     cursor: pointer;
+    pointer-events: auto;
+}
+
+.lyric-split-overlay .chord-label {
+    bottom: auto;
+    right: auto;
+    margin-bottom: 0;
 }
 
 .lyrics-display.align-right .chord-label,
 .lyrics-display.rtl .chord-label {
     left: auto;
     right: 0;
+}
+
+.lyrics-display.align-right .lyric-split-overlay .chord-label,
+.lyrics-display.rtl .lyric-split-overlay .chord-label {
+    left: 0;
+    right: auto;
 }
 
 .sel-handle {

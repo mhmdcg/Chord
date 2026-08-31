@@ -121,12 +121,13 @@ class ChordAnnotatorApp {
         document.getElementById('lyricThemeLightBtn').addEventListener('click', () => this.setLyricTheme('light'));
         document.getElementById('lyricThemeDarkBtn').addEventListener('click', () => this.setLyricTheme('dark'));
 
-        const lyricsContent = document.getElementById('lyricsContent');
-        lyricsContent.addEventListener('mousedown', (e) => {
+        const lyricsDisplay = document.getElementById('lyricsDisplay');
+        lyricsDisplay.addEventListener('mousedown', (e) => {
             if (this.splitMode || this.eraseMode || e.target.closest('.lyric-split')) e.preventDefault();
         });
-        lyricsContent.addEventListener('pointerdown', (e) => this.handleSplitPointerDown(e));
-        lyricsContent.addEventListener('click', (e) => this.handleLyricsClick(e));
+        lyricsDisplay.addEventListener('pointerdown', (e) => this.handleSplitPointerDown(e));
+        lyricsDisplay.addEventListener('click', (e) => this.handleLyricsClick(e));
+        lyricsDisplay.addEventListener('scroll', () => this.positionLyricOverlays());
         document.addEventListener('pointermove', (e) => this.handleSplitPointerMove(e));
         document.addEventListener('pointerup', (e) => this.handleSplitPointerUp(e));
         document.addEventListener('pointercancel', (e) => this.handleSplitPointerUp(e));
@@ -148,8 +149,14 @@ class ChordAnnotatorApp {
         this.bindHandle('endHandle', 'end');
 
         document.addEventListener('keydown', (e) => this.handleKeydown(e));
-        window.addEventListener('scroll', () => this.positionHandles(), true);
-        window.addEventListener('resize', () => this.positionHandles());
+        window.addEventListener('scroll', () => {
+            this.positionHandles();
+            this.positionLyricOverlays();
+        }, true);
+        window.addEventListener('resize', () => {
+            this.positionHandles();
+            this.positionLyricOverlays();
+        });
     }
 
     bindHandle(id, which) {
@@ -803,10 +810,31 @@ class ChordAnnotatorApp {
             return;
         }
         if (e.target.closest('.lyric-split')) return;
-        const section = e.target.closest('.lyric-section');
+        const label = e.target.closest('.chord-label');
+        if (label?.dataset.start != null && label?.dataset.end != null) {
+            e.stopPropagation();
+            this.openSectionChord(Number(label.dataset.start), Number(label.dataset.end));
+            return;
+        }
+        if (!e.target.closest('#lyricsContent')) return;
+        const offset = this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY));
+        const section = this.sectionAtOffset(offset);
         if (!section) return;
         e.stopPropagation();
-        this.openSectionChord(Number(section.dataset.start), Number(section.dataset.end));
+        this.openSectionChord(section.start, section.end);
+    }
+
+    sectionAtOffset(offset) {
+        const points = this.getSectionPoints();
+        for (let i = 0; i < points.length - 1; i += 1) {
+            const start = points[i];
+            const end = points[i + 1];
+            if (offset >= start && offset < end) return { start, end };
+        }
+        if (points.length >= 2 && offset === points[points.length - 1]) {
+            return { start: points[points.length - 2], end: points[points.length - 1] };
+        }
+        return null;
     }
 
     handleSplitClick(e) {
@@ -935,7 +963,7 @@ class ChordAnnotatorApp {
     }
 
     nearestSplitOffsetFromPoint(x, y) {
-        const hits = [...document.querySelectorAll('#lyricsContent .lyric-split')];
+        const hits = [...document.querySelectorAll('#lyricSplitOverlay .lyric-split')];
         let best = null;
         let bestDistance = 12;
         hits.forEach((el) => {
@@ -1024,47 +1052,140 @@ class ChordAnnotatorApp {
         const content = document.getElementById('lyricsContent');
         const lyrics = this.currentSong.lyrics;
         this.ensureSplits();
-        const annotations = this.getDisplayAnnotations();
 
         if (!lyrics) {
             content.textContent = '';
+            this.positionLyricOverlays();
             return;
         }
 
-        const points = this.getSectionPoints();
-        let html = '';
-        for (let i = 0; i < points.length - 1; i += 1) {
-            const start = points[i];
-            const end = points[i + 1];
-            if (start === end) continue;
+        content.innerHTML = this.formatLyricHtml(lyrics);
+        this.positionLyricOverlays();
+        requestAnimationFrame(() => this.positionLyricOverlays());
+    }
 
-            if (i > 0) {
-                html += `<span class="lyric-split" data-offset="${start}" aria-hidden="true"></span>`;
+    getCaretRectForOffset(root, offset) {
+        const pos = this.getDomPositionForOffset(root, offset);
+        if (!pos) return null;
+
+        const range = document.createRange();
+        const place = (start, end) => {
+            range.setStart(pos.node, start);
+            range.setEnd(pos.node, end);
+            return range.getBoundingClientRect();
+        };
+
+        let rect = place(pos.offset, pos.offset);
+        if (rect.height >= 2) {
+            return { left: rect.left, top: rect.top, height: rect.height };
+        }
+
+        const rtl = getComputedStyle(root).direction === 'rtl';
+        if (pos.offset > 0) {
+            rect = place(pos.offset - 1, pos.offset);
+            if (rect.height >= 2) {
+                return { left: rtl ? rect.left : rect.right, top: rect.top, height: rect.height };
             }
-
-            const text = lyrics.substring(start, end);
-            const annotation = this.annotationForSection(start, end, annotations);
-            const joinClass = this.joinClasses(lyrics, start, end, text);
-            if (annotation) {
-                const color = annotation.chord
-                    ? this.getChordColor(annotation.chord)
-                    : 'rgba(79, 70, 229, 0.18)';
-                const fill = annotation.chord ? this.getChordFill(annotation.chord) : color;
-                const pendingClass = annotation.pending ? ' pending' : '';
-                html += `<span class="lyric-section chord-annotation${pendingClass}${joinClass}" data-start="${start}" data-end="${end}" data-index="${annotation.index}" style="background-color: ${fill}">`;
-                if (annotation.chord && start === annotation.start) {
-                    html += `<span class="chord-anchor"><span class="chord-label" dir="ltr" style="background-color: ${fill}">${this.escapeHtml(annotation.chord)}</span></span>`;
-                }
-                html += this.formatLyricHtml(text);
-                html += '</span>';
-            } else {
-                html += `<span class="lyric-section${joinClass}" data-start="${start}" data-end="${end}" data-index="-1">`;
-                html += this.formatLyricHtml(text);
-                html += '</span>';
+        }
+        if (pos.offset < pos.node.textContent.length) {
+            rect = place(pos.offset, pos.offset + 1);
+            if (rect.height >= 2) {
+                return { left: rtl ? rect.right : rect.left, top: rect.top, height: rect.height };
             }
         }
 
-        content.innerHTML = html;
+        const fallback = parseFloat(getComputedStyle(root).fontSize) || 16;
+        return { left: rect.left, top: rect.top, height: fallback * 1.25 };
+    }
+
+    alignOverlay(overlay, content) {
+        overlay.style.top = `${content.offsetTop}px`;
+        overlay.style.left = `${content.offsetLeft}px`;
+        overlay.style.width = `${content.offsetWidth}px`;
+        overlay.style.height = `${content.offsetHeight}px`;
+    }
+
+    positionSplitOverlays() {
+        this.positionLyricOverlays();
+    }
+
+    positionLyricOverlays() {
+        const sectionOverlay = document.getElementById('lyricSectionOverlay');
+        const splitOverlay = document.getElementById('lyricSplitOverlay');
+        const content = document.getElementById('lyricsContent');
+        if (sectionOverlay) sectionOverlay.replaceChildren();
+        if (splitOverlay) splitOverlay.replaceChildren();
+        if (!content || !this.currentSong?.lyrics) return;
+
+        if (sectionOverlay) this.alignOverlay(sectionOverlay, content);
+        if (splitOverlay) this.alignOverlay(splitOverlay, content);
+
+        const contentRect = content.getBoundingClientRect();
+        const rtl = getComputedStyle(content).direction === 'rtl';
+        const annotations = this.getDisplayAnnotations();
+        const points = this.getSectionPoints();
+
+        for (let i = 0; i < points.length - 1; i += 1) {
+            const start = points[i];
+            const end = points[i + 1];
+            if (start >= end) continue;
+            const annotation = this.annotationForSection(start, end, annotations);
+            if (!annotation) continue;
+
+            const fillColor = annotation.chord
+                ? this.getChordFill(annotation.chord)
+                : 'rgba(79, 70, 229, 0.18)';
+            const range = this.getRangeForOffsets(start, end);
+            const caret = this.getCaretRectForOffset(content, start);
+            const textHeight = caret?.height || 22;
+
+            if (sectionOverlay && range) {
+                [...range.getClientRects()].forEach((rect) => {
+                    if (rect.width < 1 || rect.height < 1) return;
+                    const fill = document.createElement('div');
+                    fill.className = 'lyric-section-fill';
+                    if (annotation.pending) fill.classList.add('pending');
+                    fill.style.backgroundColor = fillColor;
+                    fill.style.left = `${rect.left - contentRect.left}px`;
+                    fill.style.width = `${rect.width}px`;
+                    fill.style.height = `${textHeight + 4}px`;
+                    fill.style.top = `${rect.bottom - contentRect.top - textHeight - 2}px`;
+                    sectionOverlay.appendChild(fill);
+                });
+            }
+
+            if (splitOverlay && annotation.chord && start === annotation.start && caret) {
+                const label = document.createElement('span');
+                label.className = 'chord-label';
+                label.dir = 'ltr';
+                label.dataset.start = String(start);
+                label.dataset.end = String(end);
+                label.textContent = annotation.chord;
+                label.style.backgroundColor = fillColor;
+                label.style.left = `${caret.left - contentRect.left}px`;
+                label.style.top = `${caret.top - contentRect.top}px`;
+                label.style.transform = rtl
+                    ? 'translate(-100%, calc(-100% - 2px))'
+                    : 'translateY(calc(-100% - 2px))';
+                splitOverlay.appendChild(label);
+            }
+        }
+
+        if (!splitOverlay) return;
+        const draggingTo = this.draggingSplit?.to;
+        this.getSplits().forEach((offset) => {
+            const caret = this.getCaretRectForOffset(content, offset);
+            if (!caret) return;
+            const line = document.createElement('span');
+            line.className = 'lyric-split';
+            if (draggingTo === offset) line.classList.add('dragging');
+            line.dataset.offset = String(offset);
+            line.setAttribute('aria-hidden', 'true');
+            line.style.left = `${caret.left - contentRect.left}px`;
+            line.style.top = `${caret.top - contentRect.top}px`;
+            line.style.height = `${caret.height}px`;
+            splitOverlay.appendChild(line);
+        });
     }
 
     formatLyricHtml(text) {
