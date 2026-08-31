@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-31T19:22:02.621Z",
+  "updatedAt": "2026-08-31T19:33:45.628Z",
   "songs": [
     {
       "title": "خیال",
@@ -9,7 +9,7 @@
         {
           "chord": "Db",
           "start": 0,
-          "end": 29
+          "end": 30
         },
         {
           "chord": "B",
@@ -19,12 +19,12 @@
         {
           "chord": "Abm",
           "start": 47,
-          "end": 60
+          "end": 61
         },
         {
           "chord": "B",
           "start": 61,
-          "end": 68
+          "end": 69
         },
         {
           "chord": "Bbm",
@@ -49,22 +49,22 @@
         {
           "chord": "Db",
           "start": 140,
-          "end": 147
+          "end": 148
         },
         {
           "chord": "B",
           "start": 148,
-          "end": 162
+          "end": 163
         },
         {
           "chord": "Bbm",
           "start": 163,
-          "end": 199
+          "end": 200
         },
         {
           "chord": "Ebm",
           "start": 200,
-          "end": 223
+          "end": 224
         },
         {
           "chord": "Db",
@@ -74,42 +74,42 @@
         {
           "chord": "B",
           "start": 237,
-          "end": 244
+          "end": 245
         },
         {
           "chord": "Bbm",
           "start": 245,
-          "end": 271
+          "end": 272
         },
         {
           "chord": "Bb7",
           "start": 272,
-          "end": 288
+          "end": 289
         },
         {
           "chord": "Ebm",
           "start": 289,
-          "end": 327
+          "end": 328
         },
         {
           "chord": "Db",
           "start": 328,
-          "end": 340
+          "end": 341
         },
         {
           "chord": "B",
           "start": 341,
-          "end": 348
+          "end": 349
         },
         {
           "chord": "Bbm",
           "start": 349,
-          "end": 354
+          "end": 355
         },
         {
           "chord": "Db",
           "start": 355,
-          "end": 363
+          "end": 364
         },
         {
           "chord": "B",
@@ -122,6 +122,11 @@
           "end": 376
         },
         {
+          "chord": "Bbm",
+          "start": 376,
+          "end": 380
+        },
+        {
           "chord": "Db",
           "start": 380,
           "end": 390
@@ -129,7 +134,7 @@
         {
           "chord": "B",
           "start": 390,
-          "end": 392
+          "end": 393
         },
         {
           "chord": "Bbm",
@@ -148,23 +153,13 @@
         },
         {
           "chord": "Bbm",
-          "start": 376,
-          "end": 379
-        },
-        {
-          "chord": "Bbm",
           "start": 408,
           "end": 415
         },
         {
-          "chord": "Ebm",
-          "start": 421,
-          "end": 428
-        },
-        {
-          "chord": "Bbm",
-          "start": 429,
-          "end": 431
+          "chord": "B",
+          "start": 415,
+          "end": 419
         },
         {
           "chord": "Db",
@@ -172,9 +167,14 @@
           "end": 421
         },
         {
-          "chord": "B",
-          "start": 415,
-          "end": 418
+          "chord": "Ebm",
+          "start": 421,
+          "end": 429
+        },
+        {
+          "chord": "Bbm",
+          "start": 429,
+          "end": 432
         },
         {
           "chord": "Gbmaj7",
@@ -194,7 +194,7 @@
         {
           "chord": "Abm",
           "start": 450,
-          "end": 457
+          "end": 458
         },
         {
           "chord": "Db",
@@ -210,7 +210,49 @@
       "tempo": 140,
       "lyricTheme": "light",
       "chordsLocked": false,
-      "scaleMode": "minor"
+      "scaleMode": "minor",
+      "splits": [
+        30,
+        47,
+        61,
+        69,
+        86,
+        115,
+        130,
+        140,
+        148,
+        163,
+        200,
+        224,
+        237,
+        245,
+        272,
+        289,
+        328,
+        341,
+        349,
+        355,
+        364,
+        370,
+        376,
+        380,
+        390,
+        393,
+        398,
+        406,
+        408,
+        415,
+        419,
+        421,
+        429,
+        432,
+        442,
+        444,
+        446,
+        450,
+        458,
+        460
+      ]
     },
     {
       "title": "بهانه",
