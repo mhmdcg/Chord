@@ -1980,7 +1980,10 @@ class ChordAnnotatorApp {
                 cacheBust: true,
                 width: card.offsetWidth || width,
                 height: card.offsetHeight,
-                filter: (node) => !(node.classList && node.classList.contains('sel-handle'))
+                filter: (node) => !(node.classList && (
+                    node.classList.contains('sel-handle')
+                    || node.classList.contains('lyric-split')
+                ))
             });
         } finally {
             card.classList.remove('is-export');

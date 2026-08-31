@@ -107,20 +107,6 @@
                     </div>
                     <button id="doneAnnotatingBtn" class="btn btn-primary">Done</button>
                 </div>
-                <div class="header-toolbar">
-                    <button id="undoBtn" class="btn btn-icon" type="button" aria-label="Undo" title="Undo" disabled>
-                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9h10.5a5.5 5.5 0 1 1 0 11H11"/>
-                            <path d="M7 5 3 9l4 4"/>
-                        </svg>
-                    </button>
-                    <button id="redoBtn" class="btn btn-icon" type="button" aria-label="Redo" title="Redo" disabled>
-                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 9H10.5a5.5 5.5 0 1 0 0 11H13"/>
-                            <path d="M17 5 21 9l-4 4"/>
-                        </svg>
-                    </button>
-                </div>
             </div>
 
             <div class="annotation-container">
@@ -129,6 +115,20 @@
                         <div class="lyric-theme-toggle" role="group" aria-label="Lyrics theme">
                             <button type="button" id="lyricThemeLightBtn" class="lyric-theme-opt active" aria-pressed="true">Light</button>
                             <button type="button" id="lyricThemeDarkBtn" class="lyric-theme-opt" aria-pressed="false">Dark</button>
+                        </div>
+                        <div class="history-buttons">
+                            <button id="undoBtn" class="btn btn-icon" type="button" aria-label="Undo" title="Undo" disabled>
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 9h10.5a5.5 5.5 0 1 1 0 11H11"/>
+                                    <path d="M7 5 3 9l4 4"/>
+                                </svg>
+                            </button>
+                            <button id="redoBtn" class="btn btn-icon" type="button" aria-label="Redo" title="Redo" disabled>
+                                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 9H10.5a5.5 5.5 0 1 0 0 11H13"/>
+                                    <path d="M17 5 21 9l-4 4"/>
+                                </svg>
+                            </button>
                         </div>
                         <button id="exportLyricsBtn" class="btn btn-secondary" type="button">Export</button>
                         <div class="scale-control">
