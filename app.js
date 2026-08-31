@@ -10,6 +10,7 @@ class ChordAnnotatorApp {
 
         this.pendingEdit = null;
         this.draggingHandle = null;
+        this.splitMode = false;
         this.history = [];
         this.historyIndex = -1;
         this.lastSelectionAt = 0;
@@ -104,6 +105,7 @@ class ChordAnnotatorApp {
         document.getElementById('scaleMajorBtn').addEventListener('click', () => this.setScaleMode('major'));
         document.getElementById('scaleMinorBtn').addEventListener('click', () => this.setScaleMode('minor'));
         document.getElementById('lockChordsBtn').addEventListener('click', () => this.toggleChordsLock());
+        document.getElementById('splitModeBtn').addEventListener('click', () => this.toggleSplitMode());
         document.getElementById('timeTop').addEventListener('input', () => this.updateLyricsMetaPreview());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('input', () => this.updateLyricsMetaPreview());
@@ -116,15 +118,10 @@ class ChordAnnotatorApp {
         document.getElementById('lyricThemeDarkBtn').addEventListener('click', () => this.setLyricTheme('dark'));
 
         const lyricsContent = document.getElementById('lyricsContent');
-        lyricsContent.addEventListener('mouseup', (e) => this.handleTextSelection(e));
-        lyricsContent.addEventListener('touchend', (e) => this.handleTextSelection(e));
-        lyricsContent.addEventListener('click', (e) => {
-            const annotation = e.target.closest('.chord-annotation');
-            if (annotation) {
-                e.stopPropagation();
-                this.editAnnotation(annotation);
-            }
+        lyricsContent.addEventListener('mousedown', (e) => {
+            if (this.splitMode) e.preventDefault();
         });
+        lyricsContent.addEventListener('click', (e) => this.handleLyricsClick(e));
 
         document.getElementById('cancelChordBtn').addEventListener('click', () => this.closeChordModal());
         document.getElementById('saveChordBtn').addEventListener('click', () => this.saveChord());
@@ -245,6 +242,8 @@ class ChordAnnotatorApp {
             this.applyTextAlign();
         } else if (viewName === 'annotation') {
             document.getElementById('annotationView').classList.add('active');
+            this.setSplitMode(false);
+            this.ensureSplits();
             this.initHistory();
             this.renderAnnotationView();
         }
@@ -266,6 +265,7 @@ class ChordAnnotatorApp {
             tempo: '',
             lyricTheme: 'light',
             chordsLocked: false,
+            splits: [],
             createdAt: new Date().toISOString()
         };
 
@@ -359,13 +359,14 @@ class ChordAnnotatorApp {
     snapshotSongState() {
         return {
             annotations: JSON.parse(JSON.stringify(this.currentSong.annotations || [])),
+            splits: [...this.getSplits()],
             scale: this.currentSong.scale || ''
         };
     }
 
     historyEntry(entry) {
         if (Array.isArray(entry)) {
-            return { annotations: entry, scale: this.currentSong?.scale || '' };
+            return { annotations: entry, splits: this.getSplits(), scale: this.currentSong?.scale || '' };
         }
         return entry;
     }
@@ -373,11 +374,21 @@ class ChordAnnotatorApp {
     applySongState(state) {
         const entry = this.historyEntry(state);
         this.currentSong.annotations = JSON.parse(JSON.stringify(entry.annotations || []));
+        if (Array.isArray(entry.splits)) {
+            this.currentSong.splits = [...entry.splits];
+        }
         this.currentSong.scale = entry.scale || '';
+        this.normalizeSplits();
     }
 
     commitAnnotations(annotations) {
-        this.currentSong.annotations = annotations;
+        this.commitSongState({ annotations });
+    }
+
+    commitSongState(patch = {}) {
+        if (patch.annotations) this.currentSong.annotations = patch.annotations;
+        if (patch.splits) this.currentSong.splits = patch.splits;
+        this.normalizeSplits();
         this.history = this.history.slice(0, this.historyIndex + 1);
         this.history.push(this.snapshotSongState());
         this.historyIndex++;
@@ -646,9 +657,217 @@ class ChordAnnotatorApp {
         return result;
     }
 
+    getSplits() {
+        return Array.isArray(this.currentSong?.splits) ? this.currentSong.splits : [];
+    }
+
+    getSectionPoints() {
+        const length = this.currentSong?.lyrics?.length || 0;
+        const points = new Set([0, length]);
+        this.getSplits().forEach((offset) => points.add(this.clampOffset(offset)));
+        return Array.from(points).sort((a, b) => a - b);
+    }
+
+    collapseNearbyOffsets(offsets) {
+        const sorted = [...new Set(offsets.map((value) => this.clampOffset(value)))].sort((a, b) => a - b);
+        const collapsed = [];
+        sorted.forEach((offset) => {
+            if (!collapsed.length || offset - collapsed[collapsed.length - 1] > 1) {
+                collapsed.push(offset);
+            } else {
+                collapsed[collapsed.length - 1] = offset;
+            }
+        });
+        return collapsed;
+    }
+
+    deriveSplitsFromAnnotations() {
+        const length = this.currentSong?.lyrics?.length || 0;
+        const points = [];
+        (this.currentSong.annotations || []).forEach((annotation) => {
+            if (annotation.start > 0 && annotation.start < length) points.push(annotation.start);
+            if (annotation.end > 0 && annotation.end < length) points.push(annotation.end);
+        });
+        return this.collapseNearbyOffsets(points).filter((offset) => offset > 0 && offset < length);
+    }
+
+    ensureSplits() {
+        if (!this.currentSong) return;
+        if (!Array.isArray(this.currentSong.splits)) {
+            this.currentSong.splits = this.deriveSplitsFromAnnotations();
+            this.currentSong.annotations = this.snapAnnotationsToSections(this.currentSong.annotations);
+        }
+        this.normalizeSplits();
+    }
+
+    normalizeSplits() {
+        if (!this.currentSong) return;
+        const length = this.currentSong.lyrics?.length || 0;
+        this.currentSong.splits = this.collapseNearbyOffsets(this.getSplits())
+            .filter((offset) => offset > 0 && offset < length);
+    }
+
+    annotationForSection(start, end, annotations = this.getDisplayAnnotations()) {
+        const covering = annotations.filter((annotation) => annotation.start <= start && annotation.end >= end);
+        return covering.find((annotation) => annotation.pending) || covering[0] ||
+            annotations.find((annotation) => annotation.start === start) || null;
+    }
+
+    snapAnnotationsToSections(annotations = this.currentSong.annotations || []) {
+        const points = this.getSectionPoints();
+        const next = [];
+        for (let i = 0; i < points.length - 1; i += 1) {
+            const start = points[i];
+            const end = points[i + 1];
+            if (start >= end) continue;
+            const match = this.annotationForSection(start, end, annotations.map((annotation, index) => ({
+                ...annotation,
+                index,
+                pending: false
+            })));
+            if (match?.chord) {
+                next.push({ chord: match.chord, start, end });
+            }
+        }
+        return next;
+    }
+
+    toggleSplitMode() {
+        this.setSplitMode(!this.splitMode);
+    }
+
+    setSplitMode(enabled) {
+        this.splitMode = Boolean(enabled);
+        if (this.splitMode) this.closeChordModal();
+        const button = document.getElementById('splitModeBtn');
+        const display = document.getElementById('lyricsDisplay');
+        if (button) {
+            button.classList.toggle('active', this.splitMode);
+            button.setAttribute('aria-pressed', this.splitMode ? 'true' : 'false');
+            button.textContent = this.splitMode ? 'Stop split' : 'Split';
+        }
+        if (display) display.classList.toggle('is-splitting', this.splitMode);
+        window.getSelection()?.removeAllRanges();
+    }
+
+    handleLyricsClick(e) {
+        if (this.draggingHandle) return;
+        if (e.target.closest && e.target.closest('.sel-handle')) return;
+        if (this.splitMode) {
+            e.preventDefault();
+            this.handleSplitClick(e);
+            return;
+        }
+        const section = e.target.closest('.lyric-section');
+        if (!section) return;
+        e.stopPropagation();
+        this.openSectionChord(Number(section.dataset.start), Number(section.dataset.end));
+    }
+
+    handleSplitClick(e) {
+        const splitEl = e.target.closest('.lyric-split');
+        if (splitEl) {
+            this.removeSplitAt(Number(splitEl.dataset.offset));
+            return;
+        }
+        const nearby = this.nearestSplitOffsetFromPoint(e.clientX, e.clientY);
+        if (nearby != null) {
+            this.removeSplitAt(nearby);
+            return;
+        }
+        this.addSplitAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
+    }
+
+    nearestSplitOffsetFromPoint(x, y) {
+        const hits = [...document.querySelectorAll('#lyricsContent .lyric-split')];
+        let best = null;
+        let bestDistance = 12;
+        hits.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            const dx = x - (rect.left + rect.width / 2);
+            const dy = y - (rect.top + rect.height / 2);
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                best = Number(el.dataset.offset);
+            }
+        });
+        return Number.isFinite(best) ? best : null;
+    }
+
+    addSplitAt(offset) {
+        this.ensureSplits();
+        const length = this.currentSong.lyrics.length;
+        const point = this.clampOffset(offset);
+        if (point <= 0 || point >= length) return;
+        if (this.getSplits().some((split) => Math.abs(split - point) <= 1)) return;
+
+        const splits = this.collapseNearbyOffsets([...this.getSplits(), point]);
+        const annotations = this.snapAnnotationsToSections(
+            (this.currentSong.annotations || []).map((annotation) => {
+                if (annotation.start < point && point < annotation.end) {
+                    return { ...annotation, end: point };
+                }
+                return { ...annotation };
+            })
+        );
+        this.currentSong.splits = splits;
+        this.commitSongState({ annotations, splits });
+        this.renderAnnotationView();
+    }
+
+    removeSplitAt(offset) {
+        this.ensureSplits();
+        const point = this.clampOffset(offset);
+        const points = this.getSectionPoints();
+        const index = points.indexOf(point);
+        if (index <= 0 || index >= points.length - 1) return;
+
+        const start = points[index - 1];
+        const end = points[index + 1];
+        const indexed = (this.currentSong.annotations || []).map((annotation, i) => ({
+            ...annotation,
+            index: i,
+            pending: false
+        }));
+        const left = this.annotationForSection(start, point, indexed);
+        const right = this.annotationForSection(point, end, indexed);
+        const skip = new Set([left?.index, right?.index].filter((value) => Number.isInteger(value) && value >= 0));
+        const kept = (this.currentSong.annotations || []).filter((_, i) => !skip.has(i));
+        if (left?.chord || right?.chord) {
+            kept.push({ chord: left?.chord || right.chord, start, end });
+        }
+
+        const splits = this.getSplits().filter((split) => split !== point);
+        this.commitSongState({ annotations: this.snapAnnotationsToSections(kept), splits });
+        this.renderAnnotationView();
+    }
+
+    openSectionChord(start, end) {
+        if (this.ignoreAnnotationClick || this.draggingHandle) return;
+        const sectionStart = this.clampOffset(start);
+        const sectionEnd = this.clampOffset(end);
+        if (sectionStart >= sectionEnd) return;
+
+        const annotations = this.currentSong.annotations || [];
+        const match = this.annotationForSection(sectionStart, sectionEnd, annotations.map((annotation, index) => ({
+            ...annotation,
+            index,
+            pending: false
+        })));
+        this.openPendingEdit({
+            type: match ? 'update' : 'create',
+            index: match ? match.index : -1,
+            start: sectionStart,
+            end: sectionEnd,
+            chord: match?.chord || ''
+        });
+    }
+
     renderAnnotatedLyrics() {
         const content = document.getElementById('lyricsContent');
         const lyrics = this.currentSong.lyrics;
+        this.ensureSplits();
         const annotations = this.getDisplayAnnotations();
 
         if (!lyrics) {
@@ -656,40 +875,36 @@ class ChordAnnotatorApp {
             return;
         }
 
-        const points = new Set([0, lyrics.length]);
-        annotations.forEach(annotation => {
-            points.add(this.clampOffset(annotation.start));
-            points.add(this.clampOffset(annotation.end));
-        });
-        const sorted = Array.from(points).sort((a, b) => a - b);
-
+        const points = this.getSectionPoints();
         let html = '';
-        for (let i = 0; i < sorted.length - 1; i++) {
-            const start = sorted[i];
-            const end = sorted[i + 1];
+        for (let i = 0; i < points.length - 1; i += 1) {
+            const start = points[i];
+            const end = points[i + 1];
             if (start === end) continue;
 
-            const text = lyrics.substring(start, end);
-            const covering = annotations.filter(a => a.start <= start && a.end >= end);
-            const pending = covering.find(a => a.pending);
-            const annotation = pending || covering[0];
+            if (i > 0) {
+                html += `<span class="lyric-split" data-offset="${start}" aria-hidden="true"></span>`;
+            }
 
+            const text = lyrics.substring(start, end);
+            const annotation = this.annotationForSection(start, end, annotations);
+            const joinClass = this.joinClasses(lyrics, start, end, text);
             if (annotation) {
-                const isFirst = start === annotation.start;
                 const color = annotation.chord
                     ? this.getChordColor(annotation.chord)
                     : 'rgba(79, 70, 229, 0.18)';
                 const fill = annotation.chord ? this.getChordFill(annotation.chord) : color;
                 const pendingClass = annotation.pending ? ' pending' : '';
-                const joinClass = this.joinClasses(lyrics, start, end, text);
-                html += `<span class="chord-annotation${pendingClass}${joinClass}" data-index="${annotation.index}" style="background-color: ${fill}">`;
-                if (isFirst && annotation.chord) {
+                html += `<span class="lyric-section chord-annotation${pendingClass}${joinClass}" data-start="${start}" data-end="${end}" data-index="${annotation.index}" style="background-color: ${fill}">`;
+                if (annotation.chord && start === annotation.start) {
                     html += `<span class="chord-anchor"><span class="chord-label" dir="ltr" style="background-color: ${fill}">${this.escapeHtml(annotation.chord)}</span></span>`;
                 }
                 html += this.formatLyricHtml(text);
                 html += '</span>';
             } else {
+                html += `<span class="lyric-section${joinClass}" data-start="${start}" data-end="${end}" data-index="-1">`;
                 html += this.formatLyricHtml(text);
+                html += '</span>';
             }
         }
 
@@ -939,55 +1154,8 @@ class ChordAnnotatorApp {
         return null;
     }
 
-    handleTextSelection(e) {
-        if (this.draggingHandle) return;
-        if (e.target.closest && e.target.closest('.sel-handle')) return;
-
-        const run = () => {
-            const selection = window.getSelection();
-            if (!selection || selection.rangeCount === 0) return;
-
-            const selectedText = selection.toString();
-            if (!selectedText || !selectedText.trim()) return;
-
-            const content = document.getElementById('lyricsContent');
-            const range = selection.getRangeAt(0);
-            if (!content.contains(range.commonAncestorContainer) && range.commonAncestorContainer !== content) {
-                return;
-            }
-
-            const start = this.getLyricOffset(content, range.startContainer, range.startOffset);
-            const end = this.getLyricOffset(content, range.endContainer, range.endOffset);
-            const normalizedStart = Math.min(start, end);
-            const normalizedEnd = Math.max(start, end);
-
-            if (normalizedStart === normalizedEnd) return;
-            if (Date.now() - this.lastSelectionAt < 350 &&
-                this.pendingEdit &&
-                this.pendingEdit.start === normalizedStart &&
-                this.pendingEdit.end === normalizedEnd) {
-                return;
-            }
-
-            this.lastSelectionAt = Date.now();
-            this.ignoreAnnotationClick = true;
-            setTimeout(() => { this.ignoreAnnotationClick = false; }, 300);
-
-            selection.removeAllRanges();
-            this.openPendingEdit({
-                type: 'create',
-                index: -1,
-                start: normalizedStart,
-                end: normalizedEnd,
-                chord: ''
-            });
-        };
-
-        if (e.type === 'touchend') {
-            setTimeout(run, 20);
-        } else {
-            run();
-        }
+    handleTextSelection() {
+        return;
     }
 
     openPendingEdit(pending) {
@@ -1057,44 +1225,8 @@ class ChordAnnotatorApp {
     positionHandles() {
         const startHandle = document.getElementById('startHandle');
         const endHandle = document.getElementById('endHandle');
-        const display = document.getElementById('lyricsDisplay');
-
-        if (!this.pendingEdit || this.currentView !== 'annotation') {
-            startHandle.hidden = true;
-            endHandle.hidden = true;
-            return;
-        }
-
-        const range = this.getRangeForOffsets(this.pendingEdit.start, this.pendingEdit.end);
-        if (!range) {
-            startHandle.hidden = true;
-            endHandle.hidden = true;
-            return;
-        }
-
-        const rects = Array.from(range.getClientRects()).filter(rect => rect.width || rect.height);
-        if (!rects.length) {
-            startHandle.hidden = true;
-            endHandle.hidden = true;
-            return;
-        }
-
-        const displayRect = display.getBoundingClientRect();
-        const isRtl = display.classList.contains('rtl');
-        const first = rects[0];
-        const last = rects[rects.length - 1];
-
-        const startX = isRtl ? first.right : first.left;
-        const startY = first.top;
-        const endX = isRtl ? last.left : last.right;
-        const endY = last.bottom;
-
-        startHandle.hidden = false;
-        endHandle.hidden = false;
-        startHandle.style.left = `${startX - displayRect.left + display.scrollLeft}px`;
-        startHandle.style.top = `${startY - displayRect.top + display.scrollTop}px`;
-        endHandle.style.left = `${endX - displayRect.left + display.scrollLeft}px`;
-        endHandle.style.top = `${endY - displayRect.top + display.scrollTop}px`;
+        if (startHandle) startHandle.hidden = true;
+        if (endHandle) endHandle.hidden = true;
     }
 
     closeChordModal() {
@@ -1141,6 +1273,7 @@ class ChordAnnotatorApp {
         }
 
         next = this.resolveOverlaps(next, this.pendingEdit.type === 'update' ? this.pendingEdit.index : next.length - 1);
+        next = this.snapAnnotationsToSections(next);
 
         this.commitAnnotations(next);
         this.closeChordModal();

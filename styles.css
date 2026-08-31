@@ -759,6 +759,28 @@ body {
     box-shadow: 0 1px 2px var(--shadow);
 }
 
+.split-mode-btn {
+    height: 32px;
+    min-height: 32px;
+    width: 100%;
+    padding: 0 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.split-mode-btn.active {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
 .annotation-tools select,
 .time-signature input,
 .song-tempo input {
@@ -991,6 +1013,51 @@ body {
 
 .chord-annotation:hover {
     filter: brightness(0.95);
+}
+
+.lyric-section {
+    cursor: pointer;
+}
+
+.lyrics-display.is-splitting .lyric-section {
+    cursor: inherit;
+}
+
+.lyrics-display.is-splitting .lyrics-content {
+    cursor: col-resize;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.lyric-split {
+    display: inline-block;
+    position: relative;
+    width: 0;
+    height: 1.35em;
+    vertical-align: -0.2em;
+    border-inline-start: 2px solid var(--primary);
+    pointer-events: none;
+}
+
+.lyric-split::after {
+    content: '';
+    position: absolute;
+    inset-block: -0.2em;
+    inset-inline-start: -10px;
+    width: 20px;
+}
+
+.lyrics-display.is-splitting .lyric-split {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.lyrics-display.is-export .lyric-split {
+    display: none;
+}
+
+.lyrics-display.theme-dark .lyric-split {
+    border-inline-start-color: #fff;
 }
 
 .chord-anchor {
