@@ -11,6 +11,9 @@ class ChordAnnotatorApp {
         this.pendingEdit = null;
         this.draggingHandle = null;
         this.splitMode = false;
+        this.eraseMode = false;
+        this.draggingSplit = null;
+        this.ignoreSplitClick = false;
         this.history = [];
         this.historyIndex = -1;
         this.lastSelectionAt = 0;
@@ -106,6 +109,7 @@ class ChordAnnotatorApp {
         document.getElementById('scaleMinorBtn').addEventListener('click', () => this.setScaleMode('minor'));
         document.getElementById('lockChordsBtn').addEventListener('click', () => this.toggleChordsLock());
         document.getElementById('splitModeBtn').addEventListener('click', () => this.toggleSplitMode());
+        document.getElementById('eraseSplitsBtn').addEventListener('click', () => this.toggleEraseMode());
         document.getElementById('timeTop').addEventListener('input', () => this.updateLyricsMetaPreview());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('input', () => this.updateLyricsMetaPreview());
@@ -119,9 +123,13 @@ class ChordAnnotatorApp {
 
         const lyricsContent = document.getElementById('lyricsContent');
         lyricsContent.addEventListener('mousedown', (e) => {
-            if (this.splitMode) e.preventDefault();
+            if (this.splitMode || this.eraseMode || e.target.closest('.lyric-split')) e.preventDefault();
         });
+        lyricsContent.addEventListener('pointerdown', (e) => this.handleSplitPointerDown(e));
         lyricsContent.addEventListener('click', (e) => this.handleLyricsClick(e));
+        document.addEventListener('pointermove', (e) => this.handleSplitPointerMove(e));
+        document.addEventListener('pointerup', (e) => this.handleSplitPointerUp(e));
+        document.addEventListener('pointercancel', (e) => this.handleSplitPointerUp(e));
 
         document.getElementById('cancelChordBtn').addEventListener('click', () => this.closeChordModal());
         document.getElementById('saveChordBtn').addEventListener('click', () => this.saveChord());
@@ -243,6 +251,7 @@ class ChordAnnotatorApp {
         } else if (viewName === 'annotation') {
             document.getElementById('annotationView').classList.add('active');
             this.setSplitMode(false);
+            this.setEraseMode(false);
             this.ensureSplits();
             this.initHistory();
             this.renderAnnotationView();
@@ -736,28 +745,64 @@ class ChordAnnotatorApp {
         this.setSplitMode(!this.splitMode);
     }
 
+    toggleEraseMode() {
+        this.setEraseMode(!this.eraseMode);
+    }
+
     setSplitMode(enabled) {
         this.splitMode = Boolean(enabled);
-        if (this.splitMode) this.closeChordModal();
-        const button = document.getElementById('splitModeBtn');
-        const display = document.getElementById('lyricsDisplay');
-        if (button) {
-            button.classList.toggle('active', this.splitMode);
-            button.setAttribute('aria-pressed', this.splitMode ? 'true' : 'false');
-            button.textContent = this.splitMode ? 'Stop split' : 'Split';
+        if (this.splitMode) {
+            this.eraseMode = false;
+            this.closeChordModal();
         }
-        if (display) display.classList.toggle('is-splitting', this.splitMode);
+        this.updateSplitToolButtons();
         window.getSelection()?.removeAllRanges();
     }
 
+    setEraseMode(enabled) {
+        this.eraseMode = Boolean(enabled);
+        if (this.eraseMode) {
+            this.splitMode = false;
+            this.closeChordModal();
+        }
+        this.updateSplitToolButtons();
+        window.getSelection()?.removeAllRanges();
+    }
+
+    updateSplitToolButtons() {
+        const splitBtn = document.getElementById('splitModeBtn');
+        const eraseBtn = document.getElementById('eraseSplitsBtn');
+        const display = document.getElementById('lyricsDisplay');
+        if (splitBtn) {
+            splitBtn.classList.toggle('active', this.splitMode);
+            splitBtn.setAttribute('aria-pressed', this.splitMode ? 'true' : 'false');
+            splitBtn.textContent = this.splitMode ? 'Stop split' : 'Split';
+        }
+        if (eraseBtn) {
+            eraseBtn.classList.toggle('active', this.eraseMode);
+            eraseBtn.setAttribute('aria-pressed', this.eraseMode ? 'true' : 'false');
+            eraseBtn.textContent = this.eraseMode ? 'Stop erase' : 'Erase';
+        }
+        if (display) {
+            display.classList.toggle('is-splitting', this.splitMode);
+            display.classList.toggle('is-erasing', this.eraseMode);
+        }
+    }
+
     handleLyricsClick(e) {
-        if (this.draggingHandle) return;
+        if (this.draggingHandle || this.draggingSplit || this.ignoreSplitClick) return;
         if (e.target.closest && e.target.closest('.sel-handle')) return;
+        if (this.eraseMode) {
+            e.preventDefault();
+            this.handleEraseClick(e);
+            return;
+        }
         if (this.splitMode) {
             e.preventDefault();
             this.handleSplitClick(e);
             return;
         }
+        if (e.target.closest('.lyric-split')) return;
         const section = e.target.closest('.lyric-section');
         if (!section) return;
         e.stopPropagation();
@@ -765,17 +810,128 @@ class ChordAnnotatorApp {
     }
 
     handleSplitClick(e) {
+        if (e.target.closest('.lyric-split')) return;
+        const nearby = this.nearestSplitOffsetFromPoint(e.clientX, e.clientY);
+        if (nearby != null) return;
+        this.addSplitAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
+    }
+
+    handleEraseClick(e) {
         const splitEl = e.target.closest('.lyric-split');
         if (splitEl) {
             this.removeSplitAt(Number(splitEl.dataset.offset));
             return;
         }
         const nearby = this.nearestSplitOffsetFromPoint(e.clientX, e.clientY);
-        if (nearby != null) {
-            this.removeSplitAt(nearby);
+        if (nearby != null) this.removeSplitAt(nearby);
+    }
+
+    handleSplitPointerDown(e) {
+        if (this.eraseMode || e.button) return;
+        const splitEl = e.target.closest('.lyric-split');
+        if (!splitEl) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const from = Number(splitEl.dataset.offset);
+        this.draggingSplit = {
+            from,
+            to: from,
+            moved: false,
+            startX: e.clientX,
+            startY: e.clientY,
+            originalSplits: [...this.getSplits()],
+            originalAnnotations: JSON.parse(JSON.stringify(this.currentSong.annotations || []))
+        };
+        splitEl.classList.add('dragging');
+        document.getElementById('lyricsDisplay')?.classList.add('dragging');
+        if (splitEl.setPointerCapture && e.pointerId != null) {
+            splitEl.setPointerCapture(e.pointerId);
+        }
+    }
+
+    handleSplitPointerMove(e) {
+        if (!this.draggingSplit) return;
+        e.preventDefault();
+        const dx = e.clientX - this.draggingSplit.startX;
+        const dy = e.clientY - this.draggingSplit.startY;
+        if (!this.draggingSplit.moved && (dx * dx + dy * dy) < 16) return;
+        this.draggingSplit.moved = true;
+        const next = this.constrainSplitMove(
+            this.draggingSplit.from,
+            this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)),
+            this.draggingSplit.originalSplits
+        );
+        if (next === this.draggingSplit.to) return;
+        this.draggingSplit.to = next;
+        this.applySplitMove(this.draggingSplit.from, next, this.draggingSplit.originalSplits, this.draggingSplit.originalAnnotations, false);
+    }
+
+    handleSplitPointerUp(e) {
+        if (!this.draggingSplit) return;
+        const drag = this.draggingSplit;
+        this.draggingSplit = null;
+        document.getElementById('lyricsDisplay')?.classList.remove('dragging');
+        document.querySelectorAll('.lyric-split.dragging').forEach((el) => el.classList.remove('dragging'));
+
+        this.currentSong.splits = [...drag.originalSplits];
+        this.currentSong.annotations = JSON.parse(JSON.stringify(drag.originalAnnotations));
+
+        if (drag.moved && drag.to != null && drag.to !== drag.from) {
+            this.ignoreSplitClick = true;
+            setTimeout(() => { this.ignoreSplitClick = false; }, 300);
+            this.applySplitMove(drag.from, drag.to, drag.originalSplits, drag.originalAnnotations, true);
             return;
         }
-        this.addSplitAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
+
+        this.normalizeSplits();
+        this.renderAnnotatedLyrics();
+    }
+
+    constrainSplitMove(from, offset, splits = this.getSplits()) {
+        const length = this.currentSong?.lyrics?.length || 0;
+        const points = [0, ...this.collapseNearbyOffsets(splits), length];
+        const index = points.indexOf(from);
+        if (index <= 0 || index >= points.length - 1) return from;
+        const prev = points[index - 1];
+        const next = points[index + 1];
+        return Math.max(prev + 1, Math.min(next - 1, this.clampOffset(offset)));
+    }
+
+    applySplitMove(from, to, originalSplits, originalAnnotations, commit) {
+        const point = this.constrainSplitMove(from, to, originalSplits);
+        const length = this.currentSong.lyrics.length;
+        const points = [0, ...this.collapseNearbyOffsets(originalSplits), length];
+        const index = points.indexOf(from);
+        if (index <= 0 || index >= points.length - 1) return;
+
+        const start = points[index - 1];
+        const end = points[index + 1];
+        const indexed = originalAnnotations.map((annotation, i) => ({
+            ...annotation,
+            index: i,
+            pending: false
+        }));
+        const left = this.annotationForSection(start, from, indexed);
+        const right = this.annotationForSection(from, end, indexed);
+        const skip = new Set([left?.index, right?.index].filter((value) => Number.isInteger(value) && value >= 0));
+        const kept = originalAnnotations.filter((_, i) => !skip.has(i));
+        if (left?.chord) kept.push({ chord: left.chord, start, end: point });
+        if (right?.chord) kept.push({ chord: right.chord, start: point, end });
+
+        const splits = this.collapseNearbyOffsets([
+            ...originalSplits.filter((split) => split !== from),
+            point
+        ]).filter((offset) => offset > 0 && offset < length);
+
+        if (commit) {
+            this.commitSongState({ annotations: this.snapAnnotationsToSections(kept), splits });
+            this.renderAnnotationView();
+            return;
+        }
+
+        this.currentSong.splits = splits;
+        this.currentSong.annotations = this.snapAnnotationsToSections(kept);
+        this.renderAnnotatedLyrics();
     }
 
     nearestSplitOffsetFromPoint(x, y) {

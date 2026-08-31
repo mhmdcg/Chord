@@ -781,6 +781,28 @@ body {
     border-color: var(--primary);
 }
 
+.erase-splits-btn {
+    height: 32px;
+    min-height: 32px;
+    width: 100%;
+    padding: 0 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.erase-splits-btn.active {
+    background: #C5A45A;
+    color: #fff;
+    border-color: #C5A45A;
+}
+
 .annotation-tools select,
 .time-signature input,
 .song-tempo input {
@@ -1029,14 +1051,22 @@ body {
     -webkit-user-select: none;
 }
 
+.lyrics-display.is-erasing .lyrics-content {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 .lyric-split {
     display: inline-block;
     position: relative;
     width: 0;
     height: 1.35em;
     vertical-align: -0.2em;
-    border-inline-start: 2px solid var(--primary);
-    pointer-events: none;
+    border-inline-start: 2px solid #C5A45A;
+    pointer-events: auto;
+    cursor: col-resize;
+    touch-action: none;
 }
 
 .lyric-split::after {
@@ -1047,17 +1077,21 @@ body {
     width: 20px;
 }
 
-.lyrics-display.is-splitting .lyric-split {
-    pointer-events: auto;
+.lyric-split.dragging {
+    border-inline-start-width: 3px;
+}
+
+.lyrics-display.is-erasing .lyric-split {
     cursor: pointer;
 }
 
 .lyrics-display.is-export .lyric-split {
     display: none;
+    pointer-events: none;
 }
 
 .lyrics-display.theme-dark .lyric-split {
-    border-inline-start-color: #fff;
+    border-inline-start-color: #C5A45A;
 }
 
 .chord-anchor {

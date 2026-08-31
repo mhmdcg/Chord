@@ -103,7 +103,7 @@
                     <button id="backToEditorBtn" class="btn btn-secondary">← Back</button>
                     <div class="header-center">
                         <h2 id="annotationTitle">Add Chords</h2>
-                        <p class="header-guide">Turn on Split and tap the lyrics to place section lines. Turn it off, then tap a section to add a chord.</p>
+                        <p class="header-guide">Use Split to add lines, Erase to delete them, or drag a line to move it. Then tap a section to add a chord.</p>
                     </div>
                     <button id="doneAnnotatingBtn" class="btn btn-primary">Done</button>
                 </div>
@@ -145,6 +145,7 @@
                             </div>
                             <button type="button" id="lockChordsBtn" class="lock-chords-btn" aria-pressed="false">Lock chords</button>
                             <button type="button" id="splitModeBtn" class="split-mode-btn" aria-pressed="false">Split</button>
+                            <button type="button" id="eraseSplitsBtn" class="erase-splits-btn" aria-pressed="false">Erase</button>
                         </div>
                         <span class="time-signature">
                             <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beats per bar" />
