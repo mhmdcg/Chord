@@ -816,7 +816,8 @@ body {
 
 .annotation-tools select,
 .time-signature input,
-.song-tempo input {
+.song-tempo input,
+.video-length input {
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--text);
@@ -863,6 +864,31 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+}
+
+.video-length {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.video-length input {
+    width: 3.2rem;
+    text-align: center;
+    padding-inline: 0.2rem;
+    -moz-appearance: textfield;
+}
+
+.video-length input::-webkit-outer-spin-button,
+.video-length input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.video-length-unit {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text);
 }
 
 .tempo-sign {
@@ -948,7 +974,7 @@ body {
 }
 
 .lyrics-display.theme-dark .chord-label {
-    color: var(--text);
+    color: #fff;
 }
 
 .melody-break {
@@ -1122,6 +1148,10 @@ body {
 .lyrics-display.is-export .lyric-split {
     display: none !important;
     pointer-events: none;
+}
+
+.lyrics-display.is-export .chord-label {
+    font-weight: 700;
 }
 
 .lyrics-display.theme-dark .lyric-split {
@@ -1494,7 +1524,8 @@ body {
     }
 
     .annotation-tools .time-signature,
-    .annotation-tools .song-tempo {
+    .annotation-tools .song-tempo,
+    .annotation-tools .video-length {
         width: auto;
         flex: 1 1 auto;
     }

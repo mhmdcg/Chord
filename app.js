@@ -38,6 +38,7 @@ class ChordAnnotatorApp {
             '#7C3AED'
         ];
         this.highlightAlpha = { light: 0.1, dark: 0.14 };
+        this.exportFillBoost = false;
 
         this.rootLetters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.chordQualities = [
@@ -119,6 +120,7 @@ class ChordAnnotatorApp {
         document.getElementById('deleteAllChordsBtn').addEventListener('click', () => this.deleteAllChords());
         document.getElementById('exportLyricsBtn').addEventListener('click', () => this.exportLyricsImage());
         document.getElementById('exportLyricsVideoBtn').addEventListener('click', () => this.exportLyricsVideo());
+        document.getElementById('videoLength').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('lyricThemeLightBtn').addEventListener('click', () => this.setLyricTheme('light'));
         document.getElementById('lyricThemeDarkBtn').addEventListener('click', () => this.setLyricTheme('dark'));
 
@@ -283,6 +285,7 @@ class ChordAnnotatorApp {
             lyricTheme: 'light',
             chordsLocked: false,
             splits: [],
+            videoSeconds: 60,
             createdAt: new Date().toISOString()
         };
 
@@ -554,6 +557,7 @@ class ChordAnnotatorApp {
         document.getElementById('timeTop').value = this.currentSong.timeTop || 4;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom || 4;
         document.getElementById('songTempo').value = this.currentSong.tempo || '';
+        document.getElementById('videoLength').value = this.getVideoLengthSeconds();
         this.updateScaleModeButton();
         this.updateLockChordsButton();
         this.updateLyricsMetaPreview();
@@ -600,9 +604,11 @@ class ChordAnnotatorApp {
         this.currentSong.timeBottom = Number.isFinite(bottom) && bottom > 0 ? bottom : 4;
         const tempo = parseInt(document.getElementById('songTempo').value, 10);
         this.currentSong.tempo = Number.isFinite(tempo) && tempo > 0 ? tempo : '';
+        this.currentSong.videoSeconds = this.getVideoLengthSeconds();
         document.getElementById('timeTop').value = this.currentSong.timeTop;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom;
         document.getElementById('songTempo').value = this.currentSong.tempo;
+        document.getElementById('videoLength').value = this.currentSong.videoSeconds;
         this.updateLyricsMetaPreview();
         this.persistCurrentSong();
     }
@@ -1145,7 +1151,10 @@ class ChordAnnotatorApp {
 
             const fillColor = annotation.chord
                 ? this.getChordFill(annotation.chord)
-                : 'rgba(79, 70, 229, 0.18)';
+                : this.getPendingFill();
+            const labelColor = annotation.chord
+                ? this.getChordFill(annotation.chord, 'label')
+                : fillColor;
             const range = this.getRangeForOffsets(start, end);
             const caret = this.getCaretRectForOffset(content, start);
             const textHeight = caret?.height || 22;
@@ -1172,7 +1181,7 @@ class ChordAnnotatorApp {
                 label.dataset.start = String(start);
                 label.dataset.end = String(end);
                 label.textContent = annotation.chord;
-                label.style.backgroundColor = fillColor;
+                label.style.backgroundColor = labelColor;
                 label.style.left = `${caret.left - contentRect.left}px`;
                 label.style.top = `${caret.top - contentRect.top}px`;
                 label.style.transform = rtl
@@ -1966,7 +1975,9 @@ class ChordAnnotatorApp {
     setExportButtonsBusy(busy, videoLabel) {
         const imageBtn = document.getElementById('exportLyricsBtn');
         const videoBtn = document.getElementById('exportLyricsVideoBtn');
+        const videoLength = document.getElementById('videoLength');
         if (imageBtn) imageBtn.disabled = busy;
+        if (videoLength) videoLength.disabled = busy;
         if (videoBtn) {
             videoBtn.disabled = busy;
             if (busy && videoLabel) videoBtn.textContent = videoLabel;
@@ -1975,14 +1986,26 @@ class ChordAnnotatorApp {
     }
 
     lyricVideoSpec() {
+        const seconds = this.getVideoLengthSeconds();
+        const durationMs = seconds * 1000;
+        const hold = Math.min(2500, Math.max(400, Math.round(durationMs * 0.042)));
         return {
             width: 1080,
             height: 1920,
             fps: 30,
-            durationMs: 60_000,
-            holdStartMs: 2_500,
-            holdEndMs: 2_500
+            durationMs,
+            holdStartMs: hold,
+            holdEndMs: hold
         };
+    }
+
+    getVideoLengthSeconds() {
+        const raw = parseInt(document.getElementById('videoLength')?.value, 10);
+        const fallback = parseInt(this.currentSong?.videoSeconds, 10);
+        const seconds = Number.isFinite(raw)
+            ? raw
+            : (Number.isFinite(fallback) ? fallback : 60);
+        return Math.min(180, Math.max(3, seconds));
     }
 
     pickVideoMimeType() {
@@ -2085,9 +2108,9 @@ class ChordAnnotatorApp {
         }
         if (typeof Mp4Muxer === 'undefined') return null;
         const codecs = [
-            'avc1.420028',
             'avc1.4D4028',
             'avc1.640028',
+            'avc1.420028',
             'avc1.4D001F',
             'avc1.42001E'
         ];
@@ -2096,7 +2119,7 @@ class ChordAnnotatorApp {
                 codec,
                 width,
                 height,
-                bitrate: 8_000_000,
+                bitrate: 12_000_000,
                 framerate: 30,
                 avc: { format: 'avc' }
             };
@@ -2121,7 +2144,7 @@ class ChordAnnotatorApp {
         canvas.width = spec.width;
         canvas.height = spec.height;
         const ctx = canvas.getContext('2d', { alpha: false });
-        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingEnabled = source.width !== spec.width;
         if ('imageSmoothingQuality' in ctx) ctx.imageSmoothingQuality = 'high';
         const background = isDark ? '#000000' : '#ffffff';
 
@@ -2167,6 +2190,11 @@ class ChordAnnotatorApp {
             return;
         }
 
+        const seconds = this.getVideoLengthSeconds();
+        const lengthInput = document.getElementById('videoLength');
+        if (lengthInput) lengthInput.value = seconds;
+        if (this.currentSong) this.currentSong.videoSeconds = seconds;
+
         this.setExportButtonsBusy(true, 'Exporting video…');
         const previousLabel = button.textContent;
 
@@ -2175,7 +2203,7 @@ class ChordAnnotatorApp {
                 await document.fonts.ready;
             }
             const isDark = card.classList.contains('theme-dark');
-            const source = await this.captureLyricsCanvas(card);
+            const source = await this.captureLyricsCanvas(card, { targetWidth: 1080, boostFills: true });
             let blob;
             if (encoderConfig) {
                 blob = await this.encodeLyricScrollMp4(source, {
@@ -2377,7 +2405,7 @@ class ChordAnnotatorApp {
         return new Blob(chunks, { type });
     }
 
-    async captureLyricsCanvas(card) {
+    async captureLyricsCanvas(card, { targetWidth = null, boostFills = false } = {}) {
         const width = card.offsetWidth || 540;
         const isDark = card.classList.contains('theme-dark');
         const hiddenHandles = [];
@@ -2389,17 +2417,22 @@ class ChordAnnotatorApp {
         });
         const previousOverflow = card.style.overflow;
         const previousHeight = card.style.height;
+        const previousBoost = this.exportFillBoost;
         card.style.overflow = 'hidden';
         card.style.height = `${Math.max(card.scrollHeight, card.offsetHeight)}px`;
         card.classList.add('is-export');
+        this.exportFillBoost = Boolean(boostFills);
         this.positionLyricOverlays();
         await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
         this.positionLyricOverlays();
 
         try {
+            const pixelRatio = targetWidth
+                ? targetWidth / width
+                : Math.min(3, Math.max(2, 1080 / width));
             return await htmlToImage.toCanvas(card, {
                 backgroundColor: isDark ? '#000000' : '#ffffff',
-                pixelRatio: Math.min(3, Math.max(2, 1080 / width)),
+                pixelRatio,
                 cacheBust: true,
                 width: card.offsetWidth || width,
                 height: card.offsetHeight,
@@ -2409,6 +2442,7 @@ class ChordAnnotatorApp {
                 ))
             });
         } finally {
+            this.exportFillBoost = previousBoost;
             card.classList.remove('is-export');
             card.style.overflow = previousOverflow;
             card.style.height = previousHeight;
@@ -2455,9 +2489,23 @@ class ChordAnnotatorApp {
         return this.pickDistinctColor(Object.values(map));
     }
 
-    getChordFill(chord) {
+    getChordFill(chord, role = 'highlight') {
         const theme = this.getLyricTheme();
-        return this.withAlpha(this.getChordColor(chord), this.highlightAlpha[theme]);
+        let alpha = this.highlightAlpha[theme];
+        if (this.exportFillBoost) {
+            alpha = role === 'label'
+                ? (theme === 'dark' ? 0.92 : 0.86)
+                : (theme === 'dark' ? 0.42 : 0.34);
+        }
+        return this.withAlpha(this.getChordColor(chord), alpha);
+    }
+
+    getPendingFill() {
+        const theme = this.getLyricTheme();
+        if (this.exportFillBoost) {
+            return theme === 'dark' ? 'rgba(79, 70, 229, 0.42)' : 'rgba(79, 70, 229, 0.34)';
+        }
+        return 'rgba(79, 70, 229, 0.18)';
     }
 
     getSongChordList(song = this.currentSong) {
