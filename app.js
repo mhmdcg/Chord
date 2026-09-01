@@ -2107,68 +2107,106 @@ class ChordAnnotatorApp {
         }
         if (typeof Mp4Muxer === 'undefined') return null;
         const codecs = [
+            'avc1.420028',
             'avc1.4D4028',
             'avc1.640028',
-            'avc1.420028',
             'avc1.4D001F',
             'avc1.42001E'
         ];
-        for (const codec of codecs) {
-            const config = {
-                codec,
-                width,
-                height,
-                bitrate: 12_000_000,
-                framerate: 30,
-                avc: { format: 'avc' }
-            };
-            try {
-                const support = await VideoEncoder.isConfigSupported(config);
-                if (support?.supported) {
-                    const resolved = support.config || config;
-                    return { ...resolved, avc: { format: 'avc' } };
+        const extras = [
+            {
+                hardwareAcceleration: 'prefer-software',
+                latencyMode: 'quality',
+                bitrateMode: 'constant',
+                colorSpace: {
+                    primaries: 'bt709',
+                    transfer: 'iec61966-2-1',
+                    matrix: 'rgb',
+                    fullRange: true
                 }
-            } catch {
-                // Try the next Instagram-safe H.264 profile.
+            },
+            {
+                hardwareAcceleration: 'prefer-software',
+                latencyMode: 'quality',
+                colorSpace: { primaries: 'bt709', transfer: 'bt709', matrix: 'bt709', fullRange: true }
+            },
+            { hardwareAcceleration: 'prefer-software', latencyMode: 'quality' },
+            { latencyMode: 'quality' },
+            {}
+        ];
+        for (const codec of codecs) {
+            for (const extra of extras) {
+                const config = {
+                    codec,
+                    width,
+                    height,
+                    bitrate: 16_000_000,
+                    framerate: 30,
+                    avc: { format: 'avc' },
+                    ...extra
+                };
+                try {
+                    const support = await VideoEncoder.isConfigSupported(config);
+                    if (support?.supported) {
+                        const resolved = support.config || config;
+                        return { ...resolved, avc: { format: 'avc' } };
+                    }
+                } catch {
+                    // Try the next encoder setup.
+                }
             }
         }
         return null;
     }
 
-    createLyricVideoFrame(source, isDark) {
+    prepareLyricVideoSource(source, isDark) {
         const spec = this.lyricVideoSpec();
-        const srcViewH = source.width * (spec.height / spec.width);
+        const width = spec.width;
+        const height = Math.max(spec.height, Math.round(source.height * (width / source.width)));
+        const fitted = document.createElement('canvas');
+        fitted.width = width;
+        fitted.height = height;
+        const ctx = fitted.getContext('2d', { alpha: false, colorSpace: 'srgb' })
+            || fitted.getContext('2d', { alpha: false });
+        ctx.imageSmoothingEnabled = false;
+        ctx.fillStyle = isDark ? '#000000' : '#ffffff';
+        ctx.fillRect(0, 0, width, height);
+        ctx.drawImage(source, 0, 0, width, height);
+        return fitted;
+    }
+
+    createLyricVideoFrame(rawSource, isDark) {
+        const spec = this.lyricVideoSpec();
+        const source = this.prepareLyricVideoSource(rawSource, isDark);
+        const srcViewH = Math.min(source.height, Math.round(source.width * spec.height / spec.width));
         const maxY = Math.max(0, source.height - srcViewH);
         const canvas = document.createElement('canvas');
         canvas.width = spec.width;
         canvas.height = spec.height;
-        const ctx = canvas.getContext('2d', { alpha: false });
-        ctx.imageSmoothingEnabled = source.width !== spec.width;
-        if ('imageSmoothingQuality' in ctx) ctx.imageSmoothingQuality = 'high';
+        const ctx = canvas.getContext('2d', { alpha: false, colorSpace: 'srgb' })
+            || canvas.getContext('2d', { alpha: false });
+        ctx.imageSmoothingEnabled = false;
         const background = isDark ? '#000000' : '#ffffff';
 
         const drawAt = (y) => {
-            const srcY = Math.max(0, Math.min(maxY, y));
-            const sliceH = Math.min(srcViewH, source.height - srcY);
+            const srcY = Math.max(0, Math.min(maxY, Math.round(y)));
             ctx.fillStyle = background;
             ctx.fillRect(0, 0, spec.width, spec.height);
-            if (sliceH > 0) {
-                ctx.drawImage(
-                    source,
-                    0, srcY, source.width, sliceH,
-                    0, 0, spec.width, spec.height * (sliceH / srcViewH)
-                );
-            }
+            ctx.drawImage(
+                source,
+                0, srcY, source.width, srcViewH,
+                0, 0, spec.width, spec.height
+            );
         };
 
         const yAtTime = (elapsedMs) => {
             const scrollMs = spec.durationMs - spec.holdStartMs - spec.holdEndMs;
             if (elapsedMs <= spec.holdStartMs || maxY <= 1) return 0;
             if (elapsedMs >= spec.holdStartMs + scrollMs) return maxY;
-            return ((elapsedMs - spec.holdStartMs) / scrollMs) * maxY;
+            return Math.round(((elapsedMs - spec.holdStartMs) / scrollMs) * maxY);
         };
 
-        return { canvas, drawAt, yAtTime, spec };
+        return { canvas, ctx, drawAt, yAtTime, spec };
     }
 
     async exportLyricsVideo() {
@@ -2228,7 +2266,7 @@ class ChordAnnotatorApp {
     }
 
     async encodeLyricScrollMp4(source, { isDark, encoderConfig, onProgress }) {
-        const { canvas, drawAt, yAtTime, spec } = this.createLyricVideoFrame(source, isDark);
+        const { canvas, ctx, drawAt, yAtTime, spec } = this.createLyricVideoFrame(source, isDark);
         const totalFrames = Math.round(spec.durationMs / 1000 * spec.fps);
         const frameDuration = 1e6 / spec.fps;
         const audioConfig = await this.pickAacEncoderConfig();
@@ -2305,11 +2343,22 @@ class ChordAnnotatorApp {
             for (let i = 0; i < totalFrames; i++) {
                 if (encoderError) throw encoderError;
                 drawAt(yAtTime((i / spec.fps) * 1000));
-                const frame = new VideoFrame(canvas, {
-                    timestamp: i * frameDuration,
-                    duration: frameDuration
-                });
-                encoder.encode(frame, { keyFrame: i % spec.fps === 0 });
+                let frame;
+                try {
+                    const imageData = ctx.getImageData(0, 0, spec.width, spec.height);
+                    frame = new VideoFrame(imageData, {
+                        timestamp: i * frameDuration,
+                        duration: frameDuration,
+                        alpha: 'discard'
+                    });
+                } catch {
+                    frame = new VideoFrame(canvas, {
+                        timestamp: i * frameDuration,
+                        duration: frameDuration,
+                        alpha: 'discard'
+                    });
+                }
+                encoder.encode(frame, { keyFrame: i === 0 });
                 frame.close();
                 await waitForQueue(encoder);
                 if (i % spec.fps === 0 || i === totalFrames - 1) {
