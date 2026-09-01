@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T09:43:40.453Z",
+  "updatedAt": "2026-09-01T11:12:38.210Z",
   "songs": [
     {
       "title": "خیال",
@@ -256,7 +256,8 @@
       "recentChords": [
         "Db",
         "B"
-      ]
+      ],
+      "videoSeconds": 30
     },
     {
       "title": "بهانه",
