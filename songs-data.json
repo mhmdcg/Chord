@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T14:07:00.262Z",
+  "updatedAt": "2026-09-01T14:07:27.798Z",
   "songs": [
     {
       "title": "خیال",
@@ -215,6 +215,11 @@
           "chord": "Ebm",
           "start": 491,
           "end": 502
+        },
+        {
+          "chord": "Bbm",
+          "start": 502,
+          "end": 514
         }
       ],
       "textAlign": "right",
@@ -278,10 +283,10 @@
         578
       ],
       "recentChords": [
+        "Bbm",
         "Ebm",
         "B",
-        "Db",
-        "Bbm"
+        "Db"
       ],
       "videoSeconds": 180
     },
