@@ -1987,14 +1987,14 @@ class ChordAnnotatorApp {
     lyricVideoSpec() {
         const seconds = this.getVideoLengthSeconds();
         const durationMs = seconds * 1000;
-        const hold = Math.min(2500, Math.max(400, Math.round(durationMs * 0.042)));
+        const holdStartMs = Math.min(7_000, durationMs);
         return {
             width: 1080,
             height: 1920,
             fps: 30,
             durationMs,
-            holdStartMs: hold,
-            holdEndMs: hold
+            holdStartMs,
+            holdEndMs: 0
         };
     }
 
@@ -2201,7 +2201,7 @@ class ChordAnnotatorApp {
 
         const yAtTime = (elapsedMs) => {
             const scrollMs = spec.durationMs - spec.holdStartMs - spec.holdEndMs;
-            if (elapsedMs <= spec.holdStartMs || maxY <= 1) return 0;
+            if (scrollMs <= 0 || maxY <= 1 || elapsedMs <= spec.holdStartMs) return 0;
             if (elapsedMs >= spec.holdStartMs + scrollMs) return maxY;
             return Math.round(((elapsedMs - spec.holdStartMs) / scrollMs) * maxY);
         };
