@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T15:28:28.739Z",
+  "updatedAt": "2026-09-01T15:28:34.297Z",
   "songs": [
     {
       "title": "خیال",
@@ -262,13 +262,13 @@
           "end": 666
         },
         {
-          "chord": "Abm",
+          "chord": "Ebm",
           "start": 666,
-          "end": 703
+          "end": 687
         },
         {
           "chord": "Bbm",
-          "start": 703,
+          "start": 687,
           "end": 723
         }
       ],
@@ -335,7 +335,7 @@
         648,
         657,
         666,
-        703,
+        687,
         723,
         734,
         745,
@@ -350,12 +350,12 @@
         865
       ],
       "recentChords": [
+        "Ebm",
         "Db",
         "B",
         "Bbm",
         "Abm",
-        "Gbmaj7",
-        "Ebm"
+        "Gbmaj7"
       ],
       "videoSeconds": 180
     },
