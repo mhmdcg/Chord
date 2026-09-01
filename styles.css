@@ -1032,7 +1032,7 @@ body {
     position: relative;
     z-index: 2;
     background: transparent;
-    cursor: pointer;
+    cursor: default;
 }
 
 .lyrics-display.align-left .lyrics-content {
@@ -1100,13 +1100,20 @@ body {
 .lyric-section-overlay {
     position: absolute;
     pointer-events: none;
-    z-index: 1;
+    z-index: 3;
 }
 
 .lyric-section-fill {
     position: absolute;
     border-radius: 4px;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.lyrics-display.is-splitting .lyric-section-fill,
+.lyrics-display.is-erasing .lyric-section-fill {
     pointer-events: none;
+    cursor: inherit;
 }
 
 .lyric-section-fill.pending {

@@ -831,12 +831,11 @@ class ChordAnnotatorApp {
             this.openSectionChord(Number(label.dataset.start), Number(label.dataset.end));
             return;
         }
-        if (!e.target.closest('#lyricsContent')) return;
-        const offset = this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY));
-        const section = this.sectionAtOffset(offset);
-        if (!section) return;
-        e.stopPropagation();
-        this.openSectionChord(section.start, section.end);
+        const fill = e.target.closest('.lyric-section-fill');
+        if (fill?.dataset.start != null && fill?.dataset.end != null) {
+            e.stopPropagation();
+            this.openSectionChord(Number(fill.dataset.start), Number(fill.dataset.end));
+        }
     }
 
     sectionAtOffset(offset) {
@@ -1146,11 +1145,9 @@ class ChordAnnotatorApp {
             const end = points[i + 1];
             if (start >= end) continue;
             const annotation = this.annotationForSection(start, end, annotations);
-            if (!annotation) continue;
-
-            const fillColor = annotation.chord
-                ? this.getChordFill(annotation.chord)
-                : this.getPendingFill();
+            const fillColor = annotation
+                ? (annotation.chord ? this.getChordFill(annotation.chord) : this.getPendingFill())
+                : '';
             const range = this.getRangeForOffsets(start, end);
             const caret = this.getCaretRectForOffset(content, start);
             const textHeight = caret?.height || 22;
@@ -1160,8 +1157,10 @@ class ChordAnnotatorApp {
                     if (rect.width < 1 || rect.height < 1) return;
                     const fill = document.createElement('div');
                     fill.className = 'lyric-section-fill';
-                    if (annotation.pending) fill.classList.add('pending');
-                    fill.style.backgroundColor = fillColor;
+                    fill.dataset.start = String(start);
+                    fill.dataset.end = String(end);
+                    if (annotation?.pending) fill.classList.add('pending');
+                    if (fillColor) fill.style.backgroundColor = fillColor;
                     fill.style.left = `${rect.left - contentRect.left}px`;
                     fill.style.width = `${rect.width}px`;
                     fill.style.height = `${textHeight + 4}px`;
@@ -1170,7 +1169,7 @@ class ChordAnnotatorApp {
                 });
             }
 
-            if (splitOverlay && annotation.chord && start === annotation.start && caret) {
+            if (splitOverlay && annotation?.chord && start === annotation.start && caret) {
                 const label = document.createElement('span');
                 label.className = 'chord-label';
                 label.dir = 'ltr';
