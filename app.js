@@ -1994,7 +1994,8 @@ class ChordAnnotatorApp {
             fps: 30,
             durationMs,
             holdStartMs,
-            holdEndMs: 0
+            holdEndMs: 0,
+            topPadRatio: 0.1
         };
     }
 
@@ -2162,7 +2163,9 @@ class ChordAnnotatorApp {
     createLyricVideoFrame(rawSource, isDark) {
         const spec = this.lyricVideoSpec();
         const source = this.prepareLyricVideoSource(rawSource, isDark);
-        const srcViewH = Math.min(source.height, Math.round(source.width * spec.height / spec.width));
+        const topPad = Math.round(spec.height * spec.topPadRatio / 2) * 2;
+        const contentH = spec.height - topPad;
+        const srcViewH = Math.min(source.height, Math.round(source.width * contentH / spec.width));
         const maxY = Math.max(0, source.height - srcViewH);
         const canvas = document.createElement('canvas');
         canvas.width = spec.width;
@@ -2179,7 +2182,7 @@ class ChordAnnotatorApp {
             ctx.drawImage(
                 source,
                 0, srcY, source.width, srcViewH,
-                0, 0, spec.width, spec.height
+                0, topPad, spec.width, contentH
             );
         };
 
