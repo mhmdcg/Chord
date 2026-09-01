@@ -1974,14 +1974,96 @@ class ChordAnnotatorApp {
         }
     }
 
+    lyricVideoSpec() {
+        return {
+            width: 1080,
+            height: 1920,
+            fps: 30,
+            durationMs: 60_000,
+            holdStartMs: 2_500,
+            holdEndMs: 2_500
+        };
+    }
+
     pickVideoMimeType() {
         if (typeof MediaRecorder === 'undefined' || !MediaRecorder.isTypeSupported) return '';
         return [
+            'video/mp4;codecs=avc1.4D4028',
+            'video/mp4;codecs=avc1.640028',
+            'video/mp4',
             'video/webm;codecs=vp9',
             'video/webm;codecs=vp8',
-            'video/webm',
-            'video/mp4'
+            'video/webm'
         ].find((type) => MediaRecorder.isTypeSupported(type)) || '';
+    }
+
+    async pickAvcEncoderConfig(width, height) {
+        if (typeof VideoEncoder === 'undefined' || typeof VideoEncoder.isConfigSupported !== 'function') {
+            return null;
+        }
+        if (typeof Mp4Muxer === 'undefined') return null;
+        const codecs = [
+            'avc1.4D4028',
+            'avc1.640028',
+            'avc1.4D001F',
+            'avc1.42001E'
+        ];
+        for (const codec of codecs) {
+            const config = {
+                codec,
+                width,
+                height,
+                bitrate: 8_000_000,
+                framerate: 30,
+                avc: { format: 'avc' }
+            };
+            try {
+                const support = await VideoEncoder.isConfigSupported(config);
+                if (support?.supported) {
+                    const resolved = support.config || config;
+                    return { ...resolved, avc: { format: 'avc' } };
+                }
+            } catch {
+                // Try the next Instagram-safe H.264 profile.
+            }
+        }
+        return null;
+    }
+
+    createLyricVideoFrame(source, isDark) {
+        const spec = this.lyricVideoSpec();
+        const srcViewH = source.width * (spec.height / spec.width);
+        const maxY = Math.max(0, source.height - srcViewH);
+        const canvas = document.createElement('canvas');
+        canvas.width = spec.width;
+        canvas.height = spec.height;
+        const ctx = canvas.getContext('2d', { alpha: false });
+        ctx.imageSmoothingEnabled = true;
+        if ('imageSmoothingQuality' in ctx) ctx.imageSmoothingQuality = 'high';
+        const background = isDark ? '#000000' : '#ffffff';
+
+        const drawAt = (y) => {
+            const srcY = Math.max(0, Math.min(maxY, y));
+            const sliceH = Math.min(srcViewH, source.height - srcY);
+            ctx.fillStyle = background;
+            ctx.fillRect(0, 0, spec.width, spec.height);
+            if (sliceH > 0) {
+                ctx.drawImage(
+                    source,
+                    0, srcY, source.width, sliceH,
+                    0, 0, spec.width, spec.height * (sliceH / srcViewH)
+                );
+            }
+        };
+
+        const yAtTime = (elapsedMs) => {
+            const scrollMs = spec.durationMs - spec.holdStartMs - spec.holdEndMs;
+            if (elapsedMs <= spec.holdStartMs || maxY <= 1) return 0;
+            if (elapsedMs >= spec.holdStartMs + scrollMs) return maxY;
+            return ((elapsedMs - spec.holdStartMs) / scrollMs) * maxY;
+        };
+
+        return { canvas, drawAt, yAtTime, spec };
     }
 
     async exportLyricsVideo() {
@@ -1991,13 +2073,13 @@ class ChordAnnotatorApp {
             alert('Export is not available.');
             return;
         }
-        if (typeof MediaRecorder === 'undefined' || !HTMLCanvasElement.prototype.captureStream) {
-            alert('Video export is not supported in this browser.');
-            return;
-        }
 
+        const encoderConfig = await this.pickAvcEncoderConfig(1080, 1920);
         const mimeType = this.pickVideoMimeType();
-        if (!mimeType) {
+        const canRecord = typeof MediaRecorder !== 'undefined'
+            && typeof HTMLCanvasElement.prototype.captureStream === 'function'
+            && Boolean(mimeType);
+        if (!encoderConfig && !canRecord) {
             alert('Video export is not supported in this browser.');
             return;
         }
@@ -2009,17 +2091,21 @@ class ChordAnnotatorApp {
             if (document.fonts?.ready) {
                 await document.fonts.ready;
             }
-            const viewW = card.offsetWidth || 540;
-            const viewH = card.offsetHeight || Math.round(viewW * 16 / 9);
             const isDark = card.classList.contains('theme-dark');
             const source = await this.captureLyricsCanvas(card);
-            button.textContent = 'Recording…';
-            const blob = await this.recordLyricScrollVideo(source, {
-                viewW,
-                viewH,
-                isDark,
-                mimeType
-            });
+            let blob;
+            if (encoderConfig) {
+                blob = await this.encodeLyricScrollMp4(source, {
+                    isDark,
+                    encoderConfig,
+                    onProgress: (percent) => {
+                        button.textContent = `Encoding ${percent}%`;
+                    }
+                });
+            } else {
+                button.textContent = 'Recording…';
+                blob = await this.recordLyricScrollVideo(source, { isDark, mimeType });
+            }
             const extension = blob.type.includes('mp4') ? 'mp4' : 'webm';
             await this.saveExportBlob(blob, this.exportFilename(extension));
         } catch (error) {
@@ -2031,37 +2117,71 @@ class ChordAnnotatorApp {
         }
     }
 
-    async recordLyricScrollVideo(source, { viewW, viewH, isDark, mimeType }) {
-        const outW = Math.max(2, Math.round(source.width / 2) * 2);
-        const outH = Math.max(2, Math.round(outW * (viewH / viewW) / 2) * 2);
-        const srcViewH = source.width * (outH / outW);
-        const maxY = Math.max(0, source.height - srcViewH);
-        const cssSpeed = 46;
-        const sourceSpeed = cssSpeed * (source.width / viewW);
-        const scrollMs = maxY > 1 ? Math.max(2500, (maxY / sourceSpeed) * 1000) : 0;
-        const holdStartMs = 1400;
-        const holdEndMs = 1800;
-        const totalMs = holdStartMs + scrollMs + holdEndMs;
-        const background = isDark ? '#000000' : '#ffffff';
+    async encodeLyricScrollMp4(source, { isDark, encoderConfig, onProgress }) {
+        const { canvas, drawAt, yAtTime, spec } = this.createLyricVideoFrame(source, isDark);
+        const totalFrames = Math.round(spec.durationMs / 1000 * spec.fps);
+        const frameDuration = Math.round(1_000_000 / spec.fps);
+        const muxer = new Mp4Muxer.Muxer({
+            target: new Mp4Muxer.ArrayBufferTarget(),
+            video: {
+                codec: 'avc',
+                width: spec.width,
+                height: spec.height,
+                frameRate: spec.fps
+            },
+            fastStart: 'in-memory',
+            firstTimestampBehavior: 'offset'
+        });
 
-        const canvas = document.createElement('canvas');
-        canvas.width = outW;
-        canvas.height = outH;
-        canvas.style.cssText = 'position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none;';
-        document.body.appendChild(canvas);
-        const ctx = canvas.getContext('2d', { alpha: false });
+        let encoderError = null;
+        const encoder = new VideoEncoder({
+            output: (chunk, meta) => muxer.addVideoChunk(chunk, meta),
+            error: (error) => {
+                encoderError = error;
+            }
+        });
+        encoder.configure(encoderConfig);
 
-        const drawAt = (y) => {
-            const srcY = Math.max(0, Math.min(maxY, y));
-            const sliceH = Math.min(srcViewH, source.height - srcY);
-            ctx.fillStyle = background;
-            ctx.fillRect(0, 0, outW, outH);
-            ctx.drawImage(source, 0, srcY, source.width, sliceH, 0, 0, outW, outH * (sliceH / srcViewH));
+        const waitForQueue = async () => {
+            while (encoder.encodeQueueSize > 8) {
+                await new Promise((resolve) => {
+                    encoder.ondequeue = () => resolve();
+                });
+            }
         };
 
+        try {
+            for (let i = 0; i < totalFrames; i++) {
+                if (encoderError) throw encoderError;
+                drawAt(yAtTime((i / spec.fps) * 1000));
+                const frame = new VideoFrame(canvas, {
+                    timestamp: i * frameDuration,
+                    duration: frameDuration
+                });
+                encoder.encode(frame, { keyFrame: i % spec.fps === 0 });
+                frame.close();
+                await waitForQueue();
+                if (i % spec.fps === 0 || i === totalFrames - 1) {
+                    onProgress?.(Math.round((i + 1) / totalFrames * 100));
+                    await new Promise((resolve) => setTimeout(resolve, 0));
+                }
+            }
+            await encoder.flush();
+            if (encoderError) throw encoderError;
+            muxer.finalize();
+            return new Blob([muxer.target.buffer], { type: 'video/mp4' });
+        } finally {
+            try { encoder.close(); } catch { /* already closed */ }
+        }
+    }
+
+    async recordLyricScrollVideo(source, { isDark, mimeType }) {
+        const { canvas, drawAt, yAtTime, spec } = this.createLyricVideoFrame(source, isDark);
+        canvas.style.cssText = 'position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none;';
+        document.body.appendChild(canvas);
         drawAt(0);
 
-        const stream = canvas.captureStream(30);
+        const stream = canvas.captureStream(spec.fps);
         const recorder = new MediaRecorder(stream, {
             mimeType,
             videoBitsPerSecond: 8_000_000
@@ -2082,17 +2202,11 @@ class ChordAnnotatorApp {
         await new Promise((resolve) => {
             const tick = (now) => {
                 const elapsed = now - startedAt;
-                let y = 0;
-                if (elapsed > holdStartMs && maxY > 1) {
-                    const t = Math.min(1, (elapsed - holdStartMs) / scrollMs);
-                    y = t * maxY;
-                }
-                if (elapsed >= holdStartMs + scrollMs) y = maxY;
-                drawAt(y);
-                if (elapsed < totalMs) {
+                drawAt(yAtTime(elapsed));
+                if (elapsed < spec.durationMs) {
                     requestAnimationFrame(tick);
                 } else {
-                    drawAt(maxY);
+                    drawAt(yAtTime(spec.durationMs));
                     resolve();
                 }
             };
