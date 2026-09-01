@@ -2114,22 +2114,6 @@ class ChordAnnotatorApp {
             'avc1.42001E'
         ];
         const extras = [
-            {
-                hardwareAcceleration: 'prefer-software',
-                latencyMode: 'quality',
-                bitrateMode: 'constant',
-                colorSpace: {
-                    primaries: 'bt709',
-                    transfer: 'iec61966-2-1',
-                    matrix: 'rgb',
-                    fullRange: true
-                }
-            },
-            {
-                hardwareAcceleration: 'prefer-software',
-                latencyMode: 'quality',
-                colorSpace: { primaries: 'bt709', transfer: 'bt709', matrix: 'bt709', fullRange: true }
-            },
             { hardwareAcceleration: 'prefer-software', latencyMode: 'quality' },
             { latencyMode: 'quality' },
             {}
@@ -2292,8 +2276,11 @@ class ChordAnnotatorApp {
 
         let encoderError = null;
         let encodedFrames = 0;
+        let sawKeyFrame = false;
         const encoder = new VideoEncoder({
             output: (chunk, meta) => {
+                if (!sawKeyFrame && chunk.type !== 'key') return;
+                sawKeyFrame = true;
                 const copied = new Uint8Array(chunk.byteLength);
                 chunk.copyTo(copied);
                 const data = this.isAnnexBNal(copied) ? this.annexBToLengthPrefixed(copied) : copied;
@@ -2358,8 +2345,9 @@ class ChordAnnotatorApp {
                         alpha: 'discard'
                     });
                 }
-                encoder.encode(frame, { keyFrame: i === 0 });
+                encoder.encode(frame, { keyFrame: i < 2 || i % spec.fps === 0 });
                 frame.close();
+                if (i === 0) await encoder.flush();
                 await waitForQueue(encoder);
                 if (i % spec.fps === 0 || i === totalFrames - 1) {
                     onProgress?.(Math.round((i + 1) / totalFrames * 100));
