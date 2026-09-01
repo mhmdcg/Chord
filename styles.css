@@ -624,7 +624,7 @@ body {
     font-size: 0.9rem;
     line-height: 3.4;
     position: relative;
-    cursor: text;
+    cursor: default;
     box-shadow: 0 2px 8px var(--shadow);
     text-align: center;
 }
@@ -1032,6 +1032,7 @@ body {
     position: relative;
     z-index: 2;
     background: transparent;
+    cursor: pointer;
 }
 
 .lyrics-display.align-left .lyrics-content {

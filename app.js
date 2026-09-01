@@ -1187,6 +1187,8 @@ class ChordAnnotatorApp {
             }
         }
 
+        if (splitOverlay) this.packChordLabels(splitOverlay, rtl);
+
         if (!splitOverlay) return;
         const draggingTo = this.draggingSplit?.to;
         this.getSplits().forEach((offset) => {
@@ -1201,6 +1203,45 @@ class ChordAnnotatorApp {
             line.style.top = `${caret.top - contentRect.top}px`;
             line.style.height = `${caret.height}px`;
             splitOverlay.appendChild(line);
+        });
+    }
+
+    packChordLabels(splitOverlay, rtl) {
+        const labels = [...splitOverlay.querySelectorAll('.chord-label')];
+        if (labels.length < 2) return;
+
+        const gap = 4;
+        const lineTol = 10;
+        const lines = [];
+        labels.forEach((label) => {
+            const top = label.getBoundingClientRect().top;
+            const line = lines.find((entry) => Math.abs(entry.top - top) <= lineTol);
+            if (line) line.labels.push(label);
+            else lines.push({ top, labels: [label] });
+        });
+
+        lines.forEach((line) => {
+            if (rtl) {
+                let prevLeft = Infinity;
+                line.labels.forEach((label) => {
+                    const rect = label.getBoundingClientRect();
+                    const overlap = rect.right - (prevLeft - gap);
+                    if (overlap > 0.5) {
+                        label.style.left = `${(parseFloat(label.style.left) || 0) - overlap}px`;
+                    }
+                    prevLeft = label.getBoundingClientRect().left;
+                });
+                return;
+            }
+            let prevRight = -Infinity;
+            line.labels.forEach((label) => {
+                const rect = label.getBoundingClientRect();
+                const overlap = (prevRight + gap) - rect.left;
+                if (overlap > 0.5) {
+                    label.style.left = `${(parseFloat(label.style.left) || 0) + overlap}px`;
+                }
+                prevRight = label.getBoundingClientRect().right;
+            });
         });
     }
 
@@ -1832,7 +1873,7 @@ class ChordAnnotatorApp {
                 btn.classList.add('selected');
             }
             btn.textContent = chord;
-            btn.addEventListener('click', () => this.selectSuggestedChord(chord));
+            btn.addEventListener('click', () => this.selectSuggestedChord(chord, { apply: true }));
             container.appendChild(btn);
         });
     }
@@ -1869,12 +1910,13 @@ class ChordAnnotatorApp {
         });
     }
 
-    selectSuggestedChord(chord) {
+    selectSuggestedChord(chord, { apply = false } = {}) {
         document.getElementById('chordInput').value = chord;
         if (this.pendingEdit) this.pendingEdit.chord = chord;
         this.updateChordSuggestions();
         this.renderAnnotatedLyrics();
         this.positionHandles();
+        if (apply) this.saveChord();
     }
 
     deleteAllChords() {
