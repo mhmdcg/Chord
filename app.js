@@ -118,6 +118,7 @@ class ChordAnnotatorApp {
         document.getElementById('songTempo').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('deleteAllChordsBtn').addEventListener('click', () => this.deleteAllChords());
         document.getElementById('exportLyricsBtn').addEventListener('click', () => this.exportLyricsImage());
+        document.getElementById('exportLyricsVideoBtn').addEventListener('click', () => this.exportLyricsVideo());
         document.getElementById('lyricThemeLightBtn').addEventListener('click', () => this.setLyricTheme('light'));
         document.getElementById('lyricThemeDarkBtn').addEventListener('click', () => this.setLyricTheme('dark'));
 
@@ -1887,12 +1888,14 @@ class ChordAnnotatorApp {
         this.renderAnnotationView();
     }
 
-    exportFilename() {
-        return MusicTheory.exportImageFilename(
+    exportFilename(extension = 'jpg') {
+        const name = MusicTheory.exportImageFilename(
             this.currentSong?.title,
             this.currentSong?.artist,
             this.currentSong?.scale
         );
+        if (!extension || extension === 'jpg') return name;
+        return name.replace(/\.jpg$/i, `.${extension}`);
     }
 
     isIosDevice() {
@@ -1901,9 +1904,9 @@ class ChordAnnotatorApp {
             || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     }
 
-    async saveJpegBlob(blob, filename) {
+    async saveExportBlob(blob, filename) {
         if (this.isIosDevice()) {
-            const file = new File([blob], filename, { type: 'image/jpeg' });
+            const file = new File([blob], filename, { type: blob.type || 'application/octet-stream' });
             try {
                 if (navigator.canShare && navigator.canShare({ files: [file] })) {
                     await navigator.share({ files: [file], title: filename });
@@ -1934,7 +1937,7 @@ class ChordAnnotatorApp {
         }
 
         const previousLabel = button.textContent;
-        button.disabled = true;
+        this.setExportButtonsBusy(true);
         button.textContent = 'Exporting…';
 
         try {
@@ -1950,14 +1953,160 @@ class ChordAnnotatorApp {
                 }, 'image/jpeg', 0.92);
             });
 
-            await this.saveJpegBlob(blob, this.exportFilename());
+            await this.saveExportBlob(blob, this.exportFilename());
         } catch (error) {
             console.error('Export failed:', error);
             alert('Could not export the lyrics image.');
         } finally {
-            button.disabled = false;
             button.textContent = previousLabel;
+            this.setExportButtonsBusy(false);
         }
+    }
+
+    setExportButtonsBusy(busy, videoLabel) {
+        const imageBtn = document.getElementById('exportLyricsBtn');
+        const videoBtn = document.getElementById('exportLyricsVideoBtn');
+        if (imageBtn) imageBtn.disabled = busy;
+        if (videoBtn) {
+            videoBtn.disabled = busy;
+            if (busy && videoLabel) videoBtn.textContent = videoLabel;
+            if (!busy) videoBtn.textContent = 'Export video';
+        }
+    }
+
+    pickVideoMimeType() {
+        if (typeof MediaRecorder === 'undefined' || !MediaRecorder.isTypeSupported) return '';
+        return [
+            'video/webm;codecs=vp9',
+            'video/webm;codecs=vp8',
+            'video/webm',
+            'video/mp4'
+        ].find((type) => MediaRecorder.isTypeSupported(type)) || '';
+    }
+
+    async exportLyricsVideo() {
+        const card = document.getElementById('lyricsDisplay');
+        const button = document.getElementById('exportLyricsVideoBtn');
+        if (!card || typeof htmlToImage?.toCanvas !== 'function') {
+            alert('Export is not available.');
+            return;
+        }
+        if (typeof MediaRecorder === 'undefined' || !HTMLCanvasElement.prototype.captureStream) {
+            alert('Video export is not supported in this browser.');
+            return;
+        }
+
+        const mimeType = this.pickVideoMimeType();
+        if (!mimeType) {
+            alert('Video export is not supported in this browser.');
+            return;
+        }
+
+        this.setExportButtonsBusy(true, 'Exporting video…');
+        const previousLabel = button.textContent;
+
+        try {
+            if (document.fonts?.ready) {
+                await document.fonts.ready;
+            }
+            const viewW = card.offsetWidth || 540;
+            const viewH = card.offsetHeight || Math.round(viewW * 16 / 9);
+            const isDark = card.classList.contains('theme-dark');
+            const source = await this.captureLyricsCanvas(card);
+            button.textContent = 'Recording…';
+            const blob = await this.recordLyricScrollVideo(source, {
+                viewW,
+                viewH,
+                isDark,
+                mimeType
+            });
+            const extension = blob.type.includes('mp4') ? 'mp4' : 'webm';
+            await this.saveExportBlob(blob, this.exportFilename(extension));
+        } catch (error) {
+            console.error('Video export failed:', error);
+            alert('Could not export the lyrics video.');
+        } finally {
+            button.textContent = previousLabel;
+            this.setExportButtonsBusy(false);
+        }
+    }
+
+    async recordLyricScrollVideo(source, { viewW, viewH, isDark, mimeType }) {
+        const outW = Math.max(2, Math.round(source.width / 2) * 2);
+        const outH = Math.max(2, Math.round(outW * (viewH / viewW) / 2) * 2);
+        const srcViewH = source.width * (outH / outW);
+        const maxY = Math.max(0, source.height - srcViewH);
+        const cssSpeed = 46;
+        const sourceSpeed = cssSpeed * (source.width / viewW);
+        const scrollMs = maxY > 1 ? Math.max(2500, (maxY / sourceSpeed) * 1000) : 0;
+        const holdStartMs = 1400;
+        const holdEndMs = 1800;
+        const totalMs = holdStartMs + scrollMs + holdEndMs;
+        const background = isDark ? '#000000' : '#ffffff';
+
+        const canvas = document.createElement('canvas');
+        canvas.width = outW;
+        canvas.height = outH;
+        canvas.style.cssText = 'position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none;';
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d', { alpha: false });
+
+        const drawAt = (y) => {
+            const srcY = Math.max(0, Math.min(maxY, y));
+            const sliceH = Math.min(srcViewH, source.height - srcY);
+            ctx.fillStyle = background;
+            ctx.fillRect(0, 0, outW, outH);
+            ctx.drawImage(source, 0, srcY, source.width, sliceH, 0, 0, outW, outH * (sliceH / srcViewH));
+        };
+
+        drawAt(0);
+
+        const stream = canvas.captureStream(30);
+        const recorder = new MediaRecorder(stream, {
+            mimeType,
+            videoBitsPerSecond: 8_000_000
+        });
+        const chunks = [];
+        recorder.ondataavailable = (event) => {
+            if (event.data && event.data.size) chunks.push(event.data);
+        };
+
+        const stopped = new Promise((resolve, reject) => {
+            recorder.onerror = () => reject(new Error('Could not record the video.'));
+            recorder.onstop = () => resolve();
+        });
+
+        recorder.start(200);
+
+        const startedAt = performance.now();
+        await new Promise((resolve) => {
+            const tick = (now) => {
+                const elapsed = now - startedAt;
+                let y = 0;
+                if (elapsed > holdStartMs && maxY > 1) {
+                    const t = Math.min(1, (elapsed - holdStartMs) / scrollMs);
+                    y = t * maxY;
+                }
+                if (elapsed >= holdStartMs + scrollMs) y = maxY;
+                drawAt(y);
+                if (elapsed < totalMs) {
+                    requestAnimationFrame(tick);
+                } else {
+                    drawAt(maxY);
+                    resolve();
+                }
+            };
+            requestAnimationFrame(tick);
+        });
+
+        await new Promise((resolve) => setTimeout(resolve, 180));
+        if (recorder.state !== 'inactive') recorder.stop();
+        await stopped;
+        stream.getTracks().forEach((track) => track.stop());
+        canvas.remove();
+
+        const type = recorder.mimeType || mimeType || 'video/webm';
+        return new Blob(chunks, { type });
     }
 
     async captureLyricsCanvas(card) {
