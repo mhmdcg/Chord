@@ -38,7 +38,6 @@ class ChordAnnotatorApp {
             '#7C3AED'
         ];
         this.highlightAlpha = { light: 0.1, dark: 0.14 };
-        this.exportFillBoost = false;
 
         this.rootLetters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.chordQualities = [
@@ -1152,9 +1151,6 @@ class ChordAnnotatorApp {
             const fillColor = annotation.chord
                 ? this.getChordFill(annotation.chord)
                 : this.getPendingFill();
-            const labelColor = annotation.chord
-                ? this.getChordFill(annotation.chord, 'label')
-                : fillColor;
             const range = this.getRangeForOffsets(start, end);
             const caret = this.getCaretRectForOffset(content, start);
             const textHeight = caret?.height || 22;
@@ -1181,7 +1177,7 @@ class ChordAnnotatorApp {
                 label.dataset.start = String(start);
                 label.dataset.end = String(end);
                 label.textContent = annotation.chord;
-                label.style.backgroundColor = labelColor;
+                label.style.backgroundColor = fillColor;
                 label.style.left = `${caret.left - contentRect.left}px`;
                 label.style.top = `${caret.top - contentRect.top}px`;
                 label.style.transform = rtl
@@ -1976,7 +1972,10 @@ class ChordAnnotatorApp {
         const imageBtn = document.getElementById('exportLyricsBtn');
         const videoBtn = document.getElementById('exportLyricsVideoBtn');
         const videoLength = document.getElementById('videoLength');
-        if (imageBtn) imageBtn.disabled = busy;
+        if (imageBtn) {
+            imageBtn.disabled = busy;
+            if (!busy) imageBtn.textContent = 'Export image';
+        }
         if (videoLength) videoLength.disabled = busy;
         if (videoBtn) {
             videoBtn.disabled = busy;
@@ -2203,7 +2202,7 @@ class ChordAnnotatorApp {
                 await document.fonts.ready;
             }
             const isDark = card.classList.contains('theme-dark');
-            const source = await this.captureLyricsCanvas(card, { targetWidth: 1080, boostFills: true });
+            const source = await this.captureLyricsCanvas(card);
             let blob;
             if (encoderConfig) {
                 blob = await this.encodeLyricScrollMp4(source, {
@@ -2405,7 +2404,7 @@ class ChordAnnotatorApp {
         return new Blob(chunks, { type });
     }
 
-    async captureLyricsCanvas(card, { targetWidth = null, boostFills = false } = {}) {
+    async captureLyricsCanvas(card) {
         const width = card.offsetWidth || 540;
         const isDark = card.classList.contains('theme-dark');
         const hiddenHandles = [];
@@ -2417,22 +2416,17 @@ class ChordAnnotatorApp {
         });
         const previousOverflow = card.style.overflow;
         const previousHeight = card.style.height;
-        const previousBoost = this.exportFillBoost;
         card.style.overflow = 'hidden';
         card.style.height = `${Math.max(card.scrollHeight, card.offsetHeight)}px`;
         card.classList.add('is-export');
-        this.exportFillBoost = Boolean(boostFills);
         this.positionLyricOverlays();
         await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
         this.positionLyricOverlays();
 
         try {
-            const pixelRatio = targetWidth
-                ? targetWidth / width
-                : Math.min(3, Math.max(2, 1080 / width));
             return await htmlToImage.toCanvas(card, {
                 backgroundColor: isDark ? '#000000' : '#ffffff',
-                pixelRatio,
+                pixelRatio: Math.min(3, Math.max(2, 1080 / width)),
                 cacheBust: true,
                 width: card.offsetWidth || width,
                 height: card.offsetHeight,
@@ -2442,7 +2436,6 @@ class ChordAnnotatorApp {
                 ))
             });
         } finally {
-            this.exportFillBoost = previousBoost;
             card.classList.remove('is-export');
             card.style.overflow = previousOverflow;
             card.style.height = previousHeight;
@@ -2489,22 +2482,12 @@ class ChordAnnotatorApp {
         return this.pickDistinctColor(Object.values(map));
     }
 
-    getChordFill(chord, role = 'highlight') {
+    getChordFill(chord) {
         const theme = this.getLyricTheme();
-        let alpha = this.highlightAlpha[theme];
-        if (this.exportFillBoost) {
-            alpha = role === 'label'
-                ? (theme === 'dark' ? 0.92 : 0.86)
-                : (theme === 'dark' ? 0.42 : 0.34);
-        }
-        return this.withAlpha(this.getChordColor(chord), alpha);
+        return this.withAlpha(this.getChordColor(chord), this.highlightAlpha[theme]);
     }
 
     getPendingFill() {
-        const theme = this.getLyricTheme();
-        if (this.exportFillBoost) {
-            return theme === 'dark' ? 'rgba(79, 70, 229, 0.42)' : 'rgba(79, 70, 229, 0.34)';
-        }
         return 'rgba(79, 70, 229, 0.18)';
     }
 

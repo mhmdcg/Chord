@@ -1150,10 +1150,6 @@ body {
     pointer-events: none;
 }
 
-.lyrics-display.is-export .chord-label {
-    font-weight: 700;
-}
-
 .lyrics-display.theme-dark .lyric-split {
     border-inline-start-color: #C5A45A;
 }
