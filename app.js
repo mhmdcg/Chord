@@ -733,8 +733,13 @@ class ChordAnnotatorApp {
             annotations.find((annotation) => annotation.start === start) || null;
     }
 
-    snapAnnotationsToSections(annotations = this.currentSong.annotations || []) {
-        const points = this.getSectionPoints();
+    snapAnnotationsToSections(annotations = this.currentSong.annotations || [], splits = this.getSplits()) {
+        const length = this.currentSong?.lyrics?.length || 0;
+        const points = [...new Set([
+            0,
+            ...this.collapseNearbyOffsets(splits).map((offset) => this.clampOffset(offset)),
+            length
+        ])].sort((a, b) => a - b);
         const next = [];
         for (let i = 0; i < points.length - 1; i += 1) {
             const start = points[i];
@@ -956,13 +961,13 @@ class ChordAnnotatorApp {
         ]).filter((offset) => offset > 0 && offset < length);
 
         if (commit) {
-            this.commitSongState({ annotations: this.snapAnnotationsToSections(kept), splits });
+            this.commitSongState({ annotations: this.snapAnnotationsToSections(kept, splits), splits });
             this.renderAnnotationView();
             return;
         }
 
         this.currentSong.splits = splits;
-        this.currentSong.annotations = this.snapAnnotationsToSections(kept);
+        this.currentSong.annotations = this.snapAnnotationsToSections(kept, splits);
         this.renderAnnotatedLyrics();
     }
 
@@ -997,7 +1002,8 @@ class ChordAnnotatorApp {
                     return { ...annotation, end: point };
                 }
                 return { ...annotation };
-            })
+            }),
+            splits
         );
         this.currentSong.splits = splits;
         this.commitSongState({ annotations, splits });
@@ -1027,7 +1033,7 @@ class ChordAnnotatorApp {
         }
 
         const splits = this.getSplits().filter((split) => split !== point);
-        this.commitSongState({ annotations: this.snapAnnotationsToSections(kept), splits });
+        this.commitSongState({ annotations: this.snapAnnotationsToSections(kept, splits), splits });
         this.renderAnnotationView();
     }
 
