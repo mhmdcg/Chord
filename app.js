@@ -1997,6 +1997,88 @@ class ChordAnnotatorApp {
         ].find((type) => MediaRecorder.isTypeSupported(type)) || '';
     }
 
+    async pickAacEncoderConfig() {
+        if (typeof AudioEncoder === 'undefined' || typeof AudioEncoder.isConfigSupported !== 'function') {
+            return null;
+        }
+        const config = {
+            codec: 'mp4a.40.2',
+            numberOfChannels: 2,
+            sampleRate: 48000,
+            bitrate: 64_000
+        };
+        try {
+            const support = await AudioEncoder.isConfigSupported(config);
+            if (support?.supported) return support.config || config;
+        } catch {
+            return null;
+        }
+        return null;
+    }
+
+    isAnnexBNal(data) {
+        return data.length >= 4
+            && data[0] === 0
+            && data[1] === 0
+            && (data[2] === 1 || (data[2] === 0 && data[3] === 1));
+    }
+
+    annexBToLengthPrefixed(data) {
+        const nalus = [];
+        let i = 0;
+        while (i < data.length) {
+            let naluStart = -1;
+            if (i + 3 < data.length && data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 1) {
+                naluStart = i + 3;
+            } else if (i + 4 <= data.length && data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0 && data[i + 3] === 1) {
+                naluStart = i + 4;
+            }
+            if (naluStart < 0) {
+                i += 1;
+                continue;
+            }
+            let next = data.length;
+            for (let j = naluStart; j + 2 < data.length; j += 1) {
+                if (data[j] === 0 && data[j + 1] === 0 && data[j + 2] === 1) {
+                    next = j > naluStart && data[j - 1] === 0 ? j - 1 : j;
+                    break;
+                }
+            }
+            if (naluStart < next) nalus.push(data.subarray(naluStart, next));
+            i = next;
+        }
+        const total = nalus.reduce((sum, nalu) => sum + 4 + nalu.length, 0);
+        const out = new Uint8Array(total);
+        let offset = 0;
+        nalus.forEach((nalu) => {
+            out[offset] = (nalu.length >>> 24) & 255;
+            out[offset + 1] = (nalu.length >>> 16) & 255;
+            out[offset + 2] = (nalu.length >>> 8) & 255;
+            out[offset + 3] = nalu.length & 255;
+            out.set(nalu, offset + 4);
+            offset += 4 + nalu.length;
+        });
+        return out.length ? out : data;
+    }
+
+    readMp4DurationSeconds(buffer) {
+        const bytes = new Uint8Array(buffer);
+        const limit = Math.min(bytes.length - 32, 2_000_000);
+        for (let i = 0; i < limit; i += 1) {
+            if (bytes[i] !== 0x6d || bytes[i + 1] !== 0x76 || bytes[i + 2] !== 0x68 || bytes[i + 3] !== 0x64) continue;
+            const view = new DataView(buffer, i + 4);
+            if (view.getUint8(0) === 1) {
+                const timescale = view.getUint32(20);
+                const duration = view.getUint32(24) * 2 ** 32 + view.getUint32(28);
+                return timescale ? duration / timescale : 0;
+            }
+            const timescale = view.getUint32(12);
+            const duration = view.getUint32(16);
+            return timescale ? duration / timescale : 0;
+        }
+        return 0;
+    }
+
     async pickAvcEncoderConfig(width, height) {
         if (typeof VideoEncoder === 'undefined' || typeof VideoEncoder.isConfigSupported !== 'function') {
             return null;
@@ -2121,24 +2203,35 @@ class ChordAnnotatorApp {
     async encodeLyricScrollMp4(source, { isDark, encoderConfig, onProgress }) {
         const { canvas, drawAt, yAtTime, spec } = this.createLyricVideoFrame(source, isDark);
         const totalFrames = Math.round(spec.durationMs / 1000 * spec.fps);
-        const frameDuration = Math.round(1_000_000 / spec.fps);
-        const muxer = new Mp4Muxer.Muxer({
+        const frameDuration = 1e6 / spec.fps;
+        const audioConfig = await this.pickAacEncoderConfig();
+        const muxerOptions = {
             target: new Mp4Muxer.ArrayBufferTarget(),
             video: {
                 codec: 'avc',
                 width: spec.width,
-                height: spec.height
+                height: spec.height,
+                frameRate: spec.fps
             },
             fastStart: 'in-memory',
             firstTimestampBehavior: 'offset'
-        });
+        };
+        if (audioConfig) {
+            muxerOptions.audio = {
+                codec: 'aac',
+                numberOfChannels: audioConfig.numberOfChannels || 2,
+                sampleRate: audioConfig.sampleRate || 48000
+            };
+        }
+        const muxer = new Mp4Muxer.Muxer(muxerOptions);
 
         let encoderError = null;
         let encodedFrames = 0;
         const encoder = new VideoEncoder({
             output: (chunk, meta) => {
-                const data = new Uint8Array(chunk.byteLength);
-                chunk.copyTo(data);
+                const copied = new Uint8Array(chunk.byteLength);
+                chunk.copyTo(copied);
+                const data = this.isAnnexBNal(copied) ? this.annexBToLengthPrefixed(copied) : copied;
                 muxer.addVideoChunkRaw(
                     data,
                     chunk.type,
@@ -2154,10 +2247,29 @@ class ChordAnnotatorApp {
         });
         encoder.configure(encoderConfig);
 
-        const waitForQueue = async () => {
-            while (encoder.encodeQueueSize > 8) {
+        let audioEncoder = null;
+        let encodedAudioChunks = 0;
+        if (audioConfig) {
+            audioEncoder = new AudioEncoder({
+                output: (chunk, meta) => {
+                    const data = new Uint8Array(chunk.byteLength);
+                    chunk.copyTo(data);
+                    const timestamp = encodedAudioChunks * (1024 / (audioConfig.sampleRate || 48000)) * 1e6;
+                    const duration = (1024 / (audioConfig.sampleRate || 48000)) * 1e6;
+                    muxer.addAudioChunkRaw(data, chunk.type, timestamp, duration, meta);
+                    encodedAudioChunks += 1;
+                },
+                error: (error) => {
+                    encoderError = error;
+                }
+            });
+            audioEncoder.configure(audioConfig);
+        }
+
+        const waitForQueue = async (which) => {
+            while (which.encodeQueueSize > 8) {
                 await new Promise((resolve) => {
-                    encoder.ondequeue = () => resolve();
+                    which.ondequeue = () => resolve();
                 });
             }
         };
@@ -2172,7 +2284,7 @@ class ChordAnnotatorApp {
                 });
                 encoder.encode(frame, { keyFrame: i % spec.fps === 0 });
                 frame.close();
-                await waitForQueue();
+                await waitForQueue(encoder);
                 if (i % spec.fps === 0 || i === totalFrames - 1) {
                     onProgress?.(Math.round((i + 1) / totalFrames * 100));
                     await new Promise((resolve) => setTimeout(resolve, 0));
@@ -2180,10 +2292,40 @@ class ChordAnnotatorApp {
             }
             await encoder.flush();
             if (encoderError) throw encoderError;
+            if (encodedFrames === 0) throw new Error('No video frames were encoded.');
+
+            if (audioEncoder) {
+                const sampleRate = audioConfig.sampleRate || 48000;
+                const channels = audioConfig.numberOfChannels || 2;
+                const framesPerChunk = 1024;
+                const totalSamples = Math.ceil((spec.durationMs / 1000 * sampleRate) / framesPerChunk) * framesPerChunk;
+                for (let start = 0; start < totalSamples; start += framesPerChunk) {
+                    if (encoderError) throw encoderError;
+                    const audioData = new AudioData({
+                        format: 'f32',
+                        sampleRate,
+                        numberOfFrames: framesPerChunk,
+                        numberOfChannels: channels,
+                        timestamp: (start / sampleRate) * 1e6,
+                        data: new Float32Array(framesPerChunk * channels)
+                    });
+                    audioEncoder.encode(audioData);
+                    audioData.close();
+                    await waitForQueue(audioEncoder);
+                }
+                await audioEncoder.flush();
+                if (encoderError) throw encoderError;
+            }
+
             muxer.finalize();
-            return new Blob([muxer.target.buffer], { type: 'video/mp4' });
+            const buffer = muxer.target.buffer;
+            if (this.readMp4DurationSeconds(buffer) < 1) {
+                throw new Error('The exported video is missing a duration.');
+            }
+            return new Blob([buffer], { type: 'video/mp4' });
         } finally {
             try { encoder.close(); } catch { /* already closed */ }
+            try { audioEncoder?.close(); } catch { /* already closed */ }
         }
     }
 
