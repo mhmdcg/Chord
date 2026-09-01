@@ -2003,6 +2003,7 @@ class ChordAnnotatorApp {
         }
         if (typeof Mp4Muxer === 'undefined') return null;
         const codecs = [
+            'avc1.420028',
             'avc1.4D4028',
             'avc1.640028',
             'avc1.4D001F',
@@ -2126,16 +2127,27 @@ class ChordAnnotatorApp {
             video: {
                 codec: 'avc',
                 width: spec.width,
-                height: spec.height,
-                frameRate: spec.fps
+                height: spec.height
             },
             fastStart: 'in-memory',
             firstTimestampBehavior: 'offset'
         });
 
         let encoderError = null;
+        let encodedFrames = 0;
         const encoder = new VideoEncoder({
-            output: (chunk, meta) => muxer.addVideoChunk(chunk, meta),
+            output: (chunk, meta) => {
+                const data = new Uint8Array(chunk.byteLength);
+                chunk.copyTo(data);
+                muxer.addVideoChunkRaw(
+                    data,
+                    chunk.type,
+                    encodedFrames * frameDuration,
+                    frameDuration,
+                    meta
+                );
+                encodedFrames += 1;
+            },
             error: (error) => {
                 encoderError = error;
             }
