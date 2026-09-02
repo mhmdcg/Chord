@@ -858,6 +858,52 @@ body {
     border-color: #0D9488;
 }
 
+.visibility-toggles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.visibility-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.4rem;
+    height: 32px;
+    min-height: 32px;
+    width: 100%;
+    padding: 0 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.visibility-btn svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex-shrink: 0;
+}
+
+.visibility-btn .eye-slash {
+    display: none;
+}
+
+.visibility-btn[aria-pressed="false"] {
+    color: var(--text-light);
+    opacity: 0.72;
+}
+
+.visibility-btn[aria-pressed="false"] .eye-slash {
+    display: block;
+}
+
 .annotation-tools select,
 .time-signature input,
 .song-tempo input,
@@ -1161,6 +1207,19 @@ body {
 .lyrics-display.is-downbeating .lyric-section-fill {
     pointer-events: none;
     cursor: inherit;
+}
+
+.lyrics-display.hide-chords .chord-label,
+.lyrics-display.hide-chords .lyric-section-fill {
+    display: none !important;
+}
+
+.lyrics-display.hide-splits .lyric-split {
+    display: none !important;
+}
+
+.lyrics-display.hide-downbeats .lyric-downbeat {
+    display: none !important;
 }
 
 .lyrics-display.is-playing-chords .lyric-split,
@@ -1623,6 +1682,10 @@ body {
 
     .annotation-tools .scale-control {
         flex: 1 1 100%;
+    }
+
+    .annotation-tools .visibility-toggles {
+        width: 100%;
     }
 
     .annotation-tools .time-signature,

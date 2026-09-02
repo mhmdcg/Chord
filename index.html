@@ -153,6 +153,32 @@
                             <button type="button" id="downbeatModeBtn" class="downbeat-mode-btn" aria-pressed="false">Downbeat</button>
                             <button type="button" id="eraseSplitsBtn" class="erase-splits-btn" aria-pressed="false">Erase</button>
                             <button type="button" id="playChordsBtn" class="play-chords-btn" aria-pressed="false">Chord play mode</button>
+                            <div class="visibility-toggles" role="group" aria-label="Show on lyric card">
+                                <button type="button" id="toggleChordsVisBtn" class="visibility-btn" aria-pressed="true" title="Show chords">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                        <path class="eye-slash" d="M4 4l16 16"/>
+                                    </svg>
+                                    <span>Chords</span>
+                                </button>
+                                <button type="button" id="toggleSplitsVisBtn" class="visibility-btn" aria-pressed="true" title="Show split lines">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                        <path class="eye-slash" d="M4 4l16 16"/>
+                                    </svg>
+                                    <span>Splits</span>
+                                </button>
+                                <button type="button" id="toggleDownbeatsVisBtn" class="visibility-btn" aria-pressed="true" title="Show downbeats">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                        <path class="eye-slash" d="M4 4l16 16"/>
+                                    </svg>
+                                    <span>Downbeats</span>
+                                </button>
+                            </div>
                         </div>
                         <span class="time-signature">
                             <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beats per bar" />

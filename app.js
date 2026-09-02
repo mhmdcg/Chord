@@ -118,6 +118,9 @@ class ChordAnnotatorApp {
         document.getElementById('downbeatModeBtn').addEventListener('click', () => this.toggleDownbeatMode());
         document.getElementById('eraseSplitsBtn').addEventListener('click', () => this.toggleEraseMode());
         document.getElementById('playChordsBtn').addEventListener('click', () => this.togglePlayMode());
+        document.getElementById('toggleChordsVisBtn').addEventListener('click', () => this.toggleLyricLayer('chords'));
+        document.getElementById('toggleSplitsVisBtn').addEventListener('click', () => this.toggleLyricLayer('splits'));
+        document.getElementById('toggleDownbeatsVisBtn').addEventListener('click', () => this.toggleLyricLayer('downbeats'));
         document.getElementById('timeTop').addEventListener('input', () => this.updateLyricsMetaPreview());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('input', () => this.updateLyricsMetaPreview());
@@ -531,12 +534,49 @@ class ChordAnnotatorApp {
         darkBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
     }
 
+    lyricLayerHidden(layer) {
+        if (layer === 'chords') return this.currentSong?.hideChords === true;
+        if (layer === 'splits') return this.currentSong?.hideSplits === true;
+        if (layer === 'downbeats') return this.currentSong?.hideDownbeats === true;
+        return false;
+    }
+
+    toggleLyricLayer(layer) {
+        if (!this.currentSong) return;
+        if (layer === 'chords') this.currentSong.hideChords = !this.lyricLayerHidden('chords');
+        else if (layer === 'splits') this.currentSong.hideSplits = !this.lyricLayerHidden('splits');
+        else if (layer === 'downbeats') this.currentSong.hideDownbeats = !this.lyricLayerHidden('downbeats');
+        else return;
+        this.applyLyricVisibility();
+        this.persistCurrentSong();
+    }
+
+    applyLyricVisibility() {
+        const display = document.getElementById('lyricsDisplay');
+        if (display) {
+            display.classList.toggle('hide-chords', this.lyricLayerHidden('chords'));
+            display.classList.toggle('hide-splits', this.lyricLayerHidden('splits'));
+            display.classList.toggle('hide-downbeats', this.lyricLayerHidden('downbeats'));
+        }
+
+        const sync = (id, visible) => {
+            const btn = document.getElementById(id);
+            if (!btn) return;
+            btn.setAttribute('aria-pressed', visible ? 'true' : 'false');
+            btn.classList.toggle('is-off', !visible);
+        };
+        sync('toggleChordsVisBtn', !this.lyricLayerHidden('chords'));
+        sync('toggleSplitsVisBtn', !this.lyricLayerHidden('splits'));
+        sync('toggleDownbeatsVisBtn', !this.lyricLayerHidden('downbeats'));
+    }
+
     renderAnnotationView() {
         document.getElementById('annotationTitle').textContent = this.currentSong.title;
         this.updateLyricsHeading();
         this.updateSongMetaFields();
         this.applyTextAlign();
         this.applyLyricTheme();
+        this.applyLyricVisibility();
 
         this.renderAnnotatedLyrics();
         this.updateChordLegend();
