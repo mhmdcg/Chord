@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-02T12:15:10.494Z",
+  "updatedAt": "2026-09-02T12:19:14.437Z",
   "songs": [
     {
       "title": "خیال",
@@ -454,7 +454,10 @@
         "Abm",
         "Gbmaj7"
       ],
-      "videoSeconds": 180
+      "videoSeconds": 180,
+      "downbeats": [
+        6
+      ]
     },
     {
       "title": "بهانه",
