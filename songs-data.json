@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-02T22:02:54.709Z",
+  "updatedAt": "2026-09-02T22:03:33.670Z",
   "songs": [
     {
       "title": "خیال",
@@ -454,7 +454,7 @@
         "Abm",
         "Gbmaj7"
       ],
-      "videoSeconds": 180,
+      "videoSeconds": 30,
       "downbeats": [
         0,
         6,
@@ -518,7 +518,7 @@
       ],
       "hideChords": false,
       "hideSplits": false,
-      "hideDownbeats": false,
+      "hideDownbeats": true,
       "downbeatsEqualized": false
     },
     {
