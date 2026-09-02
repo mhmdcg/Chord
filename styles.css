@@ -1158,6 +1158,10 @@ body {
     text-align: center;
 }
 
+.lyrics-display.is-equalized {
+    overflow-x: auto;
+}
+
 .lyrics-display.is-equalized .lyrics-content,
 .lyrics-display.is-equalized.align-left .lyrics-content,
 .lyrics-display.is-equalized.align-right .lyrics-content,

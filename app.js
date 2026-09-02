@@ -1646,6 +1646,7 @@ class ChordAnnotatorApp {
     }
 
     clearDownbeatSpacing(content) {
+        content.style.paddingInlineStart = '';
         content.querySelectorAll('.downbeat-spacer').forEach((el) => el.remove());
         content.querySelectorAll('.downbeat-stretch, .downbeat-line').forEach((el) => {
             const parent = el.parentNode;
@@ -1765,56 +1766,53 @@ class ChordAnnotatorApp {
                 const firstAlong = Math.max(0, along(beats[0].x));
                 const textEndX = this.getCharInlineEndX(content, lineEnd, rtl);
                 const textEndAlong = textEndX == null ? along(beats[3].x) : along(textEndX);
+                const alongs = beats.map((beat) => along(beat.x));
                 return {
                     beats,
                     lineStart,
                     lineEnd,
                     prefix: Math.max(0, firstAlong - startAlong),
-                    alongs: beats.map((beat) => along(beat.x)),
-                    textEndAlong
+                    alongs,
+                    gaps: [alongs[1] - alongs[0], alongs[2] - alongs[1], alongs[3] - alongs[2]],
+                    afterLast: textEndAlong - alongs[3]
                 };
             });
         if (!lines.length) return;
 
+        const base = Math.max(4, ...lines.flatMap((line) => line.gaps));
         const maxPrefix = Math.max(0, ...lines.map((line) => line.prefix));
-        const slot = (innerWidth - maxPrefix) / 4;
-        if (slot < 4) return;
+        const padStart = rtl ? padRight : padLeft;
+        if (maxPrefix >= 0.5) {
+            content.style.paddingInlineStart = `${padStart + maxPrefix}px`;
+        }
 
         const ops = [];
         const lineWraps = [];
         lines.forEach((line) => {
-            lineWraps.push({ start: line.lineStart, end: line.lineEnd });
-            const leading = maxPrefix - line.prefix;
-            if (leading >= 0.5) {
-                ops.push({
-                    from: line.lineStart,
-                    to: line.lineStart,
-                    extra: leading,
-                    leading: true,
-                    trailing: false
-                });
-            }
+            lineWraps.push({ start: line.lineStart, end: line.lineEnd, prefix: line.prefix });
             for (let i = 0; i < 4; i += 1) {
                 const from = line.beats[i].offset;
                 const to = i < 3 ? line.beats[i + 1].offset : line.lineEnd;
-                const a = line.alongs[i];
-                const b = i < 3 ? line.alongs[i + 1] : line.textEndAlong;
-                const extra = slot - (b - a);
-                if (Math.abs(extra) < 0.5) continue;
-                ops.push({ from, to, extra, trailing: i === 3, leading: false });
+                const current = i < 3 ? line.gaps[i] : line.afterLast;
+                const extra = base - current;
+                if (extra < 0.5) continue;
+                ops.push({ from, to, extra, trailing: i === 3 });
             }
         });
 
         lineWraps.sort((a, b) => b.start - a.start);
         lineWraps.forEach((wrap) => this.wrapLyricNowrap(content, wrap.start, wrap.end));
+        lineWraps.forEach((wrap) => {
+            if (wrap.prefix < 0.5) return;
+            const pos = this.getDomPositionForOffset(content, wrap.start);
+            const line = pos?.node?.parentElement?.closest('.downbeat-line');
+            if (line) line.style.marginInlineStart = `-${wrap.prefix}px`;
+        });
 
         ops.sort((a, b) => b.from - a.from || b.to - a.to);
         ops.forEach((op) => {
-            if (op.leading) {
-                this.insertLyricWidget(content, op.from, this.createDownbeatSpacer(op.extra, op.from));
-                return;
-            }
-            if (op.extra > 0 && op.trailing) {
+            if (op.extra < 0.5) return;
+            if (op.trailing) {
                 const pos = this.getDomPositionForOffset(content, op.from);
                 const line = pos?.node?.parentElement?.closest('.downbeat-line');
                 if (line) {
@@ -1822,7 +1820,7 @@ class ChordAnnotatorApp {
                     return;
                 }
             }
-            if (op.extra > 0 && (this.findLastWordBreak(op.from, op.to) >= 0 || !this.wouldSplitJoin(op.to))) {
+            if (this.findLastWordBreak(op.from, op.to) >= 0 || !this.wouldSplitJoin(op.to)) {
                 let insertAt = this.findLastWordBreak(op.from, op.to);
                 if (insertAt < 0) insertAt = op.to;
                 if (insertAt > 0 && this.currentSong.lyrics[insertAt - 1] === '\n') insertAt -= 1;
