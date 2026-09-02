@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-02T21:57:17.008Z",
+  "updatedAt": "2026-09-02T21:57:21.112Z",
   "songs": [
     {
       "title": "خیال",
@@ -530,7 +530,7 @@
       "createdAt": "2026-08-24T07:59:29.573Z",
       "scale": "Dm",
       "timeTop": 6,
-      "timeBottom": 4,
+      "timeBottom": 8,
       "tempo": 140,
       "lyricTheme": "light",
       "chordsLocked": false,
