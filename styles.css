@@ -1174,7 +1174,9 @@ body {
 }
 
 .downbeat-line {
+    display: inline-block;
     white-space: nowrap;
+    vertical-align: baseline;
 }
 
 .downbeat-stretch {
