@@ -16,6 +16,7 @@ class ChordAnnotatorApp {
         this.downbeatMode = false;
         this.draggingSplit = null;
         this.draggingDownbeat = null;
+        this.beatModeGrid = null;
         this.ignoreSplitClick = false;
         this.history = [];
         this.historyIndex = -1;
@@ -1230,7 +1231,7 @@ class ChordAnnotatorApp {
     }
 
     handleEraseClick(e) {
-        const downbeatEl = e.target.closest('.lyric-downbeat');
+        const downbeatEl = e.target.closest('.lyric-downbeat:not(.lyric-downbeat-grid)');
         if (downbeatEl) {
             this.removeDownbeatAt(Number(downbeatEl.dataset.offset));
             return;
@@ -1240,7 +1241,7 @@ class ChordAnnotatorApp {
             this.removeSplitAt(Number(splitEl.dataset.offset));
             return;
         }
-        const nearbyDownbeat = this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-downbeat');
+        const nearbyDownbeat = this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-downbeat:not(.lyric-downbeat-grid)');
         const nearbySplit = this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-split');
         if (nearbyDownbeat && nearbySplit) {
             if (nearbyDownbeat.distance <= nearbySplit.distance) this.removeDownbeatAt(nearbyDownbeat.offset);
@@ -1253,7 +1254,7 @@ class ChordAnnotatorApp {
 
     handleSplitPointerDown(e) {
         if (this.eraseMode || this.playMode || e.button) return;
-        const downbeatEl = e.target.closest('.lyric-downbeat');
+        const downbeatEl = e.target.closest('.lyric-downbeat:not(.lyric-downbeat-grid)');
         if (downbeatEl) {
             e.preventDefault();
             e.stopPropagation();
@@ -1431,7 +1432,7 @@ class ChordAnnotatorApp {
     }
 
     nearestDownbeatOffsetFromPoint(x, y) {
-        return this.nearestMarkFromPoint(x, y, '#lyricSplitOverlay .lyric-downbeat')?.offset ?? null;
+        return this.nearestMarkFromPoint(x, y, '#lyricSplitOverlay .lyric-downbeat:not(.lyric-downbeat-grid)')?.offset ?? null;
     }
 
     addSplitAt(offset) {
@@ -1541,6 +1542,7 @@ class ChordAnnotatorApp {
         const on = this.currentSong?.downbeatsEqualized === true;
         btn.classList.toggle('active', on);
         btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.textContent = on ? 'Stop beat mode' : 'Beat mode';
     }
 
     equalizeDownbeats() {
@@ -1549,7 +1551,7 @@ class ChordAnnotatorApp {
         const turningOn = this.currentSong.downbeatsEqualized !== true;
         if (turningOn) {
             if (this.getDownbeats().length < 4) {
-                alert('Add 4 downbeats, then tap Equalize.');
+                alert('Add 4 downbeats, then tap Beat mode.');
                 return;
             }
             this.currentSong.hideDownbeats = false;
@@ -1558,64 +1560,35 @@ class ChordAnnotatorApp {
         this.renderAnnotationView();
     }
 
-    getLyricLineInfos() {
-        const lyrics = this.currentSong.lyrics || '';
-        const marks = [...this.getDownbeats()].sort((a, b) => a - b);
-        const lines = [];
-        let start = 0;
-        for (let i = 0; i <= lyrics.length; i += 1) {
-            if (i < lyrics.length && lyrics[i] !== '\n') continue;
-            lines.push({
-                start,
-                end: i,
-                downbeats: marks.filter((mark) => mark >= start && mark < i)
-            });
-            start = i + 1;
-        }
-        return lines;
-    }
-
     getDownbeatBars() {
-        return this.getLyricLineInfos().flatMap((line) => {
-            const bars = [];
-            for (let i = 0; i + 3 < line.downbeats.length; i += 4) {
-                bars.push(line.downbeats.slice(i, i + 4));
-            }
-            return bars;
-        });
+        const marks = [...this.getDownbeats()].sort((a, b) => a - b);
+        const bars = [];
+        for (let i = 0; i < marks.length; i += 4) {
+            bars.push(marks.slice(i, i + 4));
+        }
+        return bars;
     }
 
     getEqualizeBarRanges() {
         const lyrics = this.currentSong.lyrics || '';
+        const marks = [...this.getDownbeats()].sort((a, b) => a - b);
+        if (!marks.length) return [];
         const ranges = [];
-        this.getLyricLineInfos().forEach((line) => {
-            const beats = line.downbeats;
-            if (!beats.length) return;
-            const complete = Math.floor(beats.length / 4);
-            const lineEnd = (line.end < lyrics.length && lyrics[line.end] === '\n')
-                ? line.end + 1
-                : line.end;
-
-            for (let i = 0; i < complete; i += 1) {
-                const bar = beats.slice(i * 4, i * 4 + 4);
-                const start = i === 0 ? line.start : bar[0];
-                let end;
-                if (i < complete - 1) end = beats[(i + 1) * 4];
-                else if (beats.length % 4) end = beats[complete * 4];
-                else end = lineEnd;
-                ranges.push({ beats: bar, start, end, complete: true });
+        for (let i = 0; i < marks.length; i += 4) {
+            const beats = marks.slice(i, i + 4);
+            let start = i === 0 ? 0 : beats[0];
+            if (i === 0) {
+                while (start < beats[0] && lyrics[start] === '\n') start += 1;
             }
-
-            const leftover = beats.slice(complete * 4);
-            if (leftover.length) {
-                ranges.push({
-                    beats: leftover,
-                    start: complete ? leftover[0] : line.start,
-                    end: lineEnd,
-                    complete: false
-                });
-            }
-        });
+            const next = marks[i + 4];
+            const end = next != null ? next : lyrics.length;
+            ranges.push({
+                beats,
+                start,
+                end,
+                complete: beats.length === 4
+            });
+        }
         return ranges;
     }
 
@@ -1691,7 +1664,7 @@ class ChordAnnotatorApp {
     findLastWordBreak(from, to) {
         const lyrics = this.currentSong.lyrics || '';
         for (let i = to - 1; i >= from; i -= 1) {
-            if (lyrics[i] === ' ' || lyrics[i] === '\t') return i + 1;
+            if (lyrics[i] === ' ' || lyrics[i] === '\t' || lyrics[i] === '\n') return i + 1;
         }
         return -1;
     }
@@ -1704,6 +1677,7 @@ class ChordAnnotatorApp {
     }
 
     clearDownbeatSpacing(content) {
+        this.beatModeGrid = null;
         content.style.paddingInlineStart = '';
         content.querySelectorAll('.downbeat-spacer').forEach((el) => el.remove());
         content.querySelectorAll('.downbeat-stretch, .downbeat-line').forEach((el) => {
@@ -1772,7 +1746,7 @@ class ChordAnnotatorApp {
         range.setStart(startPos.node, startPos.offset);
         const endLine = endPos.node.parentElement?.closest('.downbeat-line');
         const startLine = startPos.node.parentElement?.closest('.downbeat-line');
-        if (endLine && endLine !== startLine && endPos.offset === 0) {
+        if (endLine && endLine !== startLine) {
             range.setEndBefore(endLine);
         } else {
             range.setEnd(endPos.node, endPos.offset);
@@ -1834,6 +1808,14 @@ class ChordAnnotatorApp {
         wraps.forEach((wrap) => this.wrapLyricNowrap(content, wrap.start, wrap.end));
         void content.offsetWidth;
 
+        ranges.forEach((range) => {
+            const pos = this.getDomPositionForOffset(content, range.start);
+            const wrap = pos?.node?.parentElement?.closest('.downbeat-line');
+            if (!wrap) return;
+            wrap.dataset.beatFirst = String(range.beats[0]);
+            wrap.dataset.beatCount = String(range.beats.length);
+        });
+
         const lines = ranges.map((range) => {
             const carets = range.beats.map((offset) => this.getCaretRectForOffset(content, offset));
             if (carets.some((caret) => !caret)) return null;
@@ -1861,7 +1843,19 @@ class ChordAnnotatorApp {
         }).filter(Boolean);
         if (!lines.length) return;
 
-        const gapPool = lines.flatMap((line) => line.gaps).filter((gap) => gap > 0);
+        const lyrics = this.currentSong.lyrics || '';
+        const gapPool = lines.flatMap((line) => {
+            const usable = [];
+            for (let i = 0; i < line.gaps.length; i += 1) {
+                const gap = line.gaps[i];
+                if (gap <= 0) continue;
+                const from = line.beats[i];
+                const to = line.beats[i + 1];
+                if (!/[^\s_]/.test(lyrics.slice(from, to))) continue;
+                usable.push(gap);
+            }
+            return usable;
+        });
         const base = Math.max(4, ...(gapPool.length ? gapPool : [4]));
         const maxPrefix = Math.max(0, ...lines.map((line) => line.prefix));
         const padStart = rtl ? padRight : padLeft;
@@ -1871,23 +1865,23 @@ class ChordAnnotatorApp {
 
         const ops = [];
         lines.forEach((line) => {
-            if (line.prefix >= 0.5) {
-                const pos = this.getDomPositionForOffset(content, line.start);
-                const wrap = pos?.node?.parentElement?.closest('.downbeat-line');
-                if (wrap) wrap.style.marginInlineStart = `-${line.prefix}px`;
+            const pos = this.getDomPositionForOffset(content, line.start);
+            const wrap = pos?.node?.parentElement?.closest('.downbeat-line');
+            if (line.prefix >= 0.5 && wrap) {
+                wrap.style.marginInlineStart = `-${line.prefix}px`;
             }
-            const slots = line.complete ? 4 : line.gaps.length;
-            for (let i = 0; i < slots; i += 1) {
+            for (let i = 0; i < line.beats.length; i += 1) {
+                const last = i === line.beats.length - 1;
                 const from = line.beats[i];
-                const to = i < line.beats.length - 1 ? line.beats[i + 1] : line.end;
-                const current = i < line.gaps.length ? line.gaps[i] : line.afterLast;
+                const to = last ? line.end : line.beats[i + 1];
+                const current = last ? line.afterLast : line.gaps[i];
                 const extra = base - current;
                 if (extra < 0.5) continue;
                 ops.push({
                     from,
                     to,
                     extra,
-                    trailing: line.complete && i === 3
+                    trailing: last
                 });
             }
         });
@@ -1912,6 +1906,19 @@ class ChordAnnotatorApp {
             }
             this.wrapLyricStretch(content, op.from, Math.max(op.from + 1, op.to), op.extra);
         });
+
+        lines.forEach((line) => {
+            const missing = 4 - line.beats.length;
+            if (missing <= 0) return;
+            const pos = this.getDomPositionForOffset(content, line.start);
+            const wrap = pos?.node?.parentElement?.closest('.downbeat-line');
+            if (!wrap) return;
+            for (let i = 0; i < missing; i += 1) {
+                wrap.appendChild(this.createDownbeatSpacer(base, line.end));
+            }
+        });
+
+        this.beatModeGrid = { base, rtl };
     }
 
     openSectionChord(start, end) {
@@ -1990,12 +1997,10 @@ class ChordAnnotatorApp {
         }
 
         const rect = place(pos.offset, pos.offset);
-        if (usable(rect)) {
+        if (usable(rect) && (rect.left !== 0 || rect.top !== 0 || rootRect.left < 1)) {
             return { left: rect.left, top: rect.top, height: rect.height };
         }
-
-        const fallback = parseFloat(getComputedStyle(root).fontSize) || 16;
-        return { left: rect.left, top: rect.top, height: fallback * 1.25 };
+        return null;
     }
 
     alignOverlay(overlay, content) {
@@ -2102,6 +2107,41 @@ class ChordAnnotatorApp {
             mark.style.top = `${caret.top - contentRect.top}px`;
             splitOverlay.appendChild(mark);
         });
+        this.drawBeatModeGridMarks(splitOverlay, content, contentRect);
+    }
+
+    drawBeatModeGridMarks(splitOverlay, content, contentRect) {
+        if (!this.currentSong?.downbeatsEqualized || this.lyricLayerHidden('downbeats')) return;
+        const base = this.beatModeGrid?.base;
+        if (!(base > 0)) return;
+        const rtl = this.beatModeGrid.rtl;
+        const sign = rtl ? -1 : 1;
+        content.querySelectorAll('.downbeat-line').forEach((lineEl) => {
+            const firstOffset = Number(lineEl.dataset.beatFirst);
+            const beatCount = Number(lineEl.dataset.beatCount);
+            if (!Number.isFinite(firstOffset) || beatCount >= 4) return;
+            const firstCaret = this.getCaretRectForOffset(content, firstOffset);
+            if (!firstCaret) return;
+            const rowMarks = [...splitOverlay.querySelectorAll('.lyric-downbeat')].filter((mark) => {
+                const top = parseFloat(mark.style.top) || 0;
+                return Math.abs(top - (firstCaret.top - contentRect.top)) <= 8;
+            });
+            for (let i = 0; i < 4; i += 1) {
+                const x = firstCaret.left + i * base * sign;
+                const taken = rowMarks.some((mark) => {
+                    const left = contentRect.left + (parseFloat(mark.style.left) || 0);
+                    return Math.abs(left - x) <= 8;
+                });
+                if (taken) continue;
+                const mark = document.createElement('span');
+                mark.className = 'lyric-downbeat lyric-downbeat-grid';
+                mark.setAttribute('aria-hidden', 'true');
+                mark.textContent = "'";
+                mark.style.left = `${x - contentRect.left}px`;
+                mark.style.top = `${firstCaret.top - contentRect.top}px`;
+                splitOverlay.appendChild(mark);
+            }
+        });
     }
 
     packChordLabels(splitOverlay, rtl) {
@@ -2145,12 +2185,14 @@ class ChordAnnotatorApp {
 
     formatLyricHtml(text) {
         if (!text) return '';
+        const flatten = this.currentSong?.downbeatsEqualized === true;
         return text.split(/(_+)/).map((part) => {
             if (!part) return '';
             if (/^_+$/.test(part)) {
                 return this.melodyBreakHtml(part);
             }
-            return this.escapeHtml(part);
+            const display = flatten ? part.replace(/\n/g, ' ') : part;
+            return this.escapeHtml(display);
         }).join('');
     }
 

@@ -1179,7 +1179,12 @@ body {
 
 .downbeat-line {
     display: block;
-    white-space: nowrap;
+    white-space: pre;
+}
+
+.lyric-downbeat-grid {
+    pointer-events: none;
+    cursor: default;
 }
 
 .downbeat-stretch {
