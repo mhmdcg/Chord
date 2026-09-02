@@ -792,6 +792,28 @@ body {
     border-color: var(--primary);
 }
 
+.downbeat-mode-btn {
+    height: 32px;
+    min-height: 32px;
+    width: 100%;
+    padding: 0 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.downbeat-mode-btn.active {
+    background: #B45309;
+    color: #fff;
+    border-color: #B45309;
+}
+
 .erase-splits-btn {
     height: 32px;
     min-height: 32px;
@@ -1103,11 +1125,13 @@ body {
     cursor: pointer;
 }
 
-.lyrics-display.is-splitting .lyric-section {
+.lyrics-display.is-splitting .lyric-section,
+.lyrics-display.is-downbeating .lyric-section {
     cursor: inherit;
 }
 
-.lyrics-display.is-splitting .lyrics-content {
+.lyrics-display.is-splitting .lyrics-content,
+.lyrics-display.is-downbeating .lyrics-content {
     cursor: col-resize;
     user-select: none;
     -webkit-user-select: none;
@@ -1133,12 +1157,14 @@ body {
 }
 
 .lyrics-display.is-splitting .lyric-section-fill,
-.lyrics-display.is-erasing .lyric-section-fill {
+.lyrics-display.is-erasing .lyric-section-fill,
+.lyrics-display.is-downbeating .lyric-section-fill {
     pointer-events: none;
     cursor: inherit;
 }
 
-.lyrics-display.is-playing-chords .lyric-split {
+.lyrics-display.is-playing-chords .lyric-split,
+.lyrics-display.is-playing-chords .lyric-downbeat {
     pointer-events: none;
     cursor: inherit;
 }
@@ -1193,6 +1219,45 @@ body {
 
 .lyrics-display.theme-dark .lyric-split {
     border-inline-start-color: #C5A45A;
+}
+
+.lyric-downbeat {
+    position: absolute;
+    pointer-events: auto;
+    cursor: col-resize;
+    touch-action: none;
+    color: #C5A45A;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1;
+    user-select: none;
+    transform: translate(-50%, calc(-100% - 1px));
+}
+
+.lyric-downbeat::after {
+    content: '';
+    position: absolute;
+    inset-block: -0.15em;
+    inset-inline-start: -10px;
+    width: 20px;
+    height: 1.15em;
+}
+
+.lyric-downbeat.dragging {
+    font-weight: 800;
+}
+
+.lyrics-display.is-erasing .lyric-downbeat {
+    cursor: pointer;
+}
+
+.lyrics-display.is-export .lyric-downbeat {
+    pointer-events: none;
+}
+
+.lyrics-display.theme-dark .lyric-downbeat {
+    color: #C5A45A;
 }
 
 .chord-label {

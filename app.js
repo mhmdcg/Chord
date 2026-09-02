@@ -13,7 +13,9 @@ class ChordAnnotatorApp {
         this.splitMode = false;
         this.eraseMode = false;
         this.playMode = false;
+        this.downbeatMode = false;
         this.draggingSplit = null;
+        this.draggingDownbeat = null;
         this.ignoreSplitClick = false;
         this.history = [];
         this.historyIndex = -1;
@@ -113,6 +115,7 @@ class ChordAnnotatorApp {
         document.getElementById('scaleMinorBtn').addEventListener('click', () => this.setScaleMode('minor'));
         document.getElementById('lockChordsBtn').addEventListener('click', () => this.toggleChordsLock());
         document.getElementById('splitModeBtn').addEventListener('click', () => this.toggleSplitMode());
+        document.getElementById('downbeatModeBtn').addEventListener('click', () => this.toggleDownbeatMode());
         document.getElementById('eraseSplitsBtn').addEventListener('click', () => this.toggleEraseMode());
         document.getElementById('playChordsBtn').addEventListener('click', () => this.togglePlayMode());
         document.getElementById('timeTop').addEventListener('input', () => this.updateLyricsMetaPreview());
@@ -130,7 +133,7 @@ class ChordAnnotatorApp {
 
         const lyricsDisplay = document.getElementById('lyricsDisplay');
         lyricsDisplay.addEventListener('mousedown', (e) => {
-            if (this.splitMode || this.eraseMode || this.playMode || e.target.closest('.lyric-split')) e.preventDefault();
+            if (this.splitMode || this.downbeatMode || this.eraseMode || this.playMode || e.target.closest('.lyric-split, .lyric-downbeat')) e.preventDefault();
         });
         lyricsDisplay.addEventListener('pointerdown', (e) => this.handleSplitPointerDown(e));
         lyricsDisplay.addEventListener('click', (e) => this.handleLyricsClick(e));
@@ -265,9 +268,11 @@ class ChordAnnotatorApp {
         } else if (viewName === 'annotation') {
             document.getElementById('annotationView').classList.add('active');
             this.setSplitMode(false);
+            this.setDownbeatMode(false);
             this.setEraseMode(false);
             this.setPlayMode(false);
             this.ensureSplits();
+            this.ensureDownbeats();
             this.initHistory();
             this.renderAnnotationView();
         }
@@ -290,6 +295,7 @@ class ChordAnnotatorApp {
             lyricTheme: 'light',
             chordsLocked: false,
             splits: [],
+            downbeats: [],
             videoSeconds: 60,
             createdAt: new Date().toISOString()
         };
@@ -385,6 +391,7 @@ class ChordAnnotatorApp {
         return {
             annotations: JSON.parse(JSON.stringify(this.currentSong.annotations || [])),
             splits: [...this.getSplits()],
+            downbeats: [...this.getDownbeats()],
             scale: this.currentSong.scale || '',
             recentChords: [...(this.currentSong.recentChords || [])]
         };
@@ -392,7 +399,7 @@ class ChordAnnotatorApp {
 
     historyEntry(entry) {
         if (Array.isArray(entry)) {
-            return { annotations: entry, splits: this.getSplits(), scale: this.currentSong?.scale || '' };
+            return { annotations: entry, splits: this.getSplits(), downbeats: this.getDownbeats(), scale: this.currentSong?.scale || '' };
         }
         return entry;
     }
@@ -403,11 +410,15 @@ class ChordAnnotatorApp {
         if (Array.isArray(entry.splits)) {
             this.currentSong.splits = [...entry.splits];
         }
+        if (Array.isArray(entry.downbeats)) {
+            this.currentSong.downbeats = [...entry.downbeats];
+        }
         this.currentSong.scale = entry.scale || '';
         if (Array.isArray(entry.recentChords)) {
             this.currentSong.recentChords = [...entry.recentChords];
         }
         this.normalizeSplits();
+        this.normalizeDownbeats();
     }
 
     commitAnnotations(annotations) {
@@ -416,8 +427,10 @@ class ChordAnnotatorApp {
 
     commitSongState(patch = {}) {
         if (patch.annotations) this.currentSong.annotations = patch.annotations;
-        if (patch.splits) this.currentSong.splits = patch.splits;
+        if (Array.isArray(patch.splits)) this.currentSong.splits = patch.splits;
+        if (Array.isArray(patch.downbeats)) this.currentSong.downbeats = patch.downbeats;
         this.normalizeSplits();
+        this.normalizeDownbeats();
         this.history = this.history.slice(0, this.historyIndex + 1);
         this.history.push(this.snapshotSongState());
         this.historyIndex++;
@@ -693,6 +706,10 @@ class ChordAnnotatorApp {
         return Array.isArray(this.currentSong?.splits) ? this.currentSong.splits : [];
     }
 
+    getDownbeats() {
+        return Array.isArray(this.currentSong?.downbeats) ? this.currentSong.downbeats : [];
+    }
+
     getSectionPoints() {
         const length = this.currentSong?.lyrics?.length || 0;
         const points = new Set([0, length]);
@@ -739,6 +756,19 @@ class ChordAnnotatorApp {
             .filter((offset) => offset > 0 && offset < length);
     }
 
+    ensureDownbeats() {
+        if (!this.currentSong) return;
+        if (!Array.isArray(this.currentSong.downbeats)) this.currentSong.downbeats = [];
+        this.normalizeDownbeats();
+    }
+
+    normalizeDownbeats() {
+        if (!this.currentSong) return;
+        const length = this.currentSong.lyrics?.length || 0;
+        this.currentSong.downbeats = this.collapseNearbyOffsets(this.getDownbeats())
+            .filter((offset) => offset >= 0 && offset < length);
+    }
+
     annotationForSection(start, end, annotations = this.getDisplayAnnotations()) {
         const covering = annotations.filter((annotation) => annotation.start <= start && annotation.end >= end);
         return covering.find((annotation) => annotation.pending) || covering[0] ||
@@ -773,6 +803,10 @@ class ChordAnnotatorApp {
         this.setSplitMode(!this.splitMode);
     }
 
+    toggleDownbeatMode() {
+        this.setDownbeatMode(!this.downbeatMode);
+    }
+
     toggleEraseMode() {
         this.setEraseMode(!this.eraseMode);
     }
@@ -784,6 +818,20 @@ class ChordAnnotatorApp {
     setSplitMode(enabled) {
         this.splitMode = Boolean(enabled);
         if (this.splitMode) {
+            this.downbeatMode = false;
+            this.eraseMode = false;
+            this.playMode = false;
+            this.stopPianoChord();
+            this.closeChordModal();
+        }
+        this.updateSplitToolButtons();
+        window.getSelection()?.removeAllRanges();
+    }
+
+    setDownbeatMode(enabled) {
+        this.downbeatMode = Boolean(enabled);
+        if (this.downbeatMode) {
+            this.splitMode = false;
             this.eraseMode = false;
             this.playMode = false;
             this.stopPianoChord();
@@ -797,6 +845,7 @@ class ChordAnnotatorApp {
         this.eraseMode = Boolean(enabled);
         if (this.eraseMode) {
             this.splitMode = false;
+            this.downbeatMode = false;
             this.playMode = false;
             this.stopPianoChord();
             this.closeChordModal();
@@ -809,6 +858,7 @@ class ChordAnnotatorApp {
         this.playMode = Boolean(enabled);
         if (this.playMode) {
             this.splitMode = false;
+            this.downbeatMode = false;
             this.eraseMode = false;
             this.closeChordModal();
             this.warmupGrandPianoSamples();
@@ -822,6 +872,7 @@ class ChordAnnotatorApp {
 
     updateSplitToolButtons() {
         const splitBtn = document.getElementById('splitModeBtn');
+        const downbeatBtn = document.getElementById('downbeatModeBtn');
         const eraseBtn = document.getElementById('eraseSplitsBtn');
         const playBtn = document.getElementById('playChordsBtn');
         const display = document.getElementById('lyricsDisplay');
@@ -829,6 +880,11 @@ class ChordAnnotatorApp {
             splitBtn.classList.toggle('active', this.splitMode);
             splitBtn.setAttribute('aria-pressed', this.splitMode ? 'true' : 'false');
             splitBtn.textContent = this.splitMode ? 'Stop split' : 'Split';
+        }
+        if (downbeatBtn) {
+            downbeatBtn.classList.toggle('active', this.downbeatMode);
+            downbeatBtn.setAttribute('aria-pressed', this.downbeatMode ? 'true' : 'false');
+            downbeatBtn.textContent = this.downbeatMode ? 'Stop downbeat' : 'Downbeat';
         }
         if (eraseBtn) {
             eraseBtn.classList.toggle('active', this.eraseMode);
@@ -842,13 +898,14 @@ class ChordAnnotatorApp {
         }
         if (display) {
             display.classList.toggle('is-splitting', this.splitMode);
+            display.classList.toggle('is-downbeating', this.downbeatMode);
             display.classList.toggle('is-erasing', this.eraseMode);
             display.classList.toggle('is-playing-chords', this.playMode);
         }
     }
 
     handleLyricsClick(e) {
-        if (this.draggingHandle || this.draggingSplit || this.ignoreSplitClick) return;
+        if (this.draggingHandle || this.draggingSplit || this.draggingDownbeat || this.ignoreSplitClick) return;
         if (e.target.closest && e.target.closest('.sel-handle')) return;
         if (this.eraseMode) {
             e.preventDefault();
@@ -860,12 +917,17 @@ class ChordAnnotatorApp {
             this.handleSplitClick(e);
             return;
         }
+        if (this.downbeatMode) {
+            e.preventDefault();
+            this.handleDownbeatClick(e);
+            return;
+        }
         if (this.playMode) {
             e.preventDefault();
             this.handlePlayChordClick(e);
             return;
         }
-        if (e.target.closest('.lyric-split')) return;
+        if (e.target.closest('.lyric-split, .lyric-downbeat')) return;
         const label = e.target.closest('.chord-label');
         if (label?.dataset.start != null && label?.dataset.end != null) {
             e.stopPropagation();
@@ -893,7 +955,7 @@ class ChordAnnotatorApp {
     }
 
     handlePlayChordClick(e) {
-        if (e.target.closest('.lyric-split')) return;
+        if (e.target.closest('.lyric-split, .lyric-downbeat')) return;
         const label = e.target.closest('.chord-label');
         const fill = e.target.closest('.lyric-section-fill');
         const start = label?.dataset.start ?? fill?.dataset.start;
@@ -1099,24 +1161,63 @@ class ChordAnnotatorApp {
     }
 
     handleSplitClick(e) {
-        if (e.target.closest('.lyric-split')) return;
+        if (e.target.closest('.lyric-split, .lyric-downbeat')) return;
         const nearby = this.nearestSplitOffsetFromPoint(e.clientX, e.clientY);
         if (nearby != null) return;
         this.addSplitAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
     }
 
+    handleDownbeatClick(e) {
+        if (e.target.closest('.lyric-downbeat')) return;
+        const nearby = this.nearestDownbeatOffsetFromPoint(e.clientX, e.clientY);
+        if (nearby != null) return;
+        this.addDownbeatAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
+    }
+
     handleEraseClick(e) {
+        const downbeatEl = e.target.closest('.lyric-downbeat');
+        if (downbeatEl) {
+            this.removeDownbeatAt(Number(downbeatEl.dataset.offset));
+            return;
+        }
         const splitEl = e.target.closest('.lyric-split');
         if (splitEl) {
             this.removeSplitAt(Number(splitEl.dataset.offset));
             return;
         }
-        const nearby = this.nearestSplitOffsetFromPoint(e.clientX, e.clientY);
-        if (nearby != null) this.removeSplitAt(nearby);
+        const nearbyDownbeat = this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-downbeat');
+        const nearbySplit = this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-split');
+        if (nearbyDownbeat && nearbySplit) {
+            if (nearbyDownbeat.distance <= nearbySplit.distance) this.removeDownbeatAt(nearbyDownbeat.offset);
+            else this.removeSplitAt(nearbySplit.offset);
+            return;
+        }
+        if (nearbyDownbeat) this.removeDownbeatAt(nearbyDownbeat.offset);
+        else if (nearbySplit) this.removeSplitAt(nearbySplit.offset);
     }
 
     handleSplitPointerDown(e) {
         if (this.eraseMode || this.playMode || e.button) return;
+        const downbeatEl = e.target.closest('.lyric-downbeat');
+        if (downbeatEl) {
+            e.preventDefault();
+            e.stopPropagation();
+            const from = Number(downbeatEl.dataset.offset);
+            this.draggingDownbeat = {
+                from,
+                to: from,
+                moved: false,
+                startX: e.clientX,
+                startY: e.clientY,
+                originalDownbeats: [...this.getDownbeats()]
+            };
+            downbeatEl.classList.add('dragging');
+            document.getElementById('lyricsDisplay')?.classList.add('dragging');
+            if (downbeatEl.setPointerCapture && e.pointerId != null) {
+                downbeatEl.setPointerCapture(e.pointerId);
+            }
+            return;
+        }
         const splitEl = e.target.closest('.lyric-split');
         if (!splitEl) return;
         e.preventDefault();
@@ -1139,6 +1240,22 @@ class ChordAnnotatorApp {
     }
 
     handleSplitPointerMove(e) {
+        if (this.draggingDownbeat) {
+            e.preventDefault();
+            const dx = e.clientX - this.draggingDownbeat.startX;
+            const dy = e.clientY - this.draggingDownbeat.startY;
+            if (!this.draggingDownbeat.moved && (dx * dx + dy * dy) < 16) return;
+            this.draggingDownbeat.moved = true;
+            const next = this.constrainDownbeatMove(
+                this.draggingDownbeat.from,
+                this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)),
+                this.draggingDownbeat.originalDownbeats
+            );
+            if (next === this.draggingDownbeat.to) return;
+            this.draggingDownbeat.to = next;
+            this.applyDownbeatMove(this.draggingDownbeat.from, next, this.draggingDownbeat.originalDownbeats, false);
+            return;
+        }
         if (!this.draggingSplit) return;
         e.preventDefault();
         const dx = e.clientX - this.draggingSplit.startX;
@@ -1156,6 +1273,22 @@ class ChordAnnotatorApp {
     }
 
     handleSplitPointerUp(e) {
+        if (this.draggingDownbeat) {
+            const drag = this.draggingDownbeat;
+            this.draggingDownbeat = null;
+            document.getElementById('lyricsDisplay')?.classList.remove('dragging');
+            document.querySelectorAll('.lyric-downbeat.dragging').forEach((el) => el.classList.remove('dragging'));
+            this.currentSong.downbeats = [...drag.originalDownbeats];
+            if (drag.moved && drag.to != null && drag.to !== drag.from) {
+                this.ignoreSplitClick = true;
+                setTimeout(() => { this.ignoreSplitClick = false; }, 300);
+                this.applyDownbeatMove(drag.from, drag.to, drag.originalDownbeats, true);
+                return;
+            }
+            this.normalizeDownbeats();
+            this.renderAnnotatedLyrics();
+            return;
+        }
         if (!this.draggingSplit) return;
         const drag = this.draggingSplit;
         this.draggingSplit = null;
@@ -1223,21 +1356,27 @@ class ChordAnnotatorApp {
         this.renderAnnotatedLyrics();
     }
 
-    nearestSplitOffsetFromPoint(x, y) {
-        const hits = [...document.querySelectorAll('#lyricSplitOverlay .lyric-split')];
+    nearestMarkFromPoint(x, y, selector, maxDistance = 12) {
+        const hits = [...document.querySelectorAll(selector)];
         let best = null;
-        let bestDistance = 12;
         hits.forEach((el) => {
             const rect = el.getBoundingClientRect();
             const dx = x - (rect.left + rect.width / 2);
             const dy = y - (rect.top + rect.height / 2);
             const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < bestDistance) {
-                bestDistance = distance;
-                best = Number(el.dataset.offset);
+            if (distance < maxDistance && (!best || distance < best.distance)) {
+                best = { offset: Number(el.dataset.offset), distance };
             }
         });
-        return Number.isFinite(best) ? best : null;
+        return best && Number.isFinite(best.offset) ? best : null;
+    }
+
+    nearestSplitOffsetFromPoint(x, y) {
+        return this.nearestMarkFromPoint(x, y, '#lyricSplitOverlay .lyric-split')?.offset ?? null;
+    }
+
+    nearestDownbeatOffsetFromPoint(x, y) {
+        return this.nearestMarkFromPoint(x, y, '#lyricSplitOverlay .lyric-downbeat')?.offset ?? null;
     }
 
     addSplitAt(offset) {
@@ -1289,6 +1428,58 @@ class ChordAnnotatorApp {
         this.renderAnnotationView();
     }
 
+    constrainDownbeatMove(from, offset, downbeats = this.getDownbeats()) {
+        const length = this.currentSong?.lyrics?.length || 0;
+        if (length <= 0) return from;
+        const points = this.collapseNearbyOffsets(downbeats)
+            .filter((value) => value >= 0 && value < length);
+        const index = points.indexOf(from);
+        let min = 0;
+        let max = length - 1;
+        if (index > 0) min = points[index - 1] + 1;
+        if (index >= 0 && index < points.length - 1) max = points[index + 1] - 1;
+        return Math.max(min, Math.min(max, this.clampOffset(offset)));
+    }
+
+    applyDownbeatMove(from, to, originalDownbeats, commit) {
+        const length = this.currentSong.lyrics.length;
+        const point = this.constrainDownbeatMove(from, to, originalDownbeats);
+        const downbeats = this.collapseNearbyOffsets([
+            ...originalDownbeats.filter((offset) => offset !== from),
+            point
+        ]).filter((offset) => offset >= 0 && offset < length);
+
+        if (commit) {
+            this.commitSongState({ downbeats });
+            this.renderAnnotationView();
+            return;
+        }
+
+        this.currentSong.downbeats = downbeats;
+        this.renderAnnotatedLyrics();
+    }
+
+    addDownbeatAt(offset) {
+        this.ensureDownbeats();
+        const length = this.currentSong.lyrics.length;
+        const point = this.clampOffset(offset);
+        if (point < 0 || point >= length) return;
+        if (this.getDownbeats().some((mark) => Math.abs(mark - point) <= 1)) return;
+        const downbeats = this.collapseNearbyOffsets([...this.getDownbeats(), point])
+            .filter((value) => value >= 0 && value < length);
+        this.commitSongState({ downbeats });
+        this.renderAnnotationView();
+    }
+
+    removeDownbeatAt(offset) {
+        this.ensureDownbeats();
+        const point = this.clampOffset(offset);
+        const downbeats = this.getDownbeats().filter((mark) => mark !== point);
+        if (downbeats.length === this.getDownbeats().length) return;
+        this.commitSongState({ downbeats });
+        this.renderAnnotationView();
+    }
+
     openSectionChord(start, end) {
         if (this.playMode || this.ignoreAnnotationClick || this.draggingHandle) return;
         const sectionStart = this.clampOffset(start);
@@ -1314,6 +1505,7 @@ class ChordAnnotatorApp {
         const content = document.getElementById('lyricsContent');
         const lyrics = this.currentSong.lyrics;
         this.ensureSplits();
+        this.ensureDownbeats();
 
         if (!lyrics) {
             content.textContent = '';
@@ -1449,6 +1641,20 @@ class ChordAnnotatorApp {
             line.style.top = `${caret.top - contentRect.top}px`;
             line.style.height = `${caret.height}px`;
             splitOverlay.appendChild(line);
+        });
+        const draggingDownbeatTo = this.draggingDownbeat?.to;
+        this.getDownbeats().forEach((offset) => {
+            const caret = this.getCaretRectForOffset(content, offset);
+            if (!caret) return;
+            const mark = document.createElement('span');
+            mark.className = 'lyric-downbeat';
+            if (draggingDownbeatTo === offset) mark.classList.add('dragging');
+            mark.dataset.offset = String(offset);
+            mark.setAttribute('aria-hidden', 'true');
+            mark.textContent = "'";
+            mark.style.left = `${caret.left - contentRect.left}px`;
+            mark.style.top = `${caret.top - contentRect.top}px`;
+            splitOverlay.appendChild(mark);
         });
     }
 
