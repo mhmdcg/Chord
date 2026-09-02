@@ -819,6 +819,7 @@ class ChordAnnotatorApp {
             this.splitMode = false;
             this.eraseMode = false;
             this.closeChordModal();
+            if (this.playInstrument === 'grand') this.warmupGrandPianoSamples();
         } else {
             this.stopPianoChord();
         }
@@ -956,11 +957,14 @@ class ChordAnnotatorApp {
         this.pianoVoices = [];
     }
 
+    playInstrumentIds() {
+        return ['piano', 'grand', 'epiano', 'organ', 'guitar', 'strings', 'pad', 'bell'];
+    }
+
     loadPlayInstrument() {
         try {
             const saved = localStorage.getItem('chordPlayInstrument');
-            const allowed = ['piano', 'epiano', 'organ', 'guitar', 'strings', 'pad', 'bell'];
-            if (allowed.includes(saved)) return saved;
+            if (this.playInstrumentIds().includes(saved)) return saved;
         } catch {
             // Ignore storage errors.
         }
@@ -968,19 +972,131 @@ class ChordAnnotatorApp {
     }
 
     setPlayInstrument(id) {
-        const allowed = ['piano', 'epiano', 'organ', 'guitar', 'strings', 'pad', 'bell'];
-        this.playInstrument = allowed.includes(id) ? id : 'piano';
+        this.playInstrument = this.playInstrumentIds().includes(id) ? id : 'piano';
         try {
             localStorage.setItem('chordPlayInstrument', this.playInstrument);
         } catch {
             // Ignore storage errors.
         }
         this.syncPlayInstrumentSelect();
+        if (this.playInstrument === 'grand') this.warmupGrandPianoSamples();
     }
 
     syncPlayInstrumentSelect() {
         const select = document.getElementById('playInstrumentSelect');
         if (select) select.value = this.playInstrument || 'piano';
+    }
+
+    getGrandPianoSampleMap() {
+        if (this._grandPianoSampleMap) return this._grandPianoSampleMap;
+        const names = [
+            'C2', 'Ds2', 'Fs2', 'A2',
+            'C3', 'Ds3', 'Fs3', 'A3',
+            'C4', 'Ds4', 'Fs4', 'A4',
+            'C5', 'Ds5', 'Fs5', 'A5', 'C6'
+        ];
+        this._grandPianoSampleMap = names.map((name, index) => ({
+            midi: 36 + index * 3,
+            file: `${name}.mp3`
+        }));
+        return this._grandPianoSampleMap;
+    }
+
+    nearestGrandPianoSample(midi) {
+        const map = this.getGrandPianoSampleMap();
+        let best = map[0];
+        let bestDist = Math.abs(midi - best.midi);
+        map.forEach((entry) => {
+            const dist = Math.abs(midi - entry.midi);
+            if (dist < bestDist) {
+                best = entry;
+                bestDist = dist;
+            }
+        });
+        return best;
+    }
+
+    decodeAudioBuffer(ctx, arrayBuffer) {
+        const data = arrayBuffer.slice(0);
+        if (ctx.decodeAudioData.length === 1) {
+            return ctx.decodeAudioData(data);
+        }
+        return new Promise((resolve, reject) => {
+            ctx.decodeAudioData(data, resolve, reject);
+        });
+    }
+
+    loadGrandPianoSample(ctx, sample) {
+        this._grandSampleBuffers = this._grandSampleBuffers || new Map();
+        this._grandSampleLoads = this._grandSampleLoads || new Map();
+        if (this._grandSampleBuffers.has(sample.midi)) {
+            return Promise.resolve(this._grandSampleBuffers.get(sample.midi));
+        }
+        if (this._grandSampleLoads.has(sample.midi)) {
+            return this._grandSampleLoads.get(sample.midi);
+        }
+        const url = `https://tonejs.github.io/audio/salamander/${sample.file}`;
+        const promise = fetch(url, { mode: 'cors' })
+            .then((response) => {
+                if (!response.ok) throw new Error('sample fetch failed');
+                return response.arrayBuffer();
+            })
+            .then((data) => this.decodeAudioBuffer(ctx, data))
+            .then((buffer) => {
+                this._grandSampleBuffers.set(sample.midi, buffer);
+                return buffer;
+            })
+            .catch(() => {
+                this._grandSampleLoads.delete(sample.midi);
+                return null;
+            });
+        this._grandSampleLoads.set(sample.midi, promise);
+        return promise;
+    }
+
+    warmupGrandPianoSamples() {
+        const ctx = this.ensureAudioContext();
+        if (!ctx) return;
+        const start = () => {
+            this.getGrandPianoSampleMap().forEach((sample) => {
+                this.loadGrandPianoSample(ctx, sample);
+            });
+        };
+        if (ctx.state === 'suspended') {
+            ctx.resume().then(start).catch(() => {});
+            return;
+        }
+        start();
+    }
+
+    ensureGrandPianoSamples(ctx, notes) {
+        return Promise.all(notes.map((midi) => {
+            return this.loadGrandPianoSample(ctx, this.nearestGrandPianoSample(midi));
+        }));
+    }
+
+    playGrandPianoNote(ctx, midi, start) {
+        const sample = this.nearestGrandPianoSample(midi);
+        const buffer = this._grandSampleBuffers && this._grandSampleBuffers.get(sample.midi);
+        if (!buffer) return false;
+        const source = ctx.createBufferSource();
+        source.buffer = buffer;
+        source.playbackRate.value = 2 ** ((midi - sample.midi) / 12);
+        const gain = ctx.createGain();
+        const brightness = Math.max(0.72, 1 - (midi - 48) / 70);
+        const peak = 0.18 * brightness;
+        const dur = Math.min(buffer.duration / Math.max(source.playbackRate.value, 0.5), 4.2);
+        const fadeAt = start + Math.max(dur - 0.85, 0.25);
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.exponentialRampToValueAtTime(peak, start + 0.006);
+        gain.gain.setValueAtTime(peak, fadeAt);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+        source.connect(gain);
+        gain.connect(ctx.destination);
+        source.start(start);
+        source.stop(start + dur + 0.05);
+        this.addVoice([source, gain]);
+        return true;
     }
 
     getNoiseBuffer(ctx) {
@@ -1260,12 +1376,18 @@ class ChordAnnotatorApp {
         const ctx = this.ensureAudioContext();
         if (!ctx) return;
         const instrument = this.playInstrument || 'piano';
-        const startPlayback = () => {
+        const startPlayback = async () => {
+            let useGrand = instrument === 'grand';
+            if (useGrand) {
+                await this.ensureGrandPianoSamples(ctx, notes);
+            }
             this.stopPianoChord();
             const now = ctx.currentTime;
             const strum = instrument === 'guitar' ? 0.022 : 0.012;
             notes.forEach((midi, index) => {
-                this.playInstrumentNote(ctx, midi, now + index * strum, instrument);
+                const when = now + index * strum;
+                if (useGrand && this.playGrandPianoNote(ctx, midi, when)) return;
+                this.playInstrumentNote(ctx, midi, when, useGrand ? 'piano' : instrument);
             });
         };
         if (ctx.state === 'suspended') {
