@@ -152,6 +152,15 @@
                             <button type="button" id="splitModeBtn" class="split-mode-btn" aria-pressed="false">Split</button>
                             <button type="button" id="eraseSplitsBtn" class="erase-splits-btn" aria-pressed="false">Erase</button>
                             <button type="button" id="playChordsBtn" class="play-chords-btn" aria-pressed="false">Chord play mode</button>
+                            <select id="playInstrumentSelect" class="play-instrument-select" aria-label="Chord sound">
+                                <option value="piano">Piano</option>
+                                <option value="epiano">Electric piano</option>
+                                <option value="organ">Organ</option>
+                                <option value="guitar">Guitar</option>
+                                <option value="strings">Strings</option>
+                                <option value="pad">Synth pad</option>
+                                <option value="bell">Bell</option>
+                            </select>
                         </div>
                         <span class="time-signature">
                             <input id="timeTop" type="number" inputmode="numeric" min="1" max="32" value="4" aria-label="Beats per bar" />

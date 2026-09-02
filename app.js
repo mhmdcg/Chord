@@ -22,6 +22,7 @@ class ChordAnnotatorApp {
         this.audioContext = null;
         this.pianoVoices = [];
         this.soundingFillTimer = 0;
+        this.playInstrument = this.loadPlayInstrument();
 
         // Evenly spaced hues so neighboring assignments stay easy to tell apart.
         this.colorPalette = [
@@ -115,6 +116,10 @@ class ChordAnnotatorApp {
         document.getElementById('splitModeBtn').addEventListener('click', () => this.toggleSplitMode());
         document.getElementById('eraseSplitsBtn').addEventListener('click', () => this.toggleEraseMode());
         document.getElementById('playChordsBtn').addEventListener('click', () => this.togglePlayMode());
+        document.getElementById('playInstrumentSelect').addEventListener('change', (e) => {
+            this.setPlayInstrument(e.target.value);
+        });
+        this.syncPlayInstrumentSelect();
         document.getElementById('timeTop').addEventListener('input', () => this.updateLyricsMetaPreview());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('input', () => this.updateLyricsMetaPreview());
@@ -940,12 +945,300 @@ class ChordAnnotatorApp {
         return 440 * (2 ** ((midi - 69) / 12));
     }
 
-    stopPianoChord() {
-        (this.pianoVoices || []).forEach((voice) => {
-            try { voice.osc.stop(); } catch { /* already stopped */ }
-            try { voice.gain.disconnect(); } catch { /* already disconnected */ }
+    loadPlayInstrument() {
+        try {
+            const saved = localStorage.getItem('chordPlayInstrument');
+            const allowed = ['piano', 'epiano', 'organ', 'guitar', 'strings', 'pad', 'bell'];
+            if (allowed.includes(saved)) return saved;
+        } catch {
+            // Ignore storage errors.
+        }
+        return 'piano';
+    }
+
+    setPlayInstrument(id) {
+        const allowed = ['piano', 'epiano', 'organ', 'guitar', 'strings', 'pad', 'bell'];
+        this.playInstrument = allowed.includes(id) ? id : 'piano';
+        try {
+            localStorage.setItem('chordPlayInstrument', this.playInstrument);
+        } catch {
+            // Ignore storage errors.
+        }
+        this.syncPlayInstrumentSelect();
+    }
+
+    syncPlayInstrumentSelect() {
+        const select = document.getElementById('playInstrumentSelect');
+        if (select) select.value = this.playInstrument || 'piano';
+    }
+
+    getNoiseBuffer(ctx) {
+        if (this._noiseBuffer && this._noiseBuffer.sampleRate === ctx.sampleRate) return this._noiseBuffer;
+        const length = Math.floor(ctx.sampleRate * 0.25);
+        const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < length; i += 1) data[i] = Math.random() * 2 - 1;
+        this._noiseBuffer = buffer;
+        return buffer;
+    }
+
+    getInstrumentWave(ctx, kind) {
+        this._instrumentWaves = this._instrumentWaves || new WeakMap();
+        let waves = this._instrumentWaves.get(ctx);
+        if (!waves) {
+            waves = {};
+            this._instrumentWaves.set(ctx, waves);
+        }
+        if (waves[kind]) return waves[kind];
+        const n = 32;
+        const real = new Float32Array(n);
+        const imag = new Float32Array(n);
+        if (kind === 'piano') {
+            for (let i = 1; i < n; i += 1) {
+                imag[i] = (1 / (i ** 1.2)) * (i % 2 ? 1 : 0.62);
+            }
+        } else if (kind === 'epiano') {
+            imag[1] = 1;
+            imag[2] = 0.45;
+            imag[3] = 0.12;
+            imag[4] = 0.08;
+            imag[7] = 0.05;
+        } else if (kind === 'bell') {
+            imag[1] = 1;
+            imag[2] = 0.55;
+            imag[3] = 0.35;
+            imag[5] = 0.22;
+            imag[7] = 0.12;
+        } else {
+            imag[1] = 1;
+            imag[2] = 0.3;
+            imag[3] = 0.15;
+        }
+        waves[kind] = ctx.createPeriodicWave(real, imag);
+        return waves[kind];
+    }
+
+    addVoice(nodes) {
+        this.pianoVoices.push({
+            osc: {
+                stop() {
+                    nodes.forEach((node) => {
+                        try { node.stop?.(); } catch { /* already stopped */ }
+                    });
+                }
+            },
+            gain: {
+                disconnect() {
+                    nodes.forEach((node) => {
+                        try { node.disconnect?.(); } catch { /* already disconnected */ }
+                    });
+                }
+            }
         });
-        this.pianoVoices = [];
+    }
+
+    envelopeGain(ctx, start, attack, decay, sustain, release, peak = 0.2) {
+        const gain = ctx.createGain();
+        const dur = attack + decay + release;
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.exponentialRampToValueAtTime(Math.max(peak, 0.001), start + attack);
+        gain.gain.exponentialRampToValueAtTime(Math.max(peak * sustain, 0.0002), start + attack + decay);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+        return { gain, duration: dur };
+    }
+
+    playInstrumentNote(ctx, midi, start, instrument) {
+        const freq = this.midiToFreq(midi);
+        const brightness = Math.max(0.45, 1 - (midi - 48) / 50);
+        const nodes = [];
+
+        if (instrument === 'organ') {
+            const { gain, duration } = this.envelopeGain(ctx, start, 0.02, 0.08, 0.85, 0.35, 0.09);
+            [1, 2, 3, 4, 6].forEach((ratio, i) => {
+                const osc = ctx.createOscillator();
+                const g = ctx.createGain();
+                osc.type = i % 2 ? 'sine' : 'square';
+                osc.frequency.value = freq * ratio;
+                g.gain.value = [0.55, 0.28, 0.16, 0.1, 0.06][i];
+                osc.connect(g);
+                g.connect(gain);
+                osc.start(start);
+                osc.stop(start + duration + 0.05);
+                nodes.push(osc, g);
+            });
+            nodes.push(gain);
+            gain.connect(ctx.destination);
+            this.addVoice(nodes);
+            return;
+        }
+
+        if (instrument === 'strings') {
+            const { gain, duration } = this.envelopeGain(ctx, start, 0.14, 0.25, 0.7, 0.9, 0.07 * brightness);
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.value = 1800 + midi * 12;
+            filter.Q.value = 0.4;
+            [-7, 7].forEach((cents) => {
+                const osc = ctx.createOscillator();
+                osc.type = 'sawtooth';
+                osc.frequency.value = freq;
+                osc.detune.value = cents;
+                osc.connect(filter);
+                osc.start(start);
+                osc.stop(start + duration + 0.05);
+                nodes.push(osc);
+            });
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            nodes.push(filter, gain);
+            this.addVoice(nodes);
+            return;
+        }
+
+        if (instrument === 'pad') {
+            const { gain, duration } = this.envelopeGain(ctx, start, 0.22, 0.3, 0.75, 1.1, 0.08);
+            [-6, 6].forEach((cents, i) => {
+                const osc = ctx.createOscillator();
+                osc.type = i ? 'triangle' : 'sine';
+                osc.frequency.value = freq;
+                osc.detune.value = cents;
+                osc.connect(gain);
+                osc.start(start);
+                osc.stop(start + duration + 0.05);
+                nodes.push(osc);
+            });
+            nodes.push(gain);
+            gain.connect(ctx.destination);
+            this.addVoice(nodes);
+            return;
+        }
+
+        if (instrument === 'bell') {
+            const { gain, duration } = this.envelopeGain(ctx, start, 0.005, 0.4, 0.15, 1.6, 0.1);
+            [1, 2.76, 5.4].forEach((ratio, i) => {
+                const osc = ctx.createOscillator();
+                const g = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq * ratio;
+                g.gain.value = [1, 0.28, 0.12][i];
+                osc.connect(g);
+                g.connect(gain);
+                osc.start(start);
+                osc.stop(start + duration + 0.05);
+                nodes.push(osc, g);
+            });
+            nodes.push(gain);
+            gain.connect(ctx.destination);
+            this.addVoice(nodes);
+            return;
+        }
+
+        if (instrument === 'guitar') {
+            const { gain, duration } = this.envelopeGain(ctx, start, 0.004, 0.18, 0.22, 1.1, 0.16 * brightness);
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(3200, start);
+            filter.frequency.exponentialRampToValueAtTime(900, start + 0.25);
+            const osc = ctx.createOscillator();
+            osc.type = 'sawtooth';
+            osc.frequency.value = freq;
+            osc.connect(filter);
+            filter.connect(gain);
+            const noise = ctx.createBufferSource();
+            noise.buffer = this.getNoiseBuffer(ctx);
+            const noiseFilter = ctx.createBiquadFilter();
+            noiseFilter.type = 'bandpass';
+            noiseFilter.frequency.value = freq * 2;
+            noiseFilter.Q.value = 2;
+            const noiseGain = ctx.createGain();
+            noiseGain.gain.setValueAtTime(0.12, start);
+            noiseGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.04);
+            noise.connect(noiseFilter);
+            noiseFilter.connect(noiseGain);
+            noiseGain.connect(gain);
+            osc.start(start);
+            osc.stop(start + duration + 0.05);
+            noise.start(start);
+            noise.stop(start + 0.05);
+            nodes.push(osc, filter, noise, noiseFilter, noiseGain, gain);
+            gain.connect(ctx.destination);
+            this.addVoice(nodes);
+            return;
+        }
+
+        if (instrument === 'epiano') {
+            const { gain, duration } = this.envelopeGain(ctx, start, 0.008, 0.35, 0.35, 1.2, 0.14);
+            const wave = this.getInstrumentWave(ctx, 'epiano');
+            const osc = ctx.createOscillator();
+            osc.setPeriodicWave(wave);
+            osc.frequency.value = freq;
+            const tine = ctx.createOscillator();
+            tine.type = 'sine';
+            tine.frequency.value = freq * 12.01;
+            const tineGain = ctx.createGain();
+            tineGain.gain.value = 0.03;
+            const tremolo = ctx.createOscillator();
+            const tremoloGain = ctx.createGain();
+            tremolo.frequency.value = 4.8;
+            tremoloGain.gain.value = 0.18;
+            const tremoloDepth = ctx.createGain();
+            tremoloDepth.gain.value = 1;
+            tremolo.connect(tremoloGain);
+            tremoloGain.connect(gain.gain);
+            osc.connect(gain);
+            tine.connect(tineGain);
+            tineGain.connect(gain);
+            osc.start(start);
+            tine.start(start);
+            tremolo.start(start);
+            osc.stop(start + duration + 0.05);
+            tine.stop(start + duration + 0.05);
+            tremolo.stop(start + duration + 0.05);
+            nodes.push(osc, tine, tineGain, tremolo, tremoloGain, gain);
+            gain.connect(ctx.destination);
+            this.addVoice(nodes);
+            return;
+        }
+
+        const { gain, duration } = this.envelopeGain(ctx, start, 0.006, 0.32, 0.28, 1.7, 0.18 * brightness);
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.Q.value = 0.85;
+        filter.frequency.setValueAtTime(4200 * brightness, start);
+        filter.frequency.exponentialRampToValueAtTime(780, start + 0.55);
+        const osc = ctx.createOscillator();
+        osc.setPeriodicWave(this.getInstrumentWave(ctx, 'piano'));
+        osc.frequency.value = freq;
+        const partial = ctx.createOscillator();
+        partial.type = 'sine';
+        partial.frequency.value = freq * 2.003;
+        const partialGain = ctx.createGain();
+        partialGain.gain.value = 0.08;
+        const hammer = ctx.createBufferSource();
+        hammer.buffer = this.getNoiseBuffer(ctx);
+        const hammerFilter = ctx.createBiquadFilter();
+        hammerFilter.type = 'bandpass';
+        hammerFilter.frequency.value = Math.min(3800, freq * 8);
+        hammerFilter.Q.value = 1.1;
+        const hammerGain = ctx.createGain();
+        hammerGain.gain.setValueAtTime(0.16 * brightness, start);
+        hammerGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.035);
+        osc.connect(filter);
+        partial.connect(partialGain);
+        partialGain.connect(filter);
+        hammer.connect(hammerFilter);
+        hammerFilter.connect(hammerGain);
+        hammerGain.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(start);
+        partial.start(start);
+        hammer.start(start);
+        osc.stop(start + duration + 0.05);
+        partial.stop(start + duration + 0.05);
+        hammer.stop(start + 0.05);
+        nodes.push(osc, partial, partialGain, hammer, hammerFilter, hammerGain, filter, gain);
+        this.addVoice(nodes);
     }
 
     playPianoChord(chord) {
@@ -955,45 +1248,13 @@ class ChordAnnotatorApp {
         if (!notes.length) return;
         const ctx = this.ensureAudioContext();
         if (!ctx) return;
+        const instrument = this.playInstrument || 'piano';
         const startPlayback = () => {
             this.stopPianoChord();
             const now = ctx.currentTime;
-            const duration = 1.4;
+            const strum = instrument === 'guitar' ? 0.022 : 0.012;
             notes.forEach((midi, index) => {
-                const start = now + index * 0.014;
-                const freq = this.midiToFreq(midi);
-                const filter = ctx.createBiquadFilter();
-                filter.type = 'lowpass';
-                filter.Q.value = 0.7;
-                filter.frequency.setValueAtTime(2800, start);
-                filter.frequency.exponentialRampToValueAtTime(820, start + 0.45);
-
-                const master = ctx.createGain();
-                master.gain.setValueAtTime(0.0001, start);
-                master.gain.exponentialRampToValueAtTime(0.22, start + 0.02);
-                master.gain.exponentialRampToValueAtTime(0.08, start + 0.28);
-                master.gain.exponentialRampToValueAtTime(0.0001, start + duration);
-
-                const partials = [
-                    { type: 'triangle', ratio: 1, gain: 0.7 },
-                    { type: 'sine', ratio: 2, gain: 0.22 },
-                    { type: 'sine', ratio: 3, gain: 0.1 }
-                ];
-                partials.forEach((partial) => {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = partial.type;
-                    osc.frequency.value = freq * partial.ratio;
-                    gain.gain.value = partial.gain;
-                    osc.connect(gain);
-                    gain.connect(filter);
-                    osc.start(start);
-                    osc.stop(start + duration + 0.05);
-                    this.pianoVoices.push({ osc, gain });
-                });
-                filter.connect(master);
-                master.connect(ctx.destination);
-                this.pianoVoices.push({ osc: { stop() {} }, gain: master });
+                this.playInstrumentNote(ctx, midi, now + index * strum, instrument);
             });
         };
         if (ctx.state === 'suspended') {

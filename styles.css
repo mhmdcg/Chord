@@ -836,6 +836,16 @@ body {
     border-color: #0D9488;
 }
 
+.play-instrument-select {
+    width: 100%;
+    flex: none;
+}
+
+.annotation-tools .play-instrument-select {
+    width: 100%;
+    flex: none;
+}
+
 .annotation-tools select,
 .time-signature input,
 .song-tempo input,
