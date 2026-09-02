@@ -814,6 +814,28 @@ body {
     border-color: #C5A45A;
 }
 
+.play-chords-btn {
+    height: 32px;
+    min-height: 32px;
+    width: 100%;
+    padding: 0 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.play-chords-btn.active {
+    background: #0D9488;
+    color: #fff;
+    border-color: #0D9488;
+}
+
 .annotation-tools select,
 .time-signature input,
 .song-tempo input,
@@ -1114,6 +1136,17 @@ body {
 .lyrics-display.is-erasing .lyric-section-fill {
     pointer-events: none;
     cursor: inherit;
+}
+
+.lyrics-display.is-playing-chords .lyric-split {
+    pointer-events: none;
+    cursor: inherit;
+}
+
+.chord-label.is-sounding,
+.lyric-section-fill.is-sounding {
+    outline: 2px solid #0D9488;
+    outline-offset: 1px;
 }
 
 .lyric-section-fill.pending {

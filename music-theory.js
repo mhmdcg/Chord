@@ -134,6 +134,81 @@
         return normalizePreferredScale(next);
     }
 
+    const QUALITY_INTERVALS = [
+        ['maj7#11', [0, 4, 7, 11, 18]],
+        ['m7b5', [0, 3, 6, 10]],
+        ['madd9', [0, 3, 7, 14]],
+        ['add11', [0, 4, 7, 17]],
+        ['add4', [0, 4, 5, 7]],
+        ['add9', [0, 4, 7, 14]],
+        ['9sus4', [0, 5, 7, 10, 14]],
+        ['7sus4', [0, 5, 7, 10]],
+        ['maj9', [0, 4, 7, 11, 14]],
+        ['maj7', [0, 4, 7, 11]],
+        ['dim7', [0, 3, 6, 9]],
+        ['m13', [0, 3, 7, 10, 14, 21]],
+        ['m11', [0, 3, 7, 10, 14, 17]],
+        ['m9', [0, 3, 7, 10, 14]],
+        ['m6', [0, 3, 7, 9]],
+        ['m7', [0, 3, 7, 10]],
+        ['13', [0, 4, 7, 10, 14, 21]],
+        ['11', [0, 4, 7, 10, 14, 17]],
+        ['7b9', [0, 4, 7, 10, 13]],
+        ['7#9', [0, 4, 7, 10, 15]],
+        ['7b5', [0, 4, 6, 10]],
+        ['7#5', [0, 4, 8, 10]],
+        ['9', [0, 4, 7, 10, 14]],
+        ['7', [0, 4, 7, 10]],
+        ['6', [0, 4, 7, 9]],
+        ['sus2', [0, 2, 7]],
+        ['sus4', [0, 5, 7]],
+        ['sus', [0, 5, 7]],
+        ['dim', [0, 3, 6]],
+        ['aug', [0, 4, 8]],
+        ['5', [0, 7]],
+        ['min', [0, 3, 7]],
+        ['m', [0, 3, 7]]
+    ];
+
+    function normalizeQuality(quality) {
+        let q = String(quality || '').replace(/\s+/g, '');
+        q = q.replace(/^Δ/, 'maj').replace(/^ø/, 'm7b5').replace(/^°/, 'dim');
+        q = q.replace(/^maj$/i, '').replace(/^M$/, '').replace(/^min$/i, 'm').replace(/^mi$/i, 'm');
+        return q;
+    }
+
+    function intervalsForQuality(quality) {
+        const q = normalizeQuality(quality);
+        if (!q) return [0, 4, 7];
+        const match = QUALITY_INTERVALS.find(([name]) => name.toLowerCase() === q.toLowerCase());
+        if (match) return match[1];
+        if (/^m(?!aj)/i.test(q)) return [0, 3, 7];
+        return [0, 4, 7];
+    }
+
+    function chordMidiNotes(chord, octave = 3) {
+        const raw = String(chord || '').trim();
+        if (!raw) return [];
+        const parts = raw.split('/');
+        const parsed = parseChordRoot(parts[0]);
+        if (!parsed) return [];
+        const rootPc = noteIndex(parsed.root);
+        if (rootPc == null) return [];
+        const rootMidi = (octave + 1) * 12 + rootPc;
+        const notes = intervalsForQuality(parsed.quality).map((interval) => rootMidi + interval);
+        if (parts[1]) {
+            const bass = parseChordRoot(parts[1]);
+            const bassPc = noteIndex(bass?.root);
+            if (bassPc != null) {
+                let bassMidi = octave * 12 + bassPc;
+                const lowest = Math.min(...notes);
+                while (bassMidi >= lowest) bassMidi -= 12;
+                notes.unshift(bassMidi);
+            }
+        }
+        return [...new Set(notes)].sort((a, b) => a - b);
+    }
+
     const ARABIC_SCRIPT = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
     const DIACRITIC = /[\u064B-\u065F\u0670\u06D6-\u06ED]/g;
     const PERSIAN_DIGITS = { '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4', '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9' };
@@ -300,6 +375,7 @@
         transposeChordName,
         transposeScale,
         toggleScaleQuality,
+        chordMidiNotes,
         romanizeToLatin,
         filenameToken,
         exportImageFilename

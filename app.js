@@ -12,12 +12,16 @@ class ChordAnnotatorApp {
         this.draggingHandle = null;
         this.splitMode = false;
         this.eraseMode = false;
+        this.playMode = false;
         this.draggingSplit = null;
         this.ignoreSplitClick = false;
         this.history = [];
         this.historyIndex = -1;
         this.lastSelectionAt = 0;
         this.ignoreAnnotationClick = false;
+        this.audioContext = null;
+        this.pianoVoices = [];
+        this.soundingFillTimer = 0;
 
         // Evenly spaced hues so neighboring assignments stay easy to tell apart.
         this.colorPalette = [
@@ -110,6 +114,7 @@ class ChordAnnotatorApp {
         document.getElementById('lockChordsBtn').addEventListener('click', () => this.toggleChordsLock());
         document.getElementById('splitModeBtn').addEventListener('click', () => this.toggleSplitMode());
         document.getElementById('eraseSplitsBtn').addEventListener('click', () => this.toggleEraseMode());
+        document.getElementById('playChordsBtn').addEventListener('click', () => this.togglePlayMode());
         document.getElementById('timeTop').addEventListener('input', () => this.updateLyricsMetaPreview());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('timeBottom').addEventListener('input', () => this.updateLyricsMetaPreview());
@@ -125,7 +130,7 @@ class ChordAnnotatorApp {
 
         const lyricsDisplay = document.getElementById('lyricsDisplay');
         lyricsDisplay.addEventListener('mousedown', (e) => {
-            if (this.splitMode || this.eraseMode || e.target.closest('.lyric-split')) e.preventDefault();
+            if (this.splitMode || this.eraseMode || this.playMode || e.target.closest('.lyric-split')) e.preventDefault();
         });
         lyricsDisplay.addEventListener('pointerdown', (e) => this.handleSplitPointerDown(e));
         lyricsDisplay.addEventListener('click', (e) => this.handleLyricsClick(e));
@@ -261,6 +266,7 @@ class ChordAnnotatorApp {
             document.getElementById('annotationView').classList.add('active');
             this.setSplitMode(false);
             this.setEraseMode(false);
+            this.setPlayMode(false);
             this.ensureSplits();
             this.initHistory();
             this.renderAnnotationView();
@@ -771,10 +777,16 @@ class ChordAnnotatorApp {
         this.setEraseMode(!this.eraseMode);
     }
 
+    togglePlayMode() {
+        this.setPlayMode(!this.playMode);
+    }
+
     setSplitMode(enabled) {
         this.splitMode = Boolean(enabled);
         if (this.splitMode) {
             this.eraseMode = false;
+            this.playMode = false;
+            this.stopPianoChord();
             this.closeChordModal();
         }
         this.updateSplitToolButtons();
@@ -785,15 +797,32 @@ class ChordAnnotatorApp {
         this.eraseMode = Boolean(enabled);
         if (this.eraseMode) {
             this.splitMode = false;
+            this.playMode = false;
+            this.stopPianoChord();
             this.closeChordModal();
         }
         this.updateSplitToolButtons();
         window.getSelection()?.removeAllRanges();
     }
 
+    setPlayMode(enabled) {
+        this.playMode = Boolean(enabled);
+        if (this.playMode) {
+            this.splitMode = false;
+            this.eraseMode = false;
+            this.closeChordModal();
+        } else {
+            this.stopPianoChord();
+        }
+        this.updateSplitToolButtons();
+        this.updateChordLegend();
+        window.getSelection()?.removeAllRanges();
+    }
+
     updateSplitToolButtons() {
         const splitBtn = document.getElementById('splitModeBtn');
         const eraseBtn = document.getElementById('eraseSplitsBtn');
+        const playBtn = document.getElementById('playChordsBtn');
         const display = document.getElementById('lyricsDisplay');
         if (splitBtn) {
             splitBtn.classList.toggle('active', this.splitMode);
@@ -805,9 +834,15 @@ class ChordAnnotatorApp {
             eraseBtn.setAttribute('aria-pressed', this.eraseMode ? 'true' : 'false');
             eraseBtn.textContent = this.eraseMode ? 'Stop erase' : 'Erase';
         }
+        if (playBtn) {
+            playBtn.classList.toggle('active', this.playMode);
+            playBtn.setAttribute('aria-pressed', this.playMode ? 'true' : 'false');
+            playBtn.textContent = this.playMode ? 'Stop play' : 'Chord play mode';
+        }
         if (display) {
             display.classList.toggle('is-splitting', this.splitMode);
             display.classList.toggle('is-erasing', this.eraseMode);
+            display.classList.toggle('is-playing-chords', this.playMode);
         }
     }
 
@@ -822,6 +857,11 @@ class ChordAnnotatorApp {
         if (this.splitMode) {
             e.preventDefault();
             this.handleSplitClick(e);
+            return;
+        }
+        if (this.playMode) {
+            e.preventDefault();
+            this.handlePlayChordClick(e);
             return;
         }
         if (e.target.closest('.lyric-split')) return;
@@ -851,6 +891,118 @@ class ChordAnnotatorApp {
         return null;
     }
 
+    handlePlayChordClick(e) {
+        if (e.target.closest('.lyric-split')) return;
+        const label = e.target.closest('.chord-label');
+        const fill = e.target.closest('.lyric-section-fill');
+        const start = label?.dataset.start ?? fill?.dataset.start;
+        const end = label?.dataset.end ?? fill?.dataset.end;
+        if (start == null || end == null) return;
+        e.stopPropagation();
+        this.playSectionChord(Number(start), Number(end), fill || label);
+    }
+
+    playSectionChord(start, end, target) {
+        const sectionStart = this.clampOffset(start);
+        const sectionEnd = this.clampOffset(end);
+        const annotations = (this.currentSong.annotations || []).map((annotation, index) => ({
+            ...annotation,
+            index,
+            pending: false
+        }));
+        const match = this.annotationForSection(sectionStart, sectionEnd, annotations);
+        if (!match?.chord) return;
+        this.flashSoundingTarget(target);
+        this.playPianoChord(match.chord);
+    }
+
+    flashSoundingTarget(target) {
+        document.querySelectorAll('.lyric-section-fill.is-sounding, .chord-label.is-sounding')
+            .forEach((node) => node.classList.remove('is-sounding'));
+        if (!target) return;
+        target.classList.add('is-sounding');
+        window.clearTimeout(this.soundingFillTimer);
+        this.soundingFillTimer = window.setTimeout(() => {
+            target.classList.remove('is-sounding');
+        }, 500);
+    }
+
+    ensureAudioContext() {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return null;
+        if (!this.audioContext || this.audioContext.state === 'closed') {
+            this.audioContext = new AudioCtx();
+        }
+        return this.audioContext;
+    }
+
+    midiToFreq(midi) {
+        return 440 * (2 ** ((midi - 69) / 12));
+    }
+
+    stopPianoChord() {
+        (this.pianoVoices || []).forEach((voice) => {
+            try { voice.osc.stop(); } catch { /* already stopped */ }
+            try { voice.gain.disconnect(); } catch { /* already disconnected */ }
+        });
+        this.pianoVoices = [];
+    }
+
+    playPianoChord(chord) {
+        const notes = typeof MusicTheory?.chordMidiNotes === 'function'
+            ? MusicTheory.chordMidiNotes(chord)
+            : [];
+        if (!notes.length) return;
+        const ctx = this.ensureAudioContext();
+        if (!ctx) return;
+        const startPlayback = () => {
+            this.stopPianoChord();
+            const now = ctx.currentTime;
+            const duration = 1.4;
+            notes.forEach((midi, index) => {
+                const start = now + index * 0.014;
+                const freq = this.midiToFreq(midi);
+                const filter = ctx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.Q.value = 0.7;
+                filter.frequency.setValueAtTime(2800, start);
+                filter.frequency.exponentialRampToValueAtTime(820, start + 0.45);
+
+                const master = ctx.createGain();
+                master.gain.setValueAtTime(0.0001, start);
+                master.gain.exponentialRampToValueAtTime(0.22, start + 0.02);
+                master.gain.exponentialRampToValueAtTime(0.08, start + 0.28);
+                master.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+
+                const partials = [
+                    { type: 'triangle', ratio: 1, gain: 0.7 },
+                    { type: 'sine', ratio: 2, gain: 0.22 },
+                    { type: 'sine', ratio: 3, gain: 0.1 }
+                ];
+                partials.forEach((partial) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = partial.type;
+                    osc.frequency.value = freq * partial.ratio;
+                    gain.gain.value = partial.gain;
+                    osc.connect(gain);
+                    gain.connect(filter);
+                    osc.start(start);
+                    osc.stop(start + duration + 0.05);
+                    this.pianoVoices.push({ osc, gain });
+                });
+                filter.connect(master);
+                master.connect(ctx.destination);
+                this.pianoVoices.push({ osc: { stop() {} }, gain: master });
+            });
+        };
+        if (ctx.state === 'suspended') {
+            ctx.resume().then(startPlayback).catch(() => {});
+            return;
+        }
+        startPlayback();
+    }
+
     handleSplitClick(e) {
         if (e.target.closest('.lyric-split')) return;
         const nearby = this.nearestSplitOffsetFromPoint(e.clientX, e.clientY);
@@ -869,7 +1021,7 @@ class ChordAnnotatorApp {
     }
 
     handleSplitPointerDown(e) {
-        if (this.eraseMode || e.button) return;
+        if (this.eraseMode || this.playMode || e.button) return;
         const splitEl = e.target.closest('.lyric-split');
         if (!splitEl) return;
         e.preventDefault();
@@ -1043,7 +1195,7 @@ class ChordAnnotatorApp {
     }
 
     openSectionChord(start, end) {
-        if (this.ignoreAnnotationClick || this.draggingHandle) return;
+        if (this.playMode || this.ignoreAnnotationClick || this.draggingHandle) return;
         const sectionStart = this.clampOffset(start);
         const sectionEnd = this.clampOffset(end);
         if (sectionStart >= sectionEnd) return;
@@ -2531,7 +2683,7 @@ class ChordAnnotatorApp {
         const usedChords = new Set((this.currentSong.annotations || []).map(a => a.chord));
         const container = document.getElementById('chordLegendList');
         const deleteBtn = document.getElementById('deleteAllChordsBtn');
-        if (deleteBtn) deleteBtn.disabled = usedChords.size === 0;
+        if (deleteBtn) deleteBtn.disabled = this.playMode || usedChords.size === 0;
 
         if (usedChords.size === 0) {
             container.innerHTML = '<p style="color: var(--text-light); font-size: 0.875rem;">No chords added yet</p>';
