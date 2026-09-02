@@ -1548,7 +1548,7 @@ class ChordAnnotatorApp {
         this.ensureDownbeats();
         const turningOn = this.currentSong.downbeatsEqualized !== true;
         if (turningOn) {
-            if (this.getDownbeatBars().length < 1) {
+            if (this.getDownbeats().length < 4) {
                 alert('Add 4 downbeats, then tap Equalize.');
                 return;
             }
@@ -1558,46 +1558,65 @@ class ChordAnnotatorApp {
         this.renderAnnotationView();
     }
 
-    getDownbeatBars() {
+    getLyricLineInfos() {
+        const lyrics = this.currentSong.lyrics || '';
         const marks = [...this.getDownbeats()].sort((a, b) => a - b);
-        const bars = [];
-        for (let i = 0; i + 3 < marks.length; i += 4) {
-            bars.push([marks[i], marks[i + 1], marks[i + 2], marks[i + 3]]);
+        const lines = [];
+        let start = 0;
+        for (let i = 0; i <= lyrics.length; i += 1) {
+            if (i < lyrics.length && lyrics[i] !== '\n') continue;
+            lines.push({
+                start,
+                end: i,
+                downbeats: marks.filter((mark) => mark >= start && mark < i)
+            });
+            start = i + 1;
         }
-        return bars;
+        return lines;
     }
 
-    equalizeBarStart(firstBeat, prevLast, lyrics) {
-        for (let i = firstBeat - 1; i > prevLast; i -= 1) {
-            if (lyrics[i] === '\n') return i + 1;
-        }
-        if (prevLast < 0) {
-            let start = 0;
-            while (start < firstBeat && lyrics[start] === '\n') start += 1;
-            return start;
-        }
-        return firstBeat;
+    getDownbeatBars() {
+        return this.getLyricLineInfos().flatMap((line) => {
+            const bars = [];
+            for (let i = 0; i + 3 < line.downbeats.length; i += 4) {
+                bars.push(line.downbeats.slice(i, i + 4));
+            }
+            return bars;
+        });
     }
 
     getEqualizeBarRanges() {
         const lyrics = this.currentSong.lyrics || '';
-        const bars = this.getDownbeatBars();
-        const leftover = [...this.getDownbeats()].sort((a, b) => a - b).slice(bars.length * 4);
-        return bars.map((beats, index) => {
-            const prevLast = index === 0 ? -1 : bars[index - 1][3];
-            const start = this.equalizeBarStart(beats[0], prevLast, lyrics);
-            let end;
-            if (index < bars.length - 1) {
-                end = this.equalizeBarStart(bars[index + 1][0], beats[3], lyrics);
-            } else if (leftover.length) {
-                end = this.equalizeBarStart(leftover[0], beats[3], lyrics);
-            } else {
-                end = beats[3] + 1;
-                while (end < lyrics.length && lyrics[end] !== '\n') end += 1;
-                if (end < lyrics.length && lyrics[end] === '\n') end += 1;
+        const ranges = [];
+        this.getLyricLineInfos().forEach((line) => {
+            const beats = line.downbeats;
+            if (!beats.length) return;
+            const complete = Math.floor(beats.length / 4);
+            const lineEnd = (line.end < lyrics.length && lyrics[line.end] === '\n')
+                ? line.end + 1
+                : line.end;
+
+            for (let i = 0; i < complete; i += 1) {
+                const bar = beats.slice(i * 4, i * 4 + 4);
+                const start = i === 0 ? line.start : bar[0];
+                let end;
+                if (i < complete - 1) end = beats[(i + 1) * 4];
+                else if (beats.length % 4) end = beats[complete * 4];
+                else end = lineEnd;
+                ranges.push({ beats: bar, start, end, complete: true });
             }
-            return { beats, start, end, complete: true };
+
+            const leftover = beats.slice(complete * 4);
+            if (leftover.length) {
+                ranges.push({
+                    beats: leftover,
+                    start: complete ? leftover[0] : line.start,
+                    end: lineEnd,
+                    complete: false
+                });
+            }
         });
+        return ranges;
     }
 
     groupDownbeatsByLine(content) {
@@ -1761,13 +1780,18 @@ class ChordAnnotatorApp {
         if (range.collapsed) return;
         const span = document.createElement('span');
         span.className = 'downbeat-line';
+        let contents;
         try {
-            span.appendChild(range.extractContents());
+            contents = range.extractContents();
+        } catch {
+            return;
+        }
+        span.appendChild(contents);
+        try {
             range.insertNode(span);
         } catch {
-            /* keep the line as-is if the range can't be wrapped */
+            startPos.node.parentNode?.insertBefore(span, startPos.node);
         }
-        if (!span.textContent) span.remove();
     }
 
     createDownbeatSpacer(width, offset) {
@@ -1813,24 +1837,32 @@ class ChordAnnotatorApp {
         const lines = ranges.map((range) => {
             const carets = range.beats.map((offset) => this.getCaretRectForOffset(content, offset));
             if (carets.some((caret) => !caret)) return null;
+            const top = carets[0].top;
+            if (carets.some((caret) => Math.abs(caret.top - top) > 8)) return null;
             const alongs = carets.map((caret) => along(caret.left));
             const startCaret = this.getCaretRectForOffset(content, range.start);
             const startAlong = startCaret ? along(startCaret.left) : alongs[0];
+            const last = range.beats[range.beats.length - 1];
             const textEndX = this.getCharInlineEndX(content, range.end, rtl);
-            const textEndAlong = textEndX == null ? alongs[3] : along(textEndX);
+            const textEndAlong = textEndX == null ? alongs[alongs.length - 1] : along(textEndX);
+            const gaps = [];
+            for (let i = 0; i < alongs.length - 1; i += 1) gaps.push(alongs[i + 1] - alongs[i]);
             return {
                 beats: range.beats,
                 start: range.start,
                 end: range.end,
+                complete: range.complete,
                 prefix: Math.max(0, alongs[0] - startAlong),
                 alongs,
-                gaps: [alongs[1] - alongs[0], alongs[2] - alongs[1], alongs[3] - alongs[2]],
-                afterLast: Math.max(0, textEndAlong - alongs[3])
+                gaps,
+                afterLast: Math.max(0, textEndAlong - alongs[alongs.length - 1]),
+                last
             };
         }).filter(Boolean);
         if (!lines.length) return;
 
-        const base = Math.max(4, ...lines.flatMap((line) => line.gaps));
+        const gapPool = lines.flatMap((line) => line.gaps).filter((gap) => gap > 0);
+        const base = Math.max(4, ...(gapPool.length ? gapPool : [4]));
         const maxPrefix = Math.max(0, ...lines.map((line) => line.prefix));
         const padStart = rtl ? padRight : padLeft;
         if (maxPrefix >= 0.5) {
@@ -1844,13 +1876,19 @@ class ChordAnnotatorApp {
                 const wrap = pos?.node?.parentElement?.closest('.downbeat-line');
                 if (wrap) wrap.style.marginInlineStart = `-${line.prefix}px`;
             }
-            for (let i = 0; i < 4; i += 1) {
+            const slots = line.complete ? 4 : line.gaps.length;
+            for (let i = 0; i < slots; i += 1) {
                 const from = line.beats[i];
-                const to = i < 3 ? line.beats[i + 1] : line.end;
-                const current = i < 3 ? line.gaps[i] : line.afterLast;
+                const to = i < line.beats.length - 1 ? line.beats[i + 1] : line.end;
+                const current = i < line.gaps.length ? line.gaps[i] : line.afterLast;
                 const extra = base - current;
                 if (extra < 0.5) continue;
-                ops.push({ from, to, extra, trailing: i === 3 });
+                ops.push({
+                    from,
+                    to,
+                    extra,
+                    trailing: line.complete && i === 3
+                });
             }
         });
 
