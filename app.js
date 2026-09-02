@@ -590,6 +590,9 @@ class ChordAnnotatorApp {
         this.applyTextAlign();
         this.applyLyricTheme();
         this.applyLyricVisibility();
+        if (this.currentSong?.downbeatsEqualized && this.downbeatMode) {
+            this.setDownbeatMode(false);
+        }
         this.syncEqualizeButton();
 
         this.renderAnnotatedLyrics();
@@ -883,6 +886,7 @@ class ChordAnnotatorApp {
     }
 
     setDownbeatMode(enabled) {
+        if (enabled && this.currentSong?.downbeatsEqualized) return;
         this.downbeatMode = Boolean(enabled);
         if (this.downbeatMode) {
             this.splitMode = false;
@@ -1224,6 +1228,7 @@ class ChordAnnotatorApp {
     }
 
     handleDownbeatClick(e) {
+        if (this.currentSong?.downbeatsEqualized) return;
         if (e.target.closest('.lyric-downbeat')) return;
         const nearby = this.nearestDownbeatOffsetFromPoint(e.clientX, e.clientY);
         if (nearby != null) return;
@@ -1231,7 +1236,10 @@ class ChordAnnotatorApp {
     }
 
     handleEraseClick(e) {
-        const downbeatEl = e.target.closest('.lyric-downbeat:not(.lyric-downbeat-grid)');
+        if (this.currentSong?.downbeatsEqualized && e.target.closest('.lyric-downbeat')) return;
+        const downbeatEl = this.currentSong?.downbeatsEqualized
+            ? null
+            : e.target.closest('.lyric-downbeat:not(.lyric-downbeat-grid)');
         if (downbeatEl) {
             this.removeDownbeatAt(Number(downbeatEl.dataset.offset));
             return;
@@ -1241,7 +1249,9 @@ class ChordAnnotatorApp {
             this.removeSplitAt(Number(splitEl.dataset.offset));
             return;
         }
-        const nearbyDownbeat = this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-downbeat:not(.lyric-downbeat-grid)');
+        const nearbyDownbeat = this.currentSong?.downbeatsEqualized
+            ? null
+            : this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-downbeat:not(.lyric-downbeat-grid)');
         const nearbySplit = this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-split');
         if (nearbyDownbeat && nearbySplit) {
             if (nearbyDownbeat.distance <= nearbySplit.distance) this.removeDownbeatAt(nearbyDownbeat.offset);
@@ -1254,6 +1264,10 @@ class ChordAnnotatorApp {
 
     handleSplitPointerDown(e) {
         if (this.eraseMode || this.playMode || e.button) return;
+        if (this.currentSong?.downbeatsEqualized) {
+            const downbeatEl = e.target.closest('.lyric-downbeat');
+            if (downbeatEl) return;
+        }
         const downbeatEl = e.target.closest('.lyric-downbeat:not(.lyric-downbeat-grid)');
         if (downbeatEl) {
             e.preventDefault();
@@ -1542,7 +1556,7 @@ class ChordAnnotatorApp {
         const on = this.currentSong?.downbeatsEqualized === true;
         btn.classList.toggle('active', on);
         btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-        btn.textContent = on ? 'Stop beat mode' : 'Beat mode';
+        btn.textContent = on ? 'Exit beat mode' : 'Beat mode';
     }
 
     equalizeDownbeats() {
@@ -1555,6 +1569,7 @@ class ChordAnnotatorApp {
                 return;
             }
             this.currentSong.hideDownbeats = false;
+            this.setDownbeatMode(false);
         }
         this.commitSongState({ downbeatsEqualized: turningOn });
         this.renderAnnotationView();
@@ -1567,6 +1582,10 @@ class ChordAnnotatorApp {
             bars.push(marks.slice(i, i + 4));
         }
         return bars;
+    }
+
+    isBeatModeFillerRange(start, end) {
+        return /^[\s_]*$/.test((this.currentSong?.lyrics || '').slice(start, end));
     }
 
     getEqualizeBarRanges() {
@@ -1847,6 +1866,9 @@ class ChordAnnotatorApp {
             if (!wrap) return;
             wrap.dataset.beatFirst = String(range.beats[0]);
             wrap.dataset.beatCount = String(range.beats.length);
+            if (this.isBeatModeFillerRange(range.start, range.end)) {
+                wrap.classList.add('is-beat-filler');
+            }
         });
 
         const lines = ranges.map((range) => {
@@ -2121,7 +2143,13 @@ class ChordAnnotatorApp {
             splitOverlay.appendChild(line);
         });
         const draggingDownbeatTo = this.draggingDownbeat?.to;
+        const lyrics = this.currentSong.lyrics || '';
+        const fillerRanges = this.currentSong.downbeatsEqualized
+            ? this.getEqualizeBarRanges().filter((range) => this.isBeatModeFillerRange(range.start, range.end))
+            : [];
         this.getDownbeats().forEach((offset) => {
+            if (lyrics[offset] === '_') return;
+            if (fillerRanges.some((range) => offset >= range.start && offset < range.end)) return;
             const caret = this.getCaretRectForOffset(content, offset);
             if (!caret) return;
             const mark = document.createElement('span');
@@ -2143,7 +2171,7 @@ class ChordAnnotatorApp {
         if (!(base > 0)) return;
         const rtl = this.beatModeGrid.rtl;
         const sign = rtl ? -1 : 1;
-        content.querySelectorAll('.downbeat-line').forEach((lineEl) => {
+        content.querySelectorAll('.downbeat-line:not(.is-beat-filler)').forEach((lineEl) => {
             const firstOffset = Number(lineEl.dataset.beatFirst);
             const beatCount = Number(lineEl.dataset.beatCount);
             if (!Number.isFinite(firstOffset) || beatCount >= 4) return;

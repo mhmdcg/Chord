@@ -1167,6 +1167,16 @@ body {
 .lyrics-display.is-equalized.align-right .lyrics-content,
 .lyrics-display.is-equalized.rtl .lyrics-content {
     text-align: start;
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 1.85rem;
+}
+
+.lyrics-display.is-equalized .melody-break {
+    display: none;
+}
+
+.downbeat-line.is-beat-filler {
+    display: none;
 }
 
 .downbeat-spacer {
@@ -1182,6 +1192,7 @@ body {
     white-space: pre;
 }
 
+.lyrics-display.is-equalized .lyric-downbeat,
 .lyric-downbeat-grid {
     pointer-events: none;
     cursor: default;
@@ -1834,6 +1845,14 @@ body {
     .lyrics-content {
         line-height: 3.45;
         padding-inline: 0.9rem;
+    }
+
+    .lyrics-display.is-equalized .lyrics-content,
+    .lyrics-display.is-equalized.align-left .lyrics-content,
+    .lyrics-display.is-equalized.align-right .lyrics-content,
+    .lyrics-display.is-equalized.rtl .lyrics-content {
+        padding-inline-start: 0.35rem;
+        padding-inline-end: 1.35rem;
     }
 
     .lyrics-meta {
