@@ -1782,11 +1782,7 @@ class ChordAnnotatorApp {
         return spacer;
     }
 
-    applyDownbeatEqualSpacing(content) {
-        this.clearDownbeatSpacing(content);
-        if (!this.currentSong?.downbeatsEqualized || this.draggingDownbeat) return;
-
-        void content.offsetWidth;
+    lyricInlineMetrics(content) {
         const style = getComputedStyle(content);
         const rtl = style.direction === 'rtl';
         const padLeft = parseFloat(style.paddingLeft) || 0;
@@ -1794,11 +1790,48 @@ class ChordAnnotatorApp {
         const box = content.getBoundingClientRect();
         const innerLeft = box.left + padLeft;
         const innerRight = box.right - padRight;
-        const innerWidth = innerRight - innerLeft;
+        const inlineStart = rtl ? innerRight : innerLeft;
+        return {
+            rtl,
+            padLeft,
+            padRight,
+            innerLeft,
+            innerRight,
+            innerWidth: innerRight - innerLeft,
+            along: (x) => (rtl ? inlineStart - x : x - inlineStart)
+        };
+    }
+
+    measureNaturalBeatWidth(content) {
+        const lyrics = this.currentSong.lyrics || '';
+        const { innerWidth, along } = this.lyricInlineMetrics(content);
+        if (innerWidth < 8) return 4;
+        const marks = [...this.getDownbeats()].sort((a, b) => a - b);
+        const gaps = [];
+        for (let i = 0; i < marks.length - 1; i += 1) {
+            const from = marks[i];
+            const to = marks[i + 1];
+            const slice = lyrics.slice(from, to);
+            if (slice.includes('\n')) continue;
+            if (!/[^\s_]/.test(slice)) continue;
+            const start = this.getCaretRectForOffset(content, from);
+            const end = this.getCaretRectForOffset(content, to);
+            if (!start || !end) continue;
+            if (Math.abs(start.top - end.top) > 8) continue;
+            const gap = along(end.left) - along(start.left);
+            if (gap > 0.5) gaps.push(gap);
+        }
+        return Math.max(4, ...(gaps.length ? gaps : [4]));
+    }
+
+    applyDownbeatEqualSpacing(content, beatBase) {
+        this.clearDownbeatSpacing(content);
+        if (!this.currentSong?.downbeatsEqualized || this.draggingDownbeat) return;
+
+        void content.offsetWidth;
+        const { rtl, padLeft, padRight, innerWidth, along } = this.lyricInlineMetrics(content);
         if (innerWidth < 8) return;
 
-        const inlineStart = rtl ? innerRight : innerLeft;
-        const along = (x) => (rtl ? inlineStart - x : x - inlineStart);
         const ranges = this.getEqualizeBarRanges();
         if (!ranges.length) return;
 
@@ -1843,20 +1876,7 @@ class ChordAnnotatorApp {
         }).filter(Boolean);
         if (!lines.length) return;
 
-        const lyrics = this.currentSong.lyrics || '';
-        const gapPool = lines.flatMap((line) => {
-            const usable = [];
-            for (let i = 0; i < line.gaps.length; i += 1) {
-                const gap = line.gaps[i];
-                if (gap <= 0) continue;
-                const from = line.beats[i];
-                const to = line.beats[i + 1];
-                if (!/[^\s_]/.test(lyrics.slice(from, to))) continue;
-                usable.push(gap);
-            }
-            return usable;
-        });
-        const base = Math.max(4, ...(gapPool.length ? gapPool : [4]));
+        const base = beatBase > 4 ? beatBase : Math.max(4, ...(lines.flatMap((line) => line.gaps).filter((gap) => gap > 0).concat(4)));
         const maxPrefix = Math.max(0, ...lines.map((line) => line.prefix));
         const padStart = rtl ? padRight : padLeft;
         if (maxPrefix >= 0.5) {
@@ -1954,11 +1974,18 @@ class ChordAnnotatorApp {
             return;
         }
 
-        content.innerHTML = this.formatLyricHtml(lyrics);
+        const equalized = this.currentSong.downbeatsEqualized === true;
+        content.innerHTML = this.formatLyricHtml(lyrics, false);
+        let beatBase = 0;
+        if (equalized) {
+            void content.offsetWidth;
+            beatBase = this.measureNaturalBeatWidth(content);
+            content.innerHTML = this.formatLyricHtml(lyrics, true);
+        }
         const display = document.getElementById('lyricsDisplay');
-        display?.classList.toggle('is-equalized', this.currentSong.downbeatsEqualized === true);
+        display?.classList.toggle('is-equalized', equalized);
         this.syncEqualizeButton();
-        this.applyDownbeatEqualSpacing(content);
+        this.applyDownbeatEqualSpacing(content, beatBase);
         this.positionLyricOverlays();
         requestAnimationFrame(() => this.positionLyricOverlays());
     }
@@ -2183,9 +2210,9 @@ class ChordAnnotatorApp {
         });
     }
 
-    formatLyricHtml(text) {
+    formatLyricHtml(text, flatten) {
         if (!text) return '';
-        const flatten = this.currentSong?.downbeatsEqualized === true;
+        if (flatten == null) flatten = this.currentSong?.downbeatsEqualized === true;
         return text.split(/(_+)/).map((part) => {
             if (!part) return '';
             if (/^_+$/.test(part)) {
