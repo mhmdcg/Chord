@@ -814,6 +814,28 @@ body {
     border-color: #B45309;
 }
 
+.equalize-downbeats-btn {
+    height: 32px;
+    min-height: 32px;
+    width: 100%;
+    padding: 0 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.equalize-downbeats-btn.active {
+    background: #B45309;
+    color: #fff;
+    border-color: #B45309;
+}
+
 .erase-splits-btn {
     height: 32px;
     min-height: 32px;
@@ -1134,6 +1156,36 @@ body {
 .lyrics-display.rtl .lyrics-content {
     direction: rtl;
     text-align: center;
+}
+
+.lyrics-display.is-equalized .lyrics-content,
+.lyrics-display.is-equalized.align-left .lyrics-content,
+.lyrics-display.is-equalized.align-right .lyrics-content,
+.lyrics-display.is-equalized.rtl .lyrics-content {
+    text-align: start;
+}
+
+.downbeat-spacer {
+    display: inline-block;
+    width: 0;
+    height: 1px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+.downbeat-line {
+    white-space: nowrap;
+}
+
+.downbeat-stretch {
+    display: inline;
+}
+
+.downbeat-stretch.joins-prev::before,
+.downbeat-stretch.joins-next::after,
+.downbeat-spacer.joins-prev::before,
+.downbeat-spacer.joins-next::after {
+    content: '\200D';
 }
 
 .lyrics-display.dragging .lyrics-content {

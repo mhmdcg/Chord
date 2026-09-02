@@ -116,6 +116,7 @@ class ChordAnnotatorApp {
         document.getElementById('lockChordsBtn').addEventListener('click', () => this.toggleChordsLock());
         document.getElementById('splitModeBtn').addEventListener('click', () => this.toggleSplitMode());
         document.getElementById('downbeatModeBtn').addEventListener('click', () => this.toggleDownbeatMode());
+        document.getElementById('equalizeDownbeatsBtn').addEventListener('click', () => this.equalizeDownbeats());
         document.getElementById('eraseSplitsBtn').addEventListener('click', () => this.toggleEraseMode());
         document.getElementById('playChordsBtn').addEventListener('click', () => this.togglePlayMode());
         document.getElementById('toggleChordsVisBtn').addEventListener('click', () => this.toggleLyricLayer('chords'));
@@ -395,6 +396,7 @@ class ChordAnnotatorApp {
             annotations: JSON.parse(JSON.stringify(this.currentSong.annotations || [])),
             splits: [...this.getSplits()],
             downbeats: [...this.getDownbeats()],
+            downbeatsEqualized: this.currentSong.downbeatsEqualized === true,
             scale: this.currentSong.scale || '',
             recentChords: [...(this.currentSong.recentChords || [])]
         };
@@ -402,7 +404,13 @@ class ChordAnnotatorApp {
 
     historyEntry(entry) {
         if (Array.isArray(entry)) {
-            return { annotations: entry, splits: this.getSplits(), downbeats: this.getDownbeats(), scale: this.currentSong?.scale || '' };
+            return {
+                annotations: entry,
+                splits: this.getSplits(),
+                downbeats: this.getDownbeats(),
+                downbeatsEqualized: this.currentSong?.downbeatsEqualized === true,
+                scale: this.currentSong?.scale || ''
+            };
         }
         return entry;
     }
@@ -415,6 +423,9 @@ class ChordAnnotatorApp {
         }
         if (Array.isArray(entry.downbeats)) {
             this.currentSong.downbeats = [...entry.downbeats];
+        }
+        if (entry.downbeatsEqualized != null) {
+            this.currentSong.downbeatsEqualized = entry.downbeatsEqualized === true;
         }
         this.currentSong.scale = entry.scale || '';
         if (Array.isArray(entry.recentChords)) {
@@ -432,6 +443,7 @@ class ChordAnnotatorApp {
         if (patch.annotations) this.currentSong.annotations = patch.annotations;
         if (Array.isArray(patch.splits)) this.currentSong.splits = patch.splits;
         if (Array.isArray(patch.downbeats)) this.currentSong.downbeats = patch.downbeats;
+        if (patch.downbeatsEqualized != null) this.currentSong.downbeatsEqualized = patch.downbeatsEqualized === true;
         this.normalizeSplits();
         this.normalizeDownbeats();
         this.history = this.history.slice(0, this.historyIndex + 1);
@@ -577,6 +589,7 @@ class ChordAnnotatorApp {
         this.applyTextAlign();
         this.applyLyricTheme();
         this.applyLyricVisibility();
+        this.syncEqualizeButton();
 
         this.renderAnnotatedLyrics();
         this.updateChordLegend();
@@ -941,7 +954,9 @@ class ChordAnnotatorApp {
             display.classList.toggle('is-downbeating', this.downbeatMode);
             display.classList.toggle('is-erasing', this.eraseMode);
             display.classList.toggle('is-playing-chords', this.playMode);
+            display.classList.toggle('is-equalized', this.currentSong?.downbeatsEqualized === true);
         }
+        this.syncEqualizeButton();
     }
 
     handleLyricsClick(e) {
@@ -1520,6 +1535,263 @@ class ChordAnnotatorApp {
         this.renderAnnotationView();
     }
 
+    syncEqualizeButton() {
+        const btn = document.getElementById('equalizeDownbeatsBtn');
+        if (!btn) return;
+        const on = this.currentSong?.downbeatsEqualized === true;
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+
+    equalizeDownbeats() {
+        if (!this.currentSong?.lyrics) return;
+        this.ensureDownbeats();
+        const turningOn = this.currentSong.downbeatsEqualized !== true;
+        if (turningOn) {
+            const content = document.getElementById('lyricsContent');
+            if (!content) return;
+            const groups = this.groupDownbeatsByLine(content);
+            if (!groups.some((group) => group.marks.length === 4)) {
+                alert('Add 4 downbeats on a line, then tap Equalize.');
+                return;
+            }
+            this.currentSong.hideDownbeats = false;
+        }
+        this.commitSongState({ downbeatsEqualized: turningOn });
+        this.renderAnnotationView();
+    }
+
+    groupDownbeatsByLine(content) {
+        const lineTol = 8;
+        const groups = [];
+        this.getDownbeats().forEach((offset) => {
+            const caret = this.getCaretRectForOffset(content, offset);
+            if (!caret) return;
+            const mark = { offset, x: caret.left, top: caret.top };
+            const line = groups.find((group) => Math.abs(group.top - mark.top) <= lineTol);
+            if (line) line.marks.push(mark);
+            else groups.push({ top: mark.top, marks: [mark] });
+        });
+        groups.forEach((group) => group.marks.sort((a, b) => a.offset - b.offset));
+        return groups;
+    }
+
+    getVisualLineStart(content, lineTop, beforeOffset) {
+        const lyrics = this.currentSong.lyrics || '';
+        let start = 0;
+        for (let i = 0; i < beforeOffset; i += 1) {
+            if (lyrics[i] === '\n') start = i + 1;
+        }
+        for (let i = beforeOffset - 1; i >= start; i -= 1) {
+            if (lyrics[i] === '\n') return i + 1;
+            const caret = this.getCaretRectForOffset(content, i);
+            if (caret && Math.abs(caret.top - lineTop) > 8) return i + 1;
+        }
+        return start;
+    }
+
+    getVisualLineEnd(content, fromOffset, lineTop) {
+        const lyrics = this.currentSong.lyrics || '';
+        for (let i = fromOffset; i < lyrics.length; i += 1) {
+            if (lyrics[i] === '\n') return i;
+            const caret = this.getCaretRectForOffset(content, i);
+            if (caret && Math.abs(caret.top - lineTop) > 8) return i;
+        }
+        return lyrics.length;
+    }
+
+    getCharInlineEndX(content, offset, rtl) {
+        const lyrics = this.currentSong.lyrics || '';
+        if (!lyrics.length) return null;
+        let charOffset = offset;
+        if (charOffset >= lyrics.length) charOffset = lyrics.length;
+        if (charOffset <= 0) {
+            const caret = this.getCaretRectForOffset(content, 0);
+            return caret ? caret.left : null;
+        }
+        const prev = charOffset - 1;
+        const pos = this.getDomPositionForOffset(content, prev);
+        if (!pos) {
+            const caret = this.getCaretRectForOffset(content, Math.min(charOffset, lyrics.length));
+            return caret ? caret.left : null;
+        }
+        if (pos.offset >= pos.node.textContent.length) {
+            const caret = this.getCaretRectForOffset(content, Math.min(charOffset, lyrics.length));
+            return caret ? caret.left : null;
+        }
+        const range = document.createRange();
+        range.setStart(pos.node, pos.offset);
+        range.setEnd(pos.node, pos.offset + 1);
+        const rect = range.getBoundingClientRect();
+        if (rect.width < 0.5 && rect.height < 0.5) {
+            const caret = this.getCaretRectForOffset(content, Math.min(charOffset, lyrics.length));
+            return caret ? caret.left : null;
+        }
+        return rtl ? rect.left : rect.right;
+    }
+
+    findLastWordBreak(from, to) {
+        const lyrics = this.currentSong.lyrics || '';
+        for (let i = to - 1; i >= from; i -= 1) {
+            if (lyrics[i] === ' ' || lyrics[i] === '\t') return i + 1;
+        }
+        return -1;
+    }
+
+    wouldSplitJoin(offset) {
+        const lyrics = this.currentSong.lyrics || '';
+        const prev = this.adjacentJoiningChar(lyrics, offset, -1);
+        const next = this.adjacentJoiningChar(lyrics, offset - 1, 1);
+        return this.shouldJoinArabic(prev, next);
+    }
+
+    clearDownbeatSpacing(content) {
+        content.querySelectorAll('.downbeat-spacer').forEach((el) => el.remove());
+        content.querySelectorAll('.downbeat-stretch, .downbeat-line').forEach((el) => {
+            const parent = el.parentNode;
+            if (!parent) return;
+            while (el.firstChild) parent.insertBefore(el.firstChild, el);
+            parent.removeChild(el);
+        });
+    }
+
+    insertLyricWidget(content, offset, element) {
+        const pos = this.getDomPositionForOffset(content, offset);
+        if (!pos) return;
+        const source = pos.node.parentElement?.closest('.melody-break-source');
+        if (source) {
+            const brk = source.closest('.melody-break');
+            if (brk?.parentNode) {
+                brk.parentNode.insertBefore(element, brk.nextSibling);
+                return;
+            }
+        }
+        if (pos.offset <= 0) {
+            pos.node.parentNode?.insertBefore(element, pos.node);
+            return;
+        }
+        if (pos.offset >= pos.node.textContent.length) {
+            pos.node.parentNode?.insertBefore(element, pos.node.nextSibling);
+            return;
+        }
+        const rest = pos.node.splitText(pos.offset);
+        rest.parentNode.insertBefore(element, rest);
+    }
+
+    wrapLyricStretch(content, start, end, extraPx) {
+        const lyrics = this.currentSong.lyrics || '';
+        if (end <= start || extraPx <= 0) return;
+        const startPos = this.getDomPositionForOffset(content, start);
+        const endPos = this.getDomPositionForOffset(content, end);
+        if (!startPos || !endPos) return;
+
+        const range = document.createRange();
+        range.setStart(startPos.node, startPos.offset);
+        range.setEnd(endPos.node, endPos.offset);
+        const span = document.createElement('span');
+        span.className = 'downbeat-stretch';
+        const join = this.joinClasses(lyrics, start, end, lyrics.slice(start, end));
+        if (join) span.className += join;
+        const letters = Math.max(1, end - start);
+        span.style.letterSpacing = `${extraPx / letters}px`;
+        try {
+            span.appendChild(range.extractContents());
+            range.insertNode(span);
+        } catch {
+            this.insertLyricWidget(content, end, this.createDownbeatSpacer(Math.max(0, extraPx), end));
+        }
+    }
+
+    wrapLyricNowrap(content, start, end) {
+        if (end <= start) return;
+        const startPos = this.getDomPositionForOffset(content, start);
+        const endPos = this.getDomPositionForOffset(content, end);
+        if (!startPos || !endPos) return;
+        const range = document.createRange();
+        range.setStart(startPos.node, startPos.offset);
+        range.setEnd(endPos.node, endPos.offset);
+        const span = document.createElement('span');
+        span.className = 'downbeat-line';
+        try {
+            span.appendChild(range.extractContents());
+            range.insertNode(span);
+        } catch {
+            /* keep the line as-is if the range can't be wrapped */
+        }
+    }
+
+    createDownbeatSpacer(width, offset) {
+        const spacer = document.createElement('span');
+        spacer.className = 'downbeat-spacer';
+        spacer.setAttribute('aria-hidden', 'true');
+        spacer.style.width = `${Math.max(0, width)}px`;
+        const lyrics = this.currentSong.lyrics || '';
+        const prev = this.adjacentJoiningChar(lyrics, offset, -1);
+        const next = this.adjacentJoiningChar(lyrics, offset - 1, 1);
+        if (this.shouldJoinArabic(prev, next)) {
+            spacer.classList.add('joins-prev', 'joins-next');
+        }
+        return spacer;
+    }
+
+    applyDownbeatEqualSpacing(content) {
+        this.clearDownbeatSpacing(content);
+        if (!this.currentSong?.downbeatsEqualized || this.draggingDownbeat) return;
+
+        void content.offsetWidth;
+        const style = getComputedStyle(content);
+        const rtl = style.direction === 'rtl';
+        const padLeft = parseFloat(style.paddingLeft) || 0;
+        const padRight = parseFloat(style.paddingRight) || 0;
+        const box = content.getBoundingClientRect();
+        const innerLeft = box.left + padLeft;
+        const innerRight = box.right - padRight;
+        const innerWidth = innerRight - innerLeft;
+        if (innerWidth < 8) return;
+
+        const inlineStart = rtl ? innerRight : innerLeft;
+        const along = (x) => (rtl ? inlineStart - x : x - inlineStart);
+
+        const ops = [];
+        const lineWraps = [];
+        this.groupDownbeatsByLine(content).forEach((group) => {
+            if (group.marks.length !== 4) return;
+            const beats = group.marks;
+            const firstAlong = Math.max(0, along(beats[0].x));
+            const slot = (innerWidth - firstAlong) / 4;
+            if (slot < 4) return;
+            const lineStart = this.getVisualLineStart(content, group.top, beats[0].offset);
+            const lineEnd = this.getVisualLineEnd(content, beats[3].offset + 1, group.top);
+            const textEndX = this.getCharInlineEndX(content, lineEnd, rtl);
+            const textEndAlong = textEndX == null ? along(beats[3].x) : along(textEndX);
+            lineWraps.push({ start: lineStart, end: lineEnd });
+            for (let i = 0; i < 4; i += 1) {
+                const from = beats[i].offset;
+                const to = i < 3 ? beats[i + 1].offset : lineEnd;
+                const a = along(beats[i].x);
+                const b = i < 3 ? along(beats[i + 1].x) : textEndAlong;
+                const extra = slot - (b - a);
+                if (extra < 0.5) continue;
+                ops.push({ from, to, extra, trailing: i === 3 });
+            }
+        });
+
+        lineWraps.sort((a, b) => b.start - a.start);
+        lineWraps.forEach((wrap) => this.wrapLyricNowrap(content, wrap.start, wrap.end));
+
+        ops.sort((a, b) => b.from - a.from || b.to - a.to);
+        ops.forEach((op) => {
+            if (op.extra > 0 && (op.trailing || this.findLastWordBreak(op.from, op.to) >= 0 || !this.wouldSplitJoin(op.to))) {
+                let insertAt = this.findLastWordBreak(op.from, op.to);
+                if (insertAt < 0) insertAt = op.to;
+                if (insertAt > 0 && this.currentSong.lyrics[insertAt - 1] === '\n') insertAt -= 1;
+                this.insertLyricWidget(content, insertAt, this.createDownbeatSpacer(op.extra, insertAt));
+                return;
+            }
+            this.wrapLyricStretch(content, op.from, Math.max(op.from + 1, op.to), op.extra);
+        });
+    }
+
     openSectionChord(start, end) {
         if (this.playMode || this.ignoreAnnotationClick || this.draggingHandle) return;
         const sectionStart = this.clampOffset(start);
@@ -1554,6 +1826,10 @@ class ChordAnnotatorApp {
         }
 
         content.innerHTML = this.formatLyricHtml(lyrics);
+        const display = document.getElementById('lyricsDisplay');
+        display?.classList.toggle('is-equalized', this.currentSong.downbeatsEqualized === true);
+        this.syncEqualizeButton();
+        this.applyDownbeatEqualSpacing(content);
         this.positionLyricOverlays();
         requestAnimationFrame(() => this.positionLyricOverlays());
     }
@@ -1569,23 +1845,31 @@ class ChordAnnotatorApp {
             return range.getBoundingClientRect();
         };
 
-        let rect = place(pos.offset, pos.offset);
-        if (rect.height >= 2) {
-            return { left: rect.left, top: rect.top, height: rect.height };
-        }
-
         const rtl = getComputedStyle(root).direction === 'rtl';
+        const rootRect = root.getBoundingClientRect();
+        const usable = (rect) => (
+            rect
+            && rect.height >= 2
+            && rect.bottom >= rootRect.top - 1
+            && rect.top <= rootRect.bottom + 1
+        );
+
+        if (pos.offset < pos.node.textContent.length) {
+            const rect = place(pos.offset, pos.offset + 1);
+            if (usable(rect)) {
+                return { left: rtl ? rect.right : rect.left, top: rect.top, height: rect.height };
+            }
+        }
         if (pos.offset > 0) {
-            rect = place(pos.offset - 1, pos.offset);
-            if (rect.height >= 2) {
+            const rect = place(pos.offset - 1, pos.offset);
+            if (usable(rect)) {
                 return { left: rtl ? rect.left : rect.right, top: rect.top, height: rect.height };
             }
         }
-        if (pos.offset < pos.node.textContent.length) {
-            rect = place(pos.offset, pos.offset + 1);
-            if (rect.height >= 2) {
-                return { left: rtl ? rect.right : rect.left, top: rect.top, height: rect.height };
-            }
+
+        const rect = place(pos.offset, pos.offset);
+        if (usable(rect)) {
+            return { left: rect.left, top: rect.top, height: rect.height };
         }
 
         const fallback = parseFloat(getComputedStyle(root).fontSize) || 16;
@@ -1834,14 +2118,17 @@ class ChordAnnotatorApp {
 
     isLabelNode(node) {
         const element = node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
-        return Boolean(element && element.closest && element.closest('.chord-label, .melody-break-mark'));
+        return Boolean(element && element.closest && element.closest('.chord-label, .melody-break-mark, .downbeat-spacer'));
     }
 
     createLyricWalker(root) {
         return document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-            acceptNode: (node) => this.isLabelNode(node)
-                ? NodeFilter.FILTER_REJECT
-                : NodeFilter.FILTER_ACCEPT
+            acceptNode: (node) => {
+                if (!node.textContent || this.isLabelNode(node)) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                return NodeFilter.FILTER_ACCEPT;
+            }
         });
     }
 
@@ -1878,6 +2165,10 @@ class ChordAnnotatorApp {
             if (melody) {
                 return this.nearestOffsetFromPoint(x, y);
             }
+        }
+
+        if (range.startContainer.parentElement?.closest('.downbeat-spacer')) {
+            return this.nearestOffsetFromPoint(x, y);
         }
 
         return this.getLyricOffset(content, range.startContainer, range.startOffset);
@@ -1968,7 +2259,7 @@ class ChordAnnotatorApp {
         while ((node = walker.nextNode())) {
             last = node;
             const length = node.textContent.length;
-            if (offset + length >= targetOffset) {
+            if (offset + length > targetOffset) {
                 return { node, offset: targetOffset - offset };
             }
             offset += length;
