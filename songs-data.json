@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-02T10:20:02.930Z",
+  "updatedAt": "2026-09-02T10:20:04.594Z",
   "songs": [
     {
       "title": "خیال",
@@ -7,294 +7,294 @@
       "lyrics": "اگه ساحل بودم واسه تو تو صدفا گل میکاشتم\nاگه شاعر بودم خودمو تو غزلا جا میذاشتم\nاگه زورم میرسید هرچی تو میخواستی میشدم برات\nنمیذاشتم هوا بارونی بشه پشت ابرا بمونن ستاره ها\nفکر و خیالم این روزا باهاته تو گوش من فقط صدا صداته\nکجا برم هوای تو هوای من شه\nفکر و خیالم این روزا همش از تو پر شده\nحالا این آدم این روزا از همه دلخور شده\nکجا برم هوای تو هوای من شه\nعاشق مث تو دیوونه مث من\nاین حال تورو کی میدونه مث من\nعاشق مث تو دیوونه مث من\nاین حال تورو کی میدونه مث من\n_____\n                                                                                                                                                               \n                                                                                                                                                               \n_____\nتو مث ستاره ها شبو از شب زده ها دور میکنی\nتو مث دوباره ها عشقو به دوباره مجبور میکنی\nتو خودت نازی دلت ناز چشات ناز داره\nتو ترانه ای ترانه ی چشات یه بغل راز داره\nعاشق مث تو ... (تکرار)",
       "annotations": [
         {
-          "chord": "E",
+          "chord": "F",
           "start": 0,
           "end": 30
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 30,
           "end": 47
         },
         {
-          "chord": "Bm",
+          "chord": "Cm",
           "start": 47,
           "end": 61
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 61,
           "end": 69
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 69,
           "end": 86
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 86,
           "end": 115
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 115,
           "end": 130
         },
         {
-          "chord": "F#m",
+          "chord": "Gm",
           "start": 130,
           "end": 140
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 140,
           "end": 148
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 148,
           "end": 163
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 163,
           "end": 200
         },
         {
-          "chord": "F#m",
+          "chord": "Gm",
           "start": 200,
           "end": 224
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 224,
           "end": 237
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 237,
           "end": 245
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 245,
           "end": 272
         },
         {
-          "chord": "C#7",
+          "chord": "D7",
           "start": 272,
           "end": 289
         },
         {
-          "chord": "F#m",
+          "chord": "Gm",
           "start": 289,
           "end": 296
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 296,
           "end": 341
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 341,
           "end": 349
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 349,
           "end": 355
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 355,
           "end": 363
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 363,
           "end": 369
         },
         {
-          "chord": "F#m",
+          "chord": "Gm",
           "start": 369,
           "end": 376
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 376,
           "end": 380
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 380,
           "end": 389
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 389,
           "end": 393
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 393,
           "end": 398
         },
         {
-          "chord": "Bm",
+          "chord": "Cm",
           "start": 398,
           "end": 406
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 406,
           "end": 408
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 408,
           "end": 415
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 415,
           "end": 419
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 419,
           "end": 421
         },
         {
-          "chord": "F#m",
+          "chord": "Gm",
           "start": 421,
           "end": 429
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 429,
           "end": 432
         },
         {
-          "chord": "Amaj7",
+          "chord": "Bbmaj7",
           "start": 432,
           "end": 442
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 442,
           "end": 445
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 445,
           "end": 450
         },
         {
-          "chord": "Bm",
+          "chord": "Cm",
           "start": 450,
           "end": 457
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 457,
           "end": 460
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 467,
           "end": 488
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 488,
           "end": 506
         },
         {
-          "chord": "F#m",
+          "chord": "Gm",
           "start": 506,
           "end": 525
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 525,
           "end": 544
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 544,
           "end": 563
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 563,
           "end": 574
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 574,
           "end": 585
         },
         {
-          "chord": "Bm",
+          "chord": "Cm",
           "start": 585,
           "end": 603
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 603,
           "end": 621
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 627,
           "end": 648
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 648,
           "end": 657
         },
         {
-          "chord": "E",
+          "chord": "F",
           "start": 657,
           "end": 666
         },
         {
-          "chord": "F#m",
+          "chord": "Gm",
           "start": 666,
           "end": 685
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 685,
           "end": 704
         },
         {
-          "chord": "Amaj7",
+          "chord": "Bbmaj7",
           "start": 704,
           "end": 723
         },
         {
-          "chord": "D",
+          "chord": "Eb",
           "start": 723,
           "end": 745
         },
         {
-          "chord": "Bm",
+          "chord": "Cm",
           "start": 745,
           "end": 763
         },
         {
-          "chord": "C#m",
+          "chord": "Dm",
           "start": 763,
           "end": 781
         }
       ],
       "textAlign": "right",
       "createdAt": "2026-08-24T07:59:29.573Z",
-      "scale": "F#m",
+      "scale": "Gm",
       "timeTop": 4,
       "timeBottom": 4,
       "tempo": 140,
@@ -370,12 +370,12 @@
         865
       ],
       "recentChords": [
-        "C#m",
-        "Bm",
-        "D",
-        "Amaj7",
-        "F#m",
-        "E"
+        "Dm",
+        "Cm",
+        "Eb",
+        "Bbmaj7",
+        "Gm",
+        "F"
       ],
       "videoSeconds": 180
     },
