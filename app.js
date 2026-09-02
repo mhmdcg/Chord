@@ -116,9 +116,12 @@ class ChordAnnotatorApp {
         document.getElementById('splitModeBtn').addEventListener('click', () => this.toggleSplitMode());
         document.getElementById('eraseSplitsBtn').addEventListener('click', () => this.toggleEraseMode());
         document.getElementById('playChordsBtn').addEventListener('click', () => this.togglePlayMode());
-        document.getElementById('playInstrumentSelect').addEventListener('change', (e) => {
-            this.setPlayInstrument(e.target.value);
-        });
+        const playInstrumentSelect = document.getElementById('playInstrumentSelect');
+        if (playInstrumentSelect) {
+            playInstrumentSelect.addEventListener('change', (e) => {
+                this.setPlayInstrument(e.target.value);
+            });
+        }
         this.syncPlayInstrumentSelect();
         document.getElementById('timeTop').addEventListener('input', () => this.updateLyricsMetaPreview());
         document.getElementById('timeTop').addEventListener('change', () => this.saveSongMeta());
@@ -943,6 +946,14 @@ class ChordAnnotatorApp {
 
     midiToFreq(midi) {
         return 440 * (2 ** ((midi - 69) / 12));
+    }
+
+    stopPianoChord() {
+        (this.pianoVoices || []).forEach((voice) => {
+            try { voice.osc.stop(); } catch { /* already stopped */ }
+            try { voice.gain.disconnect(); } catch { /* already disconnected */ }
+        });
+        this.pianoVoices = [];
     }
 
     loadPlayInstrument() {
