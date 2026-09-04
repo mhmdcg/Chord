@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T13:52:43.640Z",
+  "updatedAt": "2026-09-04T14:47:11.289Z",
   "songs": [
     {
       "title": "خیال",
@@ -454,7 +454,7 @@
         "Abm",
         "Gbmaj7"
       ],
-      "videoSeconds": 60,
+      "videoSeconds": 10,
       "downbeats": [
         0,
         6,
@@ -520,8 +520,8 @@
       "hideSplits": false,
       "hideDownbeats": true,
       "downbeatsEqualized": false,
-      "videoStillSeconds": 10,
-      "videoEndStillSeconds": 10
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7
     },
     {
       "title": "بهانه",
