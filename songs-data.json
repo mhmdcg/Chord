@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T15:52:08.664Z",
+  "updatedAt": "2026-09-04T15:52:12.336Z",
   "songs": [
     {
       "title": "خیال",
@@ -522,8 +522,8 @@
       "hideSplits": false,
       "hideDownbeats": true,
       "downbeatsEqualized": false,
-      "videoStillSeconds": 7,
-      "videoEndStillSeconds": 7
+      "videoStillSeconds": 15,
+      "videoEndStillSeconds": 15
     },
     {
       "title": "بهانه",
