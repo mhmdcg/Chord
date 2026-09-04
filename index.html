@@ -137,14 +137,16 @@
                                 <input id="videoLength" type="number" inputmode="numeric" min="3" max="180" value="60" aria-label="Video length in seconds" />
                                 <span class="video-length-unit">s</span>
                             </label>
-                            <label class="video-length" title="Seconds to hold still at the start">
-                                <input id="videoStill" type="number" inputmode="numeric" min="0" max="60" value="7" aria-label="Initial still seconds" />
-                                <span class="video-length-unit">s still</span>
-                            </label>
-                            <label class="video-length" title="Seconds to hold still at the end">
-                                <input id="videoEndStill" type="number" inputmode="numeric" min="0" max="60" value="7" aria-label="Ending still seconds" />
-                                <span class="video-length-unit">s end still</span>
-                            </label>
+                            <div class="video-still-fields">
+                                <label class="video-length" title="Seconds to hold still at the start">
+                                    <input id="videoStill" type="number" inputmode="numeric" min="0" max="60" value="7" aria-label="Initial still seconds" />
+                                    <span class="video-length-unit">s start</span>
+                                </label>
+                                <label class="video-length" title="Seconds to hold still at the end">
+                                    <input id="videoEndStill" type="number" inputmode="numeric" min="0" max="60" value="7" aria-label="Ending still seconds" />
+                                    <span class="video-length-unit">s end</span>
+                                </label>
+                            </div>
                         </div>
                         <div class="scale-control">
                             <div class="transpose-buttons">
