@@ -3061,7 +3061,7 @@ class ChordAnnotatorApp {
         return {
             width: 1080,
             height: 1920,
-            fps: 60,
+            fps: 30,
             durationMs,
             holdStartMs,
             holdEndMs: 0,
@@ -3172,7 +3172,7 @@ class ChordAnnotatorApp {
         return 0;
     }
 
-    async pickAvcEncoderConfig(width, height, fps = 60) {
+    async pickAvcEncoderConfig(width, height) {
         if (typeof VideoEncoder === 'undefined' || typeof VideoEncoder.isConfigSupported !== 'function') {
             return null;
         }
@@ -3185,10 +3185,10 @@ class ChordAnnotatorApp {
             'avc1.42001E'
         ];
         const extras = [
-            { hardwareAcceleration: 'prefer-hardware', latencyMode: 'quality', bitrate: 14_000_000 },
-            { latencyMode: 'quality', bitrate: 14_000_000 },
-            { hardwareAcceleration: 'prefer-software', latencyMode: 'quality', bitrate: 12_000_000 },
-            { bitrate: 12_000_000 }
+            { hardwareAcceleration: 'prefer-software', latencyMode: 'quality', bitrate: 36_000_000 },
+            { latencyMode: 'quality', bitrate: 36_000_000 },
+            { hardwareAcceleration: 'prefer-software', bitrate: 24_000_000 },
+            { bitrate: 24_000_000 }
         ];
         for (const codec of codecs) {
             for (const extra of extras) {
@@ -3196,8 +3196,8 @@ class ChordAnnotatorApp {
                     codec,
                     width,
                     height,
-                    bitrate: 14_000_000,
-                    framerate: fps,
+                    bitrate: 24_000_000,
+                    framerate: 30,
                     avc: { format: 'avc' },
                     ...extra
                 };
@@ -3205,7 +3205,7 @@ class ChordAnnotatorApp {
                     const support = await VideoEncoder.isConfigSupported(config);
                     if (support?.supported) {
                         const resolved = support.config || config;
-                        return { ...resolved, avc: { format: 'avc' }, framerate: fps };
+                        return { ...resolved, avc: { format: 'avc' } };
                     }
                 } catch {
                     // Try the next encoder setup.
@@ -3215,12 +3215,15 @@ class ChordAnnotatorApp {
         return null;
     }
 
-    makeLyricVideoFrame(canvas, timestamp, duration) {
-        try {
-            return new VideoFrame(canvas, { timestamp, duration, alpha: 'discard' });
-        } catch {
-            return new VideoFrame(canvas, { timestamp, duration });
-        }
+    makeLyricVideoFrame(canvas, ctx, timestamp, duration) {
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        return new VideoFrame(imageData.data, {
+            format: 'RGBA',
+            codedWidth: canvas.width,
+            codedHeight: canvas.height,
+            timestamp,
+            duration
+        });
     }
 
     canvas2d(canvas, extra = {}) {
@@ -3234,19 +3237,20 @@ class ChordAnnotatorApp {
         const background = isDark ? '#000000' : '#ffffff';
         return pack.strips.map((strip) => {
             const height = Math.max(2, Math.round(strip.height * (spec.width / strip.width) / 2) * 2);
-            if (strip.width === spec.width && strip.height === height) {
-                return { canvas: strip, width: spec.width, height };
-            }
             const canvas = document.createElement('canvas');
             canvas.width = spec.width;
             canvas.height = height;
-            const ctx = this.canvas2d(canvas);
+            const ctx = this.canvas2d(canvas, { willReadFrequently: true });
             ctx.fillStyle = background;
             ctx.fillRect(0, 0, spec.width, height);
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = 'high';
             ctx.drawImage(strip, 0, 0, spec.width, height);
-            return { canvas, width: spec.width, height };
+            return {
+                width: spec.width,
+                height,
+                pixels: ctx.getImageData(0, 0, spec.width, height)
+            };
         });
     }
 
@@ -3261,15 +3265,13 @@ class ChordAnnotatorApp {
         const canvas = document.createElement('canvas');
         canvas.width = spec.width;
         canvas.height = spec.height;
-        const ctx = this.canvas2d(canvas);
+        const ctx = this.canvas2d(canvas, { willReadFrequently: true });
         ctx.imageSmoothingEnabled = false;
         const background = isDark ? '#000000' : '#ffffff';
-        let lastSrcY = NaN;
 
         const drawAt = (y) => {
-            const srcY = Math.max(0, Math.min(maxY, Math.round(y)));
-            if (srcY === lastSrcY) return;
-            lastSrcY = srcY;
+            let srcY = Math.max(0, Math.min(maxY, Math.round(y)));
+            srcY -= srcY % 2;
             ctx.fillStyle = background;
             ctx.fillRect(0, 0, spec.width, spec.height);
             let remaining = srcViewH;
@@ -3282,11 +3284,7 @@ class ChordAnnotatorApp {
                     continue;
                 }
                 const take = Math.min(row.height - skip, remaining);
-                ctx.drawImage(
-                    row.canvas,
-                    0, skip, row.width, take,
-                    0, destY, spec.width, take
-                );
+                ctx.putImageData(row.pixels, 0, destY - skip, 0, skip, row.width, take);
                 destY += take;
                 remaining -= take;
                 skip = 0;
@@ -3311,7 +3309,7 @@ class ChordAnnotatorApp {
             return;
         }
 
-        const encoderConfig = await this.pickAvcEncoderConfig(1080, 1920, 60);
+        const encoderConfig = await this.pickAvcEncoderConfig(1080, 1920);
         const mimeType = this.pickVideoMimeType();
         const canRecord = typeof MediaRecorder !== 'undefined'
             && typeof HTMLCanvasElement.prototype.captureStream === 'function'
@@ -3360,7 +3358,7 @@ class ChordAnnotatorApp {
     }
 
     async encodeLyricScrollMp4(source, { isDark, encoderConfig, onProgress }) {
-        const { canvas, drawAt, yAtTime, spec } = this.createLyricVideoFrame(source, isDark);
+        const { canvas, ctx, drawAt, yAtTime, spec } = this.createLyricVideoFrame(source, isDark);
         const totalFrames = Math.round(spec.durationMs / 1000 * spec.fps);
         const frameDuration = 1e6 / spec.fps;
         const audioConfig = await this.pickAacEncoderConfig();
@@ -3429,20 +3427,19 @@ class ChordAnnotatorApp {
         }
 
         const waitForQueue = async (which) => {
-            while (which.encodeQueueSize > 16) {
+            while (which.encodeQueueSize > 8) {
                 await new Promise((resolve) => {
                     which.ondequeue = () => resolve();
                 });
             }
         };
 
-        const keyEvery = Math.max(15, Math.round(spec.fps / 4));
         try {
             for (let i = 0; i < totalFrames; i++) {
                 if (encoderError) throw encoderError;
                 drawAt(yAtTime((i / spec.fps) * 1000));
-                const frame = this.makeLyricVideoFrame(canvas, i * frameDuration, frameDuration);
-                encoder.encode(frame, { keyFrame: i === 0 || i % keyEvery === 0 });
+                const frame = this.makeLyricVideoFrame(canvas, ctx, i * frameDuration, frameDuration);
+                encoder.encode(frame, { keyFrame: true });
                 frame.close();
                 await waitForQueue(encoder);
                 if (i % spec.fps === 0 || i === totalFrames - 1) {
