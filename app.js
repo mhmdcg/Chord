@@ -134,6 +134,7 @@ class ChordAnnotatorApp {
         document.getElementById('exportLyricsVideoBtn').addEventListener('click', () => this.exportLyricsVideo());
         document.getElementById('videoLength').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('videoStill').addEventListener('change', () => this.saveSongMeta());
+        document.getElementById('videoEndStill').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('lyricThemeLightBtn').addEventListener('click', () => this.setLyricTheme('light'));
         document.getElementById('lyricThemeDarkBtn').addEventListener('click', () => this.setLyricTheme('dark'));
 
@@ -304,6 +305,7 @@ class ChordAnnotatorApp {
             downbeats: [],
             videoSeconds: 60,
             videoStillSeconds: 7,
+            videoEndStillSeconds: 7,
             createdAt: new Date().toISOString()
         };
 
@@ -636,6 +638,7 @@ class ChordAnnotatorApp {
         document.getElementById('songTempo').value = this.currentSong.tempo || '';
         document.getElementById('videoLength').value = this.getVideoLengthSeconds();
         document.getElementById('videoStill').value = this.getVideoStillSeconds();
+        document.getElementById('videoEndStill').value = this.getVideoEndStillSeconds();
         this.updateScaleModeButton();
         this.updateLockChordsButton();
         this.updateLyricsMetaPreview();
@@ -684,11 +687,13 @@ class ChordAnnotatorApp {
         this.currentSong.tempo = Number.isFinite(tempo) && tempo > 0 ? tempo : '';
         this.currentSong.videoSeconds = this.getVideoLengthSeconds();
         this.currentSong.videoStillSeconds = this.getVideoStillSeconds();
+        this.currentSong.videoEndStillSeconds = this.getVideoEndStillSeconds();
         document.getElementById('timeTop').value = this.currentSong.timeTop;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom;
         document.getElementById('songTempo').value = this.currentSong.tempo;
         document.getElementById('videoLength').value = this.currentSong.videoSeconds;
         document.getElementById('videoStill').value = this.currentSong.videoStillSeconds;
+        document.getElementById('videoEndStill').value = this.currentSong.videoEndStillSeconds;
         this.updateLyricsMetaPreview();
         this.persistCurrentSong();
     }
@@ -3048,12 +3053,14 @@ class ChordAnnotatorApp {
         const videoBtn = document.getElementById('exportLyricsVideoBtn');
         const videoLength = document.getElementById('videoLength');
         const videoStill = document.getElementById('videoStill');
+        const videoEndStill = document.getElementById('videoEndStill');
         if (imageBtn) {
             imageBtn.disabled = busy;
             if (!busy) imageBtn.textContent = 'Export image';
         }
         if (videoLength) videoLength.disabled = busy;
         if (videoStill) videoStill.disabled = busy;
+        if (videoEndStill) videoEndStill.disabled = busy;
         if (videoBtn) {
             videoBtn.disabled = busy;
             if (busy && videoLabel) videoBtn.textContent = videoLabel;
@@ -3065,13 +3072,17 @@ class ChordAnnotatorApp {
         const seconds = this.getVideoLengthSeconds();
         const durationMs = seconds * 1000;
         const holdStartMs = Math.min(this.getVideoStillSeconds() * 1000, durationMs);
+        const holdEndMs = Math.min(
+            this.getVideoEndStillSeconds() * 1000,
+            Math.max(0, durationMs - holdStartMs)
+        );
         return {
             width: 1080,
             height: 1920,
             fps: 30,
             durationMs,
             holdStartMs,
-            holdEndMs: 0,
+            holdEndMs,
             topPadRatio: 0.1
         };
     }
@@ -3088,6 +3099,15 @@ class ChordAnnotatorApp {
     getVideoStillSeconds() {
         const raw = parseInt(document.getElementById('videoStill')?.value, 10);
         const fallback = parseInt(this.currentSong?.videoStillSeconds, 10);
+        const seconds = Number.isFinite(raw)
+            ? raw
+            : (Number.isFinite(fallback) ? fallback : 7);
+        return Math.min(60, Math.max(0, seconds));
+    }
+
+    getVideoEndStillSeconds() {
+        const raw = parseInt(document.getElementById('videoEndStill')?.value, 10);
+        const fallback = parseInt(this.currentSong?.videoEndStillSeconds, 10);
         const seconds = Number.isFinite(raw)
             ? raw
             : (Number.isFinite(fallback) ? fallback : 7);
@@ -3337,13 +3357,17 @@ class ChordAnnotatorApp {
 
         const seconds = this.getVideoLengthSeconds();
         const stillSeconds = this.getVideoStillSeconds();
+        const endStillSeconds = this.getVideoEndStillSeconds();
         const lengthInput = document.getElementById('videoLength');
         const stillInput = document.getElementById('videoStill');
+        const endStillInput = document.getElementById('videoEndStill');
         if (lengthInput) lengthInput.value = seconds;
         if (stillInput) stillInput.value = stillSeconds;
+        if (endStillInput) endStillInput.value = endStillSeconds;
         if (this.currentSong) {
             this.currentSong.videoSeconds = seconds;
             this.currentSong.videoStillSeconds = stillSeconds;
+            this.currentSong.videoEndStillSeconds = endStillSeconds;
         }
 
         this.setExportButtonsBusy(true, 'Exporting video…');
