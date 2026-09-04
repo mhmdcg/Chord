@@ -3269,6 +3269,69 @@ class ChordAnnotatorApp {
             || canvas.getContext('2d');
     }
 
+    paintInstagramIcon(ctx, x, y, size, color) {
+        const inset = size * 0.12;
+        const left = x + inset;
+        const top = y + inset;
+        const box = size - inset * 2;
+        const radius = box * 0.22;
+        ctx.save();
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineWidth = Math.max(1.5, size * 0.08);
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        if (typeof ctx.roundRect === 'function') ctx.roundRect(left, top, box, box, radius);
+        else ctx.rect(left, top, box, box);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(x + size * 0.5, y + size * 0.52, size * 0.18, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(x + size * 0.7, y + size * 0.3, size * 0.05, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+
+    paintExportBrand(ctx, centerX, centerY, color, scale = 1) {
+        const icon = 22 * scale;
+        const gap = 10 * scale;
+        ctx.save();
+        ctx.fillStyle = color;
+        ctx.font = `600 ${Math.round(16 * scale)}px Estedad, Tahoma, sans-serif`;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.direction = 'ltr';
+        const label = 'chords.ir';
+        const textW = ctx.measureText(label).width;
+        const total = icon + gap + textW;
+        const x0 = centerX - total / 2;
+        this.paintInstagramIcon(ctx, x0, centerY - icon / 2, icon, color);
+        ctx.fillText(label, x0 + icon + gap, centerY);
+        ctx.restore();
+    }
+
+    withExportBrand(source, isDark) {
+        const bar = Math.max(52, Math.round(source.width * 0.065));
+        const canvas = document.createElement('canvas');
+        canvas.width = source.width;
+        canvas.height = source.height + bar;
+        const ctx = this.canvas2d(canvas, { willReadFrequently: true });
+        const background = isDark ? '#000000' : '#ffffff';
+        ctx.fillStyle = background;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const sourceCtx = this.canvas2d(source, { willReadFrequently: true });
+        ctx.putImageData(sourceCtx.getImageData(0, 0, source.width, source.height), 0, 0);
+        this.paintExportBrand(
+            ctx,
+            canvas.width / 2,
+            source.height + bar / 2,
+            isDark ? '#ffffff' : '#111111',
+            canvas.width / 1080
+        );
+        return canvas;
+    }
+
     prepareLyricVideoStrips(pack, isDark, destWidth) {
         const spec = this.lyricVideoSpec();
         const width = destWidth || spec.width;
@@ -3366,6 +3429,13 @@ class ChordAnnotatorApp {
                 remaining -= take;
                 skip = 0;
             }
+            this.paintExportBrand(
+                ctx,
+                spec.width / 2,
+                spec.height - bottomPad / 2,
+                isDark ? '#ffffff' : '#111111',
+                1.15
+            );
         };
 
         const yAtTime = (elapsedMs) => {
@@ -3891,7 +3961,8 @@ class ChordAnnotatorApp {
     }
 
     async captureLyricsCanvas(card) {
-        return this.stitchLyricStrips(await this.captureLyricsStrips(card));
+        const pack = await this.captureLyricsStrips(card);
+        return this.withExportBrand(this.stitchLyricStrips(pack), pack.isDark);
     }
 
     updateChordLegend() {
