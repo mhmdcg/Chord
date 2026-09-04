@@ -3555,27 +3555,49 @@ class ChordAnnotatorApp {
         const previousHeight = card.style.height;
         const previousScroll = card.scrollTop;
         const fullHeight = Math.max(card.scrollHeight, card.offsetHeight);
-        const viewHeight = Math.max(1, card.clientHeight || card.offsetHeight);
         const pixelRatio = Math.min(2, Math.max(2, 1080 / width));
         card.classList.add('is-export');
         card.style.overflow = 'hidden';
+        card.style.height = `${fullHeight}px`;
+        card.scrollTop = 0;
+        this.positionLyricOverlays();
+        await this.waitAnimationFrames(2);
+        this.positionLyricOverlays();
 
         try {
-            const out = document.createElement('canvas');
-            out.width = Math.round(width * pixelRatio);
-            out.height = Math.round(fullHeight * pixelRatio);
-            const ctx = out.getContext('2d', { alpha: false, colorSpace: 'srgb' })
-                || out.getContext('2d', { alpha: false });
-            ctx.fillStyle = background;
-            ctx.fillRect(0, 0, out.width, out.height);
-
-            const maxScroll = Math.max(0, fullHeight - viewHeight);
-            const captureOpts = {
+            if (typeof html2canvas === 'function') {
+                return await html2canvas(card, {
+                    backgroundColor: background,
+                    scale: pixelRatio,
+                    useCORS: true,
+                    logging: false,
+                    foreignObjectRendering: false,
+                    width,
+                    height: fullHeight,
+                    windowWidth: width,
+                    windowHeight: fullHeight,
+                    scrollX: 0,
+                    scrollY: 0,
+                    ignoreElements: (el) => el.classList?.contains('sel-handle')
+                        || el.classList?.contains('lyric-split'),
+                    onclone: (clonedDoc) => {
+                        const cloned = clonedDoc.getElementById('lyricsDisplay');
+                        if (!cloned) return;
+                        cloned.classList.add('is-export');
+                        cloned.style.height = `${fullHeight}px`;
+                        cloned.style.overflow = 'hidden';
+                        cloned.style.boxShadow = 'none';
+                        cloned.style.border = 'none';
+                        cloned.style.borderRadius = '0';
+                    }
+                });
+            }
+            return await htmlToImage.toCanvas(card, {
                 backgroundColor: background,
                 pixelRatio,
                 cacheBust: false,
                 width,
-                height: viewHeight,
+                height: fullHeight,
                 style: {
                     overflow: 'hidden',
                     boxShadow: 'none',
@@ -3586,22 +3608,7 @@ class ChordAnnotatorApp {
                     node.classList.contains('sel-handle')
                     || node.classList.contains('lyric-split')
                 ))
-            };
-
-            for (let y = 0; y < fullHeight; ) {
-                const take = Math.min(viewHeight, fullHeight - y);
-                card.scrollTop = Math.min(y, maxScroll);
-                this.positionLyricOverlays();
-                await this.waitAnimationFrames(2);
-                this.positionLyricOverlays();
-                const slice = await htmlToImage.toCanvas(card, captureOpts);
-                const srcY = Math.round((y - Math.min(y, maxScroll)) * pixelRatio);
-                const srcH = Math.min(slice.height - srcY, Math.round(take * pixelRatio));
-                const destY = Math.round(y * pixelRatio);
-                ctx.drawImage(slice, 0, srcY, slice.width, srcH, 0, destY, slice.width, srcH);
-                y += take;
-            }
-            return out;
+            });
         } finally {
             card.classList.remove('is-export');
             card.style.overflow = previousOverflow;
