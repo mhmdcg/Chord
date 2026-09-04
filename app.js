@@ -3294,11 +3294,11 @@ class ChordAnnotatorApp {
     }
 
     paintExportBrand(ctx, centerX, centerY, color, scale = 1) {
-        const icon = 22 * scale;
-        const gap = 10 * scale;
+        const icon = 44 * scale;
+        const gap = 20 * scale;
         ctx.save();
         ctx.fillStyle = color;
-        ctx.font = `600 ${Math.round(16 * scale)}px Estedad, Tahoma, sans-serif`;
+        ctx.font = `600 ${Math.round(32 * scale)}px Estedad, Tahoma, sans-serif`;
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
         ctx.direction = 'ltr';
@@ -3312,7 +3312,7 @@ class ChordAnnotatorApp {
     }
 
     withExportBrand(source, isDark) {
-        const bar = Math.max(52, Math.round(source.width * 0.065));
+        const bar = Math.max(104, Math.round(source.width * 0.12));
         const canvas = document.createElement('canvas');
         canvas.width = source.width;
         canvas.height = source.height + bar;
