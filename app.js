@@ -3094,7 +3094,7 @@ class ChordAnnotatorApp {
         const seconds = Number.isFinite(raw)
             ? raw
             : (Number.isFinite(fallback) ? fallback : 60);
-        return Math.min(180, Math.max(3, seconds));
+        return Math.min(300, Math.max(3, seconds));
     }
 
     getVideoStillSeconds() {
@@ -3292,17 +3292,50 @@ class ChordAnnotatorApp {
         });
     }
 
+    copyStripPixels(strips, srcY, height) {
+        const width = strips[0]?.width || 1;
+        const h = Math.max(0, Math.round(height));
+        if (!h || !strips.length) return null;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = h;
+        const ctx = this.canvas2d(canvas, { willReadFrequently: true });
+        let remaining = h;
+        let destY = 0;
+        let skip = Math.max(0, Math.round(srcY));
+        for (const row of strips) {
+            if (remaining <= 0) break;
+            if (skip >= row.height) {
+                skip -= row.height;
+                continue;
+            }
+            const take = Math.min(row.height - skip, remaining);
+            ctx.putImageData(row.pixels, 0, destY - skip, 0, skip, row.width, take);
+            destY += take;
+            remaining -= take;
+            skip = 0;
+        }
+        return ctx.getImageData(0, 0, width, h);
+    }
+
     createLyricVideoFrame(pack, isDark) {
         const spec = this.lyricVideoSpec();
         const sidePad = Math.round(spec.width * (spec.sidePadRatio || 0) / 2) * 2;
-        const topPad = Math.round(spec.height * spec.topPadRatio / 2) * 2;
-        const bottomPad = topPad;
+        const minTopPad = Math.round(spec.height * spec.topPadRatio / 2) * 2;
+        const bottomPad = minTopPad;
         const contentW = spec.width - sidePad * 2;
-        const contentH = spec.height - topPad - bottomPad;
         const strips = this.prepareLyricVideoStrips(pack, isDark, contentW);
         const sourceHeight = strips.reduce((sum, row) => sum + row.height, 0);
-        const srcViewH = Math.min(sourceHeight, contentH);
-        const maxY = Math.max(0, sourceHeight - srcViewH);
+        const scale = contentW / (pack.width || contentW);
+        let headerH = Math.round((pack.headerCss || 0) * scale / 2) * 2;
+        headerH = Math.max(0, Math.min(sourceHeight, headerH));
+        const headerPixels = headerH ? this.copyStripPixels(strips, 0, headerH) : null;
+        const topPad = Math.max(minTopPad, headerH);
+        const headerDestY = Math.max(0, topPad - headerH);
+        const contentH = spec.height - topPad - bottomPad;
+        const bodyHeight = Math.max(0, sourceHeight - headerH);
+        const srcViewH = Math.min(bodyHeight, contentH);
+        const maxY = Math.max(0, bodyHeight - srcViewH);
         const canvas = document.createElement('canvas');
         canvas.width = spec.width;
         canvas.height = spec.height;
@@ -3315,9 +3348,12 @@ class ChordAnnotatorApp {
             srcY -= srcY % 2;
             ctx.fillStyle = background;
             ctx.fillRect(0, 0, spec.width, spec.height);
+            if (headerPixels) {
+                ctx.putImageData(headerPixels, sidePad, headerDestY);
+            }
             let remaining = srcViewH;
             let destY = topPad;
-            let skip = srcY;
+            let skip = headerH + srcY;
             for (const row of strips) {
                 if (remaining <= 0) break;
                 if (skip >= row.height) {
@@ -3803,6 +3839,10 @@ class ChordAnnotatorApp {
 
         try {
             const origin = card.getBoundingClientRect();
+            const contentEl = card.querySelector('.lyrics-content');
+            const headerCss = contentEl
+                ? Math.max(0, contentEl.getBoundingClientRect().top - origin.top)
+                : 0;
             const stripCss = 256;
             const strips = [];
             for (let y = 0; y < fullHeight; y += stripCss) {
@@ -3819,7 +3859,7 @@ class ChordAnnotatorApp {
                 this.paintLyricsCard(ctx, card, origin, { y, h });
                 strips.push(canvas);
             }
-            return { strips, width, height: fullHeight, pixelRatio, isDark, background };
+            return { strips, width, height: fullHeight, pixelRatio, isDark, background, headerCss };
         } finally {
             card.classList.remove('is-export');
             card.style.overflow = previousOverflow;
