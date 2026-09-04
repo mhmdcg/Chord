@@ -2052,6 +2052,18 @@ class ChordAnnotatorApp {
         return null;
     }
 
+    bakeExportOverlay(el, caret, contentRect, { rtl = false, kind = 'downbeat' } = {}) {
+        el.style.transform = 'none';
+        const width = el.offsetWidth || el.getBoundingClientRect().width;
+        const height = el.offsetHeight || el.getBoundingClientRect().height;
+        let left = caret.left;
+        let top = caret.top - height - (kind === 'chord' ? 2 : 1);
+        if (kind === 'chord' && rtl) left -= width;
+        if (kind === 'downbeat') left -= width / 2;
+        el.style.left = `${left - contentRect.left}px`;
+        el.style.top = `${top - contentRect.top}px`;
+    }
+
     alignOverlay(overlay, content) {
         overlay.style.top = `${content.offsetTop}px`;
         overlay.style.left = `${content.offsetLeft}px`;
@@ -2076,6 +2088,7 @@ class ChordAnnotatorApp {
 
         const contentRect = content.getBoundingClientRect();
         const rtl = getComputedStyle(content).direction === 'rtl';
+        const exporting = document.getElementById('lyricsDisplay')?.classList.contains('is-export');
         const annotations = this.getDisplayAnnotations();
         const points = this.getSectionPoints();
 
@@ -2118,10 +2131,17 @@ class ChordAnnotatorApp {
                 label.style.backgroundColor = fillColor;
                 label.style.left = `${caret.left - contentRect.left}px`;
                 label.style.top = `${caret.top - contentRect.top}px`;
-                label.style.transform = rtl
-                    ? 'translate(-100%, calc(-100% - 2px))'
-                    : 'translateY(calc(-100% - 2px))';
                 splitOverlay.appendChild(label);
+                if (exporting) {
+                    this.bakeExportOverlay(label, caret, contentRect, {
+                        rtl,
+                        kind: 'chord'
+                    });
+                } else {
+                    label.style.transform = rtl
+                        ? 'translate(-100%, calc(-100% - 2px))'
+                        : 'translateY(calc(-100% - 2px))';
+                }
             }
         }
 
@@ -2161,6 +2181,7 @@ class ChordAnnotatorApp {
             mark.style.left = `${caret.left - contentRect.left}px`;
             mark.style.top = `${caret.top - contentRect.top}px`;
             splitOverlay.appendChild(mark);
+            if (exporting) this.bakeExportOverlay(mark, caret, contentRect, { kind: 'downbeat' });
         });
         this.drawBeatModeGridMarks(splitOverlay, content, contentRect);
     }
@@ -2195,6 +2216,9 @@ class ChordAnnotatorApp {
                 mark.style.left = `${x - contentRect.left}px`;
                 mark.style.top = `${firstCaret.top - contentRect.top}px`;
                 splitOverlay.appendChild(mark);
+                if (document.getElementById('lyricsDisplay')?.classList.contains('is-export')) {
+                    this.bakeExportOverlay(mark, { left: x, top: firstCaret.top }, contentRect, { kind: 'downbeat' });
+                }
             }
         });
     }
@@ -3189,19 +3213,16 @@ class ChordAnnotatorApp {
     }
 
     prepareLyricVideoSource(source, isDark) {
-        const spec = this.lyricVideoSpec();
-        const width = spec.width;
-        const height = Math.max(spec.height, Math.round(source.height * (width / source.width)));
-        const fitted = document.createElement('canvas');
-        fitted.width = width;
-        fitted.height = height;
-        const ctx = fitted.getContext('2d', { alpha: false, colorSpace: 'srgb' })
-            || fitted.getContext('2d', { alpha: false });
+        const canvas = document.createElement('canvas');
+        canvas.width = source.width;
+        canvas.height = source.height;
+        const ctx = canvas.getContext('2d', { alpha: false, colorSpace: 'srgb' })
+            || canvas.getContext('2d', { alpha: false });
         ctx.imageSmoothingEnabled = false;
         ctx.fillStyle = isDark ? '#000000' : '#ffffff';
-        ctx.fillRect(0, 0, width, height);
-        ctx.drawImage(source, 0, 0, width, height);
-        return fitted;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(source, 0, 0);
+        return canvas;
     }
 
     createLyricVideoFrame(rawSource, isDark) {
@@ -3209,18 +3230,19 @@ class ChordAnnotatorApp {
         const source = this.prepareLyricVideoSource(rawSource, isDark);
         const topPad = Math.round(spec.height * spec.topPadRatio / 2) * 2;
         const contentH = spec.height - topPad;
-        const srcViewH = Math.min(source.height, Math.round(source.width * contentH / spec.width));
+        const srcViewH = Math.min(source.height, source.width * contentH / spec.width);
         const maxY = Math.max(0, source.height - srcViewH);
         const canvas = document.createElement('canvas');
         canvas.width = spec.width;
         canvas.height = spec.height;
         const ctx = canvas.getContext('2d', { alpha: false, colorSpace: 'srgb' })
             || canvas.getContext('2d', { alpha: false });
-        ctx.imageSmoothingEnabled = false;
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
         const background = isDark ? '#000000' : '#ffffff';
 
         const drawAt = (y) => {
-            const srcY = Math.max(0, Math.min(maxY, Math.round(y)));
+            const srcY = Math.max(0, Math.min(maxY, y));
             ctx.fillStyle = background;
             ctx.fillRect(0, 0, spec.width, spec.height);
             ctx.drawImage(
@@ -3234,7 +3256,7 @@ class ChordAnnotatorApp {
             const scrollMs = spec.durationMs - spec.holdStartMs - spec.holdEndMs;
             if (scrollMs <= 0 || maxY <= 1 || elapsedMs <= spec.holdStartMs) return 0;
             if (elapsedMs >= spec.holdStartMs + scrollMs) return maxY;
-            return Math.round(((elapsedMs - spec.holdStartMs) / scrollMs) * maxY);
+            return (elapsedMs - spec.holdStartMs) / scrollMs * maxY;
         };
 
         return { canvas, ctx, drawAt, yAtTime, spec };
@@ -3377,22 +3399,11 @@ class ChordAnnotatorApp {
             for (let i = 0; i < totalFrames; i++) {
                 if (encoderError) throw encoderError;
                 drawAt(yAtTime((i / spec.fps) * 1000));
-                let frame;
-                try {
-                    const imageData = ctx.getImageData(0, 0, spec.width, spec.height);
-                    frame = new VideoFrame(imageData, {
-                        timestamp: i * frameDuration,
-                        duration: frameDuration,
-                        alpha: 'discard'
-                    });
-                } catch {
-                    frame = new VideoFrame(canvas, {
-                        timestamp: i * frameDuration,
-                        duration: frameDuration,
-                        alpha: 'discard'
-                    });
-                }
-                encoder.encode(frame, { keyFrame: i < 2 || i % spec.fps === 0 });
+                const frame = new VideoFrame(canvas, {
+                    timestamp: i * frameDuration,
+                    duration: frameDuration
+                });
+                encoder.encode(frame, { keyFrame: i === 0 || i % 15 === 0 });
                 frame.close();
                 if (i === 0) await encoder.flush();
                 await waitForQueue(encoder);
@@ -3444,12 +3455,15 @@ class ChordAnnotatorApp {
         const { canvas, drawAt, yAtTime, spec } = this.createLyricVideoFrame(source, isDark);
         canvas.style.cssText = 'position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;pointer-events:none;';
         document.body.appendChild(canvas);
-        drawAt(0);
 
-        const stream = canvas.captureStream(spec.fps);
+        const stream = canvas.captureStream(0);
+        const track = stream.getVideoTracks()[0];
+        drawAt(0);
+        track.requestFrame?.();
+
         const recorder = new MediaRecorder(stream, {
             mimeType,
-            videoBitsPerSecond: 8_000_000
+            videoBitsPerSecond: 12_000_000
         });
         const chunks = [];
         recorder.ondataavailable = (event) => {
@@ -3468,10 +3482,12 @@ class ChordAnnotatorApp {
             const tick = (now) => {
                 const elapsed = now - startedAt;
                 drawAt(yAtTime(elapsed));
+                track.requestFrame?.();
                 if (elapsed < spec.durationMs) {
                     requestAnimationFrame(tick);
                 } else {
                     drawAt(yAtTime(spec.durationMs));
+                    track.requestFrame?.();
                     resolve();
                 }
             };
@@ -3510,10 +3526,14 @@ class ChordAnnotatorApp {
         try {
             return await htmlToImage.toCanvas(card, {
                 backgroundColor: isDark ? '#000000' : '#ffffff',
-                pixelRatio: Math.min(3, Math.max(2, 1080 / width)),
+                pixelRatio: Math.min(2, Math.max(2, 1080 / width)),
                 cacheBust: true,
                 width: card.offsetWidth || width,
                 height: card.offsetHeight,
+                style: {
+                    overflow: 'hidden',
+                    boxShadow: 'none'
+                },
                 filter: (node) => !(node.classList && (
                     node.classList.contains('sel-handle')
                     || node.classList.contains('lyric-split')

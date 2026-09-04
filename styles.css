@@ -1384,8 +1384,17 @@ body {
     cursor: pointer;
 }
 
-.lyrics-display.is-export .lyric-downbeat {
-    pointer-events: none;
+.lyrics-display.is-export {
+    box-shadow: none;
+    overflow: hidden !important;
+    scrollbar-gutter: auto;
+}
+
+.lyrics-display.is-export .lyric-downbeat,
+.lyrics-display.is-export .chord-label,
+.lyrics-display.is-export .melody-break-line {
+    transform: none !important;
+    filter: none !important;
 }
 
 .lyrics-display.theme-dark .lyric-downbeat {
