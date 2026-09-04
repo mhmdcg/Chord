@@ -3083,7 +3083,8 @@ class ChordAnnotatorApp {
             durationMs,
             holdStartMs,
             holdEndMs,
-            topPadRatio: 0.1
+            topPadRatio: 0.1,
+            sidePadRatio: 0.06
         };
     }
 
@@ -3268,34 +3269,38 @@ class ChordAnnotatorApp {
             || canvas.getContext('2d');
     }
 
-    prepareLyricVideoStrips(pack, isDark) {
+    prepareLyricVideoStrips(pack, isDark, destWidth) {
         const spec = this.lyricVideoSpec();
+        const width = destWidth || spec.width;
         const background = isDark ? '#000000' : '#ffffff';
         return pack.strips.map((strip) => {
-            const height = Math.max(2, Math.round(strip.height * (spec.width / strip.width) / 2) * 2);
+            const height = Math.max(2, Math.round(strip.height * (width / strip.width) / 2) * 2);
             const canvas = document.createElement('canvas');
-            canvas.width = spec.width;
+            canvas.width = width;
             canvas.height = height;
             const ctx = this.canvas2d(canvas, { willReadFrequently: true });
             ctx.fillStyle = background;
-            ctx.fillRect(0, 0, spec.width, height);
+            ctx.fillRect(0, 0, width, height);
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = 'high';
-            ctx.drawImage(strip, 0, 0, spec.width, height);
+            ctx.drawImage(strip, 0, 0, width, height);
             return {
-                width: spec.width,
+                width,
                 height,
-                pixels: ctx.getImageData(0, 0, spec.width, height)
+                pixels: ctx.getImageData(0, 0, width, height)
             };
         });
     }
 
     createLyricVideoFrame(pack, isDark) {
         const spec = this.lyricVideoSpec();
-        const strips = this.prepareLyricVideoStrips(pack, isDark);
-        const sourceHeight = strips.reduce((sum, row) => sum + row.height, 0);
+        const sidePad = Math.round(spec.width * (spec.sidePadRatio || 0) / 2) * 2;
         const topPad = Math.round(spec.height * spec.topPadRatio / 2) * 2;
-        const contentH = spec.height - topPad;
+        const bottomPad = topPad;
+        const contentW = spec.width - sidePad * 2;
+        const contentH = spec.height - topPad - bottomPad;
+        const strips = this.prepareLyricVideoStrips(pack, isDark, contentW);
+        const sourceHeight = strips.reduce((sum, row) => sum + row.height, 0);
         const srcViewH = Math.min(sourceHeight, contentH);
         const maxY = Math.max(0, sourceHeight - srcViewH);
         const canvas = document.createElement('canvas');
@@ -3320,7 +3325,7 @@ class ChordAnnotatorApp {
                     continue;
                 }
                 const take = Math.min(row.height - skip, remaining);
-                ctx.putImageData(row.pixels, 0, destY - skip, 0, skip, row.width, take);
+                ctx.putImageData(row.pixels, sidePad, destY - skip, 0, skip, row.width, take);
                 destY += take;
                 remaining -= take;
                 skip = 0;
