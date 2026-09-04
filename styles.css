@@ -1390,11 +1390,29 @@ body {
     scrollbar-gutter: auto;
 }
 
+.lyrics-display.is-export .lyric-section-overlay {
+    z-index: 1;
+}
+
+.lyrics-display.is-export .lyrics-content {
+    z-index: 2;
+}
+
+.lyrics-display.is-export .lyric-split-overlay {
+    z-index: 4;
+}
+
 .lyrics-display.is-export .lyric-downbeat,
 .lyrics-display.is-export .chord-label,
 .lyrics-display.is-export .melody-break-line {
     transform: none !important;
     filter: none !important;
+}
+
+.lyrics-display.is-export .lyric-downbeat::after,
+.lyrics-display.is-export .lyric-split::after {
+    content: none !important;
+    display: none !important;
 }
 
 .lyrics-display.theme-dark .lyric-downbeat {

@@ -2128,7 +2128,9 @@ class ChordAnnotatorApp {
                 label.dataset.start = String(start);
                 label.dataset.end = String(end);
                 label.textContent = annotation.chord;
-                label.style.backgroundColor = fillColor;
+                label.style.backgroundColor = exporting && annotation.chord
+                    ? this.mixWithSurface(this.getChordColor(annotation.chord), 0.22)
+                    : fillColor;
                 label.style.left = `${caret.left - contentRect.left}px`;
                 label.style.top = `${caret.top - contentRect.top}px`;
                 splitOverlay.appendChild(label);
@@ -3193,7 +3195,7 @@ class ChordAnnotatorApp {
                     codec,
                     width,
                     height,
-                    bitrate: 16_000_000,
+                    bitrate: 24_000_000,
                     framerate: 30,
                     avc: { format: 'avc' },
                     ...extra
@@ -3212,17 +3214,43 @@ class ChordAnnotatorApp {
         return null;
     }
 
+    copyCanvasTiled(ctx, source) {
+        const tile = 256;
+        for (let y = 0; y < source.height; y += tile) {
+            const height = Math.min(tile, source.height - y);
+            for (let x = 0; x < source.width; x += tile) {
+                const width = Math.min(tile, source.width - x);
+                ctx.drawImage(source, x, y, width, height, x, y, width, height);
+            }
+        }
+    }
+
     prepareLyricVideoSource(source, isDark) {
-        const canvas = document.createElement('canvas');
-        canvas.width = source.width;
-        canvas.height = source.height;
-        const ctx = canvas.getContext('2d', { alpha: false, colorSpace: 'srgb' })
-            || canvas.getContext('2d', { alpha: false });
-        ctx.imageSmoothingEnabled = false;
+        const spec = this.lyricVideoSpec();
+        const flat = document.createElement('canvas');
+        flat.width = source.width;
+        flat.height = source.height;
+        const flatCtx = flat.getContext('2d', { alpha: false, colorSpace: 'srgb' })
+            || flat.getContext('2d', { alpha: false });
+        flatCtx.fillStyle = isDark ? '#000000' : '#ffffff';
+        flatCtx.fillRect(0, 0, flat.width, flat.height);
+        this.copyCanvasTiled(flatCtx, source);
+
+        const width = spec.width;
+        const height = Math.max(spec.height, Math.round(flat.height * (width / flat.width) / 2) * 2);
+        if (flat.width === width && flat.height === height) return flat;
+
+        const fitted = document.createElement('canvas');
+        fitted.width = width;
+        fitted.height = height;
+        const ctx = fitted.getContext('2d', { alpha: false, colorSpace: 'srgb' })
+            || fitted.getContext('2d', { alpha: false });
         ctx.fillStyle = isDark ? '#000000' : '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(source, 0, 0);
-        return canvas;
+        ctx.fillRect(0, 0, width, height);
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(flat, 0, 0, width, height);
+        return fitted;
     }
 
     createLyricVideoFrame(rawSource, isDark) {
@@ -3230,19 +3258,19 @@ class ChordAnnotatorApp {
         const source = this.prepareLyricVideoSource(rawSource, isDark);
         const topPad = Math.round(spec.height * spec.topPadRatio / 2) * 2;
         const contentH = spec.height - topPad;
-        const srcViewH = Math.min(source.height, source.width * contentH / spec.width);
+        const srcViewH = Math.min(source.height, Math.round(source.width * contentH / spec.width / 2) * 2);
         const maxY = Math.max(0, source.height - srcViewH);
         const canvas = document.createElement('canvas');
         canvas.width = spec.width;
         canvas.height = spec.height;
         const ctx = canvas.getContext('2d', { alpha: false, colorSpace: 'srgb' })
             || canvas.getContext('2d', { alpha: false });
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = 'high';
+        ctx.imageSmoothingEnabled = false;
         const background = isDark ? '#000000' : '#ffffff';
 
         const drawAt = (y) => {
-            const srcY = Math.max(0, Math.min(maxY, y));
+            let srcY = Math.max(0, Math.min(maxY, Math.round(y)));
+            srcY -= srcY % 2;
             ctx.fillStyle = background;
             ctx.fillRect(0, 0, spec.width, spec.height);
             ctx.drawImage(
@@ -3256,7 +3284,7 @@ class ChordAnnotatorApp {
             const scrollMs = spec.durationMs - spec.holdStartMs - spec.holdEndMs;
             if (scrollMs <= 0 || maxY <= 1 || elapsedMs <= spec.holdStartMs) return 0;
             if (elapsedMs >= spec.holdStartMs + scrollMs) return maxY;
-            return (elapsedMs - spec.holdStartMs) / scrollMs * maxY;
+            return ((elapsedMs - spec.holdStartMs) / scrollMs) * maxY;
         };
 
         return { canvas, ctx, drawAt, yAtTime, spec };
@@ -3399,11 +3427,13 @@ class ChordAnnotatorApp {
             for (let i = 0; i < totalFrames; i++) {
                 if (encoderError) throw encoderError;
                 drawAt(yAtTime((i / spec.fps) * 1000));
-                const frame = new VideoFrame(canvas, {
+                const bitmap = await createImageBitmap(canvas);
+                const frame = new VideoFrame(bitmap, {
                     timestamp: i * frameDuration,
                     duration: frameDuration
                 });
-                encoder.encode(frame, { keyFrame: i === 0 || i % 15 === 0 });
+                bitmap.close();
+                encoder.encode(frame, { keyFrame: i === 0 || i % 8 === 0 });
                 frame.close();
                 if (i === 0) await encoder.flush();
                 await waitForQueue(encoder);
@@ -3624,6 +3654,31 @@ class ChordAnnotatorApp {
 
     remapChordColors() {
         // Colors are assigned per song at render time so nearby chords stay distinct.
+    }
+
+    mixWithSurface(color, amount) {
+        const value = String(color || '').trim();
+        let r = 0;
+        let g = 0;
+        let b = 0;
+        const hex = value.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+        if (hex) {
+            let raw = hex[1];
+            if (raw.length === 3) raw = raw.split('').map((ch) => ch + ch).join('');
+            const n = parseInt(raw, 16);
+            r = (n >> 16) & 255;
+            g = (n >> 8) & 255;
+            b = n & 255;
+        } else {
+            const rgb = value.match(/^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i);
+            if (!rgb) return color;
+            r = Number(rgb[1]);
+            g = Number(rgb[2]);
+            b = Number(rgb[3]);
+        }
+        const bg = this.getLyricTheme() === 'dark' ? 0 : 255;
+        const mix = (channel) => Math.round(channel * amount + bg * (1 - amount));
+        return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
     }
 
     withAlpha(color, alpha) {
