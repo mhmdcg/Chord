@@ -3576,6 +3576,30 @@ class ChordAnnotatorApp {
         }
     }
 
+    clusterLyricChars(chars) {
+        const groups = [];
+        let current = [];
+        chars.forEach((entry) => {
+            if (!current.length) {
+                current.push(entry);
+                return;
+            }
+            const prev = current[current.length - 1];
+            const gap = Math.min(
+                Math.abs(entry.rect.left - prev.rect.right),
+                Math.abs(prev.rect.left - entry.rect.right)
+            );
+            if (gap > 3) {
+                groups.push(current);
+                current = [entry];
+            } else {
+                current.push(entry);
+            }
+        });
+        if (current.length) groups.push(current);
+        return groups;
+    }
+
     paintTextNode(ctx, node, origin) {
         const text = node.textContent;
         if (!text) return;
@@ -3601,25 +3625,28 @@ class ChordAnnotatorApp {
         if (!lines.length) return;
 
         ctx.save();
-        ctx.font = style.font;
+        ctx.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
         ctx.fillStyle = style.color;
         ctx.textBaseline = 'alphabetic';
-        const rtl = style.direction === 'rtl';
-        ctx.direction = rtl ? 'rtl' : 'ltr';
-        ctx.textAlign = rtl ? 'right' : 'left';
-        if (style.letterSpacing && style.letterSpacing !== 'normal') {
-            ctx.letterSpacing = style.letterSpacing;
-        }
+        ctx.direction = 'ltr';
+        ctx.textAlign = 'left';
         const ascent = ctx.measureText('مA').fontBoundingBoxAscent
             || parseFloat(style.fontSize) * 0.8;
 
         lines.forEach((line) => {
-            const str = line.chars.map((entry) => entry.ch).join('');
-            if (!str.trim() && !/\s/.test(str)) return;
-            const edge = rtl ? line.chars[line.chars.length - 1] : line.chars[0];
-            const x = (rtl ? edge.rect.right : edge.rect.left) - origin.left;
             const y = line.top - origin.top + ascent;
-            ctx.fillText(str, x, y);
+            this.clusterLyricChars(line.chars).forEach((cluster) => {
+                const str = cluster.map((entry) => entry.ch).join('');
+                if (!str.trim()) return;
+                const left = Math.min(...cluster.map((entry) => entry.rect.left));
+                const right = Math.max(...cluster.map((entry) => entry.rect.right));
+                ctx.letterSpacing = '0px';
+                if (str.length > 1) {
+                    const natural = ctx.measureText(str).width;
+                    ctx.letterSpacing = `${(right - left - natural) / (str.length - 1)}px`;
+                }
+                ctx.fillText(str, left - origin.left, y);
+            });
         });
         ctx.restore();
     }
