@@ -3006,7 +3006,7 @@ class ChordAnnotatorApp {
     async exportLyricsImage() {
         const card = document.getElementById('lyricsDisplay');
         const button = document.getElementById('exportLyricsBtn');
-        if (!card || typeof htmlToImage?.toCanvas !== 'function') {
+        if (!card) {
             alert('Export is not available.');
             return;
         }
@@ -3178,16 +3178,17 @@ class ChordAnnotatorApp {
         }
         if (typeof Mp4Muxer === 'undefined') return null;
         const codecs = [
-            'avc1.420028',
             'avc1.4D4028',
             'avc1.640028',
+            'avc1.420028',
             'avc1.4D001F',
             'avc1.42001E'
         ];
         const extras = [
-            { hardwareAcceleration: 'prefer-software', latencyMode: 'quality' },
-            { latencyMode: 'quality' },
-            {}
+            { hardwareAcceleration: 'prefer-software', latencyMode: 'quality', bitrate: 36_000_000 },
+            { latencyMode: 'quality', bitrate: 36_000_000 },
+            { hardwareAcceleration: 'prefer-software', bitrate: 24_000_000 },
+            { bitrate: 24_000_000 }
         ];
         for (const codec of codecs) {
             for (const extra of extras) {
@@ -3214,57 +3215,57 @@ class ChordAnnotatorApp {
         return null;
     }
 
-    copyCanvasTiled(ctx, source) {
-        const tile = 256;
-        for (let y = 0; y < source.height; y += tile) {
-            const height = Math.min(tile, source.height - y);
-            for (let x = 0; x < source.width; x += tile) {
-                const width = Math.min(tile, source.width - x);
-                ctx.drawImage(source, x, y, width, height, x, y, width, height);
-            }
-        }
+    makeLyricVideoFrame(canvas, ctx, timestamp, duration) {
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        return new VideoFrame(imageData.data, {
+            format: 'RGBA',
+            codedWidth: canvas.width,
+            codedHeight: canvas.height,
+            timestamp,
+            duration
+        });
     }
 
-    prepareLyricVideoSource(source, isDark) {
-        const spec = this.lyricVideoSpec();
-        const flat = document.createElement('canvas');
-        flat.width = source.width;
-        flat.height = source.height;
-        const flatCtx = flat.getContext('2d', { alpha: false, colorSpace: 'srgb' })
-            || flat.getContext('2d', { alpha: false });
-        flatCtx.fillStyle = isDark ? '#000000' : '#ffffff';
-        flatCtx.fillRect(0, 0, flat.width, flat.height);
-        this.copyCanvasTiled(flatCtx, source);
-
-        const width = spec.width;
-        const height = Math.max(spec.height, Math.round(flat.height * (width / flat.width) / 2) * 2);
-        if (flat.width === width && flat.height === height) return flat;
-
-        const fitted = document.createElement('canvas');
-        fitted.width = width;
-        fitted.height = height;
-        const ctx = fitted.getContext('2d', { alpha: false, colorSpace: 'srgb' })
-            || fitted.getContext('2d', { alpha: false });
-        ctx.fillStyle = isDark ? '#000000' : '#ffffff';
-        ctx.fillRect(0, 0, width, height);
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = 'high';
-        ctx.drawImage(flat, 0, 0, width, height);
-        return fitted;
+    canvas2d(canvas, extra = {}) {
+        return canvas.getContext('2d', { alpha: false, colorSpace: 'srgb', ...extra })
+            || canvas.getContext('2d', { alpha: false, ...extra })
+            || canvas.getContext('2d');
     }
 
-    createLyricVideoFrame(rawSource, isDark) {
+    prepareLyricVideoStrips(pack, isDark) {
         const spec = this.lyricVideoSpec();
-        const source = this.prepareLyricVideoSource(rawSource, isDark);
+        const background = isDark ? '#000000' : '#ffffff';
+        return pack.strips.map((strip) => {
+            const height = Math.max(2, Math.round(strip.height * (spec.width / strip.width) / 2) * 2);
+            const canvas = document.createElement('canvas');
+            canvas.width = spec.width;
+            canvas.height = height;
+            const ctx = this.canvas2d(canvas, { willReadFrequently: true });
+            ctx.fillStyle = background;
+            ctx.fillRect(0, 0, spec.width, height);
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(strip, 0, 0, spec.width, height);
+            return {
+                width: spec.width,
+                height,
+                pixels: ctx.getImageData(0, 0, spec.width, height)
+            };
+        });
+    }
+
+    createLyricVideoFrame(pack, isDark) {
+        const spec = this.lyricVideoSpec();
+        const strips = this.prepareLyricVideoStrips(pack, isDark);
+        const sourceHeight = strips.reduce((sum, row) => sum + row.height, 0);
         const topPad = Math.round(spec.height * spec.topPadRatio / 2) * 2;
         const contentH = spec.height - topPad;
-        const srcViewH = Math.min(source.height, Math.round(source.width * contentH / spec.width / 2) * 2);
-        const maxY = Math.max(0, source.height - srcViewH);
+        const srcViewH = Math.min(sourceHeight, contentH);
+        const maxY = Math.max(0, sourceHeight - srcViewH);
         const canvas = document.createElement('canvas');
         canvas.width = spec.width;
         canvas.height = spec.height;
-        const ctx = canvas.getContext('2d', { alpha: false, colorSpace: 'srgb' })
-            || canvas.getContext('2d', { alpha: false });
+        const ctx = this.canvas2d(canvas, { willReadFrequently: true });
         ctx.imageSmoothingEnabled = false;
         const background = isDark ? '#000000' : '#ffffff';
 
@@ -3273,11 +3274,21 @@ class ChordAnnotatorApp {
             srcY -= srcY % 2;
             ctx.fillStyle = background;
             ctx.fillRect(0, 0, spec.width, spec.height);
-            ctx.drawImage(
-                source,
-                0, srcY, source.width, srcViewH,
-                0, topPad, spec.width, contentH
-            );
+            let remaining = srcViewH;
+            let destY = topPad;
+            let skip = srcY;
+            for (const row of strips) {
+                if (remaining <= 0) break;
+                if (skip >= row.height) {
+                    skip -= row.height;
+                    continue;
+                }
+                const take = Math.min(row.height - skip, remaining);
+                ctx.putImageData(row.pixels, 0, destY - skip, 0, skip, row.width, take);
+                destY += take;
+                remaining -= take;
+                skip = 0;
+            }
         };
 
         const yAtTime = (elapsedMs) => {
@@ -3293,7 +3304,7 @@ class ChordAnnotatorApp {
     async exportLyricsVideo() {
         const card = document.getElementById('lyricsDisplay');
         const button = document.getElementById('exportLyricsVideoBtn');
-        if (!card || typeof htmlToImage?.toCanvas !== 'function') {
+        if (!card) {
             alert('Export is not available.');
             return;
         }
@@ -3321,7 +3332,7 @@ class ChordAnnotatorApp {
                 await document.fonts.ready;
             }
             const isDark = card.classList.contains('theme-dark');
-            const source = await this.captureLyricsCanvas(card);
+            const source = await this.captureLyricsStrips(card);
             let blob;
             if (encoderConfig) {
                 blob = await this.encodeLyricScrollMp4(source, {
@@ -3427,15 +3438,9 @@ class ChordAnnotatorApp {
             for (let i = 0; i < totalFrames; i++) {
                 if (encoderError) throw encoderError;
                 drawAt(yAtTime((i / spec.fps) * 1000));
-                const bitmap = await createImageBitmap(canvas);
-                const frame = new VideoFrame(bitmap, {
-                    timestamp: i * frameDuration,
-                    duration: frameDuration
-                });
-                bitmap.close();
-                encoder.encode(frame, { keyFrame: i === 0 || i % 8 === 0 });
+                const frame = this.makeLyricVideoFrame(canvas, ctx, i * frameDuration, frameDuration);
+                encoder.encode(frame, { keyFrame: true });
                 frame.close();
-                if (i === 0) await encoder.flush();
                 await waitForQueue(encoder);
                 if (i % spec.fps === 0 || i === totalFrames - 1) {
                     onProgress?.(Math.round((i + 1) / totalFrames * 100));
@@ -3540,7 +3545,161 @@ class ChordAnnotatorApp {
         }
     }
 
-    async captureLyricsCanvas(card) {
+    cssBox(el, origin) {
+        const rect = el.getBoundingClientRect();
+        return {
+            x: rect.left - origin.left,
+            y: rect.top - origin.top,
+            w: rect.width,
+            h: rect.height
+        };
+    }
+
+    fillRoundRect(ctx, x, y, w, h, radius) {
+        const r = Math.max(0, Math.min(radius, w / 2, h / 2));
+        ctx.beginPath();
+        if (typeof ctx.roundRect === 'function') ctx.roundRect(x, y, w, h, r);
+        else ctx.rect(x, y, w, h);
+        ctx.fill();
+    }
+
+    paintBox(ctx, el, origin) {
+        const style = getComputedStyle(el);
+        if (style.display === 'none' || style.visibility === 'hidden') return;
+        const box = this.cssBox(el, origin);
+        if (box.w < 0.5 || box.h < 0.5) return;
+        const fill = style.backgroundColor;
+        if (fill && fill !== 'rgba(0, 0, 0, 0)' && fill !== 'transparent') {
+            ctx.fillStyle = fill;
+            const radius = parseFloat(style.borderTopLeftRadius) || 0;
+            this.fillRoundRect(ctx, box.x, box.y, box.w, box.h, radius);
+        }
+    }
+
+    paintTextNode(ctx, node, origin) {
+        const text = node.textContent;
+        if (!text) return;
+        const parent = node.parentElement;
+        if (!parent) return;
+        const style = getComputedStyle(parent);
+        if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0) return;
+
+        const range = document.createRange();
+        const lines = [];
+        for (let i = 0; i < text.length; i += 1) {
+            range.setStart(node, i);
+            range.setEnd(node, i + 1);
+            const rect = range.getBoundingClientRect();
+            if (rect.width < 0.15 && rect.height < 0.15) continue;
+            let line = lines.find((entry) => Math.abs(entry.top - rect.top) <= 3);
+            if (!line) {
+                line = { top: rect.top, chars: [] };
+                lines.push(line);
+            }
+            line.chars.push({ ch: text[i], rect });
+        }
+        if (!lines.length) return;
+
+        ctx.save();
+        ctx.font = style.font;
+        ctx.fillStyle = style.color;
+        ctx.textBaseline = 'alphabetic';
+        const rtl = style.direction === 'rtl';
+        ctx.direction = rtl ? 'rtl' : 'ltr';
+        ctx.textAlign = rtl ? 'right' : 'left';
+        if (style.letterSpacing && style.letterSpacing !== 'normal') {
+            ctx.letterSpacing = style.letterSpacing;
+        }
+        const ascent = ctx.measureText('مA').fontBoundingBoxAscent
+            || parseFloat(style.fontSize) * 0.8;
+
+        lines.forEach((line) => {
+            const str = line.chars.map((entry) => entry.ch).join('');
+            if (!str.trim() && !/\s/.test(str)) return;
+            const edge = rtl ? line.chars[line.chars.length - 1] : line.chars[0];
+            const x = (rtl ? edge.rect.right : edge.rect.left) - origin.left;
+            const y = line.top - origin.top + ascent;
+            ctx.fillText(str, x, y);
+        });
+        ctx.restore();
+    }
+
+    paintTextTree(ctx, root, origin, clip) {
+        if (!root) return;
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+            acceptNode: (node) => {
+                if (!node.textContent) return NodeFilter.FILTER_REJECT;
+                const el = node.parentElement;
+                if (!el) return NodeFilter.FILTER_REJECT;
+                if (el.closest('.sel-handle, .melody-break-source, .lyric-section-overlay, .lyric-split-overlay')) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                const style = getComputedStyle(el);
+                if (style.display === 'none' || style.visibility === 'hidden') {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                if (!this.boxIntersectsClip(this.cssBox(el, origin), clip)) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                return NodeFilter.FILTER_ACCEPT;
+            }
+        });
+        let node;
+        while ((node = walker.nextNode())) this.paintTextNode(ctx, node, origin);
+    }
+
+    boxIntersectsClip(box, clip) {
+        if (!clip) return true;
+        const pad = 48;
+        return box.y + box.h >= clip.y - pad && box.y <= clip.y + clip.h + pad;
+    }
+
+    paintLyricsCard(ctx, card, origin, clip) {
+        card.querySelectorAll('.export-meta-chip, .lyric-section-fill').forEach((el) => {
+            if (!this.boxIntersectsClip(this.cssBox(el, origin), clip)) return;
+            this.paintBox(ctx, el, origin);
+        });
+        card.querySelectorAll('.melody-break-line').forEach((el) => {
+            const style = getComputedStyle(el);
+            if (style.display === 'none') return;
+            const box = this.cssBox(el, origin);
+            if (!this.boxIntersectsClip(box, clip)) return;
+            ctx.fillStyle = style.backgroundColor === 'rgba(0, 0, 0, 0)' ? style.color : style.backgroundColor;
+            ctx.fillRect(box.x, box.y, box.w, Math.max(1, box.h));
+        });
+        this.paintTextTree(ctx, card.querySelector('.lyrics-meta'), origin, clip);
+        this.paintTextTree(ctx, card.querySelector('.lyrics-content'), origin, clip);
+        card.querySelectorAll('.chord-label').forEach((el) => {
+            const box = this.cssBox(el, origin);
+            if (!this.boxIntersectsClip(box, clip)) return;
+            this.paintBox(ctx, el, origin);
+            const style = getComputedStyle(el);
+            ctx.save();
+            ctx.font = style.font;
+            ctx.fillStyle = style.color;
+            ctx.textAlign = 'left';
+            ctx.direction = 'ltr';
+            ctx.textBaseline = 'middle';
+            const pad = parseFloat(style.paddingInlineStart) || parseFloat(style.paddingLeft) || 5;
+            ctx.fillText(el.textContent || '', box.x + pad, box.y + box.h / 2);
+            ctx.restore();
+        });
+        card.querySelectorAll('.lyric-downbeat').forEach((el) => {
+            const style = getComputedStyle(el);
+            if (style.display === 'none') return;
+            const box = this.cssBox(el, origin);
+            if (!this.boxIntersectsClip(box, clip)) return;
+            ctx.save();
+            ctx.font = style.font;
+            ctx.fillStyle = style.color;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'alphabetic';
+            ctx.fillText(el.textContent || "'", box.x + box.w / 2, box.y + box.h);
+            ctx.restore();
+        });
+    }
+
+    async captureLyricsStrips(card) {
         const width = card.offsetWidth || 540;
         const isDark = card.classList.contains('theme-dark');
         const background = isDark ? '#000000' : '#ffffff';
@@ -3565,50 +3724,24 @@ class ChordAnnotatorApp {
         this.positionLyricOverlays();
 
         try {
-            if (typeof html2canvas === 'function') {
-                return await html2canvas(card, {
-                    backgroundColor: background,
-                    scale: pixelRatio,
-                    useCORS: true,
-                    logging: false,
-                    foreignObjectRendering: false,
-                    width,
-                    height: fullHeight,
-                    windowWidth: width,
-                    windowHeight: fullHeight,
-                    scrollX: 0,
-                    scrollY: 0,
-                    ignoreElements: (el) => el.classList?.contains('sel-handle')
-                        || el.classList?.contains('lyric-split'),
-                    onclone: (clonedDoc) => {
-                        const cloned = clonedDoc.getElementById('lyricsDisplay');
-                        if (!cloned) return;
-                        cloned.classList.add('is-export');
-                        cloned.style.height = `${fullHeight}px`;
-                        cloned.style.overflow = 'hidden';
-                        cloned.style.boxShadow = 'none';
-                        cloned.style.border = 'none';
-                        cloned.style.borderRadius = '0';
-                    }
-                });
+            const origin = card.getBoundingClientRect();
+            const stripCss = 256;
+            const strips = [];
+            for (let y = 0; y < fullHeight; y += stripCss) {
+                const h = Math.min(stripCss, fullHeight - y);
+                const canvas = document.createElement('canvas');
+                canvas.width = Math.round(width * pixelRatio);
+                canvas.height = Math.round(h * pixelRatio);
+                const ctx = this.canvas2d(canvas, { willReadFrequently: true });
+                ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, -y * pixelRatio);
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.fillStyle = background;
+                ctx.fillRect(0, y, width, h);
+                this.paintLyricsCard(ctx, card, origin, { y, h });
+                strips.push(canvas);
             }
-            return await htmlToImage.toCanvas(card, {
-                backgroundColor: background,
-                pixelRatio,
-                cacheBust: false,
-                width,
-                height: fullHeight,
-                style: {
-                    overflow: 'hidden',
-                    boxShadow: 'none',
-                    border: 'none',
-                    borderRadius: '0px'
-                },
-                filter: (node) => !(node.classList && (
-                    node.classList.contains('sel-handle')
-                    || node.classList.contains('lyric-split')
-                ))
-            });
+            return { strips, width, height: fullHeight, pixelRatio, isDark, background };
         } finally {
             card.classList.remove('is-export');
             card.style.overflow = previousOverflow;
@@ -3619,6 +3752,28 @@ class ChordAnnotatorApp {
             });
             this.positionLyricOverlays();
         }
+    }
+
+    stitchLyricStrips(pack) {
+        const width = pack.strips[0]?.width || 1;
+        const height = pack.strips.reduce((sum, strip) => sum + strip.height, 0) || 1;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = this.canvas2d(canvas, { willReadFrequently: true });
+        ctx.fillStyle = pack.background || '#ffffff';
+        ctx.fillRect(0, 0, width, height);
+        let y = 0;
+        pack.strips.forEach((strip) => {
+            const stripCtx = this.canvas2d(strip, { willReadFrequently: true });
+            ctx.putImageData(stripCtx.getImageData(0, 0, strip.width, strip.height), 0, y);
+            y += strip.height;
+        });
+        return canvas;
+    }
+
+    async captureLyricsCanvas(card) {
+        return this.stitchLyricStrips(await this.captureLyricsStrips(card));
     }
 
     updateChordLegend() {
