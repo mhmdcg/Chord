@@ -1386,6 +1386,8 @@ body {
 
 .lyrics-display.is-export {
     box-shadow: none;
+    border: none;
+    border-radius: 0;
     overflow: hidden !important;
     scrollbar-gutter: auto;
 }

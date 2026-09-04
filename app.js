@@ -3534,9 +3534,16 @@ class ChordAnnotatorApp {
         return new Blob(chunks, { type });
     }
 
+    async waitAnimationFrames(count = 2) {
+        for (let i = 0; i < count; i += 1) {
+            await new Promise((resolve) => requestAnimationFrame(resolve));
+        }
+    }
+
     async captureLyricsCanvas(card) {
         const width = card.offsetWidth || 540;
         const isDark = card.classList.contains('theme-dark');
+        const background = isDark ? '#000000' : '#ffffff';
         const hiddenHandles = [];
         card.querySelectorAll('.sel-handle').forEach((handle) => {
             if (!handle.hidden) {
@@ -3546,33 +3553,60 @@ class ChordAnnotatorApp {
         });
         const previousOverflow = card.style.overflow;
         const previousHeight = card.style.height;
-        card.style.overflow = 'hidden';
-        card.style.height = `${Math.max(card.scrollHeight, card.offsetHeight)}px`;
+        const previousScroll = card.scrollTop;
+        const fullHeight = Math.max(card.scrollHeight, card.offsetHeight);
+        const viewHeight = Math.max(1, card.clientHeight || card.offsetHeight);
+        const pixelRatio = Math.min(2, Math.max(2, 1080 / width));
         card.classList.add('is-export');
-        this.positionLyricOverlays();
-        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-        this.positionLyricOverlays();
+        card.style.overflow = 'hidden';
 
         try {
-            return await htmlToImage.toCanvas(card, {
-                backgroundColor: isDark ? '#000000' : '#ffffff',
-                pixelRatio: Math.min(2, Math.max(2, 1080 / width)),
-                cacheBust: true,
-                width: card.offsetWidth || width,
-                height: card.offsetHeight,
+            const out = document.createElement('canvas');
+            out.width = Math.round(width * pixelRatio);
+            out.height = Math.round(fullHeight * pixelRatio);
+            const ctx = out.getContext('2d', { alpha: false, colorSpace: 'srgb' })
+                || out.getContext('2d', { alpha: false });
+            ctx.fillStyle = background;
+            ctx.fillRect(0, 0, out.width, out.height);
+
+            const maxScroll = Math.max(0, fullHeight - viewHeight);
+            const captureOpts = {
+                backgroundColor: background,
+                pixelRatio,
+                cacheBust: false,
+                width,
+                height: viewHeight,
                 style: {
                     overflow: 'hidden',
-                    boxShadow: 'none'
+                    boxShadow: 'none',
+                    border: 'none',
+                    borderRadius: '0px'
                 },
                 filter: (node) => !(node.classList && (
                     node.classList.contains('sel-handle')
                     || node.classList.contains('lyric-split')
                 ))
-            });
+            };
+
+            for (let y = 0; y < fullHeight; ) {
+                const take = Math.min(viewHeight, fullHeight - y);
+                card.scrollTop = Math.min(y, maxScroll);
+                this.positionLyricOverlays();
+                await this.waitAnimationFrames(2);
+                this.positionLyricOverlays();
+                const slice = await htmlToImage.toCanvas(card, captureOpts);
+                const srcY = Math.round((y - Math.min(y, maxScroll)) * pixelRatio);
+                const srcH = Math.min(slice.height - srcY, Math.round(take * pixelRatio));
+                const destY = Math.round(y * pixelRatio);
+                ctx.drawImage(slice, 0, srcY, slice.width, srcH, 0, destY, slice.width, srcH);
+                y += take;
+            }
+            return out;
         } finally {
             card.classList.remove('is-export');
             card.style.overflow = previousOverflow;
             card.style.height = previousHeight;
+            card.scrollTop = previousScroll;
             hiddenHandles.forEach((handle) => {
                 handle.hidden = false;
             });
