@@ -978,6 +978,12 @@ body {
     gap: 0.25rem;
 }
 
+.video-export-fields {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
 .video-length {
     display: inline-flex;
     align-items: center;
@@ -1792,6 +1798,7 @@ body {
 
     .annotation-tools .time-signature,
     .annotation-tools .song-tempo,
+    .annotation-tools .video-export-fields,
     .annotation-tools .video-length {
         width: auto;
         flex: 1 1 auto;

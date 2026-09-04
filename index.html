@@ -132,10 +132,16 @@
                         </div>
                         <button id="exportLyricsBtn" class="btn btn-secondary" type="button">Export image</button>
                         <button id="exportLyricsVideoBtn" class="btn btn-secondary" type="button">Export video</button>
-                        <label class="video-length">
-                            <input id="videoLength" type="number" inputmode="numeric" min="3" max="180" value="60" aria-label="Video length in seconds" />
-                            <span class="video-length-unit">s</span>
-                        </label>
+                        <div class="video-export-fields">
+                            <label class="video-length" title="Total video length">
+                                <input id="videoLength" type="number" inputmode="numeric" min="3" max="180" value="60" aria-label="Video length in seconds" />
+                                <span class="video-length-unit">s</span>
+                            </label>
+                            <label class="video-length" title="Seconds to hold still at the start">
+                                <input id="videoStill" type="number" inputmode="numeric" min="0" max="60" value="7" aria-label="Initial still seconds" />
+                                <span class="video-length-unit">s still</span>
+                            </label>
+                        </div>
                         <div class="scale-control">
                             <div class="transpose-buttons">
                                 <button type="button" id="transposeDownBtn" class="transpose-btn" aria-label="Transpose down a half step">−</button>
@@ -256,6 +262,6 @@
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="music-theory.js"></script>
-    <script src="app.js?v=20260904j"></script>
+    <script src="app.js?v=20260904k"></script>
 </body>
 </html>

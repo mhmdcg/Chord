@@ -133,6 +133,7 @@ class ChordAnnotatorApp {
         document.getElementById('exportLyricsBtn').addEventListener('click', () => this.exportLyricsImage());
         document.getElementById('exportLyricsVideoBtn').addEventListener('click', () => this.exportLyricsVideo());
         document.getElementById('videoLength').addEventListener('change', () => this.saveSongMeta());
+        document.getElementById('videoStill').addEventListener('change', () => this.saveSongMeta());
         document.getElementById('lyricThemeLightBtn').addEventListener('click', () => this.setLyricTheme('light'));
         document.getElementById('lyricThemeDarkBtn').addEventListener('click', () => this.setLyricTheme('dark'));
 
@@ -302,6 +303,7 @@ class ChordAnnotatorApp {
             splits: [],
             downbeats: [],
             videoSeconds: 60,
+            videoStillSeconds: 7,
             createdAt: new Date().toISOString()
         };
 
@@ -633,6 +635,7 @@ class ChordAnnotatorApp {
         document.getElementById('timeBottom').value = this.currentSong.timeBottom || 4;
         document.getElementById('songTempo').value = this.currentSong.tempo || '';
         document.getElementById('videoLength').value = this.getVideoLengthSeconds();
+        document.getElementById('videoStill').value = this.getVideoStillSeconds();
         this.updateScaleModeButton();
         this.updateLockChordsButton();
         this.updateLyricsMetaPreview();
@@ -680,10 +683,12 @@ class ChordAnnotatorApp {
         const tempo = parseInt(document.getElementById('songTempo').value, 10);
         this.currentSong.tempo = Number.isFinite(tempo) && tempo > 0 ? tempo : '';
         this.currentSong.videoSeconds = this.getVideoLengthSeconds();
+        this.currentSong.videoStillSeconds = this.getVideoStillSeconds();
         document.getElementById('timeTop').value = this.currentSong.timeTop;
         document.getElementById('timeBottom').value = this.currentSong.timeBottom;
         document.getElementById('songTempo').value = this.currentSong.tempo;
         document.getElementById('videoLength').value = this.currentSong.videoSeconds;
+        document.getElementById('videoStill').value = this.currentSong.videoStillSeconds;
         this.updateLyricsMetaPreview();
         this.persistCurrentSong();
     }
@@ -3042,11 +3047,13 @@ class ChordAnnotatorApp {
         const imageBtn = document.getElementById('exportLyricsBtn');
         const videoBtn = document.getElementById('exportLyricsVideoBtn');
         const videoLength = document.getElementById('videoLength');
+        const videoStill = document.getElementById('videoStill');
         if (imageBtn) {
             imageBtn.disabled = busy;
             if (!busy) imageBtn.textContent = 'Export image';
         }
         if (videoLength) videoLength.disabled = busy;
+        if (videoStill) videoStill.disabled = busy;
         if (videoBtn) {
             videoBtn.disabled = busy;
             if (busy && videoLabel) videoBtn.textContent = videoLabel;
@@ -3057,7 +3064,7 @@ class ChordAnnotatorApp {
     lyricVideoSpec() {
         const seconds = this.getVideoLengthSeconds();
         const durationMs = seconds * 1000;
-        const holdStartMs = Math.min(7_000, durationMs);
+        const holdStartMs = Math.min(this.getVideoStillSeconds() * 1000, durationMs);
         return {
             width: 1080,
             height: 1920,
@@ -3076,6 +3083,15 @@ class ChordAnnotatorApp {
             ? raw
             : (Number.isFinite(fallback) ? fallback : 60);
         return Math.min(180, Math.max(3, seconds));
+    }
+
+    getVideoStillSeconds() {
+        const raw = parseInt(document.getElementById('videoStill')?.value, 10);
+        const fallback = parseInt(this.currentSong?.videoStillSeconds, 10);
+        const seconds = Number.isFinite(raw)
+            ? raw
+            : (Number.isFinite(fallback) ? fallback : 7);
+        return Math.min(60, Math.max(0, seconds));
     }
 
     pickVideoMimeType() {
@@ -3320,9 +3336,15 @@ class ChordAnnotatorApp {
         }
 
         const seconds = this.getVideoLengthSeconds();
+        const stillSeconds = this.getVideoStillSeconds();
         const lengthInput = document.getElementById('videoLength');
+        const stillInput = document.getElementById('videoStill');
         if (lengthInput) lengthInput.value = seconds;
-        if (this.currentSong) this.currentSong.videoSeconds = seconds;
+        if (stillInput) stillInput.value = stillSeconds;
+        if (this.currentSong) {
+            this.currentSong.videoSeconds = seconds;
+            this.currentSong.videoStillSeconds = stillSeconds;
+        }
 
         this.setExportButtonsBusy(true, 'Exporting video…');
         const previousLabel = button.textContent;
