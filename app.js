@@ -160,7 +160,9 @@ class ChordAnnotatorApp {
                 this.pendingEdit.chord = e.target.value;
             }
             this.updateChordSuggestions();
+            this.updateChordColorButton();
         });
+        this.bindChordColorPicker();
         document.getElementById('chordInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') this.saveChord();
         });
@@ -309,6 +311,7 @@ class ChordAnnotatorApp {
             videoSeconds: 60,
             videoStillSeconds: 7,
             videoEndStillSeconds: 7,
+            chordColors: {},
             createdAt: new Date().toISOString()
         };
 
@@ -2834,6 +2837,7 @@ class ChordAnnotatorApp {
         document.getElementById('annotationView').classList.add('sheet-open');
 
         this.updateChordSuggestions();
+        this.updateChordColorButton();
         this.renderAnnotationView();
         this.scrollSelectionIntoView();
 
@@ -2893,6 +2897,7 @@ class ChordAnnotatorApp {
     }
 
     closeChordModal() {
+        this.setChordColorPaletteOpen(false);
         document.getElementById('chordModal').classList.remove('active');
         document.getElementById('annotationView').classList.remove('sheet-open');
         document.getElementById('removeChordBtn').hidden = true;
@@ -3247,6 +3252,7 @@ class ChordAnnotatorApp {
         document.getElementById('chordInput').value = chord;
         if (this.pendingEdit) this.pendingEdit.chord = chord;
         this.updateChordSuggestions();
+        this.updateChordColorButton();
         this.renderAnnotatedLyrics();
         this.positionHandles();
         if (apply) this.saveChord();
@@ -4176,8 +4182,10 @@ class ChordAnnotatorApp {
             ctx.direction = 'ltr';
             ctx.textBaseline = 'middle';
             if (onText) {
-                ctx.textAlign = 'center';
-                ctx.fillText(el.textContent || '', box.x + box.w / 2, box.y + box.h / 2);
+                const rtl = card.classList.contains('rtl') || card.classList.contains('align-right');
+                const pad = parseFloat(style.paddingInlineStart) || parseFloat(style.paddingLeft) || 5;
+                ctx.textAlign = rtl ? 'right' : 'left';
+                ctx.fillText(el.textContent || '', rtl ? box.x + box.w - pad : box.x + pad, box.y + box.h / 2);
             } else {
                 ctx.textAlign = 'left';
                 const pad = parseFloat(style.paddingInlineStart) || parseFloat(style.paddingLeft) || 5;
@@ -4312,9 +4320,80 @@ class ChordAnnotatorApp {
         });
     }
 
+    chordColorKey(chord) {
+        return this.displayChord(chord || '').trim().toLowerCase();
+    }
+
+    bindChordColorPicker() {
+        const button = document.getElementById('chordColorBtn');
+        const palette = document.getElementById('chordColorPalette');
+        if (!button || !palette) return;
+        palette.replaceChildren();
+        this.colorPalette.forEach((color) => {
+            const swatch = document.createElement('button');
+            swatch.type = 'button';
+            swatch.className = 'chord-color-swatch';
+            swatch.style.backgroundColor = color;
+            swatch.dataset.color = color;
+            swatch.setAttribute('aria-label', `Use color ${color}`);
+            swatch.addEventListener('click', () => this.pickSongChordColor(color));
+            palette.appendChild(swatch);
+        });
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const open = palette.hidden;
+            this.setChordColorPaletteOpen(open);
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.chord-color-wrap')) this.setChordColorPaletteOpen(false);
+        });
+    }
+
+    setChordColorPaletteOpen(open) {
+        const button = document.getElementById('chordColorBtn');
+        const palette = document.getElementById('chordColorPalette');
+        if (!button || !palette) return;
+        palette.hidden = !open;
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) this.syncChordColorSwatches();
+    }
+
+    updateChordColorButton() {
+        const button = document.getElementById('chordColorBtn');
+        if (!button) return;
+        const chord = this.displayChord(document.getElementById('chordInput')?.value || '').trim();
+        button.hidden = !chord;
+        if (chord) button.style.backgroundColor = this.getChordColor(chord);
+        this.syncChordColorSwatches();
+    }
+
+    syncChordColorSwatches() {
+        const palette = document.getElementById('chordColorPalette');
+        if (!palette || palette.hidden) return;
+        const chord = this.displayChord(document.getElementById('chordInput')?.value || '').trim();
+        const current = chord ? this.getChordColor(chord).toLowerCase() : '';
+        palette.querySelectorAll('.chord-color-swatch').forEach((swatch) => {
+            swatch.classList.toggle('selected', (swatch.dataset.color || '').toLowerCase() === current);
+        });
+    }
+
+    pickSongChordColor(color) {
+        const chord = this.displayChord(document.getElementById('chordInput')?.value || '').trim();
+        if (!this.currentSong || !chord || !color) return;
+        if (!this.currentSong.chordColors) this.currentSong.chordColors = {};
+        this.currentSong.chordColors[this.chordColorKey(chord)] = color;
+        this.persistCurrentSong();
+        this.setChordColorPaletteOpen(false);
+        this.updateChordColorButton();
+        this.renderAnnotationView();
+    }
+
     getChordColor(chord) {
         const map = this.getSongColorMap();
         if (map[chord]) return map[chord];
+        const key = this.chordColorKey(chord);
+        const match = Object.keys(map).find((name) => this.chordColorKey(name) === key);
+        if (match) return map[match];
         return this.pickDistinctColor(Object.values(map));
     }
 
@@ -4357,8 +4436,16 @@ class ChordAnnotatorApp {
 
     getSongColorMap(song = this.currentSong) {
         const map = {};
-        this.getSongChordList(song).forEach((chord, index) => {
-            map[chord] = this.colorPalette[index % this.colorPalette.length];
+        const custom = song?.chordColors || {};
+        const byKey = {};
+        let autoIndex = 0;
+        this.getSongChordList(song).forEach((chord) => {
+            const key = this.chordColorKey(chord);
+            if (!byKey[key]) {
+                byKey[key] = custom[key] || this.colorPalette[autoIndex % this.colorPalette.length];
+                if (!custom[key]) autoIndex += 1;
+            }
+            map[chord] = byKey[key];
         });
         return map;
     }

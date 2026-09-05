@@ -1519,14 +1519,19 @@ body {
 .lyric-split-overlay .chord-label.on-text {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    padding: 0;
+    justify-content: flex-start;
+    padding: 0 5px;
     margin: 0;
     background: transparent;
     box-shadow: none;
     transform: none;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.lyrics-display.align-right .lyric-split-overlay .chord-label.on-text,
+.lyrics-display.rtl .lyric-split-overlay .chord-label.on-text {
+    justify-content: flex-end;
 }
 
 .lyrics-display.align-right .chord-label,
@@ -1641,9 +1646,67 @@ body {
     border-top: 1px solid var(--border);
 }
 
-.modal-content h3 {
+.modal-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
     margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+    margin: 0;
     font-size: 1.25rem;
+}
+
+.chord-color-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.chord-color-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    background: #e5e7eb;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 2px var(--surface);
+}
+
+.chord-color-btn:hover,
+.chord-color-btn[aria-expanded="true"] {
+    border-color: var(--primary);
+}
+
+.chord-color-palette {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(5, 1.5rem);
+    gap: 0.4rem;
+    padding: 0.6rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px var(--shadow-lg);
+}
+
+.chord-color-swatch {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.chord-color-swatch.selected,
+.chord-color-swatch:hover {
+    border-color: var(--text);
 }
 
 .selected-text-preview {

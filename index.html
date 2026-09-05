@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20260905j">
+    <link rel="stylesheet" href="styles.css?v=20260905l">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -236,7 +236,13 @@
                 <!-- Chord Input Sheet -->
                 <div id="chordModal" class="modal">
                     <div class="modal-content">
-                        <h3 id="chordModalTitle">Add Chord</h3>
+                        <div class="modal-header-row">
+                            <h3 id="chordModalTitle">Add Chord</h3>
+                            <div class="chord-color-wrap">
+                                <button type="button" id="chordColorBtn" class="chord-color-btn" title="Chord color" aria-label="Pick chord color" aria-expanded="false" hidden></button>
+                                <div id="chordColorPalette" class="chord-color-palette" hidden></div>
+                            </div>
+                        </div>
                         <p class="selected-text-preview"></p>
                         <input type="text" id="chordInput" placeholder="e.g., Am, G, D7, Cm" autocomplete="off" autocapitalize="off" />
                         <div class="chord-recent-row" id="chordRecentRow" hidden>
@@ -268,6 +274,6 @@
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="music-theory.js?v=20260905c"></script>
-    <script src="app.js?v=20260905k"></script>
+    <script src="app.js?v=20260905l"></script>
 </body>
 </html>
