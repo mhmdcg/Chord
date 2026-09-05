@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T13:27:50.539Z",
+  "updatedAt": "2026-09-05T13:28:22.333Z",
   "songs": [
     {
       "title": "خیال",
@@ -532,7 +532,7 @@
       "annotations": [],
       "textAlign": "right",
       "createdAt": "2026-08-24T07:59:29.573Z",
-      "scale": "Dm",
+      "scale": "Em",
       "timeTop": 6,
       "timeBottom": 8,
       "tempo": 140,
@@ -554,9 +554,9 @@
         211
       ],
       "recentChords": [
-        "B",
-        "D",
-        "A"
+        "C#",
+        "E",
+        "B"
       ],
       "downbeats": [
         0,
