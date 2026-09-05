@@ -823,6 +823,38 @@ class ChordAnnotatorApp {
         return lines;
     }
 
+    vocalRowTopsForSection(section, lineHeight) {
+        const lines = this.sourceLinesInRange(section.start, section.end);
+        const hasLetter = lines.some((line) => !line.spaceOnly);
+        const hasSpace = lines.some((line) => line.spaceOnly);
+        if (!hasLetter) return [];
+        const rects = [...section.lineRects]
+            .filter((rect) => rect.width >= 8 && rect.height >= 1)
+            .sort((a, b) => a.top - b.top || a.left - b.left);
+        if (!rects.length) return [];
+        const skipLeftover = (rect, next) => (
+            Boolean(next) && next.top > rect.top + rect.height * 0.4 && rect.width < 28
+        );
+        if (!hasSpace) {
+            return rects
+                .filter((rect, index) => !skipLeftover(rect, rects[index + 1]))
+                .map((rect) => rect.top);
+        }
+        const firstIsLetter = !lines[0].spaceOnly;
+        const lastIsSpace = lines[lines.length - 1].spaceOnly;
+        const sameRow = (top, other) => Math.abs(top - other) <= lineHeight * 0.4;
+        if (firstIsLetter && lastIsSpace) {
+            const lastTop = rects[rects.length - 1].top;
+            return rects
+                .filter((rect) => !sameRow(rect.top, lastTop))
+                .map((rect) => rect.top);
+        }
+        const firstTop = rects[0].top;
+        return rects
+            .filter((rect) => !sameRow(rect.top, firstTop))
+            .map((rect) => rect.top);
+    }
+
     getSectionPoints() {
         const length = this.currentSong?.lyrics?.length || 0;
         const points = new Set([0, length]);
@@ -2438,15 +2470,7 @@ class ChordAnnotatorApp {
 
         const vocalTops = [];
         sectionLayouts.forEach((section) => {
-            if (!this.sourceLinesInRange(section.start, section.end).some((line) => !line.spaceOnly)) return;
-            const rects = [...section.lineRects]
-                .filter((rect) => rect.width >= 8 && rect.height >= 1)
-                .sort((a, b) => a.top - b.top || a.left - b.left);
-            rects.forEach((rect, index) => {
-                const next = rects[index + 1];
-                if (next && next.top > rect.top + rect.height * 0.4 && rect.width < 28) return;
-                vocalTops.push(rect.top);
-            });
+            vocalTops.push(...this.vocalRowTopsForSection(section, lineHeight));
         });
         const rowHasLetters = (top) => vocalTops.some((rowTop) => Math.abs(rowTop - top) <= lineHeight * 0.4);
 
