@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T13:30:13.299Z",
+  "updatedAt": "2026-09-05T13:30:22.159Z",
   "songs": [
     {
       "title": "خیال",
@@ -544,6 +544,11 @@
           "chord": "D",
           "start": 47,
           "end": 78
+        },
+        {
+          "chord": "Dsus2",
+          "start": 78,
+          "end": 87
         }
       ],
       "textAlign": "right",
@@ -570,6 +575,7 @@
         211
       ],
       "recentChords": [
+        "Dsus2",
         "D",
         "Esus2",
         "Em",
@@ -630,7 +636,8 @@
     "Gbmaj7": "#E11D48",
     "Am": "#0EA5E9",
     "Em": "#0EA5E9",
-    "Esus2": "#F59E0B"
+    "Esus2": "#F59E0B",
+    "Dsus2": "#16A34A"
   },
   "nextColorIndex": 22
 }
