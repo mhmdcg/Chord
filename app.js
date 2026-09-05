@@ -1028,7 +1028,7 @@ class ChordAnnotatorApp {
     handlePlayChordClick(e) {
         const hit = this.sectionFromPlayEvent(e);
         if (!hit) return;
-        e.preventDefault();
+        if (e.cancelable && e.type !== 'pointerdown') e.preventDefault();
         e.stopPropagation();
         this.playSectionChord(hit.start, hit.end, hit.target);
     }
@@ -1101,20 +1101,30 @@ class ChordAnnotatorApp {
         if (ctx.state === 'suspended') {
             ctx.resume().catch(() => {});
         }
-        if (!this._audioUnlocked) {
-            try {
-                const buffer = ctx.createBuffer(1, 1, ctx.sampleRate || 44100);
-                const source = ctx.createBufferSource();
-                const gain = ctx.createGain();
-                gain.gain.value = 0.0001;
-                source.buffer = buffer;
-                source.connect(gain);
-                gain.connect(ctx.destination);
-                source.start(0);
-                this._audioUnlocked = true;
-            } catch {
-                // iOS may still unlock on the next resume()
+        try {
+            if (!this._htmlAudioUnlock) {
+                this._htmlAudioUnlock = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA');
+                this._htmlAudioUnlock.setAttribute('playsinline', '');
+                this._htmlAudioUnlock.setAttribute('webkit-playsinline', '');
+                this._htmlAudioUnlock.volume = 0.01;
             }
+            const played = this._htmlAudioUnlock.play();
+            if (played) played.catch(() => {});
+        } catch {
+            // keep Web Audio unlock below
+        }
+        try {
+            const buffer = ctx.createBuffer(1, 1, ctx.sampleRate || 44100);
+            const source = ctx.createBufferSource();
+            const gain = ctx.createGain();
+            gain.gain.value = 0.0001;
+            source.buffer = buffer;
+            source.connect(gain);
+            gain.connect(ctx.destination);
+            source.start(0);
+            this._audioUnlocked = true;
+        } catch {
+            // iOS may still unlock on resume()
         }
         return ctx;
     }
@@ -1221,7 +1231,7 @@ class ChordAnnotatorApp {
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(440 * (2 ** ((midi - 69) / 12)), start);
         gain.gain.setValueAtTime(0.0001, start);
-        gain.gain.exponentialRampToValueAtTime(0.1, start + 0.012);
+        gain.gain.exponentialRampToValueAtTime(0.2, start + 0.012);
         gain.gain.exponentialRampToValueAtTime(0.0001, start + 1.05);
         osc.connect(gain);
         gain.connect(ctx.destination);
@@ -1281,19 +1291,12 @@ class ChordAnnotatorApp {
         if (!notes.length) return;
         const ctx = this.unlockAudioContext();
         if (!ctx) return;
-        const startPlayback = async () => {
-            if (ctx.state === 'suspended') {
-                try { await ctx.resume(); } catch { return; }
-            }
-            const loaded = await this.ensureGrandPianoSamples(ctx, notes);
-            this.stopPianoChord();
-            const now = ctx.currentTime;
-            notes.forEach((midi, index) => {
-                if (!loaded[index]) this.loadGrandPianoSample(ctx, this.nearestGrandPianoSample(midi));
-                this.playGrandPianoNote(ctx, midi, now + index * 0.012);
-            });
-        };
-        startPlayback();
+        this.stopPianoChord();
+        const now = ctx.currentTime;
+        notes.forEach((midi, index) => {
+            this.playGrandPianoNote(ctx, midi, now + index * 0.012);
+        });
+        this.ensureGrandPianoSamples(ctx, notes);
     }
 
     handleSplitClick(e) {
@@ -1341,7 +1344,9 @@ class ChordAnnotatorApp {
     handleSplitPointerDown(e) {
         if (this.playMode) {
             if (e.button) return;
-            this._playPointer = { x: e.clientX, y: e.clientY };
+            this.handlePlayChordClick(e);
+            this.ignoreSplitClick = true;
+            setTimeout(() => { this.ignoreSplitClick = false; }, 400);
             return;
         }
         if (this.eraseMode || e.button) return;
@@ -1424,18 +1429,6 @@ class ChordAnnotatorApp {
     }
 
     handleSplitPointerUp(e) {
-        if (this.playMode && this._playPointer) {
-            const start = this._playPointer;
-            this._playPointer = null;
-            const dx = e.clientX - start.x;
-            const dy = e.clientY - start.y;
-            if ((dx * dx + dy * dy) < 144) {
-                this.handlePlayChordClick(e);
-                this.ignoreSplitClick = true;
-                setTimeout(() => { this.ignoreSplitClick = false; }, 400);
-            }
-            return;
-        }
         if (this.draggingDownbeat) {
             const drag = this.draggingDownbeat;
             this.draggingDownbeat = null;
@@ -4272,6 +4265,15 @@ class ChordAnnotatorApp {
         return 'rgba(79, 70, 229, 0.18)';
     }
 
+    countUniqueChords(song) {
+        const seen = new Set();
+        (song?.annotations || []).forEach((annotation) => {
+            const name = this.displayChord(annotation.chord || '').trim().toLowerCase();
+            if (name) seen.add(name);
+        });
+        return seen.size;
+    }
+
     getSongChordList(song = this.currentSong) {
         const seen = [];
         const annotations = [...(song?.annotations || [])].sort((a, b) => a.start - b.start);
@@ -4386,7 +4388,7 @@ class ChordAnnotatorApp {
             const meta = document.createElement('div');
             meta.className = 'song-card-meta';
 
-            const chordCount = song.annotations ? song.annotations.length : 0;
+            const chordCount = this.countUniqueChords(song);
             const metaText = document.createElement('span');
             metaText.textContent = `${chordCount} chord${chordCount !== 1 ? 's' : ''}`;
 
