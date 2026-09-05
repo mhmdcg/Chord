@@ -781,30 +781,22 @@ class ChordAnnotatorApp {
         return Array.isArray(this.currentSong?.downbeats) ? this.currentSong.downbeats : [];
     }
 
-    getMelodyBreakRanges() {
+    lyricLineAtOffset(offset) {
         const lyrics = this.currentSong?.lyrics || '';
-        const breaks = [];
-        const re = /_+/g;
-        let match;
-        while ((match = re.exec(lyrics))) {
-            breaks.push({ start: match.index, end: match.index + match[0].length });
-        }
-        return breaks;
+        const index = Math.max(0, Math.min(offset, lyrics.length));
+        const start = lyrics.lastIndexOf('\n', index - 1) + 1;
+        const end = lyrics.indexOf('\n', index);
+        return lyrics.slice(start, end < 0 ? lyrics.length : end);
     }
 
-    getMelodyOnlyRanges() {
-        const breaks = this.getMelodyBreakRanges();
-        const ranges = [];
-        for (let i = 0; i < breaks.length - 1; i += 1) {
-            const start = breaks[i].end;
-            const end = breaks[i + 1].start;
-            if (start < end) ranges.push({ start, end });
+    isSpaceOnlyLineAt(offset) {
+        const line = this.lyricLineAtOffset(offset);
+        if (!line) return false;
+        try {
+            return !/\p{L}/u.test(line);
+        } catch {
+            return !/[A-Za-z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(line);
         }
-        return ranges;
-    }
-
-    isMelodyOnlyOffset(offset) {
-        return this.getMelodyOnlyRanges().some((range) => offset >= range.start && offset < range.end);
     }
 
     getSectionPoints() {
@@ -2419,7 +2411,7 @@ class ChordAnnotatorApp {
             }
 
             if (splitOverlay && annotation?.chord && start === annotation.start && caret) {
-                const onText = this.isMelodyOnlyOffset(start);
+                const onText = this.isSpaceOnlyLineAt(start);
                 const fillRect = lineRects[0];
                 const label = document.createElement('span');
                 label.className = onText ? 'chord-label on-text' : 'chord-label';
