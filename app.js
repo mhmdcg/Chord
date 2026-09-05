@@ -2038,6 +2038,26 @@ class ChordAnnotatorApp {
         return fontSize * 3.4;
     }
 
+    getLyricTextHeight(el) {
+        const style = getComputedStyle(el);
+        const fontSize = parseFloat(style.fontSize) || 16;
+        try {
+            const canvas = this._lyricMetricsCanvas || (this._lyricMetricsCanvas = document.createElement('canvas'));
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+                ctx.font = style.font;
+                const metrics = ctx.measureText('آیهگیپHg');
+                const ascent = metrics.actualBoundingBoxAscent || 0;
+                const descent = metrics.actualBoundingBoxDescent || 0;
+                const measured = ascent + descent;
+                if (measured >= fontSize * 0.7) return measured;
+            }
+        } catch {
+            // fall through to font-size
+        }
+        return fontSize * 1.15;
+    }
+
     usableOverlayRects(rects, lineHeight, rootRect) {
         const maxH = Math.max(lineHeight * 1.5, lineHeight + 8);
         return [...rects].filter((rect) => (
@@ -2049,23 +2069,28 @@ class ChordAnnotatorApp {
         ));
     }
 
-    normalizeOverlayBox(box, lineHeight) {
+    normalizeOverlayBox(box, lineHeight, textHeight = lineHeight) {
         if (!box) return null;
-        const height = box.height || lineHeight;
+        const height = box.height || textHeight;
         if (height > lineHeight * 1.5) {
-            return { left: box.left, top: box.top, height: lineHeight };
+            const extra = Math.max(0, lineHeight - textHeight);
+            return { left: box.left, top: box.top + extra / 2, height: textHeight };
         }
-        if (height < lineHeight * 0.55) {
+        if (height > textHeight * 1.25) {
+            const extra = height - textHeight;
+            return { left: box.left, top: box.top + extra / 2, height: textHeight };
+        }
+        if (height < textHeight * 0.75) {
             const mid = box.top + height / 2;
-            return { left: box.left, top: mid - lineHeight / 2, height: lineHeight };
+            return { left: box.left, top: mid - textHeight / 2, height: textHeight };
         }
-        return { left: box.left, top: box.top, height };
+        return { left: box.left, top: box.top, height: textHeight };
     }
 
-    mergeOverlayRectsByLine(rects, lineHeight) {
+    mergeOverlayRectsByLine(rects, lineHeight, textHeight = lineHeight) {
         const lines = [];
         rects.forEach((rect) => {
-            const box = this.normalizeOverlayBox(rect, lineHeight);
+            const box = this.normalizeOverlayBox(rect, lineHeight, textHeight);
             if (!box || rect.width < 1) return;
             const mid = box.top + box.height / 2;
             const line = lines.find((entry) => Math.abs((entry.top + entry.height / 2) - mid) <= lineHeight * 0.45);
@@ -2074,13 +2099,13 @@ class ChordAnnotatorApp {
                 line.left = Math.min(line.left, rect.left);
                 line.right = Math.max(line.right, right);
                 line.top = Math.min(line.top, box.top);
-                line.height = Math.max(line.height, box.height);
+                line.height = textHeight;
             } else {
                 lines.push({
                     left: rect.left,
                     right,
                     top: box.top,
-                    height: box.height
+                    height: textHeight
                 });
             }
         });
@@ -2128,7 +2153,7 @@ class ChordAnnotatorApp {
         return rects;
     }
 
-    getSectionLineRects(start, end, lineHeight) {
+    getSectionLineRects(start, end, lineHeight, textHeight = lineHeight) {
         const content = document.getElementById('lyricsContent');
         const range = this.getRangeForOffsets(start, end);
         if (!content || !range) return [];
@@ -2154,7 +2179,7 @@ class ChordAnnotatorApp {
             collected.push(...fromRange(nodeRange));
         }
         if (!sawNode) collected.push(...fromRange(range));
-        return this.mergeOverlayRectsByLine(collected, lineHeight);
+        return this.mergeOverlayRectsByLine(collected, lineHeight, textHeight);
     }
 
     getCaretRectForOffset(root, offset) {
@@ -2165,8 +2190,9 @@ class ChordAnnotatorApp {
         const rtl = getComputedStyle(root).direction === 'rtl';
         const rootRect = root.getBoundingClientRect();
         const lineHeight = this.getLyricLineHeight(root);
+        const textHeight = this.getLyricTextHeight(root);
         const toCaret = (rect, left) => (
-            this.normalizeOverlayBox({ left, top: rect.top, height: rect.height }, lineHeight)
+            this.normalizeOverlayBox({ left, top: rect.top, height: rect.height }, lineHeight, textHeight)
         );
 
         const pick = (start, end, edge) => {
@@ -2250,6 +2276,7 @@ class ChordAnnotatorApp {
         const annotations = this.getDisplayAnnotations();
         const points = this.getSectionPoints();
         const lineHeight = this.getLyricLineHeight(content);
+        const textHeight = this.getLyricTextHeight(content);
 
         for (let i = 0; i < points.length - 1; i += 1) {
             const start = points[i];
@@ -2260,7 +2287,7 @@ class ChordAnnotatorApp {
                 ? (annotation.chord ? this.getChordFill(annotation.chord) : this.getPendingFill())
                 : '';
             const caret = this.getCaretRectForOffset(content, start);
-            const lineRects = this.getSectionLineRects(start, end, lineHeight);
+            const lineRects = this.getSectionLineRects(start, end, lineHeight, textHeight);
 
             if (sectionOverlay) {
                 lineRects.forEach((rect) => {
