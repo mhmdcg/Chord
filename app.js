@@ -2022,43 +2022,191 @@ class ChordAnnotatorApp {
         requestAnimationFrame(() => this.positionLyricOverlays());
     }
 
+    getLyricLineHeight(el) {
+        if (!el) return 22;
+        const style = getComputedStyle(el);
+        const fontSize = parseFloat(style.fontSize) || 16;
+        const lh = style.lineHeight;
+        if (lh.endsWith('px')) {
+            const px = parseFloat(lh);
+            return px > 0 ? px : fontSize * 3.4;
+        }
+        const numeric = parseFloat(lh);
+        if (lh !== 'normal' && Number.isFinite(numeric) && numeric > 0) {
+            return numeric * fontSize;
+        }
+        return fontSize * 3.4;
+    }
+
+    usableOverlayRects(rects, lineHeight, rootRect) {
+        const maxH = Math.max(lineHeight * 1.5, lineHeight + 8);
+        return [...rects].filter((rect) => (
+            rect.width >= 1
+            && rect.height >= 2
+            && rect.height <= maxH
+            && rect.bottom >= rootRect.top - 1
+            && rect.top <= rootRect.bottom + 1
+        ));
+    }
+
+    normalizeOverlayBox(box, lineHeight) {
+        if (!box) return null;
+        const height = box.height || lineHeight;
+        if (height > lineHeight * 1.5) {
+            return { left: box.left, top: box.top, height: lineHeight };
+        }
+        if (height < lineHeight * 0.55) {
+            const mid = box.top + height / 2;
+            return { left: box.left, top: mid - lineHeight / 2, height: lineHeight };
+        }
+        return { left: box.left, top: box.top, height };
+    }
+
+    mergeOverlayRectsByLine(rects, lineHeight) {
+        const lines = [];
+        rects.forEach((rect) => {
+            const box = this.normalizeOverlayBox(rect, lineHeight);
+            if (!box || rect.width < 1) return;
+            const mid = box.top + box.height / 2;
+            const line = lines.find((entry) => Math.abs((entry.top + entry.height / 2) - mid) <= lineHeight * 0.45);
+            const right = rect.left + rect.width;
+            if (line) {
+                line.left = Math.min(line.left, rect.left);
+                line.right = Math.max(line.right, right);
+                line.top = Math.min(line.top, box.top);
+                line.height = Math.max(line.height, box.height);
+            } else {
+                lines.push({
+                    left: rect.left,
+                    right,
+                    top: box.top,
+                    height: box.height
+                });
+            }
+        });
+        return lines.map((line) => ({
+            left: line.left,
+            width: line.right - line.left,
+            top: line.top,
+            height: line.height,
+            bottom: line.top + line.height
+        }));
+    }
+
+    measureRangeByCharacter(nodeRange, lineHeight, rootRect) {
+        const node = nodeRange.startContainer;
+        if (!node || node.nodeType !== Node.TEXT_NODE) {
+            return [...nodeRange.getClientRects()]
+                .filter((rect) => rect.width >= 1 && rect.height >= 2)
+                .map((rect) => ({
+                    left: rect.left,
+                    width: rect.width,
+                    top: rect.top,
+                    height: Math.min(rect.height, lineHeight)
+                }));
+        }
+        const probe = document.createRange();
+        const rects = [];
+        for (let i = nodeRange.startOffset; i < nodeRange.endOffset; i += 1) {
+            probe.setStart(node, i);
+            probe.setEnd(node, i + 1);
+            const picked = this.usableOverlayRects(probe.getClientRects(), lineHeight, rootRect);
+            if (picked.length) {
+                rects.push(...picked);
+                continue;
+            }
+            const union = probe.getBoundingClientRect();
+            if (union.width >= 1 && union.height >= 2) {
+                rects.push({
+                    left: union.left,
+                    width: union.width,
+                    top: union.top,
+                    height: Math.min(union.height, lineHeight)
+                });
+            }
+        }
+        return rects;
+    }
+
+    getSectionLineRects(start, end, lineHeight) {
+        const content = document.getElementById('lyricsContent');
+        const range = this.getRangeForOffsets(start, end);
+        if (!content || !range) return [];
+        const rootRect = content.getBoundingClientRect();
+        const fromRange = (nodeRange) => {
+            const rects = this.usableOverlayRects(nodeRange.getClientRects(), lineHeight, rootRect);
+            return rects.length ? rects : this.measureRangeByCharacter(nodeRange, lineHeight, rootRect);
+        };
+
+        const collected = [];
+        const walker = this.createLyricWalker(content);
+        let node;
+        let sawNode = false;
+        while ((node = walker.nextNode())) {
+            if (!range.intersectsNode(node)) continue;
+            sawNode = true;
+            const startOff = node === range.startContainer ? range.startOffset : 0;
+            const endOff = node === range.endContainer ? range.endOffset : node.textContent.length;
+            if (startOff >= endOff) continue;
+            const nodeRange = document.createRange();
+            nodeRange.setStart(node, startOff);
+            nodeRange.setEnd(node, endOff);
+            collected.push(...fromRange(nodeRange));
+        }
+        if (!sawNode) collected.push(...fromRange(range));
+        return this.mergeOverlayRectsByLine(collected, lineHeight);
+    }
+
     getCaretRectForOffset(root, offset) {
         const pos = this.getDomPositionForOffset(root, offset);
         if (!pos) return null;
 
         const range = document.createRange();
-        const place = (start, end) => {
-            range.setStart(pos.node, start);
-            range.setEnd(pos.node, end);
-            return range.getBoundingClientRect();
-        };
-
         const rtl = getComputedStyle(root).direction === 'rtl';
         const rootRect = root.getBoundingClientRect();
-        const usable = (rect) => (
-            rect
-            && rect.height >= 2
-            && rect.bottom >= rootRect.top - 1
-            && rect.top <= rootRect.bottom + 1
+        const lineHeight = this.getLyricLineHeight(root);
+        const toCaret = (rect, left) => (
+            this.normalizeOverlayBox({ left, top: rect.top, height: rect.height }, lineHeight)
         );
 
-        if (pos.offset < pos.node.textContent.length) {
-            const rect = place(pos.offset, pos.offset + 1);
-            if (usable(rect)) {
-                return { left: rtl ? rect.right : rect.left, top: rect.top, height: rect.height };
+        const pick = (start, end, edge) => {
+            range.setStart(pos.node, start);
+            range.setEnd(pos.node, end);
+            const rects = this.usableOverlayRects(range.getClientRects(), lineHeight, rootRect);
+            if (rects.length) {
+                const rect = rects.reduce((a, b) => (a.height <= b.height ? a : b));
+                const left = edge === 'end'
+                    ? (rtl ? rect.left : rect.right)
+                    : (rtl ? rect.right : rect.left);
+                return toCaret(rect, left);
             }
+            const union = range.getBoundingClientRect();
+            if (
+                union
+                && union.height >= 2
+                && union.bottom >= rootRect.top - 1
+                && union.top <= rootRect.bottom + 1
+                && (union.left !== 0 || union.top !== 0 || rootRect.left < 1)
+            ) {
+                const left = edge === 'end'
+                    ? (rtl ? union.left : union.right)
+                    : (rtl ? union.right : union.left);
+                return toCaret({ top: union.top, height: Math.min(union.height, lineHeight) }, left);
+            }
+            return null;
+        };
+
+        if (pos.offset < pos.node.textContent.length) {
+            const caret = pick(pos.offset, pos.offset + 1, 'start');
+            if (caret) return caret;
         }
         if (pos.offset > 0) {
-            const rect = place(pos.offset - 1, pos.offset);
-            if (usable(rect)) {
-                return { left: rtl ? rect.left : rect.right, top: rect.top, height: rect.height };
-            }
+            const caret = pick(pos.offset - 1, pos.offset, 'end');
+            if (caret) return caret;
         }
 
-        const rect = place(pos.offset, pos.offset);
-        if (usable(rect) && (rect.left !== 0 || rect.top !== 0 || rootRect.left < 1)) {
-            return { left: rect.left, top: rect.top, height: rect.height };
-        }
+        const collapsed = pick(pos.offset, pos.offset, 'start');
+        if (collapsed) return collapsed;
         return null;
     }
 
@@ -2101,6 +2249,7 @@ class ChordAnnotatorApp {
         const exporting = document.getElementById('lyricsDisplay')?.classList.contains('is-export');
         const annotations = this.getDisplayAnnotations();
         const points = this.getSectionPoints();
+        const lineHeight = this.getLyricLineHeight(content);
 
         for (let i = 0; i < points.length - 1; i += 1) {
             const start = points[i];
@@ -2110,12 +2259,11 @@ class ChordAnnotatorApp {
             const fillColor = annotation
                 ? (annotation.chord ? this.getChordFill(annotation.chord) : this.getPendingFill())
                 : '';
-            const range = this.getRangeForOffsets(start, end);
             const caret = this.getCaretRectForOffset(content, start);
-            const textHeight = caret?.height || 22;
+            const lineRects = this.getSectionLineRects(start, end, lineHeight);
 
-            if (sectionOverlay && range) {
-                [...range.getClientRects()].forEach((rect) => {
+            if (sectionOverlay) {
+                lineRects.forEach((rect) => {
                     if (rect.width < 1 || rect.height < 1) return;
                     const fill = document.createElement('div');
                     fill.className = 'lyric-section-fill';
@@ -2125,8 +2273,8 @@ class ChordAnnotatorApp {
                     if (fillColor) fill.style.backgroundColor = fillColor;
                     fill.style.left = `${rect.left - contentRect.left}px`;
                     fill.style.width = `${rect.width}px`;
-                    fill.style.height = `${textHeight + 4}px`;
-                    fill.style.top = `${rect.bottom - contentRect.top - textHeight - 2}px`;
+                    fill.style.height = `${rect.height + 4}px`;
+                    fill.style.top = `${rect.top - contentRect.top - 2}px`;
                     sectionOverlay.appendChild(fill);
                 });
             }
