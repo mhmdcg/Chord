@@ -49,6 +49,10 @@ eq(theory.transposeScale('Ebm', 4), 'Gm');
 
 eq(theory.transposeChordName('Bbm7', 3, 'C#m'), 'C#m7');
 eq(theory.transposeChordName('Amaj7', 1, 'Bb'), 'Bbmaj7');
+eq(theory.formatChordDisplay('Cmaj7'), 'CM7', 'Cmaj7 displays as CM7');
+eq(theory.formatChordDisplay('Gbmaj7/Bb'), 'GbM7/Bb', 'slash maj7 displays with M');
+eq(theory.formatChordDisplay('CM7'), 'CM7', 'CM7 stays CM7');
+deepEq(theory.chordMidiNotes('CM7'), theory.chordMidiNotes('Cmaj7'), 'CM7 plays as Cmaj7');
 eq(theory.transposeChordName('Fdim', 3, 'F#m'), 'G#dim');
 eq(theory.transposeChordName('Gb', 3, 'F#m'), 'A');
 eq(theory.transposeChordName('Cb', 3, 'F#m'), 'D');

@@ -173,8 +173,13 @@
     function normalizeQuality(quality) {
         let q = String(quality || '').replace(/\s+/g, '');
         q = q.replace(/^Δ/, 'maj').replace(/^ø/, 'm7b5').replace(/^°/, 'dim');
+        q = q.replace(/^M(?=[0-9#b])/, 'maj');
         q = q.replace(/^maj$/i, '').replace(/^M$/, '').replace(/^min$/i, 'm').replace(/^mi$/i, 'm');
         return q;
+    }
+
+    function formatChordDisplay(chord) {
+        return String(chord || '').replace(/maj/gi, 'M');
     }
 
     function intervalsForQuality(quality) {
@@ -376,6 +381,7 @@
         transposeScale,
         toggleScaleQuality,
         chordMidiNotes,
+        formatChordDisplay,
         romanizeToLatin,
         filenameToken,
         exportImageFilename

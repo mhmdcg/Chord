@@ -48,12 +48,12 @@ class ChordAnnotatorApp {
 
         this.rootLetters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         this.chordQualities = [
-            '', 'm', '7', 'm7', 'maj7', '6', 'm6',
-            '9', 'm9', 'maj9', 'add9', 'madd9', 'add11', 'add4',
+            '', 'm', '7', 'm7', 'M7', '6', 'm6',
+            '9', 'm9', 'M9', 'add9', 'madd9', 'add11', 'add4',
             'sus2', 'sus4', 'sus', '7sus4', '9sus4',
             'dim', 'dim7', 'm7b5', 'aug',
             '5', '11', '13', 'm11', 'm13',
-            '7b9', '7#9', '7b5', '7#5', 'maj7#11'
+            '7b9', '7#9', '7b5', '7#5', 'M7#11'
         ];
         this.allChords = this.buildChordCatalog();
         this.scaleOptions = {
@@ -2312,7 +2312,7 @@ class ChordAnnotatorApp {
                 label.dir = 'ltr';
                 label.dataset.start = String(start);
                 label.dataset.end = String(end);
-                label.textContent = annotation.chord;
+                label.textContent = this.displayChord(annotation.chord);
                 label.style.backgroundColor = exporting && annotation.chord
                     ? this.mixWithSurface(this.getChordColor(annotation.chord), 0.22)
                     : fillColor;
@@ -2712,7 +2712,7 @@ class ChordAnnotatorApp {
         document.getElementById('chordModalTitle').textContent =
             pending.type === 'update' ? 'Edit Chord' : 'Add Chord';
         document.querySelector('.selected-text-preview').textContent = `"${preview}"`;
-        document.getElementById('chordInput').value = pending.chord || '';
+        document.getElementById('chordInput').value = this.displayChord(pending.chord || '');
         document.getElementById('removeChordBtn').hidden = pending.type !== 'update';
         document.getElementById('chordModal').classList.add('active');
         document.getElementById('annotationView').classList.add('sheet-open');
@@ -2795,7 +2795,7 @@ class ChordAnnotatorApp {
     }
 
     saveChord() {
-        const chord = document.getElementById('chordInput').value.trim();
+        const chord = this.displayChord(document.getElementById('chordInput').value.trim());
         if (!chord) {
             alert('Please enter a chord');
             return;
@@ -2874,6 +2874,10 @@ class ChordAnnotatorApp {
 
     parseChordRoot(chord) {
         return MusicTheory.parseChordRoot(chord);
+    }
+
+    displayChord(chord) {
+        return MusicTheory.formatChordDisplay(chord);
     }
 
     transposeChordName(chord, semitones, targetKey) {
@@ -3082,11 +3086,11 @@ class ChordAnnotatorApp {
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'chord-suggestion recent';
-            if (selectedChord && chord.toLowerCase() === selectedChord.toLowerCase()) {
+            if (selectedChord && this.displayChord(chord).toLowerCase() === this.displayChord(selectedChord).toLowerCase()) {
                 btn.classList.add('selected');
             }
-            btn.textContent = chord;
-            btn.addEventListener('click', () => this.selectSuggestedChord(chord, { apply: true }));
+            btn.textContent = this.displayChord(chord);
+            btn.addEventListener('click', () => this.selectSuggestedChord(this.displayChord(chord), { apply: true }));
             container.appendChild(btn);
         });
     }
@@ -3114,11 +3118,11 @@ class ChordAnnotatorApp {
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'chord-suggestion';
-            if (selectedChord && chord.toLowerCase() === selectedChord.toLowerCase()) {
+            if (selectedChord && this.displayChord(chord).toLowerCase() === this.displayChord(selectedChord).toLowerCase()) {
                 btn.classList.add('selected');
             }
-            btn.textContent = chord;
-            btn.addEventListener('click', () => this.selectSuggestedChord(chord));
+            btn.textContent = this.displayChord(chord);
+            btn.addEventListener('click', () => this.selectSuggestedChord(this.displayChord(chord)));
             container.appendChild(btn);
         });
     }
@@ -4162,7 +4166,7 @@ class ChordAnnotatorApp {
             colorBox.style.backgroundColor = this.getChordFill(chord);
 
             const label = document.createElement('span');
-            label.textContent = chord;
+            label.textContent = this.displayChord(chord);
 
             item.appendChild(colorBox);
             item.appendChild(label);
@@ -4396,7 +4400,7 @@ class ChordAnnotatorApp {
                 const chip = document.createElement('span');
                 chip.className = 'training-chord';
                 chip.dir = 'ltr';
-                chip.textContent = chord;
+                chip.textContent = this.displayChord(chord);
                 chip.style.backgroundColor = this.withAlpha(
                     this.colorPalette[index % this.colorPalette.length],
                     this.highlightAlpha.light
