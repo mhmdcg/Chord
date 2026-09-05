@@ -810,13 +810,11 @@ class ChordAnnotatorApp {
         let offset = start;
         while (offset < end) {
             const newline = lyrics.indexOf('\n', offset);
-            const lineEnd = newline < 0 || newline >= end ? end : newline;
-            const text = lyrics.slice(offset, lineEnd);
-            const melodyBreak = /^_+$/.test(text.trim());
-            if (!melodyBreak) {
+            const fullLine = this.lyricLineAtOffset(offset);
+            if (!/^_+$/.test(fullLine.trim())) {
                 lines.push({
                     start: offset,
-                    spaceOnly: this.lineHasNoLetters(text)
+                    spaceOnly: this.isSpaceOnlyLineAt(offset)
                 });
             }
             if (newline < 0 || newline >= end) break;
