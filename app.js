@@ -2406,6 +2406,7 @@ class ChordAnnotatorApp {
         const lineHeight = this.getLyricLineHeight(content);
         const textHeight = this.getLyricTextHeight(content);
 
+        const sectionLayouts = [];
         for (let i = 0; i < points.length - 1; i += 1) {
             const start = points[i];
             const end = points[i + 1];
@@ -2415,6 +2416,7 @@ class ChordAnnotatorApp {
                 ? (annotation.chord ? this.getChordFill(annotation.chord) : this.getPendingFill())
                 : '';
             const lineRects = this.getSectionLineRects(start, end, lineHeight, textHeight);
+            sectionLayouts.push({ start, end, annotation, fillColor, lineRects });
 
             if (sectionOverlay) {
                 lineRects.forEach((rect) => {
@@ -2432,22 +2434,38 @@ class ChordAnnotatorApp {
                     sectionOverlay.appendChild(fill);
                 });
             }
-
-            if (splitOverlay && annotation?.chord && start === annotation.start) {
-                this.placeChordLabelsForSection({
-                    content,
-                    contentRect,
-                    lineRects,
-                    start,
-                    end,
-                    lineHeight,
-                    annotation,
-                    fillColor,
-                    rtl,
-                    exporting
-                });
-            }
         }
+
+        const vocalTops = [];
+        sectionLayouts.forEach((section) => {
+            if (!this.sourceLinesInRange(section.start, section.end).some((line) => !line.spaceOnly)) return;
+            const rects = [...section.lineRects]
+                .filter((rect) => rect.width >= 8 && rect.height >= 1)
+                .sort((a, b) => a.top - b.top || a.left - b.left);
+            rects.forEach((rect, index) => {
+                const next = rects[index + 1];
+                if (next && next.top > rect.top + rect.height * 0.4 && rect.width < 28) return;
+                vocalTops.push(rect.top);
+            });
+        });
+        const rowHasLetters = (top) => vocalTops.some((rowTop) => Math.abs(rowTop - top) <= lineHeight * 0.4);
+
+        sectionLayouts.forEach((section) => {
+            if (!splitOverlay || !section.annotation?.chord || section.start !== section.annotation.start) return;
+            this.placeChordLabelsForSection({
+                content,
+                contentRect,
+                lineRects: section.lineRects,
+                start: section.start,
+                end: section.end,
+                lineHeight,
+                annotation: section.annotation,
+                fillColor: section.fillColor,
+                rtl,
+                exporting,
+                rowHasLetters
+            });
+        });
 
         if (splitOverlay) this.packChordLabels(splitOverlay, rtl);
 
@@ -2576,7 +2594,8 @@ class ChordAnnotatorApp {
         annotation,
         fillColor,
         rtl,
-        exporting
+        exporting,
+        rowHasLetters
     }) {
         const splitOverlay = document.getElementById('lyricSplitOverlay');
         if (!splitOverlay) return;
@@ -2605,7 +2624,7 @@ class ChordAnnotatorApp {
             }
             const line = sourceLines[lineIndex];
             if (!line) return;
-            const onText = line.spaceOnly;
+            const onText = line.spaceOnly && !rowHasLetters?.(rect.top);
             if (onText && rect.width < 16) return;
             const edge = rtl ? rect.left + (rect.width || 0) : rect.left;
             const label = document.createElement('span');
