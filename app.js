@@ -792,78 +792,37 @@ class ChordAnnotatorApp {
         return lyrics.slice(start, end < 0 ? lyrics.length : end);
     }
 
-    isSpaceOnlyLineAt(offset) {
-        const line = this.lyricLineAtOffset(offset);
+    lineHasNoLetters(text) {
         try {
-            return !/\p{L}/u.test(line);
+            return !/\p{L}/u.test(text || '');
         } catch {
-            return !/[A-Za-z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(line);
+            return !/[A-Za-z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(text || '');
         }
     }
 
-    isSpaceOnlyVisualLine(content, start, end, rect, lineHeight) {
-        const midY = rect.top + rect.height / 2;
-        const lyrics = this.currentSong?.lyrics || '';
-        let sawMatch = false;
-        let allSpace = true;
-        const consider = (offset) => {
-            if (offset < start || offset > end) return;
-            const probe = Math.min(Math.max(offset, start), Math.max(start, end - 1));
-            const caret = this.getCaretRectForOffset(content, probe);
-            if (!caret) return;
-            if (Math.abs((caret.top + caret.height / 2) - midY) > lineHeight * 0.45) return;
-            sawMatch = true;
-            if (!this.isSpaceOnlyLineAt(probe)) allSpace = false;
-        };
-        consider(start);
-        let newline = lyrics.indexOf('\n', start);
-        while (newline !== -1 && newline <= end) {
-            consider(newline);
-            if (newline + 1 <= end) consider(newline + 1);
-            newline = lyrics.indexOf('\n', newline + 1);
-        }
-        if (sawMatch) return allSpace;
-        return this.isSpaceOnlyLineAt(this.offsetOnLineRect(content, start, end, rect, lineHeight));
+    isSpaceOnlyLineAt(offset) {
+        return this.lineHasNoLetters(this.lyricLineAtOffset(offset));
     }
 
-    offsetOnLineRect(content, start, end, rect, lineHeight) {
-        const midY = rect.top + rect.height / 2;
-        const rtl = getComputedStyle(content).direction === 'rtl';
-        const x = rtl ? rect.left + (rect.width || 0) - 2 : rect.left + 2;
+    sourceLinesInRange(start, end) {
         const lyrics = this.currentSong?.lyrics || '';
-        const caretDist = (offset) => {
-            const caret = this.getCaretRectForOffset(content, offset);
-            if (!caret) return Infinity;
-            return Math.abs((caret.top + caret.height / 2) - midY);
-        };
-        const fromPoint = this.clampOffset(this.getLyricOffsetFromPoint(x, midY));
-        const snapped = lyrics[fromPoint] === '\n' && fromPoint + 1 < end
-            ? fromPoint + 1
-            : fromPoint;
-        if (snapped >= start && snapped < end && caretDist(snapped) <= lineHeight * 0.45) {
-            return snapped;
-        }
-        if (fromPoint >= start && fromPoint < end && caretDist(fromPoint) <= lineHeight * 0.45) {
-            return fromPoint;
-        }
-
-        const candidates = [start];
-        let newline = lyrics.indexOf('\n', start);
-        while (newline !== -1 && newline < end) {
-            if (newline + 1 < end) candidates.push(newline + 1);
-            newline = lyrics.indexOf('\n', newline + 1);
-        }
-        let best = start;
-        let bestDist = Infinity;
-        for (const offset of candidates) {
-            const dist = caretDist(offset);
-            if (dist < bestDist) {
-                bestDist = dist;
-                best = offset;
+        const lines = [];
+        let offset = start;
+        while (offset < end) {
+            const newline = lyrics.indexOf('\n', offset);
+            const lineEnd = newline < 0 || newline >= end ? end : newline;
+            const text = lyrics.slice(offset, lineEnd);
+            const melodyBreak = /^_+$/.test(text.trim());
+            if (!melodyBreak) {
+                lines.push({
+                    start: offset,
+                    spaceOnly: this.lineHasNoLetters(text)
+                });
             }
-            if (dist <= lineHeight * 0.45) return offset;
+            if (newline < 0 || newline >= end) break;
+            offset = newline + 1;
         }
-        return best;
+        return lines;
     }
 
     getSectionPoints() {
@@ -2457,7 +2416,6 @@ class ChordAnnotatorApp {
             const fillColor = annotation
                 ? (annotation.chord ? this.getChordFill(annotation.chord) : this.getPendingFill())
                 : '';
-            const caret = this.getCaretRectForOffset(content, start);
             const lineRects = this.getSectionLineRects(start, end, lineHeight, textHeight);
 
             if (sectionOverlay) {
@@ -2624,18 +2582,33 @@ class ChordAnnotatorApp {
     }) {
         const splitOverlay = document.getElementById('lyricSplitOverlay');
         if (!splitOverlay) return;
+        const sourceLines = this.sourceLinesInRange(start, end);
         const rects = [...lineRects]
             .filter((rect) => rect.width >= 8 && rect.height >= 1)
             .sort((a, b) => a.top - b.top || a.left - b.left);
+        const isNewVisualLine = (rect, next) => (
+            Boolean(next) && next.top > rect.top + rect.height * 0.4
+        );
+        let lineIndex = 0;
         rects.forEach((rect, index) => {
             const next = rects[index + 1];
-            const wrapLeftover = next
-                && rect.width < 28
-                && next.top > rect.top + rect.height * 0.4;
-            const offset = this.offsetOnLineRect(content, start, end, rect, lineHeight);
-            if (/^_+$/.test((this.lyricLineAtOffset(offset) || '').trim())) return;
-            const onText = this.isSpaceOnlyVisualLine(content, start, end, rect, lineHeight);
-            if (wrapLeftover || (onText && rect.width < 16)) return;
+            const wrapLeftover = isNewVisualLine(rect, next) && rect.width < 28;
+            if (wrapLeftover) {
+                if (sourceLines[lineIndex]?.spaceOnly) lineIndex += 1;
+                return;
+            }
+            const remainingRects = rects.length - index;
+            while (
+                lineIndex < sourceLines.length - 1
+                && sourceLines[lineIndex].spaceOnly
+                && (sourceLines.length - lineIndex) > remainingRects
+            ) {
+                lineIndex += 1;
+            }
+            const line = sourceLines[lineIndex];
+            if (!line) return;
+            const onText = line.spaceOnly;
+            if (onText && rect.width < 16) return;
             const edge = rtl ? rect.left + (rect.width || 0) : rect.left;
             const label = document.createElement('span');
             label.className = onText ? 'chord-label on-text' : 'chord-label';
@@ -2659,14 +2632,18 @@ class ChordAnnotatorApp {
                 label.style.top = `${rect.top - contentRect.top}px`;
             }
             splitOverlay.appendChild(label);
-            if (onText) return;
-            const caret = { left: edge, top: rect.top, height: rect.height };
-            if (exporting) {
-                this.bakeExportOverlay(label, caret, contentRect, { rtl, kind: 'chord' });
-            } else {
-                label.style.transform = rtl
-                    ? 'translate(-100%, calc(-100% - 2px))'
-                    : 'translateY(calc(-100% - 2px))';
+            if (!onText) {
+                const caret = { left: edge, top: rect.top, height: rect.height };
+                if (exporting) {
+                    this.bakeExportOverlay(label, caret, contentRect, { rtl, kind: 'chord' });
+                } else {
+                    label.style.transform = rtl
+                        ? 'translate(-100%, calc(-100% - 2px))'
+                        : 'translateY(calc(-100% - 2px))';
+                }
+            }
+            if (isNewVisualLine(rect, next) && (sourceLines.length - lineIndex) > (rects.length - index - 1)) {
+                lineIndex += 1;
             }
         });
     }
