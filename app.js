@@ -2534,7 +2534,7 @@ class ChordAnnotatorApp {
     formatLyricHtml(text, flatten) {
         if (!text) return '';
         if (flatten == null) flatten = this.currentSong?.downbeatsEqualized === true;
-        return text.split(/(_+)/).map((part) => {
+        return text.split(/\n?(_+)\n?/).map((part) => {
             if (!part) return '';
             if (/^_+$/.test(part)) {
                 return this.melodyBreakHtml(part);

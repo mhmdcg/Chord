@@ -1139,12 +1139,14 @@ body {
 
 .melody-break {
     position: relative;
-    display: inline-flex;
+    display: flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
     color: #C5A45A;
-    line-height: 1;
+    line-height: 1.7;
+    padding-block: 0.1em;
 }
 
 .melody-break-mark {
