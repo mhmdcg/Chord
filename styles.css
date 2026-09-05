@@ -1516,6 +1516,19 @@ body {
     margin-bottom: 0;
 }
 
+.lyric-split-overlay .chord-label.on-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .lyrics-display.align-right .chord-label,
 .lyrics-display.rtl .chord-label {
     left: auto;

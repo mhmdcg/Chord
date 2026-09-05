@@ -781,6 +781,32 @@ class ChordAnnotatorApp {
         return Array.isArray(this.currentSong?.downbeats) ? this.currentSong.downbeats : [];
     }
 
+    getMelodyBreakRanges() {
+        const lyrics = this.currentSong?.lyrics || '';
+        const breaks = [];
+        const re = /_+/g;
+        let match;
+        while ((match = re.exec(lyrics))) {
+            breaks.push({ start: match.index, end: match.index + match[0].length });
+        }
+        return breaks;
+    }
+
+    getMelodyOnlyRanges() {
+        const breaks = this.getMelodyBreakRanges();
+        const ranges = [];
+        for (let i = 0; i < breaks.length - 1; i += 1) {
+            const start = breaks[i].end;
+            const end = breaks[i + 1].start;
+            if (start < end) ranges.push({ start, end });
+        }
+        return ranges;
+    }
+
+    isMelodyOnlyOffset(offset) {
+        return this.getMelodyOnlyRanges().some((range) => offset >= range.start && offset < range.end);
+    }
+
     getSectionPoints() {
         const length = this.currentSong?.lyrics?.length || 0;
         const points = new Set([0, length]);
@@ -2393,24 +2419,36 @@ class ChordAnnotatorApp {
             }
 
             if (splitOverlay && annotation?.chord && start === annotation.start && caret) {
+                const onText = this.isMelodyOnlyOffset(start);
+                const fillRect = lineRects[0];
                 const label = document.createElement('span');
-                label.className = 'chord-label';
+                label.className = onText ? 'chord-label on-text' : 'chord-label';
                 label.dir = 'ltr';
                 label.dataset.start = String(start);
                 label.dataset.end = String(end);
                 label.textContent = this.displayChord(annotation.chord);
-                label.style.backgroundColor = exporting && annotation.chord
-                    ? this.mixWithSurface(this.getChordColor(annotation.chord), 0.22)
-                    : fillColor;
-                label.style.left = `${caret.left - contentRect.left}px`;
-                label.style.top = `${caret.top - contentRect.top}px`;
+                if (!onText) {
+                    label.style.backgroundColor = exporting && annotation.chord
+                        ? this.mixWithSurface(this.getChordColor(annotation.chord), 0.22)
+                        : fillColor;
+                }
+                if (onText && fillRect) {
+                    label.style.left = `${fillRect.left - contentRect.left}px`;
+                    label.style.top = `${fillRect.top - contentRect.top - 2}px`;
+                    label.style.width = `${fillRect.width}px`;
+                    label.style.height = `${fillRect.height + 4}px`;
+                    label.style.transform = 'none';
+                } else {
+                    label.style.left = `${caret.left - contentRect.left}px`;
+                    label.style.top = `${caret.top - contentRect.top}px`;
+                }
                 splitOverlay.appendChild(label);
-                if (exporting) {
+                if (exporting && !onText) {
                     this.bakeExportOverlay(label, caret, contentRect, {
                         rtl,
                         kind: 'chord'
                     });
-                } else {
+                } else if (!onText) {
                     label.style.transform = rtl
                         ? 'translate(-100%, calc(-100% - 2px))'
                         : 'translateY(calc(-100% - 2px))';
@@ -2497,7 +2535,7 @@ class ChordAnnotatorApp {
     }
 
     packChordLabels(splitOverlay, rtl) {
-        const labels = [...splitOverlay.querySelectorAll('.chord-label')];
+        const labels = [...splitOverlay.querySelectorAll('.chord-label:not(.on-text)')];
         if (labels.length < 2) return;
 
         const gap = 4;
@@ -4137,16 +4175,22 @@ class ChordAnnotatorApp {
         card.querySelectorAll('.chord-label').forEach((el) => {
             const box = this.cssBox(el, origin);
             if (!this.boxIntersectsClip(box, clip)) return;
-            this.paintBox(ctx, el, origin);
+            const onText = el.classList.contains('on-text');
+            if (!onText) this.paintBox(ctx, el, origin);
             const style = getComputedStyle(el);
             ctx.save();
             ctx.font = style.font;
             ctx.fillStyle = style.color;
-            ctx.textAlign = 'left';
             ctx.direction = 'ltr';
             ctx.textBaseline = 'middle';
-            const pad = parseFloat(style.paddingInlineStart) || parseFloat(style.paddingLeft) || 5;
-            ctx.fillText(el.textContent || '', box.x + pad, box.y + box.h / 2);
+            if (onText) {
+                ctx.textAlign = 'center';
+                ctx.fillText(el.textContent || '', box.x + box.w / 2, box.y + box.h / 2);
+            } else {
+                ctx.textAlign = 'left';
+                const pad = parseFloat(style.paddingInlineStart) || parseFloat(style.paddingLeft) || 5;
+                ctx.fillText(el.textContent || '', box.x + pad, box.y + box.h / 2);
+            }
             ctx.restore();
         });
         card.querySelectorAll('.lyric-downbeat').forEach((el) => {
