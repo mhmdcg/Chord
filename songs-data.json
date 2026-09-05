@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T19:45:01.163Z",
+  "updatedAt": "2026-09-05T19:45:06.014Z",
   "songs": [
     {
       "title": "خیال",
@@ -911,7 +911,7 @@
         {
           "chord": "Em",
           "start": 1111,
-          "end": 1147
+          "end": 1116
         },
         {
           "chord": "D",
@@ -1154,6 +1154,7 @@
         1093,
         1101,
         1111,
+        1116,
         1147,
         1168,
         1172,
@@ -1216,7 +1217,7 @@
         171,
         192
       ],
-      "hideSplits": true,
+      "hideSplits": false,
       "hideDownbeats": true,
       "downbeatsEqualized": false,
       "videoSeconds": 240,
