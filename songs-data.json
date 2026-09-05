@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T18:09:50.900Z",
+  "updatedAt": "2026-09-05T18:09:58.996Z",
   "songs": [
     {
       "title": "خیال",
@@ -1217,7 +1217,10 @@
       "videoSeconds": 240,
       "hideChords": false,
       "videoStillSeconds": 0,
-      "videoEndStillSeconds": 0
+      "videoEndStillSeconds": 0,
+      "chordColors": {
+        "em": "#EA580C"
+      }
     }
   ],
   "chordColors": {
