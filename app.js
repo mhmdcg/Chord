@@ -1289,6 +1289,11 @@ class ChordAnnotatorApp {
             ? MusicTheory.chordMidiNotes(chord)
             : [];
         if (!notes.length) return;
+        const nowMs = performance.now();
+        const playKey = this.displayChord(chord).toLowerCase();
+        if (this._lastPlayKey === playKey && nowMs - (this._lastPlayAt || 0) < 280) return;
+        this._lastPlayKey = playKey;
+        this._lastPlayAt = nowMs;
         const ctx = this.unlockAudioContext();
         if (!ctx) return;
         this.stopPianoChord();
@@ -1344,9 +1349,10 @@ class ChordAnnotatorApp {
     handleSplitPointerDown(e) {
         if (this.playMode) {
             if (e.button) return;
+            if (e.pointerType === 'mouse') return;
             this.handlePlayChordClick(e);
             this.ignoreSplitClick = true;
-            setTimeout(() => { this.ignoreSplitClick = false; }, 400);
+            setTimeout(() => { this.ignoreSplitClick = false; }, 500);
             return;
         }
         if (this.eraseMode || e.button) return;
@@ -4265,6 +4271,11 @@ class ChordAnnotatorApp {
         return 'rgba(79, 70, 229, 0.18)';
     }
 
+    playListedChord(chord, target) {
+        this.flashSoundingTarget(target);
+        this.playPianoChord(chord);
+    }
+
     countUniqueChords(song) {
         const seen = new Set();
         (song?.annotations || []).forEach((annotation) => {
@@ -4482,14 +4493,21 @@ class ChordAnnotatorApp {
             const chords = document.createElement('div');
             chords.className = 'all-chords-values';
             group.chords.forEach((chord, index) => {
-                const chip = document.createElement('span');
+                const chip = document.createElement('button');
+                chip.type = 'button';
                 chip.className = 'training-chord';
                 chip.dir = 'ltr';
                 chip.textContent = this.displayChord(chord);
+                chip.setAttribute('aria-label', `Play ${this.displayChord(chord)}`);
                 chip.style.backgroundColor = this.withAlpha(
                     this.colorPalette[index % this.colorPalette.length],
                     this.highlightAlpha.light
                 );
+                chip.addEventListener('pointerdown', (e) => {
+                    if (e.pointerType === 'mouse' || e.button) return;
+                    this.playListedChord(chord, chip);
+                });
+                chip.addEventListener('click', () => this.playListedChord(chord, chip));
                 chords.appendChild(chip);
             });
 
