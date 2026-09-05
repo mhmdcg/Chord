@@ -1526,7 +1526,7 @@ body {
     box-shadow: none;
     transform: none;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .lyrics-display.align-right .lyric-split-overlay .chord-label.on-text,

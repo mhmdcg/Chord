@@ -794,12 +794,76 @@ class ChordAnnotatorApp {
 
     isSpaceOnlyLineAt(offset) {
         const line = this.lyricLineAtOffset(offset);
-        if (!line) return false;
         try {
             return !/\p{L}/u.test(line);
         } catch {
             return !/[A-Za-z\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(line);
         }
+    }
+
+    isSpaceOnlyVisualLine(content, start, end, rect, lineHeight) {
+        const midY = rect.top + rect.height / 2;
+        const lyrics = this.currentSong?.lyrics || '';
+        let sawMatch = false;
+        let allSpace = true;
+        const consider = (offset) => {
+            if (offset < start || offset > end) return;
+            const probe = Math.min(Math.max(offset, start), Math.max(start, end - 1));
+            const caret = this.getCaretRectForOffset(content, probe);
+            if (!caret) return;
+            if (Math.abs((caret.top + caret.height / 2) - midY) > lineHeight * 0.45) return;
+            sawMatch = true;
+            if (!this.isSpaceOnlyLineAt(probe)) allSpace = false;
+        };
+        consider(start);
+        let newline = lyrics.indexOf('\n', start);
+        while (newline !== -1 && newline <= end) {
+            consider(newline);
+            if (newline + 1 <= end) consider(newline + 1);
+            newline = lyrics.indexOf('\n', newline + 1);
+        }
+        if (sawMatch) return allSpace;
+        return this.isSpaceOnlyLineAt(this.offsetOnLineRect(content, start, end, rect, lineHeight));
+    }
+
+    offsetOnLineRect(content, start, end, rect, lineHeight) {
+        const midY = rect.top + rect.height / 2;
+        const rtl = getComputedStyle(content).direction === 'rtl';
+        const x = rtl ? rect.left + (rect.width || 0) - 2 : rect.left + 2;
+        const lyrics = this.currentSong?.lyrics || '';
+        const caretDist = (offset) => {
+            const caret = this.getCaretRectForOffset(content, offset);
+            if (!caret) return Infinity;
+            return Math.abs((caret.top + caret.height / 2) - midY);
+        };
+        const fromPoint = this.clampOffset(this.getLyricOffsetFromPoint(x, midY));
+        const snapped = lyrics[fromPoint] === '\n' && fromPoint + 1 < end
+            ? fromPoint + 1
+            : fromPoint;
+        if (snapped >= start && snapped < end && caretDist(snapped) <= lineHeight * 0.45) {
+            return snapped;
+        }
+        if (fromPoint >= start && fromPoint < end && caretDist(fromPoint) <= lineHeight * 0.45) {
+            return fromPoint;
+        }
+
+        const candidates = [start];
+        let newline = lyrics.indexOf('\n', start);
+        while (newline !== -1 && newline < end) {
+            if (newline + 1 < end) candidates.push(newline + 1);
+            newline = lyrics.indexOf('\n', newline + 1);
+        }
+        let best = start;
+        let bestDist = Infinity;
+        for (const offset of candidates) {
+            const dist = caretDist(offset);
+            if (dist < bestDist) {
+                bestDist = dist;
+                best = offset;
+            }
+            if (dist <= lineHeight * 0.45) return offset;
+        }
+        return best;
     }
 
     getSectionPoints() {
@@ -2413,41 +2477,19 @@ class ChordAnnotatorApp {
                 });
             }
 
-            if (splitOverlay && annotation?.chord && start === annotation.start && caret) {
-                const onText = this.isSpaceOnlyLineAt(start);
-                const fillRect = lineRects[0];
-                const label = document.createElement('span');
-                label.className = onText ? 'chord-label on-text' : 'chord-label';
-                label.dir = 'ltr';
-                label.dataset.start = String(start);
-                label.dataset.end = String(end);
-                label.textContent = this.displayChord(annotation.chord);
-                if (!onText) {
-                    label.style.backgroundColor = exporting && annotation.chord
-                        ? this.mixWithSurface(this.getChordColor(annotation.chord), 0.22)
-                        : fillColor;
-                }
-                if (onText && fillRect) {
-                    label.style.left = `${fillRect.left - contentRect.left}px`;
-                    label.style.top = `${fillRect.top - contentRect.top - 2}px`;
-                    label.style.width = `${fillRect.width}px`;
-                    label.style.height = `${fillRect.height + 4}px`;
-                    label.style.transform = 'none';
-                } else {
-                    label.style.left = `${caret.left - contentRect.left}px`;
-                    label.style.top = `${caret.top - contentRect.top}px`;
-                }
-                splitOverlay.appendChild(label);
-                if (exporting && !onText) {
-                    this.bakeExportOverlay(label, caret, contentRect, {
-                        rtl,
-                        kind: 'chord'
-                    });
-                } else if (!onText) {
-                    label.style.transform = rtl
-                        ? 'translate(-100%, calc(-100% - 2px))'
-                        : 'translateY(calc(-100% - 2px))';
-                }
+            if (splitOverlay && annotation?.chord && start === annotation.start) {
+                this.placeChordLabelsForSection({
+                    content,
+                    contentRect,
+                    lineRects,
+                    start,
+                    end,
+                    lineHeight,
+                    annotation,
+                    fillColor,
+                    rtl,
+                    exporting
+                });
             }
         }
 
@@ -2565,6 +2607,67 @@ class ChordAnnotatorApp {
                 }
                 prevRight = label.getBoundingClientRect().right;
             });
+        });
+    }
+
+    placeChordLabelsForSection({
+        content,
+        contentRect,
+        lineRects,
+        start,
+        end,
+        lineHeight,
+        annotation,
+        fillColor,
+        rtl,
+        exporting
+    }) {
+        const splitOverlay = document.getElementById('lyricSplitOverlay');
+        if (!splitOverlay) return;
+        const rects = [...lineRects]
+            .filter((rect) => rect.width >= 8 && rect.height >= 1)
+            .sort((a, b) => a.top - b.top || a.left - b.left);
+        rects.forEach((rect, index) => {
+            const next = rects[index + 1];
+            const wrapLeftover = next
+                && rect.width < 28
+                && next.top > rect.top + rect.height * 0.4;
+            const offset = this.offsetOnLineRect(content, start, end, rect, lineHeight);
+            if (/^_+$/.test((this.lyricLineAtOffset(offset) || '').trim())) return;
+            const onText = this.isSpaceOnlyVisualLine(content, start, end, rect, lineHeight);
+            if (wrapLeftover || (onText && rect.width < 16)) return;
+            const edge = rtl ? rect.left + (rect.width || 0) : rect.left;
+            const label = document.createElement('span');
+            label.className = onText ? 'chord-label on-text' : 'chord-label';
+            label.dir = 'ltr';
+            label.dataset.start = String(start);
+            label.dataset.end = String(end);
+            label.textContent = this.displayChord(annotation.chord);
+            if (!onText) {
+                label.style.backgroundColor = exporting && annotation.chord
+                    ? this.mixWithSurface(this.getChordColor(annotation.chord), 0.22)
+                    : fillColor;
+            }
+            if (onText) {
+                label.style.left = `${rect.left - contentRect.left}px`;
+                label.style.top = `${rect.top - contentRect.top - 2}px`;
+                label.style.width = `${rect.width}px`;
+                label.style.height = `${rect.height + 4}px`;
+                label.style.transform = 'none';
+            } else {
+                label.style.left = `${edge - contentRect.left}px`;
+                label.style.top = `${rect.top - contentRect.top}px`;
+            }
+            splitOverlay.appendChild(label);
+            if (onText) return;
+            const caret = { left: edge, top: rect.top, height: rect.height };
+            if (exporting) {
+                this.bakeExportOverlay(label, caret, contentRect, { rtl, kind: 'chord' });
+            } else {
+                label.style.transform = rtl
+                    ? 'translate(-100%, calc(-100% - 2px))'
+                    : 'translateY(calc(-100% - 2px))';
+            }
         });
     }
 
