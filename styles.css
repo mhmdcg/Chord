@@ -1333,6 +1333,16 @@ body {
     display: none !important;
 }
 
+.lyrics-display.is-playing-chords .lyrics-content {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.lyrics-display.is-playing-chords .lyric-section-overlay,
+.lyrics-display.is-playing-chords .lyric-split-overlay {
+    pointer-events: auto;
+}
+
 .lyrics-display.is-playing-chords .lyric-split,
 .lyrics-display.is-playing-chords .lyric-downbeat {
     pointer-events: none;
