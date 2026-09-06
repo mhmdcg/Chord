@@ -786,7 +786,8 @@ class ChordAnnotatorApp {
 
     lyricLineAtOffset(offset) {
         const lyrics = this.currentSong?.lyrics || '';
-        const index = Math.max(0, Math.min(offset, lyrics.length));
+        let index = Math.max(0, Math.min(offset, lyrics.length));
+        if (lyrics[index] === '\n' && index < lyrics.length) index += 1;
         const start = lyrics.lastIndexOf('\n', index - 1) + 1;
         const end = lyrics.indexOf('\n', index);
         return lyrics.slice(start, end < 0 ? lyrics.length : end);
@@ -808,6 +809,7 @@ class ChordAnnotatorApp {
         const lyrics = this.currentSong?.lyrics || '';
         const lines = [];
         let offset = start;
+        while (offset < end && lyrics[offset] === '\n') offset += 1;
         while (offset < end) {
             const newline = lyrics.indexOf('\n', offset);
             const fullLine = this.lyricLineAtOffset(offset);
@@ -837,7 +839,14 @@ class ChordAnnotatorApp {
         );
         if (!hasSpace) {
             return rects
-                .filter((rect, index) => !skipLeftover(rect, rects[index + 1]))
+                .filter((rect, index) => {
+                    if (skipLeftover(rect, rects[index + 1])) return false;
+                    if (index === rects.length - 1 && index > 0) {
+                        const prev = rects[index - 1];
+                        if (rect.top > prev.top + prev.height * 0.4) return false;
+                    }
+                    return true;
+                })
                 .map((rect) => rect.top);
         }
         const firstIsLetter = !lines[0].spaceOnly;
@@ -2682,14 +2691,14 @@ class ChordAnnotatorApp {
             const remainingRects = rects.length - index;
             while (
                 lineIndex < sourceLines.length - 1
-                && sourceLines[lineIndex].spaceOnly
                 && (sourceLines.length - lineIndex) > remainingRects
             ) {
                 lineIndex += 1;
             }
             const line = sourceLines[lineIndex];
             if (!line) return;
-            const onText = line.spaceOnly && !rowHasLetters?.(rect.top);
+            const onText = !rowHasLetters?.(rect.top)
+                && (line.spaceOnly || sourceLines.some((entry) => entry.spaceOnly));
             if (onText && rect.width < 16) return;
             const edge = rtl ? rect.left + (rect.width || 0) : rect.left;
             const label = document.createElement('span');
