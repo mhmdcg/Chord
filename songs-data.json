@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-06T11:05:20.800Z",
+  "updatedAt": "2026-09-06T11:15:58.271Z",
   "songs": [
     {
       "title": "خیال",
@@ -1204,9 +1204,9 @@
         1558
       ],
       "recentChords": [
+        "C",
         "Em",
         "E7",
-        "C",
         "D7",
         "F#dim",
         "B7",
@@ -1243,12 +1243,13 @@
       "videoEndStillSeconds": 0,
       "chordColors": {
         "em": "#E11D48",
-        "f#dim": "#E11D48"
+        "f#dim": "#E11D48",
+        "c": "#16A34A"
       }
     }
   ],
   "chordColors": {
-    "C": "#EA580C",
+    "C": "#16A34A",
     "Cadd4": "#FFB300",
     "F": "#F59E0B",
     "Fsus": "#66BB6A",
