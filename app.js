@@ -2415,6 +2415,47 @@ class ChordAnnotatorApp {
         overlay.style.height = `${content.offsetHeight}px`;
     }
 
+    sectionLineBoxes(lineRects) {
+        return [...lineRects]
+            .filter((rect) => rect.width >= 1 && rect.height >= 1)
+            .sort((a, b) => a.top - b.top || a.left - b.left);
+    }
+
+    splitEdgeForRect(rect, rtl, which) {
+        const startEdge = rtl ? rect.left + (rect.width || 0) : rect.left;
+        const endEdge = rtl ? rect.left : rect.left + (rect.width || 0);
+        return which === 'start' ? startEdge : endEdge;
+    }
+
+    splitMarksForOffset(offset, sectionLayouts, rtl) {
+        const placements = [];
+        const add = (left, top, height) => {
+            if (!Number.isFinite(left) || !Number.isFinite(top) || !(height > 0)) return;
+            if (placements.some((entry) => Math.abs(entry.left - left) <= 2 && Math.abs(entry.top - top) <= 8)) {
+                return;
+            }
+            placements.push({ left, top, height });
+        };
+        const ending = sectionLayouts.find((section) => section.end === offset);
+        const starting = sectionLayouts.find((section) => section.start === offset);
+        if (ending) {
+            const boxes = this.sectionLineBoxes(ending.lineRects);
+            const last = boxes[boxes.length - 1];
+            if (last) add(this.splitEdgeForRect(last, rtl, 'end'), last.top, last.height);
+        }
+        if (starting) {
+            const boxes = this.sectionLineBoxes(starting.lineRects);
+            const first = boxes[0];
+            if (first) add(this.splitEdgeForRect(first, rtl, 'start'), first.top, first.height);
+        }
+        if (!placements.length) {
+            const content = document.getElementById('lyricsContent');
+            const caret = content ? this.getCaretRectForOffset(content, offset) : null;
+            if (caret) add(caret.left, caret.top, caret.height);
+        }
+        return placements;
+    }
+
     positionSplitOverlays() {
         this.positionLyricOverlays();
     }
@@ -2496,17 +2537,17 @@ class ChordAnnotatorApp {
         if (!splitOverlay) return;
         const draggingTo = this.draggingSplit?.to;
         this.getSplits().forEach((offset) => {
-            const caret = this.getCaretRectForOffset(content, offset);
-            if (!caret) return;
-            const line = document.createElement('span');
-            line.className = 'lyric-split';
-            if (draggingTo === offset) line.classList.add('dragging');
-            line.dataset.offset = String(offset);
-            line.setAttribute('aria-hidden', 'true');
-            line.style.left = `${caret.left - contentRect.left}px`;
-            line.style.top = `${caret.top - contentRect.top}px`;
-            line.style.height = `${caret.height}px`;
-            splitOverlay.appendChild(line);
+            this.splitMarksForOffset(offset, sectionLayouts, rtl).forEach((mark) => {
+                const line = document.createElement('span');
+                line.className = 'lyric-split';
+                if (draggingTo === offset) line.classList.add('dragging');
+                line.dataset.offset = String(offset);
+                line.setAttribute('aria-hidden', 'true');
+                line.style.left = `${mark.left - contentRect.left}px`;
+                line.style.top = `${mark.top - contentRect.top}px`;
+                line.style.height = `${mark.height}px`;
+                splitOverlay.appendChild(line);
+            });
         });
         const draggingDownbeatTo = this.draggingDownbeat?.to;
         const lyrics = this.currentSong.lyrics || '';
