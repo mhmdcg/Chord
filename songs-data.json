@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T16:35:51.258Z",
+  "updatedAt": "2026-09-07T16:35:53.131Z",
   "songs": [
     {
       "title": "خیال",
@@ -1423,7 +1423,7 @@
         "Em7",
         "G"
       ],
-      "hideSplits": false
+      "hideSplits": true
     }
   ],
   "chordColors": {
