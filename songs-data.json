@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T16:31:22.808Z",
+  "updatedAt": "2026-09-07T16:31:24.615Z",
   "songs": [
     {
       "title": "خیال",
@@ -1414,6 +1414,11 @@
           "chord": "F#7",
           "start": 685,
           "end": 697
+        },
+        {
+          "chord": "F#7",
+          "start": 697,
+          "end": 710
         }
       ],
       "textAlign": "right",
