@@ -875,16 +875,11 @@ class ChordAnnotatorApp {
         const sorted = [...new Set(offsets.map((value) => this.clampOffset(value)))].sort((a, b) => a - b);
         const collapsed = [];
         sorted.forEach((offset) => {
-            const prev = collapsed[collapsed.length - 1];
-            if (prev == null || offset - prev > 1) {
+            if (!collapsed.length || offset - collapsed[collapsed.length - 1] > 1) {
                 collapsed.push(offset);
-                return;
+            } else {
+                collapsed[collapsed.length - 1] = offset;
             }
-            if (offset !== prev && this.isSpaceOnlyLineAt(prev) && this.isSpaceOnlyLineAt(offset)) {
-                collapsed.push(offset);
-                return;
-            }
-            collapsed[collapsed.length - 1] = offset;
         });
         return collapsed;
     }
@@ -1397,15 +1392,10 @@ class ChordAnnotatorApp {
     }
 
     handleSplitClick(e) {
-        const splitEl = e.target.closest('.lyric-split');
-        if (splitEl) {
-            const box = splitEl.getBoundingClientRect();
-            if (Math.abs(e.clientX - (box.left + box.width / 2)) <= 6) return;
-        }
-        if (e.target.closest('.lyric-downbeat')) return;
-        const nearby = this.nearestMarkFromPoint(e.clientX, e.clientY, '#lyricSplitOverlay .lyric-split');
-        if (nearby && nearby.distance <= 5) return;
-        this.addSplitAt(this.offsetForSplitClick(e.clientX, e.clientY));
+        if (e.target.closest('.lyric-split, .lyric-downbeat')) return;
+        const nearby = this.nearestSplitOffsetFromPoint(e.clientX, e.clientY);
+        if (nearby != null) return;
+        this.addSplitAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
     }
 
     handleDownbeatClick(e) {
@@ -1413,7 +1403,7 @@ class ChordAnnotatorApp {
         if (e.target.closest('.lyric-downbeat')) return;
         const nearby = this.nearestDownbeatOffsetFromPoint(e.clientX, e.clientY);
         if (nearby != null) return;
-        this.addDownbeatAt(this.offsetForSplitClick(e.clientX, e.clientY));
+        this.addDownbeatAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
     }
 
     handleEraseClick(e) {
@@ -1479,8 +1469,6 @@ class ChordAnnotatorApp {
         }
         const splitEl = e.target.closest('.lyric-split');
         if (!splitEl) return;
-        const splitBox = splitEl.getBoundingClientRect();
-        if (Math.abs(e.clientX - (splitBox.left + splitBox.width / 2)) > 6) return;
         e.preventDefault();
         e.stopPropagation();
         const from = Number(splitEl.dataset.offset);
@@ -1632,44 +1620,6 @@ class ChordAnnotatorApp {
         return best && Number.isFinite(best.offset) ? best : null;
     }
 
-    spaceRangeInSection(start, end) {
-        const lyrics = this.currentSong?.lyrics || '';
-        let from = start;
-        if (lyrics[from] === '\n' && from + 1 < end) from += 1;
-        if (from < end && this.isSpaceOnlyLineAt(from)) {
-            const newline = lyrics.indexOf('\n', from);
-            return { start: from, end: newline < 0 || newline > end ? end : newline };
-        }
-        const newline = lyrics.indexOf('\n', start);
-        if (newline >= 0 && newline + 1 < end && this.isSpaceOnlyLineAt(newline + 1)) {
-            const next = lyrics.indexOf('\n', newline + 1);
-            return { start: newline + 1, end: next < 0 || next > end ? end : next };
-        }
-        return null;
-    }
-
-    offsetForSplitClick(x, y) {
-        const fill = [...document.querySelectorAll('.lyric-section-fill')].find((el) => {
-            const box = el.getBoundingClientRect();
-            return x >= box.left && x <= box.right && y >= box.top && y <= box.bottom;
-        });
-        const range = fill ? this.spaceRangeInSection(Number(fill.dataset.start), Number(fill.dataset.end)) : null;
-        if (fill && range && range.end - range.start > 1) {
-            const box = fill.getBoundingClientRect();
-            const display = document.getElementById('lyricsDisplay');
-            const rtl = display?.classList.contains('rtl') || display?.classList.contains('align-right');
-            const t = box.width > 0
-                ? (rtl ? (box.right - x) / box.width : (x - box.left) / box.width)
-                : 0.5;
-            const span = range.end - range.start;
-            let point = range.start + Math.round(Math.max(0, Math.min(1, t)) * span);
-            if (point <= range.start) point = range.start + 1;
-            if (point >= range.end) point = range.end - 1;
-            return this.clampOffset(point);
-        }
-        return this.clampOffset(this.getLyricOffsetFromPoint(x, y));
-    }
-
     nearestSplitOffsetFromPoint(x, y) {
         return this.nearestMarkFromPoint(x, y, '#lyricSplitOverlay .lyric-split')?.offset ?? null;
     }
@@ -1683,12 +1633,7 @@ class ChordAnnotatorApp {
         const length = this.currentSong.lyrics.length;
         const point = this.clampOffset(offset);
         if (point <= 0 || point >= length) return;
-        const duplicate = this.getSplits().some((split) => {
-            if (split === point) return true;
-            if (Math.abs(split - point) > 1) return false;
-            return !(this.isSpaceOnlyLineAt(split) && this.isSpaceOnlyLineAt(point));
-        });
-        if (duplicate) return;
+        if (this.getSplits().some((split) => Math.abs(split - point) <= 1)) return;
 
         const splits = this.collapseNearbyOffsets([...this.getSplits(), point]);
         const annotations = this.snapAnnotationsToSections(
@@ -2936,7 +2881,8 @@ class ChordAnnotatorApp {
                     return this.draggingHandle === 'start' ? match.start : match.end;
                 }
             }
-            if (startEl?.closest('.chord-label, .melody-break')) {
+            const melody = startEl?.closest('.melody-break');
+            if (melody) {
                 return this.nearestOffsetFromPoint(x, y);
             }
         }
