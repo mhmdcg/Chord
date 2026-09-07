@@ -2541,7 +2541,10 @@ class ChordAnnotatorApp {
             });
         });
 
-        if (splitOverlay) this.packChordLabels(splitOverlay, rtl);
+        if (splitOverlay) {
+            this.packChordLabels(splitOverlay, rtl);
+            this.keepChordLabelsInView(splitOverlay);
+        }
 
         if (!splitOverlay) return;
         const draggingTo = this.draggingSplit?.to;
@@ -2658,6 +2661,20 @@ class ChordAnnotatorApp {
         });
     }
 
+    keepChordLabelsInView(splitOverlay) {
+        const bounds = splitOverlay.getBoundingClientRect();
+        if (!(bounds.width > 0)) return;
+        splitOverlay.querySelectorAll('.chord-label:not(.on-text)').forEach((label) => {
+            const box = label.getBoundingClientRect();
+            let shift = 0;
+            if (box.left < bounds.left) shift += bounds.left - box.left;
+            if (box.right + shift > bounds.right) shift -= (box.right + shift) - bounds.right;
+            if (Math.abs(shift) > 0.5) {
+                label.style.left = `${(parseFloat(label.style.left) || 0) + shift}px`;
+            }
+        });
+    }
+
     placeChordLabelsForSection({
         content,
         contentRect,
@@ -2675,7 +2692,7 @@ class ChordAnnotatorApp {
         if (!splitOverlay) return;
         const sourceLines = this.sourceLinesInRange(start, end);
         const rects = [...lineRects]
-            .filter((rect) => rect.width >= 8 && rect.height >= 1)
+            .filter((rect) => rect.width >= 1 && rect.height >= 1)
             .sort((a, b) => a.top - b.top || a.left - b.left);
         const isNewVisualLine = (rect, next) => (
             Boolean(next) && next.top > rect.top + rect.height * 0.4
@@ -2699,7 +2716,6 @@ class ChordAnnotatorApp {
             if (!line) return;
             const onText = !rowHasLetters?.(rect.top)
                 && (line.spaceOnly || sourceLines.some((entry) => entry.spaceOnly));
-            if (onText && rect.width < 16) return;
             const edge = rtl ? rect.left + (rect.width || 0) : rect.left;
             const label = document.createElement('span');
             label.className = onText ? 'chord-label on-text' : 'chord-label';
