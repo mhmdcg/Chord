@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T16:07:03.852Z",
+  "updatedAt": "2026-09-07T16:07:19.584Z",
   "songs": [
     {
       "title": "خیال",
@@ -1366,7 +1366,8 @@
         "Abdim",
         "G",
         "A"
-      ]
+      ],
+      "hideSplits": true
     }
   ],
   "chordColors": {
