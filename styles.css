@@ -1328,7 +1328,10 @@ body {
 
 .lyrics-display.is-splitting .lyric-section-fill,
 .lyrics-display.is-erasing .lyric-section-fill,
-.lyrics-display.is-downbeating .lyric-section-fill {
+.lyrics-display.is-downbeating .lyric-section-fill,
+.lyrics-display.is-splitting .chord-label,
+.lyrics-display.is-erasing .chord-label,
+.lyrics-display.is-downbeating .chord-label {
     pointer-events: none;
     cursor: inherit;
 }

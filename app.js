@@ -1395,7 +1395,7 @@ class ChordAnnotatorApp {
         if (e.target.closest('.lyric-split, .lyric-downbeat')) return;
         const nearby = this.nearestSplitOffsetFromPoint(e.clientX, e.clientY);
         if (nearby != null) return;
-        this.addSplitAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
+        this.addSplitAt(this.offsetForSplitClick(e.clientX, e.clientY));
     }
 
     handleDownbeatClick(e) {
@@ -1403,7 +1403,7 @@ class ChordAnnotatorApp {
         if (e.target.closest('.lyric-downbeat')) return;
         const nearby = this.nearestDownbeatOffsetFromPoint(e.clientX, e.clientY);
         if (nearby != null) return;
-        this.addDownbeatAt(this.clampOffset(this.getLyricOffsetFromPoint(e.clientX, e.clientY)));
+        this.addDownbeatAt(this.offsetForSplitClick(e.clientX, e.clientY));
     }
 
     handleEraseClick(e) {
@@ -1618,6 +1618,25 @@ class ChordAnnotatorApp {
             }
         });
         return best && Number.isFinite(best.offset) ? best : null;
+    }
+
+    offsetForSplitClick(x, y) {
+        const fill = [...document.querySelectorAll('.lyric-section-fill')].find((el) => {
+            const box = el.getBoundingClientRect();
+            return x >= box.left && x <= box.right && y >= box.top && y <= box.bottom;
+        });
+        if (fill && this.isSpaceOnlyLineAt(Number(fill.dataset.start))) {
+            const start = Number(fill.dataset.start);
+            const end = Number(fill.dataset.end);
+            const box = fill.getBoundingClientRect();
+            const display = document.getElementById('lyricsDisplay');
+            const rtl = display?.classList.contains('rtl') || display?.classList.contains('align-right');
+            const t = box.width > 0
+                ? (rtl ? (box.right - x) / box.width : (x - box.left) / box.width)
+                : 0;
+            return this.clampOffset(start + Math.round(Math.max(0, Math.min(1, t)) * Math.max(0, end - start)));
+        }
+        return this.clampOffset(this.getLyricOffsetFromPoint(x, y));
     }
 
     nearestSplitOffsetFromPoint(x, y) {
@@ -2881,8 +2900,7 @@ class ChordAnnotatorApp {
                     return this.draggingHandle === 'start' ? match.start : match.end;
                 }
             }
-            const melody = startEl?.closest('.melody-break');
-            if (melody) {
+            if (startEl?.closest('.chord-label, .melody-break')) {
                 return this.nearestOffsetFromPoint(x, y);
             }
         }
