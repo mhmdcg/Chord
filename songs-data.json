@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T16:14:39.057Z",
+  "updatedAt": "2026-09-07T16:16:48.143Z",
   "songs": [
     {
       "title": "خیال",
@@ -1343,7 +1343,7 @@
         {
           "chord": "Bm",
           "start": 506,
-          "end": 511
+          "end": 524
         }
       ],
       "textAlign": "right",
@@ -1373,7 +1373,7 @@
         494,
         499,
         506,
-        511
+        524
       ],
       "downbeats": [],
       "videoSeconds": 60,
