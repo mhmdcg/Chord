@@ -2348,7 +2348,46 @@ class ChordAnnotatorApp {
             collected.push(...fromRange(nodeRange));
         }
         if (!sawNode) collected.push(...fromRange(range));
-        return this.mergeOverlayRectsByLine(collected, lineHeight, textHeight);
+        const merged = this.mergeOverlayRectsByLine(collected, lineHeight, textHeight);
+        return this.ensureLeadingLineRect(merged, start, end, lineHeight, textHeight);
+    }
+
+    ensureLeadingLineRect(rects, start, end, lineHeight, textHeight) {
+        const lyrics = this.currentSong?.lyrics || '';
+        const newline = lyrics.indexOf('\n', start);
+        if (newline === -1 || newline <= start || newline >= end) return rects;
+        const content = document.getElementById('lyricsContent');
+        if (!content) return rects;
+        const from = this.getCaretRectForOffset(content, start);
+        const to = this.getCaretRectForOffset(content, newline);
+        let measured = [];
+        if (from && to && Math.abs(from.top - to.top) <= lineHeight * 0.45) {
+            const left = Math.min(from.left, to.left);
+            const right = Math.max(from.left, to.left);
+            if (right - left >= 1) {
+                measured = [{
+                    left,
+                    width: right - left,
+                    top: from.top,
+                    height: from.height || textHeight
+                }];
+            }
+        }
+        if (!measured.length) {
+            const leadRange = this.getRangeForOffsets(start, newline);
+            if (!leadRange) return rects;
+            const rootRect = content.getBoundingClientRect();
+            measured = this.usableOverlayRects(leadRange.getClientRects(), lineHeight, rootRect);
+            if (!measured.length) {
+                measured = this.measureRangeByCharacter(leadRange, lineHeight, rootRect);
+            }
+        }
+        if (!measured.length) return rects;
+        const lead = this.mergeOverlayRectsByLine(measured, lineHeight, textHeight);
+        const extra = lead.filter((box) => !rects.some((rect) => (
+            Math.abs(rect.top - box.top) <= lineHeight * 0.45
+        )));
+        return extra.length ? [...extra, ...rects] : rects;
     }
 
     getCaretRectForOffset(root, offset) {
@@ -2525,7 +2564,7 @@ class ChordAnnotatorApp {
         const rowHasLetters = (top) => vocalTops.some((rowTop) => Math.abs(rowTop - top) <= lineHeight * 0.4);
 
         sectionLayouts.forEach((section) => {
-            if (!splitOverlay || !section.annotation?.chord || section.start !== section.annotation.start) return;
+            if (!splitOverlay || !section.annotation?.chord) return;
             this.placeChordLabelsForSection({
                 content,
                 contentRect,
@@ -2623,7 +2662,13 @@ class ChordAnnotatorApp {
     }
 
     packChordLabels(splitOverlay, rtl) {
-        const labels = [...splitOverlay.querySelectorAll('.chord-label:not(.on-text)')];
+        const labels = [...splitOverlay.querySelectorAll('.chord-label:not(.on-text)')]
+            .sort((a, b) => {
+                const aBox = a.getBoundingClientRect();
+                const bBox = b.getBoundingClientRect();
+                if (Math.abs(aBox.top - bBox.top) > 10) return aBox.top - bBox.top;
+                return rtl ? bBox.right - aBox.right : aBox.left - bBox.left;
+            });
         if (labels.length < 2) return;
 
         const gap = 4;
@@ -2636,6 +2681,9 @@ class ChordAnnotatorApp {
             else lines.push({ top, labels: [label] });
         });
 
+        const minLeft = (document.getElementById('lyricsDisplay') || splitOverlay)
+            .getBoundingClientRect().left + 2;
+
         lines.forEach((line) => {
             if (rtl) {
                 let prevLeft = Infinity;
@@ -2643,7 +2691,10 @@ class ChordAnnotatorApp {
                     const rect = label.getBoundingClientRect();
                     const overlap = rect.right - (prevLeft - gap);
                     if (overlap > 0.5) {
-                        label.style.left = `${(parseFloat(label.style.left) || 0) - overlap}px`;
+                        const room = rect.left - minLeft;
+                        if (room > 0.5) {
+                            label.style.left = `${(parseFloat(label.style.left) || 0) - Math.min(overlap, room)}px`;
+                        }
                     }
                     prevLeft = label.getBoundingClientRect().left;
                 });
@@ -2662,17 +2713,26 @@ class ChordAnnotatorApp {
     }
 
     keepChordLabelsInView(splitOverlay) {
-        const bounds = splitOverlay.getBoundingClientRect();
+        const bounds = (document.getElementById('lyricsDisplay') || splitOverlay).getBoundingClientRect();
         if (!(bounds.width > 0)) return;
         splitOverlay.querySelectorAll('.chord-label:not(.on-text)').forEach((label) => {
             const box = label.getBoundingClientRect();
             let shift = 0;
-            if (box.left < bounds.left) shift += bounds.left - box.left;
-            if (box.right + shift > bounds.right) shift -= (box.right + shift) - bounds.right;
+            if (box.left < bounds.left + 2) shift += (bounds.left + 2) - box.left;
+            if (box.right + shift > bounds.right - 2) shift -= (box.right + shift) - (bounds.right - 2);
             if (Math.abs(shift) > 0.5) {
                 label.style.left = `${(parseFloat(label.style.left) || 0) + shift}px`;
             }
         });
+    }
+
+    keepRtlLabelOnCard(label, rect, contentRect) {
+        const bounds = document.getElementById('lyricsDisplay')?.getBoundingClientRect();
+        if (!bounds || bounds.width <= 0) return;
+        const box = label.getBoundingClientRect();
+        if (box.left >= bounds.left + 2) return;
+        label.style.left = `${rect.left - contentRect.left}px`;
+        label.style.transform = 'translateY(calc(-100% - 2px))';
     }
 
     placeChordLabelsForSection({
@@ -2700,11 +2760,6 @@ class ChordAnnotatorApp {
         let lineIndex = 0;
         rects.forEach((rect, index) => {
             const next = rects[index + 1];
-            const wrapLeftover = isNewVisualLine(rect, next) && rect.width < 28;
-            if (wrapLeftover) {
-                if (sourceLines[lineIndex]?.spaceOnly) lineIndex += 1;
-                return;
-            }
             const remainingRects = rects.length - index;
             while (
                 lineIndex < sourceLines.length - 1
@@ -2747,6 +2802,7 @@ class ChordAnnotatorApp {
                     label.style.transform = rtl
                         ? 'translate(-100%, calc(-100% - 2px))'
                         : 'translateY(calc(-100% - 2px))';
+                    this.keepRtlLabelOnCard(label, rect, contentRect);
                 }
             }
             if (isNewVisualLine(rect, next) && (sourceLines.length - lineIndex) > (rects.length - index - 1)) {
