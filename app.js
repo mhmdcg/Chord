@@ -2326,6 +2326,11 @@ class ChordAnnotatorApp {
         return rects;
     }
 
+    isDashLayoutNode(node) {
+        const element = node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement;
+        return Boolean(element?.closest?.('.dash-break, .dash-break-nl'));
+    }
+
     getSectionLineRects(start, end, lineHeight, textHeight = lineHeight) {
         const content = document.getElementById('lyricsContent');
         const range = this.getRangeForOffsets(start, end);
@@ -2340,9 +2345,11 @@ class ChordAnnotatorApp {
         const walker = this.createLyricWalker(content);
         let node;
         let sawNode = false;
+        let measured = false;
         while ((node = walker.nextNode())) {
             if (!range.intersectsNode(node)) continue;
             sawNode = true;
+            if (this.isDashLayoutNode(node)) continue;
             const startOff = node === range.startContainer ? range.startOffset : 0;
             const endOff = node === range.endContainer ? range.endOffset : node.textContent.length;
             if (startOff >= endOff) continue;
@@ -2350,8 +2357,12 @@ class ChordAnnotatorApp {
             nodeRange.setStart(node, startOff);
             nodeRange.setEnd(node, endOff);
             collected.push(...fromRange(nodeRange));
+            measured = true;
         }
-        if (!sawNode) collected.push(...fromRange(range));
+        if (!measured) {
+            if (sawNode) return [];
+            collected.push(...fromRange(range));
+        }
         const merged = this.mergeOverlayRectsByLine(collected, lineHeight, textHeight);
         return this.ensureLeadingLineRect(merged, start, end, lineHeight, textHeight);
     }
@@ -2362,8 +2373,11 @@ class ChordAnnotatorApp {
         if (newline === -1 || newline <= start || newline >= end) return rects;
         const content = document.getElementById('lyricsContent');
         if (!content) return rects;
+        const fromPos = this.getDomPositionForOffset(content, start);
+        const toPos = this.getDomPositionForOffset(content, Math.max(start, newline - 1));
+        if (this.isDashLayoutNode(fromPos?.node) || this.isDashLayoutNode(toPos?.node)) return rects;
         const from = this.getCaretRectForOffset(content, start);
-        const to = this.getCaretRectForOffset(content, newline);
+        const to = this.getCaretRectForOffset(content, Math.max(start, newline - 1));
         let measured = [];
         if (from && to && Math.abs(from.top - to.top) <= lineHeight * 0.45) {
             const left = Math.min(from.left, to.left);
@@ -2378,6 +2392,8 @@ class ChordAnnotatorApp {
             }
         }
         if (!measured.length) {
+            const newlinePos = this.getDomPositionForOffset(content, newline);
+            if (this.isDashLayoutNode(newlinePos?.node)) return rects;
             const leadRange = this.getRangeForOffsets(start, newline);
             if (!leadRange) return rects;
             const rootRect = content.getBoundingClientRect();
@@ -2824,8 +2840,28 @@ class ChordAnnotatorApp {
                 return this.melodyBreakHtml(part);
             }
             const display = flatten ? part.replace(/\n/g, ' ') : part;
-            return this.formatDashLines(display);
+            return this.formatDashAndParenHtml(display);
         }).join('');
+    }
+
+    formatDashAndParenHtml(text) {
+        if (!text) return '';
+        const chunks = [];
+        const re = /\(([^()]*)\)/g;
+        let last = 0;
+        let match;
+        while ((match = re.exec(text))) {
+            if (match.index > last) chunks.push({ type: 'text', value: text.slice(last, match.index) });
+            chunks.push({ type: 'paren', value: match[0] });
+            last = match.index + match[0].length;
+        }
+        if (last < text.length) chunks.push({ type: 'text', value: text.slice(last) });
+        if (!chunks.length) return this.formatDashLines(text);
+        return chunks.map((chunk) => (
+            chunk.type === 'paren'
+                ? `<span class="lyric-paren">${this.escapeHtml(chunk.value)}</span>`
+                : this.formatDashLines(chunk.value)
+        )).join('');
     }
 
     formatDashLines(text) {
