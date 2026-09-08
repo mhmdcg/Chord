@@ -1195,7 +1195,9 @@ body {
 }
 
 .lyrics-content > .dash-break:first-child,
-.lyrics-content > .dash-break-nl:first-child + .dash-break {
+.lyrics-content > .paren-line:first-child,
+.lyrics-content > .dash-break-nl:first-child + .dash-break,
+.lyrics-content > .dash-break-nl:first-child + .paren-line {
     margin-block-start: 0;
 }
 
@@ -1203,9 +1205,14 @@ body {
     color: #C5A45A;
 }
 
+.paren-line {
+    display: block;
+    margin-block-start: calc((1 - var(--lyric-line-height, 3.4)) * 0.5em + 6px);
+}
+
 .lyric-paren {
     color: #C5A45A;
-    font-size: 75%;
+    font-size: 82.5%;
 }
 
 .lyrics-display.theme-dark .lyric-paren {

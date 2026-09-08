@@ -805,6 +805,10 @@ class ChordAnnotatorApp {
         return /^[\t ]*[-–—−](?:[\t ]*[-–—−])*[\t ]*$/.test(text || '');
     }
 
+    lineHasParen(text) {
+        return /[()（）]/.test(text || '');
+    }
+
     isSpaceOnlyLineAt(offset) {
         return this.lineHasNoLetters(this.lyricLineAtOffset(offset));
     }
@@ -2846,35 +2850,57 @@ class ChordAnnotatorApp {
 
     formatDashAndParenHtml(text) {
         if (!text) return '';
-        const chunks = [];
-        const re = /\(([^()]*)\)/g;
-        let last = 0;
-        let match;
-        while ((match = re.exec(text))) {
-            if (match.index > last) chunks.push({ type: 'text', value: text.slice(last, match.index) });
-            chunks.push({ type: 'paren', value: match[0] });
-            last = match.index + match[0].length;
-        }
-        if (last < text.length) chunks.push({ type: 'text', value: text.slice(last) });
-        if (!chunks.length) return this.formatDashLines(text);
-        return chunks.map((chunk) => (
-            chunk.type === 'paren'
-                ? `<span class="lyric-paren">${this.escapeHtml(chunk.value)}</span>`
-                : this.formatDashLines(chunk.value)
-        )).join('');
-    }
-
-    formatDashLines(text) {
-        if (!text) return '';
         const lines = text.split('\n');
+        let inParen = false;
         return lines.map((line, index) => {
-            const body = this.isDashOnlyLine(line)
-                ? `<span class="dash-break">${this.escapeHtml(line)}</span>`
-                : this.escapeHtml(line);
+            const startedInParen = inParen;
+            let body;
+            let isParenLine = false;
+            if (this.isDashOnlyLine(line)) {
+                inParen = false;
+                body = `<span class="dash-break">${this.escapeHtml(line)}</span>`;
+            } else {
+                const wrapped = this.wrapParenRunsOnLine(line, inParen);
+                inParen = wrapped.inParen;
+                isParenLine = startedInParen || this.lineHasParen(line);
+                body = isParenLine ? `<span class="paren-line">${wrapped.html}</span>` : wrapped.html;
+            }
             if (index === lines.length - 1) return body;
-            const hideBreak = this.isDashOnlyLine(line) || this.isDashOnlyLine(lines[index + 1]);
+            const next = lines[index + 1];
+            const hideBreak = this.isDashOnlyLine(line)
+                || isParenLine
+                || this.isDashOnlyLine(next)
+                || this.lineHasParen(next)
+                || inParen;
             return hideBreak ? `${body}<span class="dash-break-nl">\n</span>` : `${body}\n`;
         }).join('');
+    }
+
+    wrapParenRunsOnLine(line, inParen) {
+        let html = '';
+        let inside = Boolean(inParen);
+        let buf = '';
+        const flush = (asParen) => {
+            if (!buf) return;
+            const escaped = this.escapeHtml(buf);
+            html += asParen ? `<span class="lyric-paren">${escaped}</span>` : escaped;
+            buf = '';
+        };
+        for (const char of line) {
+            if (char === '(' && !inside) {
+                flush(false);
+                inside = true;
+                buf = '(';
+            } else if ((char === ')' || char === '）') && inside) {
+                buf += char;
+                flush(true);
+                inside = false;
+            } else {
+                buf += char;
+            }
+        }
+        flush(inside);
+        return { html, inParen: inside };
     }
 
     melodyBreakHtml(source) {
