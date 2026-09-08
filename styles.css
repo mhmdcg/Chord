@@ -632,7 +632,8 @@ body {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
     font-size: 1.125rem;
-    line-height: 3.4;
+    --lyric-line-height: 3.4;
+    line-height: var(--lyric-line-height);
     position: relative;
     cursor: default;
     box-shadow: 0 2px 8px var(--shadow);
@@ -1182,13 +1183,33 @@ body {
     color: #C5A45A;
 }
 
+.dash-break {
+    display: block;
+    color: #C5A45A;
+    line-height: 1;
+    margin-block-start: calc((1 - var(--lyric-line-height, 3.4)) * 0.5em + 4px);
+}
+
+.dash-break-nl {
+    display: none;
+}
+
+.lyrics-content > .dash-break:first-child,
+.lyrics-content > .dash-break-nl:first-child + .dash-break {
+    margin-block-start: 0;
+}
+
+.lyrics-display.theme-dark .dash-break {
+    color: #C5A45A;
+}
+
 .lyrics-content {
     font-family: 'Estedad', Tahoma, sans-serif;
     white-space: pre-wrap;
     word-wrap: break-word;
     user-select: text;
     -webkit-user-select: text;
-    line-height: 3.4;
+    line-height: var(--lyric-line-height, 3.4);
     padding-top: 1.25rem;
     padding-inline: 1.6rem;
     text-align: center;
@@ -1222,7 +1243,8 @@ body {
     padding-inline-end: 1.85rem;
 }
 
-.lyrics-display.is-equalized .melody-break {
+.lyrics-display.is-equalized .melody-break,
+.lyrics-display.is-equalized .dash-break {
     display: none;
 }
 
@@ -2024,11 +2046,12 @@ body {
     .lyrics-display {
         padding: 1.1rem 0.35rem 1.5rem;
         font-size: 1.125rem;
-        line-height: 3.45;
+        --lyric-line-height: 3.45;
+        line-height: var(--lyric-line-height);
     }
 
     .lyrics-content {
-        line-height: 3.45;
+        line-height: var(--lyric-line-height);
         padding-inline: 0.9rem;
     }
 
@@ -2071,12 +2094,13 @@ body {
 @media (min-width: 1024px) {
     .lyrics-display {
         font-size: 1.125rem;
-        line-height: 3.4;
+        --lyric-line-height: 3.4;
+        line-height: var(--lyric-line-height);
         padding-top: 1.1rem;
     }
 
     .lyrics-content {
-        line-height: 3.4;
+        line-height: var(--lyric-line-height);
     }
 }
 

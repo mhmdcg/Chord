@@ -801,6 +801,10 @@ class ChordAnnotatorApp {
         }
     }
 
+    isDashOnlyLine(text) {
+        return /^[\t ]*[-–—−](?:[\t ]*[-–—−])*[\t ]*$/.test(text || '');
+    }
+
     isSpaceOnlyLineAt(offset) {
         return this.lineHasNoLetters(this.lyricLineAtOffset(offset));
     }
@@ -2820,7 +2824,20 @@ class ChordAnnotatorApp {
                 return this.melodyBreakHtml(part);
             }
             const display = flatten ? part.replace(/\n/g, ' ') : part;
-            return this.escapeHtml(display);
+            return this.formatDashLines(display);
+        }).join('');
+    }
+
+    formatDashLines(text) {
+        if (!text) return '';
+        const lines = text.split('\n');
+        return lines.map((line, index) => {
+            const body = this.isDashOnlyLine(line)
+                ? `<span class="dash-break">${this.escapeHtml(line)}</span>`
+                : this.escapeHtml(line);
+            if (index === lines.length - 1) return body;
+            const hideBreak = this.isDashOnlyLine(line) || this.isDashOnlyLine(lines[index + 1]);
+            return hideBreak ? `${body}<span class="dash-break-nl">\n</span>` : `${body}\n`;
         }).join('');
     }
 
@@ -4379,7 +4396,7 @@ class ChordAnnotatorApp {
                 if (!node.textContent) return NodeFilter.FILTER_REJECT;
                 const el = node.parentElement;
                 if (!el) return NodeFilter.FILTER_REJECT;
-                if (el.closest('.sel-handle, .melody-break-source, .lyric-section-overlay, .lyric-split-overlay')) {
+                if (el.closest('.sel-handle, .melody-break-source, .dash-break-nl, .lyric-section-overlay, .lyric-split-overlay')) {
                     return NodeFilter.FILTER_REJECT;
                 }
                 const style = getComputedStyle(el);
