@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-09T14:14:21.133Z",
+  "updatedAt": "2026-09-09T14:14:24.206Z",
   "songs": [
     {
       "title": "خیال",
@@ -1872,7 +1872,7 @@
       ],
       "downbeats": [],
       "videoSeconds": 300,
-      "videoStillSeconds": 7,
+      "videoStillSeconds": 0,
       "videoEndStillSeconds": 7,
       "chordColors": {
         "dm": "#65A30D"
