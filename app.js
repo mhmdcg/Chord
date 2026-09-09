@@ -3724,7 +3724,7 @@ class ChordAnnotatorApp {
     clampVideoStill(value, fallback = 7) {
         const seconds = parseInt(value, 10);
         if (!Number.isFinite(seconds)) return fallback;
-        return Math.min(60, Math.max(0, seconds));
+        return Math.max(0, seconds);
     }
 
     normalizeVideoTiming(song) {
