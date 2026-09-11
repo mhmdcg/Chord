@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T13:04:49.831Z",
+  "updatedAt": "2026-09-11T13:04:58.738Z",
   "songs": [
     {
       "title": "خیال",
@@ -1944,6 +1944,11 @@
           "chord": "C#m",
           "start": 186,
           "end": 198
+        },
+        {
+          "chord": "G#7",
+          "start": 198,
+          "end": 208
         }
       ],
       "textAlign": "right",
@@ -1975,6 +1980,7 @@
       "createdAt": "2026-09-10T13:43:14.042Z",
       "scaleMode": "minor",
       "recentChords": [
+        "G#7",
         "F#m",
         "C#m",
         "C#7",
@@ -2028,7 +2034,8 @@
     "Edim": "#F59E0B",
     "C#m": "#0EA5E9",
     "G#": "#F59E0B",
-    "F#m": "#6366F1"
+    "F#m": "#6366F1",
+    "G#7": "#0D9488"
   },
   "nextColorIndex": 22
 }
