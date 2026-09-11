@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T15:39:38.056Z",
+  "updatedAt": "2026-09-11T15:40:36.532Z",
   "songs": [
     {
       "title": "خیال",
@@ -1994,6 +1994,11 @@
           "chord": "Adim",
           "start": 355,
           "end": 368
+        },
+        {
+          "chord": "C#m",
+          "start": 417,
+          "end": 427
         }
       ],
       "textAlign": "right",
