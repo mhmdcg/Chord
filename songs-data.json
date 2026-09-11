@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T13:33:54.016Z",
+  "updatedAt": "2026-09-11T13:33:57.096Z",
   "songs": [
     {
       "title": "خیال",
@@ -1993,7 +1993,7 @@
         {
           "chord": "Adim",
           "start": 338,
-          "end": 368
+          "end": 353
         }
       ],
       "textAlign": "right",
@@ -2025,7 +2025,7 @@
         321,
         330,
         338,
-        368
+        353
       ],
       "downbeats": [],
       "videoSeconds": 60,
