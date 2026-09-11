@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T11:23:55.080Z",
+  "updatedAt": "2026-09-11T11:23:56.749Z",
   "songs": [
     {
       "title": "خیال",
@@ -1904,7 +1904,8 @@
       "chordsLocked": false,
       "splits": [
         27,
-        56
+        56,
+        73
       ],
       "downbeats": [],
       "videoSeconds": 60,
