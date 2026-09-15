@@ -14,6 +14,14 @@ class ChordAnnotatorApp {
         this.eraseMode = false;
         this.playMode = false;
         this.liveMode = false;
+        this.liveTransposeOffset = 0;
+        this.liveAutoScroll = false;
+        this.liveAutoScrollSpeed = 24;
+        this.liveAutoScrollTimer = 0;
+        this.liveAutoScrollLastTs = 0;
+        this.liveScrollCarry = 0;
+        this.liveProgrammaticScroll = false;
+        this.liveTouchY = null;
         this.downbeatMode = false;
         this.draggingSplit = null;
         this.draggingDownbeat = null;
@@ -97,8 +105,14 @@ class ChordAnnotatorApp {
             const index = Number(e.target.value);
             if (Number.isFinite(index)) this.openLiveSong(index);
         });
-        document.getElementById('liveTransposeUpBtn').addEventListener('click', () => this.transposeSong(1));
-        document.getElementById('liveTransposeDownBtn').addEventListener('click', () => this.transposeSong(-1));
+        document.getElementById('liveTransposeUpBtn').addEventListener('click', () => this.transposeLiveSong(1));
+        document.getElementById('liveTransposeDownBtn').addEventListener('click', () => this.transposeLiveSong(-1));
+        document.getElementById('liveResetScaleBtn').addEventListener('click', () => this.resetLiveScale());
+        document.getElementById('liveAutoScrollBtn').addEventListener('click', () => this.toggleLiveAutoScroll());
+        document.getElementById('liveScrollSpeed').addEventListener('input', (e) => {
+            const speed = Number(e.target.value);
+            if (Number.isFinite(speed)) this.liveAutoScrollSpeed = speed;
+        });
         document.getElementById('syncSettingsBtn').addEventListener('click', () => this.toggleSyncPanel());
         document.getElementById('syncBanner').addEventListener('click', () => {
             if (this.syncState === 'needs-token') this.toggleSyncPanel();
@@ -156,7 +170,23 @@ class ChordAnnotatorApp {
         });
         lyricsDisplay.addEventListener('pointerdown', (e) => this.handleSplitPointerDown(e));
         lyricsDisplay.addEventListener('click', (e) => this.handleLyricsClick(e));
-        lyricsDisplay.addEventListener('scroll', () => this.positionLyricOverlays());
+        lyricsDisplay.addEventListener('scroll', () => {
+            if (this.liveProgrammaticScroll) return;
+            this.positionLyricOverlays();
+        });
+        lyricsDisplay.addEventListener('wheel', () => {
+            if (this.liveMode && this.liveAutoScroll) this.stopLiveAutoScroll();
+        }, { passive: true });
+        lyricsDisplay.addEventListener('touchstart', (e) => {
+            this.liveTouchY = e.touches[0]?.clientY ?? null;
+        }, { passive: true });
+        lyricsDisplay.addEventListener('touchmove', (e) => {
+            if (!this.liveMode || !this.liveAutoScroll) return;
+            const y = e.touches[0]?.clientY;
+            if (this.liveTouchY != null && y != null && Math.abs(y - this.liveTouchY) > 8) {
+                this.stopLiveAutoScroll();
+            }
+        }, { passive: true });
         document.addEventListener('pointermove', (e) => this.handleSplitPointerMove(e));
         document.addEventListener('pointerup', (e) => this.handleSplitPointerUp(e));
         document.addEventListener('pointercancel', (e) => this.handleSplitPointerUp(e));
@@ -333,14 +363,18 @@ class ChordAnnotatorApp {
             this.currentSong = null;
             this.renderLiveEmpty();
             this.updateLiveScaleLabel();
+            this.updateLiveScrollControls();
         }
     }
 
     exitLiveMode() {
         this.liveMode = false;
+        this.stopLiveAutoScroll();
         this.setPlayMode(false);
         document.getElementById('lyricsDisplay')?.classList.remove('is-live');
         this.ensureLyricsDisplayIn('annotationLyricsHost');
+        this.updateLiveScaleLabel();
+        this.updateLiveScrollControls();
     }
 
     syncLiveSongsFromList() {
@@ -349,6 +383,7 @@ class ChordAnnotatorApp {
             this.currentSong = null;
             this.renderLiveEmpty();
             this.updateLiveScaleLabel();
+            this.updateLiveScrollControls();
             return;
         }
         if (!this.currentSong) {
@@ -396,9 +431,10 @@ class ChordAnnotatorApp {
         this.ensureDownbeats();
         this.renderAnnotationView();
         this.setPlayMode(true);
+        this.liveTransposeOffset = 0;
         this.updateLiveScaleLabel();
-        const display = document.getElementById('lyricsDisplay');
-        if (display) display.scrollTop = 0;
+        this.updateLiveScrollControls();
+        this.setLyricsScrollTop(0);
         requestAnimationFrame(() => this.positionLyricOverlays());
     }
 
@@ -415,9 +451,123 @@ class ChordAnnotatorApp {
 
     updateLiveScaleLabel() {
         const label = document.getElementById('liveScaleLabel');
-        if (!label) return;
-        const scale = MusicTheory.normalizePreferredScale(this.currentSong?.scale || '') || '—';
-        label.textContent = scale;
+        const resetBtn = document.getElementById('liveResetScaleBtn');
+        if (label) {
+            const scale = MusicTheory.normalizePreferredScale(this.currentSong?.scale || '') || '—';
+            label.textContent = scale;
+        }
+        if (resetBtn) {
+            resetBtn.disabled = !this.liveMode || !this.currentSong || this.liveTransposeOffset === 0;
+        }
+    }
+
+    transposeLiveSong(semitones) {
+        if (!this.liveMode || !this.currentSong || !semitones) return;
+        this.transposeSong(semitones);
+        this.liveTransposeOffset += semitones;
+        this.updateLiveScaleLabel();
+    }
+
+    resetLiveScale() {
+        if (!this.liveMode || this.editingIndex < 0 || !this.liveTransposeOffset) return;
+        const display = document.getElementById('lyricsDisplay');
+        const scrollTop = display ? display.scrollTop : 0;
+        const keepAuto = this.liveAutoScroll;
+        this.stopLiveAutoScroll();
+        this.openLiveSong(this.editingIndex);
+        this.setLyricsScrollTop(scrollTop);
+        if (keepAuto) this.startLiveAutoScroll();
+        requestAnimationFrame(() => this.positionLyricOverlays());
+    }
+
+    updateLiveScrollControls() {
+        const btn = document.getElementById('liveAutoScrollBtn');
+        const slider = document.getElementById('liveScrollSpeed');
+        const hasSong = this.liveMode && !!this.currentSong;
+        if (btn) {
+            btn.disabled = !hasSong;
+            btn.setAttribute('aria-pressed', this.liveAutoScroll ? 'true' : 'false');
+            btn.setAttribute('aria-label', this.liveAutoScroll ? 'Pause auto-scroll' : 'Start auto-scroll');
+            btn.title = this.liveAutoScroll ? 'Pause auto-scroll' : 'Auto-scroll';
+        }
+        if (slider) {
+            slider.disabled = !hasSong;
+            if (document.activeElement !== slider) slider.value = String(this.liveAutoScrollSpeed);
+        }
+    }
+
+    setLyricsScrollTop(top) {
+        const display = document.getElementById('lyricsDisplay');
+        if (!display) return;
+        const prev = this.liveProgrammaticScroll;
+        this.liveProgrammaticScroll = true;
+        display.scrollTop = top;
+        this.liveProgrammaticScroll = prev;
+    }
+
+    toggleLiveAutoScroll() {
+        if (!this.liveMode || !this.currentSong) return;
+        if (this.liveAutoScroll) this.stopLiveAutoScroll();
+        else this.startLiveAutoScroll();
+    }
+
+    startLiveAutoScroll() {
+        if (!this.liveMode || !this.currentSong) return;
+        const display = document.getElementById('lyricsDisplay');
+        if (!display) return;
+        const max = display.scrollHeight - display.clientHeight;
+        if (max <= 1) {
+            this.stopLiveAutoScroll();
+            return;
+        }
+        if (display.scrollTop >= max - 1) this.setLyricsScrollTop(0);
+        this.liveAutoScroll = true;
+        this.liveAutoScrollLastTs = performance.now();
+        this.liveScrollCarry = 0;
+        this.liveProgrammaticScroll = true;
+        this.updateLiveScrollControls();
+        if (this.liveAutoScrollTimer) clearInterval(this.liveAutoScrollTimer);
+        this.liveAutoScrollTimer = setInterval(() => this.tickLiveAutoScroll(performance.now()), 33);
+    }
+
+    stopLiveAutoScroll() {
+        const wasOn = this.liveAutoScroll;
+        this.liveAutoScroll = false;
+        this.liveAutoScrollLastTs = 0;
+        this.liveScrollCarry = 0;
+        this.liveProgrammaticScroll = false;
+        if (this.liveAutoScrollTimer) {
+            clearInterval(this.liveAutoScrollTimer);
+            this.liveAutoScrollTimer = 0;
+        }
+        if (wasOn) {
+            this.updateLiveScrollControls();
+            this.positionLyricOverlays();
+        }
+    }
+
+    tickLiveAutoScroll(ts) {
+        if (!this.liveMode || !this.liveAutoScroll) return;
+        const display = document.getElementById('lyricsDisplay');
+        if (!display) {
+            this.stopLiveAutoScroll();
+            return;
+        }
+        const dt = this.liveAutoScrollLastTs
+            ? Math.min(0.08, (ts - this.liveAutoScrollLastTs) / 1000)
+            : 0.033;
+        this.liveAutoScrollLastTs = ts;
+        const max = Math.max(0, display.scrollHeight - display.clientHeight);
+        if (max <= 1 || display.scrollTop >= max - 0.5) {
+            this.setLyricsScrollTop(max);
+            this.stopLiveAutoScroll();
+            return;
+        }
+        this.liveScrollCarry += this.liveAutoScrollSpeed * dt;
+        const step = Math.floor(this.liveScrollCarry);
+        if (step < 1) return;
+        this.liveScrollCarry -= step;
+        display.scrollTop += step;
     }
 
     createNewSong() {

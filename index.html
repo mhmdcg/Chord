@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20260915b">
+    <link rel="stylesheet" href="styles.css?v=20260915d">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -64,6 +64,12 @@
                     <button type="button" id="liveTransposeDownBtn" class="live-transpose-btn" aria-label="Transpose down a half step">−</button>
                     <span id="liveScaleLabel" class="live-scale-label">—</span>
                     <button type="button" id="liveTransposeUpBtn" class="live-transpose-btn" aria-label="Transpose up a half step">+</button>
+                    <button type="button" id="liveResetScaleBtn" class="live-transpose-btn live-reset-btn" aria-label="Reset to original scale" title="Original scale" disabled>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12a9 9 0 1 0 3-6.7"/>
+                            <path d="M3 5v5h5"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div class="live-body">
@@ -71,6 +77,20 @@
                     <span class="live-song-picker-label">Song</span>
                     <select id="liveSongSelect" aria-label="Select song"></select>
                 </label>
+                <div class="live-scroll-bar">
+                    <button type="button" id="liveAutoScrollBtn" class="live-scroll-toggle" aria-pressed="false" aria-label="Start auto-scroll" title="Auto-scroll" disabled>
+                        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>
+                        </svg>
+                    </button>
+                    <label class="live-scroll-speed">
+                        <span>Speed</span>
+                        <input id="liveScrollSpeed" type="range" min="8" max="64" step="1" value="24" aria-label="Auto-scroll speed" disabled />
+                    </label>
+                </div>
                 <div id="liveLyricsHost" class="live-lyrics-host"></div>
             </div>
         </div>
@@ -295,6 +315,6 @@
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="music-theory.js?v=20260905c"></script>
-    <script src="app.js?v=20260915b"></script>
+    <script src="app.js?v=20260915d"></script>
 </body>
 </html>
