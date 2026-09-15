@@ -13,6 +13,7 @@ class ChordAnnotatorApp {
         this.splitMode = false;
         this.eraseMode = false;
         this.playMode = false;
+        this.liveMode = false;
         this.downbeatMode = false;
         this.draggingSplit = null;
         this.draggingDownbeat = null;
@@ -89,7 +90,15 @@ class ChordAnnotatorApp {
     setupEventListeners() {
         document.getElementById('newSongBtn').addEventListener('click', () => this.createNewSong());
         document.getElementById('allChordsBtn').addEventListener('click', () => this.showView('allChords'));
+        document.getElementById('liveModeBtn').addEventListener('click', () => this.showView('live'));
         document.getElementById('backFromAllChordsBtn').addEventListener('click', () => this.showView('songList'));
+        document.getElementById('backFromLiveBtn').addEventListener('click', () => this.showView('songList'));
+        document.getElementById('liveSongSelect').addEventListener('change', (e) => {
+            const index = Number(e.target.value);
+            if (Number.isFinite(index)) this.openLiveSong(index);
+        });
+        document.getElementById('liveTransposeUpBtn').addEventListener('click', () => this.transposeSong(1));
+        document.getElementById('liveTransposeDownBtn').addEventListener('click', () => this.transposeSong(-1));
         document.getElementById('syncSettingsBtn').addEventListener('click', () => this.toggleSyncPanel());
         document.getElementById('syncBanner').addEventListener('click', () => {
             if (this.syncState === 'needs-token') this.toggleSyncPanel();
@@ -143,7 +152,7 @@ class ChordAnnotatorApp {
 
         const lyricsDisplay = document.getElementById('lyricsDisplay');
         lyricsDisplay.addEventListener('mousedown', (e) => {
-            if (this.splitMode || this.downbeatMode || this.eraseMode || e.target.closest('.lyric-split, .lyric-downbeat')) e.preventDefault();
+            if (this.liveMode || this.playMode || this.splitMode || this.downbeatMode || this.eraseMode || e.target.closest('.lyric-split, .lyric-downbeat')) e.preventDefault();
         });
         lyricsDisplay.addEventListener('pointerdown', (e) => this.handleSplitPointerDown(e));
         lyricsDisplay.addEventListener('click', (e) => this.handleLyricsClick(e));
@@ -263,6 +272,7 @@ class ChordAnnotatorApp {
     }
 
     showView(viewName) {
+        if (this.liveMode && viewName !== 'live') this.exitLiveMode();
         document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
 
         if (viewName === 'songList') {
@@ -273,11 +283,15 @@ class ChordAnnotatorApp {
             this.closeChordModal();
             document.getElementById('allChordsView').classList.add('active');
             this.renderAllChords();
+        } else if (viewName === 'live') {
+            this.enterLiveMode();
+            return;
         } else if (viewName === 'editor') {
             this.closeChordModal();
             document.getElementById('editorView').classList.add('active');
             this.applyTextAlign();
         } else if (viewName === 'annotation') {
+            this.ensureLyricsDisplayIn('annotationLyricsHost');
             document.getElementById('annotationView').classList.add('active');
             this.setSplitMode(false);
             this.setDownbeatMode(false);
@@ -290,6 +304,120 @@ class ChordAnnotatorApp {
         }
 
         this.currentView = viewName;
+    }
+
+    ensureLyricsDisplayIn(hostId) {
+        const display = document.getElementById('lyricsDisplay');
+        const host = document.getElementById(hostId);
+        if (!display || !host || display.parentElement === host) return;
+        host.appendChild(display);
+    }
+
+    enterLiveMode() {
+        this.liveMode = true;
+        this.closeChordModal();
+        this.setSplitMode(false);
+        this.setDownbeatMode(false);
+        this.setEraseMode(false);
+        this.ensureLyricsDisplayIn('liveLyricsHost');
+        document.getElementById('lyricsDisplay')?.classList.add('is-live');
+        document.getElementById('liveView').classList.add('active');
+        this.currentView = 'live';
+        this.populateLiveSongSelect();
+        if (this.songs.length) {
+            const index = this.editingIndex >= 0 && this.editingIndex < this.songs.length
+                ? this.editingIndex
+                : 0;
+            this.openLiveSong(index);
+        } else {
+            this.currentSong = null;
+            this.renderLiveEmpty();
+            this.updateLiveScaleLabel();
+        }
+    }
+
+    exitLiveMode() {
+        this.liveMode = false;
+        this.setPlayMode(false);
+        document.getElementById('lyricsDisplay')?.classList.remove('is-live');
+        this.ensureLyricsDisplayIn('annotationLyricsHost');
+    }
+
+    syncLiveSongsFromList() {
+        this.populateLiveSongSelect();
+        if (!this.songs.length) {
+            this.currentSong = null;
+            this.renderLiveEmpty();
+            this.updateLiveScaleLabel();
+            return;
+        }
+        if (!this.currentSong) {
+            const index = this.editingIndex >= 0 && this.editingIndex < this.songs.length
+                ? this.editingIndex
+                : 0;
+            this.openLiveSong(index);
+        }
+    }
+
+    populateLiveSongSelect() {
+        const select = document.getElementById('liveSongSelect');
+        if (!select) return;
+        const previous = select.value;
+        select.replaceChildren();
+        if (!this.songs.length) {
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = 'No songs yet';
+            select.appendChild(option);
+            select.disabled = true;
+            return;
+        }
+        select.disabled = false;
+        this.songs.forEach((song, index) => {
+            const option = document.createElement('option');
+            option.value = String(index);
+            const artist = (song.artist || '').trim();
+            option.textContent = artist ? `${song.title} — ${artist}` : (song.title || 'Untitled');
+            select.appendChild(option);
+        });
+        const preferred = this.editingIndex >= 0 ? String(this.editingIndex) : previous;
+        if ([...select.options].some((option) => option.value === preferred)) {
+            select.value = preferred;
+        }
+    }
+
+    openLiveSong(index) {
+        if (!this.songs[index]) return;
+        this.editingIndex = index;
+        this.currentSong = JSON.parse(JSON.stringify(this.songs[index]));
+        const select = document.getElementById('liveSongSelect');
+        if (select) select.value = String(index);
+        this.ensureSplits();
+        this.ensureDownbeats();
+        this.renderAnnotationView();
+        this.setPlayMode(true);
+        this.updateLiveScaleLabel();
+        const display = document.getElementById('lyricsDisplay');
+        if (display) display.scrollTop = 0;
+        requestAnimationFrame(() => this.positionLyricOverlays());
+    }
+
+    renderLiveEmpty() {
+        const content = document.getElementById('lyricsContent');
+        const sectionOverlay = document.getElementById('lyricSectionOverlay');
+        const splitOverlay = document.getElementById('lyricSplitOverlay');
+        if (content) content.textContent = '';
+        if (sectionOverlay) sectionOverlay.replaceChildren();
+        if (splitOverlay) splitOverlay.replaceChildren();
+        const heading = document.getElementById('lyricsSongHeading');
+        if (heading) heading.textContent = 'No songs yet';
+    }
+
+    updateLiveScaleLabel() {
+        const label = document.getElementById('liveScaleLabel');
+        if (!label) return;
+        const scale = MusicTheory.normalizePreferredScale(this.currentSong?.scale || '') || '—';
+        label.textContent = scale;
     }
 
     createNewSong() {
@@ -465,6 +593,11 @@ class ChordAnnotatorApp {
     }
 
     persistCurrentSong() {
+        if (this.liveMode) {
+            this.updateLyricsMetaPreview();
+            this.updateLiveScaleLabel();
+            return;
+        }
         if (this.editingIndex >= 0 && this.currentSong) {
             this.songs[this.editingIndex] = this.currentSong;
             this.saveData();
@@ -594,6 +727,7 @@ class ChordAnnotatorApp {
     }
 
     renderAnnotationView() {
+        if (!this.currentSong) return;
         document.getElementById('annotationTitle').textContent = this.currentSong.title;
         this.updateLyricsHeading();
         this.updateSongMetaFields();
@@ -608,6 +742,7 @@ class ChordAnnotatorApp {
         this.renderAnnotatedLyrics();
         this.updateChordLegend();
         this.positionHandles();
+        if (this.liveMode) this.updateLiveScaleLabel();
     }
 
     updateLyricsHeading() {
@@ -1073,6 +1208,11 @@ class ChordAnnotatorApp {
     handleLyricsClick(e) {
         if (this.draggingHandle || this.draggingSplit || this.draggingDownbeat || this.ignoreSplitClick) return;
         if (e.target.closest && e.target.closest('.sel-handle')) return;
+        if (this.liveMode) {
+            e.preventDefault();
+            this.handlePlayChordClick(e);
+            return;
+        }
         if (this.eraseMode) {
             e.preventDefault();
             this.handleEraseClick(e);
@@ -1442,7 +1582,7 @@ class ChordAnnotatorApp {
     }
 
     handleSplitPointerDown(e) {
-        if (this.playMode) {
+        if (this.liveMode || this.playMode) {
             if (e.button) return;
             if (e.pointerType === 'mouse') return;
             this.handlePlayChordClick(e);
@@ -4858,6 +4998,7 @@ class ChordAnnotatorApp {
 
         if (this.songs.length === 0) {
             container.innerHTML = '<div class="empty-state"><p>No songs yet. Create your first song!</p></div>';
+            if (this.liveMode) this.syncLiveSongsFromList();
             return;
         }
 
@@ -4920,6 +5061,8 @@ class ChordAnnotatorApp {
 
             container.appendChild(card);
         });
+
+        if (this.liveMode) this.syncLiveSongsFromList();
     }
 
     collectChordsByKey() {

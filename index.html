@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20260908e">
+    <link rel="stylesheet" href="styles.css?v=20260915b">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,6 +18,7 @@
                 <h1>🎵 My Songs</h1>
                 <div class="header-end">
                     <button id="allChordsBtn" class="btn btn-secondary" type="button">All chords</button>
+                    <button id="liveModeBtn" class="btn btn-secondary" type="button">Live mode</button>
                     <button id="syncSettingsBtn" class="btn btn-secondary" type="button">GitHub</button>
                     <button id="newSongBtn" class="btn btn-primary">+ New Song</button>
                 </div>
@@ -52,6 +53,26 @@
                 <h2>All chords</h2>
             </div>
             <div id="allChordsList" class="all-chords-list"></div>
+        </div>
+
+        <!-- Live piano mode -->
+        <div id="liveView" class="view">
+            <div class="header live-header">
+                <button id="backFromLiveBtn" class="btn btn-secondary" type="button">← Back</button>
+                <h2>Live mode</h2>
+                <div class="live-transpose" role="group" aria-label="Change scale">
+                    <button type="button" id="liveTransposeDownBtn" class="live-transpose-btn" aria-label="Transpose down a half step">−</button>
+                    <span id="liveScaleLabel" class="live-scale-label">—</span>
+                    <button type="button" id="liveTransposeUpBtn" class="live-transpose-btn" aria-label="Transpose up a half step">+</button>
+                </div>
+            </div>
+            <div class="live-body">
+                <label class="live-song-picker">
+                    <span class="live-song-picker-label">Song</span>
+                    <select id="liveSongSelect" aria-label="Select song"></select>
+                </label>
+                <div id="liveLyricsHost" class="live-lyrics-host"></div>
+            </div>
         </div>
 
         <!-- Song Editor View -->
@@ -204,7 +225,7 @@
                             <input id="songTempo" type="number" inputmode="numeric" min="20" max="320" placeholder="120" aria-label="Tempo" />
                         </span>
                     </aside>
-                    <div class="lyrics-stage">
+                    <div class="lyrics-stage" id="annotationLyricsHost">
                     <div id="lyricsDisplay" class="lyrics-display">
                     <div class="lyrics-meta">
                         <div class="lyrics-meta-controls">
@@ -274,6 +295,6 @@
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="music-theory.js?v=20260905c"></script>
-    <script src="app.js?v=20260909a"></script>
+    <script src="app.js?v=20260915b"></script>
 </body>
 </html>

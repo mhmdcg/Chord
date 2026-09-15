@@ -373,6 +373,109 @@ body {
     margin: 0 auto;
 }
 
+.live-header {
+    gap: 0.35rem;
+}
+
+.live-header h2 {
+    text-align: center;
+    margin: 0 0.5rem;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.live-transpose {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+.live-transpose-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+    color: var(--text);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.live-transpose-btn:hover {
+    background: var(--surface);
+    color: var(--primary);
+}
+
+.live-scale-label {
+    min-width: 3.25rem;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+.live-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem max(1rem, env(safe-area-inset-right, 0px)) 1.25rem max(1rem, env(safe-area-inset-left, 0px));
+    min-height: 0;
+}
+
+.live-song-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+    max-width: 540px;
+}
+
+.live-song-picker-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.live-song-picker select {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.live-lyrics-host {
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 9 / 16;
+    max-height: calc(100dvh - 11.5rem);
+    min-height: 0;
+}
+
+.live-lyrics-host .lyrics-display {
+    height: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+#liveView .sel-handle {
+    display: none !important;
+}
+
 .all-chords-row {
     display: flex;
     flex-wrap: wrap;
@@ -2015,6 +2118,7 @@ body {
 
     .song-list-header .header-end {
         width: 100%;
+        flex-wrap: wrap;
     }
 
     .song-list-header .header-end .btn {
