@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20260915d">
+    <link rel="stylesheet" href="styles.css?v=20260915f">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -90,6 +90,20 @@
                         <span>Speed</span>
                         <input id="liveScrollSpeed" type="range" min="8" max="64" step="1" value="24" aria-label="Auto-scroll speed" disabled />
                     </label>
+                    <button type="button" id="liveFullscreenBtn" class="live-fullscreen-btn" aria-pressed="false" aria-label="Full screen lyrics" title="Full screen">
+                        <svg class="icon-expand" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 3H3v5"/>
+                            <path d="M16 3h5v5"/>
+                            <path d="M8 21H3v-5"/>
+                            <path d="M16 21h5v-5"/>
+                        </svg>
+                        <svg class="icon-collapse" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 8h5V3"/>
+                            <path d="M21 8h-5V3"/>
+                            <path d="M3 16h5v5"/>
+                            <path d="M21 16h-5v5"/>
+                        </svg>
+                    </button>
                 </div>
                 <div id="liveLyricsHost" class="live-lyrics-host"></div>
             </div>
@@ -315,6 +329,6 @@
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="music-theory.js?v=20260905c"></script>
-    <script src="app.js?v=20260915d"></script>
+    <script src="app.js?v=20260915f"></script>
 </body>
 </html>

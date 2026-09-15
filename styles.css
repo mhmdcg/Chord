@@ -528,6 +528,102 @@ body {
     cursor: default;
 }
 
+.live-fullscreen-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+    color: var(--text);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.live-fullscreen-btn svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.live-fullscreen-btn .icon-collapse {
+    display: none;
+}
+
+.live-fullscreen-btn[aria-pressed="true"] {
+    background: #EEF2FF;
+    color: var(--primary);
+    border-color: #C7D2FE;
+}
+
+.live-fullscreen-btn[aria-pressed="true"] .icon-expand {
+    display: none;
+}
+
+.live-fullscreen-btn[aria-pressed="true"] .icon-collapse {
+    display: block;
+}
+
+.live-fullscreen-btn:hover:not(:disabled) {
+    color: var(--primary);
+}
+
+#liveView.is-fullscreen .live-header,
+#liveView:fullscreen .live-header,
+#liveView.is-fullscreen .live-song-picker,
+#liveView:fullscreen .live-song-picker {
+    display: none;
+}
+
+#liveView.is-fullscreen,
+#liveView:fullscreen {
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: 100dvh;
+    overflow: hidden;
+    background: var(--background);
+}
+
+#liveView.is-fullscreen .live-body,
+#liveView:fullscreen .live-body {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    padding-top: max(0.65rem, env(safe-area-inset-top, 0px));
+}
+
+#liveView.is-fullscreen .live-scroll-bar,
+#liveView:fullscreen .live-scroll-bar,
+#liveView.is-fullscreen .live-lyrics-host,
+#liveView:fullscreen .live-lyrics-host {
+    max-width: min(560px, 100%);
+}
+
+#liveView.is-fullscreen .live-lyrics-host,
+#liveView:fullscreen .live-lyrics-host {
+    flex: 1;
+    aspect-ratio: auto;
+    max-height: none;
+    width: 100%;
+    min-height: 0;
+}
+
+#liveView .lyrics-display {
+    touch-action: pan-y;
+}
+
+#liveView .lyrics-display.is-playing-chords .lyric-section-overlay,
+#liveView .lyrics-display.is-playing-chords .lyric-split-overlay {
+    pointer-events: none;
+}
+
+body.live-fullscreen {
+    overflow: hidden;
+}
+
 .live-scroll-speed {
     flex: 1;
     display: flex;
@@ -2224,7 +2320,8 @@ body {
     }
 
     .live-transpose-btn,
-    .live-scroll-toggle {
+    .live-scroll-toggle,
+    .live-fullscreen-btn {
         width: 40px;
         height: 40px;
     }

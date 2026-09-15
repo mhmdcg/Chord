@@ -21,7 +21,11 @@ class ChordAnnotatorApp {
         this.liveAutoScrollLastTs = 0;
         this.liveScrollCarry = 0;
         this.liveProgrammaticScroll = false;
-        this.liveTouchY = null;
+        this.liveIgnoreScrollUntil = 0;
+        this.liveUserScrolling = false;
+        this.liveUserScrollTimer = 0;
+        this.livePointer = null;
+        this.liveFullscreen = false;
         this.downbeatMode = false;
         this.draggingSplit = null;
         this.draggingDownbeat = null;
@@ -113,6 +117,8 @@ class ChordAnnotatorApp {
             const speed = Number(e.target.value);
             if (Number.isFinite(speed)) this.liveAutoScrollSpeed = speed;
         });
+        document.getElementById('liveFullscreenBtn').addEventListener('click', () => this.toggleLiveFullscreen());
+        document.addEventListener('fullscreenchange', () => this.syncLiveFullscreenFromBrowser());
         document.getElementById('syncSettingsBtn').addEventListener('click', () => this.toggleSyncPanel());
         document.getElementById('syncBanner').addEventListener('click', () => {
             if (this.syncState === 'needs-token') this.toggleSyncPanel();
@@ -171,21 +177,11 @@ class ChordAnnotatorApp {
         lyricsDisplay.addEventListener('pointerdown', (e) => this.handleSplitPointerDown(e));
         lyricsDisplay.addEventListener('click', (e) => this.handleLyricsClick(e));
         lyricsDisplay.addEventListener('scroll', () => {
-            if (this.liveProgrammaticScroll) return;
+            if (this.liveProgrammaticScroll || performance.now() < this.liveIgnoreScrollUntil) return;
             this.positionLyricOverlays();
         });
         lyricsDisplay.addEventListener('wheel', () => {
-            if (this.liveMode && this.liveAutoScroll) this.stopLiveAutoScroll();
-        }, { passive: true });
-        lyricsDisplay.addEventListener('touchstart', (e) => {
-            this.liveTouchY = e.touches[0]?.clientY ?? null;
-        }, { passive: true });
-        lyricsDisplay.addEventListener('touchmove', (e) => {
-            if (!this.liveMode || !this.liveAutoScroll) return;
-            const y = e.touches[0]?.clientY;
-            if (this.liveTouchY != null && y != null && Math.abs(y - this.liveTouchY) > 8) {
-                this.stopLiveAutoScroll();
-            }
+            if (this.liveMode && this.liveAutoScroll) this.noteLiveUserScroll();
         }, { passive: true });
         document.addEventListener('pointermove', (e) => this.handleSplitPointerMove(e));
         document.addEventListener('pointerup', (e) => this.handleSplitPointerUp(e));
@@ -287,6 +283,11 @@ class ChordAnnotatorApp {
     }
 
     handleKeydown(e) {
+        if (e.key === 'Escape' && this.liveFullscreen) {
+            e.preventDefault();
+            this.exitLiveFullscreen();
+            return;
+        }
         if (this.currentView !== 'annotation') return;
         const key = e.key.toLowerCase();
         if ((e.metaKey || e.ctrlKey) && key === 'z') {
@@ -369,6 +370,7 @@ class ChordAnnotatorApp {
 
     exitLiveMode() {
         this.liveMode = false;
+        this.exitLiveFullscreen();
         this.stopLiveAutoScroll();
         this.setPlayMode(false);
         document.getElementById('lyricsDisplay')?.classList.remove('is-live');
@@ -524,7 +526,6 @@ class ChordAnnotatorApp {
         this.liveAutoScroll = true;
         this.liveAutoScrollLastTs = performance.now();
         this.liveScrollCarry = 0;
-        this.liveProgrammaticScroll = true;
         this.updateLiveScrollControls();
         if (this.liveAutoScrollTimer) clearInterval(this.liveAutoScrollTimer);
         this.liveAutoScrollTimer = setInterval(() => this.tickLiveAutoScroll(performance.now()), 33);
@@ -535,6 +536,11 @@ class ChordAnnotatorApp {
         this.liveAutoScroll = false;
         this.liveAutoScrollLastTs = 0;
         this.liveScrollCarry = 0;
+        this.liveUserScrolling = false;
+        if (this.liveUserScrollTimer) {
+            clearTimeout(this.liveUserScrollTimer);
+            this.liveUserScrollTimer = 0;
+        }
         this.liveProgrammaticScroll = false;
         if (this.liveAutoScrollTimer) {
             clearInterval(this.liveAutoScrollTimer);
@@ -563,11 +569,99 @@ class ChordAnnotatorApp {
             this.stopLiveAutoScroll();
             return;
         }
+        if (this.liveUserScrolling) {
+            this.liveAutoScrollLastTs = ts;
+            this.liveScrollCarry = 0;
+            return;
+        }
         this.liveScrollCarry += this.liveAutoScrollSpeed * dt;
         const step = Math.floor(this.liveScrollCarry);
         if (step < 1) return;
         this.liveScrollCarry -= step;
+        this.liveIgnoreScrollUntil = performance.now() + 50;
+        const prev = this.liveProgrammaticScroll;
+        this.liveProgrammaticScroll = true;
         display.scrollTop += step;
+        this.liveProgrammaticScroll = prev;
+    }
+
+    noteLiveUserScroll() {
+        if (!this.liveMode || !this.liveAutoScroll) return;
+        this.liveUserScrolling = true;
+        if (this.liveUserScrollTimer) clearTimeout(this.liveUserScrollTimer);
+        this.liveUserScrollTimer = setTimeout(() => {
+            this.liveUserScrolling = false;
+            this.liveAutoScrollLastTs = performance.now();
+            this.liveUserScrollTimer = 0;
+        }, 220);
+    }
+
+    beginLivePointer(e) {
+        if (!this.liveMode || e.button) return;
+        this.livePointer = { id: e.pointerId, x: e.clientX, y: e.clientY, moved: false };
+    }
+
+    moveLivePointer(e) {
+        if (!this.livePointer || e.pointerId !== this.livePointer.id) return;
+        const dx = e.clientX - this.livePointer.x;
+        const dy = e.clientY - this.livePointer.y;
+        if (dx * dx + dy * dy < 36) return;
+        this.livePointer.moved = true;
+        this.noteLiveUserScroll();
+    }
+
+    endLivePointer(e) {
+        if (!this.livePointer || (e && e.pointerId !== this.livePointer.id)) return;
+        if (this.livePointer.moved) {
+            this.ignoreSplitClick = true;
+            setTimeout(() => { this.ignoreSplitClick = false; }, 400);
+            this.noteLiveUserScroll();
+        }
+        this.livePointer = null;
+    }
+
+    toggleLiveFullscreen() {
+        if (!this.liveMode) return;
+        if (this.liveFullscreen) this.exitLiveFullscreen();
+        else this.enterLiveFullscreen();
+    }
+
+    enterLiveFullscreen() {
+        this.applyLiveFullscreen(true);
+        const view = document.getElementById('liveView');
+        const request = view?.requestFullscreen || view?.webkitRequestFullscreen;
+        if (request) Promise.resolve(request.call(view)).catch(() => {});
+    }
+
+    exitLiveFullscreen() {
+        this.applyLiveFullscreen(false);
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (document.fullscreenElement && exit) Promise.resolve(exit.call(document)).catch(() => {});
+    }
+
+    applyLiveFullscreen(on) {
+        this.liveFullscreen = on;
+        document.getElementById('liveView')?.classList.toggle('is-fullscreen', on);
+        document.body.classList.toggle('live-fullscreen', on);
+        this.updateLiveFullscreenButton();
+        requestAnimationFrame(() => this.positionLyricOverlays());
+    }
+
+    syncLiveFullscreenFromBrowser() {
+        if (!this.liveMode) return;
+        const view = document.getElementById('liveView');
+        const nativeOn = document.fullscreenElement === view;
+        if (!nativeOn && this.liveFullscreen && document.fullscreenElement == null) {
+            this.applyLiveFullscreen(false);
+        }
+    }
+
+    updateLiveFullscreenButton() {
+        const btn = document.getElementById('liveFullscreenBtn');
+        if (!btn) return;
+        btn.setAttribute('aria-pressed', this.liveFullscreen ? 'true' : 'false');
+        btn.setAttribute('aria-label', this.liveFullscreen ? 'Exit full screen' : 'Full screen lyrics');
+        btn.title = this.liveFullscreen ? 'Exit full screen' : 'Full screen';
     }
 
     createNewSong() {
@@ -1732,7 +1826,11 @@ class ChordAnnotatorApp {
     }
 
     handleSplitPointerDown(e) {
-        if (this.liveMode || this.playMode) {
+        if (this.liveMode) {
+            this.beginLivePointer(e);
+            return;
+        }
+        if (this.playMode) {
             if (e.button) return;
             if (e.pointerType === 'mouse') return;
             this.handlePlayChordClick(e);
@@ -1787,6 +1885,7 @@ class ChordAnnotatorApp {
     }
 
     handleSplitPointerMove(e) {
+        if (this.liveMode) this.moveLivePointer(e);
         if (this.draggingDownbeat) {
             e.preventDefault();
             const dx = e.clientX - this.draggingDownbeat.startX;
@@ -1820,6 +1919,7 @@ class ChordAnnotatorApp {
     }
 
     handleSplitPointerUp(e) {
+        if (this.liveMode) this.endLivePointer(e);
         if (this.draggingDownbeat) {
             const drag = this.draggingDownbeat;
             this.draggingDownbeat = null;
