@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-17T11:43:56.324Z",
+  "updatedAt": "2026-09-17T11:44:03.316Z",
   "songs": [
     {
       "title": "خیال",
@@ -2457,7 +2457,7 @@
         "D",
         "Adim"
       ],
-      "hideChords": true,
+      "hideChords": false,
       "hideSplits": false,
       "downbeatsEqualized": false,
       "hideDownbeats": false
