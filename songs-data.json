@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-19T21:26:39.578Z",
+  "updatedAt": "2026-09-19T21:26:45.706Z",
   "songs": [
     {
       "title": "خیال",
@@ -2732,6 +2732,11 @@
           "chord": "F#",
           "start": 508,
           "end": 513
+        },
+        {
+          "chord": "D#m",
+          "start": 513,
+          "end": 529
         }
       ],
       "textAlign": "right",
@@ -2821,9 +2826,9 @@
       "createdAt": "2026-09-17T15:59:35.570Z",
       "scaleMode": "major",
       "recentChords": [
+        "D#m",
         "F#",
         "E",
-        "D#m",
         "G#m",
         "EM7",
         "D#m7"
