@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-19T21:36:50.479Z",
+  "updatedAt": "2026-09-19T21:36:54.910Z",
   "songs": [
     {
       "title": "خیال",
@@ -2915,7 +2915,7 @@
         }
       ],
       "textAlign": "right",
-      "scale": "Bm",
+      "scale": "G#m",
       "timeTop": 4,
       "timeBottom": 4,
       "tempo": 117,
@@ -2999,7 +2999,7 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-09-17T15:59:35.570Z",
-      "scaleMode": "major",
+      "scaleMode": "minor",
       "recentChords": [
         "D#m",
         "F#",
