@@ -106,6 +106,8 @@ class ChordAnnotatorApp {
         document.getElementById('scanChordsBtn').addEventListener('click', () => this.showView('scan'));
         document.getElementById('backFromScanBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('scanImageInput').addEventListener('change', (e) => this.onScanImageChosen(e));
+        document.getElementById('scanPasteBtn').addEventListener('click', () => this.pasteScanImage());
+        document.addEventListener('paste', (e) => this.onScanPaste(e));
         document.getElementById('scanReadBtn').addEventListener('click', () => this.readScanImage());
         document.getElementById('scanTransposeUpBtn').addEventListener('click', () => this.shiftScanChords(1));
         document.getElementById('scanTransposeDownBtn').addEventListener('click', () => this.shiftScanChords(-1));
@@ -5755,6 +5757,45 @@ class ChordAnnotatorApp {
 
     onScanImageChosen(event) {
         const file = event.target.files && event.target.files[0];
+        if (file) this.setScanFile(file);
+    }
+
+    onScanPaste(event) {
+        if (this.currentView !== 'scan') return;
+        const items = event.clipboardData && event.clipboardData.items;
+        if (!items) return;
+        for (const item of items) {
+            if (!item.type || !item.type.startsWith('image/')) continue;
+            const file = item.getAsFile();
+            if (!file) continue;
+            event.preventDefault();
+            this.setScanFile(file);
+            return;
+        }
+    }
+
+    async pasteScanImage() {
+        if (!navigator.clipboard || !navigator.clipboard.read) {
+            this.setScanStatus('Pasting is not available in this browser. Choose a photo instead.');
+            return;
+        }
+        try {
+            const items = await navigator.clipboard.read();
+            for (const item of items) {
+                const type = (item.types || []).find((name) => name.startsWith('image/'));
+                if (!type) continue;
+                const blob = await item.getType(type);
+                const file = new File([blob], 'pasted-image', { type: blob.type || type });
+                this.setScanFile(file);
+                return;
+            }
+            this.setScanStatus('No image on the clipboard.');
+        } catch (error) {
+            this.setScanStatus('Could not paste. Copy an image, then tap Paste again.');
+        }
+    }
+
+    setScanFile(file) {
         this.scanFile = file || null;
         const preview = document.getElementById('scanPreview');
         const readBtn = document.getElementById('scanReadBtn');
@@ -5772,7 +5813,7 @@ class ChordAnnotatorApp {
         preview.src = this.scanPreviewUrl;
         preview.hidden = false;
         readBtn.disabled = false;
-        document.getElementById('scanStatus').textContent = '';
+        this.setScanStatus('Image ready. Tap Read chords.');
     }
 
     shiftScanChords(steps) {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20261030a">
+    <link rel="stylesheet" href="styles.css?v=20261030b">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -117,12 +117,13 @@
                 <h2>Scan chords</h2>
             </div>
             <div class="scan-body">
-                <p class="scan-help">Choose a photo of lyrics with the chords written above them.</p>
+                <p class="scan-help">Choose a photo of lyrics with the chords written above them, or paste an image from the clipboard.</p>
                 <div class="scan-actions">
                     <label class="btn btn-secondary scan-pick">
                         Choose photo
                         <input id="scanImageInput" type="file" accept="image/*" hidden />
                     </label>
+                    <button id="scanPasteBtn" class="btn btn-secondary" type="button">Paste</button>
                     <button id="scanReadBtn" class="btn btn-primary" type="button" disabled>Read chords</button>
                 </div>
                 <img id="scanPreview" class="scan-preview" alt="" hidden />
@@ -358,6 +359,6 @@
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="music-theory.js?v=20260905c"></script>
-    <script src="app.js?v=20261030a"></script>
+    <script src="app.js?v=20261030b"></script>
 </body>
 </html>
