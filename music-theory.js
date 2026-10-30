@@ -101,9 +101,11 @@
     function transposeRoot(root, semitones, targetKey) {
         const index = noteIndex(root);
         if (index == null) return root;
-        const next = wrapPc(index + (semitones || 0));
+        const steps = semitones || 0;
+        if (!steps && !targetKey) return root;
+        const next = wrapPc(index + steps);
         if (targetKey) return spellRootForKey(next, targetKey);
-        return (semitones || 0) < 0 ? FLAT_NAMES[next] : SHARP_NAMES[next];
+        return steps < 0 ? FLAT_NAMES[next] : SHARP_NAMES[next];
     }
 
     function transposeOneChord(raw, steps, targetKey) {

@@ -5952,14 +5952,74 @@ class ChordAnnotatorApp {
         try {
             this.setScanStatus('Preparing the photo…');
             const image = await createImageBitmap(this.scanFile);
-            const layers = this.scanImageLayers(image);
-            image.close?.();
+            const scale = this.scanRenderScale(image);
+            const strips = this.scanStrips(image, scale);
+            const separate = this.scanUsesSeparateColors(image);
+            const tiny = separate ? this.readTinyScanChords(image) : null;
+            const useTiny = !!(tiny && tiny.medianHeight <= 12 && tiny.words.length >= 8);
             const Tesseract = await this.ensureTesseract();
-            const chordWords = await this.recognizeScanLayer(Tesseract, layers.chordCanvas, layers.lyricCanvas ? 'eng' : 'fas+eng', 'Reading chords');
-            const lyricWords = layers.lyricCanvas
-                ? await this.recognizeScanLayer(Tesseract, layers.lyricCanvas, 'fas', 'Reading lyrics')
-                : chordWords;
-            this.scanChart = this.buildScanChart(chordWords, lyricWords, !layers.lyricCanvas);
+            const chordWhitelist = 'ABCDEFGabcdefgmM#b/0123456789ijnsuo';
+            const chordWorker = useTiny ? null : await this.createScanWorker(
+                Tesseract,
+                separate ? 'eng' : 'fas+eng',
+                separate ? '11' : '4',
+                separate ? chordWhitelist : ''
+            );
+            const lyricWorker = separate
+                ? await this.createScanWorker(Tesseract, 'fas', '6', '')
+                : null;
+            const chordWords = [];
+            const lyricWords = [];
+            try {
+                if (useTiny) {
+                    this.setScanStatus('Reading chords…');
+                    tiny.words.forEach((word) => {
+                        chordWords.push({
+                            text: word.text,
+                            confidence: 90,
+                            x0: word.x0 * scale,
+                            x1: word.x1 * scale,
+                            y0: word.y0 * scale,
+                            y1: word.y1 * scale
+                        });
+                    });
+                }
+                for (let i = 0; i < strips.length; i += 1) {
+                    const strip = strips[i];
+                    const rendered = this.renderScanStrip(image, strip, scale, separate);
+                    const ownStart = strip.ownY * scale;
+                    const ownEnd = strip.ownEnd * scale;
+                    if (!useTiny) {
+                        this.scanOcrLabel = `Reading chords (${i + 1}/${strips.length})`;
+                        chordWords.push(...this.ownScanWords(
+                            this.offsetScanWords(
+                                await this.recognizeScanCanvas(chordWorker, rendered.chordCanvas),
+                                strip.y * scale,
+                                rendered.pad
+                            ),
+                            ownStart,
+                            ownEnd
+                        ));
+                    }
+                    if (lyricWorker) {
+                        this.scanOcrLabel = `Reading lyrics (${i + 1}/${strips.length})`;
+                        lyricWords.push(...this.ownScanWords(
+                            this.offsetScanWords(
+                                await this.recognizeScanCanvas(lyricWorker, rendered.lyricCanvas),
+                                strip.y * scale,
+                                rendered.pad
+                            ),
+                            ownStart,
+                            ownEnd
+                        ));
+                    }
+                }
+            } finally {
+                image.close?.();
+                if (chordWorker) await chordWorker.terminate();
+                if (lyricWorker) await lyricWorker.terminate();
+            }
+            this.scanChart = this.buildScanChart(chordWords, lyricWorker ? lyricWords : chordWords, !separate);
             this.scanSemitones = 0;
             if (!this.scanChart.length) {
                 this.setScanStatus('No lyrics or chords were found in that photo.');
@@ -5980,51 +6040,441 @@ class ChordAnnotatorApp {
         }
     }
 
-    scanImageLayers(image) {
-        const maxW = 1600;
-        const scale = Math.min(1, maxW / image.width);
+    readTinyScanChords(image) {
+        const width = image.width;
+        const height = image.height;
+        if (!width || !height || height < width * 2) return null;
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        ctx.drawImage(image, 0, 0);
+        const src = ctx.getImageData(0, 0, width, height).data;
+        const levelAt = (x, y) => {
+            const i = (y * width + x) * 4;
+            const r = src[i];
+            const g = src[i + 1];
+            const b = src[i + 2];
+            const a = src[i + 3];
+            if (a < 40) return 0;
+            const margin = r - Math.max(g, b);
+            if (r > 180 && margin > 60) return 2;
+            if (r > 155 && margin > 35) return 1;
+            return 0;
+        };
+        const seen = new Uint8Array(width * height);
+        const comps = [];
+        for (let y = 0; y < height; y += 1) {
+            for (let x = 0; x < width; x += 1) {
+                if (!levelAt(x, y) || seen[y * width + x]) continue;
+                const queue = [[x, y]];
+                seen[y * width + x] = 1;
+                const cells = [];
+                while (queue.length) {
+                    const [cx, cy] = queue.pop();
+                    if (levelAt(cx, cy) === 2) cells.push([cx, cy]);
+                    for (let dy = -1; dy <= 1; dy += 1) {
+                        for (let dx = -1; dx <= 1; dx += 1) {
+                            if (!dx && !dy) continue;
+                            const nx = cx + dx;
+                            const ny = cy + dy;
+                            if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+                            const ni = ny * width + nx;
+                            if (seen[ni] || !levelAt(nx, ny)) continue;
+                            seen[ni] = 1;
+                            queue.push([nx, ny]);
+                        }
+                    }
+                }
+                if (cells.length < 5) continue;
+                let minx = cells[0][0];
+                let maxx = minx;
+                let miny = cells[0][1];
+                let maxy = miny;
+                cells.forEach(([px, py]) => {
+                    if (px < minx) minx = px;
+                    if (px > maxx) maxx = px;
+                    if (py < miny) miny = py;
+                    if (py > maxy) maxy = py;
+                });
+                if (maxx - minx <= 1 && maxy - miny >= 7) continue;
+                comps.push({ x0: minx, y0: miny, x1: maxx, y1: maxy, cells });
+            }
+        }
+        if (comps.length < 8) return null;
+        const heights = comps.map((comp) => comp.y1 - comp.y0 + 1).sort((a, b) => a - b);
+        const medianHeight = heights[Math.floor(heights.length / 2)] || 0;
+        const gridOf = (cells, x0, y0, x1, y1) => {
+            const ink = new Set(cells.map(([px, py]) => `${px},${py}`));
+            const rows = [];
+            for (let yy = y0; yy <= y1; yy += 1) {
+                let row = '';
+                for (let xx = x0; xx <= x1; xx += 1) row += ink.has(`${xx},${yy}`) ? '#' : '.';
+                rows.push(row);
+            }
+            return rows;
+        };
+        const rect = (rows) => {
+            const kept = rows.filter((row) => row);
+            if (!kept.length) return [];
+            const w = Math.max(...kept.map((row) => row.length));
+            return kept.map((row) => row.padEnd(w, '.').slice(0, w));
+        };
+        const trim = (rows) => {
+            const boxed = rect(rows.filter((row) => row.includes('#')));
+            if (!boxed.length) return [];
+            const w = boxed[0].length;
+            let a = w;
+            let b = -1;
+            boxed.forEach((row) => {
+                for (let i = 0; i < w; i += 1) {
+                    if (row[i] === '#') {
+                        if (i < a) a = i;
+                        if (i > b) b = i;
+                    }
+                }
+            });
+            if (b < a) return [];
+            return boxed.map((row) => row.slice(a, b + 1));
+        };
+        const looksM = (grid) => {
+            const rows = trim(grid);
+            if (!rows.length) return false;
+            const h = rows.length;
+            const w = rows[0].length;
+            if (w < 4 || w > 7 || h > w + 2) return false;
+            if ((rows[0].split('#').length - 1) / w < 0.55) return false;
+            const lower = rows.slice(Math.max(1, Math.floor(h / 3)));
+            let peaks = 0;
+            let inside = false;
+            const thr = Math.max(1, lower.length * 0.45);
+            for (let x = 0; x < w; x += 1) {
+                let ink = 0;
+                lower.forEach((row) => { if (row[x] === '#') ink += 1; });
+                if (ink >= thr) {
+                    if (!inside) peaks += 1;
+                    inside = true;
+                } else inside = false;
+            }
+            return peaks >= 3;
+        };
+        const toBits = (grid) => {
+            const rows = rect(grid);
+            const h = rows.length;
+            const w = rows[0].length;
+            const bits = [];
+            for (let y = 0; y < 12; y += 1) {
+                const sy = Math.min(h - 1, Math.floor((y + 0.5) * h / 12));
+                const row = [];
+                for (let x = 0; x < 8; x += 1) {
+                    const sx = Math.min(w - 1, Math.floor((x + 0.5) * w / 8));
+                    row.push(rows[sy][sx] === '#' ? 1 : 0);
+                }
+                bits.push(row);
+            }
+            return bits;
+        };
+        if (!this.scanLetterTemplates) {
+            const exemplars = {
+                G: ['####/#.../#.##/#..#/####', '####/#..#/#.##/#..#/####', '.##./#..#/#.../#.##/#..#/.##.', '.##./#..#/#.../#.##/##.#/.##.', '.###/#..#/#.##/#..#/####', '.##./#..#/#.../#.##/#..#/.###'],
+                C: ['####/#..#/#.../#..#/####', '####/#.../#.../#..#/###.', '####/#..#/#.../#..#/.###', '.##./#..#/#.../#.../#..#/.##.'],
+                m: ['#####/#.#.#/#.#.#/#.#.#', '######/#..#.#/#..#.#/#.#.#'],
+                Y: ['#..#/#.#./.##./.#../.#..', '#..#/####/.##./.##./.##.', '#..#/#.##/.##./.##./.##.', '#.#/#.#/##./.#./.#.', '#..#/.#.#/.##./..#./..#.'],
+                b: ['#../##./#.#/#.#/#.#/##.', '#../#../###/#.#/#.#/###', '#../#../###/#../#.#/###'],
+                A: ['.##./.##./##.#/####/#..#', '.##./.##./#.#./####/#..#', '.#../.##./.##./####/####/#..#', '.#../.##./###./####/#..#/...#'],
+                F: ['###/#../##./#../#..', '###/#../###/#../#..'],
+                B: ['###/#.#/###/#.#/#.#/##.', '###/#.#/###/#.#/#.#', '####/#..#/####/#..#/####']
+            };
+            this.scanLetterTemplates = [];
+            Object.entries(exemplars).forEach(([label, list]) => {
+                list.forEach((sample) => {
+                    this.scanLetterTemplates.push({ label, bits: toBits(sample.split('/')) });
+                });
+            });
+        }
+        const templates = this.scanLetterTemplates;
+        const ham = (a, b) => {
+            let d = 0;
+            for (let y = 0; y < a.length; y += 1) {
+                for (let x = 0; x < a[y].length; x += 1) if (a[y][x] !== b[y][x]) d += 1;
+            }
+            return d;
+        };
+        const holeCount = (grid) => {
+            const rows = trim(grid);
+            if (!rows.length) return 0;
+            const h = rows.length;
+            const w = rows[0].length;
+            const empty = rows.map((row) => row.split('').map((ch) => ch === '.'));
+            const visited = empty.map((row) => row.map(() => false));
+            const queue = [];
+            const push = (x, y) => {
+                if (empty[y][x] && !visited[y][x]) {
+                    visited[y][x] = true;
+                    queue.push([x, y]);
+                }
+            };
+            for (let x = 0; x < w; x += 1) { push(x, 0); push(x, h - 1); }
+            for (let y = 0; y < h; y += 1) { push(0, y); push(w - 1, y); }
+            const flood = () => {
+                while (queue.length) {
+                    const [x, y] = queue.pop();
+                    [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([dx, dy]) => {
+                        const nx = x + dx;
+                        const ny = y + dy;
+                        if (nx >= 0 && ny >= 0 && nx < w && ny < h) push(nx, ny);
+                    });
+                }
+            };
+            flood();
+            let count = 0;
+            for (let y = 0; y < h; y += 1) {
+                for (let x = 0; x < w; x += 1) {
+                    if (!empty[y][x] || visited[y][x]) continue;
+                    count += 1;
+                    push(x, y);
+                    flood();
+                }
+            }
+            return count;
+        };
+        const spurScore = (grid) => {
+            const rows = trim(grid);
+            if (!rows.length) return 0;
+            const h = rows.length;
+            const w = rows[0].length;
+            const y0 = Math.floor(h / 3);
+            const y1 = Math.max(y0 + 1, Math.floor((2 * h) / 3));
+            const x0 = Math.max(0, w - 2);
+            let ink = 0;
+            for (let y = y0; y < y1; y += 1) {
+                for (let x = x0; x < w; x += 1) if (rows[y][x] === '#') ink += 1;
+            }
+            return ink;
+        };
+        const best = (grid, allow) => {
+            const bits = toBits(grid);
+            const scored = templates
+                .filter((item) => !allow || allow.includes(item.label))
+                .map((item) => ({ d: ham(bits, item.bits), label: item.label }))
+                .sort((a, b) => a.d - b.d);
+            let { d, label } = scored[0];
+            const by = {};
+            scored.forEach((item) => { if (by[item.label] == null) by[item.label] = item.d; });
+            if ((label === 'G' || label === 'C') && by.G != null && by.C != null && Math.abs(by.G - by.C) <= 10) {
+                label = spurScore(grid) >= 2 ? 'G' : 'C';
+                d = by[label];
+            }
+            const holes = holeCount(grid);
+            const rows = trim(grid);
+            const glyphWidth = rows.length ? rows[0].length : 0;
+            if (label === 'B' && holes === 0) {
+                const next = scored.find((item) => item.label !== 'B');
+                if (next) { label = next.label; d = next.d; }
+            } else if (holes >= 2 && glyphWidth <= 6 && label !== 'B') {
+                label = 'B';
+            }
+            return { label, d };
+        };
+        const readBlob = (grid) => {
+            let rows = trim(grid);
+            if (!rows.length) return '';
+            if (looksM(rows)) return 'm';
+            const letters = [];
+            for (let guard = 0; rows.length && guard < 6; guard += 1) {
+                const w = rows[0].length;
+                if (w <= 5) {
+                    const match = best(rows);
+                    letters.push(match.d <= 34 ? match.label : '?');
+                    break;
+                }
+                let found = null;
+                const maxWidth = Math.min(7, w - 2);
+                for (let width = 3; width <= maxWidth; width += 1) {
+                    const piece = trim(rows.map((row) => row.slice(w - width)));
+                    const left = trim(rows.map((row) => row.slice(0, w - width)));
+                    if (!piece.length || piece[0].length < 2 || !left.length) continue;
+                    const pieceMatch = looksM(piece) ? { label: 'm', d: 0 } : best(piece, ['Y', 'b']);
+                    const leftMatch = best(left);
+                    const leftM = looksM(left) || (leftMatch.label === 'm' && leftMatch.d <= 18);
+                    const leftB = holeCount(left) >= 2 && left[0].length <= 6;
+                    const cut = w - width;
+                    let body = 0;
+                    for (let y = Math.floor(rows.length / 3); y < rows.length; y += 1) {
+                        if (rows[y][Math.min(cut, w - 1)] === '#') body += 1;
+                    }
+                    let score = pieceMatch.d + body * 4;
+                    if (leftM) score -= 18;
+                    if (leftB) score -= 12;
+                    if (leftMatch.d > 36 && !leftM && !leftB) score += 40;
+                    const allowD = (leftM || leftB) ? 40 : 30;
+                    if (pieceMatch.d <= allowD && (!found || score < found.score)) {
+                        found = { score, width, label: pieceMatch.label, d: pieceMatch.d };
+                    }
+                }
+                const whole = best(rows);
+                if (found && (whole.d > found.d + 4 || w >= 7)) {
+                    letters.push(found.label);
+                    rows = trim(rows.map((row) => row.slice(0, row.length - found.width)));
+                    continue;
+                }
+                letters.push(whole.d <= 36 ? whole.label : '?');
+                break;
+            }
+            return letters.reverse().join('');
+        };
+        const mergedGrid = (parts) => {
+            const x0 = Math.min(...parts.map((part) => part.x0));
+            const x1 = Math.max(...parts.map((part) => part.x1));
+            const y0 = Math.min(...parts.map((part) => part.y0));
+            const y1 = Math.max(...parts.map((part) => part.y1));
+            const cells = parts.flatMap((part) => part.cells);
+            return gridOf(cells, x0, y0, x1, y1);
+        };
+        comps.sort((a, b) => ((a.y0 + a.y1) / 2) - ((b.y0 + b.y1) / 2) || a.x0 - b.x0);
+        const rows = [];
+        comps.forEach((comp) => {
+            const cy = (comp.y0 + comp.y1) / 2;
+            const row = rows.find((item) => Math.abs(item.cy - cy) <= 3.2);
+            if (row) {
+                row.items.push(comp);
+                row.cy = row.items.reduce((sum, item) => sum + (item.y0 + item.y1) / 2, 0) / row.items.length;
+            } else rows.push({ cy, items: [comp] });
+        });
+        const words = [];
+        rows.forEach((row) => {
+            const items = row.items.slice().sort((a, b) => a.x0 - b.x0);
+            const letters = [];
+            items.forEach((comp) => {
+                const prev = letters[letters.length - 1];
+                if (prev && comp.x0 - prev.x1 - 1 <= 1 && looksM(mergedGrid(prev.parts.concat(comp)))) {
+                    prev.parts.push(comp);
+                    prev.x1 = comp.x1;
+                    return;
+                }
+                letters.push({ parts: [comp], x0: comp.x0, x1: comp.x1 });
+            });
+            const groups = [];
+            letters.forEach((letter) => {
+                const prev = groups[groups.length - 1];
+                const last = prev && prev[prev.length - 1];
+                if (last && letter.x0 - last.x1 - 1 >= 3) groups.push([letter]);
+                else if (prev) prev.push(letter);
+                else groups.push([letter]);
+            });
+            groups.forEach((group) => {
+                const text = group.map((letter) => readBlob(mergedGrid(letter.parts))).join('');
+                if (!/^[A-G][#b]?m?Y?$/.test(text)) return;
+                const ys = group.flatMap((letter) => letter.parts.flatMap((part) => [part.y0, part.y1]));
+                words.push({
+                    text,
+                    x0: group[0].x0,
+                    x1: group[group.length - 1].x1,
+                    y0: Math.min(...ys),
+                    y1: Math.max(...ys)
+                });
+            });
+        });
+        return { words, medianHeight };
+    }
+
+    isScanRedPixel(r, g, b) {
+        return r > 105 && r > g + 20 && r > b + 20 && g < 205 && b < 205;
+    }
+
+    scanRenderScale(image) {
+        const minWidth = 1200;
+        const maxWidth = 1500;
+        if (!image?.width) return 1;
+        if (image.width > maxWidth) return maxWidth / image.width;
+        if (image.width < minWidth) return minWidth / image.width;
+        return 1;
+    }
+
+    scanStrips(image, scale) {
+        const full = image.height * scale;
+        const windowPx = 1300;
+        const overlapPx = 260;
+        if (full <= windowPx + 80) {
+            return [{ y: 0, h: image.height, ownY: 0, ownEnd: image.height }];
+        }
+        const ownSrc = Math.max(40, Math.round((windowPx - overlapPx) / scale));
+        const padSrc = Math.max(16, Math.round((overlapPx / 2) / scale));
+        const strips = [];
+        for (let ownY = 0; ownY < image.height; ownY += ownSrc) {
+            const ownEnd = Math.min(image.height, ownY + ownSrc);
+            const y = Math.max(0, ownY - padSrc);
+            const end = Math.min(image.height, ownEnd + padSrc);
+            strips.push({ y, h: Math.max(1, end - y), ownY, ownEnd });
+            if (ownEnd >= image.height) break;
+        }
+        return strips;
+    }
+
+    scanUsesSeparateColors(image) {
+        const scale = Math.min(1, 360 / Math.max(1, image.width));
         const w = Math.max(1, Math.round(image.width * scale));
         const h = Math.max(1, Math.round(image.height * scale));
-        const base = document.createElement('canvas');
-        base.width = w;
-        base.height = h;
-        const ctx = base.getContext('2d', { willReadFrequently: true });
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d', { willReadFrequently: true });
+        ctx.imageSmoothingEnabled = scale < 0.99;
         ctx.drawImage(image, 0, 0, w, h);
-        const src = ctx.getImageData(0, 0, w, h).data;
+        const data = ctx.getImageData(0, 0, w, h).data;
+        let red = 0;
+        let dark = 0;
+        for (let i = 0; i < data.length; i += 16) {
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            if (this.isScanRedPixel(r, g, b)) red += 1;
+            else if ((r + g + b) < 400) dark += 1;
+        }
+        return red > 25 && red > dark * 0.035;
+    }
+
+    renderScanStrip(image, strip, scale, separate) {
+        const pad = 24;
+        const dw = Math.max(1, Math.round(image.width * scale));
+        const dh = Math.max(1, Math.round(strip.h * scale));
+        const base = document.createElement('canvas');
+        base.width = dw + pad * 2;
+        base.height = dh + pad * 2;
+        const ctx = base.getContext('2d', { willReadFrequently: true });
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, base.width, base.height);
+        ctx.imageSmoothingEnabled = scale < 1.05;
+        ctx.drawImage(image, 0, strip.y, image.width, strip.h, pad, pad, dw, dh);
+        const src = ctx.getImageData(0, 0, base.width, base.height).data;
         const chordCanvas = document.createElement('canvas');
-        const lyricCanvas = document.createElement('canvas');
-        chordCanvas.width = lyricCanvas.width = w;
-        chordCanvas.height = lyricCanvas.height = h;
-        const chordData = chordCanvas.getContext('2d').createImageData(w, h);
-        const lyricData = lyricCanvas.getContext('2d').createImageData(w, h);
-        let redCount = 0;
-        let darkCount = 0;
+        chordCanvas.width = base.width;
+        chordCanvas.height = base.height;
+        const chordData = chordCanvas.getContext('2d').createImageData(base.width, base.height);
+        let lyricCanvas = null;
+        let lyricData = null;
+        if (separate) {
+            lyricCanvas = document.createElement('canvas');
+            lyricCanvas.width = base.width;
+            lyricCanvas.height = base.height;
+            lyricData = lyricCanvas.getContext('2d').createImageData(base.width, base.height);
+        }
         for (let i = 0; i < src.length; i += 4) {
             const r = src[i];
             const g = src[i + 1];
             const b = src[i + 2];
-            const isRed = r > 110 && r > g + 25 && r > b + 25 && g < 190 && b < 190;
-            const isDark = (r + g + b) < 380;
-            if (isRed) redCount++;
-            if (isDark && !isRed) darkCount++;
-            this.paintScanPixel(chordData.data, i, isRed);
-            this.paintScanPixel(lyricData.data, i, isDark && !isRed);
-        }
-        const separate = redCount > 400 && redCount > darkCount * 0.04;
-        if (!separate) {
-            for (let i = 0; i < src.length; i += 4) {
-                const r = src[i];
-                const g = src[i + 1];
-                const b = src[i + 2];
-                const on = (r + g + b) < 420 || (r > 110 && r > g + 25 && r > b + 25);
-                this.paintScanPixel(chordData.data, i, on);
+            const red = this.isScanRedPixel(r, g, b);
+            const dark = (r + g + b) < 400 && !red;
+            if (separate) {
+                this.paintScanPixel(chordData.data, i, red);
+                this.paintScanPixel(lyricData.data, i, dark);
+            } else {
+                this.paintScanPixel(chordData.data, i, red || dark);
             }
-            chordCanvas.getContext('2d').putImageData(chordData, 0, 0);
-            return { chordCanvas, lyricCanvas: null };
         }
         chordCanvas.getContext('2d').putImageData(chordData, 0, 0);
-        lyricCanvas.getContext('2d').putImageData(lyricData, 0, 0);
-        return { chordCanvas, lyricCanvas };
+        if (lyricCanvas) lyricCanvas.getContext('2d').putImageData(lyricData, 0, 0);
+        return { chordCanvas, lyricCanvas, pad };
     }
 
     paintScanPixel(data, index, on) {
@@ -6035,10 +6485,10 @@ class ChordAnnotatorApp {
         data[index + 3] = 255;
     }
 
-    async recognizeScanLayer(Tesseract, canvas, lang, label) {
-        this.setScanStatus(`${label}…`);
+    async createScanWorker(Tesseract, lang, psm, whitelist) {
         const worker = await Tesseract.createWorker(lang, 1, {
             logger: (message) => {
+                const label = this.scanOcrLabel || 'Reading';
                 if (message.status === 'recognizing text') {
                     const pct = Math.round((message.progress || 0) * 100);
                     this.setScanStatus(`${label}… ${pct}%`);
@@ -6047,30 +6497,66 @@ class ChordAnnotatorApp {
                 }
             }
         });
-        try {
-            const { data } = await worker.recognize(canvas);
-            return (data.words || []).map((word) => ({
-                text: String(word.text || '').replace(/[\u200e\u200f\u202a-\u202e\u2066-\u2069]/g, '').trim(),
-                confidence: word.confidence || 0,
-                x0: word.bbox.x0,
-                y0: word.bbox.y0,
-                x1: word.bbox.x1,
-                y1: word.bbox.y1
-            })).filter((word) => word.text);
-        } finally {
-            await worker.terminate();
-        }
+        const params = {
+            tessedit_pageseg_mode: String(psm),
+            user_defined_dpi: '300'
+        };
+        if (whitelist) params.tessedit_char_whitelist = whitelist;
+        await worker.setParameters(params);
+        return worker;
     }
 
-    normalizeScanChord(text) {
-        const token = String(text || '').replace(/\s+/g, '').replace(/♯/g, '#').replace(/♭/g, 'b');
+    async recognizeScanCanvas(worker, canvas) {
+        const { data } = await worker.recognize(canvas);
+        return (data.words || []).map((word) => ({
+            text: String(word.text || '').replace(/[\u200e\u200f\u202a-\u202e\u2066-\u2069]/g, '').trim(),
+            confidence: word.confidence || 0,
+            x0: word.bbox.x0,
+            y0: word.bbox.y0,
+            x1: word.bbox.x1,
+            y1: word.bbox.y1
+        })).filter((word) => word.text);
+    }
+
+    offsetScanWords(words, origin, pad) {
+        return (words || []).map((word) => ({
+            ...word,
+            x0: word.x0 - pad,
+            x1: word.x1 - pad,
+            y0: word.y0 - pad + origin,
+            y1: word.y1 - pad + origin
+        })).filter((word) => word.x1 > word.x0 + 1 && word.y1 > word.y0 + 1);
+    }
+
+    ownScanWords(words, start, end) {
+        return words.filter((word) => {
+            const cy = (word.y0 + word.y1) / 2;
+            return cy >= start && cy < end;
+        });
+    }
+
+    acceptScanChord(token) {
         if (!/^[A-Ga-g][#b]?/.test(token) || token.length > 12) return '';
         const parsed = MusicTheory.parseChordRoot(token);
         if (!parsed) return '';
         const quality = parsed.quality || '';
-        if (quality && !/^(m|min|mi|maj|dim|aug|sus|add|M)?\d*(sus\d*|add\d*|b\d+|#\d+)*$/i.test(quality)) return '';
+        if (quality && !/^(m|min|mi|maj|dim|aug|sus|add|M)?\d*(sus\d*|add\d*|b\d+|#\d+)*Y?$/i.test(quality)) return '';
         const rebuilt = `${parsed.root}${quality}`;
         return rebuilt.toLowerCase() === token.toLowerCase() ? rebuilt : '';
+    }
+
+    normalizeScanChord(text) {
+        const cleaned = String(text || '')
+            .replace(/\s+/g, '')
+            .replace(/♯/g, '#')
+            .replace(/♭/g, 'b')
+            .replace(/[|]/g, '');
+        const direct = this.acceptScanChord(cleaned);
+        if (direct) return direct;
+        const repaired = cleaned
+            .replace(/^6(?=[b#mM]|$)/, 'G')
+            .replace(/^8(?=[b#mM]|$)/, 'B');
+        return repaired === cleaned ? '' : this.acceptScanChord(repaired);
     }
 
     isScanLyricWord(text) {
@@ -6091,20 +6577,16 @@ class ChordAnnotatorApp {
                     return;
                 }
             }
-            if (this.isScanLyricWord(word.text) && word.confidence >= 45 && (word.y1 - word.y0) < 90) {
-                lyrics.push(word);
-            }
+            if (this.isScanLyricWord(word.text) && word.confidence >= 40) lyrics.push(word);
         });
         if (!mixed) {
             chordSource.forEach((word) => {
                 const chord = this.normalizeScanChord(word.text);
-                if (chord && word.confidence >= 50) chords.push({ ...word, text: chord });
+                if (chord && word.confidence >= 35) chords.push({ ...word, text: chord });
             });
         }
 
-        const centers = lyrics.map((word) => (word.x0 + word.x1) / 2).sort((a, b) => a - b);
-        const medianX = centers.length ? centers[Math.floor(centers.length / 2)] : 0;
-        const lyricWords = lyrics.filter((word) => ((word.x0 + word.x1) / 2) > medianX - 280);
+        const lyricWords = this.keepScanLyricCluster(this.keepScanLyricHeights(lyrics));
 
         const lines = [];
         lyricWords
@@ -6123,18 +6605,29 @@ class ChordAnnotatorApp {
                 line.y1 = Math.max(line.y1, word.y1);
             });
 
+        lines.sort((a, b) => a.cy - b.cy);
+        const spacings = [];
+        for (let i = 1; i < lines.length; i += 1) {
+            const gap = lines[i].cy - lines[i - 1].cy;
+            if (gap > 0) spacings.push(gap);
+        }
+        spacings.sort((a, b) => a - b);
+        const typical = spacings.length ? spacings[Math.floor(spacings.length / 2)] : 80;
+        const maxGap = Math.max(typical * 1.05, (lines[0]?.h || 24) * 2.4);
+
         const orphans = [];
         chords.forEach((chord) => {
             const cy = (chord.y0 + chord.y1) / 2;
             const cx = (chord.x0 + chord.x1) / 2;
             let bestLine = null;
-            let bestGap = Infinity;
+            let bestScore = Infinity;
             lines.forEach((line) => {
-                if (line.cy <= cy) return;
+                if (line.cy < cy - line.h * 0.25) return;
                 const gap = line.y0 - chord.y1;
-                if (gap > Math.max(80, line.h * 3)) return;
-                if (gap < bestGap) {
-                    bestGap = gap;
+                if (gap > maxGap || gap < -line.h) return;
+                const score = gap < 0 ? Math.abs(gap) : gap;
+                if (score < bestScore) {
+                    bestScore = score;
                     bestLine = line;
                 }
             });
@@ -6155,6 +6648,7 @@ class ChordAnnotatorApp {
         });
 
         const chart = lines.map((line) => ({
+            y: line.cy,
             words: line.words
                 .sort((a, b) => ((b.x0 + b.x1) / 2) - ((a.x0 + a.x1) / 2))
                 .map((word) => ({
@@ -6164,13 +6658,49 @@ class ChordAnnotatorApp {
             chords: []
         })).filter((line) => line.words.length);
 
-        if (orphans.length) {
+        const rowTol = Math.max(12, typical * 0.35);
+        const orphanRows = [];
+        orphans.sort((a, b) => a.y - b.y);
+        orphans.forEach((chord) => {
+            const row = orphanRows.find((item) => Math.abs(item.y - chord.y) <= rowTol);
+            if (!row) {
+                orphanRows.push({ y: chord.y, chords: [chord] });
+                return;
+            }
+            row.chords.push(chord);
+            row.y = row.chords.reduce((sum, item) => sum + item.y, 0) / row.chords.length;
+        });
+        orphanRows.forEach((row) => {
             chart.push({
+                y: row.y,
                 words: [],
-                chords: orphans.sort((a, b) => b.x - a.x).map((chord) => chord.text)
+                chords: row.chords.sort((a, b) => b.x - a.x).map((chord) => chord.text)
             });
-        }
-        return chart;
+        });
+        chart.sort((a, b) => a.y - b.y);
+        return chart.map((line) => ({ words: line.words, chords: line.chords }));
+    }
+
+    keepScanLyricHeights(words) {
+        if (!words.length) return words;
+        const heights = words.map((word) => word.y1 - word.y0).sort((a, b) => a - b);
+        const median = heights[Math.floor(heights.length / 2)] || 20;
+        return words.filter((word) => {
+            const height = word.y1 - word.y0;
+            return height >= median * 0.35 && height <= median * 3.2;
+        });
+    }
+
+    keepScanLyricCluster(words) {
+        if (words.length < 4) return words;
+        const xs = words.map((word) => (word.x0 + word.x1) / 2).sort((a, b) => a - b);
+        const q1 = xs[Math.floor(xs.length * 0.25)];
+        const q3 = xs[Math.floor(xs.length * 0.75)];
+        const iqr = Math.max(24, q3 - q1);
+        return words.filter((word) => {
+            const x = (word.x0 + word.x1) / 2;
+            return x >= q1 - iqr * 1.8 && x <= q3 + iqr * 1.8;
+        });
     }
 
     renderScanChart() {
