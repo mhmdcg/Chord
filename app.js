@@ -103,6 +103,12 @@ class ChordAnnotatorApp {
         document.getElementById('newSongBtn').addEventListener('click', () => this.createNewSong());
         document.getElementById('allChordsBtn').addEventListener('click', () => this.showView('allChords'));
         document.getElementById('liveModeBtn').addEventListener('click', () => this.showView('live'));
+        document.getElementById('scanChordsBtn').addEventListener('click', () => this.showView('scan'));
+        document.getElementById('backFromScanBtn').addEventListener('click', () => this.showView('songList'));
+        document.getElementById('scanImageInput').addEventListener('change', (e) => this.onScanImageChosen(e));
+        document.getElementById('scanReadBtn').addEventListener('click', () => this.readScanImage());
+        document.getElementById('scanTransposeUpBtn').addEventListener('click', () => this.shiftScanChords(1));
+        document.getElementById('scanTransposeDownBtn').addEventListener('click', () => this.shiftScanChords(-1));
         document.getElementById('backFromAllChordsBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('backFromLiveBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('liveSongSelect').addEventListener('change', (e) => {
@@ -317,6 +323,9 @@ class ChordAnnotatorApp {
         } else if (viewName === 'live') {
             this.enterLiveMode();
             return;
+        } else if (viewName === 'scan') {
+            this.closeChordModal();
+            document.getElementById('scanView').classList.add('active');
         } else if (viewName === 'editor') {
             this.closeChordModal();
             document.getElementById('editorView').classList.add('active');
@@ -5742,6 +5751,323 @@ class ChordAnnotatorApp {
                 await this.pushToGithub();
             }
         }
+    }
+
+    onScanImageChosen(event) {
+        const file = event.target.files && event.target.files[0];
+        this.scanFile = file || null;
+        const preview = document.getElementById('scanPreview');
+        const readBtn = document.getElementById('scanReadBtn');
+        if (this.scanPreviewUrl) {
+            URL.revokeObjectURL(this.scanPreviewUrl);
+            this.scanPreviewUrl = '';
+        }
+        if (!file) {
+            preview.hidden = true;
+            preview.removeAttribute('src');
+            readBtn.disabled = true;
+            return;
+        }
+        this.scanPreviewUrl = URL.createObjectURL(file);
+        preview.src = this.scanPreviewUrl;
+        preview.hidden = false;
+        readBtn.disabled = false;
+        document.getElementById('scanStatus').textContent = '';
+    }
+
+    shiftScanChords(steps) {
+        if (!this.scanChart || !steps) return;
+        this.scanSemitones = (this.scanSemitones || 0) + steps;
+        this.renderScanChart();
+    }
+
+    setScanStatus(text) {
+        const status = document.getElementById('scanStatus');
+        if (status) status.textContent = text || '';
+    }
+
+    async ensureTesseract() {
+        if (window.Tesseract) return window.Tesseract;
+        await new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
+            script.onload = () => resolve();
+            script.onerror = () => reject(new Error('Could not load the text reader. Check your connection and try again.'));
+            document.head.appendChild(script);
+        });
+        if (!window.Tesseract) throw new Error('Could not load the text reader.');
+        return window.Tesseract;
+    }
+
+    async readScanImage() {
+        if (!this.scanFile || this.scanBusy) return;
+        this.scanBusy = true;
+        const readBtn = document.getElementById('scanReadBtn');
+        readBtn.disabled = true;
+        document.getElementById('scanResult').hidden = true;
+        this.scanChart = null;
+        this.scanSemitones = 0;
+        try {
+            this.setScanStatus('Preparing the photo…');
+            const image = await createImageBitmap(this.scanFile);
+            const layers = this.scanImageLayers(image);
+            image.close?.();
+            const Tesseract = await this.ensureTesseract();
+            const chordWords = await this.recognizeScanLayer(Tesseract, layers.chordCanvas, layers.lyricCanvas ? 'eng' : 'fas+eng', 'Reading chords');
+            const lyricWords = layers.lyricCanvas
+                ? await this.recognizeScanLayer(Tesseract, layers.lyricCanvas, 'fas', 'Reading lyrics')
+                : chordWords;
+            this.scanChart = this.buildScanChart(chordWords, lyricWords, !layers.lyricCanvas);
+            this.scanSemitones = 0;
+            if (!this.scanChart.length) {
+                this.setScanStatus('No lyrics or chords were found in that photo.');
+                return;
+            }
+            const chordCount = this.scanChart.reduce((sum, line) => sum + line.words.reduce((n, word) => n + word.chords.length, 0) + (line.chords?.length || 0), 0);
+            this.setScanStatus(chordCount
+                ? `Found ${chordCount} chord${chordCount === 1 ? '' : 's'}.`
+                : 'Lyrics were found, but no chords could be read.');
+            document.getElementById('scanResult').hidden = false;
+            this.renderScanChart();
+        } catch (error) {
+            console.error(error);
+            this.setScanStatus(error.message || 'Could not read that photo.');
+        } finally {
+            this.scanBusy = false;
+            readBtn.disabled = !this.scanFile;
+        }
+    }
+
+    scanImageLayers(image) {
+        const maxW = 1600;
+        const scale = Math.min(1, maxW / image.width);
+        const w = Math.max(1, Math.round(image.width * scale));
+        const h = Math.max(1, Math.round(image.height * scale));
+        const base = document.createElement('canvas');
+        base.width = w;
+        base.height = h;
+        const ctx = base.getContext('2d', { willReadFrequently: true });
+        ctx.drawImage(image, 0, 0, w, h);
+        const src = ctx.getImageData(0, 0, w, h).data;
+        const chordCanvas = document.createElement('canvas');
+        const lyricCanvas = document.createElement('canvas');
+        chordCanvas.width = lyricCanvas.width = w;
+        chordCanvas.height = lyricCanvas.height = h;
+        const chordData = chordCanvas.getContext('2d').createImageData(w, h);
+        const lyricData = lyricCanvas.getContext('2d').createImageData(w, h);
+        let redCount = 0;
+        let darkCount = 0;
+        for (let i = 0; i < src.length; i += 4) {
+            const r = src[i];
+            const g = src[i + 1];
+            const b = src[i + 2];
+            const isRed = r > 110 && r > g + 25 && r > b + 25 && g < 190 && b < 190;
+            const isDark = (r + g + b) < 380;
+            if (isRed) redCount++;
+            if (isDark && !isRed) darkCount++;
+            this.paintScanPixel(chordData.data, i, isRed);
+            this.paintScanPixel(lyricData.data, i, isDark && !isRed);
+        }
+        const separate = redCount > 400 && redCount > darkCount * 0.04;
+        if (!separate) {
+            for (let i = 0; i < src.length; i += 4) {
+                const r = src[i];
+                const g = src[i + 1];
+                const b = src[i + 2];
+                const on = (r + g + b) < 420 || (r > 110 && r > g + 25 && r > b + 25);
+                this.paintScanPixel(chordData.data, i, on);
+            }
+            chordCanvas.getContext('2d').putImageData(chordData, 0, 0);
+            return { chordCanvas, lyricCanvas: null };
+        }
+        chordCanvas.getContext('2d').putImageData(chordData, 0, 0);
+        lyricCanvas.getContext('2d').putImageData(lyricData, 0, 0);
+        return { chordCanvas, lyricCanvas };
+    }
+
+    paintScanPixel(data, index, on) {
+        const value = on ? 0 : 255;
+        data[index] = value;
+        data[index + 1] = value;
+        data[index + 2] = value;
+        data[index + 3] = 255;
+    }
+
+    async recognizeScanLayer(Tesseract, canvas, lang, label) {
+        this.setScanStatus(`${label}…`);
+        const worker = await Tesseract.createWorker(lang, 1, {
+            logger: (message) => {
+                if (message.status === 'recognizing text') {
+                    const pct = Math.round((message.progress || 0) * 100);
+                    this.setScanStatus(`${label}… ${pct}%`);
+                } else if (message.status) {
+                    this.setScanStatus(`${label}…`);
+                }
+            }
+        });
+        try {
+            const { data } = await worker.recognize(canvas);
+            return (data.words || []).map((word) => ({
+                text: String(word.text || '').replace(/[\u200e\u200f\u202a-\u202e\u2066-\u2069]/g, '').trim(),
+                confidence: word.confidence || 0,
+                x0: word.bbox.x0,
+                y0: word.bbox.y0,
+                x1: word.bbox.x1,
+                y1: word.bbox.y1
+            })).filter((word) => word.text);
+        } finally {
+            await worker.terminate();
+        }
+    }
+
+    normalizeScanChord(text) {
+        const token = String(text || '').replace(/\s+/g, '').replace(/♯/g, '#').replace(/♭/g, 'b');
+        if (!/^[A-Ga-g][#b]?/.test(token) || token.length > 12) return '';
+        const parsed = MusicTheory.parseChordRoot(token);
+        if (!parsed) return '';
+        const quality = parsed.quality || '';
+        if (quality && !/^(m|min|mi|maj|dim|aug|sus|add|M)?\d*(sus\d*|add\d*|b\d+|#\d+)*$/i.test(quality)) return '';
+        const rebuilt = `${parsed.root}${quality}`;
+        return rebuilt.toLowerCase() === token.toLowerCase() ? rebuilt : '';
+    }
+
+    isScanLyricWord(text) {
+        const compact = String(text || '').replace(/\s/g, '');
+        const letters = compact.replace(/[^\u0600-\u06FF]/g, '');
+        return letters.length >= 1 && letters.length >= compact.length * 0.6;
+    }
+
+    buildScanChart(chordSource, lyricSource, mixed) {
+        const chords = [];
+        const lyrics = [];
+        const source = mixed ? chordSource : lyricSource;
+        source.forEach((word) => {
+            if (mixed) {
+                const chord = this.normalizeScanChord(word.text);
+                if (chord && word.confidence >= 40) {
+                    chords.push({ ...word, text: chord });
+                    return;
+                }
+            }
+            if (this.isScanLyricWord(word.text) && word.confidence >= 45 && (word.y1 - word.y0) < 90) {
+                lyrics.push(word);
+            }
+        });
+        if (!mixed) {
+            chordSource.forEach((word) => {
+                const chord = this.normalizeScanChord(word.text);
+                if (chord && word.confidence >= 50) chords.push({ ...word, text: chord });
+            });
+        }
+
+        const centers = lyrics.map((word) => (word.x0 + word.x1) / 2).sort((a, b) => a - b);
+        const medianX = centers.length ? centers[Math.floor(centers.length / 2)] : 0;
+        const lyricWords = lyrics.filter((word) => ((word.x0 + word.x1) / 2) > medianX - 280);
+
+        const lines = [];
+        lyricWords
+            .map((word) => ({ ...word, cy: (word.y0 + word.y1) / 2, h: Math.max(8, word.y1 - word.y0), chords: [] }))
+            .sort((a, b) => a.cy - b.cy)
+            .forEach((word) => {
+                const line = lines.find((item) => Math.abs(item.cy - word.cy) < Math.max(item.h, word.h) * 0.65);
+                if (!line) {
+                    lines.push({ cy: word.cy, h: word.h, y0: word.y0, y1: word.y1, words: [word] });
+                    return;
+                }
+                line.words.push(word);
+                line.cy = line.words.reduce((sum, item) => sum + item.cy, 0) / line.words.length;
+                line.h = Math.max(line.h, word.h);
+                line.y0 = Math.min(line.y0, word.y0);
+                line.y1 = Math.max(line.y1, word.y1);
+            });
+
+        const orphans = [];
+        chords.forEach((chord) => {
+            const cy = (chord.y0 + chord.y1) / 2;
+            const cx = (chord.x0 + chord.x1) / 2;
+            let bestLine = null;
+            let bestGap = Infinity;
+            lines.forEach((line) => {
+                if (line.cy <= cy) return;
+                const gap = line.y0 - chord.y1;
+                if (gap > Math.max(80, line.h * 3)) return;
+                if (gap < bestGap) {
+                    bestGap = gap;
+                    bestLine = line;
+                }
+            });
+            if (!bestLine) {
+                orphans.push({ text: chord.text, x: cx, y: cy });
+                return;
+            }
+            let bestWord = null;
+            let bestDx = Infinity;
+            bestLine.words.forEach((word) => {
+                const dx = Math.abs(((word.x0 + word.x1) / 2) - cx);
+                if (dx < bestDx) {
+                    bestDx = dx;
+                    bestWord = word;
+                }
+            });
+            if (bestWord) bestWord.chords.push({ text: chord.text, x: cx });
+        });
+
+        const chart = lines.map((line) => ({
+            words: line.words
+                .sort((a, b) => ((b.x0 + b.x1) / 2) - ((a.x0 + a.x1) / 2))
+                .map((word) => ({
+                    text: word.text,
+                    chords: word.chords.sort((a, b) => a.x - b.x).map((chord) => chord.text)
+                })),
+            chords: []
+        })).filter((line) => line.words.length);
+
+        if (orphans.length) {
+            chart.push({
+                words: [],
+                chords: orphans.sort((a, b) => b.x - a.x).map((chord) => chord.text)
+            });
+        }
+        return chart;
+    }
+
+    renderScanChart() {
+        const host = document.getElementById('scanChart');
+        const label = document.getElementById('scanIntervalLabel');
+        if (!host) return;
+        const steps = this.scanSemitones || 0;
+        if (label) {
+            label.textContent = steps === 0 ? 'Original' : (steps > 0 ? `+${steps}` : `−${Math.abs(steps)}`);
+        }
+        host.replaceChildren();
+        (this.scanChart || []).forEach((line) => {
+            const row = document.createElement('div');
+            row.className = line.words.length ? 'scan-line' : 'scan-line scan-line-chords-only';
+            if (!line.words.length) {
+                line.chords.forEach((chord) => row.appendChild(this.scanChordElement(chord, steps)));
+            } else {
+                line.words.forEach((word) => {
+                    const wordEl = document.createElement('span');
+                    wordEl.className = 'scan-word';
+                    if (word.chords.length) {
+                        const chords = document.createElement('span');
+                        chords.className = 'scan-chords';
+                        word.chords.forEach((chord) => chords.appendChild(this.scanChordElement(chord, steps)));
+                        wordEl.appendChild(chords);
+                    }
+                    wordEl.appendChild(document.createTextNode(word.text));
+                    row.appendChild(wordEl);
+                });
+            }
+            host.appendChild(row);
+        });
+    }
+
+    scanChordElement(chord, steps) {
+        const el = document.createElement('span');
+        el.className = 'scan-chord';
+        el.textContent = MusicTheory.transposeChordName(chord, steps);
+        return el;
     }
 
     updateSyncBanner(detail) {

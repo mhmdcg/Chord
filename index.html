@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20260915f">
+    <link rel="stylesheet" href="styles.css?v=20261030a">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,6 +19,7 @@
                 <div class="header-end">
                     <button id="allChordsBtn" class="btn btn-secondary" type="button">All chords</button>
                     <button id="liveModeBtn" class="btn btn-secondary" type="button">Live mode</button>
+                    <button id="scanChordsBtn" class="btn btn-secondary" type="button">Scan</button>
                     <button id="syncSettingsBtn" class="btn btn-secondary" type="button">GitHub</button>
                     <button id="newSongBtn" class="btn btn-primary">+ New Song</button>
                 </div>
@@ -106,6 +107,34 @@
                     </button>
                 </div>
                 <div id="liveLyricsHost" class="live-lyrics-host"></div>
+            </div>
+        </div>
+
+        <!-- Scan chords from a photo -->
+        <div id="scanView" class="view">
+            <div class="header">
+                <button id="backFromScanBtn" class="btn btn-secondary" type="button">← Back</button>
+                <h2>Scan chords</h2>
+            </div>
+            <div class="scan-body">
+                <p class="scan-help">Choose a photo of lyrics with the chords written above them.</p>
+                <div class="scan-actions">
+                    <label class="btn btn-secondary scan-pick">
+                        Choose photo
+                        <input id="scanImageInput" type="file" accept="image/*" hidden />
+                    </label>
+                    <button id="scanReadBtn" class="btn btn-primary" type="button" disabled>Read chords</button>
+                </div>
+                <img id="scanPreview" class="scan-preview" alt="" hidden />
+                <p id="scanStatus" class="scan-status"></p>
+                <div id="scanResult" hidden>
+                    <div class="scan-toolbar" role="group" aria-label="Transpose chords">
+                        <button type="button" id="scanTransposeDownBtn" class="live-transpose-btn" aria-label="Transpose down a half step">−</button>
+                        <span id="scanIntervalLabel" class="scan-interval">Original</span>
+                        <button type="button" id="scanTransposeUpBtn" class="live-transpose-btn" aria-label="Transpose up a half step">+</button>
+                    </div>
+                    <div id="scanChart" class="scan-chart"></div>
+                </div>
             </div>
         </div>
 
@@ -329,6 +358,6 @@
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="music-theory.js?v=20260905c"></script>
-    <script src="app.js?v=20260915f"></script>
+    <script src="app.js?v=20261030a"></script>
 </body>
 </html>
