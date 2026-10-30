@@ -295,6 +295,42 @@ body {
     cursor: default;
 }
 
+.link-import {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 0;
+}
+
+.link-import-help {
+    color: var(--text-light);
+    margin-bottom: 0.55rem;
+}
+
+.link-import-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.link-import-row input {
+    flex: 1 1 16rem;
+    min-width: 0;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.link-import-status {
+    min-height: 1.25em;
+    margin: 0.45rem 0 0;
+    color: var(--text-light);
+}
+
 /* Song List */
 .song-list {
     padding: 1.5rem;
@@ -2353,6 +2389,10 @@ body.live-fullscreen {
         padding: 0;
     }
     
+    .link-import {
+        padding: 0.85rem 1rem 0;
+    }
+
     .song-list,
     .editor-container,
     .annotation-container,

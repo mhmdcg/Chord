@@ -86,6 +86,7 @@ class ChordAnnotatorApp {
         this.githubPushInFlight = false;
         this.githubPushQueued = false;
         this.syncState = 'loading';
+        this.linkBusy = false;
 
         this.init();
     }
@@ -113,6 +114,11 @@ class ChordAnnotatorApp {
         document.getElementById('scanTransposeUpBtn').addEventListener('click', () => this.shiftScanChords(1));
         document.getElementById('scanTransposeDownBtn').addEventListener('click', () => this.shiftScanChords(-1));
         document.getElementById('scanResetBtn').addEventListener('click', () => this.resetScanChords());
+        document.getElementById('linkImportForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            this.importFromLink();
+        });
+        document.getElementById('linkPasteBtn').addEventListener('click', () => this.pasteLink());
         document.getElementById('backFromAllChordsBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('backFromLiveBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('liveSongSelect').addEventListener('change', (e) => {
@@ -5925,6 +5931,167 @@ class ChordAnnotatorApp {
     setScanStatus(text) {
         const status = document.getElementById('scanStatus');
         if (status) status.textContent = text || '';
+    }
+
+    setLinkStatus(text) {
+        const status = document.getElementById('linkImportStatus');
+        if (status) status.textContent = text || '';
+    }
+
+    async pasteLink() {
+        const input = document.getElementById('linkImportInput');
+        if (!navigator.clipboard || !navigator.clipboard.readText) {
+            this.setLinkStatus('Pasting is not available. Tap the field and paste the link.');
+            if (input) input.focus();
+            return;
+        }
+        try {
+            const text = await navigator.clipboard.readText();
+            const url = LinkCharts.parsePublicHttpUrl(text, window.location.origin);
+            if (!url) {
+                this.setLinkStatus(String(text || '').trim() ? 'The clipboard is not a link.' : 'The clipboard is empty.');
+                if (input) input.focus();
+                return;
+            }
+            input.value = url.href;
+            this.setLinkStatus('');
+            input.focus();
+        } catch (error) {
+            this.setLinkStatus('Could not paste. Tap the field and paste the link.');
+            if (input) input.focus();
+        }
+    }
+
+    async fetchLinkText(href, timeoutMs, headers) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), timeoutMs);
+        try {
+            const response = await fetch(href, {
+                method: 'GET',
+                signal: controller.signal,
+                headers,
+                redirect: 'follow',
+                credentials: 'omit',
+                mode: 'cors'
+            });
+            if (response.status === 429) {
+                const busy = new Error('The reader is busy. Wait a moment and try the link again.');
+                busy.code = 'busy';
+                throw busy;
+            }
+            if (!response.ok) return '';
+            const text = await response.text();
+            return text.length > 1500000 ? text.slice(0, 1500000) : text;
+        } catch (error) {
+            if (error && error.code === 'busy') throw error;
+            return '';
+        } finally {
+            clearTimeout(timer);
+        }
+    }
+
+    async readLinkSources(url) {
+        const sources = [];
+        const direct = await this.fetchLinkText(url.href, 12000, {
+            Accept: 'text/html, text/plain;q=0.9, */*;q=0.8'
+        });
+        if (direct) sources.push(direct);
+        const directChart = LinkCharts.parseChartSource(sources);
+        if (!directChart || !directChart.annotations.length) {
+            const reader = `https://r.jina.ai/${url.href}`;
+            const html = await this.fetchLinkText(reader, 28000, {
+                Accept: 'text/html',
+                'X-Return-Format': 'html',
+                'X-No-Cache': 'true'
+            });
+            if (html) sources.push(html);
+            const htmlChart = LinkCharts.parseChartSource(sources);
+            if (!htmlChart || !htmlChart.annotations.length) {
+                const markdown = await this.fetchLinkText(reader, 28000, {
+                    Accept: 'text/plain',
+                    'X-Return-Format': 'markdown'
+                });
+                if (markdown) sources.push(markdown);
+            }
+        }
+        if (!sources.length) {
+            throw new Error('Could not open that link. The site may be blocking it.');
+        }
+        return sources;
+    }
+
+    songFromImportedChart(chart, title) {
+        return {
+            title,
+            artist: chart.artist || '',
+            lyrics: chart.lyrics,
+            annotations: chart.annotations || [],
+            textAlign: chart.textAlign === 'right' ? 'right' : 'left',
+            scale: '',
+            timeTop: 4,
+            timeBottom: 4,
+            tempo: '',
+            lyricTheme: 'light',
+            chordsLocked: false,
+            downbeats: [],
+            videoSeconds: 60,
+            videoStillSeconds: 7,
+            videoEndStillSeconds: 7,
+            chordColors: {},
+            createdAt: new Date().toISOString()
+        };
+    }
+
+    async importFromLink() {
+        if (this.linkBusy) return;
+        const input = document.getElementById('linkImportInput');
+        const button = document.getElementById('linkImportBtn');
+        const url = LinkCharts.parsePublicHttpUrl(input && input.value, window.location.origin);
+        if (!url) {
+            this.setLinkStatus('Enter a link, like https://…');
+            if (input) input.focus();
+            return;
+        }
+        this.linkBusy = true;
+        if (button) button.disabled = true;
+        this.setLinkStatus('Reading the page…');
+        try {
+            const sources = await this.readLinkSources(url);
+            const chart = LinkCharts.parseChartSource(sources);
+            if (!chart) {
+                this.setLinkStatus('No lyrics or chords were found on that page.');
+                return;
+            }
+            const entered = window.prompt('Song name', chart.title || '');
+            if (entered == null) {
+                this.setLinkStatus('Not saved.');
+                return;
+            }
+            const title = entered.trim();
+            if (!title) {
+                alert('Please enter a song name');
+                this.setLinkStatus('Not saved.');
+                return;
+            }
+            const song = this.songFromImportedChart(chart, title);
+            this.songs.push(song);
+            this.editingIndex = this.songs.length - 1;
+            this.currentSong = song;
+            this.saveData();
+            this.renderSongList();
+            this.populateLiveSongSelect();
+            if (input) input.value = '';
+            const found = chart.annotations.length
+                ? `Found ${chart.annotations.length} chords.`
+                : 'No chords were marked on that page. You can add them here.';
+            this.setLinkStatus(`Saved “${title}”. ${found}`);
+            this.viewSong(this.editingIndex);
+        } catch (error) {
+            this.setLinkStatus((error && error.message) || 'Could not read that page.');
+        } finally {
+            this.linkBusy = false;
+            if (button) button.disabled = false;
+        }
     }
 
     async ensureTesseract() {
