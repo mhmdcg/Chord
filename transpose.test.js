@@ -68,6 +68,9 @@ eq(theory.transposeChordName('C#7', 0, 'F#m'), 'C#7');
 eq(theory.transposeChordName('Db7', 0, 'F#m'), 'C#7', 'respell Db7 to C#7 in F#m');
 eq(theory.transposeChordName('Gb', 0, 'Ebm'), 'Gb', 'keep Gb in Ebm');
 eq(theory.transposeChordName('F#', 0, 'Ebm'), 'Gb', 'respell F# to Gb in Ebm');
+eq(theory.transposeChordName('Am Dm', 2), 'Bm Em', 'space-separated chords transpose together');
+eq(theory.transposeChordName('F G', 1), 'F# G#', 'space-separated majors transpose up');
+eq(theory.transposeChordName('Am/C F', 1), 'A#m/C# F#', 'slash chord beside a second chord');
 
 const trip = roundTrip('Ebm', ['Ebm', 'Db', 'Abm', 'Bb7', 'Db/F', 'Gdim', 'Asus4', 'Cmaj7'], 12);
 eq(trip.scale, 'Ebm', '12 semitone round trip returns Ebm');

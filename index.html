@@ -125,11 +125,18 @@
                     </label>
                     <button id="scanPasteBtn" class="btn btn-secondary" type="button">Paste</button>
                     <button id="scanReadBtn" class="btn btn-primary" type="button" disabled>Read chords</button>
+                    <button id="scanSaveBtn" class="btn btn-primary" type="button" disabled>Save</button>
                 </div>
                 <img id="scanPreview" class="scan-preview" alt="" hidden />
                 <p id="scanStatus" class="scan-status"></p>
                 <div id="scanResult" hidden>
                     <div class="scan-toolbar" role="group" aria-label="Transpose chords">
+                        <button type="button" id="scanResetBtn" class="live-transpose-btn live-reset-btn" aria-label="Reset to original" title="Original" disabled>
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 12a9 9 0 1 0 3-6.7"/>
+                                <path d="M3 5v5h5"/>
+                            </svg>
+                        </button>
                         <button type="button" id="scanTransposeDownBtn" class="live-transpose-btn" aria-label="Transpose down a half step">−</button>
                         <span id="scanIntervalLabel" class="scan-interval">Original</span>
                         <button type="button" id="scanTransposeUpBtn" class="live-transpose-btn" aria-label="Transpose up a half step">+</button>
@@ -358,7 +365,7 @@
     <script src="html-to-image.min.js"></script>
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
-    <script src="music-theory.js?v=20260905c"></script>
-    <script src="app.js?v=20261030b"></script>
+    <script src="music-theory.js?v=20261030c"></script>
+    <script src="app.js?v=20261030c"></script>
 </body>
 </html>

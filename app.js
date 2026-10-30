@@ -109,8 +109,10 @@ class ChordAnnotatorApp {
         document.getElementById('scanPasteBtn').addEventListener('click', () => this.pasteScanImage());
         document.addEventListener('paste', (e) => this.onScanPaste(e));
         document.getElementById('scanReadBtn').addEventListener('click', () => this.readScanImage());
+        document.getElementById('scanSaveBtn').addEventListener('click', () => this.saveScanSong());
         document.getElementById('scanTransposeUpBtn').addEventListener('click', () => this.shiftScanChords(1));
         document.getElementById('scanTransposeDownBtn').addEventListener('click', () => this.shiftScanChords(-1));
+        document.getElementById('scanResetBtn').addEventListener('click', () => this.resetScanChords());
         document.getElementById('backFromAllChordsBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('backFromLiveBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('liveSongSelect').addEventListener('change', (e) => {
@@ -466,8 +468,15 @@ class ChordAnnotatorApp {
         const label = document.getElementById('liveScaleLabel');
         const resetBtn = document.getElementById('liveResetScaleBtn');
         if (label) {
-            const scale = MusicTheory.normalizePreferredScale(this.currentSong?.scale || '') || '—';
-            label.textContent = scale;
+            const scale = MusicTheory.normalizePreferredScale(this.currentSong?.scale || '');
+            if (scale) {
+                label.textContent = scale;
+            } else if (this.liveMode && this.currentSong) {
+                const steps = this.liveTransposeOffset || 0;
+                label.textContent = steps === 0 ? 'Original' : (steps > 0 ? `+${steps}` : `−${Math.abs(steps)}`);
+            } else {
+                label.textContent = '—';
+            }
         }
         if (resetBtn) {
             resetBtn.disabled = !this.liveMode || !this.currentSong || this.liveTransposeOffset === 0;
@@ -5822,6 +5831,97 @@ class ChordAnnotatorApp {
         this.renderScanChart();
     }
 
+    resetScanChords() {
+        if (!this.scanChart || !this.scanSemitones) return;
+        this.scanSemitones = 0;
+        this.renderScanChart();
+    }
+
+    syncScanControls() {
+        const hasChart = Array.isArray(this.scanChart) && this.scanChart.length > 0;
+        const steps = this.scanSemitones || 0;
+        const saveBtn = document.getElementById('scanSaveBtn');
+        const resetBtn = document.getElementById('scanResetBtn');
+        if (saveBtn) saveBtn.disabled = !hasChart || this.scanBusy;
+        if (resetBtn) resetBtn.disabled = !hasChart || steps === 0;
+    }
+
+    songFromScanChart() {
+        const chart = this.scanChart;
+        if (!Array.isArray(chart) || !chart.length) return null;
+        const steps = this.scanSemitones || 0;
+        let lyrics = '';
+        const annotations = [];
+        chart.forEach((line) => {
+            const pieces = [];
+            const words = Array.isArray(line.words) ? line.words : [];
+            if (words.length) {
+                words.forEach((word) => {
+                    const text = String(word?.text || '').replace(/\s+/g, ' ').trim();
+                    if (!text) return;
+                    pieces.push({ text, chords: Array.isArray(word.chords) ? word.chords : [] });
+                });
+            } else if (Array.isArray(line.chords) && line.chords.length) {
+                line.chords.forEach((chord) => pieces.push({ text: '·', chords: [chord] }));
+            }
+            if (!pieces.length) return;
+            if (lyrics) lyrics += '\n';
+            pieces.forEach((piece, index) => {
+                if (index) lyrics += ' ';
+                const start = lyrics.length;
+                lyrics += piece.text;
+                const names = piece.chords
+                    .map((name) => MusicTheory.transposeChordName(name, steps))
+                    .filter(Boolean);
+                if (names.length) annotations.push({ chord: names.join(' '), start, end: lyrics.length });
+            });
+        });
+        if (!lyrics.trim()) return null;
+        const rtl = /[\u0600-\u06FF]/.test(lyrics);
+        return {
+            title: '',
+            artist: '',
+            lyrics,
+            annotations,
+            textAlign: rtl ? 'right' : 'left',
+            scale: '',
+            timeTop: 4,
+            timeBottom: 4,
+            tempo: '',
+            lyricTheme: 'light',
+            chordsLocked: false,
+            downbeats: [],
+            videoSeconds: 60,
+            videoStillSeconds: 7,
+            videoEndStillSeconds: 7,
+            chordColors: {},
+            createdAt: new Date().toISOString()
+        };
+    }
+
+    saveScanSong() {
+        const song = this.songFromScanChart();
+        if (!song) {
+            this.setScanStatus('Read a photo before saving.');
+            return;
+        }
+        const entered = window.prompt('Song name');
+        if (entered == null) return;
+        const title = entered.trim();
+        if (!title) {
+            alert('Please enter a song name');
+            return;
+        }
+        song.title = title;
+        this.songs.push(song);
+        this.editingIndex = this.songs.length - 1;
+        this.currentSong = song;
+        this.saveData();
+        this.renderSongList();
+        this.populateLiveSongSelect();
+        this.setScanStatus(`Saved “${title}”. It is in the song list and in Live mode.`);
+    }
+
     setScanStatus(text) {
         const status = document.getElementById('scanStatus');
         if (status) status.textContent = text || '';
@@ -5848,6 +5948,7 @@ class ChordAnnotatorApp {
         document.getElementById('scanResult').hidden = true;
         this.scanChart = null;
         this.scanSemitones = 0;
+        this.syncScanControls();
         try {
             this.setScanStatus('Preparing the photo…');
             const image = await createImageBitmap(this.scanFile);
@@ -6081,6 +6182,7 @@ class ChordAnnotatorApp {
             label.textContent = steps === 0 ? 'Original' : (steps > 0 ? `+${steps}` : `−${Math.abs(steps)}`);
         }
         host.replaceChildren();
+        this.syncScanControls();
         (this.scanChart || []).forEach((line) => {
             const row = document.createElement('div');
             row.className = line.words.length ? 'scan-line' : 'scan-line scan-line-chords-only';

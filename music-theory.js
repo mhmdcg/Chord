@@ -106,15 +106,23 @@
         return (semitones || 0) < 0 ? FLAT_NAMES[next] : SHARP_NAMES[next];
     }
 
-    function transposeChordName(chord, semitones, targetKey) {
-        const raw = String(chord || '').trim();
-        if (!raw) return raw;
-        const steps = semitones || 0;
-        return raw.split('/').map((part) => {
+    function transposeOneChord(raw, steps, targetKey) {
+        return String(raw || '').split('/').map((part) => {
             const parsed = parseChordRoot(part);
             if (!parsed) return part;
             return `${transposeRoot(parsed.root, steps, targetKey)}${parsed.quality}`;
         }).join('/');
+    }
+
+    function transposeChordName(chord, semitones, targetKey) {
+        const raw = String(chord || '').trim();
+        if (!raw) return raw;
+        const steps = semitones || 0;
+        const tokens = raw.split(/\s+/);
+        if (tokens.length > 1 && tokens.every((part) => parseChordRoot(part))) {
+            return tokens.map((part) => transposeOneChord(part, steps, targetKey)).join(' ');
+        }
+        return transposeOneChord(raw, steps, targetKey);
     }
 
     function transposeScale(scale, semitones) {
@@ -194,7 +202,9 @@
     function chordMidiNotes(chord, octave = 3) {
         const raw = String(chord || '').trim();
         if (!raw) return [];
-        const parts = raw.split('/');
+        const tokens = raw.split(/\s+/);
+        const lead = tokens.length > 1 && tokens.every((part) => parseChordRoot(part)) ? tokens[0] : raw;
+        const parts = lead.split('/');
         const parsed = parseChordRoot(parts[0]);
         if (!parsed) return [];
         const rootPc = noteIndex(parsed.root);
