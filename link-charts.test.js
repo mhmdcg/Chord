@@ -99,6 +99,39 @@ check(LinkCharts.isChordToken('G/B') === 'G/B', 'slash chord');
 check(LinkCharts.isChordToken('D/F#') === 'D/F#', 'sharp bass');
 check(LinkCharts.isChordToken('Gsus4') === 'Gsus4', 'sus chord');
 check(LinkCharts.isChordToken('Verse') === '', 'section word is not a chord');
+check(LinkCharts.isChordToken('DY') === 'DY', 'Y suffix chord');
+check(LinkCharts.isChordToken('BY') === 'BY', 'BY chord');
+
+const sheet = LinkCharts.parseSheetSource(`Em
+ای تو بهانه واسه موندن
+DY      D
+ای تو خود لحظه ی بودن
+Em   C   BY
+*تو طلوع *صبح
+`);
+eq(sheet.lines.filter((line) => line.kind === 'chords').map((line) => line.placements.map((chord) => chord.name)), [
+    ['Em'],
+    ['DY', 'D'],
+    ['Em', 'C', 'BY']
+], 'sheet keeps each chord row');
+eq(sheet.lines.filter((line) => line.kind === 'lyric').map((line) => line.text), [
+    'ای تو بهانه واسه موندن',
+    'ای تو خود لحظه ی بودن',
+    'تو طلوع صبح'
+], 'sheet lyrics drop the star marks');
+check(sheet.lines[4].placements[1].col > sheet.lines[4].placements[0].col, 'later chords keep their column');
+
+const sheetHtml = `<html><head><title>چراغ آبی</title></head><body><nav>Home</nav><pre>
+Em
+سلام بر تو
+Am      G
+شب آرام
+</pre><p>footer words that are not the chart</p></body></html>`;
+const fromPre = LinkCharts.parseSheetSource(sheetHtml);
+eq(fromPre.lines.filter((line) => line.kind === 'lyric').map((line) => line.text), ['سلام بر تو', 'شب آرام'], 'sheet uses the chart, not the footer');
+const named = LinkCharts.parseSheetSource('<html><head><title>آکورد گیتار آهنگ چراغ آبی از شیفت شب - لامینور</title></head><body><pre>\nEm\nسلام\n</pre></body></html>');
+eq(named.title, 'چراغ آبی', 'persian page title');
+eq(named.artist, 'شیفت شب', 'persian page artist');
 
 if (failed) {
     console.error(`${failed} failed`);

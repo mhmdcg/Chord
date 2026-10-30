@@ -5996,8 +5996,8 @@ class ChordAnnotatorApp {
             Accept: 'text/html, text/plain;q=0.9, */*;q=0.8'
         });
         if (direct) sources.push(direct);
-        const directChart = LinkCharts.parseChartSource(sources);
-        if (!directChart || !directChart.annotations.length) {
+        const directSheet = LinkCharts.parseSheetSource(sources);
+        if (!directSheet || !directSheet.chordCount) {
             const reader = `https://r.jina.ai/${url.href}`;
             const html = await this.fetchLinkText(reader, 28000, {
                 Accept: 'text/html',
@@ -6005,8 +6005,8 @@ class ChordAnnotatorApp {
                 'X-No-Cache': 'true'
             });
             if (html) sources.push(html);
-            const htmlChart = LinkCharts.parseChartSource(sources);
-            if (!htmlChart || !htmlChart.annotations.length) {
+            const htmlSheet = LinkCharts.parseSheetSource(sources);
+            if (!htmlSheet || !htmlSheet.chordCount) {
                 const markdown = await this.fetchLinkText(reader, 28000, {
                     Accept: 'text/plain',
                     'X-Return-Format': 'markdown'
@@ -6020,26 +6020,52 @@ class ChordAnnotatorApp {
         return sources;
     }
 
-    songFromImportedChart(chart, title) {
-        return {
-            title,
-            artist: chart.artist || '',
-            lyrics: chart.lyrics,
-            annotations: chart.annotations || [],
-            textAlign: chart.textAlign === 'right' ? 'right' : 'left',
-            scale: '',
-            timeTop: 4,
-            timeBottom: 4,
-            tempo: '',
-            lyricTheme: 'light',
-            chordsLocked: false,
-            downbeats: [],
-            videoSeconds: 60,
-            videoStillSeconds: 7,
-            videoEndStillSeconds: 7,
-            chordColors: {},
-            createdAt: new Date().toISOString()
-        };
+    renderLinkSheet(sheet) {
+        const host = document.getElementById('linkSheet');
+        if (!host) return;
+        host.hidden = false;
+        host.replaceChildren();
+        if (sheet.title) {
+            const title = document.createElement('div');
+            title.className = 'link-sheet-title';
+            const artist = (sheet.artist || '').trim();
+            title.textContent = artist ? `${sheet.title} — ${artist}` : sheet.title;
+            title.dir = /[\u0600-\u06FF]/.test(title.textContent) ? 'rtl' : 'ltr';
+            host.appendChild(title);
+        }
+        (sheet.lines || []).forEach((line) => {
+            if (line.kind === 'blank') {
+                const gap = document.createElement('div');
+                gap.className = 'link-sheet-gap';
+                host.appendChild(gap);
+                return;
+            }
+            if (line.kind === 'chords') {
+                const row = document.createElement('div');
+                row.className = 'link-sheet-chords';
+                row.dir = 'ltr';
+                (line.placements || []).forEach((chord, index) => {
+                    const span = document.createElement('span');
+                    span.className = 'link-chord';
+                    span.textContent = chord.name;
+                    if (index > 0) {
+                        const previous = line.placements[index - 1];
+                        const gap = chord.col - (previous.col + String(previous.name || '').length);
+                        span.style.marginLeft = `${Math.max(0.8, Math.min(gap, 16) * 0.45)}rem`;
+                    }
+                    row.appendChild(span);
+                });
+                host.appendChild(row);
+                return;
+            }
+            if (!line.text) return;
+            const lyric = document.createElement('div');
+            lyric.className = 'link-sheet-lyric';
+            lyric.textContent = line.text;
+            lyric.dir = /[\u0600-\u06FF]/.test(line.text) ? 'rtl' : 'ltr';
+            host.appendChild(lyric);
+        });
+        host.scrollIntoView({ block: 'nearest' });
     }
 
     async importFromLink() {
@@ -6055,37 +6081,20 @@ class ChordAnnotatorApp {
         this.linkBusy = true;
         if (button) button.disabled = true;
         this.setLinkStatus('Reading the page…');
+        const sheetHost = document.getElementById('linkSheet');
+        if (sheetHost) {
+            sheetHost.hidden = true;
+            sheetHost.replaceChildren();
+        }
         try {
             const sources = await this.readLinkSources(url);
-            const chart = LinkCharts.parseChartSource(sources);
-            if (!chart) {
+            const sheet = LinkCharts.parseSheetSource(sources);
+            if (!sheet) {
                 this.setLinkStatus('No lyrics or chords were found on that page.');
                 return;
             }
-            const entered = window.prompt('Song name', chart.title || '');
-            if (entered == null) {
-                this.setLinkStatus('Not saved.');
-                return;
-            }
-            const title = entered.trim();
-            if (!title) {
-                alert('Please enter a song name');
-                this.setLinkStatus('Not saved.');
-                return;
-            }
-            const song = this.songFromImportedChart(chart, title);
-            this.songs.push(song);
-            this.editingIndex = this.songs.length - 1;
-            this.currentSong = song;
-            this.saveData();
-            this.renderSongList();
-            this.populateLiveSongSelect();
-            if (input) input.value = '';
-            const found = chart.annotations.length
-                ? `Found ${chart.annotations.length} chords.`
-                : 'No chords were marked on that page. You can add them here.';
-            this.setLinkStatus(`Saved “${title}”. ${found}`);
-            this.viewSong(this.editingIndex);
+            this.renderLinkSheet(sheet);
+            this.setLinkStatus('');
         } catch (error) {
             this.setLinkStatus((error && error.message) || 'Could not read that page.');
         } finally {

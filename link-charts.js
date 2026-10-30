@@ -34,6 +34,11 @@
 
     function cleanHeading(raw) {
         let title = decodeEntities(raw).replace(/\s+/g, ' ').trim();
+        const persianChart = title.match(/^آکورد(?:\s+گیتار)?\s+آهنگ\s+(.+?)\s+از\s+(.+?)(?:\s*[-–—|].*)?$/);
+        if (persianChart) {
+            return { title: persianChart[1].trim(), artist: persianChart[2].trim() };
+        }
+        title = title.replace(/\s*[-–—|]\s*لامینور\s*$/i, '').trim();
         title = title.replace(/\s*[\|\-–—:]\s*(?:ultimate-guitar|ultimate guitar|e-chords|worship chords|cifraclub|chordify|songsterr|guitar ?tab)\b.*$/i, '');
         let artist = '';
         const by = title.match(/^(.*?)\s+chords\s+by\s+(.+)$/i);
@@ -465,6 +470,7 @@
     function htmlToPlain(html) {
         let text = String(html || '');
         text = text.replace(/<!--[\s\S]*?-->/g, '');
+        text = text.replace(/<head\b[^>]*>[\s\S]*?<\/head>/gi, '');
         text = text.replace(/<(script|style|noscript|svg|iframe)\b[^>]*>[\s\S]*?<\/\1>/gi, '');
         text = text.replace(/<(nav|footer|aside|form)\b[^>]*>[\s\S]*?<\/\1>/gi, '');
         text = liftChordElements(text);
@@ -594,10 +600,112 @@
         return best;
     }
 
+    function cleanLyricLine(line) {
+        return String(line || '')
+            .replace(/\*/g, '')
+            .replace(/[ \t]{2,}/g, ' ')
+            .trim();
+    }
+
+    function sheetFromText(text, heading) {
+        const hint = heading || { title: '', artist: '' };
+        const lines = [];
+        let blanks = 0;
+        String(text || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n').forEach((raw) => {
+            let line = raw.replace(/\u00a0/g, ' ').replace(/\t/g, '    ').replace(/[\u200B-\u200D\uFEFF]/g, '');
+            if (/^\s*```/.test(line)) return;
+            line = line.replace(/\*\*|__|`/g, '');
+            const trimmed = line.trim();
+            if (!trimmed || /^[-=_*]{3,}$/.test(trimmed)) {
+                blanks += 1;
+                if (blanks === 1 && lines.length) lines.push({ kind: 'blank' });
+                return;
+            }
+            blanks = 0;
+            const unmarked = line.replace(/^\s{0,3}#{1,6}\s+/, '');
+            const chords = chordPlacements(unmarked);
+            if (chords) {
+                lines.push({
+                    kind: 'chords',
+                    placements: chords.map((chord) => ({ name: chord.name, col: chord.col }))
+                });
+                return;
+            }
+            const inline = parseInline(unmarked);
+            if (inline && inline.annotations && inline.annotations.length) {
+                lines.push({
+                    kind: 'chords',
+                    placements: inline.annotations.map((annotation, index) => ({
+                        name: annotation.chord,
+                        col: index * 8
+                    }))
+                });
+                const lyric = cleanLyricLine(inline.text);
+                if (lyric && lyric !== '·') lines.push({ kind: 'lyric', text: lyric });
+                return;
+            }
+            const section = isSectionLine(trimmed);
+            const lyric = cleanLyricLine(section || unmarked);
+            if (lyric) lines.push({ kind: 'lyric', text: lyric });
+        });
+        while (lines.length && lines[lines.length - 1].kind === 'blank') lines.pop();
+        const chordCount = lines.reduce((sum, line) => sum + (line.kind === 'chords' ? line.placements.length : 0), 0);
+        const lyricCount = lines.filter((line) => line.kind === 'lyric').length;
+        if (!chordCount && lyricCount < 2) return null;
+        return {
+            title: hint.title || '',
+            artist: hint.artist || '',
+            lines,
+            chordCount
+        };
+    }
+
+    function scoreSheet(sheet) {
+        if (!sheet) return 0;
+        const chords = sheet.chordCount || 0;
+        const lyrics = sheet.lines.filter((line) => line.kind === 'lyric').length;
+        if (!chords && lyrics < 4) return 0;
+        const density = chords / Math.max(sheet.lines.length, 1);
+        return chords * 1000 + density * 500 - sheet.lines.length * 5;
+    }
+
+    function sheetsFromSource(raw) {
+        const text = String(raw || '');
+        if (!text.trim()) return [];
+        const heading = pageHeading(text);
+        const chunks = [];
+        const region = extractChRegion(text);
+        if (region) chunks.push(region);
+        if (isHtml(text)) {
+            extractPres(text).forEach((block) => chunks.push(block));
+            chunks.push(htmlToPlain(text));
+        } else {
+            chunks.push(stripJina(convertChTags(unescapeChart(text))));
+        }
+        return chunks.map((chunk) => sheetFromText(chunk, heading)).filter(Boolean);
+    }
+
+    function parseSheetSource(source) {
+        const parts = Array.isArray(source) ? source : [source];
+        let best = null;
+        let bestScore = 0;
+        parts.forEach((part) => {
+            sheetsFromSource(part).forEach((sheet) => {
+                const score = scoreSheet(sheet);
+                if (score > bestScore) {
+                    best = sheet;
+                    bestScore = score;
+                }
+            });
+        });
+        return best;
+    }
+
     return {
         parsePublicHttpUrl,
         parseChartSource,
         parseChartText,
+        parseSheetSource,
         isChordToken
     };
 }));
