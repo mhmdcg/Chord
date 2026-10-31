@@ -527,6 +527,55 @@ class ChordAnnotatorApp {
             saveEasyBtn.disabled = !hasSong || (saved != null && saved === steps);
             saveEasyBtn.title = 'Save this transpose as easy';
         }
+        this.renderLiveChordList();
+    }
+
+    liveUniqueChordNames() {
+        const song = this.currentSong;
+        if (!this.liveMode || !song) return [];
+        const sheet = song.sheet && Array.isArray(song.sheet.lines);
+        const steps = sheet ? (this.liveTransposeOffset || 0) : 0;
+        const seen = new Set();
+        const names = [];
+        const add = (raw) => {
+            String(raw || '').split(/\s+/).forEach((part) => {
+                const original = part.trim();
+                if (!original) return;
+                const shown = steps ? (MusicTheory.transposeChordName(original, steps) || original) : original;
+                const key = shown.toLowerCase();
+                if (seen.has(key)) return;
+                seen.add(key);
+                names.push(shown);
+            });
+        };
+        if (sheet) {
+            song.sheet.lines.forEach((line) => {
+                if (line.kind !== 'chords') return;
+                (line.placements || []).forEach((chord) => add(chord.name));
+            });
+        } else {
+            [...(song.annotations || [])]
+                .sort((a, b) => (a.start || 0) - (b.start || 0))
+                .forEach((annotation) => add(annotation.chord));
+        }
+        return names;
+    }
+
+    renderLiveChordList() {
+        const host = document.getElementById('liveChordList');
+        if (!host) return;
+        const names = this.liveUniqueChordNames();
+        const right = this.currentSong && (
+            this.currentSong.textAlign === 'right' || this.currentSong.sheet?.align === 'right'
+        );
+        host.classList.toggle('is-left', !right);
+        host.replaceChildren();
+        host.hidden = !names.length;
+        names.forEach((name) => {
+            const item = document.createElement('span');
+            item.textContent = name;
+            host.appendChild(item);
+        });
     }
 
     formatLiveSteps(steps) {
