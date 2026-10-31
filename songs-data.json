@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T21:32:39.336Z",
+  "updatedAt": "2026-10-31T22:36:17.064Z",
   "songs": [
     {
       "title": "خیال",
@@ -14230,6 +14230,788 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T21:32:37.965Z"
+    },
+    {
+      "title": "دنیای این روزای من",
+      "artist": "داریوش",
+      "lyrics": "دنیای این روزای من، هم قد تن پوشم شده\nاینقدر دورم از تو که، دنیا فراموشم شده\nدنیای این روزای من، درگیر تنهایی شده\nتنها مدارا می کنیم، دنیا عجب جایی شده\nهرشب تو رویای خودم، آغوشتو تن می کنم\nآینده ی این خونه رو، با شمع روشن می کنم\nهرشب تو رویای خودم، آغوشتو تن می کنم\nآینده ی این خونه رو، با شمع روشن می کنم\nدر حسرت فردای تو، تقویمم و پر می کنم\nهر روز این تنهایی رو فردا تصور می کنم\nهم سنگ این روزای من، حتی شبم تاریک نیست\nاینجا بجز دوری تو، چیزی به من نزدیک نیست\nهرشب تو رویای خودم، آغوشتو تن می کنم\nآینده ی این خونه رو، با شمع روشن می کنم\nهرشب تو رویای خودم، آغوشتو تن می کنم\nآینده ی این خونه رو، با شمع روشن می کنم\nدنیای این روزای من، هم قد تن پوشم شده\nاینقدر دورم از تو که، دنیا فراموشم شده\nدنیای این روزای من، درگیر تنهایی شده\nتنها مدارا می کنیم، دنیا عجب جایی شده",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Bm   D   C   Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 6
+              },
+              {
+                "name": "D",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 15
+              },
+              {
+                "name": "Bm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   D   C   Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 9
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   C   Bm   C   Em   B   Am",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 5
+              },
+              {
+                "name": "Bm",
+                "col": 9
+              },
+              {
+                "name": "C",
+                "col": 14
+              },
+              {
+                "name": "Em",
+                "col": 18
+              },
+              {
+                "name": "B",
+                "col": 23
+              },
+              {
+                "name": "Am",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D                            Em                    Bm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 29
+              },
+              {
+                "name": "Bm",
+                "col": 51
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دنیای این روزای من، هم قد تن پوشم شده",
+            "source": "دنیای این روزای من، هم قد تن پوشم شده"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    Bm        Am       C                       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 6
+              },
+              {
+                "name": "Am",
+                "col": 16
+              },
+              {
+                "name": "C",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اینقدر دورم از تو که، دنیا فراموشم شده",
+            "source": "اینقدر دورم از تو که، دنیا فراموشم شده"
+          },
+          {
+            "kind": "chords",
+            "source": "D                        Em                        ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دنیای این روزای من، درگیر تنهایی شده",
+            "source": "دنیای این روزای من، درگیر تنهایی شده"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    Bm      Am              C                     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 6
+              },
+              {
+                "name": "Am",
+                "col": 14
+              },
+              {
+                "name": "C",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنها مدارا می کنیم، دنیا عجب جایی شده",
+            "source": "تنها مدارا می کنیم، دنیا عجب جایی شده"
+          },
+          {
+            "kind": "chords",
+            "source": "Am           Bm          D                         Em",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              },
+              {
+                "name": "D",
+                "col": 25
+              },
+              {
+                "name": "Em",
+                "col": 51
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرشب تو رویای خودم، آغوشتو تن می کنم",
+            "source": "هرشب تو رویای خودم، آغوشتو تن می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Bm              C       D                           ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 21
+              },
+              {
+                "name": "D",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آینده ی این خونه رو، با شمع روشن می کنم",
+            "source": "آینده ی این خونه رو، با شمع روشن می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Am             Bm         D                        Em",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              },
+              {
+                "name": "D",
+                "col": 26
+              },
+              {
+                "name": "Em",
+                "col": 51
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرشب تو رویای خودم، آغوشتو تن می کنم",
+            "source": "هرشب تو رویای خودم، آغوشتو تن می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Bm               C       D                           ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 22
+              },
+              {
+                "name": "D",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آینده ی این خونه رو، با شمع روشن می کنم",
+            "source": "آینده ی این خونه رو، با شمع روشن می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     D     Em     Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 7
+              },
+              {
+                "name": "Em",
+                "col": 13
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Bm   C   D   Am   Am",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 10
+              },
+              {
+                "name": "D",
+                "col": 14
+              },
+              {
+                "name": "Am",
+                "col": 18
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am                           D                    Em",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 29
+              },
+              {
+                "name": "Em",
+                "col": 50
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در حسرت فردای تو، تقویمم و پر می کنم",
+            "source": "در حسرت فردای تو، تقویمم و پر می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                  B     C                          ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 20
+              },
+              {
+                "name": "C",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر روز این تنهایی رو فردا تصور می کنم",
+            "source": "هر روز این تنهایی رو فردا تصور می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": " Am                               D                              ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 1
+              },
+              {
+                "name": "D",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هم سنگ این روزای من، حتی شبم تاریک نیست",
+            "source": "هم سنگ این روزای من، حتی شبم تاریک نیست"
+          },
+          {
+            "kind": "chords",
+            "source": " Bm           C Em                     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 1
+              },
+              {
+                "name": "C",
+                "col": 14
+              },
+              {
+                "name": "Em",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اینجا بجز دوری تو، چیزی به من نزدیک نیست",
+            "source": "اینجا بجز دوری تو، چیزی به من نزدیک نیست"
+          },
+          {
+            "kind": "chords",
+            "source": "Am            Bm         D                         Em",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 14
+              },
+              {
+                "name": "D",
+                "col": 25
+              },
+              {
+                "name": "Em",
+                "col": 51
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرشب تو رویای خودم، آغوشتو تن می کنم",
+            "source": "هرشب تو رویای خودم، آغوشتو تن می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Bm              C        D                           ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 21
+              },
+              {
+                "name": "D",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آینده ی این خونه رو، با شمع روشن می کنم",
+            "source": "آینده ی این خونه رو، با شمع روشن می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Am             Bm          D                        Em",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              },
+              {
+                "name": "D",
+                "col": 27
+              },
+              {
+                "name": "Em",
+                "col": 52
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرشب تو رویای خودم، آغوشتو تن می کنم",
+            "source": "هرشب تو رویای خودم، آغوشتو تن می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Bm             C        D                           ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 20
+              },
+              {
+                "name": "D",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آینده ی این خونه رو، با شمع روشن می کنم",
+            "source": "آینده ی این خونه رو، با شمع روشن می کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     D     Em     Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 7
+              },
+              {
+                "name": "Em",
+                "col": 13
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Bm   C   D   Am   Am",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 10
+              },
+              {
+                "name": "D",
+                "col": 14
+              },
+              {
+                "name": "Am",
+                "col": 18
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D                             Em                    Bm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 30
+              },
+              {
+                "name": "Bm",
+                "col": 52
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دنیای این روزای من، هم قد تن پوشم شده",
+            "source": "دنیای این روزای من، هم قد تن پوشم شده"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    Bm         Am      C                       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 6
+              },
+              {
+                "name": "Am",
+                "col": 17
+              },
+              {
+                "name": "C",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اینقدر دورم از تو که، دنیا فراموشم شده",
+            "source": "اینقدر دورم از تو که، دنیا فراموشم شده"
+          },
+          {
+            "kind": "chords",
+            "source": "D                        Em                        ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دنیای این روزای من، درگیر تنهایی شده",
+            "source": "دنیای این روزای من، درگیر تنهایی شده"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     Bm     Am              C                     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 7
+              },
+              {
+                "name": "Am",
+                "col": 14
+              },
+              {
+                "name": "C",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنها مدارا می کنیم، دنیا عجب جایی شده",
+            "source": "تنها مدارا می کنیم، دنیا عجب جایی شده"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   D   C   Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 9
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   D   C   Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 9
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   C   Bm   C   Em   B   Am",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 5
+              },
+              {
+                "name": "Bm",
+                "col": 9
+              },
+              {
+                "name": "C",
+                "col": 14
+              },
+              {
+                "name": "Em",
+                "col": 18
+              },
+              {
+                "name": "B",
+                "col": 23
+              },
+              {
+                "name": "Am",
+                "col": 27
+              }
+            ]
+          }
+        ],
+        "chordCount": 119,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T22:36:15.559Z"
     }
   ],
   "chordColors": {
