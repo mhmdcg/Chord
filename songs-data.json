@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T16:58:39.169Z",
+  "updatedAt": "2026-10-31T16:59:13.943Z",
   "songs": [
     {
       "title": "خیال",
@@ -12408,6 +12408,901 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T16:58:38.012Z"
+    },
+    {
+      "title": "رو در و دیوار این شهر",
+      "artist": "محمد زارع",
+      "lyrics": "رو در و دیوار این شهر\nهمش از تو یادگاره\nتوی این کوچه ی تاریک\nمنو تنها نمی ذاره\nیاد حرفای قشنگت\nکه تو قلبم لونه می کرد\nیاد دلتنگی چشمات\nکه منو بهونه می کرد\nمی زنه آتیش به جونم\nپس کجایی مهربونم\nآخه من ترانه هامو\nواسه ی کی پس بخونم\nدل من هواتو کرده\nآخ کجایی نازنینم\nکاش که بودی و می دیدی\nبی تو من تنها ترینم\nتوی این بازی که ساختی\nمن همه هستیم و باختم\nزیر پا گذاشتی آخر\nعشقی که من از تو ساختم\nاگه تو دوستم نداری\nاز دلم خبر نداری\nدلت از سنگ شده انگار\nکه منو تنها گذاشتی\nمی زنه آتیش به جونم\nپس کجایی مهربونم\nآخه من ترانه هامو\nواسه ی کی پس بخونم\nدل من هواتو کرده\nآخ کجایی نازنینم\nکاش که بودی و می دیدی\nبی تو من تنها ترینم\nمی شینم منتظر اینجا\nتا تو برگردی دوباره\nتا بشینی پای حرفام\nبریم تا ماه و ستاره\nمی دونم میای یه روزی\nیه روزی که خیلی دیره\nیه روزی دل شکستم\nسر این کوچه میمیره\nمی زنه...",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Em ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رو در و دیوار این شهر",
+            "source": "رو در و دیوار این شهر"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am            G",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همش از تو یادگاره",
+            "source": "همش از تو یادگاره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                  Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی این کوچه ی تاریک",
+            "source": "توی این کوچه ی تاریک"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Em             G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 1
+              },
+              {
+                "name": "G",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منو تنها نمی ذاره",
+            "source": "منو تنها نمی ذاره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یاد حرفای قشنگت",
+            "source": "یاد حرفای قشنگت"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                  G",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که تو قلبم لونه می کرد",
+            "source": "که تو قلبم لونه می کرد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F             Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یاد دلتنگی چشمات",
+            "source": "یاد دلتنگی چشمات"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Em                G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 1
+              },
+              {
+                "name": "G",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که منو بهونه می کرد",
+            "source": "که منو بهونه می کرد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                  Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می زنه آتیش به جونم",
+            "source": "می زنه آتیش به جونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پس کجایی مهربونم",
+            "source": "پس کجایی مهربونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F               Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه من ترانه هامو",
+            "source": "آخه من ترانه هامو"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                  G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه ی کی پس بخونم",
+            "source": "واسه ی کی پس بخونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F              Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل من هواتو کرده",
+            "source": "دل من هواتو کرده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            G ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخ کجایی نازنینم",
+            "source": "آخ کجایی نازنینم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                       Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کاش که بودی و می دیدی",
+            "source": "کاش که بودی و می دیدی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو من تنها ترینم",
+            "source": "بی تو من تنها ترینم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G                   Em",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی این بازی که ساختی",
+            "source": "توی این بازی که ساختی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Em                Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 1
+              },
+              {
+                "name": "Am",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من همه هستیم و باختم",
+            "source": "من همه هستیم و باختم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G             Em",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زیر پا گذاشتی آخر",
+            "source": "زیر پا گذاشتی آخر"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Em                   Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 1
+              },
+              {
+                "name": "Am",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشقی که من از تو ساختم",
+            "source": "عشقی که من از تو ساختم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه تو دوستم نداری",
+            "source": "اگه تو دوستم نداری"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Em          Dm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 1
+              },
+              {
+                "name": "Dm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از دلم خبر نداری",
+            "source": "از دلم خبر نداری"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                   Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلت از سنگ شده انگار",
+            "source": "دلت از سنگ شده انگار"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em              Dm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که منو تنها گذاشتی",
+            "source": "که منو تنها گذاشتی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                   Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می زنه آتیش به جونم",
+            "source": "می زنه آتیش به جونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پس کجایی مهربونم",
+            "source": "پس کجایی مهربونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F              Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه من ترانه هامو",
+            "source": "آخه من ترانه هامو"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                  G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه ی کی پس بخونم",
+            "source": "واسه ی کی پس بخونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F            Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل من هواتو کرده",
+            "source": "دل من هواتو کرده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            G ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخ کجایی نازنینم",
+            "source": "آخ کجایی نازنینم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                      Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کاش که بودی و می دیدی",
+            "source": "کاش که بودی و می دیدی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em               G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو من تنها ترینم",
+            "source": "بی تو من تنها ترینم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می شینم منتظر اینجا",
+            "source": "می شینم منتظر اینجا"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am               G",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا تو برگردی دوباره",
+            "source": "تا تو برگردی دوباره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F               Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا بشینی پای حرفام",
+            "source": "تا بشینی پای حرفام"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em               G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بریم تا ماه و ستاره",
+            "source": "بریم تا ماه و ستاره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می دونم میای یه روزی",
+            "source": "می دونم میای یه روزی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                  G",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه روزی که خیلی دیره",
+            "source": "یه روزی که خیلی دیره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                Am",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه روزی دل شکستم",
+            "source": "یه روزی دل شکستم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                  G",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سر این کوچه میمیره",
+            "source": "سر این کوچه میمیره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "می زنه...",
+            "source": "می زنه..."
+          }
+        ],
+        "chordCount": 76,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T16:59:12.823Z"
     }
   ],
   "chordColors": {
