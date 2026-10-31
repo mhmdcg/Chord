@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T22:36:17.064Z",
+  "updatedAt": "2026-10-31T22:41:05.368Z",
   "songs": [
     {
       "title": "خیال",
@@ -15012,6 +15012,2412 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T22:36:15.559Z"
+    },
+    {
+      "title": "دهاتی",
+      "artist": "شادمهر عقیلی",
+      "lyrics": "ساده بگم ساده بگم\nساده بگم دهاتـــــیم\nاهل همین نزدیکـــــیا\nهمسایه ی روشنیا\nهمخونه ی تاریکیا\nساده بگم ساده بگم\nبوی علف می ده تنم\nهنوز همون دهاتیم\nبا همه شهری شدنم\nبا همه شهری شدنم\nباغ غریب ده من\nگلای زینتی نــــداشت\nاسب نجیب ده من\nنعلای قیمتی نــــداشت\nاما همون چار تا دیوار\nبا بوی خوب کاهگلش\nاما همون چند تا خونه\nبا مردم ساده دلش\nاما همون چار تا دیوار\nبا بوی خوب کاهگلش\nاما همون چند تا خونه\nبا مردم ساده دلش\nبرای من که عکسمو\nمدتیه تو آب چشمه ندیدم\nبرای من که شهریم\nاز اون هوا دل بــــریدم\nبرای من که عکسمو\nمدتیه تو آب چشمه ندیدم\nبرای من که شهریم\nاز اون هوا دل بــــریدم\nدنیایی که دیدن اون\nاگر چه مثل قدیما\nراه درازی نــــداره\nاما می دونم که دیگه\nدنیای خوب سادگی\nبه من نیازی نــــداره\nبرای من که عکسمو\nمدتیه تو آب چشمه ندیدم\nبرای من که شهریم\nاز اون هوا دل بــــریدم\nبرای من که عکسمو\nمدتیه تو آب چشمه ندیدم\nبرای من که شهریم\nاز اون هوا دل بــــریدم\nساده بگم ساده بگم\nساده بگم دهاتـــــیم\nاهل همین نزدیکـــــیا\nهمسایه ی روشنیا\nهمخونه ی تاریکیا\nساده بگم ساده بگم\nبوی علف می ده تنم\nهنوز همون دهاتیم\nبا همه شهری شدنم\nبا همه شهری شدنم\nباغ غریب ده من\nگلای زینتی نــــداشت\nاسب نجیب ده من\nنعلای قیمتی نــــداشت\nاما همون چار تا دیوار\nبا بوی خوب کاهگلش\nاما همون چند تا خونه\nبا مردم ساده دلش\nاما همون چار تا دیوار\nبا بوی خوب کاهگلش\nاما همون چند تا خونه\nبا مردم ساده دلش\nبرای من که عکسمو\nمدتیه تو آب چشمه ندیدم\nبرای من که شهریم\nاز اون هوا دل بــــریدم\nبرای من که عکسمو\nمدتیه تو آب چشمه ندیدم\nبرای من که شهریم\nاز اون هوا دل بــــریدم\nدنیایی که دیدن اون\nاگر چه مثل قدیما\nراه درازی نــــداره\nاما می دونم که دیگه\nدنیای خوب سادگی\nبه من نیازی نــــداره\nبرای من که عکسمو\nمدتیه تو آب چشمه ندیدم\nبرای من که شهریم\nاز اون هوا دل بــــریدم\nبرای من که عکسمو\nمدتیه تو آب چشمه ندیدم\nبرای من که شهریم\nاز اون هوا دل بــــریدم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      C#m7   D#m7   C#m7   D#m7",
+            "placements": [
+              {
+                "name": "C#m7",
+                "col": 6
+              },
+              {
+                "name": "D#m7",
+                "col": 13
+              },
+              {
+                "name": "C#m7",
+                "col": 20
+              },
+              {
+                "name": "D#m7",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   G#m   D#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "D#m",
+                "col": 18
+              },
+              {
+                "name": "G#m",
+                "col": 24
+              },
+              {
+                "name": "D#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              },
+              {
+                "name": "D#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              },
+              {
+                "name": "D#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#7",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ساده بگم ساده بگم",
+            "source": "س*اده بگم ساده بگم"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m G#m       D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ساده بگم دهاتـــــیم",
+            "source": "ساده بگم د*هاتـــــ*یم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m G#m        D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اهل همین نزدیکـــــیا",
+            "source": "اهل همین ن*زدیکـــــ*یا    *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m         D#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همسایه ی روشنیا",
+            "source": "همسایه ی ر*وشنیا    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m E           G#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 4
+              },
+              {
+                "name": "G#m",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همخونه ی تاریکیا",
+            "source": "همخونه ی ت*اریک*یا    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ساده بگم ساده بگم",
+            "source": "س*اده بگم ساده بگم"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m G#m        D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بوی علف می ده تنم",
+            "source": "بوی علف م*ی ده ت*نم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m          D#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هنوز همون دهاتیم",
+            "source": "هنوز همون د*هاتیم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   E           G#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با همه شهری شدنم",
+            "source": "با همه شهر*ی شد*نم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m  E       D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 5
+              },
+              {
+                "name": "D#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با همه شهری شدنم",
+            "source": "ب*ا همه شهر*ی شد*نم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   G#m   D#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "D#m",
+                "col": 18
+              },
+              {
+                "name": "G#m",
+                "col": 24
+              },
+              {
+                "name": "D#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              },
+              {
+                "name": "D#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              },
+              {
+                "name": "D#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#7",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باغ غریب ده من",
+            "source": "ب*اغ غریب*    ده* من"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m    D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گلای زینتی نــــداشت",
+            "source": "گلای زین*تی نــــ*داشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m        D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اسب نجیب ده من",
+            "source": "اسب نجیب*     ده* من    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m      D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نعلای قیمتی نــــداشت",
+            "source": "نعلای قیم*تی نــــ*داشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#         D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما همون چار تا دیوار",
+            "source": "اما همون چ*ار تا دیوار    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m        D#7",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با بوی خوب کاهگلش",
+            "source": "با بوی خوب* کاهگلش    *"
+          },
+          {
+            "kind": "chords",
+            "source": "E          G#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما همون چند تا خونه",
+            "source": "اما همون چ*ند تا خونه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m      E",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با مردم ساده دلش",
+            "source": "ب*ا مردم س*اده دلش"
+          },
+          {
+            "kind": "chords",
+            "source": "F#         D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما همون چار تا دیوار",
+            "source": "اما همون چ*ار تا دیوار    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m        D#7",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با بوی خوب کاهگلش",
+            "source": "با بوی خوب* کاهگلش    *"
+          },
+          {
+            "kind": "chords",
+            "source": "E          G#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما همون چند تا خونه",
+            "source": "اما همون چ*ند تا خونه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m      E",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با مردم ساده دلش",
+            "source": "ب*ا مردم س*اده دلش"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#m     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که عکسمو",
+            "source": "برای من ک*ه عکسمو   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E             F#      F#",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "F#",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مدتیه تو آب چشمه ندیدم",
+            "source": "مدتیه * تو آب چشم*ه ندیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که شهریم",
+            "source": "برای من ک*ه شهریم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            B",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون هوا دل بــــریدم",
+            "source": "از اون هوا د*ل بــــر*یدم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که عکسمو",
+            "source": "برای من ک*ه عکسمو   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E             F#      F#",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "F#",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مدتیه تو آب چشمه ندیدم",
+            "source": "مدتیه * تو آب چشم*ه ندیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که شهریم",
+            "source": "برای من ک*ه شهریم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            B",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون هوا دل بــــریدم",
+            "source": "از اون هوا د*ل بــــر*یدم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دنیایی که دیدن اون",
+            "source": "دنیایی که دیدن اون    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m       F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگر چه مثل قدیما",
+            "source": "ا*گر چه مثل* قدیما"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m       E",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "راه درازی نــــداره",
+            "source": "راه دراز*ی نــــد*اره    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما می دونم که دیگه",
+            "source": "اما می دونم که دیگه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m           F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دنیای خوب سادگی",
+            "source": "دنیای خوب* سادگی    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            E",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به من نیازی نــــداره",
+            "source": "به من نیاز*ی نــــد*اره    *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m   D#m   F#   G#m   C#m   D#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 6
+              },
+              {
+                "name": "F#",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 17
+              },
+              {
+                "name": "C#m",
+                "col": 23
+              },
+              {
+                "name": "D#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#m     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که عکسمو",
+            "source": "برای من ک*ه عکسمو   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E             F#      F#",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "F#",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مدتیه تو آب چشمه ندیدم",
+            "source": "مدتیه * تو آب چشم*ه ندیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که شهریم",
+            "source": "برای من ک*ه شهریم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            B",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون هوا دل بــــریدم",
+            "source": "از اون هوا د*ل بــــر*یدم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که عکسمو",
+            "source": "برای من ک*ه عکسمو   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E             F#      F#",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "F#",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مدتیه تو آب چشمه ندیدم",
+            "source": "مدتیه * تو آب چشم*ه ندیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که شهریم",
+            "source": "برای من ک*ه شهریم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            B",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون هوا دل بــــریدم",
+            "source": "از اون هوا د*ل بــــر*یدم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   G#m   D#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "D#m",
+                "col": 18
+              },
+              {
+                "name": "G#m",
+                "col": 24
+              },
+              {
+                "name": "D#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              },
+              {
+                "name": "D#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              },
+              {
+                "name": "D#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#7",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ساده بگم ساده بگم",
+            "source": "س*اده بگم ساده بگم"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m G#m       D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ساده بگم دهاتـــــیم",
+            "source": "ساده بگم د*هاتـــــ*یم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m G#m        D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اهل همین نزدیکـــــیا",
+            "source": "اهل همین ن*زدیکـــــ*یا    *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m         D#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همسایه ی روشنیا",
+            "source": "همسایه ی ر*وشنیا    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m E           G#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 4
+              },
+              {
+                "name": "G#m",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همخونه ی تاریکیا",
+            "source": "همخونه ی ت*اریک*یا    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ساده بگم ساده بگم",
+            "source": "س*اده بگم ساده بگم"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m G#m        D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بوی علف می ده تنم",
+            "source": "بوی علف م*ی ده ت*نم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m          D#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هنوز همون دهاتیم",
+            "source": "هنوز همون د*هاتیم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   E           G#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با همه شهری شدنم",
+            "source": "با همه شهر*ی شد*نم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m  E       D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 5
+              },
+              {
+                "name": "D#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با همه شهری شدنم",
+            "source": "ب*ا همه شهر*ی شد*نم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   G#m   D#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "D#m",
+                "col": 18
+              },
+              {
+                "name": "G#m",
+                "col": 24
+              },
+              {
+                "name": "D#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              },
+              {
+                "name": "D#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m   G#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 18
+              },
+              {
+                "name": "D#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#7",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باغ غریب ده من",
+            "source": "ب*اغ غریب*    ده* من"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m    D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گلای زینتی نــــداشت",
+            "source": "گلای زین*تی نــــ*داشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m        D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اسب نجیب ده من",
+            "source": "اسب نجیب*     ده* من    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m      D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "D#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نعلای قیمتی نــــداشت",
+            "source": "نعلای قیم*تی نــــ*داشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#         D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما همون چار تا دیوار",
+            "source": "اما همون چ*ار تا دیوار    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m        D#7",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با بوی خوب کاهگلش",
+            "source": "با بوی خوب* کاهگلش    *"
+          },
+          {
+            "kind": "chords",
+            "source": "E          G#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما همون چند تا خونه",
+            "source": "اما همون چ*ند تا خونه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m      E",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با مردم ساده دلش",
+            "source": "ب*ا مردم س*اده دلش"
+          },
+          {
+            "kind": "chords",
+            "source": "F#         D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما همون چار تا دیوار",
+            "source": "اما همون چ*ار تا دیوار    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m        D#7",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با بوی خوب کاهگلش",
+            "source": "با بوی خوب* کاهگلش    *"
+          },
+          {
+            "kind": "chords",
+            "source": "E          G#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما همون چند تا خونه",
+            "source": "اما همون چ*ند تا خونه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m      E",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با مردم ساده دلش",
+            "source": "ب*ا مردم س*اده دلش"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#m     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که عکسمو",
+            "source": "برای من ک*ه عکسمو   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E             F#      F#",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "F#",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مدتیه تو آب چشمه ندیدم",
+            "source": "مدتیه * تو آب چشم*ه ندیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که شهریم",
+            "source": "برای من ک*ه شهریم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            B",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون هوا دل بــــریدم",
+            "source": "از اون هوا د*ل بــــر*یدم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که عکسمو",
+            "source": "برای من ک*ه عکسمو   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E             F#      F#",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "F#",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مدتیه تو آب چشمه ندیدم",
+            "source": "مدتیه * تو آب چشم*ه ندیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که شهریم",
+            "source": "برای من ک*ه شهریم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            B",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون هوا دل بــــریدم",
+            "source": "از اون هوا د*ل بــــر*یدم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دنیایی که دیدن اون",
+            "source": "دنیایی که دیدن اون    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m       F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگر چه مثل قدیما",
+            "source": "ا*گر چه مثل* قدیما"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m       E",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "راه درازی نــــداره",
+            "source": "راه دراز*ی نــــد*اره    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما می دونم که دیگه",
+            "source": "اما می دونم که دیگه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m           F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دنیای خوب سادگی",
+            "source": "دنیای خوب* سادگی    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            E",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به من نیازی نــــداره",
+            "source": "به من نیاز*ی نــــد*اره    *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m   D#m   F#   G#m   C#m   D#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 6
+              },
+              {
+                "name": "F#",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 17
+              },
+              {
+                "name": "C#m",
+                "col": 23
+              },
+              {
+                "name": "D#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#m     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که عکسمو",
+            "source": "برای من ک*ه عکسمو   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E             F#      F#",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "F#",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مدتیه تو آب چشمه ندیدم",
+            "source": "مدتیه * تو آب چشم*ه ندیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که شهریم",
+            "source": "برای من ک*ه شهریم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            B",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون هوا دل بــــریدم",
+            "source": "از اون هوا د*ل بــــر*یدم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که عکسمو",
+            "source": "برای من ک*ه عکسمو   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E             F#      F#",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "F#",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مدتیه تو آب چشمه ندیدم",
+            "source": "مدتیه * تو آب چشم*ه ندیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      D#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای من که شهریم",
+            "source": "برای من ک*ه شهریم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m            B",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون هوا دل بــــریدم",
+            "source": "از اون هوا د*ل بــــر*یدم   *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#m   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              }
+            ]
+          }
+        ],
+        "chordCount": 311,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T22:41:02.980Z"
     }
   ],
   "chordColors": {
