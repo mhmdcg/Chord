@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T16:58:00.590Z",
+  "updatedAt": "2026-10-31T16:58:39.169Z",
   "songs": [
     {
       "title": "خیال",
@@ -11826,6 +11826,588 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T16:57:59.068Z"
+    },
+    {
+      "title": "گل یخ",
+      "artist": "کوروش یغمایی",
+      "lyrics": "غم میون دو تا چشمون قشنگت\nلونه کرده\nشب تو موهای سیاهت\nخونه کرده\nدو تا چشمون سیاهت\nمثه شبهای منه\nسیاهیای دو چشمت\nمثه غم های منه\nوقتی بغض از مژه هام پایین می یاد\nبارون می شه\nسیل غم آبادیمو ویرونه کرده\nوقتی با من می مونی تنهاییمو\nباد می بره\nدو تا چشمام بارون شبونه کرده\nبهار از دستای من پر زد و رفت\nگل یخ توی دلم جوونه کرده\nتو اتاقم دارم از تنهایی آتیش می گیرم\nای شکوفه، توی این زمونه کرده\nچی بخونم، جوونیم رفته صدام رفته دیگه\nگل یخ توی دلم جوونه کرده\nچی بخونم، جوونیم رفته صدام رفته دیگه\nگل یخ توی دلم جوونه کرده",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Em Am Dm Em Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "Am",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 12
+              },
+              {
+                "name": "Em",
+                "col": 15
+              },
+              {
+                "name": "Am",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em Am Dm Em Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 3
+              },
+              {
+                "name": "Dm",
+                "col": 6
+              },
+              {
+                "name": "Em",
+                "col": 9
+              },
+              {
+                "name": "Am",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G                     Am",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غم میون دو تا چشمون قشنگت",
+            "source": "غم میو*ن دو تا چش*مون قشن*گت  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Am      Dm",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لونه کرده",
+            "source": "*     لونه کر*ده   *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G                       Am",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شب تو موهای سیاهت",
+            "source": "*     شب تو مو*های سیا*هت   *"
+          },
+          {
+            "kind": "chords",
+            "source": "Am     Dm",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خونه کرده",
+            "source": "*     خونه کر*ده  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                        E",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دو تا چشمون سیاهت",
+            "source": "*    دو تا چش*مون سیا*هت   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E       Dm",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه شبهای منه",
+            "source": "*   مثه شب*های منه  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                      E",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سیاهیای دو چشمت",
+            "source": "*    سیاهی*ای دو چش*مت  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E          Dm",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه غم های منه",
+            "source": "*   مثه غم  *های منه  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Em          Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 11
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی بغض از مژه هام پایین می یاد",
+            "source": "*   وقتی بغض *از مژه هام *پایین می یاد  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Bb",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بارون می شه",
+            "source": "*     بارون می *شه  *"
+          },
+          {
+            "kind": "chords",
+            "source": " E          F        G        Am",
+            "placements": [
+              {
+                "name": "E",
+                "col": 1
+              },
+              {
+                "name": "F",
+                "col": 12
+              },
+              {
+                "name": "G",
+                "col": 21
+              },
+              {
+                "name": "Am",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سیل غم آبادیمو ویرونه کرده",
+            "source": "*     سیل غم *آبادیمو * ویرونه کر*ده  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am            Em      Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 14
+              },
+              {
+                "name": "Am",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی با من می مونی تنهاییمو",
+            "source": "*   وقتی با *من می مونی *تنهاییمو  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Am       Bb",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باد می بره",
+            "source": "*      باد می ب*ره  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E           F          G         Am",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 12
+              },
+              {
+                "name": "G",
+                "col": 23
+              },
+              {
+                "name": "Am",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دو تا چشمام بارون شبونه کرده",
+            "source": "*     دو تا چش*مام بارون * شبونه کر*ده  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                        E",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بهار از دستای من پر زد و رفت",
+            "source": "*   بهار از *دستای من *پر زد و رفت  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E          F         G",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 11
+              },
+              {
+                "name": "G",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل یخ توی دلم جوونه کرده",
+            "source": "گل یخ *توی دلم *جوونه کر*ده  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                     E",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو اتاقم دارم از تنهایی آتیش می گیرم",
+            "source": "تو اتا*قم دارم از *تنهایی آ*تیش می گیرم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E              F          G",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 15
+              },
+              {
+                "name": "G",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای شکوفه، توی این زمونه کرده",
+            "source": "ای شکو*فه، توی این *زمونه کر*ده  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "E           Dm            F     Am",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 12
+              },
+              {
+                "name": "F",
+                "col": 26
+              },
+              {
+                "name": "Am",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بخونم، جوونیم رفته صدام رفته دیگه",
+            "source": "چی بخو*نم، جوونیم *رفته صدام *رفته دیگه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E          F        G",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 11
+              },
+              {
+                "name": "G",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل یخ توی دلم جوونه کرده",
+            "source": "گل یخ *توی دلم *جوونه کر*ده  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "E           Dm            F     Am",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 12
+              },
+              {
+                "name": "F",
+                "col": 26
+              },
+              {
+                "name": "Am",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بخونم، جوونیم رفته صدام رفته دیگه",
+            "source": "چی بخو*نم، جوونیم *رفته صدام *رفته دیگه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E          F        G",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 11
+              },
+              {
+                "name": "G",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل یخ توی دلم جوونه کرده",
+            "source": "گل یخ *توی دلم *جوونه کر*ده  *"
+          }
+        ],
+        "chordCount": 68,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T16:58:38.012Z"
     }
   ],
   "chordColors": {
