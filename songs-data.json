@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T21:31:33.485Z",
+  "updatedAt": "2026-10-31T21:32:39.336Z",
   "songs": [
     {
       "title": "خیال",
@@ -13603,6 +13603,633 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T21:31:32.214Z"
+    },
+    {
+      "title": "علامت سوال",
+      "artist": "شادمهر عقیلی",
+      "lyrics": "یه پنجره با یه قفس\nیه حنجره بی همنفس\nسهم من از بودن تو\nیه خاطره ست همینو بس\nتو این مثلث غریب\nستاره ها رو خط زدم\nدارم به آخر میرسم\nاز اون ور شب اومدم\nیه شب که مثل مرثیه\nخیمه زده رو باورم\nمیخوام تو این سکوت تلخ\nصداتو از یاد ببرم\nبذار که کوله بارمو\nرو شونه ی شب بذارم\nباید که از اینجا برم\nفرصت موندن ندارم\nداغ ترانه تو نگام\nشوق رسیدن تو تنم\nتو حجم سرد این قفس\nمنتظر پر زدنم\nمن از تبار غربتم\nاز آرزوهای محال\nقصه ی ما تموم شده\nبا یه علامت سوال\nبذار که کوله بارمو\nرو شونه ی شب بذارم\nباید که از اینجا برم\nفرصت موندن ندارم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه پنجره با یه قفس",
+            "source": "یه پنجره *با یه قفس  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B        F#",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه حنجره بی همنفس",
+            "source": "یه حنجره *بی همنفس  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#          E",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سهم من از بودن تو",
+            "source": "سهم من از *بودن تو  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m F# E                B",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 7
+              },
+              {
+                "name": "B",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه خاطره ست همینو بس",
+            "source": "یه خاطره ست *همی*نو *بس  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو این مثلث غریب",
+            "source": "تو این مث*لث غریب  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B       F#",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ستاره ها رو خط زدم",
+            "source": "ستاره ها *رو خط زدم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#      E",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دارم به آخر میرسم",
+            "source": "دارم به آ*خر میرسم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m F#   B       F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 9
+              },
+              {
+                "name": "F#",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از اون ور شب اومدم",
+            "source": "از اون ور *شب *اوم*دم  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m G#m       G#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "G#m",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب که مثل مرثیه",
+            "source": "یه شب که مث*ل مر*ثیه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خیمه زده رو باورم",
+            "source": "خیمه زده *رو باورم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میخوام تو این سکوت تلخ",
+            "source": "میخوام تو این *سکوت تلخ  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m F# B                  F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 7
+              },
+              {
+                "name": "F#",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "صداتو از یاد ببرم",
+            "source": "*     *     *  صداتو از *یاد ببرم  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m G#m   G#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "G#m",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بذار که کوله بارمو",
+            "source": "بذار که کو*له با*رمو  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رو شونه ی شب بذارم",
+            "source": "رو شونه ی *شب بذارم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید که از اینجا برم",
+            "source": "باید که از *اینجا برم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m F# B                     F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 7
+              },
+              {
+                "name": "F#",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فرصت موندن ندارم",
+            "source": "*     *     *  فرصت مون*دن ندارم  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m  F# G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 5
+              },
+              {
+                "name": "G#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "داغ ترانه تو نگام",
+            "source": "داغ  ترا*نه تو *نگام  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m F# E     D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 7
+              },
+              {
+                "name": "D#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شوق رسیدن تو تنم",
+            "source": "شوق  رسی*دن *تو ت*نم  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   F#      G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو حجم سرد این قفس",
+            "source": "تو حجم سر*د این *قفس  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m F# E   D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 7
+              },
+              {
+                "name": "D#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منتظر پر زدنم",
+            "source": "منتظر    *پر  *زد*نم  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من از تبار غربتم",
+            "source": "من از تبا*ر غربتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B    F#",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از آرزوهای محال",
+            "source": "از آرزو*های محال  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#         E",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قصه ی ما تموم شده",
+            "source": "قصه ی ما *تموم شده  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m F# E       B",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 7
+              },
+              {
+                "name": "B",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با یه علامت سوال",
+            "source": "با یه علا*مت *سو*ال  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m G#m   G#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "G#m",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بذار که کوله بارمو",
+            "source": "بذار که کو*له با*رمو  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رو شونه ی شب بذارم",
+            "source": "رو شونه ی *شب بذارم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید که از اینجا برم",
+            "source": "باید که از *اینجا برم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m F# B                     F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 7
+              },
+              {
+                "name": "F#",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فرصت موندن ندارم",
+            "source": "*     *     *  فرصت مون*دن ندارم  *"
+          }
+        ],
+        "chordCount": 68,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T21:32:37.965Z"
     }
   ],
   "chordColors": {
