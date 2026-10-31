@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T21:23:57.112Z",
+  "updatedAt": "2026-10-31T21:31:33.485Z",
   "songs": [
     {
       "title": "خیال",
@@ -12868,6 +12868,741 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T21:23:55.390Z"
+    },
+    {
+      "title": "پر پرواز",
+      "artist": "شادمهر عقیلی",
+      "lyrics": "intro\nتو حضور مبهم پنجره ها\nروبروم دیوارای آجریه\nخورشید روشن فردا مال تو\nسهم من شبای خاکستری\nتوی این دلواپسی های مدام\nجز ترانه های زخمی چی دارم\nوقتی حتی تو برام غریبه ای\nسر رو شونه های بارون میزارم\nاسم تو برای من مقدسه\nتا نفس تو سینه پرپر میزنه\nباورم کن که فقط باور تو\nمیتونه قفل قفس رو بشکنه\nمنم و یه آسمون بی دریغ\nمنم و یه کوره راه ناگزیر\nای ستاره شبای مشرقی\nپر پرواز منو ازم نگیر\nاسم تو برای من مقدسه\nتا نفس تو سینه پرپر میزنه\nباورم کن که فقط باور تو\nمیتونه قفل قفس رو بشکنه\nمنم و یه آسمون بی دریغ\nمنم و یه کوره راه ناگزیر\nای ستاره شبای مشرقی\nپر پرواز منو ازم نگیر",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "lyric",
+            "text": "intro",
+            "source": "intro"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm Bb Gm Fdim A Dm ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 3
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Fdim",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "Dm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm    Gm     Dm    Gm ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Dm",
+                "col": 13
+              },
+              {
+                "name": "Gm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm    Gm      A    Fdim",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "Fdim",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm    Gm     Dm    Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Dm",
+                "col": 13
+              },
+              {
+                "name": "Gm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm        A         Fdim",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              },
+              {
+                "name": "Fdim",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm          Gm     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو حضور مبهم پنجره ها",
+            "source": "تو حضور مبهم پنجره ها"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm        Gm     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روبروم دیوارای آجریه",
+            "source": "روبروم دیوارای آجریه"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm                          D7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              },
+              {
+                "name": "D7",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خورشید روشن فردا مال تو",
+            "source": "خورشید روشن فردا مال تو"
+          },
+          {
+            "kind": "chords",
+            "source": "A          Fdim     ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Fdim",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سهم من شبای خاکستری",
+            "source": "سهم من شبای خاکستری"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                    Gm      ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی این دلواپسی های مدام",
+            "source": "توی این دلواپسی های مدام"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                  Gm       ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جز ترانه های زخمی چی دارم",
+            "source": "جز ترانه های زخمی چی دارم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                         D7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی حتی تو برام غریبه ای",
+            "source": "وقتی حتی تو برام غریبه ای"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Fdim           ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Fdim",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سر رو شونه های بارون میزارم",
+            "source": "سر رو شونه های بارون میزارم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        Bb      Am Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 18
+              },
+              {
+                "name": "Dm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اسم تو برای من مقدسه",
+            "source": "اسم تو برای من مقدسه"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm    Bb                C     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 6
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا نفس تو سینه پرپر میزنه",
+            "source": "تا نفس تو سینه پرپر میزنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Bb       Am Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "Am",
+                "col": 18
+              },
+              {
+                "name": "Dm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باورم کن که فقط باور تو",
+            "source": "باورم کن که فقط باور تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Am    Dm        Bb          C     ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              },
+              {
+                "name": "C",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میتونه قفل قفس رو بشکنه",
+            "source": "میتونه قفل قفس رو بشکنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Dm       C         Bb",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 20
+              },
+              {
+                "name": "Bb",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منم و یه آسمون بی دریغ",
+            "source": "منم و یه آسمون بی دریغ"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm  Gm         Bb",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منم و یه کوره راه ناگزیر",
+            "source": "منم و یه کوره راه ناگزیر"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Dm C Bb   Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 14
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              },
+              {
+                "name": "Am",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای ستاره شبای مشرقی",
+            "source": "ای ستاره شبای مشرقی"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm     A    Am       C   Bb     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 7
+              },
+              {
+                "name": "Am",
+                "col": 12
+              },
+              {
+                "name": "C",
+                "col": 21
+              },
+              {
+                "name": "Bb",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پر پرواز منو ازم نگیر",
+            "source": " پر پرواز منو ازم نگیر"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        Bb      Am Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 18
+              },
+              {
+                "name": "Dm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اسم تو برای من مقدسه",
+            "source": "اسم تو برای من مقدسه"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm    Bb                C     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 6
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا نفس تو سینه پرپر میزنه",
+            "source": "تا نفس تو سینه پرپر میزنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Bb       Am Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "Am",
+                "col": 18
+              },
+              {
+                "name": "Dm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باورم کن که فقط باور تو",
+            "source": "باورم کن که فقط باور تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Am    Dm        Bb          C     ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              },
+              {
+                "name": "C",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میتونه قفل قفس رو بشکنه",
+            "source": "میتونه قفل قفس رو بشکنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Dm       C         Bb",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 20
+              },
+              {
+                "name": "Bb",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منم و یه آسمون بی دریغ",
+            "source": "منم و یه آسمون بی دریغ"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm  Gm         Bb",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منم و یه کوره راه ناگزیر",
+            "source": "منم و یه کوره راه ناگزیر"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Dm C Bb   Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 14
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              },
+              {
+                "name": "Am",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای ستاره شبای مشرقی",
+            "source": "ای ستاره شبای مشرقی"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm     A    Am       C   Bb     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 7
+              },
+              {
+                "name": "Am",
+                "col": 12
+              },
+              {
+                "name": "C",
+                "col": 21
+              },
+              {
+                "name": "Bb",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پر پرواز منو ازم نگیر",
+            "source": " پر پرواز منو ازم نگیر"
+          }
+        ],
+        "chordCount": 101,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T21:31:32.214Z"
     }
   ],
   "chordColors": {
