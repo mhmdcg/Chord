@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:53:29.187Z",
+  "updatedAt": "2026-10-31T12:54:37.266Z",
   "songs": [
     {
       "title": "خیال",
@@ -5296,6 +5296,929 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:53:27.728Z"
+    },
+    {
+      "title": "مستی",
+      "artist": "هایده",
+      "lyrics": "مستی ام درد منو دیگه دوا نمیکنه\nغم با من زاده شده منو رها نمیکنه\nمنو رها نمیکنه منو رها نمیکنه\nشب که از راه میرسه\nغربتم باهاش میاد\nتوی کوچه های شهر\nباز صدای پاش میاد\nمن غمای کهنه مو بر میدارم\nکه توی میخونه ها جا بذارم\nمی بینم یکی میاد از میخونه\nزیر لب مستونه آواز میخونه\nمستی ام درد منو دیگه دوا نمیکنه\nغم با من زاده شده منو رها نمیکنه\nمنو رها نمیکنه منو رها نمیکنه\nگرمی مستی میاد توی رگهای تنم\nمی بینم دلم میخواد با یکی حرف بزنم\nکی میاد به حرفای من گوش بده\nآخه من غریبه هستم با همه\nیکی آشنا میاد به چشم من\nولی از بخت بدم اونم غمه\nولی از بخت بدم اونم غمه\nمستی ام درد منو دیگه دوا نمیکنه\nغم با من زاده شده منو رها نمیکنه\nمنو رها نمیکنه منو رها نمیکنه\nخسته از هر چی که بود\nخسته از هر چی که هست\nراه میافتم که برم\nمثل هر شب مست مست\nباز دلم مثل همیشه خالیه\nباز دلم گریه تنهایی میخواد\nبر میگردم تا ببینم کسی نیست\nمی بینم غم داره دنبالم میاد\nمی بینم غم داره دنبالم میاد\nمستی ام درد منو دیگه دوا نمیکنه\nغم با من زاده شده منو رها نمیکنه\nمنو رها نمیکنه منو رها نمیکنه",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Gm                Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Dm",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "مستی ام درد منو دیگه دوا نمیکنه",
+            "source": "مستی ام درد منو دیگه دوا نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                         Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "غم با من زاده شده منو رها نمیکنه",
+            "source": "غم با من زاده شده منو رها نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                A      Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 18
+              },
+              {
+                "name": "Dm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "منو رها نمیکنه منو رها نمیکنه",
+            "source": "منو رها نمیکنه منو رها نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Dm                 ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 1
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "شب که از راه میرسه",
+            "source": "شب که از راه میرسه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "  Dm              ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 2
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "غربتم باهاش میاد",
+            "source": "غربتم باهاش میاد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm                 ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "توی کوچه های شهر",
+            "source": "توی کوچه های شهر"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm              Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "باز صدای پاش میاد",
+            "source": "باز صدای پاش میاد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Dm                          ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 1
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "من غمای کهنه مو بر میدارم",
+            "source": "من غمای کهنه مو بر میدارم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "  Dm                           ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 2
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "که توی میخونه ها جا بذارم",
+            "source": "که توی میخونه ها جا بذارم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm                           ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "می بینم یکی میاد از میخونه",
+            "source": "می بینم یکی میاد از میخونه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm Gm             Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 3
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "زیر لب مستونه آواز میخونه",
+            "source": "زیر لب مستونه آواز میخونه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "مستی ام درد منو دیگه دوا نمیکنه",
+            "source": "مستی ام درد منو دیگه دوا نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                         Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "غم با من زاده شده منو رها نمیکنه",
+            "source": "غم با من زاده شده منو رها نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                A      Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 18
+              },
+              {
+                "name": "Dm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "منو رها نمیکنه منو رها نمیکنه",
+            "source": "منو رها نمیکنه منو رها نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A                                     Dm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "گرمی مستی میاد توی رگهای تنم",
+            "source": "گرمی مستی میاد توی رگهای تنم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                                       A",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 41
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "می بینم دلم میخواد با یکی حرف بزنم",
+            "source": "می بینم دلم میخواد با یکی حرف بزنم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                                 Dm       ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 35
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "کی میاد به حرفای من گوش بده",
+            "source": "کی میاد به حرفای من گوش بده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm            A        Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "Gm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه من غریبه هستم با همه",
+            "source": "آخه من غریبه هستم با همه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                       Dm       ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "یکی آشنا میاد به چشم من",
+            "source": "یکی آشنا میاد به چشم من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm          A        Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 12
+              },
+              {
+                "name": "Gm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ولی از بخت بدم اونم غمه",
+            "source": "ولی از بخت بدم اونم غمه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm              A    Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 16
+              },
+              {
+                "name": "Dm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ولی از بخت بدم اونم غمه",
+            "source": "ولی از بخت بدم اونم غمه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "مستی ام درد منو دیگه دوا نمیکنه",
+            "source": "مستی ام درد منو دیگه دوا نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                         Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "غم با من زاده شده منو رها نمیکنه",
+            "source": "غم با من زاده شده منو رها نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                A      Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 18
+              },
+              {
+                "name": "Dm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "منو رها نمیکنه منو رها نمیکنه",
+            "source": "منو رها نمیکنه منو رها نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "    Dm                    ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "خسته از هر چی که بود",
+            "source": "خسته از هر چی که بود"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A                          Dm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "خسته از هر چی که هست",
+            "source": "خسته از هر چی که هست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "     A            ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "راه میافتم که برم",
+            "source": "راه میافتم که برم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                   A",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل هر شب مست مست",
+            "source": "مثل هر شب مست مست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "باز دلم مثل همیشه خالیه",
+            "source": "باز دلم مثل همیشه خالیه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "باز دلم گریه تنهایی میخواد",
+            "source": "باز دلم گریه تنهایی میخواد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                                Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "بر میگردم تا ببینم کسی نیست",
+            "source": "بر میگردم تا ببینم کسی نیست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm               A    Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 17
+              },
+              {
+                "name": "Dm",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "می بینم غم داره دنبالم میاد",
+            "source": "می بینم غم داره دنبالم میاد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm               A    Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 17
+              },
+              {
+                "name": "Dm",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "می بینم غم داره دنبالم میاد",
+            "source": "می بینم غم داره دنبالم میاد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "مستی ام درد منو دیگه دوا نمیکنه",
+            "source": "مستی ام درد منو دیگه دوا نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                         Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "غم با من زاده شده منو رها نمیکنه",
+            "source": "غم با من زاده شده منو رها نمیکنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                A      Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 18
+              },
+              {
+                "name": "Dm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "منو رها نمیکنه منو رها نمیکنه",
+            "source": "منو رها نمیکنه منو رها نمیکنه"
+          }
+        ],
+        "chordCount": 72,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T12:54:36.312Z"
     }
   ],
   "chordColors": {
