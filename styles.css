@@ -604,10 +604,26 @@ body {
     max-width: 540px;
 }
 
-.live-song-picker-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-light);
+.live-chord-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+    width: 100%;
+    min-height: 1.4rem;
+    justify-content: flex-end;
+    direction: ltr;
+}
+
+.live-chord-list.is-left {
+    justify-content: flex-start;
+}
+
+.live-chord-list span {
+    color: #d44545;
+    font-family: 'Estedad', Tahoma, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
 }
 
 .live-song-picker select {

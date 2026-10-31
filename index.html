@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20261031i">
+    <link rel="stylesheet" href="styles.css?v=20261031k">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -77,7 +77,7 @@
             </div>
             <div class="live-body">
                 <label class="live-song-picker">
-                    <span class="live-song-picker-label">Song</span>
+                    <div id="liveChordList" class="live-chord-list" hidden aria-label="Chords in this song"></div>
                     <select id="liveSongSelect" aria-label="Select song"></select>
                 </label>
                 <div class="live-scroll-bar">
@@ -391,6 +391,6 @@
     <script src="mp4-muxer.min.js"></script>
     <script src="link-charts.js?v=20261031j"></script>
     <script src="music-theory.js?v=20261030e"></script>
-    <script src="app.js?v=20261031j"></script>
+    <script src="app.js?v=20261031k"></script>
 </body>
 </html>
