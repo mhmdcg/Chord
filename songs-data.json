@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T14:01:14.947Z",
+  "updatedAt": "2026-10-31T14:06:27.533Z",
   "songs": [
     {
       "title": "خیال",
@@ -10686,6 +10686,501 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T14:01:13.993Z"
+    },
+    {
+      "title": "قاضی",
+      "artist": "شادمهر عقیلی",
+      "lyrics": "من نمیدونم خودت یه جوری آرومم کن\nمن که جز دستای تو راه فراری ندارم\nیه دیوونه که اصن کار به جایی نداره\nهمه دنیا تویی باقی همش یه بازیه\nکوچه ها تنگ میشن وقتی نگات ناراضیه\nانگاری یه شهر محکومن و چشمات قاضیه\nهی هوا کمتر شد جاده ها باریکن\nمن نمیدونم برم یا بمونم کاری کرد\nچشم تو ساکت شم یه آب راکد شم\nهی هوا بدتر شد مسیرا تاریکن\nمن نمیدونم برم یا بمونم کاری کرد\nچشم تو داغون شم هدف بارون شم\nمثه یه پرنده که همه پراشو چیدن\nپشت تو راه اومدم تورو نفس کشیدم\nمن میترسیدم ولی بخاطرت پریدم\nچون دلم میخواد برات بمیرمو نگاه کنی\nجاش فقط حسابمو از عاشقات جدا کنی\nزخمی که میخورم از آدمارو دوا کنی\nهی هوا کمتر شد جاده ها باریکن\nمن نمیدونم برم یا بمونم کاری کرد\nچشم تو ساکت شم یه آب راکد شم\nهی هوا بدتر شد مسیرا تاریکن\nمن نمیدونم برم یا بمونم کاری کرد\nچشم تو داغون شم هدف بارون شم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      D6                    Em",
+            "placements": [
+              {
+                "name": "D6",
+                "col": 6
+              },
+              {
+                "name": "Em",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من نمیدونم خودت یه جوری آرومم کن",
+            "source": "من نمیدونم خودت یه جوری آرومم کن"
+          },
+          {
+            "kind": "chords",
+            "source": "C                         D",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من که جز دستای تو راه فراری ندارم",
+            "source": "من که جز دستای تو راه فراری ندارم"
+          },
+          {
+            "kind": "chords",
+            "source": "B                     Am",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه دیوونه که اصن کار به جایی نداره",
+            "source": "یه دیوونه که اصن کار به جایی نداره"
+          },
+          {
+            "kind": "chords",
+            "source": "D6               Em",
+            "placements": [
+              {
+                "name": "D6",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه دنیا تویی باقی همش یه بازیه",
+            "source": "همه دنیا تویی باقی همش یه بازیه"
+          },
+          {
+            "kind": "chords",
+            "source": "C                       Bm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کوچه ها تنگ میشن وقتی نگات ناراضیه",
+            "source": "کوچه ها تنگ میشن وقتی نگات ناراضیه"
+          },
+          {
+            "kind": "chords",
+            "source": "B                     Am     ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "انگاری یه شهر محکومن و چشمات قاضیه",
+            "source": "انگاری یه شهر محکومن و چشمات قاضیه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "D                                       Em",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هی هوا کمتر شد جاده ها باریکن",
+            "source": "هی هوا کمتر شد جاده ها باریکن"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                           D",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من نمیدونم برم یا بمونم کاری کرد",
+            "source": "من نمیدونم برم یا بمونم کاری کرد"
+          },
+          {
+            "kind": "chords",
+            "source": "B                       C",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم تو ساکت شم یه آب راکد شم",
+            "source": "چشم تو ساکت شم یه آب راکد شم"
+          },
+          {
+            "kind": "chords",
+            "source": "D                                    Em",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هی هوا بدتر شد مسیرا تاریکن",
+            "source": "هی هوا بدتر شد مسیرا تاریکن"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                           D",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من نمیدونم برم یا بمونم کاری کرد",
+            "source": "من نمیدونم برم یا بمونم کاری کرد"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                  B                       C",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 20
+              },
+              {
+                "name": "C",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم تو داغون شم هدف بارون شم",
+            "source": "چشم تو داغون شم هدف بارون شم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "D6                            Em",
+            "placements": [
+              {
+                "name": "D6",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه یه پرنده که همه پراشو چیدن",
+            "source": "مثه یه پرنده که همه پراشو چیدن"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                      D",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت تو راه اومدم تورو نفس کشیدم",
+            "source": "پشت تو راه اومدم تورو نفس کشیدم"
+          },
+          {
+            "kind": "chords",
+            "source": "          B                      Am          ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من میترسیدم ولی بخاطرت پریدم",
+            "source": "من میترسیدم ولی بخاطرت پریدم"
+          },
+          {
+            "kind": "chords",
+            "source": "D6                                  Em",
+            "placements": [
+              {
+                "name": "D6",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 36
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چون دلم میخواد برات بمیرمو نگاه کنی",
+            "source": "چون دلم میخواد برات بمیرمو نگاه کنی"
+          },
+          {
+            "kind": "chords",
+            "source": "             C                      Bm          ",
+            "placements": [
+              {
+                "name": "C",
+                "col": 13
+              },
+              {
+                "name": "Bm",
+                "col": 36
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جاش فقط حسابمو از عاشقات جدا کنی",
+            "source": "جاش فقط حسابمو از عاشقات جدا کنی"
+          },
+          {
+            "kind": "chords",
+            "source": "          B                      Am          ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زخمی که میخورم از آدمارو دوا کنی",
+            "source": "زخمی که میخورم از آدمارو دوا کنی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "D                                       Em",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هی هوا کمتر شد جاده ها باریکن",
+            "source": "هی هوا کمتر شد جاده ها باریکن"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                           D",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من نمیدونم برم یا بمونم کاری کرد",
+            "source": "من نمیدونم برم یا بمونم کاری کرد"
+          },
+          {
+            "kind": "chords",
+            "source": "B                       C",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم تو ساکت شم یه آب راکد شم",
+            "source": "چشم تو ساکت شم یه آب راکد شم"
+          },
+          {
+            "kind": "chords",
+            "source": "D                                    Em",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هی هوا بدتر شد مسیرا تاریکن",
+            "source": "هی هوا بدتر شد مسیرا تاریکن"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                           D",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من نمیدونم برم یا بمونم کاری کرد",
+            "source": "من نمیدونم برم یا بمونم کاری کرد"
+          },
+          {
+            "kind": "chords",
+            "source": "B                       C",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم تو داغون شم هدف بارون شم",
+            "source": "چشم تو داغون شم هدف بارون شم"
+          }
+        ],
+        "chordCount": 49,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T14:06:26.460Z"
     }
   ],
   "chordColors": {
