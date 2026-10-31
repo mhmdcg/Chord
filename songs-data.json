@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T19:05:59.444Z",
+  "updatedAt": "2026-10-31T19:51:37.601Z",
   "songs": [
     {
       "title": "خیال",
@@ -15754,6 +15754,1820 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T19:05:58.156Z"
+    },
+    {
+      "title": "خونه عشق",
+      "artist": "شهرام شب پره",
+      "lyrics": "توی هر شهر غریبی\nبا تو می شه موندنی شد\nقصه ی هزار و یک شب\nمی شه بود و خوندنی شد\nمشق عشقای قدیمو\nبا تو می شه خط خطی کرد\nمی شه شاه قصه هارو\nیه گدای پاپتی کرد\nتوی هر شهر غریبی\nبا تو می شه موندنی شد\nقصه ی هزار و یک شب\nمی شه بود و خوندنی شد\nمشق عشقای قدیمو\nبا تو می شه خط خطی کرد\nمی شه شاه قصه هارو\nیه گدای پاپتی کرد\nبا تو هر جهنمی می شه بهشت\nبا تو می شه صد هزار قصه نوشت\nبا تو می شه خونه کرد تو شهر عشق\nاما افسوس نمی ذاره سرنوشت\nبا تو می شه زنده شد\nعمر دوباره ای گرفت\nدل وامونده رو داد و\nجون تازه ای گرفت\nبشنـــــو از من این نصیحت\nشعر موندن ساز کــــــن\nتا پر و بالم نسوخته\nتو با من پـــــرواز کـــن\nبا تو هر جهنمی می شه بهشت\nبا تو می شه صد هزار قصه نوشت\nبا تو می شه خونه کرد تو شهر عشق\nاما افسوس نمی ذاره سرنوشت\nتوی هر شهر غریبی\nبا تو می شه موندنی شد\nقصه ی هزار و یک شب\nمی شه بود و خوندنی شد\nمشق عشقای قدیمو\nبا تو می شه خط خطی کرد\nمی شه شاه قصه هارو\nیه گدای پاپتی کرد\nبا تو هر جهنمی می شه بهشت\nبا تو می شه صد هزار قصه نوشت\nبا تو می شه خونه کرد تو شهر عشق\nاما افسوس نمی ذاره سرنوشت\nبا تو می شه زنده شد\nعمر دوباره ای گرفت\nدل وامونده رو داد و\nجون تازه ای گرفت\nبشنـــــو از من این نصیحت\nشعر موندن ساز کــــــن\nتا پر و بالم نسوخته\nتو با من پـــــرواز کـــن\nبا تو هر جهنمی می شه بهشت\nبا تو می شه صد هزار قصه نوشت\nبا تو می شه خونه کرد تو شهر عشق\nاما افسوس نمی ذاره سرنوشت\nبا تو هر جهنمی می شه بهشت\nبا تو می شه صد هزار قصه نوشت\nبا تو می شه خونه کرد تو شهر عشق\nاما افسوس نمی ذاره سرنوشت",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      A#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر شهر غریبی",
+            "source": "توی هر شهر غریبی    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                              ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه موندنی شد",
+            "source": "با تو می شه موندنی ش*د"
+          },
+          {
+            "kind": "chords",
+            "source": "B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قصه ی هزار و یک شب",
+            "source": "قصه ی هزار و یک شب    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m                           ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می شه بود و خوندنی شد",
+            "source": "می شه بود و خوندنی ش*د"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مشق عشقای قدیمو",
+            "source": "مشق عشقای قدیمو    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                             ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه خط خطی کرد",
+            "source": "با تو می شه خط خطی * کرد"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m                         B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می شه شاه قصه هارو",
+            "source": "می شه شاه قصه هار*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m     B          ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه گدای پاپتی کرد",
+            "source": "یه گدای* پاپتی ک*رد"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   D#   C#",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "D#",
+                "col": 6
+              },
+              {
+                "name": "C#",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   B   G#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   B   D#",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 6
+              },
+              {
+                "name": "D#",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   B   G#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   B   D#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#      F#       A#m",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 8
+              },
+              {
+                "name": "A#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر شهر غریبی",
+            "source": "توی هر ش*هر غریب*ی    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                              ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه موندنی شد",
+            "source": "با تو می شه موندنی ش*د"
+          },
+          {
+            "kind": "chords",
+            "source": "F#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قصه ی هزار و یک شب",
+            "source": "قصه ی هزار و یک شب    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m                           ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می شه بود و خوندنی شد",
+            "source": "می شه بود و خوندنی ش*د"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#      F#        A#m",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 8
+              },
+              {
+                "name": "A#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مشق عشقای قدیمو",
+            "source": "مشق عشق*ای قدیم*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                               ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه خط خطی کرد",
+            "source": "با تو می شه خط خطی ک*رد"
+          },
+          {
+            "kind": "chords",
+            "source": "F#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m        B          G#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 11
+              },
+              {
+                "name": "G#m",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می شه شاه قصه هارو",
+            "source": "می شه شاه* قصه هار*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m      B          ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه گدای پاپتی کرد",
+            "source": "یه گدای* پاپتی ک*رد"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   F#   A#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 6
+              },
+              {
+                "name": "A#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B                  A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو هر جهنمی می شه بهشت",
+            "source": "با تو هر جهنمی م*ی شه بهشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                           B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه صد هزار قصه نوشت",
+            "source": "با تو می شه صد هزار ق*صه ن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                          A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه خونه کرد تو شهر عشق",
+            "source": "با تو می شه خونه کرد ت*و شهر عشق    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                       B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما افسوس نمی ذاره سرنوشت",
+            "source": "اما افسوس نمی ذار*ه سرن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#   B   A#m   G#m   A#m   D#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 5
+              },
+              {
+                "name": "A#m",
+                "col": 9
+              },
+              {
+                "name": "G#m",
+                "col": 15
+              },
+              {
+                "name": "A#m",
+                "col": 21
+              },
+              {
+                "name": "D#",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#   B   G#m   D#   C#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 5
+              },
+              {
+                "name": "G#m",
+                "col": 9
+              },
+              {
+                "name": "D#",
+                "col": 15
+              },
+              {
+                "name": "C#",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#   G#m   D#m   C#   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 11
+              },
+              {
+                "name": "D#m",
+                "col": 17
+              },
+              {
+                "name": "C#",
+                "col": 23
+              },
+              {
+                "name": "D#m",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   G#m   C#   F#   D#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 6
+              },
+              {
+                "name": "C#",
+                "col": 12
+              },
+              {
+                "name": "F#",
+                "col": 17
+              },
+              {
+                "name": "D#m",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   G#m   B   C#",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 6
+              },
+              {
+                "name": "B",
+                "col": 12
+              },
+              {
+                "name": "C#",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه زنده شد",
+            "source": "با تو می شه زنده شد    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m  A#7    C#",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "A#7",
+                "col": 5
+              },
+              {
+                "name": "C#",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عمر دوباره ای گرفت",
+            "source": "ع*مر دوبار*ه ای گ*رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#m                    B",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل وامونده رو داد و",
+            "source": "دل وامونده رو داد* و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m      ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جون تازه ای گرفت",
+            "source": "جون تاز*ه ای گرفت"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#             B  D#m A#m",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 15
+              },
+              {
+                "name": "D#m",
+                "col": 18
+              },
+              {
+                "name": "A#m",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بشنـــــو از من این نصیحت",
+            "source": "بشنـــــ*و از م*ن این نصیح*ت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m B            ",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شعر موندن ساز کــــــن",
+            "source": "شعر موند*ن س*از کــــــ*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m       F# B D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 10
+              },
+              {
+                "name": "B",
+                "col": 13
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا پر و بالم نسوخته",
+            "source": "تا پ*ر و ب*الم نسوخ*ته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m C# F#           ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "C#",
+                "col": 4
+              },
+              {
+                "name": "F#",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو با من پـــــرواز کـــن",
+            "source": "تو با من پ*ـــــرو*از کـــ*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B                  A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو هر جهنمی می شه بهشت",
+            "source": "با تو هر جهنمی م*ی شه بهشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                           B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه صد هزار قصه نوشت",
+            "source": "با تو می شه صد هزار ق*صه ن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                          A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه خونه کرد تو شهر عشق",
+            "source": "با تو می شه خونه کرد ت*و شهر عشق    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                       B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما افسوس نمی ذاره سرنوشت",
+            "source": "اما افسوس نمی ذار*ه سرن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   B   G#m   A#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 10
+              },
+              {
+                "name": "A#m",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   B   D#",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 6
+              },
+              {
+                "name": "D#",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   B   G#m   A#m   B   G#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 10
+              },
+              {
+                "name": "A#m",
+                "col": 16
+              },
+              {
+                "name": "B",
+                "col": 22
+              },
+              {
+                "name": "G#m",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#      F#       A#m",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 8
+              },
+              {
+                "name": "A#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر شهر غریبی",
+            "source": "توی هر ش*هر غریب*ی    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                              ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه موندنی شد",
+            "source": "با تو می شه موندنی ش*د"
+          },
+          {
+            "kind": "chords",
+            "source": "F#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قصه ی هزار و یک شب",
+            "source": "قصه ی هزار و یک شب    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m                           ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می شه بود و خوندنی شد",
+            "source": "می شه بود و خوندنی ش*د"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#      F#        A#m",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 8
+              },
+              {
+                "name": "A#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مشق عشقای قدیمو",
+            "source": "مشق عشق*ای قدیم*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                               ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه خط خطی کرد",
+            "source": "با تو می شه خط خطی ک*رد"
+          },
+          {
+            "kind": "chords",
+            "source": "F#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m        B          G#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 11
+              },
+              {
+                "name": "G#m",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می شه شاه قصه هارو",
+            "source": "می شه شاه* قصه هار*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m      B          ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه گدای پاپتی کرد",
+            "source": "یه گدای* پاپتی ک*رد"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   F#   A#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 6
+              },
+              {
+                "name": "A#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B                  A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو هر جهنمی می شه بهشت",
+            "source": "با تو هر جهنمی م*ی شه بهشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                           B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه صد هزار قصه نوشت",
+            "source": "با تو می شه صد هزار ق*صه ن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                          A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه خونه کرد تو شهر عشق",
+            "source": "با تو می شه خونه کرد ت*و شهر عشق    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                       B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما افسوس نمی ذاره سرنوشت",
+            "source": "اما افسوس نمی ذار*ه سرن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#   B   A#m   G#m   A#m   D#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 5
+              },
+              {
+                "name": "A#m",
+                "col": 9
+              },
+              {
+                "name": "G#m",
+                "col": 15
+              },
+              {
+                "name": "A#m",
+                "col": 21
+              },
+              {
+                "name": "D#",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#   B   G#m   D#   C#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 5
+              },
+              {
+                "name": "G#m",
+                "col": 9
+              },
+              {
+                "name": "D#",
+                "col": 15
+              },
+              {
+                "name": "C#",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D#m   C#   G#m   D#m   C#   D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 11
+              },
+              {
+                "name": "D#m",
+                "col": 17
+              },
+              {
+                "name": "C#",
+                "col": 23
+              },
+              {
+                "name": "D#m",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   G#m   C#   F#   D#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 6
+              },
+              {
+                "name": "C#",
+                "col": 12
+              },
+              {
+                "name": "F#",
+                "col": 17
+              },
+              {
+                "name": "D#m",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m   G#m   B   C#",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 6
+              },
+              {
+                "name": "B",
+                "col": 12
+              },
+              {
+                "name": "C#",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه زنده شد",
+            "source": "با تو می شه زنده شد    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m  A#7    C#",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "A#7",
+                "col": 5
+              },
+              {
+                "name": "C#",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عمر دوباره ای گرفت",
+            "source": "ع*مر دوبار*ه ای گ*رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#m                    B",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل وامونده رو داد و",
+            "source": "دل وامونده رو داد* و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m      ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جون تازه ای گرفت",
+            "source": "جون تاز*ه ای گرفت"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m   F#",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G#             B  D#m A#m",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 15
+              },
+              {
+                "name": "D#m",
+                "col": 18
+              },
+              {
+                "name": "A#m",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بشنـــــو از من این نصیحت",
+            "source": "بشنـــــ*و از م*ن این نصیح*ت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m C#m B            ",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شعر موندن ساز کــــــن",
+            "source": "شعر موند*ن س*از کــــــ*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m       F# B D#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 10
+              },
+              {
+                "name": "B",
+                "col": 13
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا پر و بالم نسوخته",
+            "source": "تا پ*ر و ب*الم نسوخ*ته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m C# F#           ",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "C#",
+                "col": 4
+              },
+              {
+                "name": "F#",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو با من پـــــرواز کـــن",
+            "source": "تو با من پ*ـــــرو*از کـــ*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B                  A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو هر جهنمی می شه بهشت",
+            "source": "با تو هر جهنمی م*ی شه بهشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                           B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه صد هزار قصه نوشت",
+            "source": "با تو می شه صد هزار ق*صه ن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                          A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه خونه کرد تو شهر عشق",
+            "source": "با تو می شه خونه کرد ت*و شهر عشق    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                       B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما افسوس نمی ذاره سرنوشت",
+            "source": "اما افسوس نمی ذار*ه سرن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                  A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو هر جهنمی می شه بهشت",
+            "source": "با تو هر جهنمی م*ی شه بهشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                           B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه صد هزار قصه نوشت",
+            "source": "با تو می شه صد هزار ق*صه ن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                          A#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A#m",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو می شه خونه کرد تو شهر عشق",
+            "source": "با تو می شه خونه کرد ت*و شهر عشق    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m G#m                       B",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما افسوس نمی ذاره سرنوشت",
+            "source": "اما افسوس نمی ذار*ه سرن*وشت    *"
+          },
+          {
+            "kind": "chords",
+            "source": "A#m",
+            "placements": [
+              {
+                "name": "A#m",
+                "col": 0
+              }
+            ]
+          }
+        ],
+        "chordCount": 234,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T19:51:36.314Z"
     }
   ],
   "chordColors": {
