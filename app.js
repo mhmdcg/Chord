@@ -5841,16 +5841,37 @@ class ChordAnnotatorApp {
 
     onScanPaste(event) {
         if (this.currentView !== 'scan') return;
-        const items = event.clipboardData && event.clipboardData.items;
-        if (!items) return;
-        for (const item of items) {
-            if (!item.type || !item.type.startsWith('image/')) continue;
-            const file = item.getAsFile();
-            if (!file) continue;
-            event.preventDefault();
-            this.setScanFile(file);
-            return;
+        const data = event.clipboardData;
+        if (!data) return;
+        const items = data.items;
+        if (items) {
+            for (const item of items) {
+                if (!item.type || !item.type.startsWith('image/')) continue;
+                const file = item.getAsFile();
+                if (!file) continue;
+                event.preventDefault();
+                this.setScanFile(file);
+                return;
+            }
         }
+        if (this.fillLinkFromText(this.clipboardText(data))) event.preventDefault();
+    }
+
+    clipboardText(data) {
+        if (!data || !data.getData) return '';
+        const uriList = data.getData('text/uri-list') || '';
+        const uri = uriList.split(/\r?\n/).map((line) => line.trim()).find((line) => line && !line.startsWith('#'));
+        return uri || data.getData('text/plain') || '';
+    }
+
+    fillLinkFromText(text) {
+        const input = document.getElementById('linkImportInput');
+        const url = LinkCharts.parsePublicHttpUrl(text, window.location.origin);
+        if (!url || !input) return false;
+        input.value = url.href;
+        this.setLinkStatus('');
+        input.focus();
+        return true;
     }
 
     async pasteScanImage() {
@@ -5868,9 +5889,29 @@ class ChordAnnotatorApp {
                 this.setScanFile(file);
                 return;
             }
+            const textType = (item) => (item.types || []).find((name) => name === 'text/plain' || name === 'text/uri-list');
+            for (const item of items) {
+                const type = textType(item);
+                if (!type) continue;
+                const blob = await item.getType(type);
+                if (this.fillLinkFromText(await blob.text())) {
+                    this.setScanStatus('');
+                    return;
+                }
+            }
             this.setScanStatus('No image on the clipboard.');
         } catch (error) {
-            this.setScanStatus('Could not paste. Copy an image, then tap Paste again.');
+            try {
+                const text = navigator.clipboard.readText ? await navigator.clipboard.readText() : '';
+                if (this.fillLinkFromText(text)) {
+                    this.setScanStatus('');
+                    return;
+                }
+            } catch (textError) {
+                this.setScanStatus('Could not paste. Copy an image, then tap Paste again.');
+                return;
+            }
+            this.setScanStatus('No image on the clipboard.');
         }
     }
 
@@ -6011,15 +6052,9 @@ class ChordAnnotatorApp {
         }
         try {
             const text = await navigator.clipboard.readText();
-            const url = LinkCharts.parsePublicHttpUrl(text, window.location.origin);
-            if (!url) {
-                this.setLinkStatus(String(text || '').trim() ? 'The clipboard is not a link.' : 'The clipboard is empty.');
-                if (input) input.focus();
-                return;
-            }
-            input.value = url.href;
-            this.setLinkStatus('');
-            input.focus();
+            if (this.fillLinkFromText(text)) return;
+            this.setLinkStatus(String(text || '').trim() ? 'The clipboard is not a link.' : 'The clipboard is empty.');
+            if (input) input.focus();
         } catch (error) {
             this.setLinkStatus('Could not paste. Tap the field and paste the link.');
             if (input) input.focus();
