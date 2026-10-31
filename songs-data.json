@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:51:48.905Z",
+  "updatedAt": "2026-10-31T12:53:29.187Z",
   "songs": [
     {
       "title": "خیال",
@@ -4445,6 +4445,857 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:51:31.343Z"
+    },
+    {
+      "title": "چشم من",
+      "artist": "داریوش",
+      "lyrics": "چشم من بیا منو یاری بکن\nگونه هام خشکیده شد کاری بکن\nغیر گریه مگه کاری میشه کرد\nکاری از ما نمیاد زاری بکن\nاونکه رفته دیگه هیچوقت نمیاد\nتا قیامت دل من گریه میخواد\nهر چی دریا رو زمین داره خدا\nبا تموم ابرای آسمونا\nکاشکی میداد همه رو به چشم من\nتا چشمام به حال من گریه کنن\nاونکه رفته دیگه هیچوقت نمیاد\nتا قیامت دل من گریه میخواد\nقصه ی گذشته های خوب من\nخیلی زود مثل یه خواب تموم شدن\nحالا باید سر رو زانوم بذارم\nتا قیامت اشک حسرت ببارم\nدل هیشکی مثل من غم نداره\nمثل من غربتو ماتم نداره\nحالا که گریه دوای دردمه\nچرا چشمام اشکشو کم میاره\nخورشید روشن ما رو دزدین\nزیر اون ابرای سنگین کشیدن\nهمه جا رنگ سیاه ماتمه\nفرصت موندنمون خیلی کمه\nاونکه رفته دیگه هیچوقت نمیاد\nتا قیامت دل من گریه میخواد\nسرنوشت چشاش کوره نمیبینه\nزخم خنجرش میمونه تو سینه\nلب بسته سینه ی غرق به خون\nقصه ی موندن آدم همینه\nاون که رفته دیگه هیچوقت نمیاد\nتا قیامت دل من گریه میخواد",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Em          Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم من بیا منو یاری بکن",
+            "source": "چشم من بیا منو یاری بکن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#   D                        A",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 5
+              },
+              {
+                "name": "A",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گونه هام خشکیده شد کاری بکن",
+            "source": "گونه هام خشکیده شد کاری بکن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Em            Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 1
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غیر گریه مگه کاری میشه کرد",
+            "source": "غیر گریه مگه کاری میشه کرد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#   D                  A",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 5
+              },
+              {
+                "name": "A",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کاری از ما نمیاد زاری بکن",
+            "source": "کاری از ما نمیاد زاری بکن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    G         A      Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 16
+              },
+              {
+                "name": "Em",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اونکه رفته دیگه هیچوقت نمیاد",
+            "source": "اونکه رفته دیگه هیچوقت نمیاد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     G        A   Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 16
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا قیامت دل من گریه میخواد",
+            "source": "تا قیامت دل من گریه میخواد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                     Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر چی دریا رو زمین داره خدا",
+            "source": "هر چی دریا رو زمین داره خدا"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#    D            A",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تموم ابرای آسمونا",
+            "source": "با تموم ابرای آسمونا"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                  Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کاشکی میداد همه رو به چشم من",
+            "source": "کاشکی میداد همه رو به چشم من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#    D                    A",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا چشمام به حال من گریه کنن",
+            "source": "تا چشمام به حال من گریه کنن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm G             A     Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 3
+              },
+              {
+                "name": "A",
+                "col": 17
+              },
+              {
+                "name": "Em",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اونکه رفته دیگه هیچوقت نمیاد",
+            "source": "اونکه رفته دیگه هیچوقت نمیاد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    G           A   Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 18
+              },
+              {
+                "name": "Em",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا قیامت دل من گریه میخواد",
+            "source": "تا قیامت دل من گریه میخواد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em        G    Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 10
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قصه ی گذشته های خوب من",
+            "source": "قصه ی گذشته های خوب من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                              A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خیلی زود مثل یه خواب تموم شدن",
+            "source": "خیلی زود مثل یه خواب تموم شدن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em          G  Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 12
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا باید سر رو زانوم بذارم",
+            "source": "حالا باید سر رو زانوم بذارم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                      A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا قیامت اشک حسرت ببارم",
+            "source": "تا قیامت اشک حسرت ببارم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   G           E   Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 5
+              },
+              {
+                "name": "E",
+                "col": 17
+              },
+              {
+                "name": "Em",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل هیشکی مثل من غم نداره",
+            "source": "دل هیشکی مثل من غم نداره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm  A          E  Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 4
+              },
+              {
+                "name": "E",
+                "col": 15
+              },
+              {
+                "name": "Em",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل من غربتو ماتم نداره",
+            "source": "مثل من غربتو ماتم نداره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm G                 A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 3
+              },
+              {
+                "name": "A",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا که گریه دوای دردمه",
+            "source": "حالا که گریه دوای دردمه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                   A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چرا چشمام اشکشو کم میاره",
+            "source": "چرا چشمام اشکشو کم میاره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                Bm ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خورشید روشن ما رو دزدین",
+            "source": "خورشید روشن ما رو دزدین"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#   D                    A",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 5
+              },
+              {
+                "name": "A",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زیر اون ابرای سنگین کشیدن",
+            "source": "زیر اون ابرای سنگین کشیدن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em             Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه جا رنگ سیاه ماتمه",
+            "source": "همه جا رنگ سیاه ماتمه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#  D                     A",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 4
+              },
+              {
+                "name": "A",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فرصت موندنمون خیلی کمه",
+            "source": "فرصت موندنمون خیلی کمه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm G             A     Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 3
+              },
+              {
+                "name": "A",
+                "col": 17
+              },
+              {
+                "name": "Em",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اونکه رفته دیگه هیچوقت نمیاد",
+            "source": "اونکه رفته دیگه هیچوقت نمیاد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    G           A   Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 18
+              },
+              {
+                "name": "Em",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا قیامت دل من گریه میخواد",
+            "source": "تا قیامت دل من گریه میخواد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm G            E      Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 3
+              },
+              {
+                "name": "E",
+                "col": 16
+              },
+              {
+                "name": "Em",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سرنوشت چشاش کوره نمیبینه",
+            "source": "سرنوشت چشاش کوره نمیبینه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    A       E     Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 6
+              },
+              {
+                "name": "E",
+                "col": 14
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زخم خنجرش میمونه تو سینه",
+            "source": "زخم خنجرش میمونه تو سینه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     G                   A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لب بسته سینه ی غرق به خون",
+            "source": "لب بسته سینه ی غرق به خون"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm              A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قصه ی موندن آدم همینه",
+            "source": "قصه ی موندن آدم همینه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    G                       A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اون که رفته دیگه هیچوقت نمیاد",
+            "source": "اون که رفته دیگه هیچوقت نمیاد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm              A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا قیامت دل من گریه میخواد",
+            "source": "تا قیامت دل من گریه میخواد"
+          }
+        ],
+        "chordCount": 95,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T12:53:27.728Z"
     }
   ],
   "chordColors": {
