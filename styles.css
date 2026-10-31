@@ -563,6 +563,20 @@ body {
     display: block;
 }
 
+.live-easy-btn {
+    width: auto;
+    min-width: 44px;
+    padding: 0 0.7rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.live-easy-btn.is-active {
+    background: #EEF2FF;
+    color: var(--primary);
+    border-color: #C7D2FE;
+}
+
 .live-scale-label {
     min-width: 3.25rem;
     text-align: center;
@@ -2473,11 +2487,30 @@ body.live-fullscreen {
         display: none;
     }
 
+    .live-header {
+        flex-wrap: wrap;
+        row-gap: 0.45rem;
+    }
+
+    .live-transpose {
+        flex: 1 1 100%;
+        justify-content: flex-end;
+        gap: 0.3rem;
+    }
+
     .live-transpose-btn,
     .live-scroll-toggle,
     .live-fullscreen-btn {
         width: 40px;
         height: 40px;
+    }
+
+    .live-easy-btn {
+        width: auto;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 0.55rem;
+        font-size: 0.875rem;
     }
 
     .live-scale-label {
