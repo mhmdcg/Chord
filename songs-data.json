@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:49:34.195Z",
+  "updatedAt": "2026-10-31T12:51:33.180Z",
   "songs": [
     {
       "title": "خیال",
@@ -3338,6 +3338,1113 @@
         "C"
       ],
       "hideSplits": false
+    },
+    {
+      "title": "کی اشکاتو پاک میکنه",
+      "artist": "ابی",
+      "lyrics": "کی اشکاتو پاک می کنه\nشبا که غصه داری\nدست رو موهات کی می کشه\nوقتی منو نداری\nشونه ی کی مرهم هق هقت می شه دوباره\nاز کی بهونه می گیری\nشبای بی ستاره\nبرگ ریزونای پاییز\nکی چشم به رات نشسته\nاز جلو پات جمع میکنه\nبرگای زرد و خسته\nکی منتظر می مونه\nحتی شبای یلدا\nتا خنده رو لبات بیاد\nشب برسه به فردا\nکی از سرود بارون\nقصه برات می سازه\nاز عاشقی می خونه\nوقتی که راه درازه\nکی از ستاره بارون\nچشماشو هم می ذاره\nنکنه ستاره ای بیاد\nیاد تو رو نیاره\nنکنه ستاره ای بیاد\nیاد تو رو نیاره\nکی اشکاتو پاک می کنه\nشبا که غصه داری\nدست رو موهات کی می کشه\nوقتی منو نداری\nشونه ی کی مرهم هق هقت می شه دوباره\nاز کی بهونه می گیری\nشبای بی ستاره\nبرگ ریزونای پاییز\nکی چشم به رات نشسته\nاز جلو پات جمع میکنه\nبرگای زرد و خسته\nکی منتظر می مونه\nحتی شبای یلدا\nتا خنده رو لبات بیاد\nشب برسه به فردا\nکی از سرود بارون\nقصه برات می سازه\nاز عاشقی می خونه\nوقتی که راه درازه\nکی از ستاره بارون\nچشماشو هم می ذاره\nنکنه ستاره ای بیاد\nیاد تو رو نیاره\nنکنه ستاره ای بیاد و\nیاد تو رو نیاره\nکی اشکاتو پاک می کنه",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      F#   E   D#m   B",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 6
+              },
+              {
+                "name": "E",
+                "col": 11
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              },
+              {
+                "name": "B",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#   E   D#m   B",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 5
+              },
+              {
+                "name": "D#m",
+                "col": 9
+              },
+              {
+                "name": "B",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی اشکاتو پاک می کنه",
+            "source": "کی اشکاتو پاک می کنه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "E        D#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شبا که غصه داری",
+            "source": "شبا که غص*ه داری  *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دست رو موهات کی می کشه",
+            "source": "دست رو موهات کی می کشه   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B          F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی منو نداری",
+            "source": "وقتی منو ن*داری   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E           D#m                              B",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "B",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شونه ی کی مرهم هق هقت می شه دوباره",
+            "source": "شونه ی کی مرهم هق ه*قت می شه * دوباره    *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از کی بهونه می گیری",
+            "source": "از کی بهونه می گیری   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B           F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شبای بی ستاره",
+            "source": "شبای بی س*تاره   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برگ ریزونای پاییز",
+            "source": "برگ ریزونای پاییز  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#                     B",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی چشم به رات نشسته",
+            "source": "کی چشم به رات ن*شسته  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#7",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از جلو پات جمع میکنه",
+            "source": "از جلو پات جمع میکنه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E       F#7",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برگای زرد و خسته",
+            "source": "برگای زرد* و خسته  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#               E",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی منتظر می مونه",
+            "source": "کی منتظر م*ی مونه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B      F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حتی شبای یلدا",
+            "source": "حتی شبا*ی یلدا  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#              E",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا خنده رو لبات بیاد",
+            "source": "تا خنده رو ل*بات بیاد    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B          F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شب برسه به فردا",
+            "source": "شب برسه * به فردا   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B   F#7   C#m   B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 4
+              },
+              {
+                "name": "C#m",
+                "col": 10
+              },
+              {
+                "name": "B",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#m           B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی از سرود بارون",
+            "source": "کی از سرود* بارون  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B              ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قصه برات می سازه",
+            "source": "قصه برات م*ی سازه"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m           B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از عاشقی می خونه",
+            "source": "از عاشقی م*ی خونه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B          F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی که راه درازه",
+            "source": "و*قتی که راه د*رازه"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m           B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی از ستاره بارون",
+            "source": "کی از ستار*ه بارون   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                  ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشماشو هم می ذاره",
+            "source": "چشماشو هم م*ی ذاره"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m7       B",
+            "placements": [
+              {
+                "name": "C#m7",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه ستاره ای بیاد",
+            "source": "نکنه ستار*ه ای بیاد  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B      F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یاد تو رو نیاره",
+            "source": "ی*اد تو رو ن*یاره"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m7       B",
+            "placements": [
+              {
+                "name": "C#m7",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه ستاره ای بیاد",
+            "source": "نکنه ستار*ه ای بیاد  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B      F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یاد تو رو نیاره",
+            "source": "یاد تو رو * نیاره  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#   E   D#m   B",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 5
+              },
+              {
+                "name": "D#m",
+                "col": 9
+              },
+              {
+                "name": "B",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#   E   D#m   B",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 5
+              },
+              {
+                "name": "D#m",
+                "col": 9
+              },
+              {
+                "name": "B",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی اشکاتو پاک می کنه",
+            "source": "کی اشکاتو پاک می کنه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "E        D#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شبا که غصه داری",
+            "source": "شبا که غص*ه داری  *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دست رو موهات کی می کشه",
+            "source": "دست رو موهات کی می کشه   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B          F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی منو نداری",
+            "source": "وقتی منو ن*داری   *"
+          },
+          {
+            "kind": "chords",
+            "source": "E           D#m                              B",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 12
+              },
+              {
+                "name": "B",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شونه ی کی مرهم هق هقت می شه دوباره",
+            "source": "شونه ی کی مرهم هق ه*قت می شه * دوباره    *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از کی بهونه می گیری",
+            "source": "از کی بهونه می گیری   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B           F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شبای بی ستاره",
+            "source": "شبای بی س*تاره   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برگ ریزونای پاییز",
+            "source": "برگ ریزونای پاییز  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#                     B",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی چشم به رات نشسته",
+            "source": "کی چشم به رات ن*شسته  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#7",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از جلو پات جمع میکنه",
+            "source": "از جلو پات جمع میکنه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E       F#7",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برگای زرد و خسته",
+            "source": "برگای زرد* و خسته  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#               E",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی منتظر می مونه",
+            "source": "کی منتظر م*ی مونه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B      F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حتی شبای یلدا",
+            "source": "حتی شبا*ی یلدا  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#              E",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا خنده رو لبات بیاد",
+            "source": "تا خنده رو ل*بات بیاد    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B          F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شب برسه به فردا",
+            "source": "شب برسه * به فردا   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B   F#7   C#m   B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 4
+              },
+              {
+                "name": "C#m",
+                "col": 10
+              },
+              {
+                "name": "B",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#m           B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی از سرود بارون",
+            "source": "کی از سرود* بارون  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B              ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قصه برات می سازه",
+            "source": "قصه برات م*ی سازه"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m           B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از عاشقی می خونه",
+            "source": "از عاشقی م*ی خونه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B          F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی که راه درازه",
+            "source": "و*قتی که راه د*رازه"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m           B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی از ستاره بارون",
+            "source": "کی از ستار*ه بارون   *"
+          },
+          {
+            "kind": "chords",
+            "source": "B                  ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشماشو هم می ذاره",
+            "source": "چشماشو هم م*ی ذاره"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m7       B",
+            "placements": [
+              {
+                "name": "C#m7",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه ستاره ای بیاد",
+            "source": "نکنه ستار*ه ای بیاد  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B      F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یاد تو رو نیاره",
+            "source": "ی*اد تو رو ن*یاره"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m         B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه ستاره ای بیاد و",
+            "source": "نکنه ستار*ه ای بیاد و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B       F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یاد تو رو نیاره",
+            "source": "یاد تو رو * نیاره  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#   E   D#m   B",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 5
+              },
+              {
+                "name": "D#m",
+                "col": 9
+              },
+              {
+                "name": "B",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی اشکاتو پاک می کنه",
+            "source": "کی اشکاتو پاک می کنه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              }
+            ]
+          }
+        ],
+        "chordCount": 118,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T12:51:31.343Z"
     }
   ],
   "chordColors": {
