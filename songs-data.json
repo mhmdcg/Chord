@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:57:49.007Z",
+  "updatedAt": "2026-10-31T12:59:47.583Z",
   "songs": [
     {
       "title": "خیال",
@@ -7183,6 +7183,772 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:57:47.949Z"
+    },
+    {
+      "title": "زخم کاری",
+      "artist": "بهنام بانی",
+      "lyrics": "وسط این خیابونا\nدور از تو من جون و تنم مرد\nانقده موندم که بیایی\nاین زندگی روح منو بـــــــــــــــــرد\nهر چی که میخواستم تورو\nبه دست بیارمت نشد\nانگار از اون شباس که من\nگریه کنم تا خود صبح\nتا خود صبح\nهرجا برم باز\nنمیشه که تورو فراموشت کنم\nهرجا بری تو\nمحاله از قلب خودم دورت کنم\nدیوونگیمو\nبذارش پای اینکه مجنونت شدم\nهرجــــا برم باز\nنمیشه که تورو فراموشت کنم\nهرجا بری تو\nمحاله از قلب خودم دورت کنم\nدیوونگیمو\nبذارش پای اینکه مجنونت شدم\nتنهام نذار منو\nبا این خیابونا و با این زخمای کاری\nتنهام نــذار یکم\nگوش بده حرفامو مگه\nتو دل نداری\nتو دل نداری\nهرجا برم باز\nنمیشه که تورو فراموشت کنم\nهرجا بری تو\nمحاله از قلب خودم دورت کنم\nدیوونگیمو\nبذارش پای اینکه مجنونت شدم\nهرجــــا برم باز\nنمیشه که تورو فراموشت کنم\nهرجا بری تو\nمحاله از قلب خودم دورت کنم\nدیوونگیمو\nبذارش پای اینکه مجنونت شدم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Bbm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وسط این خیابونا",
+            "source": "وسط این خیابونا"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm       Ebm        Fm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دور از تو من جون و تنم مرد",
+            "source": "دور از تو من جون و تنم مرد"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "انقده موندم که بیایی",
+            "source": "انقده موندم که بیایی"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm       Ebm        Fm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "این زندگی روح منو بـــــــــــــــــرد",
+            "source": "این زندگی روح منو بـــــــــــــــــرد"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر چی که میخواستم تورو",
+            "source": "هر چی که میخواستم تورو"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm               Gb",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به دست بیارمت نشد",
+            "source": "به دست بیارمت نشد"
+          },
+          {
+            "kind": "chords",
+            "source": "Db",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "انگار از اون شباس که من",
+            "source": "انگار از اون شباس که من"
+          },
+          {
+            "kind": "chords",
+            "source": "Ebm           Fm",
+            "placements": [
+              {
+                "name": "Ebm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گریه کنم تا خود صبح",
+            "source": "گریه کنم تا خود صبح"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   Gb",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا خود صبح",
+            "source": "تا خود صبح"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجا برم باز",
+            "source": "هرجا برم باز"
+          },
+          {
+            "kind": "chords",
+            "source": "Ebm",
+            "placements": [
+              {
+                "name": "Ebm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیشه که تورو فراموشت کنم",
+            "source": "نمیشه که تورو فراموشت کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    Ab",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجا بری تو",
+            "source": "هرجا بری تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb7                 Db",
+            "placements": [
+              {
+                "name": "Bb7",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "محاله از قلب خودم دورت کنم",
+            "source": "محاله از قلب خودم دورت کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb  Ebm",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیوونگیمو",
+            "source": "دیوونگیمو"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm                 Ebm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بذارش پای اینکه مجنونت شدم",
+            "source": "بذارش پای اینکه مجنونت شدم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb Ab Bbm",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 3
+              },
+              {
+                "name": "Bbm",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجــــا برم باز",
+            "source": "هرجــــا برم باز"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb             Ebm",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیشه که تورو فراموشت کنم",
+            "source": "نمیشه که تورو فراموشت کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    Ab",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجا بری تو",
+            "source": "هرجا بری تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb7                 Db",
+            "placements": [
+              {
+                "name": "Bb7",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "محاله از قلب خودم دورت کنم",
+            "source": "محاله از قلب خودم دورت کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb  Ebm",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیوونگیمو",
+            "source": "دیوونگیمو"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm      Fm                 Ebm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 9
+              },
+              {
+                "name": "Ebm",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بذارش پای اینکه مجنونت شدم",
+            "source": "بذارش پای اینکه مجنونت شدم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "   Bbm   ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 3
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنهام نذار منو",
+            "source": "تنهام نذار   منو"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm                   Ebm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با این خیابونا و با این زخمای کاری",
+            "source": "با این خیابونا و با این زخمای کاری"
+          },
+          {
+            "kind": "chords",
+            "source": "       Db    Ab       ",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 7
+              },
+              {
+                "name": "Ab",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنهام نــذار یکم",
+            "source": "تنهام نــذار        یکم"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گوش بده حرفامو مگه",
+            "source": "گوش بده حرفامو مگه"
+          },
+          {
+            "kind": "chords",
+            "source": "Ebm  Bb7",
+            "placements": [
+              {
+                "name": "Ebm",
+                "col": 0
+              },
+              {
+                "name": "Bb7",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو دل نداری",
+            "source": "تو دل نداری"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    Gb",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو دل نداری",
+            "source": "تو دل نداری"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجا برم باز",
+            "source": "هرجا برم باز"
+          },
+          {
+            "kind": "chords",
+            "source": "Ebm",
+            "placements": [
+              {
+                "name": "Ebm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیشه که تورو فراموشت کنم",
+            "source": "نمیشه که تورو فراموشت کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    Ab",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجا بری تو",
+            "source": "هرجا بری تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb7                 Db",
+            "placements": [
+              {
+                "name": "Bb7",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "محاله از قلب خودم دورت کنم",
+            "source": "محاله از قلب خودم دورت کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb  Ebm",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیوونگیمو",
+            "source": "دیوونگیمو"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm                 Ebm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بذارش پای اینکه مجنونت شدم",
+            "source": "بذارش پای اینکه مجنونت شدم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb Ab Bbm",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 3
+              },
+              {
+                "name": "Bbm",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجــــا برم باز",
+            "source": "هرجــــا برم باز"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb             Ebm",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیشه که تورو فراموشت کنم",
+            "source": "نمیشه که تورو فراموشت کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    Ab",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجا بری تو",
+            "source": "هرجا بری تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb7                 Db",
+            "placements": [
+              {
+                "name": "Bb7",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "محاله از قلب خودم دورت کنم",
+            "source": "محاله از قلب خودم دورت کنم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb  Ebm",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیوونگیمو",
+            "source": "دیوونگیمو"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm      Fm                 Ebm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 9
+              },
+              {
+                "name": "Ebm",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بذارش پای اینکه مجنونت شدم",
+            "source": "بذارش پای اینکه مجنونت شدم"
+          }
+        ],
+        "chordCount": 74,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T12:59:46.613Z"
     }
   ],
   "chordColors": {
