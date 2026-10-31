@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:59:47.583Z",
+  "updatedAt": "2026-10-31T13:03:10.109Z",
   "songs": [
     {
       "title": "خیال",
@@ -7949,6 +7949,1242 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:59:46.613Z"
+    },
+    {
+      "title": "ای یار من",
+      "artist": "هایده",
+      "lyrics": "ای یار من ای یار من\nای دلبر و دلدار من\nای محرم و غمخوار من\nای دین و ای ایمان من\nخوش می روی در جان من\nای درد تو درمان مـــــــــــــن\nچون می روی بی من مرو\nای جان جان بی تن مرو\nهفت آسمان را بردرم\nوز هفت دریا بگذرم\nای شعله ی تابان مـــــــــــــــــــــن\nهم رهزنی هم رهبری\nهم این سری هم آن سری\nای نور بی پایان مــــــــــــــن\nچون می روی بی من مرو\nای جان جان بی تن مرو\nای دیدن تو دین من\nوای روی تو ایمان من\nای هست تو پنهان شده\nدر هستی پنهان من\nای دیدن تو دین من\nوای روی تو ایمان من\nای هست تو پنهان شده\nدر هستی پنهان من\nچون می روی بی من مرو\nای جان جان بی تن مرو\nای یار من ای یار من\nای دلبر و دلدار من\nای محرم و غمخوار مـــــــــــــن\nای دین و ای ایمان من\nخوش می روی در جان من\nای درد تو درمان مـــــــــــــن\nچون می روی بی من مرو\nای جان جان بی تن مرو\nهفت آسمان را بردرم\nوز هفت دریا بگذرم\nای شعله ی تابان مــــــــــــــن\nهم رهزنی هم رهبری\nهم این سری هم آن سری\nای نور بی پایان مــــــــــــــن\nچون می روی بی من مرو\nای جان جان بی تن مرو\nچون می روی بی من مرو\nای جان جان بی تن مرو",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Em   B7   B   Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "B7",
+                "col": 11
+              },
+              {
+                "name": "B",
+                "col": 16
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B7   B   Em   Am   E7   B   C   D",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 5
+              },
+              {
+                "name": "Em",
+                "col": 9
+              },
+              {
+                "name": "Am",
+                "col": 14
+              },
+              {
+                "name": "E7",
+                "col": 19
+              },
+              {
+                "name": "B",
+                "col": 24
+              },
+              {
+                "name": "C",
+                "col": 28
+              },
+              {
+                "name": "D",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am   B7   Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "B7",
+                "col": 15
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B   Am   B   Am   B   Am   B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 9
+              },
+              {
+                "name": "Am",
+                "col": 13
+              },
+              {
+                "name": "B",
+                "col": 18
+              },
+              {
+                "name": "Am",
+                "col": 22
+              },
+              {
+                "name": "B",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am         E7        ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای یار من ای یار من",
+            "source": "ای یار م*ن ای یار م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Em       B7       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای دلبر و دلدار من",
+            "source": "ای دلبر* و دلدار م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7          Am         ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای محرم و غمخوار من",
+            "source": "ای محرم* و غمخوار م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em         B7           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای دین و ای ایمان من",
+            "source": "ای دین و ا*ی ایمان م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7          Am             ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خوش می روی در جان من",
+            "source": "خوش می رو*ی در جان م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Em B7 Am                    ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 3
+              },
+              {
+                "name": "Am",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای درد تو درمان مـــــــــــــن",
+            "source": "* ای درد تو درمان م*ـــــــــ*ــــن"
+          },
+          {
+            "kind": "chords",
+            "source": "Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B7            B7            ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چون می روی بی من مرو",
+            "source": "چون می رو*ی بی من مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B7           B7          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای جان جان بی تن مرو",
+            "source": "ای جان ج*ان بی تن مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7   G   Em",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 6
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am7   Em   B7",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am7",
+                "col": 10
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am       E7           ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هفت آسمان را بردرم",
+            "source": "هفت آسم*ان را بردر*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7      B7         ",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وز هفت دریا بگذرم",
+            "source": "وز هفت * دریا بگذ*رم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7 Em B7   A7            ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 3
+              },
+              {
+                "name": "B7",
+                "col": 6
+              },
+              {
+                "name": "A7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای شعله ی تابان مـــــــــــــــــــــن",
+            "source": "ای شعله ی* تابان* مــــ*ـــــــــــ*ــــــن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em           B7           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هم رهزنی هم رهبری",
+            "source": "* هم رهزنی* هم رهبری"
+          },
+          {
+            "kind": "chords",
+            "source": "B7         A7               ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هم این سری هم آن سری",
+            "source": "هم این سری* هم آن سر*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "Em B7 Am        B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 3
+              },
+              {
+                "name": "Am",
+                "col": 6
+              },
+              {
+                "name": "B7",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای نور بی پایان مــــــــــــــن",
+            "source": "* ای نور ب*ی پایان م*ــــــــــ*ــــن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7            B7            ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چون می روی بی من مرو",
+            "source": "چون می رو*ی بی من مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B7           B7          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای جان جان بی تن مرو",
+            "source": "ای جان ج*ان بی تن مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B   Am   B7   C   B   Am   B7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 4
+              },
+              {
+                "name": "B7",
+                "col": 9
+              },
+              {
+                "name": "C",
+                "col": 14
+              },
+              {
+                "name": "B",
+                "col": 18
+              },
+              {
+                "name": "Am",
+                "col": 22
+              },
+              {
+                "name": "B7",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B          ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای دیدن تو دین من",
+            "source": "* ای دیدن* تو دین من"
+          },
+          {
+            "kind": "chords",
+            "source": "B7         Am             ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای روی تو ایمان من",
+            "source": "* وای روی تو * ایمان من"
+          },
+          {
+            "kind": "chords",
+            "source": "B7             B7             ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای هست تو پنهان شده",
+            "source": "* ای هست ت*و پنهان شده"
+          },
+          {
+            "kind": "chords",
+            "source": "Am      B7          ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در هستی پنهان من",
+            "source": "در هستی* پنهان م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B          ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای دیدن تو دین من",
+            "source": "* ای دیدن* تو دین من"
+          },
+          {
+            "kind": "chords",
+            "source": "B7    Am           ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای روی تو ایمان من",
+            "source": "وای روی ت*و ایمان* من"
+          },
+          {
+            "kind": "chords",
+            "source": "B7           B7            ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای هست تو پنهان شده",
+            "source": "ای هست ت*و پنهان شد*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Am      B7          ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در هستی پنهان من",
+            "source": "در هستی* پنهان م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7            B7            ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چون می روی بی من مرو",
+            "source": "چون می رو*ی بی من مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B7           B7          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای جان جان بی تن مرو",
+            "source": "ای جان ج*ان بی تن مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7   G   Em",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 6
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am7   Em   B7",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am7",
+                "col": 10
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am         E7        ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای یار من ای یار من",
+            "source": "ای یار م*ن ای یار م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7      B7       ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای دلبر و دلدار من",
+            "source": "ای دلبر* و دلدار م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7 Em B7          A7         ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 3
+              },
+              {
+                "name": "B7",
+                "col": 6
+              },
+              {
+                "name": "A7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای محرم و غمخوار مـــــــــــــن",
+            "source": "* ای محرم* و غمخوار م*ــــــــ*ـــــن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em      B7              ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای دین و ای ایمان من",
+            "source": "ای دین و ای* ایمان م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7          A7              ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خوش می روی در جان من",
+            "source": "خوش می رو*ی در جان م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Em B7 Am                    ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 3
+              },
+              {
+                "name": "Am",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای درد تو درمان مـــــــــــــن",
+            "source": "* ای درد تو درمان م*ـــــــــ*ــــن"
+          },
+          {
+            "kind": "chords",
+            "source": "Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B7            B7            ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چون می روی بی من مرو",
+            "source": "چون می رو*ی بی من مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B7           B7          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای جان جان بی تن مرو",
+            "source": "ای جان ج*ان بی تن مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B   Am   B7   C   B   Am   B7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 4
+              },
+              {
+                "name": "B7",
+                "col": 9
+              },
+              {
+                "name": "C",
+                "col": 14
+              },
+              {
+                "name": "B",
+                "col": 18
+              },
+              {
+                "name": "Am",
+                "col": 22
+              },
+              {
+                "name": "B7",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am       E7           ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هفت آسمان را بردرم",
+            "source": "هفت آسم*ان را بردر*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7      B7         ",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وز هفت دریا بگذرم",
+            "source": "وز هفت * دریا بگذ*رم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7 Em B7     A7             ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 3
+              },
+              {
+                "name": "B7",
+                "col": 6
+              },
+              {
+                "name": "A7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای شعله ی تابان مــــــــــــــن",
+            "source": "* ای شعله ی* تابان م*ـــــــــ*ـــــن"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           B7           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هم رهزنی هم رهبری",
+            "source": "* هم رهزنی* هم رهبری"
+          },
+          {
+            "kind": "chords",
+            "source": "B7         A7               ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هم این سری هم آن سری",
+            "source": "هم این سری* هم آن سر*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "Em B7 Am        B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 3
+              },
+              {
+                "name": "Am",
+                "col": 6
+              },
+              {
+                "name": "B7",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای نور بی پایان مــــــــــــــن",
+            "source": "* ای نور ب*ی پایان م*ــــــــــ*ــــن"
+          },
+          {
+            "kind": "chords",
+            "source": "B7            B7            ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چون می روی بی من مرو",
+            "source": "چون می رو*ی بی من مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B7           B7          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای جان جان بی تن مرو",
+            "source": "ای جان ج*ان بی تن مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B7            B7            ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چون می روی بی من مرو",
+            "source": "چون می رو*ی بی من مر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B7           B7          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای جان جان بی تن مرو",
+            "source": "ای جان ج*ان بی تن مر*و"
+          }
+        ],
+        "chordCount": 159,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T13:03:09.034Z"
     }
   ],
   "chordColors": {
