@@ -135,6 +135,8 @@ class ChordAnnotatorApp {
         document.getElementById('liveTransposeUpBtn').addEventListener('click', () => this.transposeLiveSong(1));
         document.getElementById('liveTransposeDownBtn').addEventListener('click', () => this.transposeLiveSong(-1));
         document.getElementById('liveResetScaleBtn').addEventListener('click', () => this.resetLiveScale());
+        document.getElementById('liveEasyBtn').addEventListener('click', () => this.applyEasyTranspose());
+        document.getElementById('liveSaveEasyBtn').addEventListener('click', () => this.saveEasyTranspose());
         document.getElementById('liveAutoScrollBtn').addEventListener('click', () => this.toggleLiveAutoScroll());
         document.getElementById('liveScrollSpeed').addEventListener('input', (e) => {
             const speed = Number(e.target.value);
@@ -505,6 +507,64 @@ class ChordAnnotatorApp {
         if (resetBtn) {
             resetBtn.disabled = !this.liveMode || !this.currentSong || this.liveTransposeOffset === 0;
         }
+        const easyBtn = document.getElementById('liveEasyBtn');
+        const saveEasyBtn = document.getElementById('liveSaveEasyBtn');
+        const saved = this.savedEasySteps();
+        const steps = this.liveTransposeOffset || 0;
+        const hasSong = this.liveMode && !!this.currentSong;
+        if (easyBtn) {
+            const ready = hasSong && saved != null;
+            easyBtn.disabled = !ready;
+            easyBtn.classList.toggle('is-active', ready && saved === steps);
+            const savedLabel = saved == null ? 'No saved easy transpose' : `Apply saved transpose, ${this.formatLiveSteps(saved)}`;
+            easyBtn.title = savedLabel;
+            easyBtn.setAttribute('aria-label', savedLabel);
+        }
+        if (saveEasyBtn) {
+            saveEasyBtn.disabled = !hasSong || (saved != null && saved === steps);
+            saveEasyBtn.title = 'Save this transpose as easy';
+        }
+    }
+
+    formatLiveSteps(steps) {
+        const value = steps || 0;
+        if (!value) return 'Original';
+        return value > 0 ? `+${value}` : `−${Math.abs(value)}`;
+    }
+
+    savedEasySteps() {
+        if (!this.currentSong || !Object.prototype.hasOwnProperty.call(this.currentSong, 'easySemitones')) return null;
+        const value = Number(this.currentSong.easySemitones);
+        return Number.isFinite(value) ? value : null;
+    }
+
+    saveEasyTranspose() {
+        if (!this.liveMode || this.editingIndex < 0 || !this.songs[this.editingIndex] || !this.currentSong) return;
+        const steps = this.liveTransposeOffset || 0;
+        this.songs[this.editingIndex].easySemitones = steps;
+        this.currentSong.easySemitones = steps;
+        this.saveData();
+        this.updateLiveScaleLabel();
+    }
+
+    applyEasyTranspose() {
+        if (!this.liveMode || !this.currentSong) return;
+        const target = this.savedEasySteps();
+        if (target == null) return;
+        const delta = target - (this.liveTransposeOffset || 0);
+        if (!delta) return;
+        if (this.currentSong.sheet && Array.isArray(this.currentSong.sheet.lines)) {
+            this.liveTransposeOffset = target;
+            const display = document.getElementById('lyricsDisplay');
+            const scrollTop = display ? display.scrollTop : 0;
+            this.renderLiveSheet();
+            this.setLyricsScrollTop(scrollTop);
+            this.updateLiveScaleLabel();
+            return;
+        }
+        this.liveTransposeOffset = target;
+        this.transposeSong(delta);
+        this.updateLiveScaleLabel();
     }
 
     transposeLiveSong(semitones) {

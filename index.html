@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20261031g">
+    <link rel="stylesheet" href="styles.css?v=20261031i">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -62,6 +62,7 @@
                 <button id="backFromLiveBtn" class="btn btn-secondary" type="button">← Back</button>
                 <h2>Live mode</h2>
                 <div class="live-transpose" role="group" aria-label="Change scale">
+                    <button type="button" id="liveEasyBtn" class="live-transpose-btn live-easy-btn" disabled>easy</button>
                     <button type="button" id="liveTransposeDownBtn" class="live-transpose-btn" aria-label="Transpose down a half step">−</button>
                     <span id="liveScaleLabel" class="live-scale-label">—</span>
                     <button type="button" id="liveTransposeUpBtn" class="live-transpose-btn" aria-label="Transpose up a half step">+</button>
@@ -71,6 +72,7 @@
                             <path d="M3 5v5h5"/>
                         </svg>
                     </button>
+                    <button type="button" id="liveSaveEasyBtn" class="live-transpose-btn live-easy-btn" disabled>save easy</button>
                 </div>
             </div>
             <div class="live-body">
@@ -389,6 +391,6 @@
     <script src="mp4-muxer.min.js"></script>
     <script src="link-charts.js?v=20261031g"></script>
     <script src="music-theory.js?v=20261030e"></script>
-    <script src="app.js?v=20261031h"></script>
+    <script src="app.js?v=20261031i"></script>
 </body>
 </html>
