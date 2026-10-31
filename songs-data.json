@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T20:34:29.532Z",
+  "updatedAt": "2026-10-31T21:14:17.970Z",
   "songs": [
     {
       "title": "خیال",
@@ -11182,6 +11182,533 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T14:06:26.460Z"
+    },
+    {
+      "title": "نگو تنهایی",
+      "artist": "گلاره شیبانی",
+      "lyrics": "نگو غم نگو تنهایی نگو غمگین نشستم\nنگو آدما رنگارنگ انو نگو از دنیا خستم\nنگو اشک نگو بی کسی نگو از بی وفایی بی وفایی\nسره وعده ی گریه کردن بگو امشب کجایی\nبگو از راه تاریک شاید پشتش\nسفیده بگو از آدمایــی که کسی هیچوقت ندیده\nبگو از قصه هایـــــی همه ام میگن چرنده\nبگو افسانه هایی از قفس ها با پرنده\nبگو خواب بگو توی رویا بگو توی بیداری\nشونه هامو واست بیارم تا که سر روش بذاری\nبگو من همیشه با تو بگو با هم همیشه\nبگو حتی پس از مرگ بدونه تو نمیشه\nنگو از قلبه خاکی که با خون ها جون میگیره نگو از بند\nتقدیر که تنه ما توش اسیره\nنگو قانونه دنیاست کسی عاشق نمیمیره نگو بازیه\nتقدیر ما رو از همدیگه میگیره\nآخه دلم گرفته از این همه سیاهی\nبگو حتی اگه دروغه اگه امیده واحی\nدروغات اگه قشنگه اما راستی کشنده\nزندگی کردنه من به دروغه تو بنده",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Em                           D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "D",
+                "col": 35
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نگو غم نگو تنهایی نگو غمگین نشستم",
+            "source": "نگو غم نگو تنهایی نگو غمگین نشستم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                         D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نگو آدما رنگارنگ انو نگو از دنیا خستم",
+            "source": " نگو آدما رنگارنگ انو نگو از دنیا خستم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                           Em                            D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 27
+              },
+              {
+                "name": "D",
+                "col": 57
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نگو اشک نگو بی کسی نگو از بی وفایی بی وفایی",
+            "source": "نگو اشک نگو بی کسی نگو از بی وفایی بی وفایی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                             D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سره وعده ی گریه کردن بگو امشب کجایی",
+            "source": " سره وعده ی گریه کردن بگو امشب کجایی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                 Em         C    Em   Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 17
+              },
+              {
+                "name": "C",
+                "col": 28
+              },
+              {
+                "name": "Em",
+                "col": 33
+              },
+              {
+                "name": "Am",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو از راه تاریک شاید پشتش",
+            "source": "بگو از راه    تاریک شاید پشتش"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em          D            Em           Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 12
+              },
+              {
+                "name": "Em",
+                "col": 25
+              },
+              {
+                "name": "Am",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سفیده بگو از آدمایــی که کسی هیچوقت ندیده",
+            "source": "   سفیده بگو از آدمایــی که کسی هیچوقت ندیده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "         Am        Em     C       Em     Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 19
+              },
+              {
+                "name": "C",
+                "col": 26
+              },
+              {
+                "name": "Em",
+                "col": 34
+              },
+              {
+                "name": "Am",
+                "col": 41
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو از قصه هایـــــی همه ام میگن چرنده",
+            "source": "بگو از قصه هایـــــی همه ام میگن چرنده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "   Em       D           Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 3
+              },
+              {
+                "name": "D",
+                "col": 12
+              },
+              {
+                "name": "Em",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو افسانه هایی از قفس ها با پرنده",
+            "source": " بگو افسانه هایی از قفس ها با پرنده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "           Em                        D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 11
+              },
+              {
+                "name": "D",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو خواب بگو توی رویا بگو توی بیداری",
+            "source": "بگو خواب بگو توی رویا بگو توی بیداری"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                        D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شونه هامو واست بیارم تا که سر روش بذاری",
+            "source": " شونه هامو واست بیارم تا که سر روش بذاری"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "               Em                        D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 15
+              },
+              {
+                "name": "D",
+                "col": 41
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو من همیشه با تو بگو با هم همیشه",
+            "source": "بگو من همیشه با تو بگو با هم همیشه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                        D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو حتی پس از مرگ بدونه تو نمیشه",
+            "source": "  بگو حتی پس از مرگ بدونه تو نمیشه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "         Em        Am        Em       C      Em     Am ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 9
+              },
+              {
+                "name": "Am",
+                "col": 19
+              },
+              {
+                "name": "Em",
+                "col": 29
+              },
+              {
+                "name": "C",
+                "col": 38
+              },
+              {
+                "name": "Em",
+                "col": 45
+              },
+              {
+                "name": "Am",
+                "col": 52
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نگو از قلبه خاکی که با خون ها جون میگیره نگو از بند",
+            "source": "نگو از قلبه خاکی که با خون ها جون میگیره  نگو از بند"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      Em       D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "D",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تقدیر که تنه ما توش اسیره",
+            "source": "        تقدیر که تنه ما توش اسیره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "           Em      Am       Em        C       Em      Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 11
+              },
+              {
+                "name": "Am",
+                "col": 19
+              },
+              {
+                "name": "Em",
+                "col": 28
+              },
+              {
+                "name": "C",
+                "col": 38
+              },
+              {
+                "name": "Em",
+                "col": 46
+              },
+              {
+                "name": "Am",
+                "col": 54
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نگو قانونه دنیاست کسی عاشق نمیمیره نگو بازیه",
+            "source": "نگو قانونه دنیاست کسی عاشق نمیمیره  نگو بازیه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      Em     D",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "D",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تقدیر ما رو از همدیگه میگیره",
+            "source": "       تقدیر ما رو از همدیگه میگیره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                     D                    C",
+            "placements": [
+              {
+                "name": "D",
+                "col": 21
+              },
+              {
+                "name": "C",
+                "col": 42
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه دلم گرفته از این همه سیاهی",
+            "source": "آخه دلم گرفته از این همه سیاهی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                      Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو حتی اگه دروغه اگه امیده واحی",
+            "source": " بگو حتی اگه دروغه اگه امیده واحی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                  D                         C",
+            "placements": [
+              {
+                "name": "D",
+                "col": 18
+              },
+              {
+                "name": "C",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دروغات اگه قشنگه اما راستی کشنده",
+            "source": "دروغات اگه قشنگه اما راستی کشنده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                   Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زندگی کردنه من به دروغه تو بنده",
+            "source": " زندگی کردنه من به دروغه تو بنده"
+          }
+        ],
+        "chordCount": 56,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T21:14:14.236Z"
     }
   ],
   "chordColors": {
