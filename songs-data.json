@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T16:59:13.943Z",
+  "updatedAt": "2026-10-31T17:07:21.074Z",
   "songs": [
     {
       "title": "خیال",
@@ -13303,6 +13303,1274 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T16:59:12.823Z"
+    },
+    {
+      "title": "گریز",
+      "artist": "ابی",
+      "lyrics": "به تو از تو می نویسم\nبه تو ای همیشه در یاد\nای همیشه از تو زنده\nلحظه های رفته بر باد\nوقتی که بن بست غربت\nسایه سار قفسم بود\nزیر رگبار مصیبت\nبی کسی تنها کسم بود\nوقتی از آزار پاییز\nبرگ و باغم گریه می کرد\nقاصد چشم تو آمد\nمژده ی روییدن آو رد\nبه تو نامه می نویسم\nای عزیز رفته از دست\nای که خوشبختی پس از تو\nگم شد و به قصه پیو ست\nای همیشگی ترین عشق\nدر حضور حضرت تو\nای که می سوزم سراپا\nتا ابد در حسرت تو\nبه تو نامه می نویسم\nنامه ای نوشته بر باد\nکه به اسمت چو رسیدم\nقلمم به گریه افتاد\nای تو یارم روزگارم\nگفتنی ها با تو دارم\nای تو یارم از گذشته یادگارم\nبه تو نامه می نویسم\nای عزیز رفته از دست\nای که خوشبختی پس از تو\nگم شد و به قصه پیو ست\nدر گریز ناگزیرم\nگریه شد معنای لبخند\nما گذشتیم و شکستیم\nپشت سر پلهای پیوند\nدر عبور از مسلخ تن\nعشق ما از ما فنا بود\nباید از هم می گذشتیم\nبرتر از ما عشق ما بود\nای تو یارم روزگارم\nگفتنی ها با تو دارم\nای تو یارم از گذشته یادگارم\nبه تو نامه می نویسم\nای عزیز رفته از دست\nای که خوشبختی پس از تو\nگم شد و به قصه پیوست\nبه تو نامه می نویسم\nای عزیز رفته از دست\nای که خوشبختی پس از تو\nگم شد و به قصه پیو ست\nبه تو نامه می نویسم\nای عزیز رفته از دست\nای که خوشبختی پس از تو\nگم شد و به قصه پیو ست",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      B7   F#7   Am   Em",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 6
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              },
+              {
+                "name": "Am",
+                "col": 17
+              },
+              {
+                "name": "Em",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B7   F#7   Am   Em",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 11
+              },
+              {
+                "name": "Em",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B   Am   C   Em",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 4
+              },
+              {
+                "name": "C",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am   E7   Am   Em",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "Em",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B   Am   C7   F#7",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 4
+              },
+              {
+                "name": "C7",
+                "col": 9
+              },
+              {
+                "name": "F#7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B   Am   C   Em",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 4
+              },
+              {
+                "name": "C",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Em        ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تو از تو می نویسم",
+            "source": "به تو از * تو می نوی*سم"
+          },
+          {
+            "kind": "chords",
+            "source": "D            C           ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تو ای همیشه در یاد",
+            "source": "به تو ای * همیشه در * یاد"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        D           ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای همیشه از تو زنده",
+            "source": "ای همیش*ه از تو زن*ده"
+          },
+          {
+            "kind": "chords",
+            "source": "Am Em                     ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 3
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لحظه های رفته بر باد",
+            "source": "* لحظه های رفته بر * باد"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         Am        Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 11
+              },
+              {
+                "name": "Em",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی که بن بست غربت",
+            "source": "وقتی که * بن بست غر*بت  *"
+          },
+          {
+            "kind": "chords",
+            "source": "B     C          ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سایه سار قفسم بود",
+            "source": "سایه سا*ر قفس*م بود"
+          },
+          {
+            "kind": "chords",
+            "source": "Am     ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زیر رگبار مصیبت",
+            "source": "زیر رگ*بار مصیبت"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         B7          ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی کسی تنها کسم بود",
+            "source": "بی کسی * تنها کسم * بود"
+          },
+          {
+            "kind": "chords",
+            "source": "C    Am        ",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی از آزار پاییز",
+            "source": "وقتی از * آزار پا*ییز"
+          },
+          {
+            "kind": "chords",
+            "source": "B         Am7        ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برگ و باغم گریه می کرد",
+            "source": "برگ و با*غم گریه می* کرد"
+          },
+          {
+            "kind": "chords",
+            "source": "Am          ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قاصد چشم تو آمد",
+            "source": "قاصد چش*م تو آمد"
+          },
+          {
+            "kind": "chords",
+            "source": "B7 C B7          F        ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 3
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "F",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مژده ی روییدن آو رد",
+            "source": "مژده ی* روییدن آو*    *    *رد"
+          },
+          {
+            "kind": "chords",
+            "source": "Em       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تو نامه می نویسم",
+            "source": "به تو نا*مه می نویسم"
+          },
+          {
+            "kind": "chords",
+            "source": "D         C        ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای عزیز رفته از دست",
+            "source": "ای عزی*ز رفته از * دست"
+          },
+          {
+            "kind": "chords",
+            "source": "B             D               ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که خوشبختی پس از تو",
+            "source": "ای که خوشب*ختی پس از * تو"
+          },
+          {
+            "kind": "chords",
+            "source": "B7 Em          B7           ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 3
+              },
+              {
+                "name": "B7",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گم شد و به قصه پیو ست",
+            "source": "گم شد و * به قصه پیو*     *ست"
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B   Am   Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am   Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "Em",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em          ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای همیشگی ترین عشق",
+            "source": "ای همیش*گی ترین عشق"
+          },
+          {
+            "kind": "chords",
+            "source": "D        C         ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در حضور حضرت تو",
+            "source": "در حضور* حضرت * تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                       ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که می سوزم سراپا",
+            "source": "ای که می سوزم سرا*پا"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            C      ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا ابد در حسرت تو",
+            "source": "تا ابد * در حسرت ت*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تو نامه می نویسم",
+            "source": "به تو نام*ه می نویسم"
+          },
+          {
+            "kind": "chords",
+            "source": "D          C          ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نامه ای نوشته بر باد",
+            "source": "نامه ای * نوشته بر * باد"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که به اسمت چو رسیدم",
+            "source": "که به اسمت چو رسی*دم"
+          },
+          {
+            "kind": "chords",
+            "source": "B              C   ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قلمم به گریه افتاد",
+            "source": "قلم*م به گریه اف*تاد"
+          },
+          {
+            "kind": "chords",
+            "source": "Am     Em            B7",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 7
+              },
+              {
+                "name": "B7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای تو یارم روزگارم",
+            "source": "ای تو یار*م روزگار*م        *"
+          },
+          {
+            "kind": "chords",
+            "source": "Am        Em      ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتنی ها با تو دارم",
+            "source": "گفتنی* ها با تو د*ارم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em      Am        A7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 8
+              },
+              {
+                "name": "A7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای تو یارم از گذشته یادگارم",
+            "source": "ای تو یا*رم از گذش*ته یادگار*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Em       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تو نامه می نویسم",
+            "source": "به تو نا*مه می نویسم"
+          },
+          {
+            "kind": "chords",
+            "source": "D         C        ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای عزیز رفته از دست",
+            "source": "ای عزی*ز رفته از * دست"
+          },
+          {
+            "kind": "chords",
+            "source": "B             D               ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که خوشبختی پس از تو",
+            "source": "ای که خوشب*ختی پس از * تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Em B7 Em          B7           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 3
+              },
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "B7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گم شد و به قصه پیو ست",
+            "source": "گم شد و * به قصه پیو*      *      *ست"
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B   Am   Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am   Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "Em",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em      ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در گریز ناگزیرم",
+            "source": "در گریز* ناگزیرم"
+          },
+          {
+            "kind": "chords",
+            "source": "D        C            ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گریه شد معنای لبخند",
+            "source": "گریه شد * معنای لب*خند"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                       ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ما گذشتیم و شکستیم",
+            "source": "ما گذشتیم و شکس*تیم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em        C            ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت سر پلهای پیوند",
+            "source": "پشت سر * پلهای پی*وند"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در عبور از مسلخ تن",
+            "source": "در عبور ا*ز مسلخ تن"
+          },
+          {
+            "kind": "chords",
+            "source": "D        C           ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق ما از ما فنا بود",
+            "source": "عشق ما * از ما فنا * بود"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                       ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید از هم می گذشتیم",
+            "source": "باید از هم می گذش*تیم"
+          },
+          {
+            "kind": "chords",
+            "source": "B           Am7     ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Am7",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برتر از ما عشق ما بود",
+            "source": "برتر از * ما عشق ما * بود"
+          },
+          {
+            "kind": "chords",
+            "source": "Am     Em            B7",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 7
+              },
+              {
+                "name": "B7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای تو یارم روزگارم",
+            "source": "ای تو یار*م روزگار*م        *"
+          },
+          {
+            "kind": "chords",
+            "source": "Am        Em      ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتنی ها با تو دارم",
+            "source": "گفتنی* ها با تو د*ارم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em      Am        A7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 8
+              },
+              {
+                "name": "A7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای تو یارم از گذشته یادگارم",
+            "source": "ای تو یا*رم از گذش*ته یادگار*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Em       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تو نامه می نویسم",
+            "source": "به تو نا*مه می نویسم"
+          },
+          {
+            "kind": "chords",
+            "source": "D         C        ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای عزیز رفته از دست",
+            "source": "ای عزی*ز رفته از * دست"
+          },
+          {
+            "kind": "chords",
+            "source": "B             D               ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که خوشبختی پس از تو",
+            "source": "ای که خوشب*ختی پس از * تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           B7           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گم شد و به قصه پیوست",
+            "source": "گم شد و * به قصه پیو*ست"
+          },
+          {
+            "kind": "chords",
+            "source": "Em       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تو نامه می نویسم",
+            "source": "به تو نا*مه می نویسم"
+          },
+          {
+            "kind": "chords",
+            "source": "D         C        ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای عزیز رفته از دست",
+            "source": "ای عزی*ز رفته از * دست"
+          },
+          {
+            "kind": "chords",
+            "source": "B             D               ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که خوشبختی پس از تو",
+            "source": "ای که خوشب*ختی پس از * تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Em B7 Em          B7           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 3
+              },
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "B7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گم شد و به قصه پیو ست",
+            "source": "گم شد و * به قصه پیو*      *      *ست"
+          },
+          {
+            "kind": "chords",
+            "source": "Em       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تو نامه می نویسم",
+            "source": "به تو نا*مه می نویسم"
+          },
+          {
+            "kind": "chords",
+            "source": "D         C        ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای عزیز رفته از دست",
+            "source": "ای عزی*ز رفته از * دست"
+          },
+          {
+            "kind": "chords",
+            "source": "B             D               ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که خوشبختی پس از تو",
+            "source": "ای که خوشب*ختی پس از * تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Em B7 Em          B7           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 3
+              },
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "B7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گم شد و به قصه پیو ست",
+            "source": "گم شد و * به قصه پیو*      *      *ست"
+          }
+        ],
+        "chordCount": 147,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T17:07:19.936Z"
     }
   ],
   "chordColors": {
