@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T21:14:17.970Z",
+  "updatedAt": "2026-10-31T21:20:04.741Z",
   "songs": [
     {
       "title": "خیال",
@@ -11709,6 +11709,583 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T21:14:14.236Z"
+    },
+    {
+      "title": "بی خداحافظی",
+      "artist": "رضا صادقی",
+      "lyrics": "به همین سادگی رفتی بی خداحافظ عزیزم\nسهم تو شد روز تازه سهم من اشک که بریزم\nبه همین سادگی کم شد عمر گل بوته تو دستم\nگله از تو نیست میدونم خودم اینو از تو خواستم\nبه جون ستاره هامون تو عزیزتر از چشامی\nهر جا هستی خوب و خوش باش تا ابد بغض صدامی\nتو رو محض لحظه هامون نشه باورت یه وقتی\nکه دوسِت ندارم اینو به خدا گفتم به سختی\nمن اگه دوسِت نداشتم پای غم هات نمی موندم\nواست این همه ترانه از ته دل نمی خوندم\nاگه گفتم برو خوبم واسه این بود که می دیدم\nداری آب میشی می میری اینو از همه شنیدم\nدارم از دوریت می میرم تا کنار من نسوزی\nاز دلم نِمیری عمرم نفسامی که هنوزی\nتو رو محض خیره هامون که نفس نفس خدا شد\nاز همون لحظه که رفتی روحم از تنم جدا شد\nتو که تنها نمی مونی منِ تنها رو دعا کن\nخاطراتمو نگه دار اما دستامو رها کن\nدست تو اول عشقه بسپرش به آخرین مرد\nمردی که پشت یه دیوار واسه چشمات گریه می کرد\nگریه می کرد گریه می کرد گریه می کرد",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      A7                                          Dm",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 6
+              },
+              {
+                "name": "Dm",
+                "col": 50
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به همین سادگی رفتی بی خداحافظ عزیزم",
+            "source": "به همین سادگی رفتی    بی خداحافظ عزیزم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A7     Asus4                                         Gm",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              },
+              {
+                "name": "Asus4",
+                "col": 7
+              },
+              {
+                "name": "Gm",
+                "col": 53
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سهم تو شد روز تازه سهم من اشک که بریزم",
+            "source": "سهم تو شد روز تازه      سهم من اشک که بریزم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                                 Bb ",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 50
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به همین سادگی کم شد عمر گل بوته تو دستم",
+            "source": "به همین سادگی کم شد    عمر گل بوته تو دستم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A  A7  Asus4                                         Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 3
+              },
+              {
+                "name": "Asus4",
+                "col": 7
+              },
+              {
+                "name": "Gm",
+                "col": 53
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گله از تو نیست میدونم خودم اینو از تو خواستم",
+            "source": "گله از تو نیست میدونم    خودم اینو از تو خواستم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                                                    Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 54
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به جون ستاره هامون تو عزیزتر از چشامی",
+            "source": "به جون ستاره هامون              تو عزیزتر از چشامی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A7 Asus4              Gm                               Bb",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              },
+              {
+                "name": "Asus4",
+                "col": 3
+              },
+              {
+                "name": "Gm",
+                "col": 22
+              },
+              {
+                "name": "Bb",
+                "col": 55
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر جا هستی خوب و خوش باش تا ابد بغض صدامی",
+            "source": "هر جا هستی خوب و خوش باش     تا ابد بغض صدامی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                                                  Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 52
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رو محض لحظه هامون نشه باورت یه وقتی",
+            "source": "تو رو محض لحظه هامون          نشه باورت یه وقتی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "    A7  Asus4                                            Bb",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 4
+              },
+              {
+                "name": "Asus4",
+                "col": 8
+              },
+              {
+                "name": "Bb",
+                "col": 57
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که دوسِت ندارم اینو به خدا گفتم به سختی",
+            "source": "که دوسِت ندارم اینو          به خدا گفتم به سختی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A7                                             Dm",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 47
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگه دوسِت نداشتم پای غم هات نمی موندم",
+            "source": "من اگه دوسِت نداشتم      پای غم هات نمی موندم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A7     Asus4                                    Gm",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              },
+              {
+                "name": "Asus4",
+                "col": 7
+              },
+              {
+                "name": "Gm",
+                "col": 48
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واست این همه ترانه از ته دل نمی خوندم",
+            "source": "واست این همه ترانه        از ته دل نمی خوندم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                                 Bb",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 50
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه گفتم برو خوبم واسه این بود که می دیدم",
+            "source": "اگه گفتم برو خوبم         واسه این بود که می دیدم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A  A7  Asus4                                        Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 3
+              },
+              {
+                "name": "Asus4",
+                "col": 7
+              },
+              {
+                "name": "Gm",
+                "col": 52
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "داری آب میشی می میری اینو از همه شنیدم",
+            "source": "داری آب میشی می میری      اینو از همه شنیدم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                                                 Dm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 51
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دارم از دوریت می میرم تا کنار من نسوزی",
+            "source": "دارم از دوریت می میرم       تا کنار من نسوزی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A7 Asus4                   Gm               Bb",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              },
+              {
+                "name": "Asus4",
+                "col": 3
+              },
+              {
+                "name": "Gm",
+                "col": 27
+              },
+              {
+                "name": "Bb",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از دلم نِمیری عمرم نفسامی که هنوزی",
+            "source": "از دلم نِمیری عمرم             نفسامی که هنوزی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                                                  Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 52
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رو محض خیره هامون که نفس نفس خدا شد",
+            "source": "تو رو محض خیره هامون      که نفس نفس خدا شد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A7  Asus4                                            Bb",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              },
+              {
+                "name": "Asus4",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 53
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از همون لحظه که رفتی روحم از تنم جدا شد",
+            "source": "از همون لحظه که رفتی        روحم از تنم جدا شد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm            D7              Am              Dm ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 14
+              },
+              {
+                "name": "Am",
+                "col": 30
+              },
+              {
+                "name": "Dm",
+                "col": 46
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو که تنها نمی مونی منِ تنها رو دعا کن",
+            "source": "تو که تنها نمی مونی           منِ تنها رو دعا کن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm         Am                    C             Bb",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 33
+              },
+              {
+                "name": "Bb",
+                "col": 47
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خاطراتمو نگه دار اما دستامو رها کن",
+            "source": "خاطراتمو نگه دار               اما دستامو رها کن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm            D7              Am              Dm ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 14
+              },
+              {
+                "name": "Am",
+                "col": 30
+              },
+              {
+                "name": "Dm",
+                "col": 46
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دست تو اول عشقه بسپرش به آخرین مرد",
+            "source": "دست تو اول عشقه            بسپرش به آخرین مرد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Bb                                    C                      Bb",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 1
+              },
+              {
+                "name": "C",
+                "col": 39
+              },
+              {
+                "name": "Bb",
+                "col": 62
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مردی که پشت یه دیوار واسه چشمات گریه می کرد",
+            "source": "مردی که پشت یه دیوار       واسه چشمات گریه می کرد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm        Am          Bb          C                      Bb          C",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "Bb",
+                "col": 22
+              },
+              {
+                "name": "C",
+                "col": 34
+              },
+              {
+                "name": "Bb",
+                "col": 57
+              },
+              {
+                "name": "C",
+                "col": 69
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گریه می کرد گریه می کرد گریه می کرد",
+            "source": "   گریه می کرد                     گریه می کرد         گریه می کرد"
+          }
+        ],
+        "chordCount": 65,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T21:20:03.303Z"
     }
   ],
   "chordColors": {
