@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T13:44:09.408Z",
+  "updatedAt": "2026-10-31T14:01:14.947Z",
   "songs": [
     {
       "title": "خیال",
@@ -10116,6 +10116,576 @@
       "chordColors": {},
       "createdAt": "2026-10-31T13:14:14.406Z",
       "easySemitones": -2
+    },
+    {
+      "title": "بی احساس",
+      "artist": "شادمهر عقیلی",
+      "lyrics": "گفتی خیالِ تو راحت\nهرجا که باشی میام سایه به سایه ات\nمنم بهش کردم عادت\nالآن چند وقته که دوری\nرفتی از پیشم بهم گفتی که مجبوری\nمثل من کی میشه واست\nدر و دیوارِ این خونه\nمیریزه رویِ سَرم بعدِ تو دیوونه\nاینا رو یادم میمونه\nیکی یکی میچینم آجرای خاطره هامونو میبینم\nفاصلم از تو چه دوره ، از تو چه دوره\nبی احساس ، دیدی گفتم ته این رابطه بُن بسته\nگفتم قلب سنگیت از هیچی نمیترسه\nبی احساس\nلعنت به اون شب که تو گفتی من دیگه\nبر نمیگردم\nلعنت به اون شب که تا صبح\nگریه میکردم\nگفتی که از پیشت برم فراموشم\nمیکنی حتماً\nاگه عاشقت نبودم تا الآن\nصبر نمیکردم\nصبر نمیکردم\nبی احساس ، دیدی گفتم ته این رابطه بُن بسته\nگفتم قلب سنگیت از هیچی نمیترسه\nبی احساس\nبی احساس ، دیدی گفتم ته این رابطه بُن بسته\nگفتم قلب سنگیت از هیچی نمیترسه\nبی احساس",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      E        D#m       F#        G#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 15
+              },
+              {
+                "name": "F#",
+                "col": 25
+              },
+              {
+                "name": "G#m",
+                "col": 35
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      G#m      ",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتی خیالِ تو راحت",
+            "source": "گفتی خیالِ تو راحت"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "هرجا که باشی میام سایه به سایه ات",
+            "source": "هرجا که باشی میام سایه به سایه ات"
+          },
+          {
+            "kind": "chords",
+            "source": "                       F#                       ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منم بهش کردم عادت",
+            "source": "منم بهش کردم عادت"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      D#m      ",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "الآن چند وقته که دوری",
+            "source": "الآن چند وقته که دوری"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "رفتی از پیشم بهم گفتی که مجبوری",
+            "source": "رفتی از پیشم بهم گفتی که مجبوری"
+          },
+          {
+            "kind": "chords",
+            "source": "                           E                           ",
+            "placements": [
+              {
+                "name": "E",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل من کی میشه واست",
+            "source": "مثل من کی میشه واست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "     G#m     ",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در و دیوارِ این خونه",
+            "source": "در و دیوارِ این خونه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "میریزه رویِ سَرم بعدِ تو دیوونه",
+            "source": "میریزه رویِ سَرم بعدِ تو دیوونه"
+          },
+          {
+            "kind": "chords",
+            "source": "                     F#                     ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اینا رو یادم میمونه",
+            "source": "اینا رو یادم میمونه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یکی یکی میچینم آجرای خاطره هامونو میبینم",
+            "source": "یکی یکی میچینم آجرای خاطره هامونو میبینم"
+          },
+          {
+            "kind": "chords",
+            "source": " D#     D#m                 E                D#m",
+            "placements": [
+              {
+                "name": "D#",
+                "col": 1
+              },
+              {
+                "name": "D#m",
+                "col": 8
+              },
+              {
+                "name": "E",
+                "col": 28
+              },
+              {
+                "name": "D#m",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فاصلم از تو چه دوره ، از تو چه دوره",
+            "source": "فاصلم از تو چه دوره ، از تو چه دوره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      F#                                          G#m    ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 50
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی احساس ، دیدی گفتم ته این رابطه بُن بسته",
+            "source": "بی احساس ، دیدی گفتم ته این رابطه بُن بسته"
+          },
+          {
+            "kind": "chords",
+            "source": "        E                              D#m        ",
+            "placements": [
+              {
+                "name": "E",
+                "col": 8
+              },
+              {
+                "name": "D#m",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتم قلب سنگیت از هیچی نمیترسه",
+            "source": "گفتم قلب سنگیت از هیچی نمیترسه"
+          },
+          {
+            "kind": "chords",
+            "source": "      D#m      ",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی احساس",
+            "source": "بی احساس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                G#m                 ",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لعنت به اون شب که تو گفتی من دیگه",
+            "source": "لعنت به اون شب که تو گفتی من دیگه"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m E F#",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 4
+              },
+              {
+                "name": "F#",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بر نمیگردم",
+            "source": "بر نمیگردم"
+          },
+          {
+            "kind": "chords",
+            "source": "                  F#                  ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لعنت به اون شب که تا صبح",
+            "source": "لعنت به اون شب که تا صبح"
+          },
+          {
+            "kind": "chords",
+            "source": "E D#m E",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 2
+              },
+              {
+                "name": "E",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گریه میکردم",
+            "source": "گریه میکردم"
+          },
+          {
+            "kind": "chords",
+            "source": "                G#m                 ",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتی که از پیشت برم فراموشم",
+            "source": "گفتی که از پیشت برم فراموشم"
+          },
+          {
+            "kind": "chords",
+            "source": "D#m E F#",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 4
+              },
+              {
+                "name": "F#",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میکنی حتماً",
+            "source": "میکنی حتماً"
+          },
+          {
+            "kind": "chords",
+            "source": "        F#         ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه عاشقت نبودم تا الآن",
+            "source": "اگه عاشقت نبودم تا الآن"
+          },
+          {
+            "kind": "chords",
+            "source": "E D#m E",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 2
+              },
+              {
+                "name": "E",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "صبر نمیکردم",
+            "source": "صبر نمیکردم"
+          },
+          {
+            "kind": "chords",
+            "source": "D# D#m E F#",
+            "placements": [
+              {
+                "name": "D#",
+                "col": 0
+              },
+              {
+                "name": "D#m",
+                "col": 3
+              },
+              {
+                "name": "E",
+                "col": 7
+              },
+              {
+                "name": "F#",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "صبر نمیکردم",
+            "source": "صبر نمیکردم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "     F#                                          G#m    ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 5
+              },
+              {
+                "name": "G#m",
+                "col": 49
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی احساس ، دیدی گفتم ته این رابطه بُن بسته",
+            "source": "بی احساس ، دیدی گفتم ته این رابطه بُن بسته"
+          },
+          {
+            "kind": "chords",
+            "source": "        E                              D#m        ",
+            "placements": [
+              {
+                "name": "E",
+                "col": 8
+              },
+              {
+                "name": "D#m",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتم قلب سنگیت از هیچی نمیترسه",
+            "source": "گفتم قلب سنگیت از هیچی نمیترسه"
+          },
+          {
+            "kind": "chords",
+            "source": "      D# D#m      ",
+            "placements": [
+              {
+                "name": "D#",
+                "col": 6
+              },
+              {
+                "name": "D#m",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی احساس",
+            "source": "بی احساس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      F#                                          G#m    ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 6
+              },
+              {
+                "name": "G#m",
+                "col": 50
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی احساس ، دیدی گفتم ته این رابطه بُن بسته",
+            "source": "بی احساس ، دیدی گفتم ته این رابطه بُن بسته"
+          },
+          {
+            "kind": "chords",
+            "source": "        E                              D#m        ",
+            "placements": [
+              {
+                "name": "E",
+                "col": 8
+              },
+              {
+                "name": "D#m",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتم قلب سنگیت از هیچی نمیترسه",
+            "source": "گفتم قلب سنگیت از هیچی نمیترسه"
+          },
+          {
+            "kind": "chords",
+            "source": "      D#m      ",
+            "placements": [
+              {
+                "name": "D#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی احساس",
+            "source": "بی احساس"
+          }
+        ],
+        "chordCount": 51,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T14:01:13.993Z"
     }
   ],
   "chordColors": {
