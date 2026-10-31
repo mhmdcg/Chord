@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T17:08:41.941Z",
+  "updatedAt": "2026-10-31T19:05:59.444Z",
   "songs": [
     {
       "title": "خیال",
@@ -14572,6 +14572,1188 @@
       "chordColors": {},
       "createdAt": "2026-10-31T17:07:19.936Z",
       "easySemitones": -2
+    },
+    {
+      "title": "تنها نذار",
+      "artist": "سیروان خسروی",
+      "lyrics": "دزدیدی از من ، آرزو هامو\nمن از تو دارم ، تنهاییامو\nپروازو دیدیم ، بال و پرت رفت\nخاطره هامون ، از خاطرت رفت\nتنها نذار ، این دیوونه رو\nخالی نکن ، تو این خونه رو\nوقتی نیستی ، واسه کی بخونم\nتو نباشی ، واسه چی بمونم\nهر جایِ این شهر ، ردِ من و تو\nکی عاشقی کرد ، قدِ من و تو\nگفتی میمونی ، اما دلت رفت\nخاطره هامون ، از خاطرت رفت\nخیلی وقته که این خیابون توو بارون\nندیده ما رو با همدیگه\nبدونِ تو که دنیامی نه نمیخوام یه\nلحظه دنیا رو دیگه\nتنها نذار ، این دیوونه رو\nخالی نکن ، تو این خونه رو\nوقتی نیستی ، واسه کی بخونم\nتو نباشی ، واسه چی بمونم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Fmaj7      Em     G6     Am",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 6
+              },
+              {
+                "name": "Em",
+                "col": 17
+              },
+              {
+                "name": "G6",
+                "col": 24
+              },
+              {
+                "name": "Am",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                     Am",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دزدیدی از من ، آرزو هامو",
+            "source": "دزدیدی از من ، آرزو هامو"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7               Em        ",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من از تو دارم ، تنهاییامو",
+            "source": "من از تو دارم ، تنهاییامو"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                     Am",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پروازو دیدیم ، بال و پرت رفت",
+            "source": "پروازو دیدیم ، بال و پرت رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7                  Em        ",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خاطره هامون ، از خاطرت رفت",
+            "source": "خاطره هامون ، از خاطرت رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                     Am    ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنها نذار ، این دیوونه رو",
+            "source": "تنها نذار ، این دیوونه رو"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                  Em    ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خالی نکن ، تو این خونه رو",
+            "source": "خالی نکن ، تو این خونه رو"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                   Fmaj7     ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Fmaj7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی نیستی ، واسه کی بخونم",
+            "source": "وقتی نیستی ، واسه کی بخونم"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                 Em     ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو نباشی ، واسه چی بمونم",
+            "source": "تو نباشی ، واسه چی بمونم"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                       Am",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر جایِ این شهر ، ردِ من و تو",
+            "source": "هر جایِ این شهر ، ردِ من و تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7               Em        ",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی عاشقی کرد ، قدِ من و تو",
+            "source": "کی عاشقی کرد ، قدِ من و تو"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                  Am    ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتی میمونی ، اما دلت رفت",
+            "source": "گفتی میمونی ، اما دلت رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7               Em        ",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خاطره هامون ، از خاطرت رفت",
+            "source": "خاطره هامون ، از خاطرت رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خیلی وقته که این خیابون توو بارون",
+            "source": "خیلی وقته که این خیابون توو بارون"
+          },
+          {
+            "kind": "chords",
+            "source": "G6  ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ندیده ما رو با همدیگه",
+            "source": "ندیده ما رو با همدیگه"
+          },
+          {
+            "kind": "chords",
+            "source": "Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بدونِ تو که دنیامی نه نمیخوام یه",
+            "source": "بدونِ تو که دنیامی نه نمیخوام یه"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لحظه دنیا رو دیگه",
+            "source": " لحظه دنیا رو دیگه"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                     Am    ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنها نذار ، این دیوونه رو",
+            "source": "تنها نذار ، این دیوونه رو"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                  Em    ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خالی نکن ، تو این خونه رو",
+            "source": "خالی نکن ، تو این خونه رو"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                   Fmaj7     ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Fmaj7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی نیستی ، واسه کی بخونم",
+            "source": "وقتی نیستی ، واسه کی بخونم"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                 Em     ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو نباشی ، واسه چی بمونم",
+            "source": "تو نباشی ، واسه چی بمونم"
+          }
+        ],
+        "chordCount": 40,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T18:16:26.310Z"
+    },
+    {
+      "title": "من دلم تنگه",
+      "artist": "زانیار خسروی",
+      "lyrics": "من حالم خوب نیست من دلم تنگه\nهمه ی حرفام تو این آهنگه\nآخه با عشقش کی می جنگه بگو\nمن دلم تنگه من حالم خوب نیس\nحرف دارم اما تو می گی هیس\nلااقل یه چیزی به این چشای خیس بگو\nمن بی علت شب و روز خیره به عکساتم\nپشت پا بهم زدی اما هنوز پاتم نرو\nتوی هر جمعی بدون تو می رم یه گوشه\nکسی نیست لباس دلخواه منو بپوشه نرو\nنرو\nمن بی علت شب و روز خیره به عکساتم\nپشت پا بهم زدی اما هنوز پاتم نرو\nتوی هر جمعی بدون تو می رم یه گوشه\nکسی نیست لباس دلخواه منو بپوشه نرو\nنرو\nبعد تو دنبال نشونیای تو افتادم تو آدمای دیگه\nکه یکیش اسمت بود\nهنوز که هنوزه\nکافیه بفهمم که یکی هم اسم توئه\nباید خیلی حواسم به خودم باشه\nباید سعی کنم زیاد مکث نکنم\nوقتی اسمش رو میگه\nو بعد اینکه\nجوری صداش نکنم که تو رو صدا می کردمت\nیادت افتادم هر کیو دیدم\nمن به دنیای بی تو تبعیدم\nتو بدی کردی ولی بخشیدم تو رو\nبی تو این خونه مث تابوته\nچشم من رو سقف شبا مبهوته\nهمه چی بازم به تو مربوطه نرو\nمن بی علت شب و روز خیره به عکساتم\nپشت پا بهم زدی اما هنوز پاتم نرو\nتوی هر جمعی بدون تو می رم یه گوشه\nکسی نیست لباس دلخواه منو بپوشه نرو\nنرو\nمن بی علت شب و روز خیره به عکساتم\nپشت پا بهم زدی اما هنوز پاتم نرو\nتوی هر جمعی بدون تو می رم یه گوشه\nکسی نیست لباس دلخواه منو بپوشه نرو\nنرو",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      F#m7   Em7   F#m7   Bm",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 6
+              },
+              {
+                "name": "Em7",
+                "col": 13
+              },
+              {
+                "name": "F#m7",
+                "col": 19
+              },
+              {
+                "name": "Bm",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من حالم خوب نیست من دلم تنگه",
+            "source": "من حالم خوب نیست من دلم تنگه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه ی حرفام تو این آهنگه",
+            "source": "همه ی حرفام تو این آهنگه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                 Em7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه با عشقش کی می جنگه بگو",
+            "source": "آخه با عشقش کی می جنگه بگ*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من دلم تنگه من حالم خوب نیس",
+            "source": "من دلم تنگه من حالم خوب نیس  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حرف دارم اما تو می گی هیس",
+            "source": "حرف دارم اما تو می گی هیس  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                          Em7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 46
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لااقل یه چیزی به این چشای خیس بگو",
+            "source": "لااقل یه چیزی به این چشای خیس بگ*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm7",
+            "placements": [
+              {
+                "name": "Bm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بی علت شب و روز خیره به عکساتم",
+            "source": "من بی علت شب و روز خیره به عکساتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                    Em",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت پا بهم زدی اما هنوز پاتم نرو",
+            "source": "پشت پا بهم زدی اما هنوز پاتم نر*و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A7",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر جمعی بدون تو می رم یه گوشه",
+            "source": "توی هر جمعی بدون تو می رم یه گوشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                                          F#m7",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "F#m7",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی نیست لباس دلخواه منو بپوشه نرو",
+            "source": "کسی نیست لباس دلخواه منو بپوشه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نرو",
+            "source": "نر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm7",
+            "placements": [
+              {
+                "name": "Bm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بی علت شب و روز خیره به عکساتم",
+            "source": "من بی علت شب و روز خیره به عکساتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                    Em",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت پا بهم زدی اما هنوز پاتم نرو",
+            "source": "پشت پا بهم زدی اما هنوز پاتم نر*و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A7",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر جمعی بدون تو می رم یه گوشه",
+            "source": "توی هر جمعی بدون تو می رم یه گوشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                                          F#m7",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "F#m7",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی نیست لباس دلخواه منو بپوشه نرو",
+            "source": "کسی نیست لباس دلخواه منو بپوشه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نرو",
+            "source": "نر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m     ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بعد تو دنبال نشونیای تو افتادم تو آدمای دیگه",
+            "source": "بعد تو * دنبال نشونیای تو افتادم تو آدمای دیگه"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                     ",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که یکیش اسمت بود",
+            "source": "که یکیش اسمت ب*ود"
+          },
+          {
+            "kind": "lyric",
+            "text": "هنوز که هنوزه",
+            "source": "هنوز که هنوزه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کافیه بفهمم که یکی هم اسم توئه",
+            "source": "کاف*یه بفهمم که یکی هم اسم توئه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید خیلی حواسم به خودم باشه",
+            "source": "باید خیلی حواسم به خودم باشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید سعی کنم زیاد مکث نکنم",
+            "source": "باید سعی کنم زیاد مکث نکنم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                         ",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی اسمش رو میگه",
+            "source": "* وقتی اسمش رو میگه"
+          },
+          {
+            "kind": "lyric",
+            "text": "و بعد اینکه",
+            "source": "و بعد اینکه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7              ",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جوری صداش نکنم که تو رو صدا می کردمت",
+            "source": "جوری صداش ن*کنم که تو رو صدا می کردمت"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یادت افتادم هر کیو دیدم",
+            "source": "یادت افتادم هر کیو دیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من به دنیای بی تو تبعیدم",
+            "source": "من به دنیای بی تو تبعیدم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                G              Em7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 20
+              },
+              {
+                "name": "Em7",
+                "col": 35
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو بدی کردی ولی بخشیدم تو رو",
+            "source": "تو بدی کردی  *ولی بخشیدم تو ر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو این خونه مث تابوته",
+            "source": "بی تو این خونه مث تابوته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم من رو سقف شبا مبهوته",
+            "source": "چشم من رو سقف شبا مبهوته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                  G",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه چی بازم به تو مربوطه نرو",
+            "source": "همه چی بازم به تو مربوطه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm7",
+            "placements": [
+              {
+                "name": "Bm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بی علت شب و روز خیره به عکساتم",
+            "source": "من بی علت شب و روز خیره به عکساتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                    Em",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت پا بهم زدی اما هنوز پاتم نرو",
+            "source": "پشت پا بهم زدی اما هنوز پاتم نر*و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A7",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر جمعی بدون تو می رم یه گوشه",
+            "source": "توی هر جمعی بدون تو می رم یه گوشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                                          F#m7",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "F#m7",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی نیست لباس دلخواه منو بپوشه نرو",
+            "source": "کسی نیست لباس دلخواه منو بپوشه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نرو",
+            "source": "نر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm7",
+            "placements": [
+              {
+                "name": "Bm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بی علت شب و روز خیره به عکساتم",
+            "source": "من بی علت شب و روز خیره به عکساتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                    Em",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت پا بهم زدی اما هنوز پاتم نرو",
+            "source": "پشت پا بهم زدی اما هنوز پاتم نر*و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A7",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر جمعی بدون تو می رم یه گوشه",
+            "source": "توی هر جمعی بدون تو می رم یه گوشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                                          F#m7",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "F#m7",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی نیست لباس دلخواه منو بپوشه نرو",
+            "source": "کسی نیست لباس دلخواه منو بپوشه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نرو",
+            "source": "نر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7   Em7   Bm7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 7
+              },
+              {
+                "name": "Bm7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Em7   F#m   A7",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 5
+              },
+              {
+                "name": "F#m",
+                "col": 11
+              },
+              {
+                "name": "A7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Em7   F#m   A7",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 5
+              },
+              {
+                "name": "F#m",
+                "col": 11
+              },
+              {
+                "name": "A7",
+                "col": 17
+              }
+            ]
+          }
+        ],
+        "chordCount": 68,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T19:05:58.156Z"
     }
   ],
   "chordColors": {
