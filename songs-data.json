@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:54:37.266Z",
+  "updatedAt": "2026-10-31T12:56:16.235Z",
   "songs": [
     {
       "title": "خیال",
@@ -6219,6 +6219,275 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:54:36.312Z"
+    },
+    {
+      "title": "فرنگیس",
+      "artist": "سیاوش قمیشی",
+      "lyrics": "شب شب که میشه تو کوچه ی غم\nاشک من میشه ستاره\nمن چشامو به ابرا میدم\nآسمون بارون میباره\nمیخونم آخ که دیگه فرنگیس عشق تو داغونم کرد\nبه کی بگم که چشمات تو غصه زندونم کرد\nدلم شده دیوونه خدا خودش میدونه\nکوچه دلش میگیره سکوتشو میشکونه\nپنجره ها با فریاد میگن کی باز میخونه",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Eb  Gm                      Dm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 6
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              },
+              {
+                "name": "Dm",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شب شب که میشه تو کوچه ی غم",
+            "source": "شب شب که میشه تو کوچه ی غم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm         Cm   Eb",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 11
+              },
+              {
+                "name": "Eb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اشک من میشه ستاره",
+            "source": "اشک من میشه ستاره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb  Gm          Dm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "Dm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من چشامو به ابرا میدم",
+            "source": "من چشامو به ابرا میدم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm        Cm   Eb",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 10
+              },
+              {
+                "name": "Eb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آسمون بارون میباره",
+            "source": "آسمون بارون میباره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm           Cm        Eb             Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 13
+              },
+              {
+                "name": "Eb",
+                "col": 23
+              },
+              {
+                "name": "Dm",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میخونم آخ که دیگه فرنگیس عشق تو داغونم کرد",
+            "source": "میخونم آخ که دیگه فرنگیس عشق تو داغونم کرد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm        Cm             Eb           Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 10
+              },
+              {
+                "name": "Eb",
+                "col": 25
+              },
+              {
+                "name": "Dm",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به کی بگم که چشمات تو غصه زندونم کرد",
+            "source": "به کی بگم که چشمات تو غصه زندونم کرد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                Eb    Dm ",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 17
+              },
+              {
+                "name": "Dm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلم شده دیوونه خدا خودش میدونه",
+            "source": "دلم شده دیوونه خدا خودش میدونه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F                   Eb        F",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 20
+              },
+              {
+                "name": "F",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کوچه دلش میگیره سکوتشو میشکونه",
+            "source": "کوچه دلش میگیره سکوتشو میشکونه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm   Cm                    Eb        F",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 5
+              },
+              {
+                "name": "Eb",
+                "col": 27
+              },
+              {
+                "name": "F",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پنجره ها با فریاد میگن کی باز میخونه",
+            "source": "پنجره ها با فریاد میگن کی باز میخونه"
+          }
+        ],
+        "chordCount": 30,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T12:56:14.898Z"
     }
   ],
   "chordColors": {
