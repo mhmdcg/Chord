@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T22:44:21.315Z",
+  "updatedAt": "2026-10-31T22:49:46.609Z",
   "songs": [
     {
       "title": "خیال",
@@ -17838,6 +17838,963 @@
       "chordColors": {},
       "createdAt": "2026-10-31T22:44:02.500Z",
       "easySemitones": 1
+    },
+    {
+      "title": "ستاره",
+      "artist": "شادمهر عقیلی",
+      "lyrics": "دوباره دلم واسه غربت چشمات تنگه\nدوباره این دل دیوونه واست دلتنگه\nوقت از تو خوندنه ستاره ی ترانه ها\nاسم تو برای من قشنگ ترین آهنگه\nبی تو یک پرنده ی اسیر بی پروازم\nبا تو اما میرسم به قله ی\nآ و ا ز م\nاگه تا آخر این ترانه با من باشی\nواسه تو سقفی از آهنگ و صدا\nمـــی ســـــا زم\nبا یه چشمک دوباره\nمنو زنده کن ستاره\nنذار از نفس بیفتم\nتویی تنها راه چاره\nآی ستاره آی ستاره\nبی توشب نوری نداره\nاین ترانه تا همیشه\nتو رو یاد من میــــاره\nتویی که عشقمو از نگاه من میخونی\nتویی که تو تپش ترانه هام پنهونی\nتویی که همنفس همیشه ی آوازی\nتویی که آخر قـــصه ی منو میدونی\nاگه کوچه ی صدام یه کوچه ی باریکه\nاگه خونم بی چراغ چشم تو\nتــــــا ر یــــــــکه\nمیدونم آخر قصه میرسی به داد من\nلحظه ی یکی شدن تو آینه ها\nنــــــز د یـــــــکه\nبا یه چشمک دوباره\nمنو زنده کن ستاره\nنذار از نفس بیفتم\nتویی تنها راه چاره\nآی ستاره آی ستاره\nبی توشب نوری نداره\nاین ترانه تا همیشه\nتو رو یاد من میــــاره",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Bbm    Fm  Bbm  Fm  Bbm",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 6
+              },
+              {
+                "name": "Fm",
+                "col": 13
+              },
+              {
+                "name": "Bbm",
+                "col": 17
+              },
+              {
+                "name": "Fm",
+                "col": 22
+              },
+              {
+                "name": "Bbm",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm   Ab    Db     Ab",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 6
+              },
+              {
+                "name": "Db",
+                "col": 12
+              },
+              {
+                "name": "Ab",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab                           Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bbm",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دوباره دلم واسه غربت چشمات تنگه",
+            "source": "دوباره *دلم واسه *غربت چش*مات تنگه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Db           Ebm      Fm    Ab",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 13
+              },
+              {
+                "name": "Fm",
+                "col": 22
+              },
+              {
+                "name": "Ab",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دوباره این دل دیوونه واست دلتنگه",
+            "source": "دوباره *این دل دی*وونه واست *دلتنگه  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab                             Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bbm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقت از تو خوندنه ستاره ی ترانه ها",
+            "source": "وقت از *تو خوندنه * ستاره ی  *ترانه ها  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Db            Ebm      Fm     Ab",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 14
+              },
+              {
+                "name": "Fm",
+                "col": 23
+              },
+              {
+                "name": "Ab",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اسم تو برای من قشنگ ترین آهنگه",
+            "source": "اسم تو *برای من * قشنگ ترین *آهنگه  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Ab                 Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 1
+              },
+              {
+                "name": "Bbm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو یک پرنده ی اسیر بی پروازم",
+            "source": "بی تو یک * پرنده ی * اسیر بی *پروازم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb       Fm    Ab",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 9
+              },
+              {
+                "name": "Ab",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو اما میرسم به قله ی",
+            "source": "با تو ا*ما میرسم * به قله ی  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm Gb Db",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 4
+              },
+              {
+                "name": "Db",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آ و ا ز م",
+            "source": " *آ      *و   ا   *ز  م"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab            Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bbm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه تا آخر این ترانه با من باشی",
+            "source": "اگه تا * آخر این * ترانه با *من باشی  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb          Fm     Ab",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 12
+              },
+              {
+                "name": "Ab",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه تو سقفی از آهنگ و صدا",
+            "source": "واسه تو * سقفی از آ*هنگ و صدا  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm  Gb  Db",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 5
+              },
+              {
+                "name": "Db",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مـــی ســـــا زم",
+            "source": "*مـــی  *ســـــا  *زم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ebm      Fm   Bbm",
+            "placements": [
+              {
+                "name": "Ebm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 9
+              },
+              {
+                "name": "Bbm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با یه چشمک دوباره",
+            "source": "با یه چش*مک دوبا*ره  *"
+          },
+          {
+            "kind": "chords",
+            "source": "      Bbm      Fm      ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 6
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منو زنده کن ستاره",
+            "source": "منو زن*ده کن ستا*ره"
+          },
+          {
+            "kind": "chords",
+            "source": "      Db          Ab      ",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 6
+              },
+              {
+                "name": "Ab",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نذار از نفس بیفتم",
+            "source": " نذار از * نفس بیف*تم"
+          },
+          {
+            "kind": "chords",
+            "source": "         Bbm Gb Ab        ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 9
+              },
+              {
+                "name": "Gb",
+                "col": 13
+              },
+              {
+                "name": "Ab",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی تنها راه چاره",
+            "source": "تویی تن*ها را*ه چا*ره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      Ebm       Fm      ",
+            "placements": [
+              {
+                "name": "Ebm",
+                "col": 6
+              },
+              {
+                "name": "Fm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آی ستاره آی ستاره",
+            "source": "آی ستا*ره آی ستا*ره"
+          },
+          {
+            "kind": "chords",
+            "source": "          Bbm     Fm           ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی توشب نوری نداره",
+            "source": "بی توشب *نوری ندا*ره"
+          },
+          {
+            "kind": "chords",
+            "source": "      Db          Ab      ",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 6
+              },
+              {
+                "name": "Ab",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "این ترانه تا همیشه",
+            "source": " این ترا*نه تا همی*شه"
+          },
+          {
+            "kind": "chords",
+            "source": "         Bbm  Gb   Ab        ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 9
+              },
+              {
+                "name": "Gb",
+                "col": 14
+              },
+              {
+                "name": "Ab",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رو یاد من میــــاره",
+            "source": "تو رو یا*د من *میــــا*ره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab    Gb    Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 6
+              },
+              {
+                "name": "Bbm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gb     Db      Ab",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 7
+              },
+              {
+                "name": "Ab",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Db    Gb    Ebm",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 6
+              },
+              {
+                "name": "Ebm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm Ab Gb",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 4
+              },
+              {
+                "name": "Gb",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab                             Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bbm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی که عشقمو از نگاه من میخونی",
+            "source": "تویی که *عشقمو از * نگاه من *میخونی  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Db         Ebm       Fm      Ab",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 11
+              },
+              {
+                "name": "Fm",
+                "col": 21
+              },
+              {
+                "name": "Ab",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی که تو تپش ترانه هام پنهونی",
+            "source": "تویی که *تو تپش * ترانه هام *پنهونی  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab                               Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bbm",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی که همنفس همیشه ی آوازی",
+            "source": "تویی که *همنفس * همیشه ی *آوازی  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Db         Ebm     Fm      Ab",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 0
+              },
+              {
+                "name": "Ebm",
+                "col": 11
+              },
+              {
+                "name": "Fm",
+                "col": 19
+              },
+              {
+                "name": "Ab",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی که آخر قـــصه ی منو میدونی",
+            "source": "تویی که *آخر قـــ*صه ی منو *میدونی  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab                 Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bbm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه کوچه ی صدام یه کوچه ی باریکه",
+            "source": "اگه کو*چه ی صدام * یه کوچه ی *باریکه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb         Fm    Ab",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 11
+              },
+              {
+                "name": "Ab",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه خونم بی چراغ چشم تو",
+            "source": "اگه خو*نم بی چرا*غ چشم تو  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm    Gb   Db",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 7
+              },
+              {
+                "name": "Db",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تــــــا ر یــــــــکه",
+            "source": "*تــــــا   *ر   یــــــــ*که"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab            Bbm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bbm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میدونم آخر قصه میرسی به داد من",
+            "source": "میدونم * آخر ق*صه میرسی *به داد من  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gb          Fm     Ab",
+            "placements": [
+              {
+                "name": "Gb",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 12
+              },
+              {
+                "name": "Ab",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لحظه ی یکی شدن تو آینه ها",
+            "source": "لحظه ی * یکی شدن * تو آینه ها  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bbm    Gb   Db",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 0
+              },
+              {
+                "name": "Gb",
+                "col": 7
+              },
+              {
+                "name": "Db",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نــــــز د یـــــــکه",
+            "source": "*نــــــز  *د یـــــــ*که"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ebm      Fm   Bbm",
+            "placements": [
+              {
+                "name": "Ebm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 9
+              },
+              {
+                "name": "Bbm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با یه چشمک دوباره",
+            "source": "با یه چش*مک دوبا*ره  *"
+          },
+          {
+            "kind": "chords",
+            "source": "      Bbm      Fm      ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 6
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منو زنده کن ستاره",
+            "source": "منو زن*ده کن ستا*ره"
+          },
+          {
+            "kind": "chords",
+            "source": "      Db          Ab      ",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 6
+              },
+              {
+                "name": "Ab",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نذار از نفس بیفتم",
+            "source": " نذار از * نفس بیف*تم"
+          },
+          {
+            "kind": "chords",
+            "source": "         Bbm Gb Ab        ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 9
+              },
+              {
+                "name": "Gb",
+                "col": 13
+              },
+              {
+                "name": "Ab",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی تنها راه چاره",
+            "source": "تویی تن*ها را*ه چا*ره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      Ebm       Fm      ",
+            "placements": [
+              {
+                "name": "Ebm",
+                "col": 6
+              },
+              {
+                "name": "Fm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آی ستاره آی ستاره",
+            "source": "آی ستا*ره آی ستا*ره"
+          },
+          {
+            "kind": "chords",
+            "source": "          Bbm     Fm           ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی توشب نوری نداره",
+            "source": "بی توشب *نوری ندا*ره"
+          },
+          {
+            "kind": "chords",
+            "source": "      Db          Ab      ",
+            "placements": [
+              {
+                "name": "Db",
+                "col": 6
+              },
+              {
+                "name": "Ab",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "این ترانه تا همیشه",
+            "source": " این ترا*نه تا همی*شه"
+          },
+          {
+            "kind": "chords",
+            "source": "         Bbm  Gb   Ab        ",
+            "placements": [
+              {
+                "name": "Bbm",
+                "col": 9
+              },
+              {
+                "name": "Gb",
+                "col": 14
+              },
+              {
+                "name": "Ab",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رو یاد من میــــاره",
+            "source": "تو رو یا*د من *میــــا*ره"
+          }
+        ],
+        "chordCount": 115,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T22:49:44.587Z"
     }
   ],
   "chordColors": {
