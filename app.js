@@ -1561,11 +1561,25 @@ class ChordAnnotatorApp {
     }
 
     handlePlayChordClick(e) {
+        const sheetChord = e.target?.closest?.('.link-chord');
+        if (sheetChord && this.sheetView) {
+            if (e.cancelable && e.type !== 'pointerdown') e.preventDefault();
+            e.stopPropagation();
+            this.playSheetChord(sheetChord);
+            return;
+        }
         const hit = this.sectionFromPlayEvent(e);
         if (!hit) return;
         if (e.cancelable && e.type !== 'pointerdown') e.preventDefault();
         e.stopPropagation();
         this.playSectionChord(hit.start, hit.end, hit.target);
+    }
+
+    playSheetChord(target) {
+        const name = String(target?.dataset?.chord || target?.textContent || '').trim();
+        if (!name) return;
+        this.flashSoundingTarget(target);
+        this.playPianoChord(name);
     }
 
     sectionFromPlayEvent(e) {
@@ -1610,7 +1624,7 @@ class ChordAnnotatorApp {
     }
 
     flashSoundingTarget(target) {
-        document.querySelectorAll('.lyric-section-fill.is-sounding, .chord-label.is-sounding')
+        document.querySelectorAll('.lyric-section-fill.is-sounding, .chord-label.is-sounding, .link-chord.is-sounding')
             .forEach((node) => node.classList.remove('is-sounding'));
         if (!target) return;
         target.classList.add('is-sounding');
@@ -6147,6 +6161,7 @@ class ChordAnnotatorApp {
             span.dir = 'ltr';
             const original = String(chord.name || '');
             const shown = steps ? (MusicTheory.transposeChordName(original, steps) || original) : original;
+            span.dataset.chord = shown;
             span.textContent = shown;
             row.appendChild(span);
             cursor = Math.max(cursor, col + original.length);

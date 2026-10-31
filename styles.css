@@ -1683,6 +1683,10 @@ body.live-fullscreen {
     text-align: left;
 }
 
+.lyrics-display.is-sheet.is-playing-chords .link-chord {
+    cursor: pointer;
+}
+
 .lyrics-display.is-equalized {
     overflow-x: auto;
 }
@@ -1845,7 +1849,8 @@ body.live-fullscreen {
 }
 
 .chord-label.is-sounding,
-.lyric-section-fill.is-sounding {
+.lyric-section-fill.is-sounding,
+.link-chord.is-sounding {
     outline: 2px solid #0D9488;
     outline-offset: 1px;
 }
