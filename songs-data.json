@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T14:06:27.533Z",
+  "updatedAt": "2026-10-31T16:58:00.590Z",
   "songs": [
     {
       "title": "خیال",
@@ -11181,6 +11181,651 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T14:06:26.460Z"
+    },
+    {
+      "title": "ای عشق",
+      "artist": "داریوش",
+      "lyrics": "عشق به شکل پرواز پرندس\nعشق خواب یه آهوی رمندس\nمن زائری تشنه زیر باران\nعشق چشمه آبی اما کشندس\nمن میمیرم از این آب مسموم\nاما اونکه مرده از عشق\nتا قیامت هر لحظه زندس\nمن میمیرم از این آب مسموم\nمرگ عاشق عین بودن\nاوج پرواز یه پرندس\nتو که معنای عشقی به من معنا بده ای یار\nدروغ این صدا را به گور قصه ها بسپار\nصدا کن اسممو از عمق شب از نقب دیوار\nبرای زنده بودن دلیل آخرینم باش\nمنم من بذر فریاد خاک خوب سرزمینم باش\nطلوع صادق عصیان من بیداریم باش\nعشق گذشتن از مرز وجوده\nمرگ آغاز راه قصه بوده\nمن راهی شدم نگو که زوده\nاون کسی که سر سپرده\nمثل ما عاشق نبوده\nاما اون که عاشقونه\nجون سپرده هرگز نمرده",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      A      Gm                   Dm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 6
+              },
+              {
+                "name": "Gm",
+                "col": 13
+              },
+              {
+                "name": "Dm",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق به شکل پرواز پرندس",
+            "source": "عشق      به شکل پرواز پرندس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm   A   Bb       Dm     Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              },
+              {
+                "name": "Gm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق خواب یه آهوی رمندس",
+            "source": "عشق     خواب یه آهوی رمندس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " A        Gm                  Dm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 1
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              },
+              {
+                "name": "Dm",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من زائری تشنه زیر باران",
+            "source": "من         زائری تشنه زیر باران"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm  A  Bb        Dm     Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "Dm",
+                "col": 17
+              },
+              {
+                "name": "Gm",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق چشمه آبی اما کشندس",
+            "source": "عشق      چشمه آبی اما کشندس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A  Gm           D7               D",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 3
+              },
+              {
+                "name": "D7",
+                "col": 16
+              },
+              {
+                "name": "D",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من میمیرم از این آب مسموم",
+            "source": "من  میمیرم از این آب مسموم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm         Gm ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما اونکه مرده از عشق",
+            "source": "اما اونکه     مرده از عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm   A   Bb            A",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا قیامت هر لحظه زندس",
+            "source": "تا قیامت   هر لحظه زندس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A  Gm           D7               D",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 3
+              },
+              {
+                "name": "D7",
+                "col": 16
+              },
+              {
+                "name": "D",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من میمیرم از این آب مسموم",
+            "source": "من  میمیرم از این آب مسموم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm            Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مرگ عاشق عین بودن",
+            "source": "مرگ عاشق    عین بودن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm  A  Bb      A",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اوج پرواز یه پرندس",
+            "source": "اوج پرواز یه پرندس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                        Dm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 41
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو که معنای عشقی به من معنا بده ای یار",
+            "source": "تو که معنای عشقی به من معنا بده ای یار"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb                                      C",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دروغ این صدا را به گور قصه ها بسپار",
+            "source": "دروغ این صدا را به گور قصه ها بسپار"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                       C               Bb",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 25
+              },
+              {
+                "name": "Bb",
+                "col": 41
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "صدا کن اسممو از عمق شب از نقب دیوار",
+            "source": "صدا کن اسممو از عمق شب از نقب دیوار"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C                         Dm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای زنده بودن دلیل آخرینم باش",
+            "source": "برای زنده بودن دلیل آخرینم باش"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb                                      C",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منم من بذر فریاد خاک خوب سرزمینم باش",
+            "source": "منم من بذر فریاد خاک خوب سرزمینم باش"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Gm            C           Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 7
+              },
+              {
+                "name": "C",
+                "col": 21
+              },
+              {
+                "name": "Bb",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "طلوع صادق عصیان من بیداریم باش",
+            "source": "طلوع صادق عصیان من   بیداریم باش"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A        Gm                Dm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق گذشتن از مرز وجوده",
+            "source": "عشق      گذشتن از مرز وجوده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm  A  Bb    Dm    Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "Dm",
+                "col": 13
+              },
+              {
+                "name": "Gm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مرگ آغاز راه قصه بوده",
+            "source": "مرگ      آغاز راه  قصه  بوده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A  Gm       D7                  D",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 3
+              },
+              {
+                "name": "D7",
+                "col": 12
+              },
+              {
+                "name": "D",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من راهی شدم نگو که زوده",
+            "source": "من     راهی شدم نگو که زوده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm             Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اون کسی که سر سپرده",
+            "source": "اون کسی که    سر سپرده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm  A  Bb         A",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل ما عاشق نبوده",
+            "source": "مثل ما    عاشق نبوده"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm            Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما اون که عاشقونه",
+            "source": "اما اون که    عاشقونه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm  A  Bb              A",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جون سپرده هرگز نمرده",
+            "source": "جون سپرده   هرگز نمرده"
+          }
+        ],
+        "chordCount": 75,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T16:57:59.068Z"
     }
   ],
   "chordColors": {
