@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T13:43:44.773Z",
+  "updatedAt": "2026-10-31T13:43:53.390Z",
   "songs": [
     {
       "title": "خیال",
@@ -7182,7 +7182,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-10-31T12:57:47.949Z"
+      "createdAt": "2026-10-31T12:57:47.949Z",
+      "easySemitones": -2
     },
     {
       "title": "زخم کاری",
