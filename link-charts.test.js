@@ -126,6 +126,9 @@ check(sheet.lines[5].source.includes('*تو طلوع *صبح'), 'lyric row keeps
 const latin = LinkCharts.parseSheetSource('C   G\nHello there\nAm\nStay');
 eq(latin.align, 'left', 'latin sheet stays left aligned');
 eq(latin.lines[0].source, 'C   G', 'latin chord spaces kept');
+const padded = LinkCharts.parseSheetSource('      G#m      \nگفتی خیال\n                       F#                       \nمنم بهش کردم عادت\n');
+eq(padded.lines[0].source, '      G#m      ', 'chord row keeps the spaces after the name');
+check(padded.lines[2].source.endsWith('F#                       '), 'a centered chord keeps its trailing pad');
 
 const sheetHtml = `<html><head><title>چراغ آبی</title></head><body><nav>Home</nav><pre>
 Em

@@ -631,7 +631,7 @@
             if (chords) {
                 lines.push({
                     kind: 'chords',
-                    source: keptSource(unmarked),
+                    source: unmarked,
                     placements: chords.map((chord) => ({ name: chord.name, col: chord.col }))
                 });
                 return;
