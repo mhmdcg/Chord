@@ -84,11 +84,14 @@
     }
 
     function parsePublicHttpUrl(value, sameOrigin) {
-        let raw = String(value || '').trim();
-        if (!raw || raw.length > 2000) return null;
+        let raw = String(value || '')
+            .replace(/[\u200B-\u200D\uFEFF\u200E\u200F\u202A-\u202E]/g, '')
+            .trim();
+        if (!raw) return null;
         const embedded = raw.match(/https?:\/\/[^\s<>"']+/i);
-        if (embedded && !/^https?:\/\//i.test(raw)) raw = embedded[0];
+        if (embedded) raw = embedded[0];
         raw = raw.replace(/[),.;]+$/, '');
+        if (raw.length > 2000) return null;
         if (!/^[a-z][a-z0-9+.-]*:/i.test(raw)) {
             if (!raw.includes('.') || /\s/.test(raw)) return null;
             raw = `https://${raw}`;

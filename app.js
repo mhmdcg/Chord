@@ -121,7 +121,10 @@ class ChordAnnotatorApp {
             event.preventDefault();
             this.importFromLink();
         });
-        document.getElementById('linkPasteBtn').addEventListener('click', () => this.pasteLink());
+        document.getElementById('linkPasteBtn').addEventListener('click', (event) => {
+            event.preventDefault();
+            this.pasteLink();
+        });
         document.getElementById('linkTransposeUpBtn').addEventListener('click', () => this.shiftLinkChords(1));
         document.getElementById('linkTransposeDownBtn').addEventListener('click', () => this.shiftLinkChords(-1));
         document.getElementById('linkResetBtn').addEventListener('click', () => this.resetLinkChords());
@@ -6103,22 +6106,65 @@ class ChordAnnotatorApp {
         if (status) status.textContent = text || '';
     }
 
-    async pasteLink() {
+    pasteLink() {
         const input = document.getElementById('linkImportInput');
-        if (!navigator.clipboard || !navigator.clipboard.readText) {
+        if (!input) return;
+        const previous = input.value;
+        window.focus();
+        input.focus();
+        const clip = navigator.clipboard;
+        if (!clip || !clip.readText) {
             this.setLinkStatus('Pasting is not available. Tap the field and paste the link.');
-            if (input) input.focus();
             return;
         }
-        try {
-            const text = await navigator.clipboard.readText();
-            if (this.fillLinkFromText(text)) return;
-            this.setLinkStatus(String(text || '').trim() ? 'The clipboard is not a link.' : 'The clipboard is empty.');
-            if (input) input.focus();
-        } catch (error) {
-            this.setLinkStatus('Could not paste. Tap the field and paste the link.');
-            if (input) input.focus();
+        // Call this in the tap, before any wait, so the phone can allow the paste.
+        let finished = false;
+        const timer = setTimeout(() => {
+            if (!finished) this.setLinkStatus('Allow paste to replace the link.');
+        }, 700);
+        const finish = (text) => {
+            if (finished) return;
+            if (this.fillLinkFromText(text)) {
+                finished = true;
+                clearTimeout(timer);
+                return;
+            }
+            if (text == null) return;
+            finished = true;
+            clearTimeout(timer);
+            input.value = previous;
+            this.setLinkStatus(String(text || '').trim() ? 'The clipboard is not a link.' : 'Could not read the copied link. Tap the field and choose Paste.');
+        };
+        clip.readText().then((text) => {
+            if (this.fillLinkFromText(text)) {
+                finish(text);
+                return;
+            }
+            if (!clip.read) {
+                finish(text);
+                return;
+            }
+            this.readClipboardItems().then((extra) => finish(extra || text)).catch(() => finish(text));
+        }).catch(() => {
+            if (!clip.read) {
+                finish('');
+                return;
+            }
+            this.readClipboardItems().then((extra) => finish(extra)).catch(() => finish(''));
+        });
+    }
+
+    async readClipboardItems() {
+        const items = await navigator.clipboard.read();
+        const chunks = [];
+        for (const item of items) {
+            const types = item.types || [];
+            for (const type of ['text/uri-list', 'text/plain', 'text/html']) {
+                if (!types.includes(type)) continue;
+                chunks.push(await (await item.getType(type)).text());
+            }
         }
+        return chunks.join('\n');
     }
 
     async fetchLinkText(href, timeoutMs, headers) {

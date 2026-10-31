@@ -90,6 +90,8 @@ eq(fromUg.annotations.map((item) => item.chord), ['F', 'C'], 'ultimate guitar ta
 eq(fromUg.lyrics, 'Hold the line', 'tag lyrics');
 
 check(LinkCharts.parsePublicHttpUrl('https://example.com/song').href === 'https://example.com/song', 'public url');
+check(LinkCharts.parsePublicHttpUrl('https://example.com/song\nSong title').href === 'https://example.com/song', 'url kept when a title follows');
+check(LinkCharts.parsePublicHttpUrl('\u200ehttps://example.com/c\u200f').href === 'https://example.com/c', 'url with bidi marks');
 check(LinkCharts.parsePublicHttpUrl('example.com/a').href === 'https://example.com/a', 'scheme added');
 check(LinkCharts.parsePublicHttpUrl('http://127.0.0.1/chart') === null, 'loopback blocked');
 check(LinkCharts.parsePublicHttpUrl('http://192.168.1.4/a') === null, 'private lan blocked');
