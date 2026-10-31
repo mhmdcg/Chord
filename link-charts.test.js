@@ -120,6 +120,12 @@ eq(sheet.lines.filter((line) => line.kind === 'lyric').map((line) => line.text),
     'تو طلوع صبح'
 ], 'sheet lyrics drop the star marks');
 check(sheet.lines[4].placements[1].col > sheet.lines[4].placements[0].col, 'later chords keep their column');
+eq(sheet.align, 'right', 'persian sheet stays right aligned');
+eq(sheet.lines[4].source, 'Em   C   BY', 'chord row keeps the original spaces');
+check(sheet.lines[5].source.includes('*تو طلوع *صبح'), 'lyric row keeps star columns');
+const latin = LinkCharts.parseSheetSource('C   G\nHello there\nAm\nStay');
+eq(latin.align, 'left', 'latin sheet stays left aligned');
+eq(latin.lines[0].source, 'C   G', 'latin chord spaces kept');
 
 const sheetHtml = `<html><head><title>چراغ آبی</title></head><body><nav>Home</nav><pre>
 Em

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20261031a">
+    <link rel="stylesheet" href="styles.css?v=20261031e">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -126,6 +126,18 @@
                     </div>
                     <p id="linkImportStatus" class="link-import-status" role="status"></p>
                 </form>
+                <div id="linkSheetTools" class="scan-toolbar" hidden>
+                    <button type="button" id="linkResetBtn" class="live-transpose-btn live-reset-btn" aria-label="Reset to original" title="Original" disabled>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12a9 9 0 1 0 3-6.7"/>
+                            <path d="M3 5v5h5"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="linkTransposeDownBtn" class="live-transpose-btn" aria-label="Transpose down a half step">−</button>
+                    <span id="linkIntervalLabel" class="scan-interval">Original</span>
+                    <button type="button" id="linkTransposeUpBtn" class="live-transpose-btn" aria-label="Transpose up a half step">+</button>
+                    <button type="button" id="linkSaveBtn" class="btn btn-primary" disabled>Save</button>
+                </div>
                 <div id="linkSheet" class="link-sheet" hidden></div>
                 <p class="scan-help">Or choose a photo of lyrics with the chords written above them.</p>
                 <div class="scan-actions">
@@ -375,8 +387,8 @@
     <script src="html-to-image.min.js"></script>
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
-    <script src="link-charts.js?v=20261031a"></script>
+    <script src="link-charts.js?v=20261031e"></script>
     <script src="music-theory.js?v=20261030e"></script>
-    <script src="app.js?v=20261031a"></script>
+    <script src="app.js?v=20261031e"></script>
 </body>
 </html>

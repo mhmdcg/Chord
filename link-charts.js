@@ -607,6 +607,10 @@
             .trim();
     }
 
+    function keptSource(line) {
+        return String(line || '').replace(/\s+$/g, '');
+    }
+
     function sheetFromText(text, heading) {
         const hint = heading || { title: '', artist: '' };
         const lines = [];
@@ -627,36 +631,44 @@
             if (chords) {
                 lines.push({
                     kind: 'chords',
+                    source: keptSource(unmarked),
                     placements: chords.map((chord) => ({ name: chord.name, col: chord.col }))
                 });
                 return;
             }
             const inline = parseInline(unmarked);
             if (inline && inline.annotations && inline.annotations.length) {
-                lines.push({
-                    kind: 'chords',
-                    placements: inline.annotations.map((annotation, index) => ({
-                        name: annotation.chord,
-                        col: index * 8
-                    }))
+                const placements = inline.annotations.map((annotation, index) => ({
+                    name: annotation.chord,
+                    col: index * 8
+                }));
+                let source = '';
+                placements.forEach((chord) => {
+                    while (source.length < chord.col) source += ' ';
+                    source += chord.name;
                 });
-                const lyric = cleanLyricLine(inline.text);
-                if (lyric && lyric !== '·') lines.push({ kind: 'lyric', text: lyric });
+                lines.push({ kind: 'chords', source, placements });
+                const rawLyric = keptSource(inline.text);
+                const lyric = cleanLyricLine(rawLyric);
+                if (lyric && lyric !== '·') lines.push({ kind: 'lyric', text: lyric, source: rawLyric });
                 return;
             }
             const section = isSectionLine(trimmed);
-            const lyric = cleanLyricLine(section || unmarked);
-            if (lyric) lines.push({ kind: 'lyric', text: lyric });
+            const rawLyric = keptSource(section || unmarked);
+            const lyric = cleanLyricLine(rawLyric);
+            if (lyric) lines.push({ kind: 'lyric', text: lyric, source: rawLyric });
         });
         while (lines.length && lines[lines.length - 1].kind === 'blank') lines.pop();
         const chordCount = lines.reduce((sum, line) => sum + (line.kind === 'chords' ? line.placements.length : 0), 0);
         const lyricCount = lines.filter((line) => line.kind === 'lyric').length;
         if (!chordCount && lyricCount < 2) return null;
+        const lyricText = lines.filter((line) => line.kind === 'lyric').map((line) => line.source || line.text).join('\n');
         return {
             title: hint.title || '',
             artist: hint.artist || '',
             lines,
-            chordCount
+            chordCount,
+            align: isMostlyRtl(lyricText) ? 'right' : 'left'
         };
     }
 

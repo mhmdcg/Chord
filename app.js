@@ -87,6 +87,9 @@ class ChordAnnotatorApp {
         this.githubPushQueued = false;
         this.syncState = 'loading';
         this.linkBusy = false;
+        this.linkSheet = null;
+        this.linkSemitones = 0;
+        this.sheetView = false;
 
         this.init();
     }
@@ -119,6 +122,10 @@ class ChordAnnotatorApp {
             this.importFromLink();
         });
         document.getElementById('linkPasteBtn').addEventListener('click', () => this.pasteLink());
+        document.getElementById('linkTransposeUpBtn').addEventListener('click', () => this.shiftLinkChords(1));
+        document.getElementById('linkTransposeDownBtn').addEventListener('click', () => this.shiftLinkChords(-1));
+        document.getElementById('linkResetBtn').addEventListener('click', () => this.resetLinkChords());
+        document.getElementById('linkSaveBtn').addEventListener('click', () => this.saveLinkSong());
         document.getElementById('backFromAllChordsBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('backFromLiveBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('liveSongSelect').addEventListener('change', (e) => {
@@ -389,10 +396,11 @@ class ChordAnnotatorApp {
 
     exitLiveMode() {
         this.liveMode = false;
+        this.sheetView = false;
         this.exitLiveFullscreen();
         this.stopLiveAutoScroll();
         this.setPlayMode(false);
-        document.getElementById('lyricsDisplay')?.classList.remove('is-live');
+        document.getElementById('lyricsDisplay')?.classList.remove('is-live', 'is-sheet');
         this.ensureLyricsDisplayIn('annotationLyricsHost');
         this.updateLiveScaleLabel();
         this.updateLiveScrollControls();
@@ -448,11 +456,21 @@ class ChordAnnotatorApp {
         this.currentSong = JSON.parse(JSON.stringify(this.songs[index]));
         const select = document.getElementById('liveSongSelect');
         if (select) select.value = String(index);
+        this.liveTransposeOffset = 0;
+        if (this.currentSong.sheet && Array.isArray(this.currentSong.sheet.lines)) {
+            this.renderLiveSheet();
+            this.setPlayMode(true);
+            this.updateLiveScaleLabel();
+            this.updateLiveScrollControls();
+            this.setLyricsScrollTop(0);
+            return;
+        }
+        this.sheetView = false;
+        document.getElementById('lyricsDisplay')?.classList.remove('is-sheet');
         this.ensureSplits();
         this.ensureDownbeats();
         this.renderAnnotationView();
         this.setPlayMode(true);
-        this.liveTransposeOffset = 0;
         this.updateLiveScaleLabel();
         this.updateLiveScrollControls();
         this.setLyricsScrollTop(0);
@@ -491,6 +509,15 @@ class ChordAnnotatorApp {
 
     transposeLiveSong(semitones) {
         if (!this.liveMode || !this.currentSong || !semitones) return;
+        if (this.currentSong.sheet && Array.isArray(this.currentSong.sheet.lines)) {
+            this.liveTransposeOffset += semitones;
+            const display = document.getElementById('lyricsDisplay');
+            const scrollTop = display ? display.scrollTop : 0;
+            this.renderLiveSheet();
+            this.setLyricsScrollTop(scrollTop);
+            this.updateLiveScaleLabel();
+            return;
+        }
         this.transposeSong(semitones);
         this.liveTransposeOffset += semitones;
         this.updateLiveScaleLabel();
@@ -751,6 +778,7 @@ class ChordAnnotatorApp {
 
         this.currentSong.title = title;
         this.currentSong.artist = document.getElementById('songArtist').value.trim();
+        if (this.currentSong.sheet && this.currentSong.lyrics !== lyrics) delete this.currentSong.sheet;
         this.currentSong.lyrics = lyrics;
         this.currentSong.textAlign = this.getSongTextAlign(this.currentSong);
 
@@ -998,6 +1026,8 @@ class ChordAnnotatorApp {
 
     renderAnnotationView() {
         if (!this.currentSong) return;
+        this.sheetView = false;
+        document.getElementById('lyricsDisplay')?.classList.remove('is-sheet');
         document.getElementById('annotationTitle').textContent = this.currentSong.title;
         this.updateLyricsHeading();
         this.updateSongMetaFields();
@@ -2951,6 +2981,11 @@ class ChordAnnotatorApp {
     positionLyricOverlays() {
         const sectionOverlay = document.getElementById('lyricSectionOverlay');
         const splitOverlay = document.getElementById('lyricSplitOverlay');
+        if (this.sheetView) {
+            if (sectionOverlay) sectionOverlay.replaceChildren();
+            if (splitOverlay) splitOverlay.replaceChildren();
+            return;
+        }
         const content = document.getElementById('lyricsContent');
         if (sectionOverlay) sectionOverlay.replaceChildren();
         if (splitOverlay) splitOverlay.replaceChildren();
@@ -5156,9 +5191,14 @@ class ChordAnnotatorApp {
 
     countUniqueChords(song) {
         const seen = new Set();
-        (song?.annotations || []).forEach((annotation) => {
-            const name = this.displayChord(annotation.chord || '').trim().toLowerCase();
+        const add = (chord) => {
+            const name = this.displayChord(chord || '').trim().toLowerCase();
             if (name) seen.add(name);
+        };
+        (song?.annotations || []).forEach((annotation) => add(annotation.chord));
+        (song?.sheet?.lines || []).forEach((line) => {
+            if (line.kind !== 'chords') return;
+            (line.placements || []).forEach((chord) => add(chord.name));
         });
         return seen.size;
     }
@@ -5170,6 +5210,12 @@ class ChordAnnotatorApp {
             if (annotation.chord && !seen.includes(annotation.chord)) {
                 seen.push(annotation.chord);
             }
+        });
+        (song?.sheet?.lines || []).forEach((line) => {
+            if (line.kind !== 'chords') return;
+            (line.placements || []).forEach((chord) => {
+                if (chord.name && !seen.includes(chord.name)) seen.push(chord.name);
+            });
         });
         if (this.pendingEdit?.chord && !seen.includes(this.pendingEdit.chord)) {
             seen.push(this.pendingEdit.chord);
@@ -5415,6 +5461,10 @@ class ChordAnnotatorApp {
     viewSong(index) {
         this.editingIndex = index;
         this.currentSong = JSON.parse(JSON.stringify(this.songs[index]));
+        if (this.songs[index]?.sheet?.lines?.length) {
+            this.showView('live');
+            return;
+        }
         this.showView('annotation');
     }
 
@@ -6020,12 +6070,34 @@ class ChordAnnotatorApp {
         return sources;
     }
 
-    renderLinkSheet(sheet) {
-        const host = document.getElementById('linkSheet');
-        if (!host) return;
-        host.hidden = false;
-        host.replaceChildren();
-        if (sheet.title) {
+    renderLiveSheet() {
+        const song = this.currentSong;
+        if (!song?.sheet?.lines) return;
+        this.sheetView = true;
+        const right = song.textAlign === 'right' || song.sheet.align === 'right';
+        const display = document.getElementById('lyricsDisplay');
+        if (display) {
+            display.classList.add('is-sheet');
+            display.classList.toggle('align-right', right);
+            display.classList.toggle('align-left', !right);
+            display.classList.toggle('rtl', right);
+        }
+        this.updateLyricsHeading();
+        const sectionOverlay = document.getElementById('lyricSectionOverlay');
+        const splitOverlay = document.getElementById('lyricSplitOverlay');
+        if (sectionOverlay) sectionOverlay.replaceChildren();
+        if (splitOverlay) splitOverlay.replaceChildren();
+        const content = document.getElementById('lyricsContent');
+        if (!content) return;
+        content.replaceChildren();
+        this.appendSheetLines(content, song.sheet, this.liveTransposeOffset || 0);
+    }
+
+    appendSheetLines(host, sheet, steps, showTitle) {
+        if (!host || !sheet) return;
+        host.classList.toggle('is-left', sheet.align === 'left');
+        host.classList.toggle('is-right', sheet.align !== 'left');
+        if (showTitle && sheet.title) {
             const title = document.createElement('div');
             title.className = 'link-sheet-title';
             const artist = (sheet.artist || '').trim();
@@ -6041,31 +6113,174 @@ class ChordAnnotatorApp {
                 return;
             }
             if (line.kind === 'chords') {
-                const row = document.createElement('div');
-                row.className = 'link-sheet-chords';
-                row.dir = 'ltr';
-                (line.placements || []).forEach((chord, index) => {
-                    const span = document.createElement('span');
-                    span.className = 'link-chord';
-                    span.textContent = chord.name;
-                    if (index > 0) {
-                        const previous = line.placements[index - 1];
-                        const gap = chord.col - (previous.col + String(previous.name || '').length);
-                        span.style.marginLeft = `${Math.max(0.8, Math.min(gap, 16) * 0.45)}rem`;
-                    }
-                    row.appendChild(span);
-                });
-                host.appendChild(row);
+                host.appendChild(this.sheetChordLine(line, steps));
                 return;
             }
-            if (!line.text) return;
-            const lyric = document.createElement('div');
-            lyric.className = 'link-sheet-lyric';
-            lyric.textContent = line.text;
-            lyric.dir = /[\u0600-\u06FF]/.test(line.text) ? 'rtl' : 'ltr';
-            host.appendChild(lyric);
+            if (line.kind === 'lyric') host.appendChild(this.sheetLyricLine(line));
         });
+    }
+
+    appendSheetGap(parent, text) {
+        const value = String(text || '');
+        if (!value) return;
+        if (/^ +$/.test(value)) {
+            const gap = document.createElement('span');
+            gap.className = 'link-spaces';
+            gap.textContent = value;
+            parent.appendChild(gap);
+            return;
+        }
+        parent.appendChild(document.createTextNode(value));
+    }
+
+    sheetChordLine(line, steps) {
+        const row = document.createElement('div');
+        row.className = 'link-chord-line';
+        const source = String(line.source || '');
+        let cursor = 0;
+        (line.placements || []).forEach((chord) => {
+            const col = Number(chord.col) || 0;
+            if (col > cursor) this.appendSheetGap(row, source.slice(cursor, col) || ' '.repeat(col - cursor));
+            else if (col < cursor) this.appendSheetGap(row, ' ');
+            const span = document.createElement('span');
+            span.className = 'link-chord';
+            span.dir = 'ltr';
+            const original = String(chord.name || '');
+            const shown = steps ? (MusicTheory.transposeChordName(original, steps) || original) : original;
+            span.textContent = shown;
+            row.appendChild(span);
+            cursor = Math.max(cursor, col + original.length);
+        });
+        if (cursor < source.length) this.appendSheetGap(row, source.slice(cursor));
+        return row;
+    }
+
+    sheetLyricLine(line) {
+        const row = document.createElement('div');
+        row.className = 'link-lyric-line';
+        const source = String(line.source != null ? line.source : (line.text || ''));
+        source.split('*').forEach((part, index) => {
+            if (index) {
+                const tick = document.createElement('i');
+                tick.className = 'link-tick';
+                tick.setAttribute('aria-hidden', 'true');
+                row.appendChild(tick);
+            }
+            if (part) row.appendChild(document.createTextNode(part));
+        });
+        return row;
+    }
+
+    retargetChordLine(line, steps) {
+        const source = String(line.source || '');
+        let cursor = 0;
+        let out = '';
+        const placements = [];
+        (line.placements || []).forEach((chord) => {
+            const col = Number(chord.col) || 0;
+            if (col > cursor) out += source.slice(cursor, col) || ' '.repeat(col - cursor);
+            else if (col < cursor && out && !out.endsWith(' ')) out += ' ';
+            const original = String(chord.name || '');
+            const name = steps ? (MusicTheory.transposeChordName(original, steps) || original) : original;
+            placements.push({ name, col: out.length });
+            out += name;
+            cursor = Math.max(cursor, col + original.length);
+        });
+        if (cursor < source.length) out += source.slice(cursor);
+        return { kind: 'chords', source: out, placements };
+    }
+
+    renderLinkSheet() {
+        const host = document.getElementById('linkSheet');
+        const sheet = this.linkSheet;
+        if (!host || !sheet) return;
+        host.hidden = false;
+        host.replaceChildren();
+        this.appendSheetLines(host, sheet, this.linkSemitones || 0, true);
         host.scrollIntoView({ block: 'nearest' });
+        this.syncLinkControls();
+    }
+
+    syncLinkControls() {
+        const hasSheet = !!(this.linkSheet && this.linkSheet.lines && this.linkSheet.lines.length);
+        const steps = this.linkSemitones || 0;
+        const tools = document.getElementById('linkSheetTools');
+        const label = document.getElementById('linkIntervalLabel');
+        const resetBtn = document.getElementById('linkResetBtn');
+        const saveBtn = document.getElementById('linkSaveBtn');
+        if (tools) tools.hidden = !hasSheet;
+        if (label) label.textContent = steps === 0 ? 'Original' : (steps > 0 ? `+${steps}` : `−${Math.abs(steps)}`);
+        if (resetBtn) resetBtn.disabled = !hasSheet || steps === 0;
+        if (saveBtn) saveBtn.disabled = !hasSheet || this.linkBusy;
+    }
+
+    shiftLinkChords(steps) {
+        if (!this.linkSheet || !steps) return;
+        this.linkSemitones = (this.linkSemitones || 0) + steps;
+        this.renderLinkSheet();
+    }
+
+    resetLinkChords() {
+        if (!this.linkSheet || !this.linkSemitones) return;
+        this.linkSemitones = 0;
+        this.renderLinkSheet();
+    }
+
+    songFromLinkSheet() {
+        const sheet = this.linkSheet;
+        if (!sheet || !Array.isArray(sheet.lines) || !sheet.lines.length) return null;
+        const steps = this.linkSemitones || 0;
+        const lines = sheet.lines.map((line) => (
+            line.kind === 'chords' ? this.retargetChordLine(line, steps) : JSON.parse(JSON.stringify(line))
+        ));
+        const chordCount = lines.reduce((sum, line) => sum + (line.kind === 'chords' ? line.placements.length : 0), 0);
+        const lyrics = lines.filter((line) => line.kind === 'lyric' && line.text).map((line) => line.text).join('\n') || '·';
+        const align = sheet.align === 'left' ? 'left' : 'right';
+        return {
+            title: '',
+            artist: sheet.artist || '',
+            lyrics,
+            annotations: [],
+            sheet: { lines, chordCount, align },
+            textAlign: align,
+            scale: '',
+            timeTop: 4,
+            timeBottom: 4,
+            tempo: '',
+            lyricTheme: 'light',
+            chordsLocked: false,
+            splits: [],
+            downbeats: [],
+            videoSeconds: 60,
+            videoStillSeconds: 7,
+            videoEndStillSeconds: 7,
+            chordColors: {},
+            createdAt: new Date().toISOString()
+        };
+    }
+
+    saveLinkSong() {
+        const song = this.songFromLinkSheet();
+        if (!song) {
+            this.setLinkStatus('Show a chart before saving.');
+            return;
+        }
+        const suggested = (this.linkSheet && this.linkSheet.title) || '';
+        const entered = window.prompt('Song name', suggested);
+        if (entered == null) return;
+        const title = entered.trim();
+        if (!title) {
+            alert('Please enter a song name');
+            return;
+        }
+        song.title = title;
+        this.songs.push(song);
+        this.editingIndex = this.songs.length - 1;
+        this.currentSong = song;
+        this.saveData();
+        this.renderSongList();
+        this.populateLiveSongSelect();
+        this.setLinkStatus(`Saved “${title}”. It is in the song list and in Live mode.`);
     }
 
     async importFromLink() {
@@ -6079,7 +6294,10 @@ class ChordAnnotatorApp {
             return;
         }
         this.linkBusy = true;
+        this.linkSheet = null;
+        this.linkSemitones = 0;
         if (button) button.disabled = true;
+        this.syncLinkControls();
         this.setLinkStatus('Reading the page…');
         const sheetHost = document.getElementById('linkSheet');
         if (sheetHost) {
@@ -6093,13 +6311,17 @@ class ChordAnnotatorApp {
                 this.setLinkStatus('No lyrics or chords were found on that page.');
                 return;
             }
-            this.renderLinkSheet(sheet);
+            this.linkSheet = sheet;
+            this.linkSemitones = 0;
+            this.renderLinkSheet();
             this.setLinkStatus('');
         } catch (error) {
+            this.linkSheet = null;
             this.setLinkStatus((error && error.message) || 'Could not read that page.');
         } finally {
             this.linkBusy = false;
             if (button) button.disabled = false;
+            this.syncLinkControls();
         }
     }
 
