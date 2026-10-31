@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T22:41:05.368Z",
+  "updatedAt": "2026-10-31T22:44:03.620Z",
   "songs": [
     {
       "title": "خیال",
@@ -17418,6 +17418,425 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T22:41:02.980Z"
+    },
+    {
+      "title": "تقدیر",
+      "artist": "شادمهر عقیلی",
+      "lyrics": "باید تو رو پیدا کنم شاید هنوزم دیر نیست\nتو ساده دل کندی ولی تقدیر بی تقصیر نیست\nبا اینکه بی تاب منی بازم منو خط می زنی\nباید تو رو پیدا کنم تو با خودت هم دشمنی\nکی با یه جمله مثل من می تونه آرومت کنه\nاون لحظه های آخر از رفتن پشیمونت کنه\nدلگیرم از این شهر سرد این کوچه های بی عبور\nوقتی به من فکر می کنی حس می کنم از راه دور\nآخر یه شب این گریه ها سوی چشامو می بره\nعطرت داره از پیرهنی که جا گذاشتی می پره\nباید تو رو پیدا کنم هر روز تنها تر نشی\nراضی به با من بودنت حتی از این کمتر نشی\nپیدات کنم حتی اگه پرواز مو پر پر کنی\nمحکم بگیرم دستتو احساسمو باور کنی",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Ab                       Bb           Cm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 31
+              },
+              {
+                "name": "Cm",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید تو رو پیدا کنم شاید هنوزم دیر نیست",
+            "source": "باید تو رو پیدا کنم شاید هنوزم دیر نیست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm           Eb             Fm     ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 13
+              },
+              {
+                "name": "Fm",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو ساده دل کندی ولی تقدیر بی تقصیر نیست",
+            "source": "تو ساده دل کندی ولی تقدیر بی تقصیر نیست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab                       Bb           Cm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 25
+              },
+              {
+                "name": "Cm",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با اینکه بی تاب منی بازم منو خط می زنی",
+            "source": "با اینکه بی تاب منی بازم منو خط می زنی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm           Eb             Fm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 13
+              },
+              {
+                "name": "Fm",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید تو رو پیدا کنم تو با خودت هم دشمنی",
+            "source": " باید تو رو پیدا کنم تو با خودت هم دشمنی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Cm       Gm              Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 18
+              },
+              {
+                "name": "Cm",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی با یه جمله مثل من می تونه آرومت کنه",
+            "source": "کی با یه جمله مثل من می تونه آرومت کنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      Gm          Cm           Fm                   ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Cm",
+                "col": 18
+              },
+              {
+                "name": "Fm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اون لحظه های آخر از رفتن پشیمونت کنه",
+            "source": "اون لحظه های آخر از رفتن پشیمونت کنه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Cm       Gm              Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 18
+              },
+              {
+                "name": "Cm",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلگیرم از این شهر سرد این کوچه های بی عبور",
+            "source": "دلگیرم از این شهر سرد این کوچه های بی عبور"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      Gm          Cm           Fm ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Cm",
+                "col": 18
+              },
+              {
+                "name": "Fm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی به من فکر می کنی حس می کنم از راه دور",
+            "source": "وقتی به من فکر می کنی حس می کنم از راه دور"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Bb              Cm         Bb           Cm",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 17
+              },
+              {
+                "name": "Bb",
+                "col": 28
+              },
+              {
+                "name": "Cm",
+                "col": 41
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخر یه شب این گریه ها سوی چشامو می بره",
+            "source": "آخر یه شب این گریه ها سوی چشامو می بره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab              Bb         Cm           Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              },
+              {
+                "name": "Cm",
+                "col": 27
+              },
+              {
+                "name": "Gm",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عطرت داره از پیرهنی که جا گذاشتی می پره",
+            "source": " عطرت داره از پیرهنی که جا گذاشتی می پره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb         Cm         Bb         Cm",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 22
+              },
+              {
+                "name": "Cm",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید تو رو پیدا کنم هر روز تنها تر نشی",
+            "source": "باید تو رو پیدا کنم هر روز تنها تر نشی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab              Bb         Cm           Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              },
+              {
+                "name": "Cm",
+                "col": 27
+              },
+              {
+                "name": "Gm",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "راضی به با من بودنت حتی از این کمتر نشی",
+            "source": " راضی به با من بودنت حتی از این کمتر نشی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm           Ab        Bb         Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              },
+              {
+                "name": "Ab",
+                "col": 14
+              },
+              {
+                "name": "Bb",
+                "col": 24
+              },
+              {
+                "name": "Cm",
+                "col": 35
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پیدات کنم حتی اگه پرواز مو پر پر کنی",
+            "source": " پیدات کنم حتی اگه پرواز مو پر پر کنی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm           Ab        Bb         Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 13
+              },
+              {
+                "name": "Bb",
+                "col": 23
+              },
+              {
+                "name": "Cm",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "محکم بگیرم دستتو احساسمو باور کنی",
+            "source": " محکم بگیرم دستتو احساسمو باور کنی"
+          }
+        ],
+        "chordCount": 50,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T22:44:02.500Z"
     }
   ],
   "chordColors": {
