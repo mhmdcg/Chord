@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T13:03:10.109Z",
+  "updatedAt": "2026-10-31T13:14:15.833Z",
   "songs": [
     {
       "title": "خیال",
@@ -9185,6 +9185,933 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T13:03:09.034Z"
+    },
+    {
+      "title": "همه اون روزا",
+      "artist": "رضا صادقی",
+      "lyrics": "همهی اون روزایی که بی تو گذشت\nکنار تو بودمو\nغصهی رفتن تو یه روزی گرفت\nتمام وجودمو\nنمیدونم کجایی که تلخه که من\nیه خاطره بودم و بس\nنمیتونم از عشق تو دل بکنم\nتو این همه خاطره\nنمیدونم به چشم کی زل بزنم\nنگاتو یادم بره\nهنوزم عشقو خاطره هات تو دل\nکسی که دوست داره هست\nهمه گوشمو پُر میکنن که دیگه\nگریه واسه تو بسه دستایی که\nجدا بوده این همه سال\nمحاله به هم برسه اونی که همه\nچیزتو دادی براش واسه\nیکی دیگه دلواپسه\nهمه میدونن عمریه رفتی و من\nهمونجوری دوست دارمت نمیایی و\nمیمیرمو کاش خبرش\nبرسه یه روزی بهت دل دیوونه\nرازی نمیشه تو رو\nبه یکی دیگه بسپارمت\nمیدونی دل بُریدن از این همه عشق\nدرست مثه مرگمه\nخیابونای خلوت و پرسه زدن\nبدون تو حقمه\nرفتی و هر چی بین منو تو گذشت\nرسیده به گوش همه\nنمیتونم بدیتو به روت بیارم\nغرورتو بشکنم\nدلم میخواد صداتو یه بار دیگه\nبا دلهره بشنوم\nبا تو تموم پاییزو زیر یه چتر\nدوباره قدم بزنم\nهمه گوشمو پُر میکنن که دیگه\nگریه واسه تو بسه دستایی که\nجدا بوده این همه سال\nمحاله به هم برسه اونی که همه\nچیزتو دادی براش واسه\nیکی دیگه دلواپسه\nهمه میدونن عمریه رفتی و من\nهمونجوری دوست دارمت نمیایی و\nمیمیرمو کاش خبرش\nبرسه یه روزی بهت دل دیوونه\nرازی نمیشه تو رو\nبه یکی دیگه بسپارمت",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Bm                               F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 6
+              },
+              {
+                "name": "F#m",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همهی اون روزایی که بی تو گذشت",
+            "source": "همهی اون رو*زایی که بی تو گ*ذشت  *"
+          },
+          {
+            "kind": "chords",
+            "source": "  Bm ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 2
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کنار تو بودمو",
+            "source": "ک*نار تو بودمو"
+          },
+          {
+            "kind": "chords",
+            "source": "A                                E ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غصهی رفتن تو یه روزی گرفت",
+            "source": "غصهی رفت*ن تو یه روزی گ*رفت  *"
+          },
+          {
+            "kind": "chords",
+            "source": " A ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 1
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تمام وجودمو",
+            "source": "تم*ام وجودمو"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                                D",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیدونم کجایی که تلخه که من",
+            "source": "نمیدونم ک*جایی که تلخه که *من  *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#              Bm",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه خاطره بودم و بس",
+            "source": "*    یه *خاطره بودم و *بس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                        F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیتونم از عشق تو دل بکنم",
+            "source": "نمیتونم از *عشق تو دل بک*نم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "  Bm  ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 2
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو این همه خاطره",
+            "source": "تو *این همه خاطره"
+          },
+          {
+            "kind": "chords",
+            "source": "A                                 E",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیدونم به چشم کی زل بزنم",
+            "source": "نمیدونم به *چشم کی زل ب*زنم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "  A ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 2
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نگاتو یادم بره",
+            "source": "ن*گاتو یادم بره"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                                D",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هنوزم عشقو خاطره هات تو دل",
+            "source": "هنوزم عشقو *خاطره هات تو د*ل  *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#                     Bm",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی که دوست داره هست",
+            "source": "*    ک*سی که دوست داره *هست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                            F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه گوشمو پُر میکنن که دیگه",
+            "source": "همه گوشمو *پُر میکنن که دی*گه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E               Bm",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گریه واسه تو بسه دستایی که",
+            "source": "*گریه واسه تو ب*سه دستایی که"
+          },
+          {
+            "kind": "chords",
+            "source": "A                      E",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جدا بوده این همه سال",
+            "source": "ج*دا بوده این همه *سال"
+          },
+          {
+            "kind": "chords",
+            "source": "D                A",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "محاله به هم برسه اونی که همه",
+            "source": "م*حاله به هم بر*سه اونی که همه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm             D",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چیزتو دادی براش واسه",
+            "source": "*چیزتو دادی ب*راش واسه"
+          },
+          {
+            "kind": "chords",
+            "source": "C#             Bm",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یکی دیگه دلواپسه",
+            "source": "*    *یکی دیگه دلواپ*سه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                           F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه میدونن عمریه رفتی و من",
+            "source": "همه میدونن *عمریه رفتی و *من  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E                      Bm",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همونجوری دوست دارمت نمیایی و",
+            "source": "ه*مونجوری دوست دار*مت نمیایی و"
+          },
+          {
+            "kind": "chords",
+            "source": "A                    E",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میمیرمو کاش خبرش",
+            "source": " می*میرمو کاش خب*رش"
+          },
+          {
+            "kind": "chords",
+            "source": "D                 A",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برسه یه روزی بهت دل دیوونه",
+            "source": "ب*رسه یه روزی ب*هت دل دیوونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm              D",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رازی نمیشه تو رو",
+            "source": "*رازی نمیشه تو *رو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#               Bm",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به یکی دیگه بسپارمت",
+            "source": "*    به *یکی دیگه بسپار*مت"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                              F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میدونی دل بُریدن از این همه عشق",
+            "source": "میدونی دل بُ*ریدن از این همه *عشق  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "درست مثه مرگمه",
+            "source": "د*رست مثه مرگمه"
+          },
+          {
+            "kind": "chords",
+            "source": "A                             E  ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خیابونای خلوت و پرسه زدن",
+            "source": "خیابونای *خلوت و پرسه ز*دن  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بدون تو حقمه",
+            "source": "ب*دون تو حقمه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                               D",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رفتی و هر چی بین منو تو گذشت",
+            "source": "رفتی و هر چی *بین منو تو گ*ذشت  *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#                Bm",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رسیده به گوش همه",
+            "source": "*    ر*سیده به گوش ه*مه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Bm                         F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 1
+              },
+              {
+                "name": "F#m",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیتونم بدیتو به روت بیارم",
+            "source": "نمیتونم ب*دیتو به روت بیا*رم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غرورتو بشکنم",
+            "source": "غ*رورتو بشکنم"
+          },
+          {
+            "kind": "chords",
+            "source": "A                                 E ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلم میخواد صداتو یه بار دیگه",
+            "source": "دلم میخواد ص*داتو یه بار دی*گه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با دلهره بشنوم",
+            "source": "با *دلهره بشنوم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                          D",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با تو تموم پاییزو زیر یه چتر",
+            "source": "با تو تموم *پاییزو زیر یه *چتر  *"
+          },
+          {
+            "kind": "chords",
+            "source": "C#         Bm",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دوباره قدم بزنم",
+            "source": "*    دو*باره قدم بز*نم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                           F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه گوشمو پُر میکنن که دیگه",
+            "source": "همه گوشمو *پُر میکنن که دی*گه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E               Bm",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گریه واسه تو بسه دستایی که",
+            "source": "*گریه واسه تو ب*سه دستایی که"
+          },
+          {
+            "kind": "chords",
+            "source": "A                      E",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جدا بوده این همه سال",
+            "source": "ج*دا بوده این همه *سال"
+          },
+          {
+            "kind": "chords",
+            "source": "D                A",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "محاله به هم برسه اونی که همه",
+            "source": "م*حاله به هم بر*سه اونی که همه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm             D",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چیزتو دادی براش واسه",
+            "source": "*چیزتو دادی ب*راش واسه"
+          },
+          {
+            "kind": "chords",
+            "source": "C#             Bm",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یکی دیگه دلواپسه",
+            "source": "*    *یکی دیگه دلواپ*سه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                           F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه میدونن عمریه رفتی و من",
+            "source": "همه میدونن *عمریه رفتی و *من  *"
+          },
+          {
+            "kind": "chords",
+            "source": "E                      Bm",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همونجوری دوست دارمت نمیایی و",
+            "source": "ه*مونجوری دوست دار*مت نمیایی و"
+          },
+          {
+            "kind": "chords",
+            "source": "A                    E",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میمیرمو کاش خبرش",
+            "source": " می*میرمو کاش خب*رش"
+          },
+          {
+            "kind": "chords",
+            "source": "D                 A",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برسه یه روزی بهت دل دیوونه",
+            "source": "ب*رسه یه روزی ب*هت دل دیوونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm              D",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رازی نمیشه تو رو",
+            "source": "*رازی نمیشه تو *رو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#               Bm",
+            "placements": [
+              {
+                "name": "C#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به یکی دیگه بسپارمت",
+            "source": "*    به *یکی دیگه بسپار*مت"
+          }
+        ],
+        "chordCount": 88,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T13:14:14.406Z"
     }
   ],
   "chordColors": {
