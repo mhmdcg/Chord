@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T12:56:16.235Z",
+  "updatedAt": "2026-10-31T12:57:49.007Z",
   "songs": [
     {
       "title": "خیال",
@@ -6488,6 +6488,701 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:56:14.898Z"
+    },
+    {
+      "title": "پوست شیر",
+      "artist": "ابی",
+      "lyrics": "قلب تو قلب پرنده\nپوستت اما پوست شیر\nزندون تن و رها کن\nای پرنده پر بگیر\nاونور جنگل تن سبز\nپشت دشت سر به دامن\nاونور روزهای تاریک\nپشت این شبای روشن\nبرای باور بودن جایی شاید\nباشه شاید\nبرای لمس تن عشق\nکسی باید\nباشه باید\nکه سر خستگی ها تو بـــــــــه روی\nسینه بگیره\nبرای دلواپسیهات\nواسه سادگیت بمیره\nقلب تو قلب پرنده\nپوستت اما پوست شیر\nزندون تن و رها کن\nای پرنده پر بگیر\nحرف تنهائی قدیمی\nاما تلخو سینه سوزه\nاولین و آخرین حرف\nحرف هر روز و هنوزه\nتنهائی شاید یه راهه\nراهیه تا بی نهایت\nقــــصه همیشه تکرار\nهجرت و هجرت و هجرت\nاما تو این راه که همراه\nجزهجوم خار و خس نیست\nکسی شاید باشه شاید\nکسی که دستهاش قفس نیست",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      G       A     Bm",
+            "placements": [
+              {
+                "name": "G",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قلب تو قلب پرنده",
+            "source": "قلب تو *قلب پرن*ده  *"
+          },
+          {
+            "kind": "chords",
+            "source": "        D      A          ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 8
+              },
+              {
+                "name": "A",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پوستت اما پوست شیر",
+            "source": "پوستت ا*ما پوس*ت  شیر"
+          },
+          {
+            "kind": "chords",
+            "source": "Em    Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زندون تن و رها کن",
+            "source": "زندون *تن و رها *کن  *"
+          },
+          {
+            "kind": "chords",
+            "source": "       F#7   Bm     Em     ",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 7
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای پرنده پر بگیر",
+            "source": "*     ای پرن*ده پر ب*گیر"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Em        D  Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 10
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اونور جنگل تن سبز",
+            "source": "اونور *جنگل تن *سبز  *"
+          },
+          {
+            "kind": "chords",
+            "source": "       Bm        Em         ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 7
+              },
+              {
+                "name": "Em",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت دشت سر به دامن",
+            "source": "پشت دش*ت سر به  دا*من"
+          },
+          {
+            "kind": "chords",
+            "source": "      Em         G      ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "G",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اونور روزهای تاریک",
+            "source": " اونور *روزهای تا*ریک"
+          },
+          {
+            "kind": "chords",
+            "source": "        Bm      Em          ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت این شبای روشن",
+            "source": " پشت این *شبای رو*شن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "     Bm                    A       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "A",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای باور بودن جایی شاید",
+            "source": "برای * باور بو*دن جایی شا*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باشه شاید",
+            "source": "*باشه شا*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "    A           G     ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 4
+              },
+              {
+                "name": "G",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای لمس تن عشق",
+            "source": "برای * لمس تن *عشق"
+          },
+          {
+            "kind": "chords",
+            "source": "        Bm      ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی باید",
+            "source": "کسی با*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باشه باید",
+            "source": "*باشه با*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "     Bm          Em        ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "Em",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که سر خستگی ها تو بـــــــــه روی",
+            "source": "که سر * خستگی ها *تو بـــــــــه روی"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سینه بگیره",
+            "source": "سینه بگی*ره  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G         A      ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای دلواپسیهات",
+            "source": "برای * دلواپسی*هات"
+          },
+          {
+            "kind": "chords",
+            "source": "          Bm        A          ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 10
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه سادگیت بمیره",
+            "source": "واسه سا*دگیت بمی*ره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G      A      Bm",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 7
+              },
+              {
+                "name": "Bm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قلب تو قلب پرنده",
+            "source": "قلب تو *قلب پرن*ده  *"
+          },
+          {
+            "kind": "chords",
+            "source": "        D      A          ",
+            "placements": [
+              {
+                "name": "D",
+                "col": 8
+              },
+              {
+                "name": "A",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پوستت اما پوست شیر",
+            "source": "پوستت ا*ما پوس*ت  شیر"
+          },
+          {
+            "kind": "chords",
+            "source": "Em   Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زندون تن و رها کن",
+            "source": "زندون *تن و رها *کن  *"
+          },
+          {
+            "kind": "chords",
+            "source": "       F#7   Bm     Em      ",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 7
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای پرنده پر بگیر",
+            "source": "*     ای پرن*ده پر ب*گیر"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Em       D     Bm",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 1
+              },
+              {
+                "name": "D",
+                "col": 10
+              },
+              {
+                "name": "Bm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حرف تنهائی قدیمی",
+            "source": "حرف تن*هائی قدی*می  *"
+          },
+          {
+            "kind": "chords",
+            "source": "   Bm            Em   ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 3
+              },
+              {
+                "name": "Em",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما تلخو سینه سوزه",
+            "source": "اما تل*خو سینه  سو*زه"
+          },
+          {
+            "kind": "chords",
+            "source": "     Em           G     ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 5
+              },
+              {
+                "name": "G",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اولین و آخرین حرف",
+            "source": " اولی*ن و آخرین *حرف"
+          },
+          {
+            "kind": "chords",
+            "source": "     Bm         Em       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "Em",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حرف هر روز و هنوزه",
+            "source": "حرف هر *روز و هنو*زه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "      A         ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنهائی شاید یه راهه",
+            "source": "تنهائی * شاید یه را*هه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    A      Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "راهیه تا بی نهایت",
+            "source": "راه*یه تا *بی نها*یت"
+          },
+          {
+            "kind": "chords",
+            "source": "     A             G        ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 5
+              },
+              {
+                "name": "G",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قــــصه همیشه تکرار",
+            "source": "قــــصه *همیشه تک*رار"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm        A         Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هجرت و هجرت و هجرت",
+            "source": "هج*رت و هج*رت و هج*رت"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm               Em     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما تو این راه که همراه",
+            "source": "اما تو * این راه که هم*راه"
+          },
+          {
+            "kind": "chords",
+            "source": "     Bm               Em     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "Em",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جزهجوم خار و خس نیست",
+            "source": "جزهجو*م خار و خس *نیست"
+          },
+          {
+            "kind": "chords",
+            "source": "       G            A           ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی شاید باشه شاید",
+            "source": " کسی شا*ید باشه شا*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "     Bm                  A          ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 5
+              },
+              {
+                "name": "A",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی که دستهاش قفس نیست",
+            "source": "کسی که * دستهاش قفس *نیست"
+          }
+        ],
+        "chordCount": 72,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-10-31T12:57:47.949Z"
     }
   ],
   "chordColors": {
