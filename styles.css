@@ -445,12 +445,45 @@ body:has(#liveView.active) {
 }
 
 /* Song List */
+.song-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0.75rem auto 0;
+    padding: 0 1.5rem;
+}
+
+.song-filter select {
+    width: min(280px, 100%);
+    min-width: 0;
+    min-height: 40px;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.song-filter .btn {
+    flex-shrink: 0;
+    min-height: 40px;
+}
+
+.song-filter .btn:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
 .song-list {
-    padding: 1.5rem;
+    padding: 0.75rem 1.5rem 1.25rem;
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    gap: 0.45rem;
     align-content: start;
     width: 100%;
     max-width: 1100px;
@@ -459,7 +492,7 @@ body:has(#liveView.active) {
 
 .empty-state {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 2.5rem 1rem;
     color: var(--text-light);
     grid-column: 1 / -1;
 }
@@ -467,47 +500,114 @@ body:has(#liveView.active) {
 .song-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
+    border-radius: 10px;
+    padding: 0.3rem 0.35rem 0.3rem 0.6rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.35rem;
     min-width: 0;
-    cursor: pointer;
-    transition: all 0.2s;
+    min-height: 46px;
 }
 
 .song-card:hover {
-    box-shadow: 0 4px 12px var(--shadow);
-    transform: translateY(-2px);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.song-card-main {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    min-width: 0;
+    flex: 1;
 }
 
 .song-card h3 {
-    font-size: 1.125rem;
-    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0;
     color: var(--text);
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.song-card p {
-    font-size: 0.875rem;
-    color: var(--text-light);
-    margin-bottom: 0.5rem;
-}
-
-.song-card-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.song-card-artist {
+    flex: 0 1 auto;
+    flex-shrink: 2;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 0.8125rem;
     color: var(--text-light);
-    margin-top: 0.75rem;
+}
+
+.song-card-count {
+    flex: 0 0 auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    white-space: nowrap;
 }
 
 .song-card-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto;
-    padding-top: 0.75rem;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.song-icon-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.song-icon-btn svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.song-icon-view {
+    background: var(--primary);
+    color: white;
+}
+
+.song-icon-view:hover {
+    background: var(--primary-dark);
+}
+
+.song-icon-edit {
+    background: var(--surface);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.song-icon-edit:hover {
+    background: var(--background);
+    color: var(--primary);
+}
+
+.song-icon-delete {
+    background: #DC2626;
+    color: white;
+}
+
+.song-icon-delete:hover {
+    background: #B91C1C;
 }
 
 .btn-small {
@@ -2584,7 +2684,18 @@ body.live-fullscreen {
         padding: 0;
     }
 
+    .song-filter {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     .song-list,
+    .editor-container,
+    .annotation-container,
+    .all-chords-list {
+        padding: 0.75rem 1rem 1rem;
+    }
+
     .editor-container,
     .annotation-container,
     .all-chords-list {
@@ -2592,7 +2703,7 @@ body.live-fullscreen {
     }
 
     .song-list {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: 1fr;
     }
     
     .lyrics-display {

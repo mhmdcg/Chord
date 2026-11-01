@@ -86,6 +86,7 @@ class ChordAnnotatorApp {
         this.githubPushInFlight = false;
         this.githubPushQueued = false;
         this.syncState = 'loading';
+        this.artistFilter = '';
         this.linkBusy = false;
         this.linkSheet = null;
         this.linkSemitones = 0;
@@ -105,6 +106,14 @@ class ChordAnnotatorApp {
 
     setupEventListeners() {
         document.getElementById('newSongBtn').addEventListener('click', () => this.createNewSong());
+        document.getElementById('artistFilter').addEventListener('change', (e) => {
+            this.artistFilter = e.target.value;
+            this.renderSongList();
+        });
+        document.getElementById('clearArtistFilter').addEventListener('click', () => {
+            this.artistFilter = '';
+            this.renderSongList();
+        });
         document.getElementById('allChordsBtn').addEventListener('click', () => this.showView('allChords'));
         document.getElementById('liveModeBtn').addEventListener('click', () => this.showView('live'));
         document.getElementById('scanChordsBtn').addEventListener('click', () => this.showView('scan'));
@@ -5441,75 +5450,132 @@ class ChordAnnotatorApp {
         this.showView('songList');
     }
 
+    songArtists() {
+        const names = [];
+        const seen = new Set();
+        this.songs.forEach((song) => {
+            const name = (song.artist || '').trim();
+            if (!name || seen.has(name)) return;
+            seen.add(name);
+            names.push(name);
+        });
+        names.sort((a, b) => a.localeCompare(b, 'fa'));
+        return names;
+    }
+
+    renderArtistFilter() {
+        const bar = document.getElementById('songFilter');
+        const select = document.getElementById('artistFilter');
+        const clear = document.getElementById('clearArtistFilter');
+        if (!select || !bar) return;
+        const artists = this.songArtists();
+        if (this.artistFilter && !artists.includes(this.artistFilter)) this.artistFilter = '';
+        select.replaceChildren();
+        const all = document.createElement('option');
+        all.value = '';
+        all.textContent = 'All singers';
+        select.appendChild(all);
+        artists.forEach((name) => {
+            const option = document.createElement('option');
+            option.value = name;
+            option.textContent = name;
+            select.appendChild(option);
+        });
+        select.value = this.artistFilter || '';
+        select.disabled = artists.length === 0;
+        if (clear) clear.disabled = !this.artistFilter;
+        bar.hidden = this.songs.length === 0;
+    }
+
+    songActionIcon(kind) {
+        const paths = {
+            view: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+            edit: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>',
+            delete: '<path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M7 7l1 13h8l1-13"/>'
+        };
+        return `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${paths[kind] || ''}</svg>`;
+    }
+
+    songActionButton(kind, label, onClick) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `song-icon-btn song-icon-${kind}`;
+        button.setAttribute('aria-label', label);
+        button.title = label;
+        button.innerHTML = this.songActionIcon(kind);
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            onClick();
+        });
+        return button;
+    }
+
     renderSongList() {
         const container = document.getElementById('songList');
+        this.renderArtistFilter();
+
+        const emptyMessage = (text) => {
+            container.replaceChildren();
+            const empty = document.createElement('div');
+            empty.className = 'empty-state';
+            const note = document.createElement('p');
+            note.textContent = text;
+            empty.appendChild(note);
+            container.appendChild(empty);
+        };
 
         if (this.songs.length === 0) {
-            container.innerHTML = '<div class="empty-state"><p>No songs yet. Create your first song!</p></div>';
+            emptyMessage('No songs yet. Create your first song!');
             if (this.liveMode) this.syncLiveSongsFromList();
             return;
         }
 
-        container.innerHTML = '';
+        const filter = this.artistFilter;
+        container.replaceChildren();
+        let shown = 0;
 
         this.songs.forEach((song, index) => {
+            const artistName = (song.artist || '').trim();
+            if (filter && artistName !== filter) return;
+            shown += 1;
+
             const card = document.createElement('div');
             card.className = 'song-card';
 
+            const main = document.createElement('div');
+            main.className = 'song-card-main';
+
             const title = document.createElement('h3');
-            title.textContent = song.title;
+            title.dir = 'auto';
+            title.textContent = song.title || 'Untitled';
 
-            const artist = document.createElement('p');
-            artist.textContent = song.artist || 'Unknown Artist';
-
-            const meta = document.createElement('div');
-            meta.className = 'song-card-meta';
-
+            const count = document.createElement('span');
             const chordCount = this.countUniqueChords(song);
-            const metaText = document.createElement('span');
-            metaText.textContent = `${chordCount} chord${chordCount !== 1 ? 's' : ''}`;
+            count.className = 'song-card-count';
+            count.textContent = `${chordCount} chord${chordCount === 1 ? '' : 's'}`;
 
-            meta.appendChild(metaText);
+            main.appendChild(title);
+            if (artistName) {
+                const artist = document.createElement('span');
+                artist.className = 'song-card-artist';
+                artist.dir = 'auto';
+                artist.textContent = artistName;
+                main.appendChild(artist);
+            }
+            main.appendChild(count);
 
             const actions = document.createElement('div');
             actions.className = 'song-card-actions';
+            actions.appendChild(this.songActionButton('view', 'View', () => this.viewSong(index)));
+            actions.appendChild(this.songActionButton('edit', 'Edit', () => this.editSong(index)));
+            actions.appendChild(this.songActionButton('delete', 'Delete', () => this.deleteSong(index)));
 
-            const viewBtn = document.createElement('button');
-            viewBtn.className = 'btn btn-primary btn-small';
-            viewBtn.textContent = 'View';
-            viewBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.viewSong(index);
-            });
-
-            const editBtn = document.createElement('button');
-            editBtn.className = 'btn btn-secondary btn-small';
-            editBtn.textContent = 'Edit';
-            editBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.editSong(index);
-            });
-
-            const deleteBtn = document.createElement('button');
-            deleteBtn.className = 'btn btn-danger btn-small';
-            deleteBtn.textContent = 'Delete';
-            deleteBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.deleteSong(index);
-            });
-
-            actions.appendChild(viewBtn);
-            actions.appendChild(editBtn);
-            actions.appendChild(deleteBtn);
-
-            card.appendChild(title);
-            card.appendChild(artist);
-            card.appendChild(meta);
+            card.appendChild(main);
             card.appendChild(actions);
-
             container.appendChild(card);
         });
 
+        if (!shown) emptyMessage('No songs for this singer.');
         if (this.liveMode) this.syncLiveSongsFromList();
     }
 
