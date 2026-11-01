@@ -5549,11 +5549,6 @@ class ChordAnnotatorApp {
             title.dir = 'auto';
             title.textContent = song.title || 'Untitled';
 
-            const count = document.createElement('span');
-            const chordCount = this.countUniqueChords(song);
-            count.className = 'song-card-count';
-            count.textContent = `${chordCount} chord${chordCount === 1 ? '' : 's'}`;
-
             main.appendChild(title);
             if (artistName) {
                 const artist = document.createElement('span');
@@ -5562,7 +5557,6 @@ class ChordAnnotatorApp {
                 artist.textContent = artistName;
                 main.appendChild(artist);
             }
-            main.appendChild(count);
 
             const actions = document.createElement('div');
             actions.className = 'song-card-actions';
