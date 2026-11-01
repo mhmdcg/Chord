@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T11:45:58.087Z",
+  "updatedAt": "2026-11-01T11:46:08.711Z",
   "songs": [
     {
       "title": "خیال",
@@ -12867,7 +12867,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-10-31T21:23:55.390Z"
+      "createdAt": "2026-10-31T21:23:55.390Z",
+      "easySemitones": 0
     },
     {
       "title": "پر پرواز",
