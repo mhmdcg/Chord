@@ -691,17 +691,56 @@ body:has(#liveView.active) {
     flex-shrink: 0;
 }
 
+.live-chord-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 0.45rem;
+    width: 100%;
+}
+
+.live-chord-row.is-left {
+    justify-content: flex-start;
+}
+
+.live-piano-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.live-piano-btn svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.live-piano-btn:hover {
+    background: var(--background);
+    color: var(--primary);
+}
+
 .live-chord-list {
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     gap: 0.35rem 0.85rem;
-    width: 100%;
+    width: auto;
+    max-width: calc(100% - 44px);
     min-height: 1.6rem;
     padding: 0.15rem 0 0.2rem;
     justify-content: flex-end;
     direction: ltr;
-    flex-shrink: 0;
+    flex: 0 1 auto;
 }
 
 .live-chord-list.is-left {
@@ -714,6 +753,149 @@ body:has(#liveView.active) {
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.3;
+}
+
+.live-piano-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(17, 24, 39, 0.45);
+}
+
+.live-piano-popup[hidden] {
+    display: none;
+}
+
+.live-piano-card {
+    width: min(760px, 100%);
+    max-height: min(92dvh, 680px);
+    overflow: auto;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 0.9rem 0.9rem 1rem;
+    box-shadow: 0 16px 48px var(--shadow-lg);
+}
+
+.live-piano-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+}
+
+.live-piano-chords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.45rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.live-piano-chords button {
+    border: none;
+    background: transparent;
+    color: #d44545;
+    font-family: 'Estedad', Tahoma, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.28rem 0.45rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.live-piano-chords button.is-active {
+    background: #fde8e8;
+}
+
+.live-piano-close {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.piano-keys {
+    position: relative;
+    overflow-x: auto;
+    border-radius: 12px;
+    background: #111827;
+    padding: 10px 8px 12px;
+}
+
+.piano-whites {
+    display: flex;
+    height: 148px;
+    min-width: max(100%, calc(var(--white-count) * 36px));
+}
+
+.piano-white,
+.piano-black {
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    font-family: 'Estedad', Tahoma, sans-serif;
+    font-weight: 700;
+}
+
+.piano-white {
+    flex: 1 1 0;
+    min-width: 32px;
+    margin: 0 1px;
+    background: #fff;
+    color: transparent;
+    border-radius: 0 0 6px 6px;
+    box-shadow: inset 0 -2px 0 rgba(17, 24, 39, 0.08);
+}
+
+.piano-white.is-on {
+    background: #f8d0d0;
+    color: #b42318;
+}
+
+.piano-black {
+    position: absolute;
+    top: 10px;
+    height: 90px;
+    background: #111827;
+    color: transparent;
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #000;
+    z-index: 2;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+.piano-black.is-on {
+    background: #d44545;
+    color: #fff;
+    border-color: #b42318;
+}
+
+.piano-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    text-align: center;
+    font-size: 0.72rem;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.piano-black .piano-label {
+    bottom: 5px;
+    font-size: 0.62rem;
 }
 
 .live-song-picker select {

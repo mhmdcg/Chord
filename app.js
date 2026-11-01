@@ -155,6 +155,11 @@ class ChordAnnotatorApp {
             if (Number.isFinite(speed)) this.liveAutoScrollSpeed = speed;
         });
         document.getElementById('liveFullscreenBtn').addEventListener('click', () => this.toggleLiveFullscreen());
+        document.getElementById('livePianoBtn').addEventListener('click', () => this.openLivePiano());
+        document.getElementById('closeLivePianoBtn').addEventListener('click', () => this.closeLivePiano());
+        document.getElementById('livePianoPopup').addEventListener('click', (event) => {
+            if (event.target.id === 'livePianoPopup') this.closeLivePiano();
+        });
         document.addEventListener('fullscreenchange', () => this.syncLiveFullscreenFromBrowser());
         document.getElementById('syncSettingsBtn').addEventListener('click', () => this.toggleSyncPanel());
         document.getElementById('syncBanner').addEventListener('click', () => {
@@ -320,6 +325,11 @@ class ChordAnnotatorApp {
     }
 
     handleKeydown(e) {
+        if (e.key === 'Escape' && this.livePianoOpen) {
+            e.preventDefault();
+            this.closeLivePiano();
+            return;
+        }
         if (e.key === 'Escape' && this.liveFullscreen) {
             e.preventDefault();
             this.exitLiveFullscreen();
@@ -409,6 +419,7 @@ class ChordAnnotatorApp {
     }
 
     exitLiveMode() {
+        this.closeLivePiano();
         this.liveMode = false;
         this.sheetView = false;
         this.exitLiveFullscreen();
@@ -471,6 +482,7 @@ class ChordAnnotatorApp {
         const select = document.getElementById('liveSongSelect');
         if (select) select.value = String(index);
         this.liveTransposeOffset = 0;
+        this.livePianoChordIndex = 0;
         if (this.currentSong.sheet && Array.isArray(this.currentSong.sheet.lines)) {
             this.renderLiveSheet();
             this.setPlayMode(true);
@@ -572,12 +584,17 @@ class ChordAnnotatorApp {
 
     renderLiveChordList() {
         const host = document.getElementById('liveChordList');
+        const row = document.getElementById('liveChordRow');
         if (!host) return;
         const names = this.liveUniqueChordNames();
         const right = this.currentSong && (
             this.currentSong.textAlign === 'right' || this.currentSong.sheet?.align === 'right'
         );
         host.classList.toggle('is-left', !right);
+        if (row) {
+            row.classList.toggle('is-left', !right);
+            row.hidden = !names.length;
+        }
         host.replaceChildren();
         host.hidden = !names.length;
         names.forEach((name) => {
@@ -585,6 +602,131 @@ class ChordAnnotatorApp {
             item.textContent = name;
             host.appendChild(item);
         });
+        if (this.livePianoOpen) this.renderLivePiano();
+    }
+
+    openLivePiano() {
+        const names = this.liveUniqueChordNames();
+        if (!names.length) return;
+        this.livePianoOpen = true;
+        if (!Number.isInteger(this.livePianoChordIndex) || this.livePianoChordIndex >= names.length) {
+            this.livePianoChordIndex = 0;
+        }
+        const popup = document.getElementById('livePianoPopup');
+        if (popup) popup.hidden = false;
+        this.renderLivePiano();
+        document.getElementById('closeLivePianoBtn')?.focus();
+    }
+
+    closeLivePiano() {
+        this.livePianoOpen = false;
+        const popup = document.getElementById('livePianoPopup');
+        if (popup) popup.hidden = true;
+        if (this.livePianoResize) {
+            this.livePianoResize.disconnect();
+            this.livePianoResize = null;
+        }
+    }
+
+    renderLivePiano() {
+        const names = this.liveUniqueChordNames();
+        const chords = document.getElementById('livePianoChords');
+        const board = document.getElementById('livePianoBoard');
+        if (!chords || !board) return;
+        if (!names.length) {
+            this.closeLivePiano();
+            return;
+        }
+        if (!Number.isInteger(this.livePianoChordIndex) || this.livePianoChordIndex >= names.length) {
+            this.livePianoChordIndex = 0;
+        }
+        const selected = names[this.livePianoChordIndex];
+        chords.replaceChildren();
+        names.forEach((name, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = name;
+            button.classList.toggle('is-active', index === this.livePianoChordIndex);
+            button.setAttribute('aria-pressed', index === this.livePianoChordIndex ? 'true' : 'false');
+            button.addEventListener('click', () => {
+                this.livePianoChordIndex = index;
+                this.renderLivePiano();
+                this.playPianoChord(name);
+            });
+            chords.appendChild(button);
+        });
+        this.renderLivePianoKeys(board, selected);
+    }
+
+    renderLivePianoKeys(board, chord) {
+        const spelled = typeof MusicTheory?.chordSpelledNotes === 'function'
+            ? MusicTheory.chordSpelledNotes(chord)
+            : [];
+        const active = new Map(spelled.map((note) => [note.midi, note.name]));
+        const midis = spelled.map((note) => note.midi);
+        const start = midis.length ? midis[0] - (midis[0] % 12) : 48;
+        let end = start + 24;
+        if (midis.length && midis[midis.length - 1] >= end) {
+            const top = midis[midis.length - 1];
+            end = top - (top % 12) + 12;
+        }
+        board.replaceChildren();
+        const whites = document.createElement('div');
+        whites.className = 'piano-whites';
+        const whiteMidis = [];
+        for (let midi = start; midi <= end; midi += 1) {
+            if ([1, 3, 6, 8, 10].includes(midi % 12)) continue;
+            whiteMidis.push(midi);
+            whites.appendChild(this.pianoKeyButton('piano-white', midi, active.get(midi) || ''));
+        }
+        whites.style.setProperty('--white-count', String(whiteMidis.length));
+        board.appendChild(whites);
+        for (let midi = start; midi <= end; midi += 1) {
+            if (![1, 3, 6, 8, 10].includes(midi % 12)) continue;
+            board.appendChild(this.pianoKeyButton('piano-black', midi, active.get(midi) || ''));
+        }
+        if (this.livePianoResize) this.livePianoResize.disconnect();
+        this.livePianoResize = new ResizeObserver(() => this.layoutLivePianoKeys());
+        this.livePianoResize.observe(board);
+        requestAnimationFrame(() => this.layoutLivePianoKeys());
+    }
+
+    pianoKeyButton(className, midi, label) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = className;
+        button.dataset.midi = String(midi);
+        if (label) button.classList.add('is-on');
+        button.setAttribute('aria-label', label || 'Piano key');
+        const text = document.createElement('span');
+        text.className = 'piano-label';
+        text.textContent = label;
+        button.appendChild(text);
+        button.addEventListener('click', () => this.playPianoMidi(midi));
+        return button;
+    }
+
+    layoutLivePianoKeys() {
+        const board = document.getElementById('livePianoBoard');
+        const whites = board?.querySelector('.piano-whites');
+        if (!board || !whites) return;
+        board.querySelectorAll('.piano-black').forEach((black) => {
+            const midi = Number(black.dataset.midi);
+            const white = board.querySelector(`.piano-white[data-midi="${midi - 1}"]`);
+            if (!white) return;
+            const width = Math.max(16, Math.round(white.offsetWidth * 0.58));
+            black.style.width = `${width}px`;
+            black.style.left = `${white.offsetLeft + white.offsetWidth - width / 2}px`;
+        });
+    }
+
+    playPianoMidi(midi) {
+        const ctx = this.unlockAudioContext();
+        if (!ctx || !Number.isFinite(midi)) return;
+        this.stopPianoChord();
+        const now = ctx.currentTime;
+        this.playGrandPianoNote(ctx, midi, now);
+        this.ensureGrandPianoSamples(ctx, [midi]);
     }
 
     formatLiveSteps(steps) {
@@ -814,6 +956,7 @@ class ChordAnnotatorApp {
     }
 
     applyLiveFullscreen(on) {
+        if (on) this.closeLivePiano();
         this.liveFullscreen = on;
         document.getElementById('liveView')?.classList.toggle('is-fullscreen', on);
         document.body.classList.toggle('live-fullscreen', on);
