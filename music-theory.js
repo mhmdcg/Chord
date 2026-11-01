@@ -226,6 +226,62 @@
         return [...new Set(notes)].sort((a, b) => a - b);
     }
 
+    function degreeSteps(interval) {
+        if (interval <= 1) return 0;
+        if (interval <= 2) return 1;
+        if (interval <= 4) return 2;
+        if (interval === 5) return 3;
+        if (interval <= 8) return 4;
+        if (interval <= 11) return 6;
+        if (interval <= 15) return 8;
+        if (interval <= 18) return 10;
+        return 12;
+    }
+
+    function spellChordTone(letter, rootPc, interval) {
+        const letters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+        const letterIndex = letters.indexOf(letter);
+        const toneLetter = letters[(letterIndex + degreeSteps(interval)) % 7];
+        const naturalPc = NOTE_INDEX[toneLetter];
+        let accidental = wrapPc(rootPc + interval) - naturalPc;
+        if (accidental > 6) accidental -= 12;
+        if (accidental < -6) accidental += 12;
+        const mark = accidental === 1 ? '#' : accidental === 2 ? '##' : accidental === -1 ? 'b' : accidental === -2 ? 'bb' : '';
+        return `${toneLetter}${mark}`;
+    }
+
+    function chordSpelledNotes(chord, octave = 3) {
+        const raw = String(chord || '').trim();
+        if (!raw) return [];
+        const tokens = raw.split(/\s+/);
+        const lead = tokens.length > 1 && tokens.every((part) => parseChordRoot(part)) ? tokens[0] : raw;
+        const parts = lead.split('/');
+        const parsed = parseChordRoot(parts[0]);
+        if (!parsed) return [];
+        const rootPc = noteIndex(parsed.root);
+        if (rootPc == null) return [];
+        const rootMidi = (octave + 1) * 12 + rootPc;
+        const notes = intervalsForQuality(parsed.quality).map((interval) => ({
+            midi: rootMidi + interval,
+            name: spellChordTone(parsed.letter, rootPc, interval)
+        }));
+        if (parts[1]) {
+            const bass = parseChordRoot(parts[1]);
+            const bassPc = noteIndex(bass?.root);
+            if (bassPc != null) {
+                let bassMidi = octave * 12 + bassPc;
+                const lowest = Math.min(...notes.map((note) => note.midi));
+                while (bassMidi >= lowest) bassMidi -= 12;
+                notes.unshift({ midi: bassMidi, name: bass.root });
+            }
+        }
+        const byMidi = new Map();
+        notes.forEach((note) => {
+            if (!byMidi.has(note.midi)) byMidi.set(note.midi, note);
+        });
+        return [...byMidi.values()].sort((a, b) => a.midi - b.midi);
+    }
+
     const ARABIC_SCRIPT = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/;
     const DIACRITIC = /[\u064B-\u065F\u0670\u06D6-\u06ED]/g;
     const PERSIAN_DIGITS = { '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4', '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9' };
@@ -393,6 +449,7 @@
         transposeScale,
         toggleScaleQuality,
         chordMidiNotes,
+        chordSpelledNotes,
         formatChordDisplay,
         romanizeToLatin,
         filenameToken,
