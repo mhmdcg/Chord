@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T11:14:23.037Z",
+  "updatedAt": "2026-11-01T11:15:44.973Z",
   "songs": [
     {
       "title": "خیال",
@@ -21877,6 +21877,421 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-01T11:14:21.517Z"
+    },
+    {
+      "title": "تنها نذار",
+      "artist": "سیروان خسروی",
+      "lyrics": "دزدیدی از من ، آرزو هامو\nمن از تو دارم ، تنهاییامو\nپروازو دیدیم ، بال و پرت رفت\nخاطره هامون ، از خاطرت رفت\nتنها نذار ، این دیوونه رو\nخالی نکن ، تو این خونه رو\nوقتی نیستی ، واسه کی بخونم\nتو نباشی ، واسه چی بمونم\nهر جایِ این شهر ، ردِ من و تو\nکی عاشقی کرد ، قدِ من و تو\nگفتی میمونی ، اما دلت رفت\nخاطره هامون ، از خاطرت رفت\nخیلی وقته که این خیابون توو بارون\nندیده ما رو با همدیگه\nبدونِ تو که دنیامی نه نمیخوام یه\nلحظه دنیا رو دیگه\nتنها نذار ، این دیوونه رو\nخالی نکن ، تو این خونه رو\nوقتی نیستی ، واسه کی بخونم\nتو نباشی ، واسه چی بمونم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Fmaj7      Em     G6     Am",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 6
+              },
+              {
+                "name": "Em",
+                "col": 17
+              },
+              {
+                "name": "G6",
+                "col": 24
+              },
+              {
+                "name": "Am",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                     Am",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دزدیدی از من ، آرزو هامو",
+            "source": "دزدیدی از من ، آرزو هامو"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7               Em        ",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من از تو دارم ، تنهاییامو",
+            "source": "من از تو دارم ، تنهاییامو"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                     Am",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پروازو دیدیم ، بال و پرت رفت",
+            "source": "پروازو دیدیم ، بال و پرت رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7                  Em        ",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خاطره هامون ، از خاطرت رفت",
+            "source": "خاطره هامون ، از خاطرت رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                     Am    ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنها نذار ، این دیوونه رو",
+            "source": "تنها نذار ، این دیوونه رو"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                  Em    ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خالی نکن ، تو این خونه رو",
+            "source": "خالی نکن ، تو این خونه رو"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                   Fmaj7     ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Fmaj7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی نیستی ، واسه کی بخونم",
+            "source": "وقتی نیستی ، واسه کی بخونم"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                 Em     ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو نباشی ، واسه چی بمونم",
+            "source": "تو نباشی ، واسه چی بمونم"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                       Am",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر جایِ این شهر ، ردِ من و تو",
+            "source": "هر جایِ این شهر ، ردِ من و تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7               Em        ",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی عاشقی کرد ، قدِ من و تو",
+            "source": "کی عاشقی کرد ، قدِ من و تو"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                  Am    ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتی میمونی ، اما دلت رفت",
+            "source": "گفتی میمونی ، اما دلت رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7               Em        ",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خاطره هامون ، از خاطرت رفت",
+            "source": "خاطره هامون ، از خاطرت رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خیلی وقته که این خیابون توو بارون",
+            "source": "خیلی وقته که این خیابون توو بارون"
+          },
+          {
+            "kind": "chords",
+            "source": "G6  ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ندیده ما رو با همدیگه",
+            "source": "ندیده ما رو با همدیگه"
+          },
+          {
+            "kind": "chords",
+            "source": "Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بدونِ تو که دنیامی نه نمیخوام یه",
+            "source": "بدونِ تو که دنیامی نه نمیخوام یه"
+          },
+          {
+            "kind": "chords",
+            "source": "Fmaj7",
+            "placements": [
+              {
+                "name": "Fmaj7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لحظه دنیا رو دیگه",
+            "source": " لحظه دنیا رو دیگه"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                     Am    ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنها نذار ، این دیوونه رو",
+            "source": "تنها نذار ، این دیوونه رو"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                  Em    ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خالی نکن ، تو این خونه رو",
+            "source": "خالی نکن ، تو این خونه رو"
+          },
+          {
+            "kind": "chords",
+            "source": "G6                   Fmaj7     ",
+            "placements": [
+              {
+                "name": "G6",
+                "col": 0
+              },
+              {
+                "name": "Fmaj7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی نیستی ، واسه کی بخونم",
+            "source": "وقتی نیستی ، واسه کی بخونم"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                 Em     ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو نباشی ، واسه چی بمونم",
+            "source": "تو نباشی ، واسه چی بمونم"
+          }
+        ],
+        "chordCount": 40,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-01T11:15:43.573Z"
     }
   ],
   "chordColors": {
