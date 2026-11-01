@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T13:20:48.837Z",
+  "updatedAt": "2026-11-01T13:21:30.545Z",
   "songs": [
     {
       "title": "خیال",
@@ -10686,7 +10686,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-10-31T14:01:13.993Z"
+      "createdAt": "2026-10-31T14:01:13.993Z",
+      "easySemitones": 1
     },
     {
       "title": "قاضی",
