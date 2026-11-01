@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T11:46:08.711Z",
+  "updatedAt": "2026-11-01T13:02:49.902Z",
   "songs": [
     {
       "title": "خیال",
@@ -22299,6 +22299,673 @@
       "chordColors": {},
       "createdAt": "2026-11-01T11:15:43.573Z",
       "easySemitones": 0
+    },
+    {
+      "title": "خالی",
+      "artist": "ابی",
+      "lyrics": "من\nخالی از عاطفه و خشم\nخالی از خویشی و غربت\nگیج و مبهوت بین بودن و نبودن\nعشق\nآخرین همسفر من\nمثل تو منو رها کرد\nحالا دستام موندن و تنهایی و من\nای دریغ از من\nکه بیخود مثل تـــــــــو\nگمشدم ، گمشدم تو ظلمت تن\nای دریغ از تو\nکه مثلِ عکس عــــــشق\nهنوزم دادمیزنی توآینه من\nوای\nگریمون هیچ خندمون هیچ\nباخته وبرندمون هیچ\nتنها آغوش تومونده غیر از اون هیچ\nای\nای مثل من تک وتنها\nدستاموبگیر که عمر رفت\nهمه چی تویی زمین وآسمون هیچ\nدرتومیبینم،همه بودونبود\nبیاپرکن منوای خورشید دلسرد\nبی تومیمیرم،مثل قلب چراغ\nنورتوبودی کی منوازتوجداکرد",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من",
+            "source": "من"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm        A          ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خالی از عاطفه و خشم",
+            "source": "خالی از عاطفه و خشم"
+          },
+          {
+            "kind": "chords",
+            "source": "                G            A          ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 16
+              },
+              {
+                "name": "A",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خالی از خویشی و غربت",
+            "source": "خالی از خویشی و غربت"
+          },
+          {
+            "kind": "chords",
+            "source": "           F#      Bdim7     Em           ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 11
+              },
+              {
+                "name": "Bdim7",
+                "col": 19
+              },
+              {
+                "name": "Em",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گیج و مبهوت بین بودن و نبودن",
+            "source": " گیج و مبهوت بین بودن و نبودن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 1
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق",
+            "source": "عشق"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A         ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخرین همسفر من",
+            "source": "آخرین همسفر من"
+          },
+          {
+            "kind": "chords",
+            "source": "                G       A          ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 16
+              },
+              {
+                "name": "A",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل تو منو رها کرد",
+            "source": "مثل تو منو رها کرد"
+          },
+          {
+            "kind": "chords",
+            "source": "         F#      Bdim7        Em         ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 9
+              },
+              {
+                "name": "Bdim7",
+                "col": 17
+              },
+              {
+                "name": "Em",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا دستام موندن و تنهایی و من",
+            "source": "حالا دستام موندن و تنهایی و من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#    Bdim7    F#     Bdim7",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "Bdim7",
+                "col": 6
+              },
+              {
+                "name": "F#",
+                "col": 15
+              },
+              {
+                "name": "Bdim7",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#     Em     Bm          Em",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 7
+              },
+              {
+                "name": "Bm",
+                "col": 14
+              },
+              {
+                "name": "Em",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#     Em",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای دریغ از من",
+            "source": "ای دریغ از من"
+          },
+          {
+            "kind": "chords",
+            "source": "       A                     G       ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 7
+              },
+              {
+                "name": "G",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که بیخود مثل تـــــــــو",
+            "source": "که بیخود مثل تـــــــــو"
+          },
+          {
+            "kind": "chords",
+            "source": "        F#          Em        G        ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 20
+              },
+              {
+                "name": "G",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گمشدم ، گمشدم تو ظلمت تن",
+            "source": " گمشدم ، گمشدم تو ظلمت تن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#    Em",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای دریغ از تو",
+            "source": " ای دریغ از تو"
+          },
+          {
+            "kind": "chords",
+            "source": "      A                        G      ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 6
+              },
+              {
+                "name": "G",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که مثلِ عکس عــــــشق",
+            "source": "که مثلِ عکس عــــــشق"
+          },
+          {
+            "kind": "chords",
+            "source": "        F#      Em         G        ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "G",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هنوزم دادمیزنی توآینه من",
+            "source": "هنوزم  دادمیزنی توآینه من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای",
+            "source": "وای"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm             A           ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گریمون هیچ خندمون هیچ",
+            "source": "گریمون هیچ خندمون هیچ"
+          },
+          {
+            "kind": "chords",
+            "source": "                G          A         ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 16
+              },
+              {
+                "name": "A",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باخته وبرندمون هیچ",
+            "source": "باخته وبرندمون هیچ"
+          },
+          {
+            "kind": "chords",
+            "source": "      F#          Bdim7        Em      ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 6
+              },
+              {
+                "name": "Bdim7",
+                "col": 18
+              },
+              {
+                "name": "Em",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تنها آغوش تومونده غیر از اون هیچ",
+            "source": "تنها آغوش تومونده غیر از اون هیچ"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای",
+            "source": "ای"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm        A           ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای مثل من تک وتنها",
+            "source": "ای مثل من تک وتنها"
+          },
+          {
+            "kind": "chords",
+            "source": "                G          A           ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 16
+              },
+              {
+                "name": "A",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دستاموبگیر که عمر رفت",
+            "source": "دستاموبگیر که عمر رفت"
+          },
+          {
+            "kind": "chords",
+            "source": "        F#         Bdim7    Em          ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 8
+              },
+              {
+                "name": "Bdim7",
+                "col": 19
+              },
+              {
+                "name": "Em",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه چی تویی زمین وآسمون هیچ",
+            "source": "همه چی تویی زمین وآسمون هیچ"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "F#    Bdim7    F#     Bdim7",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "Bdim7",
+                "col": 6
+              },
+              {
+                "name": "F#",
+                "col": 15
+              },
+              {
+                "name": "Bdim7",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#     Em     Bm          Em",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 7
+              },
+              {
+                "name": "Bm",
+                "col": 14
+              },
+              {
+                "name": "Em",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A           G        F#    Em",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 12
+              },
+              {
+                "name": "F#",
+                "col": 21
+              },
+              {
+                "name": "Em",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "درتومیبینم،همه بودونبود",
+            "source": "درتومیبینم،همه بودونبود"
+          },
+          {
+            "kind": "chords",
+            "source": "     F#          Em         G     ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 5
+              },
+              {
+                "name": "Em",
+                "col": 17
+              },
+              {
+                "name": "G",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیاپرکن منوای خورشید دلسرد",
+            "source": "بیاپرکن منوای خورشید دلسرد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A          G         F#      Em",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 11
+              },
+              {
+                "name": "F#",
+                "col": 21
+              },
+              {
+                "name": "Em",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تومیمیرم،مثل قلب چراغ",
+            "source": "بی تومیمیرم،مثل قلب چراغ"
+          },
+          {
+            "kind": "chords",
+            "source": "       F#        Em          G       ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 7
+              },
+              {
+                "name": "Em",
+                "col": 17
+              },
+              {
+                "name": "G",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نورتوبودی کی منوازتوجداکرد",
+            "source": "نورتوبودی کی منوازتوجداکرد"
+          }
+        ],
+        "chordCount": 76,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-01T13:02:48.732Z"
     }
   ],
   "chordColors": {
