@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T11:42:03.822Z",
+  "updatedAt": "2026-11-01T11:43:55.735Z",
   "songs": [
     {
       "title": "خیال",
@@ -21876,7 +21876,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-01T11:14:21.517Z"
+      "createdAt": "2026-11-01T11:14:21.517Z",
+      "easySemitones": -1
     },
     {
       "title": "تنها نذار",
