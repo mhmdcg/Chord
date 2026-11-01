@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T13:31:02.180Z",
+  "updatedAt": "2026-11-01T13:31:57.898Z",
   "songs": [
     {
       "title": "خیال",
@@ -11709,7 +11709,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-10-31T21:14:14.236Z"
+      "createdAt": "2026-10-31T21:14:14.236Z",
+      "easySemitones": 0
     },
     {
       "title": "بی خداحافظی",
