@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T11:43:55.735Z",
+  "updatedAt": "2026-11-01T11:44:28.692Z",
   "songs": [
     {
       "title": "خیال",
@@ -20062,7 +20062,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-10-31T22:55:06.976Z"
+      "createdAt": "2026-10-31T22:55:06.976Z",
+      "easySemitones": 0
     },
     {
       "title": "خونه عشق",
