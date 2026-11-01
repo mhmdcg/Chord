@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T11:44:28.692Z",
+  "updatedAt": "2026-11-01T11:44:48.405Z",
   "songs": [
     {
       "title": "خیال",
@@ -18794,7 +18794,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-10-31T22:49:44.587Z"
+      "createdAt": "2026-10-31T22:49:44.587Z",
+      "easySemitones": -1
     },
     {
       "title": "گریز",
