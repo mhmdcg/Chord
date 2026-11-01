@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T11:45:27.843Z",
+  "updatedAt": "2026-11-01T11:45:40.504Z",
   "songs": [
     {
       "title": "خیال",
@@ -15011,7 +15011,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-10-31T22:36:15.559Z"
+      "createdAt": "2026-10-31T22:36:15.559Z",
+      "easySemitones": 0
     },
     {
       "title": "دهاتی",
