@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02T14:49:59.995Z",
+  "updatedAt": "2026-11-04T12:44:24.441Z",
   "songs": [
     {
       "title": "خیال",
@@ -23865,6 +23865,657 @@
       "chordColors": {},
       "createdAt": "2026-11-02T14:47:24.474Z",
       "easySemitones": 0
+    },
+    {
+      "title": "چه کنم",
+      "artist": "عرفان طهماسبی",
+      "lyrics": "رفتی از خلوت من همره شب های که باشی\nغم نهادی به دلم همدم غم های که باشی\nخواستم دور شوم از همه حتی ز جهانم\nمن نباشم نگرانم که تو دنیای که باشی\nگو با تو چه کنم تا تو شوی هم درد من\nتا باران بشود حال و هوای سرد من\nتا همچون مه عاشق بنوازد بنوازی ساز عشق\nگو با تو چه کنم تا تو شوی هم درد من\nتا باران بشود حال و هوای سرد من\nتا همچون مه عاشق بنوازد بنوازی\nوای از عشق فریاد از عشق\nای داد از عشق فریاد از عشق\nای داد از عشق فریاد از عشق\nدر دل بی خبرت از غم من هیچ خبر نیست\nیک نفر ماندی و در قصه ی من راه گذر نیست\nاگر از خانه ی ویرانه ی عشقت نگذشتم\nو برایم به تو راه دگری هیچ اگر نیست\nگو با تو چه کنم تا تو شوی هم درد من\nتا باران بشود حال و هوای سرد من\nتا همچون مه عاشق بنوازد بنوازی ساز عشق\nگو با تو چه کنم تا تو شوی هم درد من\nتا باران بشود حال و هوای سرد من\nتا همچون مه عاشق بنوازد بنوازی\nای وای از عشق فریاد از عشق\nای داد از عشق فریاد از عشق\nای داد از عشق فریاد از عشق",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Ab                                           Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 6
+              },
+              {
+                "name": "Gm",
+                "col": 51
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رفتی از خلوت من همره شب های که باشی",
+            "source": "رفتی از خلوت من همره شب های که باشی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   Eb                                            Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 5
+              },
+              {
+                "name": "Cm",
+                "col": 51
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غم نهادی به دلم همدم غم های که باشی",
+            "source": "غم نهادی به دلم همدم غم های که باشی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Ab                                       Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 1
+              },
+              {
+                "name": "Gm",
+                "col": 42
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خواستم دور شوم از همه حتی ز جهانم",
+            "source": "خواستم دور شوم از همه حتی ز جهانم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "  Cm   Gm   Eb                             Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 2
+              },
+              {
+                "name": "Gm",
+                "col": 7
+              },
+              {
+                "name": "Eb",
+                "col": 12
+              },
+              {
+                "name": "Cm",
+                "col": 43
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من نباشم نگرانم که تو دنیای که باشی",
+            "source": "من نباشم نگرانم که تو دنیای که باشی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm7                                          Cm",
+            "placements": [
+              {
+                "name": "Gm7",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 46
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گو با تو چه کنم تا تو شوی هم درد من",
+            "source": "گو با تو چه کنم تا تو شوی هم درد من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab                                        ",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا باران بشود حال و هوای سرد من",
+            "source": "تا باران بشود حال و هوای سرد من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7      Gm              Fm                    ",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "Fm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا همچون مه عاشق بنوازد بنوازی ساز عشق",
+            "source": "تا همچون مه عاشق بنوازد بنوازی ساز عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm7                                         Cm",
+            "placements": [
+              {
+                "name": "Gm7",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گو با تو چه کنم تا تو شوی هم درد من",
+            "source": "گو با تو چه کنم تا تو شوی هم درد من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Ab                 Cm7                ",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 1
+              },
+              {
+                "name": "Cm7",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا باران بشود حال و هوای سرد من",
+            "source": "تا باران بشود حال و هوای سرد من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Fm       Bb                   ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 7
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا همچون مه عاشق بنوازد بنوازی",
+            "source": "تا همچون مه عاشق بنوازد بنوازی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm            Cm        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از عشق فریاد از عشق",
+            "source": "وای از عشق فریاد از عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm             Cm          ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای داد از عشق فریاد از عشق",
+            "source": "ای داد از عشق فریاد از عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm      Fm    Ab     Eb   ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 8
+              },
+              {
+                "name": "Ab",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای داد از عشق فریاد از عشق",
+            "source": "ای داد از عشق فریاد از عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab         Bb          Eb        D7   Ab",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 11
+              },
+              {
+                "name": "Eb",
+                "col": 23
+              },
+              {
+                "name": "D7",
+                "col": 33
+              },
+              {
+                "name": "Ab",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در دل بی خبرت از غم من هیچ خبر نیست",
+            "source": "در دل بی خبرت از غم من هیچ خبر نیست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Ab                                            Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 46
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یک نفر ماندی و در قصه ی من راه گذر نیست",
+            "source": "یک نفر ماندی و در قصه ی من راه گذر نیست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Ab                                         Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 1
+              },
+              {
+                "name": "Gm",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگر از خانه ی ویرانه ی عشقت نگذشتم",
+            "source": "اگر از خانه ی ویرانه ی عشقت نگذشتم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Ab           Eb                       Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 1
+              },
+              {
+                "name": "Eb",
+                "col": 14
+              },
+              {
+                "name": "Gm",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "و برایم به تو راه دگری هیچ اگر نیست",
+            "source": "و برایم به تو راه دگری هیچ اگر نیست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm                                        Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 43
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گو با تو چه کنم تا تو شوی هم درد من",
+            "source": "گو با تو چه کنم تا تو شوی هم درد من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Ab                                   Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 1
+              },
+              {
+                "name": "Gm",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا باران بشود حال و هوای سرد من",
+            "source": "تا باران بشود حال و هوای سرد من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Fm       Bb                   ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 7
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا همچون مه عاشق بنوازد بنوازی ساز عشق",
+            "source": "تا همچون مه عاشق بنوازد بنوازی ساز عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm                                        Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 43
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گو با تو چه کنم تا تو شوی هم درد من",
+            "source": "گو با تو چه کنم تا تو شوی هم درد من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Ab                                   Gm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 1
+              },
+              {
+                "name": "Gm",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا باران بشود حال و هوای سرد من",
+            "source": "تا باران بشود حال و هوای سرد من"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Fm       Bb                   ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 7
+              },
+              {
+                "name": "Bb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا همچون مه عاشق بنوازد بنوازی",
+            "source": "تا همچون مه عاشق بنوازد بنوازی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm            Cm            ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای وای از عشق فریاد از عشق",
+            "source": "ای وای از عشق فریاد از عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " Gm             Cm          ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 1
+              },
+              {
+                "name": "Cm",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای داد از عشق فریاد از عشق",
+            "source": "ای داد از عشق فریاد از عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm      Fm    Ab     Eb   ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 8
+              },
+              {
+                "name": "Ab",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای داد از عشق فریاد از عشق",
+            "source": "ای داد از عشق فریاد از عشق"
+          }
+        ],
+        "chordCount": 66,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-04T12:44:22.704Z"
     }
   ],
   "chordColors": {
