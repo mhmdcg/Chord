@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T12:44:43.426Z",
+  "updatedAt": "2026-11-06T20:30:13.197Z",
   "songs": [
     {
       "title": "خیال",
@@ -24517,6 +24517,920 @@
       "chordColors": {},
       "createdAt": "2026-11-04T12:44:22.704Z",
       "easySemitones": 0
+    },
+    {
+      "title": "هزار و یکشب",
+      "artist": "ابی",
+      "lyrics": "اگر چه جای دل\nدریای خون در سینه دارم\nولی در عشق تو\nدریایی از دل کم میارم\nاگر چه روبرویی\nمثه آیینه با من\nولی چشمام بسم نیست\nبرای سیر دیدن\nنه یک دل نه هزار دل\nهمه دلهای عالم\nهمه دلها رو می خوام\nکه عاشق تو باشم\nتویی عاشق تر از عشق\nتویی شعر مجسم\nتو باغ قصه از تو\nسحر گل کرده شبنم\nتو چشمام خواب مخمل\nشراب ناب شیراز\nهزار میخونه آواز\nهزارو یک شب راز\nمی خوام تو رو ببینم\nنه یک بار نه صد بار\nبه تعداد نفس هام\nبرای دیدن تو\nنه یک چشم نه صد چشم\nهمه چشمارو می خوام\nتو رو باید مثه گل\nنوازش کرد و بویید\nبا هر چی چشم تو دنیاست\nفقط باید تو رو دید\nتو رو باید مثه ماه\nرو قله ها نگاه کرد\nبا هر چی لب تو دنیاست\nتو رو باید صدا کرد\nمی خوام تو رو ببینم\nنه یک بار نه صد بار\nبه تعداد نفس هام\nبرای دیدن تو\nنه یک چشم نه صد چشم\nهمه چشمارو می خوام",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Bm   F#7   Bm   Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 6
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              },
+              {
+                "name": "Bm",
+                "col": 17
+              },
+              {
+                "name": "Em",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   F#7   Bm   A   Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 5
+              },
+              {
+                "name": "Bm",
+                "col": 11
+              },
+              {
+                "name": "A",
+                "col": 16
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگر چه جای دل",
+            "source": "اگر چ*ه جای دل"
+          },
+          {
+            "kind": "chords",
+            "source": "F#7            Em        ",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دریای خون در سینه دارم",
+            "source": "دریای خ*ون در سینه د*ارم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         F#7    ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ولی در عشق تو",
+            "source": "* ولی د*ر عشق تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm       F#7           ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دریایی از دل کم میارم",
+            "source": "دریایی از د*ل کم میار*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگر چه روبرویی",
+            "source": "اگر چ*ه روبرویی"
+          },
+          {
+            "kind": "chords",
+            "source": "F#7      Em    ",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه آیینه با من",
+            "source": "مثه آ*یینه با م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           F#7    ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ولی چشمام بسم نیست",
+            "source": "ولی چ*شمام بسم ن*یست"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm       F#7  ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای سیر دیدن",
+            "source": "برای* سیر دید*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm          A7        ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نه یک دل نه هزار دل",
+            "source": "نه یک د*ل نه هزار د*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه دلهای عالم",
+            "source": "همه د*لهای عال*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm          F#7     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه دلها رو می خوام",
+            "source": "همه د*لها رو می خ*وام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   F#7   ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که عاشق تو باشم",
+            "source": "که ع*اشق ت*و باشم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   F#7   F#   G   Bm   Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 5
+              },
+              {
+                "name": "F#",
+                "col": 11
+              },
+              {
+                "name": "G",
+                "col": 16
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              },
+              {
+                "name": "Em",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G           Bm       ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی عاشق تر از عشق",
+            "source": "تویی ع*اشق تر از ع*شق"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                  ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی شعر مجسم",
+            "source": "تویی شعر مجس*م"
+          },
+          {
+            "kind": "chords",
+            "source": "G                    ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو باغ قصه از تو",
+            "source": "تو باغ قصه از ت*و"
+          },
+          {
+            "kind": "chords",
+            "source": "F#            G    ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سحر گل کرده شبنم",
+            "source": "سح*ر گل کرده ش*بنم"
+          },
+          {
+            "kind": "chords",
+            "source": "G          Bm        ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو چشمام خواب مخمل",
+            "source": "تو چشم*ام خواب م*خمل"
+          },
+          {
+            "kind": "chords",
+            "source": "Em               ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شراب ناب شیراز",
+            "source": "شراب ناب ش*یراز"
+          },
+          {
+            "kind": "chords",
+            "source": "G                 ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هزار میخونه آواز",
+            "source": "هزار میخونه آ*واز"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm          F#7  ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هزارو یک شب راز",
+            "source": "هزار*و یک شب ر*از"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bm            ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می خوام تو رو ببینم",
+            "source": "می خوام ت*و رو ببین*م"
+          },
+          {
+            "kind": "chords",
+            "source": "A           Bm       ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نه یک بار نه صد بار",
+            "source": "نه یک ب*ار نه صد ب*ار"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      F#7      ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تعداد نفس هام",
+            "source": "به تعد*اد نفس ه*ام"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bm  ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای دیدن تو",
+            "source": "برای* دیدن ت*و"
+          },
+          {
+            "kind": "chords",
+            "source": "F#7          Bm          ",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نه یک چشم نه صد چشم",
+            "source": "نه یک چ*شم نه صد چ*شم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm           Em      ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه چشمارو می خوام",
+            "source": "همه چ*شمارو می خ*وام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   F#7   F#   G   Bm   Em",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 5
+              },
+              {
+                "name": "F#",
+                "col": 11
+              },
+              {
+                "name": "G",
+                "col": 16
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              },
+              {
+                "name": "Em",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G        Bm      ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رو باید مثه گل",
+            "source": "تو رو ب*اید مثه گ*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "Em             G   ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نوازش کرد و بویید",
+            "source": "نواز*ش کرد و بوی*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "G               Em       ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با هر چی چشم تو دنیاست",
+            "source": "با هر چ*ی چشم تو دنی*است"
+          },
+          {
+            "kind": "chords",
+            "source": "F#         Bm     ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط باید تو رو دید",
+            "source": "فقط ب*اید تو رو د*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "G         Bm      ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رو باید مثه ماه",
+            "source": "تو رو ب*اید مثه م*اه"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           G     ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رو قله ها نگاه کرد",
+            "source": "رو قل*ه ها نگاه ک*رد"
+          },
+          {
+            "kind": "chords",
+            "source": "G             Em      ",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با هر چی لب تو دنیاست",
+            "source": "با هر چ*ی لب تو دنی*است"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm        F#       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رو باید صدا کرد",
+            "source": "تو رو ب*اید صدا ک*رد"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bm            ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می خوام تو رو ببینم",
+            "source": "می خوام ت*و رو ببین*م"
+          },
+          {
+            "kind": "chords",
+            "source": "A           Bm       ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نه یک بار نه صد بار",
+            "source": "نه یک ب*ار نه صد ب*ار"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      F#7      ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به تعداد نفس هام",
+            "source": "به تعد*اد نفس ه*ام"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bm  ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "برای دیدن تو",
+            "source": "برای* دیدن ت*و"
+          },
+          {
+            "kind": "chords",
+            "source": "F#7          Bm          ",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نه یک چشم نه صد چشم",
+            "source": "نه یک چ*شم نه صد چ*شم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm           Em      ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه چشمارو می خوام",
+            "source": "همه چ*شمارو می خ*وام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   A   Bm   A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              },
+              {
+                "name": "Bm",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   F#7   Bm   F#7",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#7",
+                "col": 5
+              },
+              {
+                "name": "Bm",
+                "col": 11
+              },
+              {
+                "name": "F#7",
+                "col": 16
+              }
+            ]
+          }
+        ],
+        "chordCount": 103,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-06T20:30:11.979Z"
     }
   ],
   "chordColors": {
