@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T20:39:08.480Z",
+  "updatedAt": "2026-11-06T20:49:01.443Z",
   "songs": [
     {
       "title": "خیال",
@@ -26239,6 +26239,1176 @@
       "chordColors": {},
       "createdAt": "2026-11-06T20:38:58.881Z",
       "easySemitones": 1
+    },
+    {
+      "title": "راوی",
+      "artist": "هایده",
+      "lyrics": "آورده خبر راوی\nکو ساغر و کو ساقی\nدوری به سر اومد\nاز او خبر اومد\nچشم و دل من روشن\nشد کلبه ی دل گلشن\nوا کن در ایوون\nکو گل واسه گلدون\nدیدی سر ذوق اومد\nبا شادی و شوق اومد\nزاری نکن ای دل\nشیون نکن ای دل\nاین لحظه ی دیداره\nپایان شب تاره\nغوغا نکن ای دل\nبلوا نکن ای دل\nخسته تر از خسته ام\nشیشه ی بشکسته ام\nخسته تر از خسته ام\nشیشه ی بشکسته ام\nحالا که از ما گذشت\nاومدن یارو باش\nکار خدا رو ببین\nعاقبت ما رو باش\nبعد یه عمری صبوری کنارم میاد\nاشکای شوقه تو چشمام که یارم میاد\nوای که پشیمون شده\nزار و پریشون شده\nوای که پشیمون شده\nزار و پریشون شده\nحالا که از ما گذشت\nاومدن یارو باش\nکار خدا رو ببین\nعاقبت ما رو باش\nبعد یه عمری صبوری کنارم میاد\nاشکای شوقه تو چشمام که یارم میاد\nآورده خبر راوی\nکو ساغر و کو ساقی\nدوری به سر اومد\nاز او خبر اومد\nاین لحظه ی دیداره\nپایان شب تاره\nغوغا نکن ای دل\nبلوا نکن ای دل\nغوغا نکن ای دل\nبلوا نکن ای دل",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Fm   Fm   Fm   Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 6
+              },
+              {
+                "name": "Fm",
+                "col": 11
+              },
+              {
+                "name": "Fm",
+                "col": 16
+              },
+              {
+                "name": "Fm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Ab   Fm   Ab   Fm",
+            "placements": [
+              {
+                "name": "Ab",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "Ab",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   Fm   C   Ab",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 10
+              },
+              {
+                "name": "Ab",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   Fm   Fm   Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   Fm   Fm   Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آورده خبر راوی",
+            "source": "آو*رده خبر راوی"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کو ساغر و کو ساقی",
+            "source": "کو س*اغر و کو ساقی"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm           Eb  ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دوری به سر اومد",
+            "source": "دور*ی به سر اوم*د"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm      Eb  ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از او خبر اومد",
+            "source": "از ا*و خبر اوم*د"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم و دل من روشن",
+            "source": "چشم* و دل من روشن"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm     ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شد کلبه ی دل گلشن",
+            "source": "شد ک*لبه ی دل گلشن"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    Eb    ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وا کن در ایوون",
+            "source": "وا ک*ن در ایو*ون"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm          Eb    ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کو گل واسه گلدون",
+            "source": "کو گ*ل واسه گلد*ون"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   Fm   Fm   Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   Fm   Fm   Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Fm  ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیدی سر ذوق اومد",
+            "source": "دید*ی سر ذوق اومد"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "با شادی و شوق اومد",
+            "source": "با ش*ادی و شوق اومد"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm         Eb  ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زاری نکن ای دل",
+            "source": "زار*ی نکن ای د*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm            Eb  ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شیون نکن ای دل",
+            "source": "شیو*ن نکن ای د*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "این لحظه ی دیداره",
+            "source": "این ل*حظه ی دیداره"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پایان شب تاره",
+            "source": "پای*ان شب تاره"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm         Eb   ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غوغا نکن ای دل",
+            "source": "غوغ*ا نکن ای د*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm          Eb ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بلوا نکن ای دل",
+            "source": "بلو*ا نکن ای د*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "C   Db   Eb   Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 4
+              },
+              {
+                "name": "Eb",
+                "col": 9
+              },
+              {
+                "name": "Fm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C   Db   Eb   Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 4
+              },
+              {
+                "name": "Eb",
+                "col": 9
+              },
+              {
+                "name": "Fm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C           Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خسته تر از خسته ام",
+            "source": "خ*سته تر از خ*سته ام"
+          },
+          {
+            "kind": "chords",
+            "source": "C           Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شیشه ی بشکسته ام",
+            "source": "ش*یشه ی بشک*سته ام"
+          },
+          {
+            "kind": "chords",
+            "source": "C           Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خسته تر از خسته ام",
+            "source": "خ*سته تر از خ*سته ام"
+          },
+          {
+            "kind": "chords",
+            "source": "C           Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شیشه ی بشکسته ام",
+            "source": "ش*یشه ی بشک*سته ام"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb          F",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا که از ما گذشت",
+            "source": "ح*الا که از م*ا گذشت"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm  Eb7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb7",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اومدن یارو باش",
+            "source": "*اومدن ی*ارو باش"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb       F",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کار خدا رو ببین",
+            "source": "ک*ار خدا ر*و ببین"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm  Eb7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb7",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عاقبت ما رو باش",
+            "source": "*عاقبت م*ا رو باش"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm         Eb      Eb       Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 11
+              },
+              {
+                "name": "Eb",
+                "col": 19
+              },
+              {
+                "name": "Fm",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بعد یه عمری صبوری کنارم میاد",
+            "source": "ب*عد یه عمر*ی صبور*ی کنارم می*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm             Eb        Eb        Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 15
+              },
+              {
+                "name": "Eb",
+                "col": 25
+              },
+              {
+                "name": "Fm",
+                "col": 35
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اشکای شوقه تو چشمام که یارم میاد",
+            "source": "ا*شکای شوق*ه تو چشم*ام که یارم می*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   Fm   Fm   Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Fm   Fm   Fm   Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C   Db   Eb   Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 4
+              },
+              {
+                "name": "Eb",
+                "col": 9
+              },
+              {
+                "name": "Fm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C   Db   Eb   Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Db",
+                "col": 4
+              },
+              {
+                "name": "Eb",
+                "col": 9
+              },
+              {
+                "name": "Fm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C           Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای که پشیمون شده",
+            "source": "و*ای که پشیم*ون شده"
+          },
+          {
+            "kind": "chords",
+            "source": "C       Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زار و پریشون شده",
+            "source": "ز*ار و پریش*ون شده"
+          },
+          {
+            "kind": "chords",
+            "source": "C           Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای که پشیمون شده",
+            "source": "و*ای که پشیم*ون شده"
+          },
+          {
+            "kind": "chords",
+            "source": "C       Fm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زار و پریشون شده",
+            "source": "ز*ار و پریش*ون شده"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb          F",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا که از ما گذشت",
+            "source": "ح*الا که از م*ا گذشت"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm  Eb7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb7",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اومدن یارو باش",
+            "source": "*اومدن ی*ارو باش"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb       F",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "F",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کار خدا رو ببین",
+            "source": "ک*ار خدا ر*و ببین"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm  Eb7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb7",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عاقبت ما رو باش",
+            "source": "*عاقبت م*ا رو باش"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm         Eb      Eb       Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 11
+              },
+              {
+                "name": "Eb",
+                "col": 19
+              },
+              {
+                "name": "Fm",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بعد یه عمری صبوری کنارم میاد",
+            "source": "ب*عد یه عمر*ی صبور*ی کنارم می*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm             Eb        Eb        Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 15
+              },
+              {
+                "name": "Eb",
+                "col": 25
+              },
+              {
+                "name": "Fm",
+                "col": 35
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اشکای شوقه تو چشمام که یارم میاد",
+            "source": "ا*شکای شوق*ه تو چشم*ام که یارم می*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آورده خبر راوی",
+            "source": "آو*رده خبر راوی"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کو ساغر و کو ساقی",
+            "source": "کو س*اغر و کو ساقی"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm           Eb  ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دوری به سر اومد",
+            "source": "دور*ی به سر اوم*د"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm      Eb  ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از او خبر اومد",
+            "source": "از ا*و خبر اوم*د"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm    ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "این لحظه ی دیداره",
+            "source": "این ل*حظه ی دیداره"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پایان شب تاره",
+            "source": "پای*ان شب تاره"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm         Eb   ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غوغا نکن ای دل",
+            "source": "غوغ*ا نکن ای د*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm          Eb ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بلوا نکن ای دل",
+            "source": "بلو*ا نکن ای د*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm         Eb   ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غوغا نکن ای دل",
+            "source": "غوغ*ا نکن ای د*ل"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm          Eb ",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بلوا نکن ای دل",
+            "source": "بلو*ا نکن ای د*ل"
+          }
+        ],
+        "chordCount": 140,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-06T20:49:00.345Z"
     }
   ],
   "chordColors": {
