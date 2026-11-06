@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T20:49:01.443Z",
+  "updatedAt": "2026-11-06T20:57:05.363Z",
   "songs": [
     {
       "title": "خیال",
@@ -27409,6 +27409,1496 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-06T20:49:00.345Z"
+    },
+    {
+      "title": "همزبونم باش",
+      "artist": "حمیرا",
+      "lyrics": "شب بلند و دل من در تب و تابه وای\nلحظه هام همه پر از حسرت خوابه وای\nذره ذره دل من آب میشه تو سینه\nآرزوی دیدنت مثل سرابه وای\nبیا و ستاره ای تو آسمونم باش\nبیا و چلچله ی شیرین زبونم باش\nمهربون من بیا و همزبونم باش\nمن بلا رو دوست دارم بلای جونم باش\nحالا تو خون منی توی تنی یا نه\nاز دل عاشق من دل می کنی یا نه\nبگو هنوز مال منی عشق منی یا نه\nشب بلند و دل من در تب و تابه وای\nلحظه هام همه پر از حسرت خوابه وای\nذره ذره دل من آب میشه تو سینه\nآرزوی دیدنت مثل سرابه وای\nبیا و ستاره ای تو آسمونم باش\nبیا و چلچله ی شیرین زبونم باش\nمهربون من بیا و همزبونم باش\nمن بلا رو دوست دارم بلای جونم باش\nحالا تو خون منی توی تنی یا نه\nاز دل عاشق من دل می کنی یا نه\nبگو هنوز مال منی عشق منی یا نه\nنکنه خدا نکرده نکنی یادم\nنکنه عزیز من ز چشمت افتادم\nنکنه تو قلبت خبری باشه\nنکنه دلت با دگری باشه\nهر نگاه گرم تو امید فردام بود\nآخه عشقت عزیزم خون تو رگهام بود\nآرزوی تــو دینم و دنیام بود\nبی تو همدمـــم قـــطره ی اشکام بود\nنکنه خدا نکرده نکنی یادم\nنکنه عزیز من ز چشمت افتادم\nنکنه تو قلبت خبری باشه\nنکنه دلت با دگری باشه\nهر نگاه گرم تو امید فردام بود\nآخه عشقت عزیزم خون تو رگهام بود\nآرزوی تــو دینم و دنیام بود\nبی تو همدمـــم قـــطره ی اشکام بود\nحالا تو خون منی توی تنی یا نه\nاز دل عاشق من دل می کنی یا نه\nبگو هنوز مال منی عشق منی یا نه\nحالا تو خون منی توی تنی یا نه\nاز دل عاشق من دل می کنی یا نه\nبگو هنوز مال منی عشق منی یا نه\nحالا تو خون منی توی تنی یا نه\nاز دل عاشق من دل می کنی یا نه\nبگو هنوز مال منی عشق منی یا نه",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Gm     Bb     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Bb     A     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Bb     A     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A         Bb                                     ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شب بلند و دل من در تب و تابه وای",
+            "source": "شب بلند و دل من در تب و تابه وای"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Bb                                        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لحظه هام همه پر از حسرت خوابه وای",
+            "source": "لحظه هام همه پر از حسرت خوابه وای"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm      A             Gm7                 ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 8
+              },
+              {
+                "name": "Gm7",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ذره ذره دل من آب میشه تو سینه",
+            "source": "ذره ذره دل من آب میشه تو سینه"
+          },
+          {
+            "kind": "chords",
+            "source": "A          A     Gm7                  ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 11
+              },
+              {
+                "name": "Gm7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آرزوی دیدنت مثل سرابه وای",
+            "source": "آرزوی دیدنت مثل سرابه وای"
+          },
+          {
+            "kind": "chords",
+            "source": "A        Bb                              ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیا و ستاره ای تو آسمونم باش",
+            "source": "بیا و ستاره ای تو آسمونم باش"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        Bb                                ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیا و چلچله ی شیرین زبونم باش",
+            "source": "بیا و چلچله ی شیرین زبونم باش"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        A      Gm7                  ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              },
+              {
+                "name": "Gm7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مهربون من بیا و همزبونم باش",
+            "source": "مهربون من بیا و همزبونم باش"
+          },
+          {
+            "kind": "chords",
+            "source": "A         A     Gm7                           ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              },
+              {
+                "name": "Gm7",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بلا رو دوست دارم بلای جونم باش",
+            "source": "من بلا رو دوست دارم بلای جونم باش"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm       Bb                      ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا تو خون منی توی تنی یا نه",
+            "source": "حالا تو خون منی توی تنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm            Bb                    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از دل عاشق من دل می کنی یا نه",
+            "source": "از دل عاشق من دل می کنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm          Bb                        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو هنوز مال منی عشق منی یا نه",
+            "source": "بگو هنوز مال منی عشق منی یا نه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A         Bb                                     ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شب بلند و دل من در تب و تابه وای",
+            "source": "شب بلند و دل من در تب و تابه وای"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Bb                                        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لحظه هام همه پر از حسرت خوابه وای",
+            "source": "لحظه هام همه پر از حسرت خوابه وای"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm      A             Gm7                 ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 8
+              },
+              {
+                "name": "Gm7",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ذره ذره دل من آب میشه تو سینه",
+            "source": "ذره ذره دل من آب میشه تو سینه"
+          },
+          {
+            "kind": "chords",
+            "source": "A          A     Gm7                  ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 11
+              },
+              {
+                "name": "Gm7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آرزوی دیدنت مثل سرابه وای",
+            "source": "آرزوی دیدنت مثل سرابه وای"
+          },
+          {
+            "kind": "chords",
+            "source": "A        Bb                              ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیا و ستاره ای تو آسمونم باش",
+            "source": "بیا و ستاره ای تو آسمونم باش"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        Bb                                ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیا و چلچله ی شیرین زبونم باش",
+            "source": "بیا و چلچله ی شیرین زبونم باش"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        A      Gm7                  ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              },
+              {
+                "name": "Gm7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مهربون من بیا و همزبونم باش",
+            "source": "مهربون من بیا و همزبونم باش"
+          },
+          {
+            "kind": "chords",
+            "source": "A         A     Gm7                           ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 10
+              },
+              {
+                "name": "Gm7",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بلا رو دوست دارم بلای جونم باش",
+            "source": "من بلا رو دوست دارم بلای جونم باش"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm       Bb                      ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا تو خون منی توی تنی یا نه",
+            "source": "حالا تو خون منی توی تنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm            Bb                    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از دل عاشق من دل می کنی یا نه",
+            "source": "از دل عاشق من دل می کنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm          Bb                        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو هنوز مال منی عشق منی یا نه",
+            "source": "بگو هنوز مال منی عشق منی یا نه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Bb     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Bb     A     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Bb     A     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A   Bb7                           ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb7",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه خدا نکرده نکنی یادم",
+            "source": "نکنه خدا نکرده نکنی یادم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb7                                ",
+            "placements": [
+              {
+                "name": "Bb7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه عزیز من ز چشمت افتادم",
+            "source": "نکنه عزیز من ز چشمت افتادم"
+          },
+          {
+            "kind": "chords",
+            "source": "A        Bb  A      Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 13
+              },
+              {
+                "name": "Bb",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه تو قلبت خبری باشه",
+            "source": "نکنه تو قلبت خبری باشه"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bb   A     Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 12
+              },
+              {
+                "name": "Bb",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه دلت با دگری باشه",
+            "source": "نکنه دلت با دگری باشه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bb7     Bb                    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb7",
+                "col": 7
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر نگاه گرم تو امید فردام بود",
+            "source": "هر نگاه گرم تو امید فردام بود"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb7         Bb                        ",
+            "placements": [
+              {
+                "name": "Bb7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه عشقت عزیزم خون تو رگهام بود",
+            "source": "آخه عشقت عزیزم خون تو رگهام بود"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bb   A    Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 12
+              },
+              {
+                "name": "Bb",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آرزوی تــو دینم و دنیام بود",
+            "source": "آرزوی تــو دینم و دنیام بود"
+          },
+          {
+            "kind": "chords",
+            "source": "A            Bb  A             Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 17
+              },
+              {
+                "name": "Bb",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو همدمـــم قـــطره ی اشکام بود",
+            "source": "بی تو همدمـــم قـــطره ی اشکام بود"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Bb     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Bb     A     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     Bb     A     A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A   Bb7                           ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb7",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه خدا نکرده نکنی یادم",
+            "source": "نکنه خدا نکرده نکنی یادم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb7                                ",
+            "placements": [
+              {
+                "name": "Bb7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه عزیز من ز چشمت افتادم",
+            "source": "نکنه عزیز من ز چشمت افتادم"
+          },
+          {
+            "kind": "chords",
+            "source": "A        Bb  A      Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 13
+              },
+              {
+                "name": "Bb",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه تو قلبت خبری باشه",
+            "source": "نکنه تو قلبت خبری باشه"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bb   A     Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 12
+              },
+              {
+                "name": "Bb",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نکنه دلت با دگری باشه",
+            "source": "نکنه دلت با دگری باشه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bb7     Bb                    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb7",
+                "col": 7
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر نگاه گرم تو امید فردام بود",
+            "source": "هر نگاه گرم تو امید فردام بود"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb7         Bb                        ",
+            "placements": [
+              {
+                "name": "Bb7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه عشقت عزیزم خون تو رگهام بود",
+            "source": "آخه عشقت عزیزم خون تو رگهام بود"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Bb   A    Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 12
+              },
+              {
+                "name": "Bb",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آرزوی تــو دینم و دنیام بود",
+            "source": "آرزوی تــو دینم و دنیام بود"
+          },
+          {
+            "kind": "chords",
+            "source": "A            Bb  A             Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 13
+              },
+              {
+                "name": "A",
+                "col": 17
+              },
+              {
+                "name": "Bb",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو همدمـــم قـــطره ی اشکام بود",
+            "source": "بی تو همدمـــم قـــطره ی اشکام بود"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm     A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "A",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm       Bb                      ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا تو خون منی توی تنی یا نه",
+            "source": "حالا تو خون منی توی تنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm            Bb                    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از دل عاشق من دل می کنی یا نه",
+            "source": "از دل عاشق من دل می کنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm          Bb                        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو هنوز مال منی عشق منی یا نه",
+            "source": "بگو هنوز مال منی عشق منی یا نه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm       Bb                      ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا تو خون منی توی تنی یا نه",
+            "source": "حالا تو خون منی توی تنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm            Bb                    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از دل عاشق من دل می کنی یا نه",
+            "source": "از دل عاشق من دل می کنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm          Bb                        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو هنوز مال منی عشق منی یا نه",
+            "source": "بگو هنوز مال منی عشق منی یا نه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm       Bb                      ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حالا تو خون منی توی تنی یا نه",
+            "source": "حالا تو خون منی توی تنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "A     Gm            Bb                    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از دل عاشق من دل می کنی یا نه",
+            "source": "از دل عاشق من دل می کنی یا نه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm          Bb                        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو هنوز مال منی عشق منی یا نه",
+            "source": "بگو هنوز مال منی عشق منی یا نه"
+          }
+        ],
+        "chordCount": 197,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-06T20:57:04.295Z"
     }
   ],
   "chordColors": {
