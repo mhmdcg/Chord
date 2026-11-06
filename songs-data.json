@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T20:30:13.197Z",
+  "updatedAt": "2026-11-06T20:39:00.015Z",
   "songs": [
     {
       "title": "خیال",
@@ -25431,6 +25431,813 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-06T20:30:11.979Z"
+    },
+    {
+      "title": "سوغاتی",
+      "artist": "هایده",
+      "lyrics": "وقتی میای صدای پات\nاز همه جادهها میاد\nانگار نه از یه شهر دور\nکه از همه دنیا میاد\nتا وقتی که در وا میشه\nلحظه دیدن میرسه\nهر چی که جاده اس رو زمین\nبه سینه من میرسه آه\nای که تویی همه کسم\nبی تو میگیره نفسم\nاگه تو رو داشته باشم\nبه هر چی میخوام میرسم\nبه هر چی میخوام میرسم\nوقتی تو نیستی قلبمو\nواسه کی تکرار بکنم\nگلهای خوابآلوده رو\nواسه کی بیدار بکنم\nدست کبوترای عشق\nواسه کی دونه بپاشه\nمگه تن من میتونه\nبدون تو زنده باشه\nای که تویی همه کسم\nبی تو میگیره نفسم\nاگه تو رو داشته باشم\nبه هر چی میخوام میرسم\nبه هر چی میخوام میرسم\nعزیزترین سوغاتیه\nغبار پیراهن تو\nعمر دوباره منه\nدیدن و بوییدن تو\nنه من تو رو واسه خودم\nنه از سر هوس میخوام\nعمر دوباره منی\nتو رو واسه نفس میخوام\nای که تویی همه کسم\nبی تو میگیره نفسم\nاگه تو رو داشته باشم\nبه هر چی میخوام میرسم\nبه هر چی میخوام میرسم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      E        C#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 6
+              },
+              {
+                "name": "C#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی میای صدای پات",
+            "source": "*وقتی میای *صدای پات"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m     C#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از همه جادهها میاد",
+            "source": "از همه جا*دهها میاد  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#7      F#m",
+            "placements": [
+              {
+                "name": "G#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "انگار نه از یه شهر دور",
+            "source": "*انگار نه از *یه شهر دور"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m         F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که از همه دنیا میاد",
+            "source": "که از همه *دنیا میاد  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "E        C#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا وقتی که در وا میشه",
+            "source": "*تا وقتی که *در وا میشه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m    C#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لحظه دیدن میرسه",
+            "source": "لحظه دی*دن میرسه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#7        F#m",
+            "placements": [
+              {
+                "name": "G#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هر چی که جاده اس رو زمین",
+            "source": "*هر چی که جا*ده اس رو زمین"
+          },
+          {
+            "kind": "chords",
+            "source": "A        C#m       F#m",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 9
+              },
+              {
+                "name": "F#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به سینه من میرسه آه",
+            "source": "به سینه *من میرسه   *آه  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m              F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که تویی همه کسم",
+            "source": "*ای که تویی *همه *کسم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#                  A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو میگیره نفسم",
+            "source": "بی تو میگی*ره ن*فسم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "  C#m              F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 2
+              },
+              {
+                "name": "F#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه تو رو داشته باشم",
+            "source": "*اگه تو رو *داشته *باشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#                          A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به هر چی میخوام میرسم",
+            "source": "به هر چی می*خوام می*رسم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#     F#m             A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به هر چی میخوام میرسم",
+            "source": "*به هر چی می*خوام  می*رسم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7          E",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی تو نیستی قلبمو",
+            "source": "*وقتی تو نیس*تی قلبمو"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه کی تکرار بکنم",
+            "source": "واسه کی تک*رار بکنم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "D         F#m",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گلهای خوابآلوده رو",
+            "source": "*گلهای خواب*آلوده رو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m        F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه کی بیدار بکنم",
+            "source": "واسه کی بی*دار بکنم  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7         E",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دست کبوترای عشق",
+            "source": "دست کبو*ترای عشق  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه کی دونه بپاشه",
+            "source": "واسه کی دو*نه بپاشه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "D   F#m",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مگه تن من میتونه",
+            "source": "*مگه تن *من میتونه"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m     F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بدون تو زنده باشه",
+            "source": "بدون تو *زنده باشه  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m              F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که تویی همه کسم",
+            "source": "*ای که تویی *همه *کسم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#                  A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو میگیره نفسم",
+            "source": "بی تو میگی*ره ن*فسم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "  C#m              F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 2
+              },
+              {
+                "name": "F#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه تو رو داشته باشم",
+            "source": "*اگه تو رو *داشته *باشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#                          A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به هر چی میخوام میرسم",
+            "source": "به هر چی می*خوام می*رسم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#     F#m             A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به هر چی میخوام میرسم",
+            "source": "*به هر چی می*خوام  می*رسم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7         E",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عزیزترین سوغاتیه",
+            "source": "*عزیزترین *سوغاتیه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غبار پیراهن تو",
+            "source": "غبار پی*راهن تو  *"
+          },
+          {
+            "kind": "chords",
+            "source": "D   F#m",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عمر دوباره منه",
+            "source": "*عمر دوبا*ره منه"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m      F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیدن و بوییدن تو",
+            "source": "دیدن و بو*ییدن تو  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7           E",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نه من تو رو واسه خودم",
+            "source": "نه من تو رو *واسه خودم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m    C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نه از سر هوس میخوام",
+            "source": "نه از سر *هوس میخوام  *"
+          },
+          {
+            "kind": "chords",
+            "source": "D   F#m",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عمر دوباره منی",
+            "source": "*عمر دوبا*ره منی"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m        F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رو واسه نفس میخوام",
+            "source": "تو رو واسه *نفس میخوام  *"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C#m              F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای که تویی همه کسم",
+            "source": "*ای که تویی *همه *کسم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#                  A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو میگیره نفسم",
+            "source": "بی تو میگی*ره ن*فسم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "  C#m              F#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 2
+              },
+              {
+                "name": "F#m",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه تو رو داشته باشم",
+            "source": "*اگه تو رو *داشته *باشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#                          A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به هر چی میخوام میرسم",
+            "source": "به هر چی می*خوام می*رسم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "G#     F#m             A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به هر چی میخوام میرسم",
+            "source": "*به هر چی می*خوام  می*رسم"
+          }
+        ],
+        "chordCount": 82,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-06T20:38:58.881Z"
     }
   ],
   "chordColors": {
