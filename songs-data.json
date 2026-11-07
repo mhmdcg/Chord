@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T20:57:05.363Z",
+  "updatedAt": "2026-11-07T01:30:28.683Z",
   "songs": [
     {
       "title": "خیال",
@@ -28899,6 +28899,881 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-06T20:57:04.295Z"
+    },
+    {
+      "title": "ستاره میشی",
+      "artist": "بهنام بانی",
+      "lyrics": "من همه دنیا رو بگردم\nمثل تو پیدا نمیشه نه نمیشه\nنه هیشکی توی دنیا عشقم\nمثه تو زیبا نمیشه نه نمیشه\nیکی اینجاس که تو هرجوری بشی باز\nتورو دوست داره همیشه\nیکی اینجاست که تو رو تنها نمیذاره\nنمیذاره همیشه\nدلم از تنهایی انقدر شده خسته که نپــرس\nدلم اصلا یه جوری افتاده دستت که نپــرس\nاین دیوونه یه جوری دل به تو بسته که نپرس\nبگو داری توی چشمام میخونی عاشقتــــم\nتو که با من بمونی یا نمونی عاشـقتــــــم\nحتی با این همه نامهربونی عاشقتم\nستاره میشی تو آسمونم\nاومدی ماه و دادی نشونم دادی نشونم\nاگه تو امشب پیشم نباشی\nآروم نمیشه دل دیوونم دل دیوونم\nیادم نمیره اون شبو با تو\nگفتی همیشه دارم هواتو دارم هواتو\nمن که به جز دل چیزی ندارم\nبیا عزیزم اونم برا تو اونم برا تو\nدلم از تنهایی انقدر شده خسته که نپــرس\nدلم اصلا یه جوری افتاده دستت که نپــرس\nاین دیوونه یه جوری دل به تو بسته که نپرس\nبگو داری توی چشمام میخونی عاشقتــــم\nتو که با من بمونی یا نمونی عاشـقتــــــم\nحتی با این همه نامهربونی عاشقتم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      C  Bbmaj7  C  Dm7",
+            "placements": [
+              {
+                "name": "C",
+                "col": 6
+              },
+              {
+                "name": "Bbmaj7",
+                "col": 9
+              },
+              {
+                "name": "C",
+                "col": 17
+              },
+              {
+                "name": "Dm7",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7  Gm7  Am7  Bbmaj7",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 5
+              },
+              {
+                "name": "Am7",
+                "col": 10
+              },
+              {
+                "name": "Bbmaj7",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb     Dm7    Am7",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 0
+              },
+              {
+                "name": "Dm7",
+                "col": 7
+              },
+              {
+                "name": "Am7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من همه دنیا رو بگردم",
+            "source": "من همه دنیا رو بگردم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm7     Gm7   Am7         ",
+            "placements": [
+              {
+                "name": "Dm7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 8
+              },
+              {
+                "name": "Am7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل تو پیدا نمیشه نه نمیشه",
+            "source": "مثل تو پیدا نمیشه نه نمیشه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb         Dm7               ",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 0
+              },
+              {
+                "name": "Dm7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نه هیشکی توی دنیا عشقم",
+            "source": "نه هیشکی توی دنیا عشقم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm7    Gm7  Am7         ",
+            "placements": [
+              {
+                "name": "Dm7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 7
+              },
+              {
+                "name": "Am7",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه تو زیبا نمیشه نه نمیشه",
+            "source": "مثه تو زیبا نمیشه نه نمیشه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7         Bb                 C          ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              },
+              {
+                "name": "C",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یکی اینجاس که تو هرجوری بشی باز",
+            "source": "یکی اینجاس که تو هرجوری بشی باز"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm7  Gm7               ",
+            "placements": [
+              {
+                "name": "Dm7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تورو دوست داره همیشه",
+            "source": "تورو دوست داره همیشه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7         Bb               C          ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              },
+              {
+                "name": "C",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یکی اینجاست که تو رو تنها نمیذاره",
+            "source": "یکی اینجاست که تو رو تنها نمیذاره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm7  Gm7   ",
+            "placements": [
+              {
+                "name": "Dm7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیذاره همیشه",
+            "source": "نمیذاره همیشه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7 Bb     C              Bb     Dm7        ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 4
+              },
+              {
+                "name": "C",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 26
+              },
+              {
+                "name": "Dm7",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلم از تنهایی انقدر شده خسته که نپــرس",
+            "source": "دلم از تنهایی انقدر شده خسته که نپــرس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm7 Am7    Bb                          C         ",
+            "placements": [
+              {
+                "name": "Gm7",
+                "col": 0
+              },
+              {
+                "name": "Am7",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلم اصلا یه جوری افتاده دستت که نپــرس",
+            "source": "دلم اصلا یه جوری افتاده دستت که نپــرس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7        Gm7            Bb          ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "این دیوونه یه جوری دل به تو بسته که نپرس",
+            "source": "این دیوونه یه جوری دل به تو بسته که نپرس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7 Bb C             Bb           Dm7     ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 4
+              },
+              {
+                "name": "C",
+                "col": 7
+              },
+              {
+                "name": "Bb",
+                "col": 21
+              },
+              {
+                "name": "Dm7",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو داری توی چشمام میخونی عاشقتــــم",
+            "source": "بگو داری توی چشمام میخونی عاشقتــــم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm7 Am7 Bb                      C            ",
+            "placements": [
+              {
+                "name": "Gm7",
+                "col": 0
+              },
+              {
+                "name": "Am7",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 8
+              },
+              {
+                "name": "C",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو که با من بمونی یا نمونی عاشـقتــــــم",
+            "source": "تو که با من بمونی یا نمونی عاشـقتــــــم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7      Gm7          Bb          ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 9
+              },
+              {
+                "name": "Bb",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حتی با این همه نامهربونی عاشقتم",
+            "source": "حتی با این همه نامهربونی عاشقتم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am  Bb  C  Dm",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 4
+              },
+              {
+                "name": "C",
+                "col": 8
+              },
+              {
+                "name": "Dm",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "A  Gm7  F  Bb",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 3
+              },
+              {
+                "name": "F",
+                "col": 8
+              },
+              {
+                "name": "Bb",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "C         Dm7          ",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Dm7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ستاره میشی تو آسمونم",
+            "source": "ستاره میشی تو آسمونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm7         Am7             Bb         ",
+            "placements": [
+              {
+                "name": "Gm7",
+                "col": 0
+              },
+              {
+                "name": "Am7",
+                "col": 12
+              },
+              {
+                "name": "Bb",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اومدی ماه و دادی نشونم دادی نشونم",
+            "source": "اومدی ماه و دادی نشونم دادی نشونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb             C             ",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه تو امشب پیشم نباشی",
+            "source": "اگه تو امشب پیشم نباشی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm7       Gm7         Am7       ",
+            "placements": [
+              {
+                "name": "Dm7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 10
+              },
+              {
+                "name": "Am7",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آروم نمیشه دل دیوونم دل دیوونم",
+            "source": "آروم نمیشه دل دیوونم دل دیوونم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7          Bb           ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یادم نمیره اون شبو با تو",
+            "source": "یادم نمیره اون شبو با تو"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm7   D7  Am7         Bb           ",
+            "placements": [
+              {
+                "name": "Gm7",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 6
+              },
+              {
+                "name": "Am7",
+                "col": 10
+              },
+              {
+                "name": "Bb",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گفتی همیشه دارم هواتو دارم هواتو",
+            "source": "گفتی همیشه دارم هواتو دارم هواتو"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Bb           C                  ",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من که به جز دل چیزی ندارم",
+            "source": "من که به جز دل چیزی ندارم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm7       Gm7        Am7     ",
+            "placements": [
+              {
+                "name": "Dm7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 10
+              },
+              {
+                "name": "Am7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیا عزیزم اونم برا تو اونم برا تو",
+            "source": " بیا عزیزم اونم برا تو اونم برا تو"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7 Bb     C              Bb     Dm7        ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 4
+              },
+              {
+                "name": "C",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 26
+              },
+              {
+                "name": "Dm7",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلم از تنهایی انقدر شده خسته که نپــرس",
+            "source": "دلم از تنهایی انقدر شده خسته که نپــرس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm7 Am7    Bb                          C         ",
+            "placements": [
+              {
+                "name": "Gm7",
+                "col": 0
+              },
+              {
+                "name": "Am7",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلم اصلا یه جوری افتاده دستت که نپــرس",
+            "source": "دلم اصلا یه جوری افتاده دستت که نپــرس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7        Gm7            Bb          ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "این دیوونه یه جوری دل به تو بسته که نپرس",
+            "source": "این دیوونه یه جوری دل به تو بسته که نپرس"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7 Bb C             Bb           Dm7     ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 4
+              },
+              {
+                "name": "C",
+                "col": 7
+              },
+              {
+                "name": "Bb",
+                "col": 21
+              },
+              {
+                "name": "Dm7",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگو داری توی چشمام میخونی عاشقتــــم",
+            "source": "بگو داری توی چشمام میخونی عاشقتــــم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm7 Am7 Bb                      C            ",
+            "placements": [
+              {
+                "name": "Gm7",
+                "col": 0
+              },
+              {
+                "name": "Am7",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 8
+              },
+              {
+                "name": "C",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو که با من بمونی یا نمونی عاشـقتــــــم",
+            "source": "تو که با من بمونی یا نمونی عاشـقتــــــم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Am7      Gm7          Bb          ",
+            "placements": [
+              {
+                "name": "Am7",
+                "col": 0
+              },
+              {
+                "name": "Gm7",
+                "col": 9
+              },
+              {
+                "name": "Bb",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حتی با این همه نامهربونی عاشقتم",
+            "source": "حتی با این همه نامهربونی عاشقتم"
+          }
+        ],
+        "chordCount": 106,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-07T01:30:27.446Z"
     }
   ],
   "chordColors": {
