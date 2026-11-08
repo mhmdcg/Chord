@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T01:30:28.683Z",
+  "updatedAt": "2026-11-08T21:54:37.284Z",
   "songs": [
     {
       "title": "خیال",
@@ -29774,6 +29774,1184 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-07T01:30:27.446Z"
+    },
+    {
+      "title": "آکورد عالم عشق حمیرا",
+      "artist": "",
+      "lyrics": "رفتن به محتوای اصلی\nآکورد\nمرجع تمرین گیتار\nنصب اپ\nخانه\nهنرمندان\nحمیرا\nعالم عشق\nآکورد عالم عشق حمیرا\nمیزان: 6/8 ریتم: 6/8 ساده تمپو: 120 گام: [G#m]\nبه جز قصه ی این عشق چی گفتم چی شنفتم\nهمش درد دلم بود اگه قصه میگفتم\nچه حرفا که نگفته هنوز روی لبامه\nچه شعرا که نخونده هنوز توی صدامه\nتو قلبم تو رو دارم اگه خونه به دوشم\nمن این عالم عشقو به عالم نفروشم\nنری دنبال مستی خودت کهنه شرابی\nواست می چی بریزم خودت باده ی نابی\nخودت باده ی نابی\nمیگن عالم مستی همین عالم عشقه\nچه خوشبخت دل من که دردش غم عشقه\nکه دردش غم عشقه\nتو قلبم تو رو دارم اگه خونه به دوشم\nمن این عالم عشقو به عالم نفروشم\nچه خوبه بدونی که با مهربونی\nمیتونی تو قلبم بمونی بمونی\nبمون تا بتونم یه عاشق بمونم\nیه دنیاست تو چشمات واسه من نگاهات\nمثل مستی خیوم تو شعرا مثل بارون\nرو دریا مثل مهتاب تو صحرا\nبمون تا بتونم یه عاشق بمونم\nتو تنها تو تنها واسه من تو دنیا\nعزیزی مثل مجنون واسه لیلا\nمثل وامه واسه عذرا\nمثل خورشید واسه فردا\nتو قلبم تو رو دارم اگه خونه به دوشم\nمن این عالم عشقو به عالم نفروشم\nتو قلبم تو رو دارم اگه خونه به دوشم\nمن این عالم عشقو به عالم نفروشم\nاین آهنگ را با ابزارهای کامل تمرین کن\nحالت صحنه، اسکرول خودکار و دسترسی آفلاین در اپ آکورد\nنصب اپ آکورد\nدیاگرام آکوردهای گیتار\nآکوردهای پیانو\nآکوردهای دیگر از حمیرا\nآکورد شب پر ستاره\n(حمیرا)\nیکی تو فکر عشقه یکی تو فکر یاره\nیکی همیشه مست\nریتم:\n6/8\nگام:\nآکورد عالم عشق\n(حمیرا)\nبه جز قصه ی این عشق چی گفتم چی شنفتم\nریتم:\n6/8\nگام:\nآکورد دل دیوونه\n(حمیرا)\nدل دیونه من هنوز در اشتباه اگر چه مهربونه ولی غرق\nریتم:\n6/8\nگام:\nآکورد همزبونم باش\n(حمیرا)\nشب بلند و دل من در تب و تابه وای\nریتم:\n6/8\nگام:\nآکورد کوچ\n(حمیرا)\nمن از تو مینویسم کلام تازه ای\nریتم:\n4/4\nگام:\nآکورد دوره دوره\n(حمیرا)\nراهم از تو دوره دوره\nدل من مگه سن\nریتم:\n6/8\nگام:\nهمه آکوردهای حمیرا\nورود به آکورد\nشماره موبایل\nکد تایید",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "lyric",
+            "text": "رفتن به محتوای اصلی",
+            "source": "رفتن به محتوای اصلی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکورد",
+            "source": "                آکورد"
+          },
+          {
+            "kind": "lyric",
+            "text": "مرجع تمرین گیتار",
+            "source": "                مرجع تمرین گیتار"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "نصب اپ",
+            "source": "                نصب اپ"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "خانه",
+            "source": "                خانه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "هنرمندان",
+            "source": "                                    هنرمندان"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "حمیرا",
+            "source": "                                    حمیرا"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "عالم عشق",
+            "source": "                                عالم عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکورد عالم عشق حمیرا",
+            "source": "        آکورد عالم عشق حمیرا"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "میزان: 6/8 ریتم: 6/8 ساده تمپو: 120 گام: [G#m]",
+            "source": "            میزان: 6/8            ریتم: 6/8 ساده            تمپو: 120            گام: [G#m]"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                                G#m         F#                             G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 32
+              },
+              {
+                "name": "F#",
+                "col": 44
+              },
+              {
+                "name": "G#m",
+                "col": 75
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به جز قصه ی این عشق چی گفتم چی شنفتم",
+            "source": "به جز قصه ی این عشق چی گفتم چی شنفتم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m              F#        ",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همش درد دلم بود اگه قصه میگفتم",
+            "source": "همش درد دلم بود اگه قصه میگفتم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m        F#                G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 11
+              },
+              {
+                "name": "G#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چه حرفا که نگفته هنوز روی لبامه",
+            "source": "چه حرفا که نگفته هنوز روی لبامه"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m        F#                G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 11
+              },
+              {
+                "name": "G#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چه شعرا که نخونده هنوز توی صدامه",
+            "source": "چه شعرا که نخونده هنوز توی صدامه"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m      F#                  G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 9
+              },
+              {
+                "name": "G#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو قلبم تو رو دارم اگه خونه به دوشم",
+            "source": "تو قلبم تو رو دارم اگه خونه به دوشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m           F#              G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "G#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من این عالم عشقو به عالم نفروشم",
+            "source": "من این عالم عشقو به عالم نفروشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m         F#          G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نری دنبال مستی خودت کهنه شرابی",
+            "source": "نری دنبال مستی خودت کهنه شرابی"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m         F#                 G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 12
+              },
+              {
+                "name": "G#m",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واست می چی بریزم خودت باده ی نابی",
+            "source": "واست می چی بریزم خودت باده ی نابی"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "خودت باده ی نابی",
+            "source": "خودت باده ی نابی"
+          },
+          {
+            "kind": "chords",
+            "source": "F#                    G#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میگن عالم مستی همین عالم عشقه",
+            "source": "میگن عالم مستی همین عالم عشقه"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m            F#                    G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 15
+              },
+              {
+                "name": "G#m",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چه خوشبخت دل من که دردش غم عشقه",
+            "source": "چه خوشبخت دل من که دردش غم عشقه"
+          },
+          {
+            "kind": "lyric",
+            "text": "که دردش غم عشقه",
+            "source": "که دردش غم عشقه"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m      F#                  G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 9
+              },
+              {
+                "name": "G#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو قلبم تو رو دارم اگه خونه به دوشم",
+            "source": "تو قلبم تو رو دارم اگه خونه به دوشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m           F#              G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "G#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من این عالم عشقو به عالم نفروشم",
+            "source": "من این عالم عشقو به عالم نفروشم"
+          },
+          {
+            "kind": "chords",
+            "source": "F#   C#m        G#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 5
+              },
+              {
+                "name": "G#m",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چه خوبه بدونی که با مهربونی",
+            "source": "چه خوبه بدونی که با مهربونی"
+          },
+          {
+            "kind": "chords",
+            "source": "F#                   G#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میتونی تو قلبم بمونی بمونی",
+            "source": "میتونی تو قلبم بمونی بمونی"
+          },
+          {
+            "kind": "chords",
+            "source": "E    F#                G#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 5
+              },
+              {
+                "name": "G#m",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بمون تا بتونم یه عاشق بمونم",
+            "source": "بمون تا بتونم یه عاشق بمونم"
+          },
+          {
+            "kind": "chords",
+            "source": "E                F#               G#m ",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 17
+              },
+              {
+                "name": "G#m",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه دنیاست تو چشمات واسه من نگاهات",
+            "source": "یه دنیاست تو چشمات واسه من نگاهات"
+          },
+          {
+            "kind": "chords",
+            "source": "E         G#m     C#m  G#m",
+            "placements": [
+              {
+                "name": "E",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 10
+              },
+              {
+                "name": "C#m",
+                "col": 18
+              },
+              {
+                "name": "G#m",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل مستی خیوم تو شعرا مثل بارون",
+            "source": "مثل مستی خیوم تو شعرا مثل بارون"
+          },
+          {
+            "kind": "chords",
+            "source": "F#        G#m           ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رو دریا مثل مهتاب تو صحرا",
+            "source": "رو دریا مثل مهتاب تو صحرا"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m    E     F#       G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 7
+              },
+              {
+                "name": "F#",
+                "col": 13
+              },
+              {
+                "name": "G#m",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بمون تا بتونم یه عاشق بمونم",
+            "source": "بمون تا بتونم یه عاشق بمونم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m    E        F#      G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 7
+              },
+              {
+                "name": "F#",
+                "col": 16
+              },
+              {
+                "name": "G#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو تنها تو تنها واسه من تو دنیا",
+            "source": "تو تنها تو تنها واسه من تو دنیا"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m                  C#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عزیزی مثل مجنون واسه لیلا",
+            "source": "عزیزی مثل مجنون واسه لیلا"
+          },
+          {
+            "kind": "chords",
+            "source": "F#                 E ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل وامه واسه عذرا",
+            "source": "مثل وامه واسه عذرا"
+          },
+          {
+            "kind": "chords",
+            "source": "F#            G#m",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "G#m",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل خورشید واسه فردا",
+            "source": "مثل خورشید واسه فردا"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m      F#                  G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 9
+              },
+              {
+                "name": "G#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو قلبم تو رو دارم اگه خونه به دوشم",
+            "source": "تو قلبم تو رو دارم اگه خونه به دوشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m           F#              G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "G#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من این عالم عشقو به عالم نفروشم",
+            "source": "من این عالم عشقو به عالم نفروشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m      F#                  G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 9
+              },
+              {
+                "name": "G#m",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو قلبم تو رو دارم اگه خونه به دوشم",
+            "source": "تو قلبم تو رو دارم اگه خونه به دوشم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#m           F#              G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 14
+              },
+              {
+                "name": "G#m",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من این عالم عشقو به عالم نفروشم",
+            "source": "من این عالم عشقو به عالم نفروشم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "این آهنگ را با ابزارهای کامل تمرین کن",
+            "source": "                    این آهنگ را با ابزارهای کامل تمرین کن"
+          },
+          {
+            "kind": "lyric",
+            "text": "حالت صحنه، اسکرول خودکار و دسترسی آفلاین در اپ آکورد",
+            "source": "                    حالت صحنه، اسکرول خودکار و دسترسی آفلاین در اپ آکورد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "نصب اپ آکورد",
+            "source": "                نصب اپ آکورد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "دیاگرام آکوردهای گیتار",
+            "source": "            دیاگرام آکوردهای گیتار"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                            G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                            F#",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                            C#m",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "                            E",
+            "placements": [
+              {
+                "name": "E",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکوردهای پیانو",
+            "source": "            آکوردهای پیانو"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکوردهای دیگر از حمیرا",
+            "source": "            آکوردهای دیگر از حمیرا"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکورد شب پر ستاره",
+            "source": "              آکورد شب پر ستاره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "(حمیرا)",
+            "source": " (حمیرا)"
+          },
+          {
+            "kind": "lyric",
+            "text": "یکی تو فکر عشقه یکی تو فکر یاره",
+            "source": "             یکی تو فکر عشقه یکی تو فکر یاره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "یکی همیشه مست",
+            "source": "یکی همیشه مست"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ریتم:",
+            "source": "                                     ریتم:"
+          },
+          {
+            "kind": "lyric",
+            "text": "6/8",
+            "source": "             6/8"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "گام:",
+            "source": "         گام:"
+          },
+          {
+            "kind": "chords",
+            "source": "             Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکورد عالم عشق",
+            "source": "              آکورد عالم عشق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "(حمیرا)",
+            "source": " (حمیرا)"
+          },
+          {
+            "kind": "lyric",
+            "text": "به جز قصه ی این عشق چی گفتم چی شنفتم",
+            "source": "             به جز قصه ی این عشق چی گفتم چی شنفتم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ریتم:",
+            "source": "                                     ریتم:"
+          },
+          {
+            "kind": "lyric",
+            "text": "6/8",
+            "source": "             6/8"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "گام:",
+            "source": "         گام:"
+          },
+          {
+            "kind": "chords",
+            "source": "             G#m",
+            "placements": [
+              {
+                "name": "G#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکورد دل دیوونه",
+            "source": "              آکورد دل دیوونه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "(حمیرا)",
+            "source": " (حمیرا)"
+          },
+          {
+            "kind": "lyric",
+            "text": "دل دیونه من هنوز در اشتباه اگر چه مهربونه ولی غرق",
+            "source": "             دل دیونه من هنوز در اشتباه اگر چه مهربونه ولی غرق"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ریتم:",
+            "source": "                                     ریتم:"
+          },
+          {
+            "kind": "lyric",
+            "text": "6/8",
+            "source": "             6/8"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "گام:",
+            "source": "         گام:"
+          },
+          {
+            "kind": "chords",
+            "source": "             A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکورد همزبونم باش",
+            "source": "              آکورد همزبونم باش"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "(حمیرا)",
+            "source": " (حمیرا)"
+          },
+          {
+            "kind": "lyric",
+            "text": "شب بلند و دل من در تب و تابه وای",
+            "source": "             شب بلند و دل من در تب و تابه وای"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ریتم:",
+            "source": "                                     ریتم:"
+          },
+          {
+            "kind": "lyric",
+            "text": "6/8",
+            "source": "             6/8"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "گام:",
+            "source": "         گام:"
+          },
+          {
+            "kind": "chords",
+            "source": "             Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکورد کوچ",
+            "source": "              آکورد کوچ"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "(حمیرا)",
+            "source": " (حمیرا)"
+          },
+          {
+            "kind": "lyric",
+            "text": "من از تو مینویسم کلام تازه ای",
+            "source": "             من از تو مینویسم کلام تازه ای"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ریتم:",
+            "source": "                                     ریتم:"
+          },
+          {
+            "kind": "lyric",
+            "text": "4/4",
+            "source": "             4/4"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "گام:",
+            "source": "         گام:"
+          },
+          {
+            "kind": "chords",
+            "source": "             Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "آکورد دوره دوره",
+            "source": "              آکورد دوره دوره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "(حمیرا)",
+            "source": " (حمیرا)"
+          },
+          {
+            "kind": "lyric",
+            "text": "راهم از تو دوره دوره",
+            "source": "             راهم از تو دوره دوره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "دل من مگه سن",
+            "source": "دل من مگه سن"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ریتم:",
+            "source": "                                     ریتم:"
+          },
+          {
+            "kind": "lyric",
+            "text": "6/8",
+            "source": "             6/8"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "گام:",
+            "source": "         گام:"
+          },
+          {
+            "kind": "chords",
+            "source": "             Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "همه آکوردهای حمیرا",
+            "source": "                همه آکوردهای حمیرا"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "ورود به آکورد",
+            "source": "                ورود به آکورد"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "شماره موبایل",
+            "source": "                        شماره موبایل"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "lyric",
+            "text": "کد تایید",
+            "source": "                        کد تایید"
+          }
+        ],
+        "chordCount": 87,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-08T21:54:36.148Z"
     }
   ],
   "chordColors": {
