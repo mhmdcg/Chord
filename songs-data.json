@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T21:54:58.631Z",
+  "updatedAt": "2026-11-09T21:03:57.782Z",
   "songs": [
     {
       "title": "خیال",
@@ -25430,7 +25430,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-06T20:30:11.979Z"
+      "createdAt": "2026-11-06T20:30:11.979Z",
+      "easySemitones": -2
     },
     {
       "title": "سوغاتی",
