@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T22:29:43.965Z",
+  "updatedAt": "2026-11-11T22:30:49.509Z",
   "songs": [
     {
       "title": "خیال",
@@ -32990,6 +32990,1122 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-11T22:29:42.476Z"
+    },
+    {
+      "title": "قصه ی من",
+      "artist": "هایده",
+      "lyrics": "مثل باد سرد پاییز\nغم لعنتی به من زد\nحتی باغبون نفهمید\nکه چه آفتی به من زد\nرگ و ریشه هام سیاه شد\nتو تنم جوونه خشکید\nاما این دل صبورم\nبه غم زمونه خندید\nآسمون مست جنونی\nآسمون تشنه خونی\nآسمون مست گناهی\nآسمون چه رو سیاهی\nاگه زندگی عذابه\nیه حباب روی آبه\nمن به گریه ها می خندم\nمی گم این همش یه خوابه\nمثل باد سرد پاییز\nغم لعنتی به من زد\nحتی باغبون نفهمید\nکه چه آفتی به من زد\nآسمون تو مرگ عشقو\nتوی یاخته هام نوشتی\nاین یه غمنامه ی تلخه\nکه تو سر تا پام نوشتی\nمن به لحظه ی شکستن\nاگه نزدیک اگه دورم\nاز ترحم تو بیزار\nکه خودم سنگ صبورم\nآسمون تیشه ت شکسته\nمن دیگه رو پام می مونم\nمنو از تنم بگیری\nتو ترانه هام می مونم\nاگه زندگی عذابه\nیه حباب روی آبه\nمن به گریه ها می خندم\nمی گم این همش یه خوابه\nمثل باد سرد پاییز\nغم لعنتی به من زد\nحتی باغبون نفهمید\nکه چه آفتی به من زد\nآسمون تیشه ت شکسته\nمن دیگه رو پام می مونم\nمنو از تنم بگیری\nتو ترانه هام می مونم",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      Em   Am   C   Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 6
+              },
+              {
+                "name": "Am",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 16
+              },
+              {
+                "name": "Em",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   Am   C   Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 5
+              },
+              {
+                "name": "C",
+                "col": 10
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G   B7   Am   Em",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 4
+              },
+              {
+                "name": "Am",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am   A7",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "A7",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B      Em        ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل باد سرد پاییز",
+            "source": "مثل باد* سرد پای*یز"
+          },
+          {
+            "kind": "chords",
+            "source": "B           Em      ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غم لعنتی به من زد",
+            "source": "غم لعن*تی به من ز*د"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         B         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حتی باغبون نفهمید",
+            "source": "حتی باغ*بون نفهم*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "B           C          ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که چه آفتی به من زد",
+            "source": "که چه آف*تی به من * زد"
+          },
+          {
+            "kind": "chords",
+            "source": "B             Em         ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رگ و ریشه هام سیاه شد",
+            "source": "رگ و ریش*ه هام سیاه * شد"
+          },
+          {
+            "kind": "chords",
+            "source": "B           Em       ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو تنم جوونه خشکید",
+            "source": "تو تنم * جوونه خش*کید"
+          },
+          {
+            "kind": "chords",
+            "source": "Am       B         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اما این دل صبورم",
+            "source": "اما این * دل صبو*رم"
+          },
+          {
+            "kind": "chords",
+            "source": "B           C      ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به غم زمونه خندید",
+            "source": "به غم* زمونه خن*دید"
+          },
+          {
+            "kind": "chords",
+            "source": "B   C",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am           E        ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آسمون مست جنونی",
+            "source": "آسمون * مست جنو*نی"
+          },
+          {
+            "kind": "chords",
+            "source": "Em        Am        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آسمون تشنه خونی",
+            "source": "آسمون * تشنه خون*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "Am            E         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آسمون مست گناهی",
+            "source": "آسمون * مست گناه*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         Am        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آسمون چه رو سیاهی",
+            "source": "آسمون * چه رو سیا*هی"
+          },
+          {
+            "kind": "chords",
+            "source": "C        F#      ",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه زندگی عذابه",
+            "source": "اگه زند*گی عذاب*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "C      F#         ",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه حباب روی آبه",
+            "source": "یه حباب* روی آب*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#            B             ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من به گریه ها می خندم",
+            "source": "من به گری*ه ها می خند*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            C                 ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می گم این همش یه خوابه",
+            "source": "می گم این ه*مش یه خواب*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "B      Em        ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل باد سرد پاییز",
+            "source": "مثل باد* سرد پای*یز"
+          },
+          {
+            "kind": "chords",
+            "source": "B           Em      ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غم لعنتی به من زد",
+            "source": "غم لعن*تی به من ز*د"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         B         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حتی باغبون نفهمید",
+            "source": "حتی باغ*بون نفهم*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "B           C          ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که چه آفتی به من زد",
+            "source": "که چه آف*تی به من * زد"
+          },
+          {
+            "kind": "chords",
+            "source": "B   C   B   C",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 8
+              },
+              {
+                "name": "C",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B   C   B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B   C   B   C   B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 8
+              },
+              {
+                "name": "C",
+                "col": 12
+              },
+              {
+                "name": "B",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B   C   B",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G   B7  Am   Em",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 4
+              },
+              {
+                "name": "Am",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am   A7",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "A7",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B          Em         ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آسمون تو مرگ عشقو",
+            "source": "آسمون ت*و مرگ عشق*و"
+          },
+          {
+            "kind": "chords",
+            "source": "B             Em         ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی یاخته هام نوشتی",
+            "source": "توی یاخت*ه هام نوشت*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "Am           B           ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "این یه غمنامه ی تلخه",
+            "source": "این یه غم*نامه ی تلخ*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "B           C             ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که تو سر تا پام نوشتی",
+            "source": "که تو سر ت*ا پام نوشت*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "B            Em           ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من به لحظه ی شکستن",
+            "source": "من به لحظ*ه ی شکست*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "B            Em      ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه نزدیک اگه دورم",
+            "source": "اگه نزد*یک اگه دور*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Am       B      ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از ترحم تو بیزار",
+            "source": "از ترح*م تو بیزا*ر"
+          },
+          {
+            "kind": "chords",
+            "source": "B         C              ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که خودم سنگ صبورم",
+            "source": "که خودم س*نگ صبور*م"
+          },
+          {
+            "kind": "chords",
+            "source": "B   C",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am                E          ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آسمون تیشه ت شکسته",
+            "source": "آسمون ت*یشه ت شکست*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Em              Am          ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من دیگه رو پام می مونم",
+            "source": "من دیگه * رو پام می مون*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         E       ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منو از تنم بگیری",
+            "source": "منو از * تنم بگیر*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "Em             Am     ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو ترانه هام می مونم",
+            "source": "تو تران*ه هام می مون*م"
+          },
+          {
+            "kind": "chords",
+            "source": "C        F#      ",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اگه زندگی عذابه",
+            "source": "اگه زند*گی عذاب*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "C      F#         ",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "F#",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه حباب روی آبه",
+            "source": "یه حباب* روی آب*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#            B             ",
+            "placements": [
+              {
+                "name": "F#",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من به گریه ها می خندم",
+            "source": "من به گری*ه ها می خند*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            C                 ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می گم این همش یه خوابه",
+            "source": "می گم این ه*مش یه خواب*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "B      Em        ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثل باد سرد پاییز",
+            "source": "مثل باد* سرد پای*یز"
+          },
+          {
+            "kind": "chords",
+            "source": "B           Em      ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غم لعنتی به من زد",
+            "source": "غم لعن*تی به من ز*د"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         B         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حتی باغبون نفهمید",
+            "source": "حتی باغ*بون نفهم*ید"
+          },
+          {
+            "kind": "chords",
+            "source": "B           C          ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که چه آفتی به من زد",
+            "source": "که چه آف*تی به من * زد"
+          },
+          {
+            "kind": "chords",
+            "source": "B               Em         ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آسمون تیشه ت شکسته",
+            "source": "آسمون ت*یشه ت شکس*ته"
+          },
+          {
+            "kind": "chords",
+            "source": "B             Em           ",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من دیگه رو پام می مونم",
+            "source": "من دیگه ر*و پام می مون*م"
+          },
+          {
+            "kind": "chords",
+            "source": "Am        B       ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "B",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منو از تنم بگیری",
+            "source": "منو از * تنم بگیر*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                       C",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو ترانه هام می مونم",
+            "source": "تو ترانه هام می مون*م  *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          }
+        ],
+        "chordCount": 132,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-11T22:30:47.877Z"
     }
   ],
   "chordColors": {
