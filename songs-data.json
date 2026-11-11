@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T21:03:57.782Z",
+  "updatedAt": "2026-11-11T22:28:43.963Z",
   "songs": [
     {
       "title": "خیال",
@@ -30954,6 +30954,942 @@
       "chordColors": {},
       "createdAt": "2026-11-08T21:54:36.148Z",
       "easySemitones": 1
+    },
+    {
+      "title": "اشاره",
+      "artist": "هایده",
+      "lyrics": "بازم اشک های چشم هام مثل آب روونه\nآدم با چه امیدی تو این دنیا بمونه\nدیگه با چه غروری بگم خیلی صبورم\nمگه می شه تو گریه بگم مست غرورم\nصدام کن که دوباره بشم عاشق عاشق\nبیام با یه اشاره بیام با یه اشاره\nیه اشاره\nتو قلبت کی عزیزتر شده از من\nکی اومد که بدت اومده از من\nکنار تو همش عشقه تو حرفام\nچقدر پیش تو آروم می شه دنیام\nچقدر پیش تو آروم می شه دنیام\nصدام کن که دوباره بشم عاشق عاشق\nبیام با یه اشاره بیام با یه اشاره\nیه اشاره یه اشاره یه اشاره یه اشاره\nخیال کردی دل من\nدل ساده ی عاشق\nاز این شاخه به اون شاخه پریده\nدل ساده ی عاشق\nدیگه بی تو تو دنیا\nیه شب خواب خوش عشقو ندیده\nتو قلبت کی عزیزتر شده از من\nکی اومد که بدت اومده از من\nکنار تو همش عشقه تو حرفام\nچقدر پیش تو آروم می شه دنیام\nچقدر پیش تو آروم می شه دنیام\nصدام کن که دوباره بشم عاشق عاشق\nبیام با یه اشاره بیام با یه اشاره\nصدام کن که دوباره بشم عاشق عاشق\nبیام با یه اشاره بیام با یه اشاره\nبیام با یه اشاره بیام با یه اشاره\nبیام با یه اشاره بیام با یه اشاره",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      F#7   D   A7   Em   Bm",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 6
+              },
+              {
+                "name": "D",
+                "col": 12
+              },
+              {
+                "name": "A7",
+                "col": 16
+              },
+              {
+                "name": "Em",
+                "col": 21
+              },
+              {
+                "name": "Bm",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Em   Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 5
+              },
+              {
+                "name": "Bm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                            Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بازم اشک های چشم هام مثل آب روونه",
+            "source": "بازم ا*شک های چشم هام مثل آ*ب روونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                     Bm    ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آدم با چه امیدی تو این دنیا بمونه",
+            "source": "آدم ب*ا چه امیدی تو این د*نیا بمونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                  Bm      ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیگه با چه غروری بگم خیلی صبورم",
+            "source": "دیگه ب*ا چه غروری بگم خ*یلی صبورم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm                       Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مگه می شه تو گریه بگم مست غرورم",
+            "source": "مگه م*ی شه تو گریه بگم م*ست غرورم"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em         B7        ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "صدام کن که دوباره بشم عاشق عاشق",
+            "source": "صدام ک*ن که دوبار*ه بشم ع*اشق عاش*ق"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em      B7     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیام با یه اشاره بیام با یه اشاره",
+            "source": "بیام ب*ا یه اشار*ه بیام ب*ا یه اشار*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm       A7",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه اشاره",
+            "source": "یه اشار*ه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm  A   Bm  A",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 4
+              },
+              {
+                "name": "Bm",
+                "col": 8
+              },
+              {
+                "name": "A",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm        Em           Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              },
+              {
+                "name": "Bm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو قلبت کی عزیزتر شده از من",
+            "source": "تو قلب*ت کی عزیزت*ر شده از م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm       Em        Bm        ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 9
+              },
+              {
+                "name": "Bm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی اومد که بدت اومده از من",
+            "source": "کی اوم*د که بدت ا*ومده از م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "A            Em          Bm  ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              },
+              {
+                "name": "Bm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کنار تو همش عشقه تو حرفام",
+            "source": "کنار* تو همش ع*شقه تو حرف*ام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm           Em      Bm       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              },
+              {
+                "name": "Bm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چقدر پیش تو آروم می شه دنیام",
+            "source": "چقدر پ*یش تو آر*وم می شه د*نیام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm           Em      Bm       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              },
+              {
+                "name": "Bm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چقدر پیش تو آروم می شه دنیام",
+            "source": "چقدر پ*یش تو آر*وم می شه د*نیام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em         B7        ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "صدام کن که دوباره بشم عاشق عاشق",
+            "source": "صدام ک*ن که دوبار*ه بشم ع*اشق عاش*ق"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em      B7     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیام با یه اشاره بیام با یه اشاره",
+            "source": "بیام ب*ا یه اشار*ه بیام ب*ا یه اشار*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm A7 Bm A7  Bm  G   Bm      A7",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 3
+              },
+              {
+                "name": "Bm",
+                "col": 6
+              },
+              {
+                "name": "A7",
+                "col": 9
+              },
+              {
+                "name": "Bm",
+                "col": 13
+              },
+              {
+                "name": "G",
+                "col": 17
+              },
+              {
+                "name": "Bm",
+                "col": 21
+              },
+              {
+                "name": "A7",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه اشاره یه اشاره یه اشاره یه اشاره",
+            "source": "یه اشار*ه یه * اشار*ه یه * اشار*ه یه * اشار*ه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#7   D   A7   Em   Bm",
+            "placements": [
+              {
+                "name": "F#7",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 6
+              },
+              {
+                "name": "A7",
+                "col": 10
+              },
+              {
+                "name": "Em",
+                "col": 15
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Em   Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 5
+              },
+              {
+                "name": "Bm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خیال کردی دل من",
+            "source": "خیال ک*ردی دل من"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل ساده ی عاشق",
+            "source": "دل س*اده ی عاشق"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm       A7            Bm         ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 9
+              },
+              {
+                "name": "Bm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از این شاخه به اون شاخه پریده",
+            "source": "از این ش*اخه به اون ش*اخه پرید*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm  A7  Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 4
+              },
+              {
+                "name": "Bm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل ساده ی عاشق",
+            "source": "دل س*اده ی عاشق"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیگه بی تو تو دنیا",
+            "source": "دیگه ب*ی تو تو دنیا"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm        A7          Bm           ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 10
+              },
+              {
+                "name": "Bm",
+                "col": 22
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب خواب خوش عشقو ندیده",
+            "source": "یه شب خ*واب خوش ع*شقو ندید*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm  A7  Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 4
+              },
+              {
+                "name": "Bm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm        Em           Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              },
+              {
+                "name": "Bm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو قلبت کی عزیزتر شده از من",
+            "source": "تو قلب*ت کی عزیزت*ر شده از م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm       Em        Bm        ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 9
+              },
+              {
+                "name": "Bm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کی اومد که بدت اومده از من",
+            "source": "کی اوم*د که بدت ا*ومده از م*ن"
+          },
+          {
+            "kind": "chords",
+            "source": "A            Em          Bm  ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              },
+              {
+                "name": "Bm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کنار تو همش عشقه تو حرفام",
+            "source": "کنار* تو همش ع*شقه تو حرف*ام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm           Em      Bm       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              },
+              {
+                "name": "Bm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چقدر پیش تو آروم می شه دنیام",
+            "source": "چقدر پ*یش تو آر*وم می شه د*نیام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm           Em      Bm       ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 13
+              },
+              {
+                "name": "Bm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چقدر پیش تو آروم می شه دنیام",
+            "source": "چقدر پ*یش تو آر*وم می شه د*نیام"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em         B7        ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "صدام کن که دوباره بشم عاشق عاشق",
+            "source": "صدام ک*ن که دوبار*ه بشم ع*اشق عاش*ق"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em      B7     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیام با یه اشاره بیام با یه اشاره",
+            "source": "بیام ب*ا یه اشار*ه بیام ب*ا یه اشار*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em         B7        ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 27
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "صدام کن که دوباره بشم عاشق عاشق",
+            "source": "صدام ک*ن که دوبار*ه بشم ع*اشق عاش*ق"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em      B7     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیام با یه اشاره بیام با یه اشاره",
+            "source": "بیام ب*ا یه اشار*ه بیام ب*ا یه اشار*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em      B7     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیام با یه اشاره بیام با یه اشاره",
+            "source": "بیام ب*ا یه اشار*ه بیام ب*ا یه اشار*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      A7      Em      B7     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "A7",
+                "col": 8
+              },
+              {
+                "name": "Em",
+                "col": 16
+              },
+              {
+                "name": "B7",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بیام با یه اشاره بیام با یه اشاره",
+            "source": "بیام ب*ا یه اشار*ه بیام ب*ا یه اشار*ه"
+          }
+        ],
+        "chordCount": 126,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-11T22:28:42.543Z"
     }
   ],
   "chordColors": {
