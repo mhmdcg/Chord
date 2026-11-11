@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T22:30:49.509Z",
+  "updatedAt": "2026-11-11T22:35:38.147Z",
   "songs": [
     {
       "title": "خیال",
@@ -34106,6 +34106,1498 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-11T22:30:47.877Z"
+    },
+    {
+      "title": "فریاد",
+      "artist": "هایده",
+      "lyrics": "امیدم را مگیر از من\nخدایا خدایا خدایا\nدل تنگ مرا مشکن\nخدایا خدایا خدایا\nمن دور از آشیانم\nسر به آسمانم\nبی نصیب و خسته\nماندم جدا ز یاران\nاز بلای طوفان\nبال من شکسته\nامیدم را مگیر از من\nخدایا خدایا خدایا\nدل تنگ مرا مشکن\nخدایا خدایا خدایا\nاز حریم دلم\nرفته رنگ هوس\nروز و شب به که گویم\nدر درون قفس آه\nدر درون قفس\nوه که دست قضا\nبسته بال مرا\nروز و شب ز گلویم\nناله خیزد و بس آه\nناله خیزد و بس\nمی زنم فریاد\nهرچه بادا باد\nوای از این طوفان\nوای از این بیداد آه\nوای از این بیداد\nمی زنم فریاد\nهرچه بادا باد\nوای از این طوفان\nوای از این بیداد آه\nوای از این بیداد\nامیدم را مگیر از من\nخدایا خدایا خدایا\nدل تنگ مرا مشکن\nخدایا خدایا خدایا\nمن دور از آشیانم\nسر به آسمانم\nبی نصیب و خسته\nماندم جدا ز یاران\nاز بلای طوفان\nبال من شکسته\nاز حریم دلم\nرفته رنگ هوس\nدرد خود به که گویم\nدر درون قفس آه\nدر درون قفس\nوه که دست قضا\nبسته بال مرا\nروز و شب ز گلویم\nناله خیزد و بس آه\nناله خیزد و بس\nمی زنم فریاد\nهرچه بادا باد\nوای از این طوفان\nوای از این بیداد آه\nوای از این بیداد\nوای از این بیداد آه\nوای از این بیداد",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      D   Eb   Gm   D   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 6
+              },
+              {
+                "name": "Eb",
+                "col": 10
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              },
+              {
+                "name": "D",
+                "col": 20
+              },
+              {
+                "name": "Eb",
+                "col": 24
+              },
+              {
+                "name": "Gm",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D   Cm7   D   Cm7   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 4
+              },
+              {
+                "name": "D",
+                "col": 10
+              },
+              {
+                "name": "Cm7",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 20
+              },
+              {
+                "name": "Gm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D   Cm7   D   Cm7   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 4
+              },
+              {
+                "name": "D",
+                "col": 10
+              },
+              {
+                "name": "Cm7",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 20
+              },
+              {
+                "name": "Gm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "امیدم را مگیر از من",
+            "source": "ا*میدم را مگیر از من"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm     D        ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خدایا خدایا خدایا",
+            "source": "خدایا خ*دایا خ*دایا"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل تنگ مرا مشکن",
+            "source": "د*ل تنگ مرا مشکن"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm     D        ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خدایا خدایا خدایا",
+            "source": "خدایا خ*دایا خ*دایا"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D              Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من دور از آشیانم",
+            "source": "م*ن دور از آشیان*م"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سر به آسمانم",
+            "source": "سر به آسمانم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی نصیب و خسته",
+            "source": "بی نصیب و خسته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ماندم جدا ز یاران",
+            "source": "م*اندم جدا ز یاران"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از بلای طوفان",
+            "source": "از بلای طوفان    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بال من شکسته",
+            "source": "بال من شکسته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "امیدم را مگیر از من",
+            "source": "ا*میدم را مگیر از من"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm     D        ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خدایا خدایا خدایا",
+            "source": "خدایا خ*دایا خ*دایا"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل تنگ مرا مشکن",
+            "source": "د*ل تنگ مرا مشکن"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm     D        ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خدایا خدایا خدایا",
+            "source": "خدایا خ*دایا خ*دایا"
+          },
+          {
+            "kind": "chords",
+            "source": "D   Eb   Gm   D   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 4
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "D",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 18
+              },
+              {
+                "name": "Gm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D   Cm7   D   Cm7   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 4
+              },
+              {
+                "name": "D",
+                "col": 10
+              },
+              {
+                "name": "Cm7",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 20
+              },
+              {
+                "name": "Gm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D   Cm7   D   Cm7   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 4
+              },
+              {
+                "name": "D",
+                "col": 10
+              },
+              {
+                "name": "Cm7",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 20
+              },
+              {
+                "name": "Gm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از حریم دلم",
+            "source": "ا*ز حریم دلم"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رفته رنگ هوس",
+            "source": "ر*فته رنگ هوس"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روز و شب به که گویم",
+            "source": "ر*وز و شب به که گویم"
+          },
+          {
+            "kind": "chords",
+            "source": "D   Eb   Gm   D   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 4
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "D",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 18
+              },
+              {
+                "name": "Gm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D   Cm7   D   Cm7   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 4
+              },
+              {
+                "name": "D",
+                "col": 10
+              },
+              {
+                "name": "Cm7",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 20
+              },
+              {
+                "name": "Gm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D   Cm7   D   Cm7   Eb   Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 4
+              },
+              {
+                "name": "D",
+                "col": 10
+              },
+              {
+                "name": "Cm7",
+                "col": 14
+              },
+              {
+                "name": "Eb",
+                "col": 20
+              },
+              {
+                "name": "Gm",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Eb          Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در درون قفس آه",
+            "source": "در درون قف*س آه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در درون قفس",
+            "source": "د*ر درون قفس"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وه که دست قضا",
+            "source": "و*ه که دست قضا"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بسته بال مرا",
+            "source": "ب*سته بال مرا"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روز و شب ز گلویم",
+            "source": "ر*وز و شب ز گلویم"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb             Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ناله خیزد و بس آه",
+            "source": "ناله خیزد و ب*س آه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ناله خیزد و بس",
+            "source": "ن*اله خیزد و بس"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می زنم فریاد",
+            "source": "م*ی زنم فری*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm      Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرچه بادا باد",
+            "source": "ه*رچه بادا ب*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "D               Eb",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این طوفان",
+            "source": "و*ای از این طوف*ان"
+          },
+          {
+            "kind": "chords",
+            "source": "D Cm              Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 2
+              },
+              {
+                "name": "Gm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این بیداد آه",
+            "source": "وای از این بید*اد آ*ه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این بیداد",
+            "source": "و*ای از این بیداد"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می زنم فریاد",
+            "source": "م*ی زنم فری*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm      Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرچه بادا باد",
+            "source": "ه*رچه بادا ب*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "D               Eb",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این طوفان",
+            "source": "و*ای از این طوف*ان"
+          },
+          {
+            "kind": "chords",
+            "source": "D Cm              Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 2
+              },
+              {
+                "name": "Gm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این بیداد آه",
+            "source": "وای از این بید*اد آ*ه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این بیداد",
+            "source": "و*ای از این بیداد"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "امیدم را مگیر از من",
+            "source": "ا*میدم را مگیر از من"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm     D        ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خدایا خدایا خدایا",
+            "source": "خدایا خ*دایا خ*دایا"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل تنگ مرا مشکن",
+            "source": "د*ل تنگ مرا مشکن"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm     D        ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "D",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خدایا خدایا خدایا",
+            "source": "خدایا خ*دایا خ*دایا"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D              Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من دور از آشیانم",
+            "source": "م*ن دور از آشیان*م"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سر به آسمانم",
+            "source": "سر به آسمانم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی نصیب و خسته",
+            "source": "بی نصیب و خسته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ماندم جدا ز یاران",
+            "source": "م*اندم جدا ز یاران"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از بلای طوفان",
+            "source": "از بلای طوفان    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بال من شکسته",
+            "source": "بال من شکسته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   Eb   Gm   D    Cm7   D",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              },
+              {
+                "name": "D",
+                "col": 15
+              },
+              {
+                "name": "Cm7",
+                "col": 20
+              },
+              {
+                "name": "D",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   Eb   Gm   D",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              },
+              {
+                "name": "D",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   Cm   Gm   Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              },
+              {
+                "name": "Cm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   D7   Eb",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 5
+              },
+              {
+                "name": "Eb",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از حریم دلم",
+            "source": "ا*ز حریم دلم"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رفته رنگ هوس",
+            "source": "ر*فته رنگ هوس"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "درد خود به که گویم",
+            "source": "د*رد خود به که گویم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb          Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در درون قفس آه",
+            "source": "در درون قف*س آه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در درون قفس",
+            "source": "د*ر درون قفس"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وه که دست قضا",
+            "source": "و*ه که دست قضا"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بسته بال مرا",
+            "source": "ب*سته بال مرا"
+          },
+          {
+            "kind": "chords",
+            "source": "D",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روز و شب ز گلویم",
+            "source": "ر*وز و شب ز گلویم"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb             Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ناله خیزد و بس آه",
+            "source": "ناله خیزد و ب*س آه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ناله خیزد و بس",
+            "source": "ن*اله خیزد و بس"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می زنم فریاد",
+            "source": "م*ی زنم فری*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm      Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرچه بادا باد",
+            "source": "ه*رچه بادا ب*اد"
+          },
+          {
+            "kind": "chords",
+            "source": "D               Eb",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این طوفان",
+            "source": "و*ای از این طوف*ان"
+          },
+          {
+            "kind": "chords",
+            "source": "D Cm              Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 2
+              },
+              {
+                "name": "Gm",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این بیداد آه",
+            "source": "وای از این بید*اد آ*ه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این بیداد",
+            "source": "و*ای از این بیداد"
+          },
+          {
+            "kind": "chords",
+            "source": "D Cm          Gm",
+            "placements": [
+              {
+                "name": "D",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 2
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این بیداد آه",
+            "source": "و*ای از این بید*اد آ*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای از این بیداد",
+            "source": "وای از این بیدا*د"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          }
+        ],
+        "chordCount": 168,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-11T22:35:35.688Z"
     }
   ],
   "chordColors": {
