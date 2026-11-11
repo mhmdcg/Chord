@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T22:28:43.963Z",
+  "updatedAt": "2026-11-11T22:29:43.965Z",
   "songs": [
     {
       "title": "خیال",
@@ -31890,6 +31890,1106 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-11T22:28:42.543Z"
+    },
+    {
+      "title": "زمونه",
+      "artist": "هایده",
+      "lyrics": "تـو نیمه راه زندگی\nدل من پرخـونه\nاینجا با این قشنگیاش\nواسه من زندونه\nاینجا با این قشنگیاش\nواسه من زندونه\nتـو نیمه راه زندگی\nدل من پرخـونه\nاینجا با این قشنگیاش\nواسه من زندونه\nوای که تموم نمـی شـه\nلجبازیات زمونه\nوای که تموم نمـی شـه\nلجبازیات زمونه\nسر رامو گرفتی\nچه بد کردی زمونه\nغرورم رو شکستی\nچه بی رحمـی زمونه\nبازم این سو و اون سو\nمنو خـوب مـی کشونی\nزمونــــه آی زمونه\nببین کـاسه ی صبرم\nچه لبریزه زمونه\nتـو غربت خـونه کردن\nغم انگیزه زمونه\nبازم این سو و اون سو\nمنو خـوب مـی کشونی\nزمونــــه آی زمونه\nوای که تموم نمـی شـه\nلجبازیات زمونه\nوای که تموم نمـی شـه\nلجبازیات زمونه\nهرچی باهات راه اومدم\nتـو باهام لج کردی\nرفیق نیمه راه شـدی\nراهتـو کج کردی\nوای که تموم نمـی شـه\nلجبازیات زمونه\nوای که تموم نمـی شـه\nلجبازیات زمونه",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      A   Gm   Dm   A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 6
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              },
+              {
+                "name": "Dm",
+                "col": 15
+              },
+              {
+                "name": "A",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A   Gm   Bb   Dm   A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   A   Gm   A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A   Dm   Dm   Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 4
+              },
+              {
+                "name": "Dm",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   A   Gm   A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A   Bb   Dm   Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 4
+              },
+              {
+                "name": "Dm",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A             ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تـو نیمه راه زندگی",
+            "source": "تـو نیمه راه* زندگی"
+          },
+          {
+            "kind": "lyric",
+            "text": "دل من پرخـونه",
+            "source": "دل من پرخـونه"
+          },
+          {
+            "kind": "chords",
+            "source": "A                ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اینجا با این قشنگیاش",
+            "source": "اینجا با این ق*شنگیاش"
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه من زندونه",
+            "source": "واسه من زندونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اینجا با این قشنگیاش",
+            "source": "ا*ینجا با این قشنگیاش"
+          },
+          {
+            "kind": "chords",
+            "source": "A                   Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه من زندونه",
+            "source": "واسه من زندون*ه      *"
+          },
+          {
+            "kind": "chords",
+            "source": "A   Gm   Dm   A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "Dm",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A   Gm   Bb   Dm   A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A             ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تـو نیمه راه زندگی",
+            "source": "تـو نیمه راه* زندگی"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل من پرخـونه",
+            "source": "دل من پ*رخـونه"
+          },
+          {
+            "kind": "chords",
+            "source": "A   Gm  A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "A",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A                ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اینجا با این قشنگیاش",
+            "source": "اینجا با این ق*شنگیاش"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm           ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه من زندونه",
+            "source": "واسه من ز*ندونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A            Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای که تموم نمـی شـه",
+            "source": "و*ای که تموم ن*مـی شـه"
+          },
+          {
+            "kind": "chords",
+            "source": "A       Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لجبازیات زمونه",
+            "source": "ل*جبازیات ز*مونه"
+          },
+          {
+            "kind": "chords",
+            "source": "A            Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای که تموم نمـی شـه",
+            "source": "و*ای که تموم ن*مـی شـه"
+          },
+          {
+            "kind": "chords",
+            "source": "A       Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لجبازیات زمونه",
+            "source": "ل*جبازیات ز*مونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   A   Gm   A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A   Dm   Dm   Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 4
+              },
+              {
+                "name": "Dm",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   A   Gm   A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A   Bb   Dm   Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Bb",
+                "col": 4
+              },
+              {
+                "name": "Dm",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A     ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سر رامو گرفتی",
+            "source": "سر ر*امو گرفتی"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       A         ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چه بد کردی زمونه",
+            "source": "چه بد ک*ردی زمون*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "A     ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غرورم رو شکستی",
+            "source": "غرور*م رو شکستی"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm         A         ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چه بی رحمـی زمونه",
+            "source": "چه بی ر*حمـی زمون*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                A      ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بازم این سو و اون سو",
+            "source": "بازم ا*ین سو و اون س*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm               A      ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منو خـوب مـی کشونی",
+            "source": "منو خ*ـوب مـی کشون*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Gm A    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زمونــــه آی زمونه",
+            "source": "زمون*ــــه * آی زمو*نه"
+          },
+          {
+            "kind": "chords",
+            "source": "A        ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببین کـاسه ی صبرم",
+            "source": "ببین کـ*اسه ی صبرم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm      A       ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چه لبریزه زمونه",
+            "source": "چه لبر*یزه زمون*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "A       ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تـو غربت خـونه کردن",
+            "source": "تـو غرب*ت خـونه کردن"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     A        ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "غم انگیزه زمونه",
+            "source": "غم انگ*یزه زمون*ه"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm                A      ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بازم این سو و اون سو",
+            "source": "بازم ا*ین سو و اون س*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm               A      ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منو خـوب مـی کشونی",
+            "source": "منو خ*ـوب مـی کشون*ی"
+          },
+          {
+            "kind": "chords",
+            "source": "A      Gm A    ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 7
+              },
+              {
+                "name": "A",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "زمونــــه آی زمونه",
+            "source": "زمون*ــــه * آی زمو*نه"
+          },
+          {
+            "kind": "chords",
+            "source": "A            Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای که تموم نمـی شـه",
+            "source": "و*ای که تموم ن*مـی شـه"
+          },
+          {
+            "kind": "chords",
+            "source": "A       Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لجبازیات زمونه",
+            "source": "ل*جبازیات ز*مونه"
+          },
+          {
+            "kind": "chords",
+            "source": "A            Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای که تموم نمـی شـه",
+            "source": "و*ای که تموم ن*مـی شـه"
+          },
+          {
+            "kind": "chords",
+            "source": "A       Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لجبازیات زمونه",
+            "source": "ل*جبازیات ز*مونه"
+          },
+          {
+            "kind": "chords",
+            "source": "A   Gm   Dm   A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "Dm",
+                "col": 9
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A   Gm   Bb   Dm   A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 14
+              },
+              {
+                "name": "A",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A                 ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هرچی باهات راه اومدم",
+            "source": "هرچی باهات ر*اه اومدم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm           ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تـو باهام لج کردی",
+            "source": "تـو باهام ل*ج کردی"
+          },
+          {
+            "kind": "chords",
+            "source": "A   Gm   A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 4
+              },
+              {
+                "name": "A",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A          ",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رفیق نیمه راه شـدی",
+            "source": "رفیق نیم*ه راه شـدی"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm       ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "راهتـو کج کردی",
+            "source": "راهتـو ک*ج کردی"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   A",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "A            Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای که تموم نمـی شـه",
+            "source": "و*ای که تموم ن*مـی شـه"
+          },
+          {
+            "kind": "chords",
+            "source": "A       Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لجبازیات زمونه",
+            "source": "ل*جبازیات ز*مونه"
+          },
+          {
+            "kind": "chords",
+            "source": "A            Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وای که تموم نمـی شـه",
+            "source": "و*ای که تموم ن*مـی شـه"
+          },
+          {
+            "kind": "chords",
+            "source": "A       Gm",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لجبازیات زمونه",
+            "source": "ل*جبازیات ز*مونه"
+          },
+          {
+            "kind": "chords",
+            "source": "A",
+            "placements": [
+              {
+                "name": "A",
+                "col": 0
+              }
+            ]
+          }
+        ],
+        "chordCount": 133,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-11T22:29:42.476Z"
     }
   ],
   "chordColors": {
