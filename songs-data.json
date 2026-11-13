@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T22:36:05.691Z",
+  "updatedAt": "2026-11-13T22:58:28.417Z",
   "songs": [
     {
       "title": "خیال",
@@ -35598,6 +35598,773 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-11T22:35:35.688Z"
+    },
+    {
+      "title": "من دلم تنگه",
+      "artist": "زانیار خسروی",
+      "lyrics": "من حالم خوب نیست من دلم تنگه\nهمه ی حرفام تو این آهنگه\nآخه با عشقش کی می جنگه بگو\nمن دلم تنگه من حالم خوب نیس\nحرف دارم اما تو می گی هیس\nلااقل یه چیزی به این چشای خیس بگو\nمن بی علت شب و روز خیره به عکساتم\nپشت پا بهم زدی اما هنوز پاتم نرو\nتوی هر جمعی بدون تو می رم یه گوشه\nکسی نیست لباس دلخواه منو بپوشه نرو\nنرو\nمن بی علت شب و روز خیره به عکساتم\nپشت پا بهم زدی اما هنوز پاتم نرو\nتوی هر جمعی بدون تو می رم یه گوشه\nکسی نیست لباس دلخواه منو بپوشه نرو\nنرو\nبعد تو دنبال نشونیای تو افتادم تو آدمای دیگه\nکه یکیش اسمت بود\nهنوز که هنوزه\nکافیه بفهمم که یکی هم اسم توئه\nباید خیلی حواسم به خودم باشه\nباید سعی کنم زیاد مکث نکنم\nوقتی اسمش رو میگه\nو بعد اینکه\nجوری صداش نکنم که تو رو صدا می کردمت\nیادت افتادم هر کیو دیدم\nمن به دنیای بی تو تبعیدم\nتو بدی کردی ولی بخشیدم تو رو\nبی تو این خونه مث تابوته\nچشم من رو سقف شبا مبهوته\nهمه چی بازم به تو مربوطه نرو\nمن بی علت شب و روز خیره به عکساتم\nپشت پا بهم زدی اما هنوز پاتم نرو\nتوی هر جمعی بدون تو می رم یه گوشه\nکسی نیست لباس دلخواه منو بپوشه نرو\nنرو\nمن بی علت شب و روز خیره به عکساتم\nپشت پا بهم زدی اما هنوز پاتم نرو\nتوی هر جمعی بدون تو می رم یه گوشه\nکسی نیست لباس دلخواه منو بپوشه نرو\nنرو",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "      F#m7   Em7   F#m7   Bm",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 6
+              },
+              {
+                "name": "Em7",
+                "col": 13
+              },
+              {
+                "name": "F#m7",
+                "col": 19
+              },
+              {
+                "name": "Bm",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من حالم خوب نیست من دلم تنگه",
+            "source": "من حالم خوب نیست من دلم تنگه  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه ی حرفام تو این آهنگه",
+            "source": "همه ی حرفام تو این آهنگه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                 Em7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه با عشقش کی می جنگه بگو",
+            "source": "آخه با عشقش کی می جنگه بگ*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من دلم تنگه من حالم خوب نیس",
+            "source": "من دلم تنگه من حالم خوب نیس  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "حرف دارم اما تو می گی هیس",
+            "source": "حرف دارم اما تو می گی هیس  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                          Em7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 46
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لااقل یه چیزی به این چشای خیس بگو",
+            "source": "لااقل یه چیزی به این چشای خیس بگ*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm7",
+            "placements": [
+              {
+                "name": "Bm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بی علت شب و روز خیره به عکساتم",
+            "source": "من بی علت شب و روز خیره به عکساتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                    Em",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت پا بهم زدی اما هنوز پاتم نرو",
+            "source": "پشت پا بهم زدی اما هنوز پاتم نر*و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A7",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر جمعی بدون تو می رم یه گوشه",
+            "source": "توی هر جمعی بدون تو می رم یه گوشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                                          F#m7",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "F#m7",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی نیست لباس دلخواه منو بپوشه نرو",
+            "source": "کسی نیست لباس دلخواه منو بپوشه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نرو",
+            "source": "نر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm7",
+            "placements": [
+              {
+                "name": "Bm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بی علت شب و روز خیره به عکساتم",
+            "source": "من بی علت شب و روز خیره به عکساتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                    Em",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت پا بهم زدی اما هنوز پاتم نرو",
+            "source": "پشت پا بهم زدی اما هنوز پاتم نر*و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A7",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر جمعی بدون تو می رم یه گوشه",
+            "source": "توی هر جمعی بدون تو می رم یه گوشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                                          F#m7",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "F#m7",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی نیست لباس دلخواه منو بپوشه نرو",
+            "source": "کسی نیست لباس دلخواه منو بپوشه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نرو",
+            "source": "نر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m     ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بعد تو دنبال نشونیای تو افتادم تو آدمای دیگه",
+            "source": "بعد تو * دنبال نشونیای تو افتادم تو آدمای دیگه"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                     ",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که یکیش اسمت بود",
+            "source": "که یکیش اسمت ب*ود"
+          },
+          {
+            "kind": "lyric",
+            "text": "هنوز که هنوزه",
+            "source": "هنوز که هنوزه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کافیه بفهمم که یکی هم اسم توئه",
+            "source": "کاف*یه بفهمم که یکی هم اسم توئه"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید خیلی حواسم به خودم باشه",
+            "source": "باید خیلی حواسم به خودم باشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باید سعی کنم زیاد مکث نکنم",
+            "source": "باید سعی کنم زیاد مکث نکنم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                         ",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی اسمش رو میگه",
+            "source": "* وقتی اسمش رو میگه"
+          },
+          {
+            "kind": "lyric",
+            "text": "و بعد اینکه",
+            "source": "و بعد اینکه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7              ",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جوری صداش نکنم که تو رو صدا می کردمت",
+            "source": "جوری صداش ن*کنم که تو رو صدا می کردمت"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یادت افتادم هر کیو دیدم",
+            "source": "یادت افتادم هر کیو دیدم    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من به دنیای بی تو تبعیدم",
+            "source": "من به دنیای بی تو تبعیدم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                G              Em7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 20
+              },
+              {
+                "name": "Em7",
+                "col": 35
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو بدی کردی ولی بخشیدم تو رو",
+            "source": "تو بدی کردی  *ولی بخشیدم تو ر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو این خونه مث تابوته",
+            "source": "بی تو این خونه مث تابوته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم من رو سقف شبا مبهوته",
+            "source": "چشم من رو سقف شبا مبهوته    *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                  G",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 38
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه چی بازم به تو مربوطه نرو",
+            "source": "همه چی بازم به تو مربوطه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm7",
+            "placements": [
+              {
+                "name": "Bm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بی علت شب و روز خیره به عکساتم",
+            "source": "من بی علت شب و روز خیره به عکساتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                    Em",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت پا بهم زدی اما هنوز پاتم نرو",
+            "source": "پشت پا بهم زدی اما هنوز پاتم نر*و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A7",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر جمعی بدون تو می رم یه گوشه",
+            "source": "توی هر جمعی بدون تو می رم یه گوشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                                          F#m7",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "F#m7",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی نیست لباس دلخواه منو بپوشه نرو",
+            "source": "کسی نیست لباس دلخواه منو بپوشه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نرو",
+            "source": "نر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm7",
+            "placements": [
+              {
+                "name": "Bm7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من بی علت شب و روز خیره به عکساتم",
+            "source": "من بی علت شب و روز خیره به عکساتم  *"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7                                    Em",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پشت پا بهم زدی اما هنوز پاتم نرو",
+            "source": "پشت پا بهم زدی اما هنوز پاتم نر*و  *"
+          },
+          {
+            "kind": "chords",
+            "source": "A7",
+            "placements": [
+              {
+                "name": "A7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی هر جمعی بدون تو می رم یه گوشه",
+            "source": "توی هر جمعی بدون تو می رم یه گوشه    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Em7                                          F#m7",
+            "placements": [
+              {
+                "name": "Em7",
+                "col": 0
+              },
+              {
+                "name": "F#m7",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی نیست لباس دلخواه منو بپوشه نرو",
+            "source": "کسی نیست لباس دلخواه منو بپوشه نر*و    *"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نرو",
+            "source": "نر*و"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m7   Em7   Bm7",
+            "placements": [
+              {
+                "name": "F#m7",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 7
+              },
+              {
+                "name": "Bm7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Em7   F#m   A7",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 5
+              },
+              {
+                "name": "F#m",
+                "col": 11
+              },
+              {
+                "name": "A7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm   Em7   F#m   A7",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "Em7",
+                "col": 5
+              },
+              {
+                "name": "F#m",
+                "col": 11
+              },
+              {
+                "name": "A7",
+                "col": 17
+              }
+            ]
+          }
+        ],
+        "chordCount": 68,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-13T22:58:27.158Z"
     }
   ],
   "chordColors": {
