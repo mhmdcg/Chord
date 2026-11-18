@@ -122,13 +122,15 @@ const cMajorKeys = theory.scaleKeyboardNotes(scales[0], 60, 72).map((note) => no
 deepEq(cMajorKeys, ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'], 'C major across one octave');
 
 const sharpMajors = theory.filterScales(scales, { types: ['major'], accidentals: ['#'] }).map((scale) => scale.root);
-deepEq(sharpMajors, ['C', 'D', 'E', 'F#', 'G', 'A', 'B'], 'sharp button hides flat majors and keeps C');
+deepEq(sharpMajors, ['C', 'D', 'E', 'F', 'F#', 'G', 'A', 'B'], 'sharp base notes plus natural roots');
 const flatMajors = theory.filterScales(scales, { types: ['major'], accidentals: ['b'] }).map((scale) => scale.root);
-deepEq(flatMajors, ['C', 'Db', 'Eb', 'F', 'Ab', 'Bb'], 'flat button hides sharp majors and keeps C');
+deepEq(flatMajors, ['C', 'Db', 'D', 'Eb', 'E', 'F', 'G', 'Ab', 'A', 'Bb', 'B'], 'flat base notes plus natural roots');
 eq(theory.filterScales(scales, { types: ['harmonic-minor', 'melodic-minor'], accidentals: ['b', '#'] }).length, 24, 'harmonic and melodic together');
-eq(theory.filterScales(scales, { types: ['major'], accidentals: [] }).map((scale) => scale.root).join(' '), 'C', 'no accidental buttons leaves C major');
+eq(theory.filterScales(scales, { types: ['major'], accidentals: [] }).map((scale) => scale.root).join(' '), 'C D E F G A B', 'no accidental buttons leaves natural roots');
 eq(theory.filterScales(scales, { types: ['minor'], accidentals: [] }).some((scale) => scale.root === 'G#'), false, 'G# minor stays hidden while sharp is off');
-eq(theory.filterScales(scales, { types: ['minor'], accidentals: [] }).map((scale) => scale.title).join(' '), 'A minor', 'A minor has no sharps or flats');
+eq(theory.filterScales(scales, { types: ['minor'], accidentals: [] }).some((scale) => scale.root === 'E'), true, 'E minor stays because its base note is natural');
+eq(theory.filterScales(scales, { types: ['minor'], accidentals: ['b'] }).some((scale) => scale.title === 'Bb minor'), true, 'Bb minor follows the flat base note');
+eq(theory.filterScales(scales, { types: ['minor'], accidentals: [] }).some((scale) => scale.root === 'Bb'), false, 'Bb minor stays hidden while flat is off');
 eq(theory.filterScales(scales, { types: [], accidentals: ['#'] }).length, 0, 'a sharp filter does not add scale types that are off');
 eq(theory.filterScales(scales, { types: ['major'], accidentals: ['#'] }).some((scale) => scale.title.includes('pentatonic')), false, 'pentatonic stays out while its button is off');
 eq(theory.scaleFilterButtons().map((filter) => filter.label).slice(0, 6).join(','), 'b,#,Minor,Major,Harmonic,Melodic', 'filter button order');

@@ -782,7 +782,7 @@ class ChordAnnotatorApp {
                 button.dataset.id = filter.id;
                 button.textContent = filter.label;
                 button.setAttribute('aria-label', filter.group === 'accidental'
-                    ? `Scales with ${filter.id === 'b' ? 'flats' : 'sharps'}`
+                    ? `Base note with ${filter.id === 'b' ? 'a flat' : 'a sharp'}`
                     : filter.label);
                 button.addEventListener('click', () => this.toggleScaleFilter(filter.group, filter.id));
                 host.appendChild(button);

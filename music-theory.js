@@ -480,18 +480,12 @@
                     interval,
                     name: spellScaleTone(parsed.letter, rootPc, interval, degree)
                 }));
-                const accidentals = [];
-                notes.forEach((note) => {
-                    if (note.name.includes('#') && !accidentals.includes('#')) accidentals.push('#');
-                    if (note.name.includes('b') && !accidentals.includes('b')) accidentals.push('b');
-                });
                 scales.push({
                     id: `${type.id}:${name}`,
                     type: type.id,
                     title: `${parsed.root} ${type.title}`,
                     root: parsed.root,
                     rootPc,
-                    accidentals,
                     notes
                 });
             });
@@ -504,8 +498,9 @@
         const accidentals = (active && active.accidentals) || [];
         return (scales || []).filter((scale) => {
             if (!types.includes(scale.type)) return false;
-            const marks = scale.accidentals || [];
-            if (marks.some((mark) => !accidentals.includes(mark))) return false;
+            const root = String(scale.root || '');
+            const mark = root.includes('#') ? '#' : root.includes('b') ? 'b' : '';
+            if (mark && !accidentals.includes(mark)) return false;
             return true;
         });
     }
