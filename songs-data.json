@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T12:46:04.740Z",
+  "updatedAt": "2026-11-18T13:48:13.356Z",
   "songs": [
     {
       "title": "خیال",
@@ -39357,6 +39357,819 @@
       "chordColors": {},
       "createdAt": "2026-11-18T12:07:43.256Z",
       "favorite": true
+    },
+    {
+      "title": "پرنده مهاجر",
+      "artist": "سیاوش قمیشی",
+      "lyrics": "ای پرنده مهاجر سفرت سلامت اما\nبه کجامیری عزیزم قفسه تموم دنیا\nروی شاخه های دوری چه خوشی داره صبوری\nوقتی خورشیدی نباشه تا همیشه سوت و کوری\nمیگذره روزای عمرت توی جاده های خلوت\nتا بخوای بر گردی خونه گم میشی تو باغ غربت\nواسه ما فرقی نداره هر جا باشیم شب نشینیم\nدلخوشیم به این که شاید سحرو یه روز ببینیم\nآخرش یه روزی هجرت\nدر خونتو میکوبه\nتازه اون لحظه میفهمی\nهمه آسمون غروبه\nآخرش یه روزی هجرت\nدر خونتو میکوبه\nتازه اون لحظه میفهمی\nهمه آسمون غروبه\nمیگذره روزای عمرت توی جاده های خلوت\nتا بخوای بر گردی خونه گم میشی تو باغ غربت\nواسه ما فرقی نداره هر جا باشیم شب نشینیم\nدلخوشیم به این که شاید سحرو یه روز ببینیم\nآخرش یه روزی هجرت\nدر خونتو میکوبه\nتازه اون لحظه میفهمی\nهمه آسمون غروبه\nآخرش یه روزی هجرت\nدر خونتو میکوبه\nتازه اون لحظه میفهمی\nهمه آسمون غروبه\nارسالکننده :",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "Dm    C    Bb        C         Dm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 6
+              },
+              {
+                "name": "Bb",
+                "col": 11
+              },
+              {
+                "name": "C",
+                "col": 21
+              },
+              {
+                "name": "Dm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C                                    Dm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای پرنده مهاجر سفرت سلامت اما",
+            "source": "ای پرنده مهاجر سفرت سلامت اما"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm     C         Bb                 C",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 7
+              },
+              {
+                "name": "Bb",
+                "col": 17
+              },
+              {
+                "name": "C",
+                "col": 36
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به کجامیری عزیزم قفسه تموم دنیا",
+            "source": "به کجامیری عزیزم قفسه تموم دنیا"
+          },
+          {
+            "kind": "chords",
+            "source": "C                                                Dm",
+            "placements": [
+              {
+                "name": "C",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 49
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روی شاخه های دوری چه خوشی داره صبوری",
+            "source": "روی شاخه های دوری چه خوشی داره صبوری"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm            C           Bb                      C",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 14
+              },
+              {
+                "name": "Bb",
+                "col": 26
+              },
+              {
+                "name": "C",
+                "col": 50
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "وقتی خورشیدی نباشه تا همیشه سوت و کوری",
+            "source": "وقتی خورشیدی نباشه تا همیشه سوت و کوری"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                                           Dm",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میگذره روزای عمرت توی جاده های خلوت",
+            "source": "میگذره روزای عمرت توی جاده های خلوت"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm       C                Gm                    Am",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 26
+              },
+              {
+                "name": "Am",
+                "col": 48
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا بخوای بر گردی خونه گم میشی تو باغ غربت",
+            "source": "تا بخوای بر گردی خونه گم میشی تو باغ غربت"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                                               Dm",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 49
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه ما فرقی نداره هر جا باشیم شب نشینیم",
+            "source": "واسه ما فرقی نداره هر جا باشیم شب نشینیم"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm       C           Gm                       Am",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 21
+              },
+              {
+                "name": "Am",
+                "col": 46
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلخوشیم به این که شاید سحرو یه روز ببینیم",
+            "source": "دلخوشیم به این که شاید سحرو یه روز ببینیم"
+          },
+          {
+            "kind": "chords",
+            "source": "        Dm           Gm        ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 8
+              },
+              {
+                "name": "Gm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخرش یه روزی هجرت",
+            "source": "آخرش یه روزی هجرت"
+          },
+          {
+            "kind": "chords",
+            "source": "     Dm       Gm     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در خونتو میکوبه",
+            "source": "در خونتو میکوبه"
+          },
+          {
+            "kind": "chords",
+            "source": "          Bb            C          ",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 10
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تازه اون لحظه میفهمی",
+            "source": "تازه اون لحظه میفهمی"
+          },
+          {
+            "kind": "chords",
+            "source": "        Dm         C        ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 8
+              },
+              {
+                "name": "C",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه آسمون غروبه",
+            "source": "همه آسمون غروبه"
+          },
+          {
+            "kind": "chords",
+            "source": "       Dm           Gm        ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 7
+              },
+              {
+                "name": "Gm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخرش یه روزی هجرت",
+            "source": "آخرش یه روزی هجرت"
+          },
+          {
+            "kind": "chords",
+            "source": "     Dm       Gm     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در خونتو میکوبه",
+            "source": "در خونتو میکوبه"
+          },
+          {
+            "kind": "chords",
+            "source": "          Bb            C          ",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 10
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تازه اون لحظه میفهمی",
+            "source": "تازه اون لحظه میفهمی"
+          },
+          {
+            "kind": "chords",
+            "source": "        Dm         C        ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 8
+              },
+              {
+                "name": "C",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه آسمون غروبه",
+            "source": "همه آسمون غروبه"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm       Gm       Dm           Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              },
+              {
+                "name": "Gm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm         C         Bb              C",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 21
+              },
+              {
+                "name": "C",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm       Gm       Dm           Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              },
+              {
+                "name": "Gm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm         C         Bb              C",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 21
+              },
+              {
+                "name": "C",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am                                           Dm",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 45
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میگذره روزای عمرت توی جاده های خلوت",
+            "source": "میگذره روزای عمرت توی جاده های خلوت"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm      C                Gm                    Am",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 8
+              },
+              {
+                "name": "Gm",
+                "col": 25
+              },
+              {
+                "name": "Am",
+                "col": 47
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تا بخوای بر گردی خونه گم میشی تو باغ غربت",
+            "source": "تا بخوای بر گردی خونه گم میشی تو باغ غربت"
+          },
+          {
+            "kind": "chords",
+            "source": "Am                                               Dm",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 49
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "واسه ما فرقی نداره هر جا باشیم شب نشینیم",
+            "source": "واسه ما فرقی نداره هر جا باشیم شب نشینیم"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm      C              Gm                       Am",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 8
+              },
+              {
+                "name": "Gm",
+                "col": 23
+              },
+              {
+                "name": "Am",
+                "col": 48
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلخوشیم به این که شاید سحرو یه روز ببینیم",
+            "source": "دلخوشیم به این که شاید سحرو یه روز ببینیم"
+          },
+          {
+            "kind": "chords",
+            "source": "        Dm           Gm        ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 8
+              },
+              {
+                "name": "Gm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخرش یه روزی هجرت",
+            "source": "آخرش یه روزی هجرت"
+          },
+          {
+            "kind": "chords",
+            "source": "     Dm       Gm     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در خونتو میکوبه",
+            "source": "در خونتو میکوبه"
+          },
+          {
+            "kind": "chords",
+            "source": "          Bb            C          ",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 10
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تازه اون لحظه میفهمی",
+            "source": "تازه اون لحظه میفهمی"
+          },
+          {
+            "kind": "chords",
+            "source": "        Dm         C        ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 8
+              },
+              {
+                "name": "C",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه آسمون غروبه",
+            "source": "همه آسمون غروبه"
+          },
+          {
+            "kind": "chords",
+            "source": "        Dm           Gm        ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 8
+              },
+              {
+                "name": "Gm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخرش یه روزی هجرت",
+            "source": "آخرش یه روزی هجرت"
+          },
+          {
+            "kind": "chords",
+            "source": "     Dm       Gm     ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 5
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در خونتو میکوبه",
+            "source": "در خونتو میکوبه"
+          },
+          {
+            "kind": "chords",
+            "source": "          Bb            C          ",
+            "placements": [
+              {
+                "name": "Bb",
+                "col": 10
+              },
+              {
+                "name": "C",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تازه اون لحظه میفهمی",
+            "source": "تازه اون لحظه میفهمی"
+          },
+          {
+            "kind": "chords",
+            "source": "        Dm         C        ",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 8
+              },
+              {
+                "name": "C",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همه آسمون غروبه",
+            "source": "همه آسمون غروبه"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm       Gm       Dm           Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              },
+              {
+                "name": "Gm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm         C         Bb              C",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 21
+              },
+              {
+                "name": "C",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm       Gm       Dm           Gm",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 18
+              },
+              {
+                "name": "Gm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm         C         Bb              C",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              },
+              {
+                "name": "Bb",
+                "col": 21
+              },
+              {
+                "name": "C",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ارسالکننده :",
+            "source": "ارسالکننده :"
+          }
+        ],
+        "chordCount": 105,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-18T13:48:12.062Z"
     }
   ],
   "chordColors": {
