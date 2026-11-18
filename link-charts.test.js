@@ -144,6 +144,52 @@ const named = LinkCharts.parseSheetSource('<html><head><title>آکورد گیت�
 eq(named.title, 'چراغ آبی', 'persian page title');
 eq(named.artist, 'شیفت شب', 'persian page artist');
 
+const laminorPage = `خانه
+آکورد آهنگ نامه آبی
+شبگرد
+تایید لامینور
+تغییر گام
+Ab
+A
+A#
+Bb
+B
+C
+C#
+Db
+D
+D#
+Eb
+E
+F
+F#
+Gb
+G
+G#
+ذخیره گام
+Em   G    F   Am
+Am         E                Am
+سلام بر تو ای دوست
+         Am                    Dm
+شب  آرام است اینجا
+ارسال کننده
+مسعود
+دیگر ترانه ها
+`;
+const fromLaminor = LinkCharts.parseSheetSource(laminorPage);
+eq(fromLaminor.title, 'نامه آبی', 'laminor heading title');
+eq(fromLaminor.artist, 'شبگرد', 'laminor heading artist');
+eq(fromLaminor.lines.filter((line) => line.kind === 'chords').map((line) => line.placements.map((chord) => chord.name)), [
+    ['Em', 'G', 'F', 'Am'],
+    ['Am', 'E', 'Am'],
+    ['Am', 'Dm']
+], 'laminor chart skips the key list');
+eq(fromLaminor.lines.filter((line) => line.kind === 'lyric').map((line) => line.text), [
+    'سلام بر تو ای دوست',
+    'شب آرام است اینجا'
+], 'laminor chart skips the page footer');
+check(fromLaminor.lines[1].source.endsWith('Am'), 'laminor chord spacing stays put');
+
 if (failed) {
     console.error(`${failed} failed`);
     process.exit(1);

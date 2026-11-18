@@ -6449,26 +6449,45 @@ class ChordAnnotatorApp {
 
     async readLinkSources(url) {
         const sources = [];
-        const direct = await this.fetchLinkText(url.href, 12000, {
+        const take = async (href, timeoutMs, headers) => {
+            const text = await this.fetchLinkText(href, timeoutMs, headers);
+            if (text) sources.push(text);
+            const sheet = LinkCharts.parseSheetSource(sources);
+            return { text, found: !!(sheet && sheet.chordCount) };
+        };
+        const direct = await take(url.href, 12000, {
             Accept: 'text/html, text/plain;q=0.9, */*;q=0.8'
         });
-        if (direct) sources.push(direct);
-        const directSheet = LinkCharts.parseSheetSource(sources);
-        if (!directSheet || !directSheet.chordCount) {
+        if (!direct.found) {
             const reader = `https://r.jina.ai/${url.href}`;
-            const html = await this.fetchLinkText(reader, 28000, {
+            // The plain reader fails on some hosts (laminor answers HTTP/3 in a way
+            // that reader rejects). An empty result skips straight to the browser
+            // engine; a page with no chords still tries the markdown reader first.
+            const html = await take(reader, 20000, {
                 Accept: 'text/html',
                 'X-Return-Format': 'html',
                 'X-No-Cache': 'true'
             });
-            if (html) sources.push(html);
-            const htmlSheet = LinkCharts.parseSheetSource(sources);
-            if (!htmlSheet || !htmlSheet.chordCount) {
-                const markdown = await this.fetchLinkText(reader, 28000, {
+            if (!html.found && html.text) {
+                await take(reader, 20000, {
                     Accept: 'text/plain',
                     'X-Return-Format': 'markdown'
                 });
-                if (markdown) sources.push(markdown);
+            }
+            const sheet = LinkCharts.parseSheetSource(sources);
+            if (!sheet || !sheet.chordCount) {
+                const browser = await take(reader, 28000, {
+                    Accept: 'text/plain',
+                    'X-Return-Format': 'text',
+                    'X-Engine': 'browser'
+                });
+                if (!browser.found) {
+                    await take(reader, 28000, {
+                        Accept: 'text/plain',
+                        'X-Return-Format': 'markdown',
+                        'X-Engine': 'browser'
+                    });
+                }
             }
         }
         if (!sources.length) {
