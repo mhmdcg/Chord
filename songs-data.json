@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T12:45:32.742Z",
+  "updatedAt": "2026-11-18T12:46:02.308Z",
   "songs": [
     {
       "title": "خیال",
@@ -28901,7 +28901,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-06T20:57:04.295Z"
+      "createdAt": "2026-11-06T20:57:04.295Z",
+      "favorite": true
     },
     {
       "title": "ستاره میشی",
