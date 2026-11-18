@@ -73,6 +73,8 @@ class ChordAnnotatorApp {
             major: MusicTheory.PREFERRED_MAJOR.slice(),
             minor: MusicTheory.PREFERRED_MINOR.slice()
         };
+        this.scales = MusicTheory.scaleCatalog();
+        this.scaleIndex = 0;
 
         this.github = {
             owner: 'mhmdcg',
@@ -115,6 +117,10 @@ class ChordAnnotatorApp {
             this.renderSongList();
         });
         document.getElementById('allChordsBtn').addEventListener('click', () => this.showView('allChords'));
+        document.getElementById('scalesBtn').addEventListener('click', () => this.showView('scales'));
+        document.getElementById('backFromScalesBtn').addEventListener('click', () => this.showView('songList'));
+        document.getElementById('scalePrevBtn').addEventListener('click', () => this.stepScale(-1));
+        document.getElementById('scaleNextBtn').addEventListener('click', () => this.stepScale(1));
         document.getElementById('liveModeBtn').addEventListener('click', () => this.showView('live'));
         document.getElementById('scanChordsBtn').addEventListener('click', () => this.showView('scan'));
         document.getElementById('backFromScanBtn').addEventListener('click', () => this.showView('songList'));
@@ -325,6 +331,14 @@ class ChordAnnotatorApp {
     }
 
     handleKeydown(e) {
+        if (this.currentView === 'scales' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+            const tag = e.target && e.target.tagName;
+            if (tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+                e.preventDefault();
+                this.stepScale(e.key === 'ArrowRight' ? 1 : -1);
+                return;
+            }
+        }
         if (e.key === 'Escape' && this.livePianoOpen) {
             e.preventDefault();
             this.closeLivePiano();
@@ -351,6 +365,7 @@ class ChordAnnotatorApp {
 
     showView(viewName) {
         if (this.liveMode && viewName !== 'live') this.exitLiveMode();
+        if (viewName !== 'scales') this.disconnectScalePiano();
         document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
 
         if (viewName === 'songList') {
@@ -361,6 +376,10 @@ class ChordAnnotatorApp {
             this.closeChordModal();
             document.getElementById('allChordsView').classList.add('active');
             this.renderAllChords();
+        } else if (viewName === 'scales') {
+            this.closeChordModal();
+            document.getElementById('scalesView').classList.add('active');
+            this.renderScaleCard();
         } else if (viewName === 'live') {
             this.enterLiveMode();
             return;
@@ -706,8 +725,7 @@ class ChordAnnotatorApp {
         return button;
     }
 
-    layoutLivePianoKeys() {
-        const board = document.getElementById('livePianoBoard');
+    layoutPianoKeys(board) {
         const whites = board?.querySelector('.piano-whites');
         if (!board || !whites) return;
         board.querySelectorAll('.piano-black').forEach((black) => {
@@ -718,6 +736,64 @@ class ChordAnnotatorApp {
             black.style.width = `${width}px`;
             black.style.left = `${white.offsetLeft + white.offsetWidth - width / 2}px`;
         });
+    }
+
+    layoutLivePianoKeys() {
+        this.layoutPianoKeys(document.getElementById('livePianoBoard'));
+    }
+
+    disconnectScalePiano() {
+        if (!this.scalePianoResize) return;
+        this.scalePianoResize.disconnect();
+        this.scalePianoResize = null;
+    }
+
+    stepScale(delta) {
+        const scales = this.scales || [];
+        if (!scales.length || !delta) return;
+        const count = scales.length;
+        this.scaleIndex = ((this.scaleIndex || 0) + delta + count) % count;
+        this.renderScaleCard();
+    }
+
+    renderScaleCard() {
+        const scales = this.scales || [];
+        const title = document.getElementById('scaleTitle');
+        const count = document.getElementById('scaleCount');
+        const notes = document.getElementById('scaleNotes');
+        const board = document.getElementById('scalePiano');
+        if (!title || !count || !notes || !board || !scales.length) return;
+        if (!Number.isInteger(this.scaleIndex) || this.scaleIndex < 0 || this.scaleIndex >= scales.length) {
+            this.scaleIndex = 0;
+        }
+        const scale = scales[this.scaleIndex];
+        title.textContent = scale.title;
+        count.textContent = `${this.scaleIndex + 1} / ${scales.length}`;
+        notes.textContent = scale.notes.map((note) => note.name).join('  ');
+        const spelled = MusicTheory.scaleKeyboardNotes(scale, 60, 84);
+        const active = new Map(spelled.map((note) => [note.midi, note.name]));
+        const start = 60;
+        const end = 84;
+        board.replaceChildren();
+        const whites = document.createElement('div');
+        whites.className = 'piano-whites';
+        let whiteCount = 0;
+        for (let midi = start; midi <= end; midi += 1) {
+            if ([1, 3, 6, 8, 10].includes(midi % 12)) continue;
+            whiteCount += 1;
+            whites.appendChild(this.pianoKeyButton('piano-white', midi, active.get(midi) || ''));
+        }
+        whites.style.setProperty('--white-count', String(whiteCount));
+        board.appendChild(whites);
+        for (let midi = start; midi <= end; midi += 1) {
+            if (![1, 3, 6, 8, 10].includes(midi % 12)) continue;
+            board.appendChild(this.pianoKeyButton('piano-black', midi, active.get(midi) || ''));
+        }
+        board.setAttribute('aria-label', `${scale.title} on piano keys`);
+        this.disconnectScalePiano();
+        this.scalePianoResize = new ResizeObserver(() => this.layoutPianoKeys(board));
+        this.scalePianoResize.observe(board);
+        requestAnimationFrame(() => this.layoutPianoKeys(board));
     }
 
     playPianoMidi(midi) {

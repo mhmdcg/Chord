@@ -106,4 +106,19 @@ eq(theory.exportImageFilename('خیال', 'عرفان طهماسبی', 'Ebm'), '
 eq(theory.exportImageFilename('Hotel California', 'Eagles', 'Bm'), 'HotelCalifornia_Eagles_Bm.jpg');
 eq(theory.exportImageFilename('خیال', '', ''), 'Khial.jpg');
 
+const scales = theory.scaleCatalog();
+eq(scales.length, 144, 'twelve keys of twelve scales');
+function scaleNames(title) {
+    return scales.find((scale) => scale.title === title).notes.map((note) => note.name).join(' ');
+}
+eq(scaleNames('C major'), 'C D E F G A B', 'C major');
+eq(scaleNames('F# major'), 'F# G# A# B C# D# E#', 'F# major');
+eq(scaleNames('Bb minor'), 'Bb C Db Eb F Gb Ab', 'Bb natural minor');
+eq(scaleNames('C harmonic minor'), 'C D Eb F G Ab B', 'C harmonic minor');
+eq(scaleNames('C melodic minor'), 'C D Eb F G A B', 'C melodic minor');
+eq(scaleNames('C blues'), 'C Eb F Gb G Bb', 'C blues');
+eq(scaleNames('Db dorian'), 'Db Eb Fb Gb Ab Bb Cb', 'Db dorian');
+const cMajorKeys = theory.scaleKeyboardNotes(scales[0], 60, 72).map((note) => note.name);
+deepEq(cMajorKeys, ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'], 'C major across one octave');
+
 console.log('All transposition spelling tests passed.');

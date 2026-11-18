@@ -425,6 +425,70 @@
         return romanized.join('').replace(/[^A-Za-z0-9]/g, '');
     }
 
+    const SCALE_TYPES = [
+        { id: 'major', title: 'major', degrees: [[0, 0], [2, 1], [4, 2], [5, 3], [7, 4], [9, 5], [11, 6]] },
+        { id: 'minor', title: 'minor', minor: true, degrees: [[0, 0], [2, 1], [3, 2], [5, 3], [7, 4], [8, 5], [10, 6]] },
+        { id: 'harmonic-minor', title: 'harmonic minor', minor: true, degrees: [[0, 0], [2, 1], [3, 2], [5, 3], [7, 4], [8, 5], [11, 6]] },
+        { id: 'melodic-minor', title: 'melodic minor', minor: true, degrees: [[0, 0], [2, 1], [3, 2], [5, 3], [7, 4], [9, 5], [11, 6]] },
+        { id: 'dorian', title: 'dorian', degrees: [[0, 0], [2, 1], [3, 2], [5, 3], [7, 4], [9, 5], [10, 6]] },
+        { id: 'phrygian', title: 'phrygian', degrees: [[0, 0], [1, 1], [3, 2], [5, 3], [7, 4], [8, 5], [10, 6]] },
+        { id: 'lydian', title: 'lydian', degrees: [[0, 0], [2, 1], [4, 2], [6, 3], [7, 4], [9, 5], [11, 6]] },
+        { id: 'mixolydian', title: 'mixolydian', degrees: [[0, 0], [2, 1], [4, 2], [5, 3], [7, 4], [9, 5], [10, 6]] },
+        { id: 'locrian', title: 'locrian', degrees: [[0, 0], [1, 1], [3, 2], [5, 3], [6, 4], [8, 5], [10, 6]] },
+        { id: 'major-pentatonic', title: 'major pentatonic', degrees: [[0, 0], [2, 1], [4, 2], [7, 4], [9, 5]] },
+        { id: 'minor-pentatonic', title: 'minor pentatonic', minor: true, degrees: [[0, 0], [3, 2], [5, 3], [7, 4], [10, 6]] },
+        { id: 'blues', title: 'blues', minor: true, degrees: [[0, 0], [3, 2], [5, 3], [6, 4], [7, 4], [10, 6]] }
+    ];
+
+    function spellScaleTone(letter, rootPc, interval, degree) {
+        const letters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+        const letterIndex = letters.indexOf(letter);
+        const toneLetter = letters[(letterIndex + degree) % 7];
+        const naturalPc = NOTE_INDEX[toneLetter];
+        let accidental = wrapPc(rootPc + interval) - naturalPc;
+        if (accidental > 6) accidental -= 12;
+        if (accidental < -6) accidental += 12;
+        const mark = accidental === 1 ? '#' : accidental === 2 ? '##' : accidental === -1 ? 'b' : accidental === -2 ? 'bb' : '';
+        return `${toneLetter}${mark}`;
+    }
+
+    function scaleCatalog() {
+        const scales = [];
+        SCALE_TYPES.forEach((type) => {
+            const roots = type.minor ? PREFERRED_MINOR : PREFERRED_MAJOR;
+            roots.forEach((name) => {
+                const parsed = parseChordRoot(name);
+                const rootPc = noteIndex(parsed.root);
+                const notes = type.degrees.map(([interval, degree]) => ({
+                    interval,
+                    name: spellScaleTone(parsed.letter, rootPc, interval, degree)
+                }));
+                scales.push({
+                    id: `${type.id}:${name}`,
+                    title: `${parsed.root} ${type.title}`,
+                    root: parsed.root,
+                    rootPc,
+                    notes
+                });
+            });
+        });
+        return scales;
+    }
+
+    function scaleKeyboardNotes(scale, startMidi, endMidi) {
+        if (!scale) return [];
+        const byPc = new Map();
+        scale.notes.forEach((note) => {
+            byPc.set(wrapPc(scale.rootPc + note.interval), note.name);
+        });
+        const notes = [];
+        for (let midi = startMidi; midi <= endMidi; midi += 1) {
+            const name = byPc.get(wrapPc(midi));
+            if (name) notes.push({ midi, name });
+        }
+        return notes;
+    }
+
     function exportImageFilename(title, artist, scale) {
         const titlePart = filenameToken(title) || 'Song';
         const artistPart = filenameToken(artist);
@@ -450,6 +514,8 @@
         toggleScaleQuality,
         chordMidiNotes,
         chordSpelledNotes,
+        scaleCatalog,
+        scaleKeyboardNotes,
         formatChordDisplay,
         romanizeToLatin,
         filenameToken,
