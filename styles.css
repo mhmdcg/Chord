@@ -1010,7 +1010,7 @@ body:has(#liveView.active) {
 }
 
 .chord-test-popup {
-    z-index: 320;
+    z-index: 400;
 }
 
 .chord-test-card {

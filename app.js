@@ -80,6 +80,7 @@ class ChordAnnotatorApp {
         this.chordTestSeconds = 3;
         this.chordTestTimer = 0;
         this.chordTestCurrent = '';
+        this.chordTestIgnoreCloseUntil = 0;
         this.liveScalePianoOpen = false;
         this.liveScalePianoOctaves = 1;
         this.liveScaleHighlight = -1;
@@ -178,10 +179,19 @@ class ChordAnnotatorApp {
         document.getElementById('livePianoBtn').addEventListener('click', () => this.openLivePiano());
         this.bindLiveScalePicker();
         document.getElementById('closeLivePianoBtn').addEventListener('click', () => this.closeLivePiano());
-        document.getElementById('chordTestBtn').addEventListener('click', () => this.startChordTest());
-        document.getElementById('closeChordTestBtn').addEventListener('click', () => this.stopChordTest());
+        document.getElementById('chordTestBtn').addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            this.startChordTest();
+        });
+        document.getElementById('closeChordTestBtn').addEventListener('click', (event) => {
+            event.stopPropagation();
+            this.stopChordTest();
+        });
         document.getElementById('chordTestPopup').addEventListener('click', (event) => {
-            if (event.target.id === 'chordTestPopup') this.stopChordTest();
+            if (event.target.id !== 'chordTestPopup') return;
+            if (performance.now() < this.chordTestIgnoreCloseUntil) return;
+            this.stopChordTest();
         });
         document.getElementById('chordTestSpeed').addEventListener('input', (event) => {
             const seconds = Number(event.target.value);
@@ -734,6 +744,7 @@ class ChordAnnotatorApp {
         if (!names.length) return;
         this.chordTestOpen = true;
         this.chordTestCurrent = '';
+        this.chordTestIgnoreCloseUntil = performance.now() + 700;
         const popup = document.getElementById('chordTestPopup');
         if (popup) popup.hidden = false;
         this.updateChordTestSpeedLabel();
