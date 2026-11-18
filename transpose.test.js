@@ -122,11 +122,13 @@ const cMajorKeys = theory.scaleKeyboardNotes(scales[0], 60, 72).map((note) => no
 deepEq(cMajorKeys, ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'], 'C major across one octave');
 
 const sharpMajors = theory.filterScales(scales, { types: ['major'], accidentals: ['#'] }).map((scale) => scale.root);
-deepEq(sharpMajors, ['D', 'E', 'F#', 'G', 'A', 'B'], 'sharp major scales');
+deepEq(sharpMajors, ['C', 'D', 'E', 'F#', 'G', 'A', 'B'], 'sharp button hides flat majors and keeps C');
 const flatMajors = theory.filterScales(scales, { types: ['major'], accidentals: ['b'] }).map((scale) => scale.root);
-deepEq(flatMajors, ['Db', 'Eb', 'F', 'Ab', 'Bb'], 'flat major scales');
-eq(theory.filterScales(scales, { types: ['harmonic-minor', 'melodic-minor'] }).length, 24, 'harmonic and melodic together');
-eq(theory.filterScales(scales, { types: ['major'], accidentals: ['b', '#'] }).some((scale) => scale.root === 'C'), false, 'C major has no accidental');
+deepEq(flatMajors, ['C', 'Db', 'Eb', 'F', 'Ab', 'Bb'], 'flat button hides sharp majors and keeps C');
+eq(theory.filterScales(scales, { types: ['harmonic-minor', 'melodic-minor'], accidentals: ['b', '#'] }).length, 24, 'harmonic and melodic together');
+eq(theory.filterScales(scales, { types: ['major'], accidentals: [] }).map((scale) => scale.root).join(' '), 'C', 'no accidental buttons leaves C major');
+eq(theory.filterScales(scales, { types: ['minor'], accidentals: [] }).some((scale) => scale.root === 'G#'), false, 'G# minor stays hidden while sharp is off');
+eq(theory.filterScales(scales, { types: ['minor'], accidentals: [] }).map((scale) => scale.title).join(' '), 'A minor', 'A minor has no sharps or flats');
 eq(theory.filterScales(scales, { types: [], accidentals: ['#'] }).length, 0, 'a sharp filter does not add scale types that are off');
 eq(theory.filterScales(scales, { types: ['major'], accidentals: ['#'] }).some((scale) => scale.title.includes('pentatonic')), false, 'pentatonic stays out while its button is off');
 eq(theory.scaleFilterButtons().map((filter) => filter.label).slice(0, 6).join(','), 'b,#,Minor,Major,Harmonic,Melodic', 'filter button order');

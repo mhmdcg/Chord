@@ -504,7 +504,8 @@
         const accidentals = (active && active.accidentals) || [];
         return (scales || []).filter((scale) => {
             if (!types.includes(scale.type)) return false;
-            if (accidentals.length && !accidentals.some((mark) => (scale.accidentals || []).includes(mark))) return false;
+            const marks = scale.accidentals || [];
+            if (marks.some((mark) => !accidentals.includes(mark))) return false;
             return true;
         });
     }
