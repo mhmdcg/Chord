@@ -121,4 +121,12 @@ eq(scaleNames('Db dorian'), 'Db Eb Fb Gb Ab Bb Cb', 'Db dorian');
 const cMajorKeys = theory.scaleKeyboardNotes(scales[0], 60, 72).map((note) => note.name);
 deepEq(cMajorKeys, ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'], 'C major across one octave');
 
+const sharpMajors = theory.filterScales(scales, { types: ['major'], accidentals: ['#'] }).map((scale) => scale.root);
+deepEq(sharpMajors, ['D', 'E', 'F#', 'G', 'A', 'B'], 'sharp major scales');
+const flatMajors = theory.filterScales(scales, { types: ['major'], accidentals: ['b'] }).map((scale) => scale.root);
+deepEq(flatMajors, ['Db', 'Eb', 'F', 'Ab', 'Bb'], 'flat major scales');
+eq(theory.filterScales(scales, { types: ['harmonic-minor', 'melodic-minor'] }).length, 24, 'harmonic and melodic together');
+eq(theory.filterScales(scales, { types: ['major'], accidentals: ['b', '#'] }).some((scale) => scale.root === 'C'), false, 'C major has no accidental');
+eq(theory.scaleFilterButtons().map((filter) => filter.label).slice(0, 6).join(','), 'b,#,Minor,Major,Harmonic,Melodic', 'filter button order');
+
 console.log('All transposition spelling tests passed.');

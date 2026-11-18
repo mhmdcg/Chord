@@ -75,6 +75,7 @@ class ChordAnnotatorApp {
         };
         this.scales = MusicTheory.scaleCatalog();
         this.scaleIndex = 0;
+        this.scaleFilters = { types: [], accidentals: [] };
 
         this.github = {
             owner: 'mhmdcg',
@@ -748,27 +749,95 @@ class ChordAnnotatorApp {
         this.scalePianoResize = null;
     }
 
+    visibleScales() {
+        return MusicTheory.filterScales(this.scales || [], this.scaleFilters);
+    }
+
+    toggleScaleFilter(group, id) {
+        const key = group === 'type' ? 'types' : 'accidentals';
+        const list = this.scaleFilters[key];
+        const index = list.indexOf(id);
+        if (index >= 0) list.splice(index, 1);
+        else list.push(id);
+        const visible = this.visibleScales();
+        const current = this.scales[this.scaleIndex];
+        if (!visible.some((scale) => scale.id === current?.id)) {
+            this.scaleIndex = visible.length ? this.scales.findIndex((scale) => scale.id === visible[0].id) : 0;
+        }
+        this.renderScaleCard();
+    }
+
+    renderScaleFilters() {
+        const host = document.getElementById('scaleFilters');
+        if (!host) return;
+        if (!host.childElementCount) {
+            MusicTheory.scaleFilterButtons().forEach((filter) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'scale-filter';
+                button.dataset.group = filter.group;
+                button.dataset.id = filter.id;
+                button.textContent = filter.label;
+                button.setAttribute('aria-label', filter.group === 'accidental'
+                    ? `Scales with ${filter.id === 'b' ? 'flats' : 'sharps'}`
+                    : filter.label);
+                button.addEventListener('click', () => this.toggleScaleFilter(filter.group, filter.id));
+                host.appendChild(button);
+            });
+        }
+        const types = new Set(this.scaleFilters.types);
+        const accidentals = new Set(this.scaleFilters.accidentals);
+        host.querySelectorAll('.scale-filter').forEach((button) => {
+            const on = button.dataset.group === 'type'
+                ? types.has(button.dataset.id)
+                : accidentals.has(button.dataset.id);
+            button.classList.toggle('is-on', on);
+            button.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+    }
+
     stepScale(delta) {
-        const scales = this.scales || [];
-        if (!scales.length || !delta) return;
-        const count = scales.length;
-        this.scaleIndex = ((this.scaleIndex || 0) + delta + count) % count;
+        const visible = this.visibleScales();
+        if (!visible.length || !delta) return;
+        const current = this.scales[this.scaleIndex];
+        let pos = visible.findIndex((scale) => scale.id === current?.id);
+        if (pos < 0) pos = 0;
+        else pos = (pos + delta + visible.length) % visible.length;
+        this.scaleIndex = this.scales.findIndex((scale) => scale.id === visible[pos].id);
         this.renderScaleCard();
     }
 
     renderScaleCard() {
+        this.renderScaleFilters();
         const scales = this.scales || [];
+        const visible = this.visibleScales();
         const title = document.getElementById('scaleTitle');
         const count = document.getElementById('scaleCount');
         const notes = document.getElementById('scaleNotes');
         const board = document.getElementById('scalePiano');
+        const empty = document.getElementById('scaleEmpty');
         if (!title || !count || !notes || !board || !scales.length) return;
+        if (!visible.length) {
+            title.textContent = '';
+            count.textContent = '0 / 0';
+            notes.textContent = '';
+            board.replaceChildren();
+            if (empty) empty.hidden = false;
+            this.disconnectScalePiano();
+            return;
+        }
+        if (empty) empty.hidden = true;
         if (!Number.isInteger(this.scaleIndex) || this.scaleIndex < 0 || this.scaleIndex >= scales.length) {
             this.scaleIndex = 0;
         }
-        const scale = scales[this.scaleIndex];
+        let scale = scales[this.scaleIndex];
+        if (!visible.some((item) => item.id === scale.id)) {
+            scale = visible[0];
+            this.scaleIndex = scales.findIndex((item) => item.id === scale.id);
+        }
+        const position = visible.findIndex((item) => item.id === scale.id);
         title.textContent = scale.title;
-        count.textContent = `${this.scaleIndex + 1} / ${scales.length}`;
+        count.textContent = `${position + 1} / ${visible.length}`;
         notes.textContent = scale.notes.map((note) => note.name).join('  ');
         const spelled = MusicTheory.scaleKeyboardNotes(scale, 60, 84);
         const active = new Map(spelled.map((note) => [note.midi, note.name]));

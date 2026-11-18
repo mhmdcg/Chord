@@ -440,6 +440,23 @@
         { id: 'blues', title: 'blues', minor: true, degrees: [[0, 0], [3, 2], [5, 3], [6, 4], [7, 4], [10, 6]] }
     ];
 
+    const SCALE_FILTERS = [
+        { group: 'accidental', id: 'b', label: 'b' },
+        { group: 'accidental', id: '#', label: '#' },
+        { group: 'type', id: 'minor', label: 'Minor' },
+        { group: 'type', id: 'major', label: 'Major' },
+        { group: 'type', id: 'harmonic-minor', label: 'Harmonic' },
+        { group: 'type', id: 'melodic-minor', label: 'Melodic' },
+        { group: 'type', id: 'dorian', label: 'Dorian' },
+        { group: 'type', id: 'phrygian', label: 'Phrygian' },
+        { group: 'type', id: 'lydian', label: 'Lydian' },
+        { group: 'type', id: 'mixolydian', label: 'Mixolydian' },
+        { group: 'type', id: 'locrian', label: 'Locrian' },
+        { group: 'type', id: 'major-pentatonic', label: 'Pentatonic' },
+        { group: 'type', id: 'minor-pentatonic', label: 'Minor pent.' },
+        { group: 'type', id: 'blues', label: 'Blues' }
+    ];
+
     function spellScaleTone(letter, rootPc, interval, degree) {
         const letters = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
         const letterIndex = letters.indexOf(letter);
@@ -463,16 +480,33 @@
                     interval,
                     name: spellScaleTone(parsed.letter, rootPc, interval, degree)
                 }));
+                const accidentals = [];
+                notes.forEach((note) => {
+                    if (note.name.includes('#') && !accidentals.includes('#')) accidentals.push('#');
+                    if (note.name.includes('b') && !accidentals.includes('b')) accidentals.push('b');
+                });
                 scales.push({
                     id: `${type.id}:${name}`,
+                    type: type.id,
                     title: `${parsed.root} ${type.title}`,
                     root: parsed.root,
                     rootPc,
+                    accidentals,
                     notes
                 });
             });
         });
         return scales;
+    }
+
+    function filterScales(scales, active) {
+        const types = (active && active.types) || [];
+        const accidentals = (active && active.accidentals) || [];
+        return (scales || []).filter((scale) => {
+            if (types.length && !types.includes(scale.type)) return false;
+            if (accidentals.length && !accidentals.some((mark) => (scale.accidentals || []).includes(mark))) return false;
+            return true;
+        });
     }
 
     function scaleKeyboardNotes(scale, startMidi, endMidi) {
@@ -515,6 +549,8 @@
         chordMidiNotes,
         chordSpelledNotes,
         scaleCatalog,
+        scaleFilterButtons: function scaleFilterButtons() { return SCALE_FILTERS.map((filter) => ({ ...filter })); },
+        filterScales,
         scaleKeyboardNotes,
         formatChordDisplay,
         romanizeToLatin,
