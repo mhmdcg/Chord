@@ -76,6 +76,10 @@ class ChordAnnotatorApp {
         this.scales = MusicTheory.scaleCatalog();
         this.scaleIndex = 0;
         this.scaleOctaves = 1;
+        this.chordTestOpen = false;
+        this.chordTestSeconds = 3;
+        this.chordTestTimer = 0;
+        this.chordTestCurrent = '';
         this.liveScalePianoOpen = false;
         this.liveScalePianoOctaves = 1;
         this.liveScaleHighlight = -1;
@@ -174,6 +178,18 @@ class ChordAnnotatorApp {
         document.getElementById('livePianoBtn').addEventListener('click', () => this.openLivePiano());
         this.bindLiveScalePicker();
         document.getElementById('closeLivePianoBtn').addEventListener('click', () => this.closeLivePiano());
+        document.getElementById('chordTestBtn').addEventListener('click', () => this.startChordTest());
+        document.getElementById('closeChordTestBtn').addEventListener('click', () => this.stopChordTest());
+        document.getElementById('chordTestPopup').addEventListener('click', (event) => {
+            if (event.target.id === 'chordTestPopup') this.stopChordTest();
+        });
+        document.getElementById('chordTestSpeed').addEventListener('input', (event) => {
+            const seconds = Number(event.target.value);
+            if (!Number.isFinite(seconds)) return;
+            this.chordTestSeconds = Math.min(10, Math.max(1, seconds));
+            this.updateChordTestSpeedLabel();
+            if (this.chordTestOpen) this.scheduleChordTest();
+        });
         document.getElementById('livePianoPopup').addEventListener('click', (event) => {
             if (event.target.id === 'livePianoPopup') this.closeLivePiano();
         });
@@ -353,6 +369,11 @@ class ChordAnnotatorApp {
         if (e.key === 'Escape' && this.liveScalePianoOpen) {
             e.preventDefault();
             this.closeLiveScalePiano();
+            return;
+        }
+        if (e.key === 'Escape' && this.chordTestOpen) {
+            e.preventDefault();
+            this.stopChordTest();
             return;
         }
         if (e.key === 'Escape' && this.livePianoOpen) {
@@ -659,6 +680,7 @@ class ChordAnnotatorApp {
     }
 
     closeLivePiano() {
+        this.stopChordTest();
         this.livePianoOpen = false;
         const popup = document.getElementById('livePianoPopup');
         if (popup) popup.hidden = true;
@@ -696,6 +718,68 @@ class ChordAnnotatorApp {
             chords.appendChild(button);
         });
         this.renderLivePianoKeys(board, selected);
+    }
+
+    updateChordTestSpeedLabel() {
+        const label = document.getElementById('chordTestSpeedLabel');
+        const slider = document.getElementById('chordTestSpeed');
+        const seconds = Math.min(10, Math.max(1, this.chordTestSeconds || 3));
+        this.chordTestSeconds = seconds;
+        if (slider && Number(slider.value) !== seconds) slider.value = String(seconds);
+        if (label) label.textContent = `${seconds} s`;
+    }
+
+    startChordTest() {
+        const names = this.liveUniqueChordNames();
+        if (!names.length) return;
+        this.chordTestOpen = true;
+        this.chordTestCurrent = '';
+        const popup = document.getElementById('chordTestPopup');
+        if (popup) popup.hidden = false;
+        this.updateChordTestSpeedLabel();
+        this.showNextChordTest(names);
+        document.getElementById('closeChordTestBtn')?.focus();
+    }
+
+    stopChordTest() {
+        this.chordTestOpen = false;
+        if (this.chordTestTimer) {
+            clearTimeout(this.chordTestTimer);
+            this.chordTestTimer = 0;
+        }
+        const popup = document.getElementById('chordTestPopup');
+        if (popup) popup.hidden = true;
+    }
+
+    scheduleChordTest() {
+        if (this.chordTestTimer) clearTimeout(this.chordTestTimer);
+        if (!this.chordTestOpen) return;
+        const seconds = Math.min(10, Math.max(1, this.chordTestSeconds || 3));
+        this.chordTestTimer = setTimeout(() => {
+            this.chordTestTimer = 0;
+            if (this.chordTestOpen) this.showNextChordTest(this.liveUniqueChordNames());
+        }, seconds * 1000);
+    }
+
+    showNextChordTest(names) {
+        const pool = names && names.length ? names : this.liveUniqueChordNames();
+        const nameEl = document.getElementById('chordTestName');
+        if (!this.chordTestOpen || !nameEl) return;
+        if (!pool.length) {
+            this.stopChordTest();
+            return;
+        }
+        let next = pool[Math.floor(Math.random() * pool.length)];
+        if (pool.length > 1) {
+            let guard = 0;
+            while (next === this.chordTestCurrent && guard < 8) {
+                next = pool[Math.floor(Math.random() * pool.length)];
+                guard += 1;
+            }
+        }
+        this.chordTestCurrent = next;
+        nameEl.textContent = next;
+        this.scheduleChordTest();
     }
 
     renderLivePianoKeys(board, chord) {

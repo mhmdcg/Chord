@@ -468,10 +468,26 @@
         </div>
     </div>
 
+    <div id="chordTestPopup" class="live-piano-popup chord-test-popup" hidden>
+        <div class="chord-test-card" role="dialog" aria-modal="true" aria-labelledby="chordTestName">
+            <div class="live-piano-top">
+                <h3 class="chord-test-heading">Chord test</h3>
+                <button type="button" id="closeChordTestBtn" class="live-piano-close" aria-label="Stop chord test">×</button>
+            </div>
+            <p id="chordTestName" class="chord-test-name"></p>
+            <label class="chord-test-speed">
+                <span>Speed</span>
+                <input id="chordTestSpeed" type="range" min="1" max="10" step="1" value="3" aria-label="Seconds each chord stays on screen" />
+                <span id="chordTestSpeedLabel">3 s</span>
+            </label>
+        </div>
+    </div>
+
     <div id="livePianoPopup" class="live-piano-popup" hidden>
         <div class="live-piano-card" role="dialog" aria-modal="true" aria-labelledby="livePianoChords">
             <div class="live-piano-top">
                 <div id="livePianoChords" class="live-piano-chords"></div>
+                <button type="button" id="chordTestBtn" class="chord-test-start">Chord test</button>
                 <button type="button" id="closeLivePianoBtn" class="live-piano-close" aria-label="Close">×</button>
             </div>
             <div id="livePianoBoard" class="piano-keys" aria-label="Piano keys"></div>
@@ -483,6 +499,6 @@
     <script src="mp4-muxer.min.js"></script>
     <script src="link-charts.js?v=20261118a"></script>
     <script src="music-theory.js?v=20261118i"></script>
-    <script src="app.js?v=20261118j"></script>
+    <script src="app.js?v=20261118k"></script>
 </body>
 </html>
