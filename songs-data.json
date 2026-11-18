@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T22:58:28.417Z",
+  "updatedAt": "2026-11-18T10:19:08.603Z",
   "songs": [
     {
       "title": "خیال",
@@ -36365,6 +36365,434 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-13T22:58:27.158Z"
+    },
+    {
+      "title": "آخرین نامه",
+      "artist": "سیاوش قمیشی",
+      "lyrics": "خوابیدی بدون لالایی و قصه\nبگیر آسوده بخواب بی درد و غصه\nدیگه کابوس زمستون نمی بینی\nتوی خواب گل های حسرت نمی چینی\nدیگه خورشید چهرتو نمی سوزونه\nجای سیلی های باد روش نمی مونه\nدیگه بیدار نمیشی با نگرونی\nیا با تردید که بری یا که بمونی\nرفتی و آدمک ها رو جا گذاشتی\nقانون جنگل و زیر پا گذاشتی\nاینجا قهرن سینه ها با مهربونی\nتو تو جنگل نمی تونستی بمونی\nدلتو بردی با خود به جای دیگه\nاونجا که خدا برات لالایی می گه\nمی دونم می بینمت یه روز دوباره\nتوی دنیایی که آدمک نداره",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "Em   G    F   Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 5
+              },
+              {
+                "name": "F",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am   G    F   Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 5
+              },
+              {
+                "name": "F",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am         E                Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 11
+              },
+              {
+                "name": "Am",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خوابیدی بدون لالایی و قصه",
+            "source": "خوابیدی بدون لالایی  و  قصه"
+          },
+          {
+            "kind": "chords",
+            "source": "Am           E                  Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 13
+              },
+              {
+                "name": "Am",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگیر آسوده بخواب بی درد و غصه",
+            "source": "بگیر آسوده بخواب بی درد و غصه"
+          },
+          {
+            "kind": "chords",
+            "source": "         Am                    Dm         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیگه کابوس زمستون نمی بینی",
+            "source": "دیگه کابوس زمستون نمی بینی"
+          },
+          {
+            "kind": "chords",
+            "source": "         Am         Dm                 E         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 20
+              },
+              {
+                "name": "E",
+                "col": 39
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی خواب گل های حسرت نمی چینی",
+            "source": "توی خواب گل های حسرت نمی چینی"
+          },
+          {
+            "kind": "chords",
+            "source": "Am          E                   Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 12
+              },
+              {
+                "name": "Am",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیگه خورشید چهرتو نمی سوزونه",
+            "source": "دیگه خورشید چهرتو نمی سوزونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Am             E                  Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 15
+              },
+              {
+                "name": "Am",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جای سیلی های باد روش نمی مونه",
+            "source": "جای سیلی های باد روش نمی مونه"
+          },
+          {
+            "kind": "chords",
+            "source": "         Am                 Dm         ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 9
+              },
+              {
+                "name": "Dm",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیگه بیدار نمیشی با نگرونی",
+            "source": "دیگه  بیدار نمیشی با نگرونی"
+          },
+          {
+            "kind": "chords",
+            "source": "        Am       Dm           E        ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 8
+              },
+              {
+                "name": "Dm",
+                "col": 17
+              },
+              {
+                "name": "E",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یا با تردید که بری یا که بمونی",
+            "source": "یا با تردید که بری یا که بمونی"
+          },
+          {
+            "kind": "chords",
+            "source": "Am   E   Dm   Am",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "E",
+                "col": 5
+              },
+              {
+                "name": "Dm",
+                "col": 9
+              },
+              {
+                "name": "Am",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "G                             Am",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "رفتی و آدمک ها رو جا گذاشتی",
+            "source": "رفتی و آدمک ها رو جا گذاشتی"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                              G",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "قانون جنگل و زیر پا گذاشتی",
+            "source": "قانون  جنگل و زیر  پا  گذاشتی"
+          },
+          {
+            "kind": "chords",
+            "source": "G                             Dm",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اینجا قهرن سینه ها با مهربونی",
+            "source": "اینجا قهرن سینه ها با مهربونی"
+          },
+          {
+            "kind": "chords",
+            "source": "            Am       G           F            ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 12
+              },
+              {
+                "name": "G",
+                "col": 21
+              },
+              {
+                "name": "F",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو تو جنگل نمی تونستی بمونی",
+            "source": "تو  تو  جنگل نمی تونستی بمونی"
+          },
+          {
+            "kind": "chords",
+            "source": "G                              Am",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 31
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلتو بردی با خود به جای دیگه",
+            "source": "دلتو بردی با خود به جای دیگه"
+          },
+          {
+            "kind": "chords",
+            "source": "Dm                               G",
+            "placements": [
+              {
+                "name": "Dm",
+                "col": 0
+              },
+              {
+                "name": "G",
+                "col": 33
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اونجا که خدا برات لالایی می گه",
+            "source": "اونجا که خدا برات لالایی می گه"
+          },
+          {
+            "kind": "chords",
+            "source": "G                                 Dm",
+            "placements": [
+              {
+                "name": "G",
+                "col": 0
+              },
+              {
+                "name": "Dm",
+                "col": 34
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می دونم می بینمت یه روز دوباره",
+            "source": "می دونم می بینمت یه روز دوباره"
+          },
+          {
+            "kind": "chords",
+            "source": "            Am       G          F            ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 12
+              },
+              {
+                "name": "G",
+                "col": 21
+              },
+              {
+                "name": "F",
+                "col": 32
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی دنیایی که آدمک نداره",
+            "source": "توی   دنیایی که  آدمک   نداره"
+          }
+        ],
+        "chordCount": 52,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-18T10:19:07.265Z"
     }
   ],
   "chordColors": {
