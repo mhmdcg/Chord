@@ -500,8 +500,8 @@
             if (!types.includes(scale.type)) return false;
             const root = String(scale.root || '');
             const mark = root.includes('#') ? '#' : root.includes('b') ? 'b' : '';
-            if (mark && !accidentals.includes(mark)) return false;
-            return true;
+            if (!accidentals.length) return !mark;
+            return accidentals.includes(mark);
         });
     }
 

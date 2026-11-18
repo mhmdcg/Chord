@@ -122,10 +122,12 @@ const cMajorKeys = theory.scaleKeyboardNotes(scales[0], 60, 72).map((note) => no
 deepEq(cMajorKeys, ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C'], 'C major across one octave');
 
 const sharpMajors = theory.filterScales(scales, { types: ['major'], accidentals: ['#'] }).map((scale) => scale.root);
-deepEq(sharpMajors, ['C', 'D', 'E', 'F', 'F#', 'G', 'A', 'B'], 'sharp base notes plus natural roots');
+deepEq(sharpMajors, ['F#'], 'sharp button is only sharp roots');
 const flatMajors = theory.filterScales(scales, { types: ['major'], accidentals: ['b'] }).map((scale) => scale.root);
-deepEq(flatMajors, ['C', 'Db', 'D', 'Eb', 'E', 'F', 'G', 'Ab', 'A', 'Bb', 'B'], 'flat base notes plus natural roots');
-eq(theory.filterScales(scales, { types: ['harmonic-minor', 'melodic-minor'], accidentals: ['b', '#'] }).length, 24, 'harmonic and melodic together');
+deepEq(flatMajors, ['Db', 'Eb', 'Ab', 'Bb'], 'flat button is only flat roots');
+const flatMinors = theory.filterScales(scales, { types: ['minor'], accidentals: ['b'] }).map((scale) => scale.root);
+deepEq(flatMinors, ['Eb', 'Bb'], 'flat minor roots');
+eq(theory.filterScales(scales, { types: ['harmonic-minor', 'melodic-minor'], accidentals: ['b', '#'] }).length, 10, 'harmonic and melodic on flat and sharp roots');
 eq(theory.filterScales(scales, { types: ['major'], accidentals: [] }).map((scale) => scale.root).join(' '), 'C D E F G A B', 'no accidental buttons leaves natural roots');
 eq(theory.filterScales(scales, { types: ['minor'], accidentals: [] }).some((scale) => scale.root === 'G#'), false, 'G# minor stays hidden while sharp is off');
 eq(theory.filterScales(scales, { types: ['minor'], accidentals: [] }).some((scale) => scale.root === 'E'), true, 'E minor stays because its base note is natural');

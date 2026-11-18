@@ -77,7 +77,7 @@ class ChordAnnotatorApp {
         this.scaleIndex = 0;
         this.scaleFilters = {
             types: MusicTheory.scaleFilterButtons().filter((filter) => filter.group === 'type').map((filter) => filter.id),
-            accidentals: ['b', '#']
+            accidentals: []
         };
 
         this.github = {
@@ -770,6 +770,13 @@ class ChordAnnotatorApp {
         this.renderScaleCard();
     }
 
+    clearScaleFilters() {
+        this.scaleFilters.types = [];
+        this.scaleFilters.accidentals = [];
+        this.scaleIndex = 0;
+        this.renderScaleCard();
+    }
+
     renderScaleFilters() {
         const host = document.getElementById('scaleFilters');
         if (!host) return;
@@ -787,6 +794,12 @@ class ChordAnnotatorApp {
                 button.addEventListener('click', () => this.toggleScaleFilter(filter.group, filter.id));
                 host.appendChild(button);
             });
+            const clear = document.createElement('button');
+            clear.type = 'button';
+            clear.className = 'scale-clear';
+            clear.textContent = 'Clear all';
+            clear.addEventListener('click', () => this.clearScaleFilters());
+            host.appendChild(clear);
         }
         const types = new Set(this.scaleFilters.types);
         const accidentals = new Set(this.scaleFilters.accidentals);
@@ -797,6 +810,8 @@ class ChordAnnotatorApp {
             button.classList.toggle('is-on', on);
             button.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
+        const clear = host.querySelector('.scale-clear');
+        if (clear) clear.disabled = !this.scaleFilters.types.length && !this.scaleFilters.accidentals.length;
     }
 
     stepScale(delta) {

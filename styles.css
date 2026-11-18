@@ -614,6 +614,23 @@ body:has(#liveView.active) {
     color: #fff;
 }
 
+.scale-clear {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-light);
+    border-radius: 999px;
+    padding: 0.38rem 0.75rem;
+    min-height: 36px;
+    font-size: 0.875rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.scale-clear:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
 .scale-empty {
     margin: 0.75rem 0 0.25rem;
     text-align: center;
