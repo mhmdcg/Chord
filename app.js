@@ -5820,6 +5820,7 @@ class ChordAnnotatorApp {
 
     songActionIcon(kind) {
         const paths = {
+            favorite: '<path d="M12 3.2l2.35 4.76 5.25.76-3.8 3.7.9 5.23L12 15.2l-4.7 2.45.9-5.23-3.8-3.7 5.25-.76L12 3.2z"/>',
             view: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
             edit: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/>',
             delete: '<path d="M4 7h16"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><path d="M7 7l1 13h8l1-13"/>'
@@ -5891,6 +5892,13 @@ class ChordAnnotatorApp {
 
             const actions = document.createElement('div');
             actions.className = 'song-card-actions';
+            const favorite = this.songActionButton(
+                'favorite',
+                song.favorite ? 'Remove favourite' : 'Favourite',
+                () => this.toggleFavorite(index)
+            );
+            favorite.setAttribute('aria-pressed', song.favorite ? 'true' : 'false');
+            actions.appendChild(favorite);
             actions.appendChild(this.songActionButton('view', 'View', () => this.viewSong(index)));
             actions.appendChild(this.songActionButton('edit', 'Edit', () => this.editSong(index)));
             actions.appendChild(this.songActionButton('delete', 'Delete', () => this.deleteSong(index)));
@@ -5973,6 +5981,14 @@ class ChordAnnotatorApp {
             row.appendChild(chords);
             container.appendChild(row);
         });
+    }
+
+    toggleFavorite(index) {
+        const song = this.songs[index];
+        if (!song) return;
+        song.favorite = !song.favorite;
+        this.saveData();
+        this.renderSongList();
     }
 
     viewSong(index) {
