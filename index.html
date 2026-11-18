@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20261118g">
+    <link rel="stylesheet" href="styles.css?v=20261118h">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -71,6 +71,10 @@
                         <button type="button" id="scaleNextBtn" class="scales-arrow" aria-label="Next scale">›</button>
                     </div>
                     <div id="scalePiano" class="piano-keys" aria-label="Scale on piano keys"></div>
+                    <div class="scale-octave" role="group" aria-label="Piano range">
+                        <button type="button" id="scaleOneOctaveBtn" class="is-on" aria-pressed="true">1 octave</button>
+                        <button type="button" id="scaleTwoOctaveBtn" aria-pressed="false">2 octaves</button>
+                    </div>
                     <p id="scaleEmpty" class="scale-empty" hidden>No scales match these filters.</p>
                 </article>
             </div>
@@ -443,7 +447,7 @@
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="link-charts.js?v=20261118a"></script>
-    <script src="music-theory.js?v=20261118g"></script>
-    <script src="app.js?v=20261118g"></script>
+    <script src="music-theory.js?v=20261118h"></script>
+    <script src="app.js?v=20261118h"></script>
 </body>
 </html>

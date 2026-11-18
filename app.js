@@ -75,6 +75,7 @@ class ChordAnnotatorApp {
         };
         this.scales = MusicTheory.scaleCatalog();
         this.scaleIndex = 0;
+        this.scaleOctaves = 1;
         this.scaleFilters = {
             types: MusicTheory.scaleFilterButtons().filter((filter) => filter.group === 'type').map((filter) => filter.id),
             accidentals: []
@@ -125,6 +126,8 @@ class ChordAnnotatorApp {
         document.getElementById('backFromScalesBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('scalePrevBtn').addEventListener('click', () => this.stepScale(-1));
         document.getElementById('scaleNextBtn').addEventListener('click', () => this.stepScale(1));
+        document.getElementById('scaleOneOctaveBtn').addEventListener('click', () => this.setScaleOctaves(1));
+        document.getElementById('scaleTwoOctaveBtn').addEventListener('click', () => this.setScaleOctaves(2));
         document.getElementById('liveModeBtn').addEventListener('click', () => this.showView('live'));
         document.getElementById('scanChordsBtn').addEventListener('click', () => this.showView('scan'));
         document.getElementById('backFromScanBtn').addEventListener('click', () => this.showView('songList'));
@@ -814,6 +817,27 @@ class ChordAnnotatorApp {
         if (clear) clear.disabled = !this.scaleFilters.types.length && !this.scaleFilters.accidentals.length;
     }
 
+    setScaleOctaves(count) {
+        const next = count === 2 ? 2 : 1;
+        if (this.scaleOctaves === next) return;
+        this.scaleOctaves = next;
+        this.renderScaleCard();
+    }
+
+    syncScaleOctaveButtons() {
+        const one = document.getElementById('scaleOneOctaveBtn');
+        const two = document.getElementById('scaleTwoOctaveBtn');
+        const octaves = this.scaleOctaves === 2 ? 2 : 1;
+        if (one) {
+            one.classList.toggle('is-on', octaves === 1);
+            one.setAttribute('aria-pressed', octaves === 1 ? 'true' : 'false');
+        }
+        if (two) {
+            two.classList.toggle('is-on', octaves === 2);
+            two.setAttribute('aria-pressed', octaves === 2 ? 'true' : 'false');
+        }
+    }
+
     stepScale(delta) {
         const visible = this.visibleScales();
         if (!visible.length || !delta) return;
@@ -827,6 +851,7 @@ class ChordAnnotatorApp {
 
     renderScaleCard() {
         this.renderScaleFilters();
+        this.syncScaleOctaveButtons();
         const scales = this.scales || [];
         const visible = this.visibleScales();
         const title = document.getElementById('scaleTitle');
@@ -857,10 +882,10 @@ class ChordAnnotatorApp {
         title.textContent = scale.title;
         count.textContent = `${position + 1} / ${visible.length}`;
         notes.textContent = scale.notes.map((note) => note.name).join('  ');
-        const spelled = MusicTheory.scaleKeyboardNotes(scale, 60, 84);
-        const active = new Map(spelled.map((note) => [note.midi, note.name]));
         const start = 60;
-        const end = 84;
+        const end = start + ((this.scaleOctaves === 2 ? 2 : 1) * 12);
+        const spelled = MusicTheory.scaleKeyboardNotes(scale, start, end);
+        const active = new Map(spelled.map((note) => [note.midi, note.name]));
         board.replaceChildren();
         const whites = document.createElement('div');
         whites.className = 'piano-whites';

@@ -722,6 +722,31 @@ body:has(#liveView.active) {
     border-color: #b42318;
 }
 
+.scale-octave {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+}
+
+.scale-octave button {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    min-height: 34px;
+    font-size: 0.8125rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.scale-octave button.is-on {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
 .all-chords-list {
     padding: 1.5rem;
     width: 100%;
