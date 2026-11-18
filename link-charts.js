@@ -614,6 +614,85 @@
         return String(line || '').replace(/\s+$/g, '');
     }
 
+    function barePitchName(line) {
+        if (!line || line.kind !== 'chords' || !line.placements || line.placements.length !== 1) return '';
+        const name = line.placements[0].name;
+        return /^[A-G](?:#|b)?$/.test(name) ? name : '';
+    }
+
+    // A chromatic key switcher (Ab, A, A#, Bb, … including both enharmonic names)
+    // is not part of the song. Real intros are not a run of those pairs.
+    function keyListIndexes(lines) {
+        const drop = new Set();
+        let run = [];
+        const flush = () => {
+            if (run.length >= 12) {
+                const names = new Set(run.map((index) => lines[index].placements[0].name));
+                const pairs = [['A#', 'Bb'], ['C#', 'Db'], ['D#', 'Eb'], ['F#', 'Gb'], ['G#', 'Ab']];
+                if (pairs.some(([sharp, flat]) => names.has(sharp) && names.has(flat))) {
+                    run.forEach((index) => drop.add(index));
+                }
+            }
+            run = [];
+        };
+        lines.forEach((line, index) => {
+            if (line.kind === 'blank') return;
+            if (barePitchName(line)) {
+                run.push(index);
+                return;
+            }
+            flush();
+        });
+        flush();
+        return drop;
+    }
+
+    function chartSpan(lines) {
+        const chrome = keyListIndexes(lines);
+        let first = -1;
+        let last = -1;
+        lines.forEach((line, index) => {
+            if (line.kind === 'chords' && !chrome.has(index)) {
+                if (first < 0) first = index;
+                last = index;
+            }
+        });
+        if (first < 0) return null;
+        if (first > 0 && lines[first - 1].kind === 'lyric' && isSectionLine(lines[first - 1].text)) first -= 1;
+        let end = last;
+        // A reader sometimes puts a blank between the last chord row and its lyric.
+        if (lines[end + 1] && lines[end + 1].kind === 'blank' && lines[end + 2] && lines[end + 2].kind === 'lyric') {
+            end += 1;
+        }
+        let tookLyric = false;
+        while (end + 1 < lines.length && lines[end + 1].kind === 'lyric') {
+            const spaced = / {2,}/.test(String(lines[end + 1].source || ''));
+            if (tookLyric && !spaced) break;
+            end += 1;
+            tookLyric = true;
+            if (!spaced) break;
+        }
+        return { first, end };
+    }
+
+    function headingFromPrefix(lines) {
+        const lyrics = [];
+        lines.forEach((line) => {
+            if (line.kind === 'lyric' && line.text) lyrics.push(String(line.text).replace(/\s+/g, ' ').trim());
+        });
+        for (let i = 0; i < lyrics.length; i += 1) {
+            const text = lyrics[i];
+            const full = text.match(/^آکورد(?:\s+گیتار)?\s+آهنگ\s+(.+?)\s+از\s+(.+)$/);
+            if (full) return { title: full[1].trim(), artist: full[2].trim() };
+            const short = text.match(/^آکورد(?:\s+گیتار)?\s+آهنگ\s+(.+)$/);
+            if (!short) continue;
+            const next = lyrics[i + 1] || '';
+            const ui = !next || next.length > 40 || /[:/]|تایید|ریتم|گام|راهنما|کاپو|اشتراک|ورود|دانلود|نظرات/.test(next);
+            return { title: short[1].trim(), artist: ui ? '' : next };
+        }
+        return { title: '', artist: '' };
+    }
+
     function sheetFromText(text, heading) {
         const hint = heading || { title: '', artist: '' };
         const lines = [];
@@ -662,14 +741,18 @@
             if (lyric) lines.push({ kind: 'lyric', text: lyric, source: rawLyric });
         });
         while (lines.length && lines[lines.length - 1].kind === 'blank') lines.pop();
-        const chordCount = lines.reduce((sum, line) => sum + (line.kind === 'chords' ? line.placements.length : 0), 0);
-        const lyricCount = lines.filter((line) => line.kind === 'lyric').length;
+        const span = chartSpan(lines);
+        const prefix = span ? headingFromPrefix(lines.slice(0, span.first)) : { title: '', artist: '' };
+        const kept = span ? lines.slice(span.first, span.end + 1) : lines;
+        while (kept.length && kept[kept.length - 1].kind === 'blank') kept.pop();
+        const chordCount = kept.reduce((sum, line) => sum + (line.kind === 'chords' ? line.placements.length : 0), 0);
+        const lyricCount = kept.filter((line) => line.kind === 'lyric').length;
         if (!chordCount && lyricCount < 2) return null;
-        const lyricText = lines.filter((line) => line.kind === 'lyric').map((line) => line.source || line.text).join('\n');
+        const lyricText = kept.filter((line) => line.kind === 'lyric').map((line) => line.source || line.text).join('\n');
         return {
-            title: hint.title || '',
-            artist: hint.artist || '',
-            lines,
+            title: hint.title || prefix.title || '',
+            artist: hint.artist || prefix.artist || '',
+            lines: kept,
             chordCount,
             align: isMostlyRtl(lyricText) ? 'right' : 'left'
         };
