@@ -75,7 +75,10 @@ class ChordAnnotatorApp {
         };
         this.scales = MusicTheory.scaleCatalog();
         this.scaleIndex = 0;
-        this.scaleFilters = { types: [], accidentals: [] };
+        this.scaleFilters = {
+            types: MusicTheory.scaleFilterButtons().filter((filter) => filter.group === 'type').map((filter) => filter.id),
+            accidentals: []
+        };
 
         this.github = {
             owner: 'mhmdcg',

@@ -503,7 +503,7 @@
         const types = (active && active.types) || [];
         const accidentals = (active && active.accidentals) || [];
         return (scales || []).filter((scale) => {
-            if (types.length && !types.includes(scale.type)) return false;
+            if (!types.includes(scale.type)) return false;
             if (accidentals.length && !accidentals.some((mark) => (scale.accidentals || []).includes(mark))) return false;
             return true;
         });

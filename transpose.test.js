@@ -127,6 +127,8 @@ const flatMajors = theory.filterScales(scales, { types: ['major'], accidentals: 
 deepEq(flatMajors, ['Db', 'Eb', 'F', 'Ab', 'Bb'], 'flat major scales');
 eq(theory.filterScales(scales, { types: ['harmonic-minor', 'melodic-minor'] }).length, 24, 'harmonic and melodic together');
 eq(theory.filterScales(scales, { types: ['major'], accidentals: ['b', '#'] }).some((scale) => scale.root === 'C'), false, 'C major has no accidental');
+eq(theory.filterScales(scales, { types: [], accidentals: ['#'] }).length, 0, 'a sharp filter does not add scale types that are off');
+eq(theory.filterScales(scales, { types: ['major'], accidentals: ['#'] }).some((scale) => scale.title.includes('pentatonic')), false, 'pentatonic stays out while its button is off');
 eq(theory.scaleFilterButtons().map((filter) => filter.label).slice(0, 6).join(','), 'b,#,Minor,Major,Harmonic,Melodic', 'filter button order');
 
 console.log('All transposition spelling tests passed.');
