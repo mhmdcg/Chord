@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T10:19:08.603Z",
+  "updatedAt": "2026-11-18T10:20:04.309Z",
   "songs": [
     {
       "title": "خیال",
@@ -36793,6 +36793,1181 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-18T10:19:07.265Z"
+    },
+    {
+      "title": "گل سنگ",
+      "artist": "هایده",
+      "lyrics": "گل سـنگم گل سنگم\nچی بـگم از دل تـنـگم\nمثه آفتاب اگـه بـر من\nنتابی سردم و بی رنگم\nگل سـنگم گل سنگم\nچی بـگم از دل تـنـگم\nمثه آفتاب اگـه بـر من\nنتابی سردم و بی رنگم\nهـمـه آهـم همه دردم\nمـثـل طـوفـان پر گردم\nهـمـه آهـم همه دردم\nمـثـل طـوفـان پر گردم\nباد مـسـتم کـه تـو صـحـرا\nمی پیچم دور تو می گردم\nگل سـنگم گل سنگم\nچی بـگم از دل تـنـگم\nمثه آفتاب اگـه بـر من\nنتابی سردم و بی رنگم\nمثه بـارون اگه نـبـاری\nخبر از حال من نـداری\nبی تو پرپر می شم دو روزه\nدل سنگـت برام می سوزه\nگل سـنگم گل سنگم\nچی بـگم از دل تـنـگم\nگل سـنگم گل سنگم\nچی بـگم از دل تـنـگم\nمثه آفتاب اگـه بـر من\nنتابی سردم و بی رنگم\nمثه بـارون اگه نـبـاری\nخبر از حال من نـداری\nبی تو پرپر می شم دو روزه\nدل سنگـت برام می سوزه\nگل سـنگم گل سنگم\nچی بـگم از دل تـنـگم\nگل سـنگم گل سنگم\nچی بـگم از دل تـنـگم\nمثه آفتاب اگـه بـر من\nنتابی سردم و بی رنگم\nهـمـه آهـم همه دردم\nمـثـل طـوفـان پر گردم\nهـمـه آهـم همه دردم\nمـثـل طـوفـان پر گردم\nباد مـسـتم کـه تـو صـحـرا\nمی پیچم دور تو می گردم\nگل سـنگم گل سنگم\nچی بـگم از دل تـنـگم\nمثه آفتاب اگـه بـر من\nنتابی سردم و بی رنگم\nارسالکننده :",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "B   Em   B   Em",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Em  Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Em",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em         ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل سـنگم گل سنگم",
+            "source": "گل سـنگم گل سنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بـگم از دل تـنـگم",
+            "source": "چی بـگم از دل تـنـگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           Am       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه آفتاب اگـه بـر من",
+            "source": "مثه آفتاب اگـه بـر من"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نتابی سردم و بی رنگم",
+            "source": "نتابی سردم و بی رنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em         ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل سـنگم گل سنگم",
+            "source": "گل سـنگم گل سنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بـگم از دل تـنـگم",
+            "source": "چی بـگم از دل تـنـگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           Am       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه آفتاب اگـه بـر من",
+            "source": "مثه آفتاب اگـه بـر من"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نتابی سردم و بی رنگم",
+            "source": "نتابی سردم و بی رنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Am          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هـمـه آهـم همه دردم",
+            "source": "هـمـه آهـم همه دردم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         C           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مـثـل طـوفـان پر گردم",
+            "source": "مـثـل طـوفـان پر گردم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Am          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هـمـه آهـم همه دردم",
+            "source": "هـمـه آهـم همه دردم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         C           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مـثـل طـوفـان پر گردم",
+            "source": "مـثـل طـوفـان پر گردم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em              Am         ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باد مـسـتم کـه تـو صـحـرا",
+            "source": "باد مـسـتم کـه تـو صـحـرا"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B7             ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می پیچم دور تو می گردم",
+            "source": "می پیچم دور تو می گردم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em         ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل سـنگم گل سنگم",
+            "source": "گل سـنگم گل سنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بـگم از دل تـنـگم",
+            "source": "چی بـگم از دل تـنـگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           Am       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه آفتاب اگـه بـر من",
+            "source": "مثه آفتاب اگـه بـر من"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نتابی سردم و بی رنگم",
+            "source": "نتابی سردم و بی رنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B   Em   B   Em",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Em  Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Em",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Em        ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه بـارون اگه نـبـاری",
+            "source": "مثه بـارون اگه نـبـاری"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خبر از حال من نـداری",
+            "source": "خبر از حال من نـداری"
+          },
+          {
+            "kind": "chords",
+            "source": "Am               Em          ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو پرپر می شم دو روزه",
+            "source": "بی تو پرپر می شم دو روزه"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل سنگـت برام می سوزه",
+            "source": "دل سنگـت برام می سوزه"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         C          ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل سـنگم گل سنگم",
+            "source": "گل سـنگم گل سنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em        B7          ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بـگم از دل تـنـگم",
+            "source": "چی بـگم از دل تـنـگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em         ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل سـنگم گل سنگم",
+            "source": "گل سـنگم گل سنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بـگم از دل تـنـگم",
+            "source": "چی بـگم از دل تـنـگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           Am       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه آفتاب اگـه بـر من",
+            "source": "مثه آفتاب اگـه بـر من"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نتابی سردم و بی رنگم",
+            "source": "نتابی سردم و بی رنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am   E7   E",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "E7",
+                "col": 15
+              },
+              {
+                "name": "E",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Am   C",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Am",
+                "col": 10
+              },
+              {
+                "name": "C",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Am         Em        ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه بـارون اگه نـبـاری",
+            "source": "مثه بـارون اگه نـبـاری"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خبر از حال من نـداری",
+            "source": "خبر از حال من نـداری"
+          },
+          {
+            "kind": "chords",
+            "source": "Am               Em          ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بی تو پرپر می شم دو روزه",
+            "source": "بی تو پرپر می شم دو روزه"
+          },
+          {
+            "kind": "chords",
+            "source": "Em                B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دل سنگـت برام می سوزه",
+            "source": "دل سنگـت برام می سوزه"
+          },
+          {
+            "kind": "chords",
+            "source": "Am         C          ",
+            "placements": [
+              {
+                "name": "Am",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل سـنگم گل سنگم",
+            "source": "گل سـنگم گل سنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em        B7          ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بـگم از دل تـنـگم",
+            "source": "چی بـگم از دل تـنـگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em         ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل سـنگم گل سنگم",
+            "source": "گل سـنگم گل سنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بـگم از دل تـنـگم",
+            "source": "چی بـگم از دل تـنـگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           Am       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه آفتاب اگـه بـر من",
+            "source": "مثه آفتاب اگـه بـر من"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نتابی سردم و بی رنگم",
+            "source": "نتابی سردم و بی رنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B   Em   B   Em",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 4
+              },
+              {
+                "name": "B",
+                "col": 9
+              },
+              {
+                "name": "Em",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7   Em  Am",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              },
+              {
+                "name": "Em",
+                "col": 10
+              },
+              {
+                "name": "Am",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Em   B7",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Am          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هـمـه آهـم همه دردم",
+            "source": "هـمـه آهـم همه دردم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         C           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مـثـل طـوفـان پر گردم",
+            "source": "مـثـل طـوفـان پر گردم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Am          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هـمـه آهـم همه دردم",
+            "source": "هـمـه آهـم همه دردم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em         C           ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "C",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مـثـل طـوفـان پر گردم",
+            "source": "مـثـل طـوفـان پر گردم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em              Am         ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "باد مـسـتم کـه تـو صـحـرا",
+            "source": "باد مـسـتم کـه تـو صـحـرا"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B7             ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "می پیچم دور تو می گردم",
+            "source": "می پیچم دور تو می گردم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em         ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل سـنگم گل سنگم",
+            "source": "گل سـنگم گل سنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "B7        Em          ",
+            "placements": [
+              {
+                "name": "B7",
+                "col": 0
+              },
+              {
+                "name": "Em",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چی بـگم از دل تـنـگم",
+            "source": "چی بـگم از دل تـنـگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em           Am       ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "Am",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه آفتاب اگـه بـر من",
+            "source": "مثه آفتاب اگـه بـر من"
+          },
+          {
+            "kind": "chords",
+            "source": "Em            B7        ",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              },
+              {
+                "name": "B7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نتابی سردم و بی رنگم",
+            "source": "نتابی سردم و بی رنگم"
+          },
+          {
+            "kind": "chords",
+            "source": "Em",
+            "placements": [
+              {
+                "name": "Em",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ارسالکننده :",
+            "source": "ارسالکننده :"
+          }
+        ],
+        "chordCount": 136,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-18T10:20:03.036Z"
     }
   ],
   "chordColors": {
