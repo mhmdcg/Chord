@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T13:48:13.356Z",
+  "updatedAt": "2026-11-18T14:33:16.515Z",
   "songs": [
     {
       "title": "خیال",
@@ -40170,6 +40170,1949 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-18T13:48:12.062Z"
+    },
+    {
+      "title": "فقط یک بار",
+      "artist": "مارتیک",
+      "lyrics": "ای لطیف نازنین\nعشق من زیباترین\nبردار از روی خود\nپرده های خشم و کین\nتو به زیبائی مهتاب\nتو به آرامش خواب\nچشم من تشنه ی پرسش\nروی تو تنها جواب\nمن اگر یک بار\nفقط یک بار\nببینم روی تو\nمن اگر یک بار\nفقط یک بار\nببینم روی تو\nنفسم یک بار\nفقط یک بار\nبگیره بوی تو\nمن اگر یک بار\nفقط یک بار\nببینم روی تو\nنفسم یک بار\nفقط یک بار\nبگیره بوی تو\nآتشـــی می گیرم از عشق\nمثه خورشید دیدنی\nداغتر از واژه ی لاله\nتو غزلها موندنی\nمن اگر یک بار\nفقط یک بار\nببینم روی تو\nای لطیف نازنین\nعشق من زیباترین\nبردار از روی خود\nپرده های خشم و کین\nتو به زیبائی مهتاب\nتو به آرامش خواب\nچشم من تشنه ی پرسش\nروی تو تنها جواب\nای لطیف نازنین\nعشق من زیباترین\nبردار از روی خود\nپرده های خشم و کین\nتو به زیبائی مهتاب\nتو به آرامش خواب\nچشم من تشنه ی پرسش\nروی تو تنها جواب\nآخ اگر یک بار\nفقط یک بار\nببینم روی تو\nمن اگر یک بار\nفقط یک بار\nببینم روی تو\nنفسم یک بار\nفقط یک بار\nبگیره بوی تو\nمن اگر یک بار\nفقط یک بار\nببینم روی تو\nنفسم یک بار\nفقط یک بار\nبگیره بوی تو\nآتشـــی می گیرم از عشق\nمثه خورشید دیدنی\nداغتر از واژه ی لاله\nتو غزلها موندنی\nمن اگر یک بار\nفقط یک بار\nببینم روی تو\nای لطیف نازنین\nعشق من زیباترین\nبردار از روی خود\nپرده های خشم و کین\nتو به زیبائی مهتاب\nتو به آرامش خواب\nچشم من تشنه ی پرسش\nروی تو تنها جواب\nای لطیف نازنین\nعشق من زیباترین\nبردار از روی خود\nپرده های خشم و کین\nتو به زیبائی مهتاب\nتو به آرامش خواب\nچشم من تشنه ی پرسش\nروی تو تنها جواب\nآخ اگر یک بار\nفقط یک بار\nببینم روی تو\nمن اگر یک بار\nفقط یک بار\nببینم روی تو\nارسالکننده :",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm      F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای لطیف نازنین",
+            "source": "ای لطیف نازنین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m         ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق من زیباترین",
+            "source": "عشق من  زیباترین"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بردار از روی خود",
+            "source": "بردار  از روی خود"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 4
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پرده های خشم و کین",
+            "source": "پرده های خشم و کین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به زیبائی مهتاب",
+            "source": "تو به زیبائی مهتاب"
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به آرامش خواب",
+            "source": "تو به آرامش خواب"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7                         Bm",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم من تشنه ی پرسش",
+            "source": "چشم من تشنه ی پرسش"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m              ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روی تو تنها جواب",
+            "source": "روی تو تنها جواب"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگر یک بار",
+            "source": "من اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7   ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط  یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m     ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   E   D",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "E",
+                "col": 12
+              },
+              {
+                "name": "D",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   E   D",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "E",
+                "col": 12
+              },
+              {
+                "name": "D",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   Bm   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   Bm   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              },
+              {
+                "name": "C#7",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              },
+              {
+                "name": "C#7",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   Bm   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   Bm   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگر یک بار",
+            "source": "من اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m    ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm  ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7      ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نفسم یک بار",
+            "source": "نفسم یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7    ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m  Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگیره بوی تو",
+            "source": "بگیره بوی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگر یک بار",
+            "source": "من اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m    ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm  ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7      ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نفسم یک بار",
+            "source": "نفسم یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7    ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m  Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگیره بوی تو",
+            "source": "بگیره بوی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7            Bm F#7",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              },
+              {
+                "name": "F#7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آتشـــی می گیرم از عشق",
+            "source": "آتشـــی  می گیرم از عشق"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m         ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه خورشید دیدنی",
+            "source": "مثه خورشید دیدنی"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7     Bm     F#7",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 8
+              },
+              {
+                "name": "F#7",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "داغتر از واژه ی لاله",
+            "source": "داغتر از واژه ی لاله"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m     ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو غزلها موندنی",
+            "source": "تو غزلها موندنی"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگر یک بار",
+            "source": "من اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7    ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              },
+              {
+                "name": "C#7",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "F#m",
+                "col": 12
+              },
+              {
+                "name": "C#7",
+                "col": 18
+              },
+              {
+                "name": "F#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای لطیف نازنین",
+            "source": "ای لطیف نازنین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق من زیباترین",
+            "source": "عشق من زیباترین"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بردار از روی خود",
+            "source": "بردار از روی خود"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پرده های خشم و کین",
+            "source": "پرده های خشم و کین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m                 Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به زیبائی مهتاب",
+            "source": "تو به زیبائی مهتاب"
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به آرامش خواب",
+            "source": "تو به آرامش خواب"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7                          ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم من تشنه ی پرسش",
+            "source": "چشم من تشنه ی پرسش"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m        ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روی تو تنها جواب",
+            "source": "روی تو تنها جواب"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای لطیف نازنین",
+            "source": "ای لطیف نازنین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق من زیباترین",
+            "source": "عشق من زیباترین"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بردار از روی خود",
+            "source": "بردار از روی خود"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پرده های خشم و کین",
+            "source": "پرده های خشم و کین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m                 Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به زیبائی مهتاب",
+            "source": "تو به زیبائی مهتاب"
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به آرامش خواب",
+            "source": "تو به آرامش خواب"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7                          ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم من تشنه ی پرسش",
+            "source": "چشم من تشنه ی پرسش"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m        ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روی تو تنها جواب",
+            "source": "روی تو تنها جواب"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخ اگر یک بار",
+            "source": "آخ اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7     ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              },
+              {
+                "name": "C#7",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              },
+              {
+                "name": "C#7",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   F#m   C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "F#m",
+                "col": 12
+              },
+              {
+                "name": "C#7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   F#m   C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "F#m",
+                "col": 12
+              },
+              {
+                "name": "C#7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   Bm   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   Bm   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              },
+              {
+                "name": "C#7",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "F#m",
+                "col": 12
+              },
+              {
+                "name": "C#7",
+                "col": 18
+              },
+              {
+                "name": "F#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگر یک بار",
+            "source": "من اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m    ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm  ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7      ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نفسم یک بار",
+            "source": "نفسم یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7    ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m  Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگیره بوی تو",
+            "source": "بگیره بوی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگر یک بار",
+            "source": "من اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m    ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm  ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7      ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نفسم یک بار",
+            "source": "نفسم یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7    ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m  Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بگیره بوی تو",
+            "source": "بگیره بوی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7            Bm F#7",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 15
+              },
+              {
+                "name": "F#7",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آتشـــی می گیرم از عشق",
+            "source": "آتشـــی  می گیرم از عشق"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m         ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مثه خورشید دیدنی",
+            "source": "مثه خورشید دیدنی"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7     Bm     F#7",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 8
+              },
+              {
+                "name": "F#7",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "داغتر از واژه ی لاله",
+            "source": "داغتر از واژه ی لاله"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m     ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو غزلها موندنی",
+            "source": "تو غزلها موندنی"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگر یک بار",
+            "source": "من اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7    ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              },
+              {
+                "name": "C#7",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   F#m   C#7   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "F#m",
+                "col": 12
+              },
+              {
+                "name": "C#7",
+                "col": 18
+              },
+              {
+                "name": "F#m",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای لطیف نازنین",
+            "source": "ای لطیف نازنین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق من زیباترین",
+            "source": "عشق من زیباترین"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بردار از روی خود",
+            "source": "بردار از روی خود"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پرده های خشم و کین",
+            "source": "پرده های خشم و کین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m                 Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به زیبائی مهتاب",
+            "source": "تو به زیبائی مهتاب"
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به آرامش خواب",
+            "source": "تو به آرامش خواب"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7                          ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم من تشنه ی پرسش",
+            "source": "چشم من تشنه ی پرسش"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m        ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روی تو تنها جواب",
+            "source": "روی تو تنها جواب"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm    F#m",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              },
+              {
+                "name": "F#m",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ای لطیف نازنین",
+            "source": "ای لطیف نازنین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عشق من زیباترین",
+            "source": "عشق من زیباترین"
+          },
+          {
+            "kind": "chords",
+            "source": "Bm     ",
+            "placements": [
+              {
+                "name": "Bm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بردار از روی خود",
+            "source": "بردار از روی خود"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پرده های خشم و کین",
+            "source": "پرده های خشم و کین"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m                 Bm",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "Bm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به زیبائی مهتاب",
+            "source": "تو به زیبائی مهتاب"
+          },
+          {
+            "kind": "lyric",
+            "text": "تو به آرامش خواب",
+            "source": "تو به آرامش خواب"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7                          ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشم من تشنه ی پرسش",
+            "source": "چشم من تشنه ی پرسش"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m        ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "روی تو تنها جواب",
+            "source": "روی تو تنها جواب"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m      ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخ اگر یک بار",
+            "source": "آخ اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7     ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "من اگر یک بار",
+            "source": "من اگر یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "C#7    ",
+            "placements": [
+              {
+                "name": "C#7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فقط یک بار",
+            "source": "فقط یک بار"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m ",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ببینم روی تو",
+            "source": "ببینم روی تو"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m   C#7   Bm   F#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 6
+              },
+              {
+                "name": "Bm",
+                "col": 12
+              },
+              {
+                "name": "F#m",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ارسالکننده :",
+            "source": "ارسالکننده :"
+          }
+        ],
+        "chordCount": 205,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-18T14:33:15.321Z"
     }
   ],
   "chordColors": {
