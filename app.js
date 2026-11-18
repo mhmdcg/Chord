@@ -76,6 +76,9 @@ class ChordAnnotatorApp {
         this.scales = MusicTheory.scaleCatalog();
         this.scaleIndex = 0;
         this.scaleOctaves = 1;
+        this.liveScalePianoOpen = false;
+        this.liveScalePianoOctaves = 1;
+        this.liveScaleHighlight = -1;
         this.scaleFilters = {
             types: MusicTheory.scaleFilterButtons().filter((filter) => filter.group === 'type').map((filter) => filter.id),
             accidentals: []
@@ -169,6 +172,7 @@ class ChordAnnotatorApp {
         });
         document.getElementById('liveFullscreenBtn').addEventListener('click', () => this.toggleLiveFullscreen());
         document.getElementById('livePianoBtn').addEventListener('click', () => this.openLivePiano());
+        this.bindLiveScalePicker();
         document.getElementById('closeLivePianoBtn').addEventListener('click', () => this.closeLivePiano());
         document.getElementById('livePianoPopup').addEventListener('click', (event) => {
             if (event.target.id === 'livePianoPopup') this.closeLivePiano();
@@ -346,6 +350,11 @@ class ChordAnnotatorApp {
                 return;
             }
         }
+        if (e.key === 'Escape' && this.liveScalePianoOpen) {
+            e.preventDefault();
+            this.closeLiveScalePiano();
+            return;
+        }
         if (e.key === 'Escape' && this.livePianoOpen) {
             e.preventDefault();
             this.closeLivePiano();
@@ -439,6 +448,7 @@ class ChordAnnotatorApp {
         } else {
             this.currentSong = null;
             this.renderLiveEmpty();
+            this.syncLiveScaleField();
             this.updateLiveScaleLabel();
             this.updateLiveScrollControls();
         }
@@ -446,6 +456,8 @@ class ChordAnnotatorApp {
 
     exitLiveMode() {
         this.closeLivePiano();
+        this.closeLiveScalePiano();
+        this.closeLiveScaleList();
         this.liveMode = false;
         this.sheetView = false;
         this.exitLiveFullscreen();
@@ -462,6 +474,7 @@ class ChordAnnotatorApp {
         if (!this.songs.length) {
             this.currentSong = null;
             this.renderLiveEmpty();
+            this.syncLiveScaleField();
             this.updateLiveScaleLabel();
             this.updateLiveScrollControls();
             return;
@@ -509,6 +522,7 @@ class ChordAnnotatorApp {
         if (select) select.value = String(index);
         this.liveTransposeOffset = 0;
         this.livePianoChordIndex = 0;
+        this.syncLiveScaleField();
         if (this.currentSong.sheet && Array.isArray(this.currentSong.sheet.lines)) {
             this.renderLiveSheet();
             this.setPlayMode(true);
@@ -882,8 +896,18 @@ class ChordAnnotatorApp {
         title.textContent = scale.title;
         count.textContent = `${position + 1} / ${visible.length}`;
         notes.textContent = scale.notes.map((note) => note.name).join('  ');
+        this.paintScalePiano(board, scale, this.scaleOctaves === 2 ? 2 : 1);
+        this.disconnectScalePiano();
+        this.scalePianoResize = new ResizeObserver(() => this.layoutPianoKeys(board));
+        this.scalePianoResize.observe(board);
+        requestAnimationFrame(() => this.layoutPianoKeys(board));
+    }
+
+    paintScalePiano(board, scale, octaves) {
+        if (!board || !scale) return;
+        const count = octaves === 2 ? 2 : 1;
         const start = 60;
-        const end = start + ((this.scaleOctaves === 2 ? 2 : 1) * 12);
+        const end = start + (count * 12);
         const spelled = MusicTheory.scaleKeyboardNotes(scale, start, end);
         const active = new Map(spelled.map((note) => [note.midi, note.name]));
         board.replaceChildren();
@@ -902,9 +926,220 @@ class ChordAnnotatorApp {
             board.appendChild(this.pianoKeyButton('piano-black', midi, active.get(midi) || ''));
         }
         board.setAttribute('aria-label', `${scale.title} on piano keys`);
-        this.disconnectScalePiano();
-        this.scalePianoResize = new ResizeObserver(() => this.layoutPianoKeys(board));
-        this.scalePianoResize.observe(board);
+    }
+
+    songTheoryScale() {
+        const id = this.currentSong && this.currentSong.scaleId;
+        if (!id) return null;
+        return (this.scales || []).find((scale) => scale.id === id) || null;
+    }
+
+    syncLiveScaleField() {
+        const input = document.getElementById('liveScaleSearch');
+        const button = document.getElementById('liveScalePianoBtn');
+        const hasSong = this.liveMode && !!this.currentSong;
+        const scale = hasSong ? this.songTheoryScale() : null;
+        if (input) {
+            input.disabled = !hasSong;
+            if (document.activeElement !== input) input.value = scale ? scale.title : '';
+        }
+        if (button) button.disabled = !scale;
+        if (this.liveScalePianoOpen && !scale) this.closeLiveScalePiano();
+        else if (this.liveScalePianoOpen) this.renderLiveScalePiano();
+    }
+
+    bindLiveScalePicker() {
+        const input = document.getElementById('liveScaleSearch');
+        const list = document.getElementById('liveScaleList');
+        const button = document.getElementById('liveScalePianoBtn');
+        if (!input || !list) return;
+        input.addEventListener('focus', () => this.openLiveScaleList());
+        input.addEventListener('input', () => {
+            this.liveScaleHighlight = -1;
+            this.openLiveScaleList();
+        });
+        input.addEventListener('keydown', (event) => this.onLiveScaleKeydown(event));
+        input.addEventListener('blur', () => {
+            setTimeout(() => {
+                if (!list.contains(document.activeElement)) this.commitLiveScaleField();
+            }, 120);
+        });
+        list.addEventListener('mousedown', (event) => event.preventDefault());
+        button?.addEventListener('click', () => this.openLiveScalePiano());
+        document.getElementById('closeLiveScalePianoBtn')?.addEventListener('click', () => this.closeLiveScalePiano());
+        document.getElementById('liveScalePianoPopup')?.addEventListener('click', (event) => {
+            if (event.target.id === 'liveScalePianoPopup') this.closeLiveScalePiano();
+        });
+        document.getElementById('liveScaleOneOctaveBtn')?.addEventListener('click', () => this.setLiveScaleOctaves(1));
+        document.getElementById('liveScaleTwoOctaveBtn')?.addEventListener('click', () => this.setLiveScaleOctaves(2));
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.live-scale-combo')) this.closeLiveScaleList();
+        });
+    }
+
+    liveScaleMatches() {
+        const input = document.getElementById('liveScaleSearch');
+        const query = (input?.value || '').trim().toLowerCase();
+        const selected = this.songTheoryScale();
+        const showAll = !query || (selected && query === selected.title.toLowerCase());
+        return (this.scales || []).filter((scale) => showAll || scale.title.toLowerCase().includes(query));
+    }
+
+    openLiveScaleList() {
+        const input = document.getElementById('liveScaleSearch');
+        const list = document.getElementById('liveScaleList');
+        if (!input || !list || input.disabled) return;
+        const matches = this.liveScaleMatches();
+        list.replaceChildren();
+        if (!matches.length) {
+            const empty = document.createElement('li');
+            empty.className = 'live-scale-empty';
+            empty.textContent = 'No matching scale';
+            list.appendChild(empty);
+            this.liveScaleHighlight = -1;
+        } else {
+            if (this.liveScaleHighlight >= matches.length) this.liveScaleHighlight = 0;
+            matches.forEach((scale, index) => {
+                const item = document.createElement('li');
+                item.setAttribute('role', 'presentation');
+                const option = document.createElement('button');
+                option.type = 'button';
+                option.setAttribute('role', 'option');
+                option.id = `liveScaleOption${index}`;
+                option.dataset.scaleId = scale.id;
+                option.textContent = scale.title;
+                option.classList.toggle('is-active', index === this.liveScaleHighlight);
+                option.setAttribute('aria-selected', index === this.liveScaleHighlight ? 'true' : 'false');
+                option.addEventListener('click', () => this.chooseLiveScale(scale.id));
+                item.appendChild(option);
+                list.appendChild(item);
+            });
+        }
+        list.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+        const active = this.liveScaleHighlight >= 0 ? `liveScaleOption${this.liveScaleHighlight}` : '';
+        if (active) input.setAttribute('aria-activedescendant', active);
+        else input.removeAttribute('aria-activedescendant');
+    }
+
+    closeLiveScaleList() {
+        const input = document.getElementById('liveScaleSearch');
+        const list = document.getElementById('liveScaleList');
+        if (list) list.hidden = true;
+        if (input) {
+            input.setAttribute('aria-expanded', 'false');
+            input.removeAttribute('aria-activedescendant');
+        }
+    }
+
+    onLiveScaleKeydown(event) {
+        const input = document.getElementById('liveScaleSearch');
+        if (!input || input.disabled) return;
+        const matches = this.liveScaleMatches();
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            if (!matches.length) {
+                this.openLiveScaleList();
+                return;
+            }
+            const delta = event.key === 'ArrowDown' ? 1 : -1;
+            const next = this.liveScaleHighlight < 0
+                ? (delta > 0 ? 0 : matches.length - 1)
+                : (this.liveScaleHighlight + delta + matches.length) % matches.length;
+            this.liveScaleHighlight = next;
+            this.openLiveScaleList();
+            document.getElementById(`liveScaleOption${next}`)?.scrollIntoView({ block: 'nearest' });
+            return;
+        }
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            const pick = matches[this.liveScaleHighlight] || (matches.length === 1 ? matches[0] : null);
+            if (pick) this.chooseLiveScale(pick.id);
+            else this.commitLiveScaleField();
+            return;
+        }
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            this.liveScaleHighlight = -1;
+            this.closeLiveScaleList();
+            this.syncLiveScaleField();
+        }
+    }
+
+    commitLiveScaleField() {
+        const input = document.getElementById('liveScaleSearch');
+        this.closeLiveScaleList();
+        if (!input || !this.currentSong) return;
+        const query = input.value.trim().toLowerCase();
+        if (!query) {
+            this.chooseLiveScale('');
+            return;
+        }
+        const exact = (this.scales || []).find((scale) => scale.title.toLowerCase() === query);
+        if (exact) this.chooseLiveScale(exact.id);
+        else this.syncLiveScaleField();
+    }
+
+    chooseLiveScale(scaleId) {
+        if (!this.liveMode || this.editingIndex < 0 || !this.songs[this.editingIndex] || !this.currentSong) return;
+        const scale = (this.scales || []).find((item) => item.id === scaleId) || null;
+        const id = scale ? scale.id : '';
+        this.currentSong.scaleId = id;
+        this.songs[this.editingIndex].scaleId = id;
+        this.liveScaleHighlight = -1;
+        this.saveData();
+        this.closeLiveScaleList();
+        this.syncLiveScaleField();
+    }
+
+    openLiveScalePiano() {
+        const scale = this.songTheoryScale();
+        if (!scale) return;
+        this.liveScalePianoOpen = true;
+        const popup = document.getElementById('liveScalePianoPopup');
+        if (popup) popup.hidden = false;
+        this.renderLiveScalePiano();
+        document.getElementById('closeLiveScalePianoBtn')?.focus();
+    }
+
+    closeLiveScalePiano() {
+        this.liveScalePianoOpen = false;
+        const popup = document.getElementById('liveScalePianoPopup');
+        if (popup) popup.hidden = true;
+        if (this.liveScalePianoResize) {
+            this.liveScalePianoResize.disconnect();
+            this.liveScalePianoResize = null;
+        }
+    }
+
+    setLiveScaleOctaves(count) {
+        this.liveScalePianoOctaves = count === 2 ? 2 : 1;
+        this.renderLiveScalePiano();
+    }
+
+    renderLiveScalePiano() {
+        const scale = this.songTheoryScale();
+        const title = document.getElementById('liveScalePianoTitle');
+        const notes = document.getElementById('liveScalePianoNotes');
+        const board = document.getElementById('liveScalePianoBoard');
+        const one = document.getElementById('liveScaleOneOctaveBtn');
+        const two = document.getElementById('liveScaleTwoOctaveBtn');
+        if (!scale || !title || !notes || !board) return;
+        const octaves = this.liveScalePianoOctaves === 2 ? 2 : 1;
+        title.textContent = scale.title;
+        notes.textContent = scale.notes.map((note) => note.name).join('  ');
+        if (one) {
+            one.classList.toggle('is-on', octaves === 1);
+            one.setAttribute('aria-pressed', octaves === 1 ? 'true' : 'false');
+        }
+        if (two) {
+            two.classList.toggle('is-on', octaves === 2);
+            two.setAttribute('aria-pressed', octaves === 2 ? 'true' : 'false');
+        }
+        this.paintScalePiano(board, scale, octaves);
+        if (this.liveScalePianoResize) this.liveScalePianoResize.disconnect();
+        this.liveScalePianoResize = new ResizeObserver(() => this.layoutPianoKeys(board));
+        this.liveScalePianoResize.observe(board);
         requestAnimationFrame(() => this.layoutPianoKeys(board));
     }
 

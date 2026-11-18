@@ -1088,6 +1088,81 @@ body:has(#liveView.active) {
     font-weight: 600;
 }
 
+.live-scale-pick {
+    display: flex;
+    align-items: stretch;
+    gap: 0.45rem;
+    width: 100%;
+}
+
+.live-scale-combo {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.live-scale-combo input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.live-scale-combo input:disabled {
+    opacity: 0.55;
+}
+
+.live-scale-list {
+    position: absolute;
+    z-index: 40;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    max-height: 240px;
+    margin: 0;
+    padding: 0.25rem;
+    overflow: auto;
+    list-style: none;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    box-shadow: 0 10px 28px var(--shadow-lg);
+}
+
+.live-scale-list[hidden] {
+    display: none;
+}
+
+.live-scale-list button {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.live-scale-list button.is-active,
+.live-scale-list button:hover {
+    background: #EEF2FF;
+    color: var(--primary);
+}
+
+.live-scale-empty {
+    padding: 0.5rem 0.6rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
 .live-scroll-bar {
     display: flex;
     align-items: center;
