@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T12:20:08.235Z",
+  "updatedAt": "2026-11-18T12:45:32.742Z",
   "songs": [
     {
       "title": "خیال",
@@ -526,7 +526,8 @@
       "videoEndStillSeconds": 15,
       "chordColors": {
         "db": "#7C3AED"
-      }
+      },
+      "favorite": false
     },
     {
       "title": "بهانه",
@@ -2992,7 +2993,8 @@
         "EM7"
       ],
       "hideSplits": false,
-      "downbeatsEqualized": false
+      "downbeatsEqualized": false,
+      "favorite": false
     },
     {
       "title": "تاک",
