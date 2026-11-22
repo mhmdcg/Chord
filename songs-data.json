@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T21:09:02.271Z",
+  "updatedAt": "2026-11-22T17:08:39.924Z",
   "songs": [
     {
       "title": "خیال",
@@ -42114,6 +42114,1390 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-18T14:33:15.321Z"
+    },
+    {
+      "title": "عسل",
+      "artist": "ابی",
+      "lyrics": "میام از شهر عشق و\nکوله بار من غزل\nپر از تکرار اسم\nخوب و دلچسب عسل\nکسی که طعم اسمش\nطعم عاشق بودنه\nطلوع تازه ی خواستن\nتو رگهای منه\nمیام از شهر عشق و\nکوله بار من غزل\nپر از تکرار اسم\nخوب و دلچسب عسل\nعسل مثل گـــله\nگل بارون زده\nبه شکل ناب عشق\nکه از خواب اومده\nسکوت لحظه هاش\nهیاهوی غمه\nبه گلبـــرگ صداش\nهجوم شبنمه\nنیاز من به او\nو ر ا ی خواستنه\nنیاز جویبار\nبه جاری بودنه\nکسی که طعم اسمش\nطعم عاشق بودنه\nتمام لحظه ها مثل\nخود من با منه\nتویی که از تمام عاشقا عاشقتری\nمنو تا غربت پاییز چشات می بری\nکسی که عمق چشماش\nجای امن بودنه\nتویی که با تو بودن\nبهترین شعر منه\nتو مثـــل خواب گل\nلطیف و ساده ای\nمث من عاشقی\nبه خاک افتاده ای\nیه جنگل رمز و راز\nیه دریا ساده ای\nاسیر عاطفه\nولی آزاده ای\nنیاز من به تو\nو ر ا ی خواستنه\nنیاز جویبار\nبه جاری بودنه\nنیاز من به تو\nو ر ا ی خواستنه\nنیاز جویبار\nبه جاری بودنه",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "D7   Fm7   Ab   Eb",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Fm7",
+                "col": 5
+              },
+              {
+                "name": "Ab",
+                "col": 11
+              },
+              {
+                "name": "Eb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm7   Gm   Dm7   Gm",
+            "placements": [
+              {
+                "name": "Dm7",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Dm7",
+                "col": 11
+              },
+              {
+                "name": "Gm",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F   Eb   C7   Gm   Gm",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 4
+              },
+              {
+                "name": "C7",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              },
+              {
+                "name": "Gm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   D7   Ab   Gm   Ab   Fm7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 5
+              },
+              {
+                "name": "Ab",
+                "col": 10
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              },
+              {
+                "name": "Ab",
+                "col": 20
+              },
+              {
+                "name": "Fm7",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Eb        Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میام از شهر عشق و",
+            "source": "میام از  شهر عشق و"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        C7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کوله بار من غزل",
+            "source": "کوله بار  من غزل"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb        Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پر از تکرار اسم",
+            "source": "پر از تکرار اسم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm              C7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خوب و دلچسب عسل",
+            "source": "خوب و دلچسب عسل"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7          Eb",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی که طعم اسمش",
+            "source": "کسی که  طعم اسمش"
+          },
+          {
+            "kind": "chords",
+            "source": "D7         Cm7",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "طعم عاشق بودنه",
+            "source": "طعم عاشق  بودنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm         Cm7      Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 11
+              },
+              {
+                "name": "Cm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "طلوع تازه ی خواستن",
+            "source": "طلوع  تازه ی خواستن"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm D7      ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 3
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو رگهای منه",
+            "source": "تو رگهای منه"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb        Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "میام از شهر عشق و",
+            "source": "میام از  شهر عشق و"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm        C7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کوله بار من غزل",
+            "source": "کوله بار  من غزل"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb        Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پر از تکرار اسم",
+            "source": "پر از تکرار اسم"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm  D7              D7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 4
+              },
+              {
+                "name": "D7",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خوب و دلچسب عسل",
+            "source": "خوب و دلچسب عسل"
+          },
+          {
+            "kind": "chords",
+            "source": "F   Eb   C7   Gm   Gm",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 4
+              },
+              {
+                "name": "C7",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              },
+              {
+                "name": "Gm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   D7   Ab   Gm   Ab   Fm7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 5
+              },
+              {
+                "name": "Ab",
+                "col": 10
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              },
+              {
+                "name": "Ab",
+                "col": 20
+              },
+              {
+                "name": "Fm7",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7 C7 Bb   ",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عسل مثل گـــله",
+            "source": "عسل مثل گـــله"
+          },
+          {
+            "kind": "chords",
+            "source": "D7    Ab",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گل بارون زده",
+            "source": "گل بارون زده"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7 C7 Bb     Gm",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 4
+              },
+              {
+                "name": "Bb",
+                "col": 7
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به شکل ناب عشق",
+            "source": "به شکل  ناب عشق"
+          },
+          {
+            "kind": "chords",
+            "source": "D7         Ab",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که از خواب اومده",
+            "source": "که از خواب اومده"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm G7     G",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 3
+              },
+              {
+                "name": "G",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سکوت لحظه هاش",
+            "source": "سکوت  لحظه هاش"
+          },
+          {
+            "kind": "chords",
+            "source": "D7      Ab",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هیاهوی غمه",
+            "source": "هیاهوی غمه"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm G7      G",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 3
+              },
+              {
+                "name": "G",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به گلبـــرگ صداش",
+            "source": "به گلبـــرگ صداش"
+          },
+          {
+            "kind": "chords",
+            "source": "D7       Ab",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "هجوم شبنمه",
+            "source": "هجوم  شبنمه"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm   Gm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نیاز من به او",
+            "source": "نیاز من به او"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm D7 Am7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 3
+              },
+              {
+                "name": "Am7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "و ر ا ی خواستنه",
+            "source": "و ر  ا ی  خواستنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm    Gm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نیاز جویبار",
+            "source": "نیاز  جویبار"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm D7  Am7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 3
+              },
+              {
+                "name": "Am7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به جاری بودنه",
+            "source": "به جاری  بودنه"
+          },
+          {
+            "kind": "chords",
+            "source": "D7   Fm7   Ab   Eb",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Fm7",
+                "col": 5
+              },
+              {
+                "name": "Ab",
+                "col": 11
+              },
+              {
+                "name": "Eb",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Dm7   Gm   Dm7   Gm",
+            "placements": [
+              {
+                "name": "Dm7",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              },
+              {
+                "name": "Dm7",
+                "col": 11
+              },
+              {
+                "name": "Gm",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "F   Eb   C7   Gm   Gm",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 4
+              },
+              {
+                "name": "C7",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              },
+              {
+                "name": "Gm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   D7   Ab   Gm   Ab   Fm7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 5
+              },
+              {
+                "name": "Ab",
+                "col": 10
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              },
+              {
+                "name": "Ab",
+                "col": 20
+              },
+              {
+                "name": "Fm7",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Eb          Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی که طعم اسمش",
+            "source": "کسی که  طعم اسمش"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm           C7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "طعم عاشق بودنه",
+            "source": "طعم عاشق  بودنه"
+          },
+          {
+            "kind": "chords",
+            "source": "C7            Eb     Gm",
+            "placements": [
+              {
+                "name": "C7",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 14
+              },
+              {
+                "name": "Gm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تمام لحظه ها مثل",
+            "source": "تمام  لحظه ها مثل"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm         ",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خود من با منه",
+            "source": "خود من  با منه"
+          },
+          {
+            "kind": "chords",
+            "source": "D7      Cm7    Cm7          Eb",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 8
+              },
+              {
+                "name": "Cm7",
+                "col": 15
+              },
+              {
+                "name": "Eb",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی که از تمام عاشقا عاشقتری",
+            "source": "تویی که  از تمام  عاشقا عاشقتری"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm     D7     Cm      Cm7     Cm",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 7
+              },
+              {
+                "name": "Cm",
+                "col": 14
+              },
+              {
+                "name": "Cm7",
+                "col": 22
+              },
+              {
+                "name": "Cm",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "منو تا غربت پاییز چشات می بری",
+            "source": "منو تا  غربت پاییز چشات می بری"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb          Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "کسی که عمق چشماش",
+            "source": "کسی که  عمق چشماش"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm         C7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "جای امن بودنه",
+            "source": "جای امن  بودنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Eb          Gm",
+            "placements": [
+              {
+                "name": "Eb",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تویی که با تو بودن",
+            "source": "تویی که  با تو بودن"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm D7            D7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 3
+              },
+              {
+                "name": "D7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "بهترین شعر منه",
+            "source": "بهترین شعر منه"
+          },
+          {
+            "kind": "chords",
+            "source": "F   Eb   C7   Gm   Gm",
+            "placements": [
+              {
+                "name": "F",
+                "col": 0
+              },
+              {
+                "name": "Eb",
+                "col": 4
+              },
+              {
+                "name": "C7",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              },
+              {
+                "name": "Gm",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Gm   D7   Ab   Gm   Ab   Fm7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 5
+              },
+              {
+                "name": "Ab",
+                "col": 10
+              },
+              {
+                "name": "Gm",
+                "col": 15
+              },
+              {
+                "name": "Ab",
+                "col": 20
+              },
+              {
+                "name": "Fm7",
+                "col": 25
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7     C7  Bb   ",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 8
+              },
+              {
+                "name": "Bb",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "تو مثـــل خواب گل",
+            "source": "تو مثـــل  خواب گل"
+          },
+          {
+            "kind": "chords",
+            "source": "D7        Ab",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "لطیف و ساده ای",
+            "source": "لطیف و  ساده ای"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm7  C7  Bb   Gm",
+            "placements": [
+              {
+                "name": "Cm7",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 5
+              },
+              {
+                "name": "Bb",
+                "col": 9
+              },
+              {
+                "name": "Gm",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "مث من عاشقی",
+            "source": "مث من  عاشقی"
+          },
+          {
+            "kind": "chords",
+            "source": "D7          Ab",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به خاک افتاده ای",
+            "source": "به خاک افتاده ای"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm  G7       G",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 4
+              },
+              {
+                "name": "G",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه جنگل رمز و راز",
+            "source": "یه جنگل  رمز و راز"
+          },
+          {
+            "kind": "chords",
+            "source": "D7       Ab",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه دریا ساده ای",
+            "source": "یه دریا  ساده ای"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm  G7    G",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 4
+              },
+              {
+                "name": "G",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "اسیر عاطفه",
+            "source": "اسیر  عاطفه"
+          },
+          {
+            "kind": "chords",
+            "source": "D7    Ab",
+            "placements": [
+              {
+                "name": "D7",
+                "col": 0
+              },
+              {
+                "name": "Ab",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ولی آزاده ای",
+            "source": "ولی آزاده ای"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm   Gm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نیاز من به تو",
+            "source": "نیاز  من به تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm D7 Am7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 3
+              },
+              {
+                "name": "Am7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "و ر ا ی خواستنه",
+            "source": "و ر  ا ی  خواستنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm    Gm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نیاز جویبار",
+            "source": "نیاز  جویبار"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm D7  Am7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 3
+              },
+              {
+                "name": "Am7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به جاری بودنه",
+            "source": "به جاری  بودنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm   Gm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 5
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نیاز من به تو",
+            "source": "نیاز  من به تو"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm D7 Am7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 3
+              },
+              {
+                "name": "Am7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "و ر ا ی خواستنه",
+            "source": "و ر  ا ی  خواستنه"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm    Gm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Gm",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نیاز جویبار",
+            "source": "نیاز  جویبار"
+          },
+          {
+            "kind": "chords",
+            "source": "Gm D7  Am7",
+            "placements": [
+              {
+                "name": "Gm",
+                "col": 0
+              },
+              {
+                "name": "D7",
+                "col": 3
+              },
+              {
+                "name": "Am7",
+                "col": 7
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به جاری بودنه",
+            "source": "به جاری  بودنه"
+          }
+        ],
+        "chordCount": 184,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-22T17:08:35.889Z"
     }
   ],
   "chordColors": {
