@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T17:10:41.571Z",
+  "updatedAt": "2026-11-26T22:31:43.937Z",
   "songs": [
     {
       "title": "خیال",
@@ -39357,7 +39357,8 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-18T12:07:43.256Z",
-      "favorite": true
+      "favorite": true,
+      "scaleId": "phrygian:C"
     },
     {
       "title": "پرنده مهاجر",
