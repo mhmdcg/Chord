@@ -1029,14 +1029,18 @@ class ChordAnnotatorApp {
         return (this.scales || []).find((scale) => scale.id === id) || null;
     }
 
-    syncLiveScaleField() {
+    syncLiveScaleField(forceValue) {
         const input = document.getElementById('liveScaleSearch');
         const button = document.getElementById('liveScalePianoBtn');
         const hasSong = this.liveMode && !!this.currentSong;
         const scale = hasSong ? this.songTheoryScale() : null;
         if (input) {
             input.disabled = !hasSong;
-            if (document.activeElement !== input) input.value = scale ? scale.title : '';
+            // A pick keeps the field focused, so the title has to be written anyway.
+            // Leaving it blank lets the later blur commit wipe the scale just chosen.
+            if (forceValue === true || document.activeElement !== input) {
+                input.value = scale ? scale.title : '';
+            }
         }
         if (button) button.disabled = !scale;
         if (this.liveScalePianoOpen && !scale) this.closeLiveScalePiano();
@@ -1105,7 +1109,16 @@ class ChordAnnotatorApp {
                 option.textContent = scale.title;
                 option.classList.toggle('is-active', index === this.liveScaleHighlight);
                 option.setAttribute('aria-selected', index === this.liveScaleHighlight ? 'true' : 'false');
-                option.addEventListener('click', () => this.chooseLiveScale(scale.id));
+                let picked = false;
+                const choose = (event) => {
+                    event.preventDefault();
+                    if (picked) return;
+                    picked = true;
+                    this.chooseLiveScale(scale.id);
+                };
+                // pointerdown commits before the field can blur and clear an empty query.
+                option.addEventListener('pointerdown', choose);
+                option.addEventListener('click', choose);
                 item.appendChild(option);
                 list.appendChild(item);
             });
@@ -1179,12 +1192,14 @@ class ChordAnnotatorApp {
         if (!this.liveMode || this.editingIndex < 0 || !this.songs[this.editingIndex] || !this.currentSong) return;
         const scale = (this.scales || []).find((item) => item.id === scaleId) || null;
         const id = scale ? scale.id : '';
+        const input = document.getElementById('liveScaleSearch');
+        if (input) input.value = scale ? scale.title : '';
         this.currentSong.scaleId = id;
         this.songs[this.editingIndex].scaleId = id;
         this.liveScaleHighlight = -1;
         this.saveData();
         this.closeLiveScaleList();
-        this.syncLiveScaleField();
+        this.syncLiveScaleField(true);
     }
 
     openLiveScalePiano() {
