@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:18:25.932Z",
+  "updatedAt": "2026-11-27T21:18:30.686Z",
   "songs": [
     {
       "title": "خیال",
@@ -29779,7 +29779,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-07T01:30:27.446Z"
+      "createdAt": "2026-11-07T01:30:27.446Z",
+      "favorite": true
     },
     {
       "title": "عالم عشق",
@@ -30958,7 +30959,8 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-08T21:54:36.148Z",
-      "easySemitones": 1
+      "easySemitones": 1,
+      "favorite": true
     },
     {
       "title": "اشاره",
