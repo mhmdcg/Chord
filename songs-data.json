@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:17:26.660Z",
+  "updatedAt": "2026-11-27T21:18:21.446Z",
   "songs": [
     {
       "title": "خیال",
@@ -36797,7 +36797,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-18T10:19:07.265Z"
+      "createdAt": "2026-11-18T10:19:07.265Z",
+      "favorite": true
     },
     {
       "title": "گل سنگ",
