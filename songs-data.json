@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:18:23.208Z",
+  "updatedAt": "2026-11-27T21:18:25.932Z",
   "songs": [
     {
       "title": "خیال",
@@ -35602,7 +35602,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-11T22:35:35.688Z"
+      "createdAt": "2026-11-11T22:35:35.688Z",
+      "favorite": true
     },
     {
       "title": "من دلم تنگه",
