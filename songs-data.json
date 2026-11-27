@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:18:50.366Z",
+  "updatedAt": "2026-11-27T21:18:52.452Z",
   "songs": [
     {
       "title": "خیال",
@@ -5301,7 +5301,8 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:53:27.728Z",
-      "easySemitones": -2
+      "easySemitones": -2,
+      "favorite": true
     },
     {
       "title": "مستی",
