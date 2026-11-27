@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:17:09.786Z",
+  "updatedAt": "2026-11-27T21:17:25.095Z",
   "songs": [
     {
       "title": "خیال",
@@ -42116,7 +42116,8 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-18T14:33:15.321Z",
-      "scaleId": "minor:F#m"
+      "scaleId": "minor:F#m",
+      "favorite": true
     },
     {
       "title": "عسل",
@@ -43500,7 +43501,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-22T17:08:35.889Z"
+      "createdAt": "2026-11-22T17:08:35.889Z",
+      "favorite": true
     },
     {
       "title": "روز برفی",
@@ -44545,7 +44547,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-27T21:13:51.186Z"
+      "createdAt": "2026-11-27T21:13:51.186Z",
+      "favorite": true
     }
   ],
   "chordColors": {
