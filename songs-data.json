@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:13:54.090Z",
+  "updatedAt": "2026-11-27T21:17:09.786Z",
   "songs": [
     {
       "title": "خیال",
@@ -22302,7 +22302,8 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-01T11:15:43.573Z",
-      "easySemitones": 0
+      "easySemitones": 0,
+      "favorite": true
     },
     {
       "title": "خالی",
