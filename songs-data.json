@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:18:21.446Z",
+  "updatedAt": "2026-11-27T21:18:23.208Z",
   "songs": [
     {
       "title": "خیال",
@@ -36369,7 +36369,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-13T22:58:27.158Z"
+      "createdAt": "2026-11-13T22:58:27.158Z",
+      "favorite": true
     },
     {
       "title": "آخرین نامه",
