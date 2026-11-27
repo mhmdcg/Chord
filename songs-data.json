@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T09:11:36.182Z",
+  "updatedAt": "2026-11-27T09:12:07.091Z",
   "songs": [
     {
       "title": "خیال",
@@ -42114,7 +42114,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-18T14:33:15.321Z"
+      "createdAt": "2026-11-18T14:33:15.321Z",
+      "scaleId": ""
     },
     {
       "title": "عسل",
