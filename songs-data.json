@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:18:36.843Z",
+  "updatedAt": "2026-11-27T21:18:50.366Z",
   "songs": [
     {
       "title": "خیال",
@@ -2994,7 +2994,7 @@
       ],
       "hideSplits": false,
       "downbeatsEqualized": false,
-      "favorite": false
+      "favorite": true
     },
     {
       "title": "تاک",
@@ -3339,7 +3339,8 @@
         "Dm",
         "C"
       ],
-      "hideSplits": false
+      "hideSplits": false,
+      "favorite": true
     },
     {
       "title": "کی اشکاتو پاک میکنه",
@@ -4447,7 +4448,8 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:51:31.343Z",
-      "easySemitones": 1
+      "easySemitones": 1,
+      "favorite": true
     },
     {
       "title": "چشم من",
