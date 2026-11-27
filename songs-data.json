@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:18:52.452Z",
+  "updatedAt": "2026-11-27T21:18:57.441Z",
   "songs": [
     {
       "title": "خیال",
@@ -7957,7 +7957,8 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-10-31T12:59:46.613Z",
-      "easySemitones": -1
+      "easySemitones": -1,
+      "favorite": true
     },
     {
       "title": "ای یار من",
