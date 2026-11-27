@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T09:12:48.700Z",
+  "updatedAt": "2026-11-27T21:09:16.691Z",
   "songs": [
     {
       "title": "خیال",
@@ -43500,6 +43500,418 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-22T17:08:35.889Z"
+    },
+    {
+      "title": "روز برفی",
+      "artist": "مرتضی پاشایی",
+      "lyrics": "چشامو ؛ می بندم میخوام هر چی غصه است بمیره\nکه تو خواب ؛ یکی از تنم عطرتو پس بگیره\nنمیشه ؛ نمیشه\nعزیزم ؛ نمیـدونی عشقت چقدر سینه سوزه\nچه سخته ؛ آدم چشم به تاریکی شب بدوزه\nهمیشه ؛ همیشه\nشبا بیدار و روزا خیره به عکست این شده کارم\nدیگه طاقت ندارم\nدلم میخواد یه جایی اونور دنیـــــا خودمو جا بذارم\nآخه عادت ندارم تو که نباشی خوابم نمیره\nخیلی دلم میگیره\nفراموشم نمیشه خاطرهامون واسه من خیلی دیره\nیه آدم چقدر طاقت غصه داره\nچجوری ، میشه خنده روی لبام پا بذاره\nدوباره ، دوباره\nبه جایی ، رسیدم که با هیشکی حرفی ندارم\nنباشی ، من هیچ حسی به روز برفـی ندارم\nنمیخوام ، بباره",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "F#m          C#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 13
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چشامو ؛ می بندم میخوام هر چی غصه است بمیره",
+            "source": "چشامو ؛ می بندم میخوام هر چی غصه است بمیره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " F#m              G#",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 1
+              },
+              {
+                "name": "G#",
+                "col": 18
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "که تو خواب ؛ یکی از تنم عطرتو پس بگیره",
+            "source": "که تو خواب ؛ یکی از تنم عطرتو پس بگیره"
+          },
+          {
+            "kind": "chords",
+            "source": "G#         A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیشه ؛ نمیشه",
+            "source": "نمیشه ؛ نمیشه"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m            C#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 15
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "عزیزم ؛ نمیـدونی عشقت چقدر سینه سوزه",
+            "source": "عزیزم ؛ نمیـدونی عشقت چقدر سینه سوزه"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": " F#m               G#",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 1
+              },
+              {
+                "name": "G#",
+                "col": 19
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چه سخته ؛ آدم چشم به تاریکی شب بدوزه",
+            "source": "چه سخته ؛ آدم چشم به تاریکی شب بدوزه"
+          },
+          {
+            "kind": "chords",
+            "source": "G#            A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "همیشه ؛ همیشه",
+            "source": "همیشه ؛ همیشه"
+          },
+          {
+            "kind": "chords",
+            "source": "B                     A                 C#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 22
+              },
+              {
+                "name": "C#m",
+                "col": 40
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شبا بیدار و روزا خیره به عکست این شده کارم",
+            "source": "شبا بیدار و روزا خیره به عکست این شده کارم"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m        C#7",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#7",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دیگه طاقت ندارم",
+            "source": "دیگه طاقت ندارم"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "   C#m            F#m   B       A           B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 3
+              },
+              {
+                "name": "F#m",
+                "col": 18
+              },
+              {
+                "name": "B",
+                "col": 24
+              },
+              {
+                "name": "A",
+                "col": 32
+              },
+              {
+                "name": "B",
+                "col": 44
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دلم میخواد یه جایی اونور دنیـــــا خودمو جا بذارم",
+            "source": "دلم میخواد یه جایی اونور دنیـــــا خودمو جا بذارم"
+          },
+          {
+            "kind": "chords",
+            "source": "B                   A                C#m",
+            "placements": [
+              {
+                "name": "B",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 20
+              },
+              {
+                "name": "C#m",
+                "col": 37
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آخه عادت ندارم تو که نباشی خوابم نمیره",
+            "source": "آخه عادت ندارم تو که نباشی خوابم نمیره"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m       C#",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "خیلی دلم میگیره",
+            "source": "خیلی دلم میگیره"
+          },
+          {
+            "kind": "blank"
+          },
+          {
+            "kind": "chords",
+            "source": "  C#m         F#m      B           A          B",
+            "placements": [
+              {
+                "name": "C#m",
+                "col": 2
+              },
+              {
+                "name": "F#m",
+                "col": 14
+              },
+              {
+                "name": "B",
+                "col": 23
+              },
+              {
+                "name": "A",
+                "col": 35
+              },
+              {
+                "name": "B",
+                "col": 46
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فراموشم نمیشه خاطرهامون واسه من خیلی دیره",
+            "source": "فراموشم نمیشه خاطرهامون واسه من خیلی دیره"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m         C#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه آدم چقدر طاقت غصه داره",
+            "source": "یه آدم چقدر طاقت غصه داره"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m           C#",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "چجوری ، میشه خنده روی لبام پا بذاره",
+            "source": "چجوری ، میشه خنده روی لبام پا بذاره"
+          },
+          {
+            "kind": "chords",
+            "source": " G#      A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 1
+              },
+              {
+                "name": "A",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "دوباره ، دوباره",
+            "source": "دوباره ، دوباره"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m         C#m",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#m",
+                "col": 12
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "به جایی ، رسیدم که با هیشکی حرفی ندارم",
+            "source": "به جایی ، رسیدم که با هیشکی حرفی ندارم"
+          },
+          {
+            "kind": "chords",
+            "source": "F#m                     C#",
+            "placements": [
+              {
+                "name": "F#m",
+                "col": 0
+              },
+              {
+                "name": "C#",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نباشی ، من هیچ حسی به روز برفـی ندارم",
+            "source": "نباشی ، من هیچ حسی به روز برفـی ندارم"
+          },
+          {
+            "kind": "chords",
+            "source": "G#         A",
+            "placements": [
+              {
+                "name": "G#",
+                "col": 0
+              },
+              {
+                "name": "A",
+                "col": 11
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "نمیخوام ، بباره",
+            "source": "نمیخوام ، بباره"
+          }
+        ],
+        "chordCount": 44,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-27T21:09:15.326Z"
     }
   ],
   "chordColors": {
