@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:18:30.686Z",
+  "updatedAt": "2026-11-27T21:18:36.843Z",
   "songs": [
     {
       "title": "خیال",
@@ -23867,7 +23867,8 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-02T14:47:24.474Z",
-      "easySemitones": 0
+      "easySemitones": 0,
+      "favorite": true
     },
     {
       "title": "چه کنم",
