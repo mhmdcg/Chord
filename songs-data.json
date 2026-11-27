@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:09:16.691Z",
+  "updatedAt": "2026-11-27T21:13:54.090Z",
   "songs": [
     {
       "title": "خیال",
@@ -43912,6 +43912,639 @@
       "videoEndStillSeconds": 7,
       "chordColors": {},
       "createdAt": "2026-11-27T21:09:15.326Z"
+    },
+    {
+      "title": "فریاد انتظار",
+      "artist": "ویگن",
+      "lyrics": "یه شب که آسمون از غم\nسیه روز و پریـــــــشونه\nیه شب که چشمه آهسته\nتوی سبزه می خونه\nیه شب که مو به مو مسته\nسر زلفت پریشونه\nشاید اشکی به یاد من بریزه\nاز چشمونت\nیه شب که تار گیسویت\nپیچد بر تار گیتارم\nشاید به گوش تو آید\nفریاد انتظارم\nیه شب که آرزوهایم\nگیرد رنگ فراموشی\nآن شب دور از تو می میرم\nدر دنیای خاموشی\nیه شب که تار گیسویت\nپیچد بر تار گیتارم\nشاید به گوش تو آید\nفریاد انتظارم\nیه شب که آرزوهایم\nگیرد رنگ فراموشی\nآن شب دور از تو می میرم\nدر دنیای خاموشی\nآن شب دور از تومی میرم\nدر دنیای خاموشی\nارسالکننده :",
+      "annotations": [],
+      "sheet": {
+        "lines": [
+          {
+            "kind": "chords",
+            "source": "Cm   G7   Bb7   Fm   Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 5
+              },
+              {
+                "name": "Bb7",
+                "col": 10
+              },
+              {
+                "name": "Fm",
+                "col": 16
+              },
+              {
+                "name": "Cm",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Cm   G7   G7",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 5
+              },
+              {
+                "name": "G7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Fm                      Cm7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Cm7",
+                "col": 24
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب که آسمون از غم",
+            "source": "یه شب که آسمون از  غم"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm      Fm      ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 8
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سیه روز و پریـــــــشونه",
+            "source": "سیه روز و پریـــــــشونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm                        Cm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 26
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب که چشمه آهسته",
+            "source": "یه شب که چشمه آهسته"
+          },
+          {
+            "kind": "chords",
+            "source": "G7       Fm       ",
+            "placements": [
+              {
+                "name": "G7",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 9
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "توی سبزه می خونه",
+            "source": "توی سبزه می خونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm                          G7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 28
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب که مو به مو مسته",
+            "source": "یه شب که مو به مو مسته"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm        Fm    ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "سر زلفت پریشونه",
+            "source": "سر زلفت پریشونه"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm        Fm                 Cm",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              },
+              {
+                "name": "Cm",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شاید اشکی به یاد من بریزه",
+            "source": "شاید اشکی به یاد من بریزه"
+          },
+          {
+            "kind": "chords",
+            "source": "G7          ",
+            "placements": [
+              {
+                "name": "G7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "از چشمونت",
+            "source": "از چشمونت"
+          },
+          {
+            "kind": "chords",
+            "source": "G7",
+            "placements": [
+              {
+                "name": "G7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Cm                       ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب که تار گیسویت",
+            "source": "یه شب که تار گیسویت"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm                   C7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پیچد بر تار گیتارم",
+            "source": "پیچد بر تار گیتارم"
+          },
+          {
+            "kind": "chords",
+            "source": "G7                     Fm",
+            "placements": [
+              {
+                "name": "G7",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شاید به گوش تو آید",
+            "source": "شاید به گوش تو آید"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm    G7    ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فریاد انتظارم",
+            "source": "فریاد انتظارم"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm                  Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب که آرزوهایم",
+            "source": "یه شب که آرزوهایم"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm               C7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گیرد رنگ فراموشی",
+            "source": "گیرد رنگ فراموشی"
+          },
+          {
+            "kind": "chords",
+            "source": "G7                           Fm",
+            "placements": [
+              {
+                "name": "G7",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 29
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آن شب دور از تو می میرم",
+            "source": "آن شب دور از تو می میرم"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm    G7      ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در دنیای خاموشی",
+            "source": "در دنیای خاموشی"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm   Fm   Fm   Cm   Fm   Fm   Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 5
+              },
+              {
+                "name": "Fm",
+                "col": 10
+              },
+              {
+                "name": "Cm",
+                "col": 15
+              },
+              {
+                "name": "Fm",
+                "col": 20
+              },
+              {
+                "name": "Fm",
+                "col": 25
+              },
+              {
+                "name": "Cm",
+                "col": 30
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Cm   G7   Fm7   F7",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 5
+              },
+              {
+                "name": "Fm7",
+                "col": 10
+              },
+              {
+                "name": "F7",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "chords",
+            "source": "Cm                       ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب که تار گیسویت",
+            "source": "یه شب که تار گیسویت"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm              C7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 16
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "پیچد بر تار گیتارم",
+            "source": "پیچد بر تار گیتارم"
+          },
+          {
+            "kind": "chords",
+            "source": "G7                     Fm",
+            "placements": [
+              {
+                "name": "G7",
+                "col": 0
+              },
+              {
+                "name": "Fm",
+                "col": 23
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "شاید به گوش تو آید",
+            "source": "شاید به گوش تو آید"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm    G7    ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 6
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "فریاد انتظارم",
+            "source": "فریاد انتظارم"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm                  Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "Cm",
+                "col": 20
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "یه شب که آرزوهایم",
+            "source": "یه شب که آرزوهایم"
+          },
+          {
+            "kind": "chords",
+            "source": "Fm               C7",
+            "placements": [
+              {
+                "name": "Fm",
+                "col": 0
+              },
+              {
+                "name": "C7",
+                "col": 17
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "گیرد رنگ فراموشی",
+            "source": "گیرد رنگ فراموشی"
+          },
+          {
+            "kind": "chords",
+            "source": "G7                   Fm7",
+            "placements": [
+              {
+                "name": "G7",
+                "col": 0
+              },
+              {
+                "name": "Fm7",
+                "col": 21
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آن شب دور از تو می میرم",
+            "source": "آن شب دور از تو می میرم"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm            G7      ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 14
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در دنیای خاموشی",
+            "source": " در دنیای خاموشی"
+          },
+          {
+            "kind": "chords",
+            "source": "G7                                ",
+            "placements": [
+              {
+                "name": "G7",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "آن شب دور از تومی میرم",
+            "source": " آن شب دور از تومی میرم"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm        G7         ",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              },
+              {
+                "name": "G7",
+                "col": 10
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "در دنیای خاموشی",
+            "source": " در دنیای خاموشی"
+          },
+          {
+            "kind": "chords",
+            "source": "Cm",
+            "placements": [
+              {
+                "name": "Cm",
+                "col": 0
+              }
+            ]
+          },
+          {
+            "kind": "lyric",
+            "text": "ارسالکننده :",
+            "source": "ارسالکننده :"
+          }
+        ],
+        "chordCount": 70,
+        "align": "right"
+      },
+      "textAlign": "right",
+      "scale": "",
+      "timeTop": 4,
+      "timeBottom": 4,
+      "tempo": "",
+      "lyricTheme": "light",
+      "chordsLocked": false,
+      "splits": [],
+      "downbeats": [],
+      "videoSeconds": 60,
+      "videoStillSeconds": 7,
+      "videoEndStillSeconds": 7,
+      "chordColors": {},
+      "createdAt": "2026-11-27T21:13:51.186Z"
     }
   ],
   "chordColors": {
