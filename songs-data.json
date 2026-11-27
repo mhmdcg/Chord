@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T21:17:25.095Z",
+  "updatedAt": "2026-11-27T21:17:26.660Z",
   "songs": [
     {
       "title": "خیال",
@@ -40172,7 +40172,8 @@
       "videoStillSeconds": 7,
       "videoEndStillSeconds": 7,
       "chordColors": {},
-      "createdAt": "2026-11-18T13:48:12.062Z"
+      "createdAt": "2026-11-18T13:48:12.062Z",
+      "favorite": true
     },
     {
       "title": "فقط یک بار",
