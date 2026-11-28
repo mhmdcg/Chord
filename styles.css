@@ -869,12 +869,105 @@ body:has(#liveView.active) {
     flex-shrink: 0;
 }
 
+.live-performance-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    width: 100%;
+}
+
+.live-loop-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 0;
+    width: 100%;
+}
+
+.live-loop-controls select,
+.live-loop-tempo input {
+    min-height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.live-loop-controls select {
+    flex: 1 1 11rem;
+    min-width: 10.5rem;
+    max-width: 16rem;
+    padding: 0.35rem 0.55rem;
+}
+
+.live-loop-tempo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text);
+    flex-shrink: 0;
+}
+
+.live-loop-tempo input {
+    width: 4.6rem;
+    padding: 0.3rem 0.15rem 0.3rem 0.45rem;
+    text-align: center;
+}
+
+.live-loop-tempo input::-webkit-inner-spin-button,
+.live-loop-tempo input::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.live-loop-tempo input:disabled,
+.live-loop-controls select:disabled {
+    opacity: 0.55;
+}
+
+.live-loop-trim {
+    min-height: 36px;
+    padding: 0.35rem 0.7rem;
+    flex-shrink: 0;
+}
+
+.live-loop-wave {
+    width: 100%;
+    height: 168px;
+    display: block;
+    border-radius: 12px;
+    background: #0e1526;
+    touch-action: none;
+    cursor: ew-resize;
+}
+
+.live-loop-trim-times,
+.live-loop-trim-status {
+    margin: 0.55rem 0 0;
+    font-weight: 650;
+}
+
+.live-loop-trim-status {
+    color: var(--text-muted, #6b7280);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
 .live-chord-row {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
     gap: 0.45rem;
     width: 100%;
+    min-width: 0;
+}
+
+.live-chord-row[hidden] {
+    display: none !important;
 }
 
 .live-chord-row.is-left {
