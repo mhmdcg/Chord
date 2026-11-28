@@ -38,6 +38,7 @@ class ChordAnnotatorApp {
         this.audioContext = null;
         this.pianoVoices = [];
         this.beatMaker = typeof BeatMaker === 'function' ? new BeatMaker() : null;
+        this.liveLoops = typeof LiveLoops === 'function' ? new LiveLoops() : null;
         this.soundingFillTimer = 0;
 
         // Evenly spaced hues so neighboring assignments stay easy to tell apart.
@@ -480,6 +481,7 @@ class ChordAnnotatorApp {
         document.getElementById('lyricsDisplay')?.classList.add('is-live');
         document.getElementById('liveView').classList.add('active');
         this.currentView = 'live';
+        this.liveLoops?.enter();
         this.populateLiveSongSelect();
         if (this.songs.length) {
             const index = this.editingIndex >= 0 && this.editingIndex < this.songs.length
@@ -496,6 +498,7 @@ class ChordAnnotatorApp {
     }
 
     exitLiveMode() {
+        this.liveLoops?.leave();
         this.closeLivePiano();
         this.closeLiveScalePiano();
         this.closeLiveScaleList();
