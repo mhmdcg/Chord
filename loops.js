@@ -30,10 +30,80 @@
         return Math.min(BPM_MAX, Math.max(BPM_MIN, bpm));
     }
 
-    function playbackRate(nativeBpm, targetBpm) {
+    function tempoRatio(nativeBpm, targetBpm) {
         const native = clampBpm(nativeBpm, 90);
         const target = clampBpm(targetBpm, native);
         return target / native;
+    }
+
+    function hannWindow(length) {
+        const window = new Float32Array(length);
+        const denom = Math.max(1, length - 1);
+        for (let i = 0; i < length; i += 1) {
+            window[i] = 0.5 * (1 - Math.cos((2 * Math.PI * i) / denom));
+        }
+        return window;
+    }
+
+    function sampleAt(channel, index, length) {
+        return channel[((index % length) + length) % length];
+    }
+
+    function alignGrain(channel, length, ideal, write, hop, outs, weight, radius) {
+        let best = ideal;
+        let bestScore = -Infinity;
+        const overlap = Math.min(hop, 256);
+        for (let delta = -radius; delta <= radius; delta += 1) {
+            const origin = ideal + delta;
+            let score = 0;
+            let used = 0;
+            for (let i = 0; i < overlap; i += 2) {
+                const at = (write + i) % outs.length;
+                if (weight[at] <= 0.0001) continue;
+                score += (outs[at] / weight[at]) * sampleAt(channel, origin + i, length);
+                used += 1;
+            }
+            if (used && score > bestScore) {
+                bestScore = score;
+                best = origin;
+            }
+        }
+        return best;
+    }
+
+    function stretchChannels(channels, ratio, grainSize) {
+        const sources = channels && channels.length ? channels : [new Float32Array(1)];
+        const length = sources[0].length || 1;
+        const speed = Math.min(8, Math.max(0.125, Number(ratio) || 1));
+        const outLength = Math.max(1, Math.round(length / speed));
+        let grain = Math.round(grainSize || Math.min(length, 2048));
+        grain = Math.max(8, Math.min(grain, length));
+        const hop = Math.max(1, Math.floor(grain / 2));
+        const window = hannWindow(grain);
+        const radius = Math.max(1, Math.min(Math.floor(hop / 2), 400));
+        const outs = sources.map(() => new Float32Array(outLength));
+        const weight = new Float32Array(outLength);
+        let read = 0;
+        let write = 0;
+        while (write < outLength) {
+            let origin = Math.round(read);
+            if (write > 0) origin = alignGrain(sources[0], length, origin, write, hop, outs[0], weight, radius);
+            for (let i = 0; i < grain; i += 1) {
+                const at = (write + i) % outLength;
+                const gain = window[i];
+                for (let channel = 0; channel < sources.length; channel += 1) {
+                    outs[channel][at] += sampleAt(sources[channel], origin + i, length) * gain;
+                }
+                weight[at] += gain;
+            }
+            read = origin + hop * speed;
+            write += hop;
+        }
+        for (let i = 0; i < outLength; i += 1) {
+            const gain = weight[i] > 0.0001 ? weight[i] : 1;
+            for (let channel = 0; channel < outs.length; channel += 1) outs[channel][i] /= gain;
+        }
+        return outs;
     }
 
     function clampTrim(start, end, duration) {
@@ -214,23 +284,29 @@
             this.peaks = new Map();
             this.source = null;
             this.playToken = 0;
+            this.playing = false;
+            this.startedAt = 0;
+            this.playBuffer = null;
+            this.stretchCache = null;
             this.drag = null;
             this.draftTrim = null;
         }
 
         enter() {
             this.active = true;
+            this.playing = false;
             this.bind();
             this.state = loadState(this.storage);
             this.syncForm();
-            if (this.current()) this.playCurrent();
         }
 
         leave() {
             this.active = false;
+            this.playing = false;
             this.playToken += 1;
             this.stopSource();
             this.closeTrim();
+            this.syncForm();
         }
 
         current() {
@@ -242,7 +318,10 @@
             const select = document.getElementById('liveLoopSelect');
             const bpm = document.getElementById('liveLoopBpm');
             const trimBtn = document.getElementById('liveLoopTrimBtn');
-            if (!select || !bpm || !trimBtn) return;
+            const playBtn = document.getElementById('liveLoopPlayBtn');
+            const slower = document.getElementById('liveLoopBpmDown');
+            const faster = document.getElementById('liveLoopBpmUp');
+            if (!select || !bpm || !trimBtn || !playBtn || !slower || !faster) return;
             this.bound = true;
             LOOPS.forEach((loop) => {
                 const option = document.createElement('option');
@@ -252,12 +331,17 @@
             });
             select.addEventListener('change', () => {
                 this.state.selected = loopById(select.value) ? select.value : '';
+                if (!this.current()) this.playing = false;
                 this.persist();
                 this.syncForm();
-                this.playCurrent();
+                if (this.playing) this.playCurrent(0);
+                else this.stopPlayback();
             });
             bpm.addEventListener('input', () => this.onTempoInput(false));
             bpm.addEventListener('change', () => this.onTempoInput(true));
+            document.getElementById('liveLoopPlayBtn').addEventListener('click', () => this.togglePlayback());
+            document.getElementById('liveLoopBpmDown').addEventListener('click', () => this.stepTempo(-1));
+            document.getElementById('liveLoopBpmUp').addEventListener('click', () => this.stepTempo(1));
             trimBtn.addEventListener('click', () => this.openTrim());
             document.getElementById('liveLoopTrimClose')?.addEventListener('click', () => this.closeTrim());
             document.getElementById('liveLoopTrim')?.addEventListener('click', (event) => {
@@ -281,24 +365,58 @@
             if (!loop || !input) return;
             const typed = Number(input.value);
             if (!commit && (!Number.isFinite(typed) || typed !== clampBpm(typed, loop.bpm))) return;
-            const bpm = clampBpm(input.value, loop.bpm);
-            if (commit) input.value = String(bpm);
+            this.applyTempo(clampBpm(input.value, loop.bpm), commit);
+        }
+
+        stepTempo(delta) {
+            const loop = this.current();
+            if (!loop) return;
+            this.applyTempo(clampBpm(tempoOf(this.state, loop) + delta, loop.bpm), true);
+        }
+
+        applyTempo(bpm, commit) {
+            const loop = this.current();
+            const input = document.getElementById('liveLoopBpm');
+            if (!loop) return;
+            const previous = tempoOf(this.state, loop);
+            if (commit && input) input.value = String(bpm);
             this.state = remember(this.state, loop, { bpm });
             this.persist();
-            if (this.source) this.source.playbackRate.value = playbackRate(loop.bpm, bpm);
+            this.syncForm();
+            if (this.playing && bpm !== previous) this.playCurrent(this.playFraction());
         }
 
         syncForm() {
             const select = document.getElementById('liveLoopSelect');
             const bpm = document.getElementById('liveLoopBpm');
             const trimBtn = document.getElementById('liveLoopTrimBtn');
+            const playBtn = document.getElementById('liveLoopPlayBtn');
+            const slower = document.getElementById('liveLoopBpmDown');
+            const faster = document.getElementById('liveLoopBpmUp');
             const loop = this.current();
+            const tempo = loop ? tempoOf(this.state, loop) : 90;
             if (select) select.value = loop ? loop.id : '';
             if (bpm) {
                 bpm.disabled = !loop;
-                bpm.value = String(loop ? tempoOf(this.state, loop) : 90);
+                bpm.value = String(tempo);
             }
             if (trimBtn) trimBtn.disabled = !loop;
+            if (slower) slower.disabled = !loop || tempo <= BPM_MIN;
+            if (faster) faster.disabled = !loop || tempo >= BPM_MAX;
+            if (playBtn) {
+                playBtn.disabled = !loop;
+                playBtn.textContent = this.playing ? 'Stop' : 'Play';
+                playBtn.setAttribute('aria-pressed', this.playing ? 'true' : 'false');
+                playBtn.setAttribute('aria-label', this.playing ? 'Stop loop' : 'Play loop');
+            }
+        }
+
+        togglePlayback() {
+            if (!this.current()) return;
+            this.playing = !this.playing;
+            this.syncForm();
+            if (this.playing) this.playCurrent(0);
+            else this.stopPlayback();
         }
 
         context() {
@@ -309,25 +427,30 @@
             return this.ctx;
         }
 
-        playCurrent() {
+        playCurrent(fraction) {
             const loop = this.current();
             this.playToken += 1;
-            if (!this.active) {
-                this.stopSource();
-                return;
-            }
             this.stopSource();
-            if (!loop) return;
+            if (!this.active || !this.playing || !loop) return;
             const token = this.playToken;
             const ctx = this.context();
             if (!ctx) return;
             if (ctx.state === 'suspended') ctx.resume();
             this.bufferFor(loop).then((buffer) => {
                 if (token !== this.playToken || !buffer) return;
-                this.schedule(loop, buffer, token);
+                this.schedule(loop, buffer, token, fraction || 0);
             }).catch(() => {
+                this.playing = false;
+                this.syncForm();
                 this.setTrimStatus('Could not load this loop.');
             });
+        }
+
+        playFraction() {
+            const duration = this.playBuffer && this.playBuffer.duration;
+            if (!this.source || !duration || !this.ctx) return 0;
+            const elapsed = this.ctx.currentTime - this.startedAt;
+            return ((elapsed % duration) + duration) % duration / duration;
         }
 
         bufferFor(loop) {
@@ -344,27 +467,51 @@
             });
         }
 
-        schedule(loop, buffer, token) {
-            if (!this.active || token !== this.playToken) return;
+        schedule(loop, buffer, token, fraction) {
+            if (!this.active || !this.playing || token !== this.playToken) return;
             const ctx = this.context();
             const trim = this.activeTrim(loop, buffer.duration);
-            const bpm = tempoOf(this.state, loop);
+            const ratio = tempoRatio(loop.bpm, tempoOf(this.state, loop));
+            const stretched = this.stretchedBuffer(ctx, loop, buffer, trim, ratio);
             const source = ctx.createBufferSource();
-            source.buffer = buffer;
-            source.playbackRate.value = playbackRate(loop.bpm, bpm);
+            source.buffer = stretched;
+            source.loop = true;
             source.connect(ctx.destination);
-            source.onended = () => {
-                if (token !== this.playToken) return;
-                if (this.source === source) this.source = null;
-                this.schedule(loop, buffer, token);
-            };
+            const offset = Math.min(Math.max(0, (fraction || 0) * stretched.duration), Math.max(0, stretched.duration - 0.001));
             try {
-                const span = Math.max(0.05, Math.min(trim.end, buffer.duration) - trim.start);
-            source.start(ctx.currentTime, Math.min(trim.start, buffer.duration - span), span);
+                source.start(ctx.currentTime, offset);
             } catch (error) {
                 return;
             }
             this.source = source;
+            this.playBuffer = stretched;
+            this.startedAt = ctx.currentTime - offset;
+        }
+
+        stretchedBuffer(ctx, loop, buffer, trim, ratio) {
+            const key = `${loop.id}:${ratio.toFixed(4)}:${trim.start.toFixed(3)}:${trim.end.toFixed(3)}`;
+            if (this.stretchCache && this.stretchCache.key === key) return this.stretchCache.audio;
+            const rate = buffer.sampleRate;
+            const start = Math.max(0, Math.floor(trim.start * rate));
+            const end = Math.min(buffer.length, Math.max(start + 1, Math.ceil(trim.end * rate)));
+            const pieces = [];
+            for (let channel = 0; channel < buffer.numberOfChannels; channel += 1) {
+                pieces.push(buffer.getChannelData(channel).subarray(start, end));
+            }
+            const grain = Math.round(rate * 0.04);
+            const stretched = stretchChannels(pieces, ratio, grain);
+            const audio = ctx.createBuffer(stretched.length, stretched[0].length, rate);
+            const fade = Math.min(256, Math.floor(stretched[0].length / 8));
+            stretched.forEach((samples, channel) => {
+                for (let i = 0; i < fade; i += 1) {
+                    const gain = i / fade;
+                    samples[i] *= gain;
+                    samples[samples.length - 1 - i] *= gain;
+                }
+                audio.copyToChannel(samples, channel);
+            });
+            this.stretchCache = { key, audio };
+            return audio;
         }
 
         activeTrim(loop, duration) {
@@ -372,9 +519,15 @@
             return trimOf(this.state, loop, duration);
         }
 
+        stopPlayback() {
+            this.playToken += 1;
+            this.stopSource();
+        }
+
         stopSource() {
             const source = this.source;
             this.source = null;
+            this.playBuffer = null;
             if (!source) return;
             source.onended = null;
             try { source.stop(); } catch (error) { /* already stopped */ }
@@ -471,10 +624,11 @@
         }
 
         restartKeepingToken(loop, buffer) {
-            if (!this.active) return;
+            if (!this.active || !this.playing) return;
+            this.playToken += 1;
             const token = this.playToken;
             this.stopSource();
-            this.schedule(loop, buffer, token);
+            this.schedule(loop, buffer, token, 0);
         }
 
         setTrimStatus(text) {
@@ -490,7 +644,8 @@
     LiveLoops.LOOPS = LOOPS;
     LiveLoops.loopById = loopById;
     LiveLoops.clampBpm = clampBpm;
-    LiveLoops.playbackRate = playbackRate;
+    LiveLoops.tempoRatio = tempoRatio;
+    LiveLoops.stretchChannels = stretchChannels;
     LiveLoops.clampTrim = clampTrim;
     LiveLoops.loadState = loadState;
     LiveLoops.saveState = saveState;

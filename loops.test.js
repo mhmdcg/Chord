@@ -12,9 +12,35 @@ function near(actual, expected, message) {
 eq(LiveLoops.clampBpm(10, 90), 40, 'tempo stays inside the spinner range');
 eq(LiveLoops.clampBpm(400, 90), 240, 'tempo stays inside the spinner range');
 eq(LiveLoops.clampBpm('nope', 90), 90, 'a blank tempo keeps the loop tempo');
-eq(LiveLoops.playbackRate(90, 90), 1, 'the recorded tempo plays at normal speed');
-eq(LiveLoops.playbackRate(90, 180), 2, 'double tempo doubles the playback rate');
-near(LiveLoops.playbackRate(90, 45), 0.5, 'half tempo halves the playback rate');
+eq(LiveLoops.tempoRatio(90, 90), 1, 'the recorded tempo plays at normal speed');
+eq(LiveLoops.tempoRatio(90, 180), 2, 'double tempo is twice as fast');
+near(LiveLoops.tempoRatio(90, 45), 0.5, 'half tempo is half as fast');
+
+function sine(length, sampleRate, hz) {
+    const out = new Float32Array(length);
+    for (let i = 0; i < length; i += 1) out[i] = Math.sin((2 * Math.PI * hz * i) / sampleRate);
+    return out;
+}
+
+function pitchHz(samples, sampleRate) {
+    const from = Math.floor(samples.length * 0.25);
+    const to = Math.floor(samples.length * 0.75);
+    let crosses = 0;
+    for (let i = from + 1; i < to; i += 1) {
+        if (samples[i - 1] <= 0 && samples[i] > 0) crosses += 1;
+    }
+    return crosses / ((to - from) / sampleRate);
+}
+
+const sampleRate = 8000;
+const tone = sine(4000, sampleRate, 440);
+const originalPitch = pitchHz(tone, sampleRate);
+const faster = LiveLoops.stretchChannels([tone], 2, 320)[0];
+const slower = LiveLoops.stretchChannels([tone], 0.5, 320)[0];
+assert.ok(Math.abs(pitchHz(faster, sampleRate) - originalPitch) / originalPitch < 0.03, 'a faster tempo keeps the same pitch');
+assert.ok(Math.abs(pitchHz(slower, sampleRate) - originalPitch) / originalPitch < 0.03, 'a slower tempo keeps the same pitch');
+assert.ok(Math.abs(faster.length / tone.length - 0.5) < 0.04, 'double tempo finishes in half the time');
+assert.ok(Math.abs(slower.length / tone.length - 2) < 0.08, 'half tempo takes twice as long');
 
 const full = LiveLoops.clampTrim(null, null, 5.4);
 near(full.start, 0);
