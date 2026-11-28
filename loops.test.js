@@ -9,14 +9,13 @@ function near(actual, expected, message) {
     assert.ok(Math.abs(actual - expected) < 0.0001, message || `${actual} !~ ${expected}`);
 }
 
-eq(LiveLoops.clampBpm(10, 90), 40, 'tempo stays inside the spinner range');
-eq(LiveLoops.clampBpm(400, 90), 240, 'tempo stays inside the spinner range');
-eq(LiveLoops.clampBpm('nope', 90), 90, 'a blank tempo keeps the loop tempo');
-eq(LiveLoops.tempoRatio(90, 90), 1, 'the recorded tempo plays at normal speed');
-eq(LiveLoops.tempoRatio(90, 180), 2, 'double tempo is twice as fast');
-near(LiveLoops.tempoRatio(90, 45), 0.5, 'half tempo is half as fast');
-eq(LiveLoops.auditionRatio(90, 180, true), 1, 'the trim is heard at the original speed');
-eq(LiveLoops.auditionRatio(90, 180, false), 2, 'tempo is applied after the trim');
+eq(LiveLoops.clampSpeed(10, 100), 50, 'speed stays inside the spinner range');
+eq(LiveLoops.clampSpeed(400, 100), 200, 'speed stays inside the spinner range');
+eq(LiveLoops.clampSpeed('nope', 100), 100, 'a blank speed stays at the original recording');
+eq(LiveLoops.playbackSpeed(100, false), 1, '100 percent plays the trimmed loop as recorded');
+eq(LiveLoops.playbackSpeed(200, false), 2, '200 percent plays that same trim twice as fast');
+eq(LiveLoops.playbackSpeed(200, true), 1, 'the trim preview stays at the original speed');
+near(LiveLoops.playbackSpeed(50, false), 0.5, '50 percent plays that same trim at half speed');
 
 function sine(length, sampleRate, hz) {
     const out = new Float32Array(length);
@@ -81,11 +80,13 @@ const memory = {
 let state = LiveLoops.loadState(memory);
 const loop = LiveLoops.loopById('drum-kit-6-8-90');
 state.selected = loop.id;
-state = LiveLoops.remember(state, loop, { bpm: 110, start: 0.4, end: 4.2 });
+state = LiveLoops.remember(state, loop, { speed: 150, start: 0.4, end: 4.2 });
 LiveLoops.saveState(memory, state);
 const loaded = LiveLoops.loadState(memory);
 eq(loaded.selected, 'drum-kit-6-8-90', 'the chosen loop is saved');
-eq(LiveLoops.tempoOf(loaded, loop), 110, 'the tempo spinner value is saved with the loop');
+eq(LiveLoops.speedOf(loaded, loop), 150, 'the speed value is saved with the loop');
+const legacy = { selected: loop.id, byId: { [loop.id]: { bpm: 180 } } };
+eq(LiveLoops.speedOf(legacy, loop), 200, 'an older tempo setting becomes a simple speed');
 const trim = LiveLoops.trimOf(loaded, loop, 5.38);
 near(trim.start, 0.4, 'the trim start is saved');
 near(trim.end, 4.2, 'the trim end is saved');
