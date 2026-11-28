@@ -565,7 +565,7 @@
             popup.hidden = false;
             const title = document.getElementById('liveLoopTrimTitle');
             if (title) title.textContent = loop.name;
-            this.setTrimStatus('Drag either edge on the original recording. Tempo speeds this selection up or down after you close.');
+            this.setTrimStatus('Drag either edge on the original recording. Closing keeps this trim playing.');
             this.bufferFor(loop).then((buffer) => {
                 if (!buffer || !this.trimming || !this.current() || this.current().id !== loop.id) return;
                 this.draftTrim = trimOf(this.state, loop, buffer.duration);
@@ -584,16 +584,19 @@
                 if (popup) popup.hidden = true;
                 return;
             }
-            const keepPlaying = this.playing && this.active;
+            const loop = this.current();
+            const buffer = loop && this.buffers.get(loop.id);
+            if (loop && buffer && this.draftTrim) {
+                this.state = remember(this.state, loop, this.draftTrim);
+                this.persist();
+            }
             if (popup) popup.hidden = true;
             this.trimming = false;
             this.drag = null;
             this.draftTrim = null;
             this.stopTrimClock();
-            this.playToken += 1;
-            this.stopSource();
+            if (this.source) this.playing = true;
             this.syncForm();
-            if (keepPlaying) this.playCurrent(0);
         }
 
         startTrimClock() {
@@ -675,7 +678,7 @@
             if (!loop || !buffer || !this.draftTrim) return;
             this.state = remember(this.state, loop, this.draftTrim);
             this.persist();
-            this.setTrimStatus('Trim saved on the original recording. Tempo is applied when you play.');
+            this.setTrimStatus('Trim saved. This selection keeps playing when you close.');
             this.renderTrim(loop, buffer);
             this.restartKeepingToken(loop, buffer);
         }
