@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20261128d">
+    <link rel="stylesheet" href="styles.css?v=20261128e">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -143,9 +143,21 @@
                         <select id="liveLoopSelect" aria-label="Loop">
                             <option value="">No loop</option>
                         </select>
-                        <label class="live-loop-tempo">Tempo
-                            <input id="liveLoopBpm" type="number" min="40" max="240" step="1" value="90" inputmode="numeric" aria-label="Loop tempo in beats per minute" disabled />
-                        </label>
+                        <button type="button" id="liveLoopPlayBtn" class="btn btn-secondary live-loop-play" aria-pressed="false" disabled>Play</button>
+                        <div class="live-loop-tempo">
+                            <span>Tempo</span>
+                            <div class="live-loop-spinner">
+                                <input id="liveLoopBpm" type="number" min="40" max="240" step="1" value="90" inputmode="numeric" aria-label="Loop tempo in beats per minute" disabled />
+                                <span class="live-loop-arrows">
+                                    <button type="button" id="liveLoopBpmUp" class="live-loop-arrow" aria-label="Faster tempo" disabled>
+                                        <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1.2 6.5 L6 1.5 L10.8 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </button>
+                                    <button type="button" id="liveLoopBpmDown" class="live-loop-arrow" aria-label="Slower tempo" disabled>
+                                        <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1.2 1.5 L6 6.5 L10.8 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
                         <button type="button" id="liveLoopTrimBtn" class="btn btn-secondary live-loop-trim" disabled>Trim</button>
                     </div>
                     <div id="liveChordRow" class="live-chord-row" hidden>
@@ -562,7 +574,7 @@
     <script src="link-charts.js?v=20261118a"></script>
     <script src="music-theory.js?v=20261118i"></script>
     <script src="beats.js?v=20261128a"></script>
-    <script src="loops.js?v=20261128c"></script>
+    <script src="loops.js?v=20261128e"></script>
     <script src="app.js?v=20261128c"></script>
 </body>
 </html>
