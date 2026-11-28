@@ -36,6 +36,10 @@
         return target / native;
     }
 
+    function auditionRatio(nativeBpm, targetBpm, originalSpeed) {
+        return originalSpeed ? 1 : tempoRatio(nativeBpm, targetBpm);
+    }
+
     function hannWindow(length) {
         const window = new Float32Array(length);
         const denom = Math.max(1, length - 1);
@@ -240,7 +244,7 @@
         return `${seconds.toFixed(2)} s`;
     }
 
-    function drawWave(canvas, peaks, trim, duration) {
+    function drawWave(canvas, peaks, trim, duration, playhead) {
         const dpr = (typeof window !== 'undefined' && window.devicePixelRatio) || 1;
         const width = canvas.clientWidth || 600;
         const height = canvas.clientHeight || 160;
@@ -272,6 +276,15 @@
         ctx.moveTo(endX - 1, 0);
         ctx.lineTo(endX - 1, height);
         ctx.stroke();
+        if (playhead != null && duration > 0) {
+            const x = Math.min(width, Math.max(0, playhead * width));
+            ctx.strokeStyle = '#7dd3fc';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
     }
 
     class LiveLoops {
@@ -288,6 +301,8 @@
             this.startedAt = 0;
             this.playBuffer = null;
             this.stretchCache = null;
+            this.trimming = false;
+            this.trimFrame = 0;
             this.drag = null;
             this.draftTrim = null;
         }
@@ -383,6 +398,7 @@
             this.state = remember(this.state, loop, { bpm });
             this.persist();
             this.syncForm();
+            if (this.trimming) return;
             if (this.playing && bpm !== previous) this.playCurrent(this.playFraction());
         }
 
@@ -395,14 +411,15 @@
             const faster = document.getElementById('liveLoopBpmUp');
             const loop = this.current();
             const tempo = loop ? tempoOf(this.state, loop) : 90;
+            const locked = !!this.trimming;
             if (select) select.value = loop ? loop.id : '';
             if (bpm) {
-                bpm.disabled = !loop;
+                bpm.disabled = !loop || locked;
                 bpm.value = String(tempo);
             }
             if (trimBtn) trimBtn.disabled = !loop;
-            if (slower) slower.disabled = !loop || tempo <= BPM_MIN;
-            if (faster) faster.disabled = !loop || tempo >= BPM_MAX;
+            if (slower) slower.disabled = !loop || locked || tempo <= BPM_MIN;
+            if (faster) faster.disabled = !loop || locked || tempo >= BPM_MAX;
             if (playBtn) {
                 playBtn.disabled = !loop;
                 playBtn.textContent = this.playing ? 'Stop' : 'Play';
@@ -468,10 +485,11 @@
         }
 
         schedule(loop, buffer, token, fraction) {
-            if (!this.active || !this.playing || token !== this.playToken) return;
+            if (!this.active || token !== this.playToken) return;
+            if (!this.playing && !this.trimming) return;
             const ctx = this.context();
             const trim = this.activeTrim(loop, buffer.duration);
-            const ratio = tempoRatio(loop.bpm, tempoOf(this.state, loop));
+            const ratio = auditionRatio(loop.bpm, tempoOf(this.state, loop), this.trimming);
             const stretched = this.stretchedBuffer(ctx, loop, buffer, trim, ratio);
             const source = ctx.createBufferSource();
             source.buffer = stretched;
@@ -498,11 +516,12 @@
             for (let channel = 0; channel < buffer.numberOfChannels; channel += 1) {
                 pieces.push(buffer.getChannelData(channel).subarray(start, end));
             }
-            const grain = Math.round(rate * 0.04);
-            const stretched = stretchChannels(pieces, ratio, grain);
-            const audio = ctx.createBuffer(stretched.length, stretched[0].length, rate);
-            const fade = Math.min(256, Math.floor(stretched[0].length / 8));
-            stretched.forEach((samples, channel) => {
+            const rendered = Math.abs(ratio - 1) < 0.0001
+                ? pieces.map((samples) => new Float32Array(samples))
+                : stretchChannels(pieces, ratio, Math.round(rate * 0.04));
+            const audio = ctx.createBuffer(rendered.length, rendered[0].length, rate);
+            const fade = Math.min(128, Math.floor(rendered[0].length / 8));
+            rendered.forEach((samples, channel) => {
                 for (let i = 0; i < fade; i += 1) {
                     const gain = i / fade;
                     samples[i] *= gain;
@@ -536,17 +555,24 @@
         openTrim() {
             const loop = this.current();
             const popup = document.getElementById('liveLoopTrim');
-            if (!loop || !popup) return;
+            if (!loop || !popup || this.trimming) return;
             const ctx = this.context();
             if (ctx && ctx.state === 'suspended') ctx.resume();
+            this.trimming = true;
+            this.playToken += 1;
+            this.stopSource();
+            this.syncForm();
             popup.hidden = false;
             const title = document.getElementById('liveLoopTrimTitle');
             if (title) title.textContent = loop.name;
-            this.setTrimStatus('Drag either edge to trim. The selection is saved on this device.');
+            this.setTrimStatus('Drag either edge on the original recording. Tempo speeds this selection up or down after you close.');
             this.bufferFor(loop).then((buffer) => {
-                if (!buffer || popup.hidden || !this.current() || this.current().id !== loop.id) return;
+                if (!buffer || !this.trimming || !this.current() || this.current().id !== loop.id) return;
                 this.draftTrim = trimOf(this.state, loop, buffer.duration);
                 this.renderTrim(loop, buffer);
+                this.playToken += 1;
+                this.schedule(loop, buffer, this.playToken, 0);
+                this.startTrimClock();
             }).catch(() => {
                 this.setTrimStatus('Could not load this loop.');
             });
@@ -554,9 +580,37 @@
 
         closeTrim() {
             const popup = document.getElementById('liveLoopTrim');
+            if (!this.trimming) {
+                if (popup) popup.hidden = true;
+                return;
+            }
+            const keepPlaying = this.playing && this.active;
             if (popup) popup.hidden = true;
+            this.trimming = false;
             this.drag = null;
             this.draftTrim = null;
+            this.stopTrimClock();
+            this.playToken += 1;
+            this.stopSource();
+            this.syncForm();
+            if (keepPlaying) this.playCurrent(0);
+        }
+
+        startTrimClock() {
+            this.stopTrimClock();
+            const tick = () => {
+                if (!this.trimming) return;
+                const loop = this.current();
+                const buffer = loop && this.buffers.get(loop.id);
+                if (loop && buffer) this.renderTrim(loop, buffer);
+                this.trimFrame = requestAnimationFrame(tick);
+            };
+            this.trimFrame = requestAnimationFrame(tick);
+        }
+
+        stopTrimClock() {
+            if (this.trimFrame) cancelAnimationFrame(this.trimFrame);
+            this.trimFrame = 0;
         }
 
         renderTrim(loop, buffer) {
@@ -564,8 +618,11 @@
             const times = document.getElementById('liveLoopTrimTimes');
             if (!canvas || !buffer) return;
             const trim = this.draftTrim || trimOf(this.state, loop, buffer.duration);
-            drawWave(canvas, this.peaks.get(loop.id) || [], trim, buffer.duration);
-            if (times) times.textContent = `${formatSeconds(trim.start)} – ${formatSeconds(trim.end)}`;
+            const fraction = this.playFraction();
+            const span = Math.max(0.001, trim.end - trim.start);
+            const playhead = (trim.start + fraction * span) / buffer.duration;
+            drawWave(canvas, this.peaks.get(loop.id) || [], trim, buffer.duration, playhead);
+            if (times) times.textContent = `${formatSeconds(trim.start)} – ${formatSeconds(trim.end)} at original speed`;
         }
 
         pointerTime(event, duration) {
@@ -618,13 +675,13 @@
             if (!loop || !buffer || !this.draftTrim) return;
             this.state = remember(this.state, loop, this.draftTrim);
             this.persist();
-            this.setTrimStatus('Trim saved on this device.');
+            this.setTrimStatus('Trim saved on the original recording. Tempo is applied when you play.');
             this.renderTrim(loop, buffer);
             this.restartKeepingToken(loop, buffer);
         }
 
         restartKeepingToken(loop, buffer) {
-            if (!this.active || !this.playing) return;
+            if (!this.active || (!this.playing && !this.trimming)) return;
             this.playToken += 1;
             const token = this.playToken;
             this.stopSource();
@@ -645,6 +702,7 @@
     LiveLoops.loopById = loopById;
     LiveLoops.clampBpm = clampBpm;
     LiveLoops.tempoRatio = tempoRatio;
+    LiveLoops.auditionRatio = auditionRatio;
     LiveLoops.stretchChannels = stretchChannels;
     LiveLoops.clampTrim = clampTrim;
     LiveLoops.loadState = loadState;
