@@ -15,6 +15,8 @@ eq(LiveLoops.clampBpm('nope', 90), 90, 'a blank tempo keeps the loop tempo');
 eq(LiveLoops.tempoRatio(90, 90), 1, 'the recorded tempo plays at normal speed');
 eq(LiveLoops.tempoRatio(90, 180), 2, 'double tempo is twice as fast');
 near(LiveLoops.tempoRatio(90, 45), 0.5, 'half tempo is half as fast');
+eq(LiveLoops.auditionRatio(90, 180, true), 1, 'the trim is heard at the original speed');
+eq(LiveLoops.auditionRatio(90, 180, false), 2, 'tempo is applied after the trim');
 
 function sine(length, sampleRate, hz) {
     const out = new Float32Array(length);
