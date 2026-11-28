@@ -9,6 +9,7 @@ A beautiful, mobile-first web application for annotating song lyrics with music 
 - **🌈 Color-Coded Display**: Each unique chord gets its own color for easy visualization
 - **🔤 Bilingual Support**: Works perfectly with both English and Persian (RTL) text
 - **📱 Mobile-First Design**: Optimized for iPhone and iPad, works great on desktop too
+- **🥁 Beat maker**: A 4×4 drum pad. Record a loop, add more sounds on top, and save beats on the device
 - **💾 Local Storage**: All your data is saved locally in your browser
 - **⚡ No Installation Required**: Works directly in any modern web browser
 - **🎨 Beautiful Modern UI**: Clean, intuitive interface with smooth animations
@@ -51,6 +52,12 @@ Simply open the app in your browser and start creating songs!
 - **Remove Chords**: Click on any highlighted text to remove its annotation
 - **Edit Song**: Go back to edit lyrics or song details
 - **Delete Song**: Remove songs you no longer need
+
+## 🥁 Beats
+
+Open **Beats** from the song list. Tap the colored pads to play. Hold a pad to give it a different drum sound. **Record** loops what you play, and further taps add another layer. **Save** keeps the beat on this device.
+
+The acoustic hits are from Virtuosity Drums (Versilian Studios and Karoryfer Samples). The electronic hits are Michael Fischer’s 1994 TR-808 recordings. Both sets are CC0, so they are free to use. Credits and the license are in `drums/`.
 
 ## 🎨 Chord Color Palette
 

@@ -37,6 +37,7 @@ class ChordAnnotatorApp {
         this.ignoreAnnotationClick = false;
         this.audioContext = null;
         this.pianoVoices = [];
+        this.beatMaker = typeof BeatMaker === 'function' ? new BeatMaker() : null;
         this.soundingFillTimer = 0;
 
         // Evenly spaced hues so neighboring assignments stay easy to tell apart.
@@ -132,6 +133,8 @@ class ChordAnnotatorApp {
         document.getElementById('allChordsBtn').addEventListener('click', () => this.showView('allChords'));
         document.getElementById('scalesBtn').addEventListener('click', () => this.showView('scales'));
         document.getElementById('backFromScalesBtn').addEventListener('click', () => this.showView('songList'));
+        document.getElementById('beatsBtn').addEventListener('click', () => this.showView('beats'));
+        document.getElementById('backFromBeatsBtn').addEventListener('click', () => this.showView('songList'));
         document.getElementById('scalePrevBtn').addEventListener('click', () => this.stepScale(-1));
         document.getElementById('scaleNextBtn').addEventListener('click', () => this.stepScale(1));
         document.getElementById('scaleOneOctaveBtn').addEventListener('click', () => this.setScaleOctaves(1));
@@ -413,6 +416,7 @@ class ChordAnnotatorApp {
     showView(viewName) {
         if (this.liveMode && viewName !== 'live') this.exitLiveMode();
         if (viewName !== 'scales') this.disconnectScalePiano();
+        if (this.currentView === 'beats' && viewName !== 'beats') this.beatMaker?.leave();
         document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
 
         if (viewName === 'songList') {
@@ -427,6 +431,12 @@ class ChordAnnotatorApp {
             this.closeChordModal();
             document.getElementById('scalesView').classList.add('active');
             this.renderScaleCard();
+        } else if (viewName === 'beats') {
+            this.closeChordModal();
+            document.getElementById('beatsView').classList.add('active');
+            this.currentView = 'beats';
+            this.beatMaker?.enter();
+            return;
         } else if (viewName === 'live') {
             this.enterLiveMode();
             return;
