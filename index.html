@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Chord Annotator</title>
-    <link rel="stylesheet" href="styles.css?v=20261118i">
+    <link rel="stylesheet" href="styles.css?v=20261128a">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4F46E5">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,6 +19,7 @@
                 <div class="header-end">
                     <button id="allChordsBtn" class="btn btn-secondary" type="button">All chords</button>
                     <button id="scalesBtn" class="btn btn-secondary" type="button">Scales</button>
+                    <button id="beatsBtn" class="btn btn-secondary" type="button">Beats</button>
                     <button id="liveModeBtn" class="btn btn-secondary" type="button">Live mode</button>
                     <button id="scanChordsBtn" class="btn btn-secondary" type="button">Scan</button>
                     <button id="syncSettingsBtn" class="btn btn-secondary" type="button">GitHub</button>
@@ -77,6 +78,33 @@
                     </div>
                     <p id="scaleEmpty" class="scale-empty" hidden>No scales match these filters.</p>
                 </article>
+            </div>
+        </div>
+
+        <!-- Drum pad beat maker -->
+        <div id="beatsView" class="view">
+            <div class="header beats-header">
+                <button id="backFromBeatsBtn" class="btn btn-secondary" type="button">← Back</button>
+                <h2>Beats</h2>
+                <select id="beatsLibrary" aria-label="Saved beats"></select>
+            </div>
+            <div class="beats-body">
+                <div class="beats-transport">
+                    <button type="button" id="beatsPlayBtn" class="btn btn-primary" aria-pressed="false">Play</button>
+                    <button type="button" id="beatsRecordBtn" class="btn btn-secondary" aria-pressed="false">Record</button>
+                    <label class="beats-bpm">BPM
+                        <input id="beatsBpm" type="number" min="60" max="200" step="1" value="96" inputmode="numeric" aria-label="Tempo in beats per minute" />
+                    </label>
+                    <button type="button" id="beatsBarsBtn" class="btn btn-secondary">1 bar</button>
+                    <button type="button" id="beatsClearBtn" class="btn btn-secondary">Clear</button>
+                    <input id="beatsName" class="beats-name" type="text" maxlength="40" aria-label="Beat name" placeholder="Beat name" />
+                    <button type="button" id="beatsSaveBtn" class="btn btn-primary">Save</button>
+                    <button type="button" id="beatsDeleteBtn" class="btn btn-secondary">Delete</button>
+                </div>
+                <div id="beatsSteps" class="beats-steps" aria-hidden="true"></div>
+                <div id="beatPads" class="beat-pads" role="group" aria-label="Drum pads"></div>
+                <p id="beatsStatus" class="beats-hint">Tap a pad to play. Hold a pad to change its sound.</p>
+                <p class="beats-credit">Acoustic drums from Virtuosity Drums. 808 drums from Michael Fischer, 1994. Both are free (CC0). Beats are saved on this device.</p>
             </div>
         </div>
 
@@ -494,11 +522,23 @@
         </div>
     </div>
 
+    <div id="beatSoundSheet" class="beat-sheet" hidden>
+        <div class="beat-sheet-card" role="dialog" aria-modal="true" aria-labelledby="beatSoundTitle">
+            <div class="beat-sheet-top">
+                <h3 id="beatSoundTitle">Choose a sound</h3>
+                <button type="button" id="beatSoundClose" class="btn btn-secondary">Close</button>
+            </div>
+            <button type="button" id="beatClearSound" class="btn btn-secondary beat-clear-sound">Clear this sound from the loop</button>
+            <div id="beatSoundList" class="beat-sound-list"></div>
+        </div>
+    </div>
+
     <script src="html-to-image.min.js"></script>
     <script src="html2canvas.min.js"></script>
     <script src="mp4-muxer.min.js"></script>
     <script src="link-charts.js?v=20261118a"></script>
     <script src="music-theory.js?v=20261118i"></script>
-    <script src="app.js?v=20261126a"></script>
+    <script src="beats.js?v=20261128a"></script>
+    <script src="app.js?v=20261128a"></script>
 </body>
 </html>

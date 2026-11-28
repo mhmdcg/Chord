@@ -1,0 +1,10 @@
+Acoustic one-shots are single hits from Virtuosity Drums by Versilian Studios
+and Karoryfer Samples, dedicated to the public domain under CC0 1.0.
+https://github.com/sfzinstruments/virtuosity_drums
+
+TR-808 one-shots are from Michael Fischer's 1994 sample set, packaged by
+TidalCycles and dedicated to the public domain under CC0 1.0.
+https://github.com/tidalcycles/sounds-tr808-fischer
+
+The CC0 1.0 legal text is in LICENSE-CC0.txt.
+These files were trimmed and peak-normalized so they work as short pad hits.
